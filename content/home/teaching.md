@@ -18,6 +18,6 @@ I am the coordinator for the following units at the University of Western
 Australia. My teaching material is gathered here. Click on the links to access
 my lecture notes.
 
-- ACCT3323: [Strategic Management Accounting](teaching_material/sma.pdf)
+- ACCT3323: [Strategic Management Accounting](https://ssrn.com/abstract=3126609)
 - ACCT3206: [Performance Measurement and Evaluation](teaching_material/pme.pdf)
 - FINA4590: Research Methods in Accounting and Finance
