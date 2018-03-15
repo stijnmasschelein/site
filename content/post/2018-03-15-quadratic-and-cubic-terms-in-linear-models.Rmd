@@ -56,7 +56,7 @@ t-distribution than with the normal distribution for the deviations. In other
 words, it looks like the extreme cases are doing a lot of work to identify the 
 regimes.
 
-```{r cubic-ols, warnings=FALSE}
+```{r cubic_ols, warnings=FALSE}
 require(ggplot2)
 mopt = -0.0026
 sdopt = 0.1488
