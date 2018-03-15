@@ -34,6 +34,7 @@ round(quantile(opt_dev_norm, probs = c(0.75, 0.5, 0.25)), 2)</code></pre>
 ##  0.1  0.0 -0.1</code></pre>
 <pre class="r"><code>round(quantile(opt_dev_t, probs = c(0.75, 0.5, 0.25)), 2)</code></pre>
 <pre><code>##   75%   50%   25% 
+<<<<<<< HEAD
 ##  0.11  0.00 -0.12</code></pre>
 <pre class="r"><code>cash_change_norm = -0.0038 + 0.2633 * opt_dev_norm - 0.0790 * opt_dev_norm ^ 2 + 
   0.3827 * opt_dev_norm ^ 3
@@ -48,4 +49,18 @@ tplot = qplot(x = opt_dev_t, y = cash_change_t) +
 print(normplot)</code></pre>
 <p><img src="/post/2018-03-15-quadratic-and-cubic-terms-in-linear-models_files/figure-html/cubic-ols-1.png" width="672" /></p>
 <pre class="r"><code>print(tplot)</code></pre>
+=======
+##  0.11  0.00 -0.11</code></pre>
+<pre class="r"><code>cash_change_norm = -0.0038 + 0.2633 * opt_dev_norm - 0.0790 * opt_dev_norm ^ 2 + 
+  0.3827 * opt_dev_norm ^ 3
+qplot(x = opt_dev_norm, y = cash_change_norm) +
+  ggtitle(&quot;Normal distributed deviations&quot;) +
+  theme_classic()</code></pre>
+<p><img src="/post/2018-03-15-quadratic-and-cubic-terms-in-linear-models_files/figure-html/cubic-ols-1.png" width="672" /></p>
+<pre class="r"><code>cash_change_t = -0.0038 + 0.2633 * opt_dev_t - 0.0790 * opt_dev_t ^ 2 + 
+  0.3827 * opt_dev_t ^ 3
+qplot(x = opt_dev_t, y = cash_change_t) +
+  ggtitle(&quot;T distributed deviations&quot;) +
+  theme_classic()</code></pre>
+>>>>>>> b986d6350170393c21d155bd60f17766a4345160
 <p><img src="/post/2018-03-15-quadratic-and-cubic-terms-in-linear-models_files/figure-html/cubic-ols-2.png" width="672" /></p>
