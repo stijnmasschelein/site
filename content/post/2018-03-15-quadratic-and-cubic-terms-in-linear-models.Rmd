@@ -61,7 +61,7 @@ require(ggplot2)
 mopt = -0.0026
 sdopt = 0.1488
 opt_dev_norm = rnorm(1e4, mopt, sdopt)
-opt_dev_t = rt(1e4, 3) * sdopt + mopt
+opt_dev_t = rt(1e4, df = 3) * sqrt(sdopt^2/3) + mopt
 round(quantile(opt_dev_norm, probs = c(0.75, 0.5, 0.25)), 2)
 round(quantile(opt_dev_t, probs = c(0.75, 0.5, 0.25)), 2)
 cash_change_norm = -0.0038 + 0.2633 * opt_dev_norm - 0.0790 * opt_dev_norm ^ 2 + 
