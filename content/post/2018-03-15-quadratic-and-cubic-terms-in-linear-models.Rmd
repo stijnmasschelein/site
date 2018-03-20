@@ -33,9 +33,11 @@ necessarily tells us anything about the three regimes and the speed of cash
 holding adjustment. Typically we are interested in the marginal effect of 
 a variable. In this case the speed of adjustment which you can see as
 
-$$\frac{\partial \Delta CH}{\partial \Delta OPT} = \beta_1 + 2 \beta_2 OPT + 
-  3\beta_3 OPT^2$$
-
+$$
+\frac{\partial \Delta CH}{\partial \Delta OPT} = \beta_1 + 2 \beta_2 \Delta OPT + 
+  3\beta_3 \Delta OPT^2
+$$
+  
 You can see that the speed of adjustment depends on three coefficients and the
 value of $\Delta OPT$. One way to represent the effect of $\Delta OPT$ on 
 $\Delta CH$ is to give the effect for different levels of $\Delta OPT$ and that
