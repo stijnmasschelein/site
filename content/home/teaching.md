@@ -20,4 +20,4 @@ my lecture notes.
 
 - ACCT3323: [Strategic Management Accounting](https://ssrn.com/abstract=3126609)
 - ACCT3206: [Performance Measurement and Evaluation](teaching_material/pme.pdf)
-- FINA4590: Research Methods in Accounting and Finance
+- FINA4590: [Research Methods in Accounting and Finance](teaching_material/_book)

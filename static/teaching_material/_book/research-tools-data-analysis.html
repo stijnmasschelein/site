@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 4 Research tools - Data Analysis | Just Enough To Be Dangerous</title>
+  <meta name="description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 4 Research tools - Data Analysis | Just Enough To Be Dangerous />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Research tools - Data Analysis | Just Enough To Be Dangerous />
+  
+  <meta name="twitter:description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance." />
+  
+
+<meta name="author" content="Stijn Masschelein">
+
+
+<meta name="date" content="2019-02-24">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="research-tools-theory.html">
+<link rel="next" href="maths-sim.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preamble</a></li>
+<li class="chapter" data-level="2" data-path="research-ceocomp.html"><a href="research-ceocomp.html"><i class="fa fa-check"></i><b>2</b> A Research Project: CEO Compensation</a><ul>
+<li class="chapter" data-level="2.1" data-path="research-ceocomp.html"><a href="research-ceocomp.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="research-ceocomp.html"><a href="research-ceocomp.html#theory"><i class="fa fa-check"></i><b>2.2</b> Theory</a></li>
+<li class="chapter" data-level="2.3" data-path="research-ceocomp.html"><a href="research-ceocomp.html#empirical-test"><i class="fa fa-check"></i><b>2.3</b> Empirical Test</a></li>
+<li class="chapter" data-level="2.4" data-path="research-ceocomp.html"><a href="research-ceocomp.html#conclusion"><i class="fa fa-check"></i><b>2.4</b> Conclusion</a></li>
+<li class="chapter" data-level="2.5" data-path="research-ceocomp.html"><a href="research-ceocomp.html#appendix-2"><i class="fa fa-check"></i><b>2.5</b> Appendix: WRDS</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="research-tools-theory.html"><a href="research-tools-theory.html"><i class="fa fa-check"></i><b>3</b> Research Tools - Theory</a><ul>
+<li class="chapter" data-level="3.1" data-path="research-tools-theory.html"><a href="research-tools-theory.html#literature-search"><i class="fa fa-check"></i><b>3.1</b> Literature Search</a></li>
+<li class="chapter" data-level="3.2" data-path="research-tools-theory.html"><a href="research-tools-theory.html#writing-under-construction"><i class="fa fa-check"></i><b>3.2</b> Writing (Under Construction)</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="research-tools-theory.html"><a href="research-tools-theory.html#levels"><i class="fa fa-check"></i><b>3.2.1</b> Different levels in a research paper or thesis.</a></li>
+<li class="chapter" data-level="3.2.2" data-path="research-tools-theory.html"><a href="research-tools-theory.html#concepts"><i class="fa fa-check"></i><b>3.2.2</b> Explain important concepts and theories.</a></li>
+<li class="chapter" data-level="3.2.3" data-path="research-tools-theory.html"><a href="research-tools-theory.html#theory-first"><i class="fa fa-check"></i><b>3.2.3</b> Theory before literature review.</a></li>
+<li class="chapter" data-level="3.2.4" data-path="research-tools-theory.html"><a href="research-tools-theory.html#unecessary"><i class="fa fa-check"></i><b>3.2.4</b> Delete unnecessary words.</a></li>
+<li class="chapter" data-level="3.2.5" data-path="research-tools-theory.html"><a href="research-tools-theory.html#hedging"><i class="fa fa-check"></i><b>3.2.5</b> Avoid vague or hedging words as much as possible.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html"><i class="fa fa-check"></i><b>4</b> Research tools - Data Analysis</a><ul>
+<li class="chapter" data-level="4.1" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#data-analysis-tools"><i class="fa fa-check"></i><b>4.1</b> Data analysis tools</a></li>
+<li class="chapter" data-level="4.2" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#the-r-console"><i class="fa fa-check"></i><b>4.2</b> The R console</a></li>
+<li class="chapter" data-level="4.3" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#r-packages"><i class="fa fa-check"></i><b>4.3</b> R packages</a></li>
+<li class="chapter" data-level="4.4" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#useful-code"><i class="fa fa-check"></i><b>4.4</b> Finally some useful code!</a></li>
+<li class="chapter" data-level="4.5" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#looking-for-help"><i class="fa fa-check"></i><b>4.5</b> Looking for help</a></li>
+<li class="chapter" data-level="4.6" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#rmarkdown-markdown-r"><i class="fa fa-check"></i><b>4.6</b> RMarkdown = Markdown + R</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#markdown"><i class="fa fa-check"></i><b>4.6.1</b> Markdown</a></li>
+<li class="chapter" data-level="4.6.2" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#r-code-in-markdown-r-chunks"><i class="fa fa-check"></i><b>4.6.2</b> R-code in markdown: R chunks</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="maths-sim.html"><a href="maths-sim.html"><i class="fa fa-check"></i><b>5</b> Theory: Maths and Simulations</a><ul>
+<li class="chapter" data-level="5.1" data-path="maths-sim.html"><a href="maths-sim.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="maths-sim.html"><a href="maths-sim.html#new-theory-ceo-firm-matching."><i class="fa fa-check"></i><b>5.2</b> New theory: CEO-firm matching.</a></li>
+<li class="chapter" data-level="5.3" data-path="maths-sim.html"><a href="maths-sim.html#three-firms---three-ceos-model"><i class="fa fa-check"></i><b>5.3</b> Three firms - three CEOs model</a></li>
+<li class="chapter" data-level="5.4" data-path="maths-sim.html"><a href="maths-sim.html#n-firms---n-ceos-model"><i class="fa fa-check"></i><b>5.4</b> N firms - N CEOs model</a></li>
+<li class="chapter" data-level="5.5" data-path="maths-sim.html"><a href="maths-sim.html#simulation"><i class="fa fa-check"></i><b>5.5</b> Simulation</a></li>
+<li class="chapter" data-level="5.6" data-path="maths-sim.html"><a href="maths-sim.html#visualisations"><i class="fa fa-check"></i><b>5.6</b> Visualisations</a></li>
+<li class="chapter" data-level="5.7" data-path="maths-sim.html"><a href="maths-sim.html#functions-in-r"><i class="fa fa-check"></i><b>5.7</b> Functions in <code>R</code></a></li>
+<li class="chapter" data-level="5.8" data-path="maths-sim.html"><a href="maths-sim.html#why-should-you-simulate-data"><i class="fa fa-check"></i><b>5.8</b> Why should you simulate data?</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>6</b> Linear regression in <code>R</code></a><ul>
+<li class="chapter" data-level="6.1" data-path="linear-regression.html"><a href="linear-regression.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="linear-regression.html"><a href="linear-regression.html#linear-regression-with-non-linear-theories"><i class="fa fa-check"></i><b>6.2</b> Linear regression with non-linear theories</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html"><i class="fa fa-check"></i><b>7</b> Measurement and Theory</a><ul>
+<li class="chapter" data-level="7.1" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#assumptions-about-ceos"><i class="fa fa-check"></i><b>7.2</b> Assumptions About CEOs</a></li>
+<li class="chapter" data-level="7.3" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#optimal-incentives"><i class="fa fa-check"></i><b>7.3</b> Optimal CEO incentives</a></li>
+<li class="chapter" data-level="7.4" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#data-sensitivity"><i class="fa fa-check"></i><b>7.4</b> What does the data say?</a></li>
+<li class="chapter" data-level="7.5" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#three-pay-performance-sensitivities"><i class="fa fa-check"></i><b>7.5</b> Three pay-performance sensitivities</a></li>
+<li class="chapter" data-level="7.6" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#comparison-plot"><i class="fa fa-check"></i><b>7.6</b> Comparison plot</a></li>
+<li class="chapter" data-level="7.7" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#libby-boxes"><i class="fa fa-check"></i><b>7.7</b> Libby boxes</a></li>
+<li class="chapter" data-level="7.8" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#are-incentives-independent-of-size"><i class="fa fa-check"></i><b>7.8</b> Are incentives independent of size?</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#randomisation-test"><i class="fa fa-check"></i><b>7.8.1</b> Randomisation Test</a></li>
+<li class="chapter" data-level="7.8.2" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#bootstrap"><i class="fa fa-check"></i><b>7.8.2</b> Bootstrap</a></li>
+<li class="chapter" data-level="7.8.3" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#p-values"><i class="fa fa-check"></i><b>7.8.3</b> P-values</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="assessment.html"><a href="assessment.html"><i class="fa fa-check"></i><b>8</b> Assessment</a><ul>
+<li class="chapter" data-level="8.1" data-path="assessment.html"><a href="assessment.html#overview"><i class="fa fa-check"></i><b>8.1</b> Overview</a></li>
+<li class="chapter" data-level="8.2" data-path="assessment.html"><a href="assessment.html#proposal-5000-words"><i class="fa fa-check"></i><b>8.2</b> Proposal (5000 words)</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="assessment.html"><a href="assessment.html#deadline"><i class="fa fa-check"></i><b>8.2.1</b> Deadline</a></li>
+<li class="chapter" data-level="8.2.2" data-path="assessment.html"><a href="assessment.html#guidelines"><i class="fa fa-check"></i><b>8.2.2</b> Guidelines</a></li>
+<li class="chapter" data-level="8.2.3" data-path="assessment.html"><a href="assessment.html#assessment-criteria"><i class="fa fa-check"></i><b>8.2.3</b> Assessment Criteria</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="assessment.html"><a href="assessment.html#presentation-10-minutes"><i class="fa fa-check"></i><b>8.3</b> Presentation (10 minutes)</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="assessment.html"><a href="assessment.html#deadline-1"><i class="fa fa-check"></i><b>8.3.1</b> Deadline</a></li>
+<li class="chapter" data-level="8.3.2" data-path="assessment.html"><a href="assessment.html#structure"><i class="fa fa-check"></i><b>8.3.2</b> Structure</a></li>
+<li class="chapter" data-level="8.3.3" data-path="assessment.html"><a href="assessment.html#assessment-1"><i class="fa fa-check"></i><b>8.3.3</b> Assessment</a></li>
+<li class="chapter" data-level="8.3.4" data-path="assessment.html"><a href="assessment.html#content"><i class="fa fa-check"></i><b>8.3.4</b> Content</a></li>
+<li class="chapter" data-level="8.3.5" data-path="assessment.html"><a href="assessment.html#presentation-style"><i class="fa fa-check"></i><b>8.3.5</b> Presentation style</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="assessment.html"><a href="assessment.html#thesis."><i class="fa fa-check"></i><b>8.4</b> Thesis.</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="assessment.html"><a href="assessment.html#deadline-2"><i class="fa fa-check"></i><b>8.4.1</b> Deadline</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="assessment.html"><a href="assessment.html#pitching-document"><i class="fa fa-check"></i><b>8.5</b> Pitching Document</a></li>
+<li class="chapter" data-level="8.6" data-path="assessment.html"><a href="assessment.html#assignments-and-homework-35"><i class="fa fa-check"></i><b>8.6</b> Assignments and Homework (35%)</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="assessment.html"><a href="assessment.html#homework-1"><i class="fa fa-check"></i><b>8.6.1</b> Homework 1</a></li>
+<li class="chapter" data-level="8.6.2" data-path="assessment.html"><a href="assessment.html#homework-2"><i class="fa fa-check"></i><b>8.6.2</b> Homework 2</a></li>
+<li class="chapter" data-level="8.6.3" data-path="assessment.html"><a href="assessment.html#assignment-1"><i class="fa fa-check"></i><b>8.6.3</b> Assignment 1</a></li>
+<li class="chapter" data-level="8.6.4" data-path="assessment.html"><a href="assessment.html#assignment-2"><i class="fa fa-check"></i><b>8.6.4</b> Assignment 2</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="assessment.html"><a href="assessment.html#marking-guide"><i class="fa fa-check"></i><b>8.7</b> Honours Marking Guide</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Just Enough To Be Dangerous</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="research-tools---data-analysis" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Research tools - Data Analysis</h1>
+<div id="data-analysis-tools" class="section level2">
+<h2><span class="header-section-number">4.1</span> Data analysis tools</h2>
+<p>Our main tool for data analysis is the R statistical software
+<span class="citation">(R Core Team <a href="#ref-R-base">2018</a>)</span>. R is free software specifically aimed at statistical
+analysis and graphical representation. It is a fully developed
+programming language that allows to extend it with new packages
+with new capabilities. We are going to heavily rely on some of
+those packages.<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a></p>
+<p>We are going to interact with the R software through Rstudio.<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a>
+Rstudio is an integrated development environment for R. It allows
+you to easily write, test, and run R code, and integrate the
+results with explanations. One advantage of R and Rstudio is that
+you can install them on as many computers as you want. You do not
+need a special license. This means that you do not have to be
+affiliated with the university to use the sofware.</p>
+<p>In Rstudio, you write code and ask the R software to execute that
+code. You can save the different steps in your analysis in an R
+script which is just a plain text file with the <code>.R</code>-extenstion.
+The advantage of plain text file is that they are easy to share
+across different operating systems. The code in your script
+allows you and anyone else to run the same analysis at a later
+point in time which is very important to check for mistakes
+and for teaching.</p>
+<p>We will make use of a special type of plain text files: Rmarkdown
+(<code>.Rmd</code>) files.<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a>. RMarkdown is an R extension of the markdown format. The
+idea of markdown is to write plain text documents which can later
+be exported to other formats such as html, pdf, or word. The
+advantage of plain text scripts and markdown. The beauty of
+RMarkdown is that it lets you combine both R scripts and markdown
+into one document. This allows you to integrate your analysis and
+your description of your analysis in one document. When you go
+back to your analysis after a couple of weeks, you will be happy
+that you have more than the raw code to look at.</p>
+<p>Finally, I am going to introduce you to a specific dialect of the
+R language which is informally known as the tidyverse. If you
+want to be a good R programmer this might not be the best entry
+point into R. However, I assume that you want to quickly pick up
+some tools to facilitate your research project and for that
+purpose I believe the tidyverse will be excellent. I will
+introduce the most important bits and pieces throughout my
+lectures however I don’t have the time to go into detail. Now and
+then, you will have to experiment on your own to get your code
+working. Some excellent resources are the free online books
+<a href="https://r4ds.had.co.nz/">R for datascience</a> and
+<a href="https://socviz.co/">Data Visualization: A practical introduction</a>.
+You can also buy reasonably priced physical copies
+if you your are interested in developing your R skills further.</p>
+<p>For larger projects, you should use a project in its own
+separate folder.<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a>. Once you need multiple scripts, you
+want to make sure that you can reliably point to the results or
+functions in different scripts. Projects help you manage all
+the parts of a larger piece of work. You can start a</p>
+<p>You start a new project by clicking <code>File &gt; New Project ...</code> You
+can start a new file by clicking <code>File &gt; New File &gt; R Script</code>.</p>
+</div>
+<div id="the-r-console" class="section level2">
+<h2><span class="header-section-number">4.2</span> The R console</h2>
+<p>In Rstudio, you can use the R console directly. I mainly use the
+R console to test the code I have written in my scripts and I
+would advice you to do the same thing. If you want to understand
+how R works. You can experiment by typing the following lines in
+the console.<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a></p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>
+x</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+x</code></pre>
+<pre><code>## [1] 2</code></pre>
+<p>The little code above already shows you two things.</p>
+<ol style="list-style-type: decimal">
+<li>You can assign (and overwrite) a numerical value to an object <code>x</code></li>
+<li>The right-hand side is assigned to the left-hand side. You can’t just
+switch them around.</li>
+</ol>
+<p>We will see further that we can assign almost anything to an
+object <code>x</code>. When <code>x</code> is a vector or a data set with multiple
+elements, this will allow us to perform the same function on each
+element of <code>x</code>. That is the basic advantage of programming. You
+can tell your computer how to do a thing and than the computer
+can do it over and over for you.</p>
+</div>
+<div id="r-packages" class="section level2">
+<h2><span class="header-section-number">4.3</span> R packages</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre>
+<p>R packages are additions to R that give R extra functionality.
+One of the selling points of R is that it has a good way of
+integrating this extra functionality and a lot of people are
+highly motivated to add this extra functionality. We will heavily
+rely on one meta-packages. <code>tidyverse</code> is a package that helps
+with data transformations and working with tabular data in a tidy
+fashion. One of the packages in the <code>tidyverse</code> is <code>ggplot2</code>
+which provides tools to make pretty plots. The code above shows
+you how to install packages and use them. Normally, you will only
+have to install a package once. However, when you want to use a
+package in your script or code, you will have to load the package
+with the <code>library()</code> function. You only have to do load a package
+once at the start of your R session or at the start of your
+script.<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a></p>
+<p><code>dplyr</code> is another part of the <code>tidyverse</code> we will use
+extensively. With 5 verbs<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a> and one pipe operator to glue them together helps
+you to explore the data.<code>filter()</code> let’s you filter out a subset
+of the observations. <code>select()</code> selects a subset of the variables.
+<code>mutate()</code> changes variables and creates new ones. <code>group_by()</code>
+and <code>summarise()</code> group subsets of observations and summarise
+them. <code>%&gt;%</code> is the pipe operator and joins together the verbs
+to create compound statements where you for instance filter a
+subset of the observations, create a new variable, create groups,
+and summarise the groups based on the average for the new
+variable.</p>
+</div>
+<div id="useful-code" class="section level2">
+<h2><span class="header-section-number">4.4</span> Finally some useful code!</h2>
+<p>Let’s run some code. First, we have to tell R to use the packages
+in the <code>tidyverse</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre>
+<p>Next, we have a look at the data I used to draw the plot of the
+compensation of CEOs of S&amp;P500 companies. First, we have to assign
+the file with the data to an object, <code>us_comp</code> in this case.<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a>
+The glimpse function gives an overview of the variables in the
+data, the type of the variables, and a couple of examples of the
+values for that variable.</p>
+<pre class="sourceCode r"><code class="sourceCode r">us_comp &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">&quot;data/us-compensation.RDS&quot;</span>)
+<span class="kw">glimpse</span>(us_comp)</code></pre>
+<pre><code>## Observations: 3,458
+## Variables: 18
+## $ year                    &lt;dbl&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2...
+## $ gvkey                   &lt;chr&gt; &quot;001045&quot;, &quot;001045&quot;, &quot;001045&quot;, &quot;001045&quot;, &quot;00...
+## $ exec_fullname           &lt;chr&gt; &quot;Gerard J. Arpey&quot;, &quot;Thomas W. Horton&quot;, &quot;Tho...
+## $ coname                  &lt;chr&gt; &quot;AMERICAN AIRLINES GROUP INC&quot;, &quot;AMERICAN AI...
+## $ ceoann                  &lt;chr&gt; &quot;CEO&quot;, &quot;CEO&quot;, &quot;CEO&quot;, &quot;CEO&quot;, &quot;CEO&quot;, &quot;CEO&quot;, &quot;...
+## $ execid                  &lt;chr&gt; &quot;14591&quot;, &quot;26059&quot;, &quot;26059&quot;, &quot;46191&quot;, &quot;46191&quot;...
+## $ bonus                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...
+## $ salary                  &lt;dbl&gt; 613.842, 618.135, 591.911, 687.884, 231.538...
+## $ stock_awards_fv         &lt;dbl&gt; 4020.380, 0.000, 4199.761, 7000.000, 10330....
+## $ stock_unvest_val        &lt;dbl&gt; 0.000, 309.656, 0.000, 31258.138, 14653.946...
+## $ eip_unearn_num          &lt;dbl&gt; 0.000, 151.900, 0.000, 410.111, 112.143, 14...
+## $ eip_unearn_val          &lt;dbl&gt; 0.000, 121.520, 0.000, 21994.253, 4749.256,...
+## $ option_awards           &lt;dbl&gt; 798.600, 0.000, 0.000, 0.000, 0.000, 0.000,...
+## $ option_awards_blk_value &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ option_awards_num       &lt;dbl&gt; 220.000, 0.000, 0.000, 0.000, 0.000, 0.000,...
+## $ tdc1                    &lt;dbl&gt; 5526.835, 656.226, 19092.978, 12301.976, 11...
+## $ tdc2                    &lt;dbl&gt; 4728.235, 656.226, 21123.739, 18975.528, 40...
+## $ shrown_tot_pct          &lt;dbl&gt; NA, NA, 0.061, 0.240, 0.224, 0.306, 0.404, ...</code></pre>
+<p>We can also look at a subset of the observations, i.e. we filter
+the observations from the company that has the key <code>001045</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(us_comp, gvkey <span class="op">==</span><span class="st"> &quot;001045&quot;</span>)</code></pre>
+<pre><code>## # A tibble: 7 x 18
+##    year gvkey exec_fullname coname ceoann execid bonus salary
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1  2011 0010… Gerard J. Ar… AMERI… CEO    14591      0   614.
+## 2  2012 0010… Thomas W. Ho… AMERI… CEO    26059      0   618.
+## 3  2013 0010… Thomas W. Ho… AMERI… CEO    26059      0   592.
+## 4  2014 0010… William Doug… AMERI… CEO    46191      0   688.
+## 5  2015 0010… William Doug… AMERI… CEO    46191      0   232.
+## 6  2016 0010… William Doug… AMERI… CEO    46191      0     0 
+## 7  2017 0010… William Doug… AMERI… CEO    46191      0     0 
+##   stock_awards_fv stock_unvest_val eip_unearn_num eip_unearn_val
+##             &lt;dbl&gt;            &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;
+## 1           4020.               0              0              0 
+## 2              0              310.           152.           122.
+## 3           4200.               0              0              0 
+## 4           7000            31258.           410.         21994.
+## 5          10330            14654.           112.          4749.
+## 6              0             1487.           144.             0 
+## 7          17914            12464.           372.         19334.
+## # ... with 6 more variables: option_awards &lt;dbl&gt;,
+## #   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
+## #   tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;</code></pre>
+<p>You can see that the company, American Airlines, has had three
+CEOs since 2011. I used the <code>gvkey</code> to select a company and not
+its name. You will often use an id or a database key especially
+if you are working with multiple datasets and you want to link
+observations from one dataset to observations in the other
+dataset.</p>
+<p>We can also filter data based on other variables. For instance,
+the below filters the observations from 2014 where the CEO had
+a salary over $1,000,000.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(us_comp, salary <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>, year <span class="op">==</span><span class="st"> </span><span class="dv">2014</span>)</code></pre>
+<pre><code>## # A tibble: 271 x 18
+##     year gvkey exec_fullname coname ceoann execid bonus salary
+##    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1  2014 0010… Donald E. Br… PINNA… CEO    05835     0   1240 
+##  2  2014 0010… Miles D. Whi… ABBOT… CEO    14300     0   1973.
+##  3  2014 0011… Rory P. Read  ADVAN… CEO    42390     0   1000.
+##  4  2014 0013… David M. Cote HONEY… CEO    20931  5500   1866.
+##  5  2014 0013… John B. Hess  HESS … CEO    02132     0   1500 
+##  6  2014 0014… Nicholas K. … AMERI… CEO    40778     0   1241.
+##  7  2014 0014… Kenneth I. C… AMERI… CEO    02157  4500   2000 
+##  8  2014 0014… Daniel Paul … AFLAC… CEO    00013     0   1441.
+##  9  2014 0014… Robert Herma… AMERI… CEO    20972     0   1385.
+## 10  2014 0015… Frank S. Her… AMETE… CEO    04252   520.  1182.
+##    stock_awards_fv stock_unvest_val eip_unearn_num eip_unearn_val
+##              &lt;dbl&gt;            &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;
+##  1           4200.           11416.           220.         14999.
+##  2           4650.               0            315.         14169.
+##  3           5073.            2008.          2149.          5695.
+##  4              0                0              0              0 
+##  5           7820.            9818.           348.         25675.
+##  6           6720.            6688.           215.         26086.
+##  7          14965.               0            423.         39325.
+##  8           2141.               0            326.         19928.
+##  9           6887.               0            418.         23409.
+## 10              0             5582.             0              0 
+## # ... with 261 more rows, and 6 more variables: option_awards &lt;dbl&gt;,
+## #   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
+## #   tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;</code></pre>
+<p>You can also select some variables if you are only interested in
+those. If a variable has an undescriptive name, you can use
+select to rename the variable. For instance, <code>tdc1</code> is the total
+compensation of a the CEO. A more descriptive name will help you
+to remember what the variable actually means.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(us_comp, year, coname, bonus, salary, <span class="dt">total =</span> tdc1)</code></pre>
+<pre><code>## # A tibble: 3,458 x 5
+##     year coname                      bonus salary  total
+##    &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1  2011 AMERICAN AIRLINES GROUP INC     0   614.  5527.
+##  2  2012 AMERICAN AIRLINES GROUP INC     0   618.   656.
+##  3  2013 AMERICAN AIRLINES GROUP INC     0   592. 19093.
+##  4  2014 AMERICAN AIRLINES GROUP INC     0   688. 12302.
+##  5  2015 AMERICAN AIRLINES GROUP INC     0   232. 11419.
+##  6  2016 AMERICAN AIRLINES GROUP INC     0     0    141.
+##  7  2017 AMERICAN AIRLINES GROUP INC     0     0  18115.
+##  8  2011 PINNACLE WEST CAPITAL CORP      0  1091   6698.
+##  9  2012 PINNACLE WEST CAPITAL CORP      0  1146  10123.
+## 10  2013 PINNACLE WEST CAPITAL CORP      0  1203.  7124.
+## # ... with 3,448 more rows</code></pre>
+<p>You can also create new variables with the <code>mutate</code> function. I
+created a variable that calculates what percentage of total
+compensation is the CEO’s salary.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(us_comp, year, coname, bonus, salary, <span class="dt">total =</span> tdc1) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">salary_percentage =</span> salary <span class="op">/</span><span class="st"> </span>total)  </code></pre>
+<pre><code>## # A tibble: 3,458 x 6
+##     year coname                      bonus salary  total salary_percentage
+##    &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;             &lt;dbl&gt;
+##  1  2011 AMERICAN AIRLINES GROUP INC     0   614.  5527.            0.111 
+##  2  2012 AMERICAN AIRLINES GROUP INC     0   618.   656.            0.942 
+##  3  2013 AMERICAN AIRLINES GROUP INC     0   592. 19093.            0.0310
+##  4  2014 AMERICAN AIRLINES GROUP INC     0   688. 12302.            0.0559
+##  5  2015 AMERICAN AIRLINES GROUP INC     0   232. 11419.            0.0203
+##  6  2016 AMERICAN AIRLINES GROUP INC     0     0    141.            0     
+##  7  2017 AMERICAN AIRLINES GROUP INC     0     0  18115.            0     
+##  8  2011 PINNACLE WEST CAPITAL CORP      0  1091   6698.            0.163 
+##  9  2012 PINNACLE WEST CAPITAL CORP      0  1146  10123.            0.113 
+## 10  2013 PINNACLE WEST CAPITAL CORP      0  1203.  7124.            0.169 
+## # ... with 3,448 more rows</code></pre>
+<p>Remark how the <code>select</code> statement from before is chained together
+with the <code>mutate</code> statement through the pipe operator (<code>%&gt;%</code>).
+This operator pipes the results from the first statemetn to the
+second statement. The second statement implicitly uses the result
+from the first statement as the data it is going to work with.</p>
+<p>You can use pipe statement to make your own descriptive
+statistics table. I created a table with some statistics for each
+firm. I first group the observations based on the <code>gvkey</code> and
+then summarise each group with the same key by defining a number
+of new variables.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">group_by</span>(us_comp, gvkey) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">N =</span> <span class="kw">n</span>(), <span class="dt">N_CEO =</span> <span class="kw">n_distinct</span>(execid), 
+            <span class="dt">average =</span> <span class="kw">mean</span>(salary), <span class="dt">sd =</span> <span class="kw">sd</span>(salary),
+            <span class="dt">med =</span> <span class="kw">median</span>(salary), <span class="dt">minimum =</span> <span class="kw">min</span>(salary), 
+            <span class="dt">maximum =</span> <span class="kw">max</span>(salary)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>()</code></pre>
+<pre><code>## # A tibble: 500 x 8
+##    gvkey      N N_CEO average    sd   med minimum maximum
+##    &lt;chr&gt;  &lt;int&gt; &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1 001045     7     3    392. 306.   592.      0     688.
+##  2 001075     7     1   1232.  93.3 1240    1091    1355 
+##  3 001078     7     1   1910.  27.6 1900    1900    1973.
+##  4 001161     7     3    890. 155.   925.    566.   1000.
+##  5 001209     7     2   1158. 112.  1200     905.   1200 
+##  6 001230     7     2    453.  44.5  437.    410.    535.
+##  7 001300     7     2   1780. 166.  1800    1415.   1890 
+##  8 001327     7     2    738.  83.3  748.    635.    850 
+##  9 001380     7     1   1500    0   1500    1500    1500 
+## 10 001440     7     2   1233. 156.  1280.    903.   1375 
+## # ... with 490 more rows</code></pre>
+</div>
+<div id="looking-for-help" class="section level2">
+<h2><span class="header-section-number">4.5</span> Looking for help</h2>
+<p>Programming is hard work. You will make mistakes. You will get
+error messages. An important programming skill is to efficiently
+debug your code and find out what is going wrong.</p>
+<ul>
+<li><p>The most important technique is trial and error. Change one
+thing in your code and see what the output is. Do you get an
+error message? What does the error message tell you? If you
+are carefull and do not change everything at once, this should
+at least help you to find out which part of the code does not
+work. This is one reason why scripts are so important. Because
+a script contains your entire analyis, you can always go back
+and (let your computer) redo the analysis from the start.</p></li>
+<li><p>If you are not sure how you should use a certain function in R,
+you can read its help files in the Rstudio <em>Help</em> window. You
+can search for more information what a function is doing.</p></li>
+<li><p>R is a very popular language. If you have a problem it is likely
+that someone else had the same problem before you. If you
+<a href="https://www.google.com">Google</a> the error message, there is a
+decent chance you will find a solution to your problem.</p></li>
+<li><p>A specific website where a lot of these questions are asked is<br />
+<a href="https://www.stackoverflow.com">StackOverflow</a>. You can often
+directly search for your error on the website and find multiple
+solutions. You can improve your chances of finding a related
+answer to your problem by adding the <code>[r]</code>, <code>[tidyverse]</code>,
+<code>[dplyr]</code>, <code>[ggplot]</code> tags to your error message.</p></li>
+<li><p>You can also ask me directly for help on LMS. I set up a forum
+for questions and I promise to help you with any R questions
+you might have for the unit and for your thesis.</p></li>
+</ul>
+</div>
+<div id="rmarkdown-markdown-r" class="section level2">
+<h2><span class="header-section-number">4.6</span> RMarkdown = Markdown + R</h2>
+<p>One of the big advantages of the R world is that you can
+easily combine explanations with your analysis in <code>.Rmd</code> files.
+The assignements can all be completed in Rmarkdown. You can find
+a lot of good resources on
+<a href="https://rmarkdown.rstudio.com/">Rmarkdown on the Rstudio website</a>.<br />
+In short, markdown is a simple markup language<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a> that lets you include R code.</p>
+<div id="markdown" class="section level3">
+<h3><span class="header-section-number">4.6.1</span> Markdown</h3>
+<p>You can have titles in markdown.</p>
+<pre><code># Title
+## Subtitle
+### Lower level titles.</code></pre>
+<p>You can emphasise some words.</p>
+<p>*<em>Italic</em>*, **<strong>bold</strong>**</p>
+<p>Add links to pages and include pictures.</p>
+<pre><code>[weblink](https://www.google.com)
+![pictures](https://rstudio.com/wp-content/uploads/2015/10/r-packages.png)</code></pre>
+<p>You can write enumerations and lists.</p>
+<pre><code>1. Item 1
+2. Item 2 
+3. Item 3 
+
+- one
+- two 
+- three </code></pre>
+<p>You can also write tables. You will rarely have to use tables.
+Typically, you can directly create the tables from R without the
+need to type in the results of your analysis.</p>
+<pre><code>First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell</code></pre>
+</div>
+<div id="r-code-in-markdown-r-chunks" class="section level3">
+<h3><span class="header-section-number">4.6.2</span> R-code in markdown: R chunks</h3>
+<p>The largest advantage of Rmarkdown files is that we can include
+pieces of R code.[^ Again, all these notes are written in
+Rmarkdown. Code chuncks go between three backticks and we tell
+Rmarkdown that the language we are using is <code>{r}</code>. The example
+below creates a code chuck where we create a random vector <code>x</code>
+with then elements where the elements are drawn from a random
+distribution with mean 4 and standard deviation 3.</p>
+<pre class="sourceCode markdown"><code class="sourceCode markdown"><span class="bn">```{r}</span>
+<span class="bn">x &lt;- rnorm(n = 10, mean = 4, sd = 3)</span>
+<span class="bn">```</span></code></pre>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-base">
+<p>R Core Team. 2018. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="20">
+<li id="fn20"><p>You can download R <a href="https://cran.curtin.edu.au/">from this CRAN server</a><a href="research-tools-data-analysis.html#fnref20" class="footnote-back">↩</a></p></li>
+<li id="fn21"><p>You can download <a href="https://www.rstudio.com/products/rstudio/download/#download">from the Rstudio website</a><a href="research-tools-data-analysis.html#fnref21" class="footnote-back">↩</a></p></li>
+<li id="fn22"><p>These notes are fully written in Rmarkdown
+files<a href="research-tools-data-analysis.html#fnref22" class="footnote-back">↩</a></p></li>
+<li id="fn23"><p>See the
+<a href="https://r4ds.had.co.nz/workflow-projects.html">Project Chapter</a>
+of Hadley Wickham’s book<a href="research-tools-data-analysis.html#fnref23" class="footnote-back">↩</a></p></li>
+<li id="fn24"><p>It is tempting to copy and paste the code but
+retyping the code is a surprising powerful way of learning to
+code. I would advise you to try to type as much of the code as
+possible when you are trying to figure out how R works.<a href="research-tools-data-analysis.html#fnref24" class="footnote-back">↩</a></p></li>
+<li id="fn25"><p>Installing packages is another reason to use the R console.<a href="research-tools-data-analysis.html#fnref25" class="footnote-back">↩</a></p></li>
+<li id="fn26"><p>i.e. functions to <em>do</em> something with
+a dataset.<a href="research-tools-data-analysis.html#fnref26" class="footnote-back">↩</a></p></li>
+<li id="fn27"><p>The data is available on LMS or through the code in the
+Appendix <a href="research-ceocomp.html#appendix-2">2.5</a><a href="research-tools-data-analysis.html#fnref27" class="footnote-back">↩</a></p></li>
+<li id="fn28"><p>This means that you can
+add little bits of code to your text that indicated how the text
+should look<a href="research-tools-data-analysis.html#fnref28" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="research-tools-theory.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="maths-sim.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["method_accfin.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
