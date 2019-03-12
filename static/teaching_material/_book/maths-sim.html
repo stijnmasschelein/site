@@ -25,7 +25,7 @@
 <meta name="author" content="Stijn Masschelein">
 
 
-<meta name="date" content="2019-02-24">
+<meta name="date" content="2019-03-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,6 +48,10 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 
 
 <style type="text/css">
@@ -183,31 +187,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.8.3" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#p-values"><i class="fa fa-check"></i><b>7.8.3</b> P-values</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="assessment.html"><a href="assessment.html"><i class="fa fa-check"></i><b>8</b> Assessment</a><ul>
-<li class="chapter" data-level="8.1" data-path="assessment.html"><a href="assessment.html#overview"><i class="fa fa-check"></i><b>8.1</b> Overview</a></li>
-<li class="chapter" data-level="8.2" data-path="assessment.html"><a href="assessment.html#proposal-5000-words"><i class="fa fa-check"></i><b>8.2</b> Proposal (5000 words)</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="assessment.html"><a href="assessment.html#deadline"><i class="fa fa-check"></i><b>8.2.1</b> Deadline</a></li>
-<li class="chapter" data-level="8.2.2" data-path="assessment.html"><a href="assessment.html#guidelines"><i class="fa fa-check"></i><b>8.2.2</b> Guidelines</a></li>
-<li class="chapter" data-level="8.2.3" data-path="assessment.html"><a href="assessment.html#assessment-criteria"><i class="fa fa-check"></i><b>8.2.3</b> Assessment Criteria</a></li>
+<li class="chapter" data-level="8" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html"><i class="fa fa-check"></i><b>8</b> Control Variables (Under Construction)</a><ul>
+<li class="chapter" data-level="8.1" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#the-data"><i class="fa fa-check"></i><b>8.1</b> The data</a></li>
+<li class="chapter" data-level="8.2" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#controlling-for-measurement-error"><i class="fa fa-check"></i><b>8.2</b> Controlling for measurement error</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#directed-acyclical-graph-or-dag"><i class="fa fa-check"></i><b>8.2.1</b> Directed Acyclical Graph (or DAG)</a></li>
+<li class="chapter" data-level="8.2.2" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#simulation-1"><i class="fa fa-check"></i><b>8.2.2</b> Simulation</a></li>
+<li class="chapter" data-level="8.2.3" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#real-data"><i class="fa fa-check"></i><b>8.2.3</b> Real data</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="assessment.html"><a href="assessment.html#presentation-10-minutes"><i class="fa fa-check"></i><b>8.3</b> Presentation (10 minutes)</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="assessment.html"><a href="assessment.html#deadline-1"><i class="fa fa-check"></i><b>8.3.1</b> Deadline</a></li>
-<li class="chapter" data-level="8.3.2" data-path="assessment.html"><a href="assessment.html#structure"><i class="fa fa-check"></i><b>8.3.2</b> Structure</a></li>
-<li class="chapter" data-level="8.3.3" data-path="assessment.html"><a href="assessment.html#assessment-1"><i class="fa fa-check"></i><b>8.3.3</b> Assessment</a></li>
-<li class="chapter" data-level="8.3.4" data-path="assessment.html"><a href="assessment.html#content"><i class="fa fa-check"></i><b>8.3.4</b> Content</a></li>
-<li class="chapter" data-level="8.3.5" data-path="assessment.html"><a href="assessment.html#presentation-style"><i class="fa fa-check"></i><b>8.3.5</b> Presentation style</a></li>
+<li class="chapter" data-level="8.3" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#interaction-effects"><i class="fa fa-check"></i><b>8.3</b> Interaction effects</a></li>
+<li class="chapter" data-level="8.4" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#controlling-for-confounds"><i class="fa fa-check"></i><b>8.4</b> Controlling for confounds</a></li>
+<li class="chapter" data-level="8.5" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#bad-controls-and-tricky-specifications"><i class="fa fa-check"></i><b>8.5</b> Bad controls and tricky specifications</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#performance-as-control"><i class="fa fa-check"></i><b>8.5.1</b> Performance as control</a></li>
+<li class="chapter" data-level="8.5.2" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#performance-as-dependent-variable"><i class="fa fa-check"></i><b>8.5.2</b> Performance as dependent variable</a></li>
+<li class="chapter" data-level="8.5.3" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#colliders"><i class="fa fa-check"></i><b>8.5.3</b> Colliders</a></li>
+<li class="chapter" data-level="8.5.4" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#selection-bias"><i class="fa fa-check"></i><b>8.5.4</b> Selection bias</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="assessment.html"><a href="assessment.html#thesis."><i class="fa fa-check"></i><b>8.4</b> Thesis.</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="assessment.html"><a href="assessment.html#deadline-2"><i class="fa fa-check"></i><b>8.4.1</b> Deadline</a></li>
+<li class="chapter" data-level="8.6" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#example-fixed-effects"><i class="fa fa-check"></i><b>8.6</b> Example: Fixed effects</a></li>
+<li class="chapter" data-level="8.7" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#instrumental-variables-and-expectations"><i class="fa fa-check"></i><b>8.7</b> Instrumental Variables and Expectations</a></li>
+<li class="chapter" data-level="8.8" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#natural-experiments-and-research-design"><i class="fa fa-check"></i><b>8.8</b> Natural Experiments and Research Design</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="assessment.html"><a href="assessment.html#pitching-document"><i class="fa fa-check"></i><b>8.5</b> Pitching Document</a></li>
-<li class="chapter" data-level="8.6" data-path="assessment.html"><a href="assessment.html#assignments-and-homework-35"><i class="fa fa-check"></i><b>8.6</b> Assignments and Homework (35%)</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="assessment.html"><a href="assessment.html#homework-1"><i class="fa fa-check"></i><b>8.6.1</b> Homework 1</a></li>
-<li class="chapter" data-level="8.6.2" data-path="assessment.html"><a href="assessment.html#homework-2"><i class="fa fa-check"></i><b>8.6.2</b> Homework 2</a></li>
-<li class="chapter" data-level="8.6.3" data-path="assessment.html"><a href="assessment.html#assignment-1"><i class="fa fa-check"></i><b>8.6.3</b> Assignment 1</a></li>
-<li class="chapter" data-level="8.6.4" data-path="assessment.html"><a href="assessment.html#assignment-2"><i class="fa fa-check"></i><b>8.6.4</b> Assignment 2</a></li>
+<li class="chapter" data-level="9" data-path="assessment.html"><a href="assessment.html"><i class="fa fa-check"></i><b>9</b> Assessment</a><ul>
+<li class="chapter" data-level="9.1" data-path="assessment.html"><a href="assessment.html#overview"><i class="fa fa-check"></i><b>9.1</b> Overview</a></li>
+<li class="chapter" data-level="9.2" data-path="assessment.html"><a href="assessment.html#proposal-5000-words"><i class="fa fa-check"></i><b>9.2</b> Proposal (5000 words)</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="assessment.html"><a href="assessment.html#deadline"><i class="fa fa-check"></i><b>9.2.1</b> Deadline</a></li>
+<li class="chapter" data-level="9.2.2" data-path="assessment.html"><a href="assessment.html#guidelines"><i class="fa fa-check"></i><b>9.2.2</b> Guidelines</a></li>
+<li class="chapter" data-level="9.2.3" data-path="assessment.html"><a href="assessment.html#assessment-criteria"><i class="fa fa-check"></i><b>9.2.3</b> Assessment Criteria</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="assessment.html"><a href="assessment.html#marking-guide"><i class="fa fa-check"></i><b>8.7</b> Honours Marking Guide</a></li>
+<li class="chapter" data-level="9.3" data-path="assessment.html"><a href="assessment.html#presentation-10-minutes"><i class="fa fa-check"></i><b>9.3</b> Presentation (10 minutes)</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="assessment.html"><a href="assessment.html#deadline-1"><i class="fa fa-check"></i><b>9.3.1</b> Deadline</a></li>
+<li class="chapter" data-level="9.3.2" data-path="assessment.html"><a href="assessment.html#structure"><i class="fa fa-check"></i><b>9.3.2</b> Structure</a></li>
+<li class="chapter" data-level="9.3.3" data-path="assessment.html"><a href="assessment.html#assessment-1"><i class="fa fa-check"></i><b>9.3.3</b> Assessment</a></li>
+<li class="chapter" data-level="9.3.4" data-path="assessment.html"><a href="assessment.html#content"><i class="fa fa-check"></i><b>9.3.4</b> Content</a></li>
+<li class="chapter" data-level="9.3.5" data-path="assessment.html"><a href="assessment.html#presentation-style"><i class="fa fa-check"></i><b>9.3.5</b> Presentation style</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="assessment.html"><a href="assessment.html#thesis."><i class="fa fa-check"></i><b>9.4</b> Thesis.</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="assessment.html"><a href="assessment.html#deadline-2"><i class="fa fa-check"></i><b>9.4.1</b> Deadline</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="assessment.html"><a href="assessment.html#pitching-document"><i class="fa fa-check"></i><b>9.5</b> Pitching Document</a></li>
+<li class="chapter" data-level="9.6" data-path="assessment.html"><a href="assessment.html#assignments-and-homework-35"><i class="fa fa-check"></i><b>9.6</b> Assignments and Homework (35%)</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="assessment.html"><a href="assessment.html#homework-1"><i class="fa fa-check"></i><b>9.6.1</b> Homework 1</a></li>
+<li class="chapter" data-level="9.6.2" data-path="assessment.html"><a href="assessment.html#homework-2"><i class="fa fa-check"></i><b>9.6.2</b> Homework 2</a></li>
+<li class="chapter" data-level="9.6.3" data-path="assessment.html"><a href="assessment.html#assignment-1"><i class="fa fa-check"></i><b>9.6.3</b> Assignment 1</a></li>
+<li class="chapter" data-level="9.6.4" data-path="assessment.html"><a href="assessment.html#assignment-2"><i class="fa fa-check"></i><b>9.6.4</b> Assignment 2</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="assessment.html"><a href="assessment.html#marking-guide"><i class="fa fa-check"></i><b>9.7</b> Honours Marking Guide</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -400,12 +423,12 @@ or CEOs become larger at the top. <code>C</code> is the <span class="math inline
 model. <code>scale</code> is an additional parameter that helps me scale the
 size of the firms so that I get similar numbers as the real data.<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a> <code>w0</code> is the base
 wage for the least talented CEO.</p>
-<pre class="sourceCode r"><code class="sourceCode r">obs =<span class="st"> </span><span class="dv">500</span>
-size_rate =<span class="st"> </span><span class="dv">1</span>; talent_rate =<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span>; 
-C =<span class="st"> </span><span class="dv">10</span>; scale =<span class="st"> </span><span class="dv">600</span>; w0 =<span class="st"> </span><span class="dv">0</span>; 
-n =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>obs)
-size =<span class="st"> </span>scale <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(<span class="op">-</span>size_rate)
-talent =<span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>talent_rate <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(talent_rate)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">obs &lt;-<span class="st"> </span><span class="dv">500</span>
+size_rate &lt;-<span class="st"> </span><span class="dv">1</span>; talent_rate &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span>; 
+C &lt;-<span class="st"> </span><span class="dv">10</span>; scale &lt;-<span class="st"> </span><span class="dv">600</span>; w0 &lt;-<span class="st"> </span><span class="dv">0</span>; 
+n &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>obs)
+size &lt;-<span class="st"> </span>scale <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(<span class="op">-</span>size_rate)
+talent &lt;-<span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>talent_rate <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(talent_rate)</code></pre>
 <p><code>n</code> is an <code>R</code> vector of length <code>obs</code> (i.e. 500) with values from
 1 to <code>obs</code>. So it is the rank in size and talent for each firm
 and CEO. You can see what <code>n</code> look like by just typing <code>n</code> and
@@ -425,16 +448,16 @@ Than <em>for</em> each firm (we go from <code>i = 499</code> to <code>i = 1</cod
 wage as the wage of the smaller firm (<code>i + 1</code>) and subtract the
 surplus our CEO would generate in the smaller firm over what
 their CEO is now generating.<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a></p>
-<pre class="sourceCode r"><code class="sourceCode r">wage =<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, obs)
-wage[obs] =<span class="st"> </span>w0
+<pre class="sourceCode r"><code class="sourceCode r">wage &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, obs)
+wage[obs] &lt;-<span class="st"> </span>w0
 <span class="cf">for</span> (i <span class="cf">in</span> (obs <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">:</span><span class="dv">1</span>){
-  wage[i] =<span class="st"> </span>wage[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>scale <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>size[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>
+  wage[i] &lt;-<span class="st"> </span>wage[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>scale <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>size[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>
 <span class="st">    </span>(talent[i] <span class="op">-</span><span class="st"> </span>talent[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])
 }</code></pre>
 <p>Now we can put all our variables in a dataset. The <code>tidyverse</code>
 calls datasets <code>tibbles</code> and they are the main object that
 <code>tidyverse</code> functions work on.</p>
-<pre class="sourceCode r"><code class="sourceCode r">simulated_data =<span class="st"> </span><span class="kw">tibble</span>(
+<pre class="sourceCode r"><code class="sourceCode r">simulated_data &lt;-<span class="st"> </span><span class="kw">tibble</span>(
   <span class="dt">n =</span> n,
   <span class="dt">size =</span> size,
   <span class="dt">talent =</span> talent,
