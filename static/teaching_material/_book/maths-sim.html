@@ -1,64 +1,61 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 5 Theory: Maths and Simulations | Just Enough To Be Dangerous</title>
-  <meta name="description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
-
-  <meta property="og:title" content="Chapter 5 Theory: Maths and Simulations | Just Enough To Be Dangerous />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance." />
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Theory: Maths and Simulations | Just Enough To Be Dangerous />
-  
-  <meta name="twitter:description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance." />
-  
-
-<meta name="author" content="Stijn Masschelein">
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Chapter 5 Theory: Maths and Simulations | Just Enough To Be Dangerous" />
+<meta property="og:type" content="book" />
 
 
-<meta name="date" content="2019-03-12">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  
-  
-<link rel="prev" href="research-tools-data-analysis.html">
-<link rel="next" href="linear-regression.html">
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<meta property="og:description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance." />
 
 
+<meta name="author" content="Stijn Masschelein" />
+
+<meta name="date" content="2019-09-10" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance.">
+
+<title>Chapter 5 Theory: Maths and Simulations | Just Enough To Be Dangerous</title>
+
+<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/envisioned.css" rel="stylesheet" />
+<link href="libs/msmb-css-0/msmb.css" rel="stylesheet" />
+<script>
+function toggle_visibility(id1, id2) {
+var e = document.getElementById(id1);
+var f = document.getElementById(id2);
+
+e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+
+if(f.classList.contains('fa-plus-square')) {
+    f.classList.add('fa-minus-square')
+    f.classList.remove('fa-plus-square')
+} else {
+    f.classList.add('fa-plus-square')
+    f.classList.remove('fa-minus-square')
+}
+
+}
+</script>
 
 
-
-
-
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<script src="libs/viz-0.3/viz.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
-
-
+<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
+
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -118,142 +115,57 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
+
 </head>
 
 <body>
 
 
 
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preamble</a></li>
-<li class="chapter" data-level="2" data-path="research-ceocomp.html"><a href="research-ceocomp.html"><i class="fa fa-check"></i><b>2</b> A Research Project: CEO Compensation</a><ul>
-<li class="chapter" data-level="2.1" data-path="research-ceocomp.html"><a href="research-ceocomp.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
-<li class="chapter" data-level="2.2" data-path="research-ceocomp.html"><a href="research-ceocomp.html#theory"><i class="fa fa-check"></i><b>2.2</b> Theory</a></li>
-<li class="chapter" data-level="2.3" data-path="research-ceocomp.html"><a href="research-ceocomp.html#empirical-test"><i class="fa fa-check"></i><b>2.3</b> Empirical Test</a></li>
-<li class="chapter" data-level="2.4" data-path="research-ceocomp.html"><a href="research-ceocomp.html#conclusion"><i class="fa fa-check"></i><b>2.4</b> Conclusion</a></li>
-<li class="chapter" data-level="2.5" data-path="research-ceocomp.html"><a href="research-ceocomp.html#appendix-2"><i class="fa fa-check"></i><b>2.5</b> Appendix: WRDS</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="research-tools-theory.html"><a href="research-tools-theory.html"><i class="fa fa-check"></i><b>3</b> Research Tools - Theory</a><ul>
-<li class="chapter" data-level="3.1" data-path="research-tools-theory.html"><a href="research-tools-theory.html#literature-search"><i class="fa fa-check"></i><b>3.1</b> Literature Search</a></li>
-<li class="chapter" data-level="3.2" data-path="research-tools-theory.html"><a href="research-tools-theory.html#writing-under-construction"><i class="fa fa-check"></i><b>3.2</b> Writing (Under Construction)</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="research-tools-theory.html"><a href="research-tools-theory.html#levels"><i class="fa fa-check"></i><b>3.2.1</b> Different levels in a research paper or thesis.</a></li>
-<li class="chapter" data-level="3.2.2" data-path="research-tools-theory.html"><a href="research-tools-theory.html#concepts"><i class="fa fa-check"></i><b>3.2.2</b> Explain important concepts and theories.</a></li>
-<li class="chapter" data-level="3.2.3" data-path="research-tools-theory.html"><a href="research-tools-theory.html#theory-first"><i class="fa fa-check"></i><b>3.2.3</b> Theory before literature review.</a></li>
-<li class="chapter" data-level="3.2.4" data-path="research-tools-theory.html"><a href="research-tools-theory.html#unecessary"><i class="fa fa-check"></i><b>3.2.4</b> Delete unnecessary words.</a></li>
-<li class="chapter" data-level="3.2.5" data-path="research-tools-theory.html"><a href="research-tools-theory.html#hedging"><i class="fa fa-check"></i><b>3.2.5</b> Avoid vague or hedging words as much as possible.</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html"><i class="fa fa-check"></i><b>4</b> Research tools - Data Analysis</a><ul>
-<li class="chapter" data-level="4.1" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#data-analysis-tools"><i class="fa fa-check"></i><b>4.1</b> Data analysis tools</a></li>
-<li class="chapter" data-level="4.2" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#the-r-console"><i class="fa fa-check"></i><b>4.2</b> The R console</a></li>
-<li class="chapter" data-level="4.3" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#r-packages"><i class="fa fa-check"></i><b>4.3</b> R packages</a></li>
-<li class="chapter" data-level="4.4" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#useful-code"><i class="fa fa-check"></i><b>4.4</b> Finally some useful code!</a></li>
-<li class="chapter" data-level="4.5" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#looking-for-help"><i class="fa fa-check"></i><b>4.5</b> Looking for help</a></li>
-<li class="chapter" data-level="4.6" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#rmarkdown-markdown-r"><i class="fa fa-check"></i><b>4.6</b> RMarkdown = Markdown + R</a><ul>
-<li class="chapter" data-level="4.6.1" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#markdown"><i class="fa fa-check"></i><b>4.6.1</b> Markdown</a></li>
-<li class="chapter" data-level="4.6.2" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#r-code-in-markdown-r-chunks"><i class="fa fa-check"></i><b>4.6.2</b> R-code in markdown: R chunks</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="maths-sim.html"><a href="maths-sim.html"><i class="fa fa-check"></i><b>5</b> Theory: Maths and Simulations</a><ul>
-<li class="chapter" data-level="5.1" data-path="maths-sim.html"><a href="maths-sim.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.2" data-path="maths-sim.html"><a href="maths-sim.html#new-theory-ceo-firm-matching."><i class="fa fa-check"></i><b>5.2</b> New theory: CEO-firm matching.</a></li>
-<li class="chapter" data-level="5.3" data-path="maths-sim.html"><a href="maths-sim.html#three-firms---three-ceos-model"><i class="fa fa-check"></i><b>5.3</b> Three firms - three CEOs model</a></li>
-<li class="chapter" data-level="5.4" data-path="maths-sim.html"><a href="maths-sim.html#n-firms---n-ceos-model"><i class="fa fa-check"></i><b>5.4</b> N firms - N CEOs model</a></li>
-<li class="chapter" data-level="5.5" data-path="maths-sim.html"><a href="maths-sim.html#simulation"><i class="fa fa-check"></i><b>5.5</b> Simulation</a></li>
-<li class="chapter" data-level="5.6" data-path="maths-sim.html"><a href="maths-sim.html#visualisations"><i class="fa fa-check"></i><b>5.6</b> Visualisations</a></li>
-<li class="chapter" data-level="5.7" data-path="maths-sim.html"><a href="maths-sim.html#functions-in-r"><i class="fa fa-check"></i><b>5.7</b> Functions in <code>R</code></a></li>
-<li class="chapter" data-level="5.8" data-path="maths-sim.html"><a href="maths-sim.html#why-should-you-simulate-data"><i class="fa fa-check"></i><b>5.8</b> Why should you simulate data?</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>6</b> Linear regression in <code>R</code></a><ul>
-<li class="chapter" data-level="6.1" data-path="linear-regression.html"><a href="linear-regression.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
-<li class="chapter" data-level="6.2" data-path="linear-regression.html"><a href="linear-regression.html#linear-regression-with-non-linear-theories"><i class="fa fa-check"></i><b>6.2</b> Linear regression with non-linear theories</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html"><i class="fa fa-check"></i><b>7</b> Measurement and Theory</a><ul>
-<li class="chapter" data-level="7.1" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
-<li class="chapter" data-level="7.2" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#assumptions-about-ceos"><i class="fa fa-check"></i><b>7.2</b> Assumptions About CEOs</a></li>
-<li class="chapter" data-level="7.3" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#optimal-incentives"><i class="fa fa-check"></i><b>7.3</b> Optimal CEO incentives</a></li>
-<li class="chapter" data-level="7.4" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#data-sensitivity"><i class="fa fa-check"></i><b>7.4</b> What does the data say?</a></li>
-<li class="chapter" data-level="7.5" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#three-pay-performance-sensitivities"><i class="fa fa-check"></i><b>7.5</b> Three pay-performance sensitivities</a></li>
-<li class="chapter" data-level="7.6" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#comparison-plot"><i class="fa fa-check"></i><b>7.6</b> Comparison plot</a></li>
-<li class="chapter" data-level="7.7" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#libby-boxes"><i class="fa fa-check"></i><b>7.7</b> Libby boxes</a></li>
-<li class="chapter" data-level="7.8" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#are-incentives-independent-of-size"><i class="fa fa-check"></i><b>7.8</b> Are incentives independent of size?</a><ul>
-<li class="chapter" data-level="7.8.1" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#randomisation-test"><i class="fa fa-check"></i><b>7.8.1</b> Randomisation Test</a></li>
-<li class="chapter" data-level="7.8.2" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#bootstrap"><i class="fa fa-check"></i><b>7.8.2</b> Bootstrap</a></li>
-<li class="chapter" data-level="7.8.3" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#p-values"><i class="fa fa-check"></i><b>7.8.3</b> P-values</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html"><i class="fa fa-check"></i><b>8</b> Control Variables (Under Construction)</a><ul>
-<li class="chapter" data-level="8.1" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#the-data"><i class="fa fa-check"></i><b>8.1</b> The data</a></li>
-<li class="chapter" data-level="8.2" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#controlling-for-measurement-error"><i class="fa fa-check"></i><b>8.2</b> Controlling for measurement error</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#directed-acyclical-graph-or-dag"><i class="fa fa-check"></i><b>8.2.1</b> Directed Acyclical Graph (or DAG)</a></li>
-<li class="chapter" data-level="8.2.2" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#simulation-1"><i class="fa fa-check"></i><b>8.2.2</b> Simulation</a></li>
-<li class="chapter" data-level="8.2.3" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#real-data"><i class="fa fa-check"></i><b>8.2.3</b> Real data</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#interaction-effects"><i class="fa fa-check"></i><b>8.3</b> Interaction effects</a></li>
-<li class="chapter" data-level="8.4" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#controlling-for-confounds"><i class="fa fa-check"></i><b>8.4</b> Controlling for confounds</a></li>
-<li class="chapter" data-level="8.5" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#bad-controls-and-tricky-specifications"><i class="fa fa-check"></i><b>8.5</b> Bad controls and tricky specifications</a><ul>
-<li class="chapter" data-level="8.5.1" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#performance-as-control"><i class="fa fa-check"></i><b>8.5.1</b> Performance as control</a></li>
-<li class="chapter" data-level="8.5.2" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#performance-as-dependent-variable"><i class="fa fa-check"></i><b>8.5.2</b> Performance as dependent variable</a></li>
-<li class="chapter" data-level="8.5.3" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#colliders"><i class="fa fa-check"></i><b>8.5.3</b> Colliders</a></li>
-<li class="chapter" data-level="8.5.4" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#selection-bias"><i class="fa fa-check"></i><b>8.5.4</b> Selection bias</a></li>
-</ul></li>
-<li class="chapter" data-level="8.6" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#example-fixed-effects"><i class="fa fa-check"></i><b>8.6</b> Example: Fixed effects</a></li>
-<li class="chapter" data-level="8.7" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#instrumental-variables-and-expectations"><i class="fa fa-check"></i><b>8.7</b> Instrumental Variables and Expectations</a></li>
-<li class="chapter" data-level="8.8" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#natural-experiments-and-research-design"><i class="fa fa-check"></i><b>8.8</b> Natural Experiments and Research Design</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="assessment.html"><a href="assessment.html"><i class="fa fa-check"></i><b>9</b> Assessment</a><ul>
-<li class="chapter" data-level="9.1" data-path="assessment.html"><a href="assessment.html#overview"><i class="fa fa-check"></i><b>9.1</b> Overview</a></li>
-<li class="chapter" data-level="9.2" data-path="assessment.html"><a href="assessment.html#proposal-5000-words"><i class="fa fa-check"></i><b>9.2</b> Proposal (5000 words)</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="assessment.html"><a href="assessment.html#deadline"><i class="fa fa-check"></i><b>9.2.1</b> Deadline</a></li>
-<li class="chapter" data-level="9.2.2" data-path="assessment.html"><a href="assessment.html#guidelines"><i class="fa fa-check"></i><b>9.2.2</b> Guidelines</a></li>
-<li class="chapter" data-level="9.2.3" data-path="assessment.html"><a href="assessment.html#assessment-criteria"><i class="fa fa-check"></i><b>9.2.3</b> Assessment Criteria</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="assessment.html"><a href="assessment.html#presentation-10-minutes"><i class="fa fa-check"></i><b>9.3</b> Presentation (10 minutes)</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="assessment.html"><a href="assessment.html#deadline-1"><i class="fa fa-check"></i><b>9.3.1</b> Deadline</a></li>
-<li class="chapter" data-level="9.3.2" data-path="assessment.html"><a href="assessment.html#structure"><i class="fa fa-check"></i><b>9.3.2</b> Structure</a></li>
-<li class="chapter" data-level="9.3.3" data-path="assessment.html"><a href="assessment.html#assessment-1"><i class="fa fa-check"></i><b>9.3.3</b> Assessment</a></li>
-<li class="chapter" data-level="9.3.4" data-path="assessment.html"><a href="assessment.html#content"><i class="fa fa-check"></i><b>9.3.4</b> Content</a></li>
-<li class="chapter" data-level="9.3.5" data-path="assessment.html"><a href="assessment.html#presentation-style"><i class="fa fa-check"></i><b>9.3.5</b> Presentation style</a></li>
-</ul></li>
-<li class="chapter" data-level="9.4" data-path="assessment.html"><a href="assessment.html#thesis."><i class="fa fa-check"></i><b>9.4</b> Thesis.</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="assessment.html"><a href="assessment.html#deadline-2"><i class="fa fa-check"></i><b>9.4.1</b> Deadline</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path="assessment.html"><a href="assessment.html#pitching-document"><i class="fa fa-check"></i><b>9.5</b> Pitching Document</a></li>
-<li class="chapter" data-level="9.6" data-path="assessment.html"><a href="assessment.html#assignments-and-homework-35"><i class="fa fa-check"></i><b>9.6</b> Assignments and Homework (35%)</a><ul>
-<li class="chapter" data-level="9.6.1" data-path="assessment.html"><a href="assessment.html#homework-1"><i class="fa fa-check"></i><b>9.6.1</b> Homework 1</a></li>
-<li class="chapter" data-level="9.6.2" data-path="assessment.html"><a href="assessment.html#homework-2"><i class="fa fa-check"></i><b>9.6.2</b> Homework 2</a></li>
-<li class="chapter" data-level="9.6.3" data-path="assessment.html"><a href="assessment.html#assignment-1"><i class="fa fa-check"></i><b>9.6.3</b> Assignment 1</a></li>
-<li class="chapter" data-level="9.6.4" data-path="assessment.html"><a href="assessment.html#assignment-2"><i class="fa fa-check"></i><b>9.6.4</b> Assignment 2</a></li>
-</ul></li>
-<li class="chapter" data-level="9.7" data-path="assessment.html"><a href="assessment.html#marking-guide"><i class="fa fa-check"></i><b>9.7</b> Honours Marking Guide</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul class="navbar">
+<li class="msmb"><p class="title">Just Enough To Be Dangerous<p><p class="author">Stijn Masschelein</p>
+<li class="dropdown" style="float:right">
+<a href="javascript:void(0)" class="dropbtn">&#x25BE; Chapters</a>
+<div class="dropdown-content">
+<a href="index.html"><span class="toc-section-number">1</span> Preamble</a>
+<a href="research-ceocomp.html"><span class="toc-section-number">2</span> A Research Project: CEO Compensation</a>
+<a href="research-tools-theory.html"><span class="toc-section-number">3</span> Research Tools - Theory</a>
+<a href="research-tools-data-analysis.html"><span class="toc-section-number">4</span> Research tools - Data Analysis</a>
+<a id="active-page" href="maths-sim.html"><span class="toc-section-number">5</span> Theory: Maths and Simulations</a><ul class="toc-sections">
+<li class="toc"><a href="#introduction-1"> Introduction</a></li>
+<li class="toc"><a href="#NA"> New theory: CEO-firm matching.</a></li>
+<li class="toc"><a href="#three-firms---three-ceos-model"> Three firms - three CEOs model</a></li>
+<li class="toc"><a href="#n-firms---n-ceos-model"> N firms - N CEOs model</a></li>
+<li class="toc"><a href="#simulation"> Simulation</a></li>
+<li class="toc"><a href="#visualisations"> Visualisations</a></li>
+<li class="toc"><a href="#functions-in-r"> Functions in <code>R</code></a></li>
+<li class="toc"><a href="#why-should-you-simulate-data"> Why should you simulate data?</a></li>
 </ul>
-
-      </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Just Enough To Be Dangerous</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
+<a href="linear-regression.html"><span class="toc-section-number">6</span> Linear regression in <code>R</code></a>
+<a href="measurement.html"><span class="toc-section-number">7</span> Measurement and Theory</a>
+<a href="control-variables.html"><span class="toc-section-number">8</span> Control Variables</a>
+<a href="assessment.html"><span class="toc-section-number">9</span> Assessment</a>
+<a href="references.html">References</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
 <div id="maths-sim" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Theory: Maths and Simulations</h1>
+<h1>
+<span class="header-section-number">Chapter 5</span> Theory: Maths and Simulations</h1>
 <div id="introduction-1" class="section level2">
-<h2><span class="header-section-number">5.1</span> Introduction</h2>
+<h2>
+<span class="header-section-number">5.1</span> Introduction</h2>
 <p>A good research project relies on strong theoretical foundation.
 Theories are a summary of prior research findings and present
 predictions you can test. In accounting and finance, a lot of
@@ -270,7 +182,8 @@ work for you. Simulate and visualise is a technique, we will use
 a lot more in the rest of the notes.</p>
 </div>
 <div id="new-theory-ceo-firm-matching." class="section level2">
-<h2><span class="header-section-number">5.2</span> New theory: CEO-firm matching.</h2>
+<h2>
+<span class="header-section-number">5.2</span> New theory: CEO-firm matching.</h2>
 <p>Let us introduce a new theory how the size of the company is
 related to the compensation of the CEO. In Chapter
 <a href="research-ceocomp.html#research-ceocomp">2</a> I presented a basic model where talented
@@ -285,7 +198,10 @@ time <span class="math inline">\(0\)</span> to time <span class="math inline">\(
 V_1(n) - V_0(n) = C V_0(n) T(m)
 \end{equation}\]</span></p>
 <p>The increase in value depends on the <span class="math inline">\(T\)</span>alent of the CEO, the
-inital <span class="math inline">\(V\)</span>alue of the firm, and a scaling factor <span class="math inline">\(C\)</span>.<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a> <span class="math inline">\(n\)</span> is the rank of the size of the
+inital <span class="math inline">\(V\)</span>alue of the firm, and a scaling factor <span class="math inline">\(C\)</span>.<label for="tufte-sn-29" class="margin-toggle sidenote-number">29</label><input type="checkbox" id="tufte-sn-29" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">29</span> The scaling factor is not crucial to the theory. If performance
+is measured in millions of dollars or in billions of dollars, the
+scaling factor will differ but that is not telling us anything
+about the economic mechanism.</span> <span class="math inline">\(n\)</span> is the rank of the size of the
 firm and <span class="math inline">\(m\)</span> is the rank of the talent of the CEO. <span class="math inline">\(n = 1\)</span> is the
 largest firm, <span class="math inline">\(m = 1\)</span> is the most talented CEO. The question the
 theory is trying to answer which CEO, <span class="math inline">\(m\)</span>, is going to work for
@@ -301,14 +217,17 @@ will need a compensation above <span class="math inline">\(w_0\)</span>.</p>
 means that the most talented CEO works for the largest firm,
 the second most talented CEO works for the second largest firm,
 until we reach the least talented CEO and the smallest firm. The
-intuition is that CEOs have a larger impact in larger firms.<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a> Therefor, most value is created when the largest firms
+intuition is that CEOs have a larger impact in larger firms.<label for="tufte-sn-30" class="margin-toggle sidenote-number">30</label><input type="checkbox" id="tufte-sn-30" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">30</span> The idea is that if a CEO is good at managing people, the
+impact of the CEO will be better if they are managing more
+people.</span> Therefor, most value is created when the largest firms
 are managed by the best CEOs. The difficulty is to determine
 how much each firm should pay the CEO. I first go over a
 simplified mathematical model that gets some of the intuition
 across, then I explain</p>
 </div>
 <div id="three-firms---three-ceos-model" class="section level2">
-<h2><span class="header-section-number">5.3</span> Three firms - three CEOs model</h2>
+<h2>
+<span class="header-section-number">5.3</span> Three firms - three CEOs model</h2>
 <p>Let us assume that there are only three CEOs and only three
 firms. To make sure that the largest firm (<span class="math inline">\(n=1\)</span>) cannot do
 better than hiring the most talented CEO (<span class="math inline">\(m=1\)</span>). In other words,
@@ -374,7 +293,8 @@ intuition about what we want to calculate, we can again derive
 the relation between firm value and CEO compensation.</p>
 </div>
 <div id="n-firms---n-ceos-model" class="section level2">
-<h2><span class="header-section-number">5.4</span> N firms - N CEOs model</h2>
+<h2>
+<span class="header-section-number">5.4</span> N firms - N CEOs model</h2>
 <p>If the literature points you to a mathematical model and you want
 to understand it better. Breaking it down to a simpler model with
 only 2 or 3 firms can be very illuminating. I hope the three firm
@@ -410,9 +330,10 @@ assumptions as the original papers but implement them in an <code>R</code>
 program.</p>
 </div>
 <div id="simulation" class="section level2">
-<h2><span class="header-section-number">5.5</span> Simulation</h2>
+<h2>
+<span class="header-section-number">5.5</span> Simulation</h2>
 <p>First, let us load the <code>tidyverse</code> package.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>Next, we simulate data for <code>obs=500</code> observations. <code>size_rate</code>
 is a parameter that controls the size of firms. A value of 1
 means that firms have constant returns to size, the same
@@ -421,14 +342,16 @@ is something similar for the Talent of the CEOs. A larger number
 for both rate parameters implies that differences between sizes
 or CEOs become larger at the top. <code>C</code> is the <span class="math inline">\(C\)</span> constant in the
 model. <code>scale</code> is an additional parameter that helps me scale the
-size of the firms so that I get similar numbers as the real data.<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a> <code>w0</code> is the base
+size of the firms so that I get similar numbers as the real data.<label for="tufte-sn-31" class="margin-toggle sidenote-number">31</label><input type="checkbox" id="tufte-sn-31" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">31</span> This is not necessarily a fudge. The theory does not say
+anything about whether we should measure firm size in USD, in AUD
+or in CNY. So the scale we use is arbitrary.</span> <code>w0</code> is the base
 wage for the least talented CEO.</p>
-<pre class="sourceCode r"><code class="sourceCode r">obs &lt;-<span class="st"> </span><span class="dv">500</span>
-size_rate &lt;-<span class="st"> </span><span class="dv">1</span>; talent_rate &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span>; 
-C &lt;-<span class="st"> </span><span class="dv">10</span>; scale &lt;-<span class="st"> </span><span class="dv">600</span>; w0 &lt;-<span class="st"> </span><span class="dv">0</span>; 
-n &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>obs)
-size &lt;-<span class="st"> </span>scale <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(<span class="op">-</span>size_rate)
-talent &lt;-<span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>talent_rate <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(talent_rate)</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">obs &lt;-<span class="st"> </span><span class="dv">500</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">size_rate &lt;-<span class="st"> </span><span class="dv">1</span>; talent_rate &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span>; </a>
+<a class="sourceLine" id="cb29-3" data-line-number="3">C &lt;-<span class="st"> </span><span class="dv">10</span>; scale &lt;-<span class="st"> </span><span class="dv">600</span>; w0 &lt;-<span class="st"> </span><span class="dv">0</span>; </a>
+<a class="sourceLine" id="cb29-4" data-line-number="4">n &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>obs)</a>
+<a class="sourceLine" id="cb29-5" data-line-number="5">size &lt;-<span class="st"> </span>scale <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(<span class="op">-</span>size_rate)</a>
+<a class="sourceLine" id="cb29-6" data-line-number="6">talent &lt;-<span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>talent_rate <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(talent_rate)</a></code></pre></div>
 <p><code>n</code> is an <code>R</code> vector of length <code>obs</code> (i.e. 500) with values from
 1 to <code>obs</code>. So it is the rank in size and talent for each firm
 and CEO. You can see what <code>n</code> look like by just typing <code>n</code> and
@@ -441,31 +364,35 @@ value for the size of each firm from 1 to 500 and for the talent
 of each CEO from 1 to 500.</p>
 <p>We can also calculate the wage of each CEO-firm combination from
 equation <a href="maths-sim.html#eq:matching-equality-general">(5.5)</a>. We start by creating
-a wage vector with 500 <code>NA</code> values.<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a>
+a wage vector with 500 <code>NA</code> values.<label for="tufte-sn-32" class="margin-toggle sidenote-number">32</label><input type="checkbox" id="tufte-sn-32" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">32</span> The <code>rep</code> function creates a vector of <code>obs</code> <em>rep</em>ititions of
+<code>NA</code></span>
 At the last (<code>obs = 500</code>) position of the vector, we set the wage
 equal to <code>w0</code> for the least talented CEO and the smallest firm.
 Than <em>for</em> each firm (we go from <code>i = 499</code> to <code>i = 1</code>), we set the
 wage as the wage of the smaller firm (<code>i + 1</code>) and subtract the
 surplus our CEO would generate in the smaller firm over what
-their CEO is now generating.<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a></p>
-<pre class="sourceCode r"><code class="sourceCode r">wage &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, obs)
-wage[obs] &lt;-<span class="st"> </span>w0
-<span class="cf">for</span> (i <span class="cf">in</span> (obs <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">:</span><span class="dv">1</span>){
-  wage[i] &lt;-<span class="st"> </span>wage[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>scale <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>size[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>
-<span class="st">    </span>(talent[i] <span class="op">-</span><span class="st"> </span>talent[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])
-}</code></pre>
+their CEO is now generating.<label for="tufte-sn-33" class="margin-toggle sidenote-number">33</label><input type="checkbox" id="tufte-sn-33" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">33</span> Again <code>scale</code> and <code>C</code> just scale
+some of the values so that they are easier to interpret. These
+parameters are less important for the economic intuition.</span></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">wage &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, obs)</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">wage[obs] &lt;-<span class="st"> </span>w0</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> (obs <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">:</span><span class="dv">1</span>){</a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">  wage[i] &lt;-<span class="st"> </span>wage[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>scale <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>size[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">*</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb30-5" data-line-number="5"><span class="st">    </span>(talent[i] <span class="op">-</span><span class="st"> </span>talent[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb30-6" data-line-number="6">}</a></code></pre></div>
 <p>Now we can put all our variables in a dataset. The <code>tidyverse</code>
 calls datasets <code>tibbles</code> and they are the main object that
 <code>tidyverse</code> functions work on.</p>
-<pre class="sourceCode r"><code class="sourceCode r">simulated_data &lt;-<span class="st"> </span><span class="kw">tibble</span>(
-  <span class="dt">n =</span> n,
-  <span class="dt">size =</span> size,
-  <span class="dt">talent =</span> talent,
-  <span class="dt">wage =</span> wage
-) </code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">simulated_data &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">  <span class="dt">n =</span> n,</a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">  <span class="dt">size =</span> size,</a>
+<a class="sourceLine" id="cb31-4" data-line-number="4">  <span class="dt">talent =</span> talent,</a>
+<a class="sourceLine" id="cb31-5" data-line-number="5">  <span class="dt">wage =</span> wage</a>
+<a class="sourceLine" id="cb31-6" data-line-number="6">) </a></code></pre></div>
 </div>
 <div id="visualisations" class="section level2">
-<h2><span class="header-section-number">5.6</span> Visualisations</h2>
+<h2>
+<span class="header-section-number">5.6</span> Visualisations</h2>
 <p>With the data we simulated, we can visualise the theory and
 see whether our theory matches our intuition. Visulising a theory
 is one way to understand the assumptions and to check whether
@@ -475,22 +402,27 @@ will give you an idea of what the data should look like.</p>
 simulated CEO wage and simulated firm size. It’s not
 perfect but the plot does follow a similar non-linear pattern as
 what we found in Chapter <a href="research-ceocomp.html#research-ceocomp">2</a> (see Figure
-<a href="maths-sim.html#fig:wage-size-data">5.2</a>).<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a></p>
+<a href="maths-sim.html#fig:wage-size-data">5.2</a>).<label for="tufte-sn-34" class="margin-toggle sidenote-number">34</label><input type="checkbox" id="tufte-sn-34" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">34</span> <code>qplot</code> is a funtion to make <em>q</em>uick plots and it is part of the
+<code>ggplot</code> package which is part of the <code>tidyverse</code>.</span></p>
 
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">data =</span> simulated_data, <span class="dt">y =</span> wage, <span class="dt">x =</span> size)</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:wage-size"></span>
-<img src="method_accfin_files/figure-html/wage-size-1.png" alt="Relation between simulated CEO wage and firm size." width="384" />
-<p class="caption">
-Figure 5.1: Relation between simulated CEO wage and firm size.
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span id="fig:wage-size"></span>
+<img src="method_accfin_files/figure-html/wage-size-1.png" alt="Relation between simulated CEO wage and firm size." width="672"><!--
+<p class="caption marginnote">-->Figure 5.1: Relation between simulated CEO wage and firm size.<!--</p>-->
+<!--</div>--></span>
 </p>
-</div>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(plot_comp_value)</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:wage-size-data"></span>
-<img src="method_accfin_files/figure-html/wage-size-data-1.png" alt="Relation between CEO compensation and market value for SP500 firms (2011-2018)." width="384" />
-<p class="caption">
-Figure 5.2: Relation between CEO compensation and market value for SP500 firms (2011-2018).
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">qplot</span>(<span class="dt">data =</span> simulated_data, <span class="dt">y =</span> wage, <span class="dt">x =</span> size)</a></code></pre></div>
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span id="fig:wage-size-data"></span>
+<img src="method_accfin_files/figure-html/wage-size-data-1.png" alt="Relation between CEO compensation and market value for SP500 firms (2011-2018)." width="672"><!--
+<p class="caption marginnote">-->Figure 5.2: Relation between CEO compensation and market value for SP500 firms (2011-2018).<!--</p>-->
+<!--</div>--></span>
 </p>
-</div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">print</span>(plot_comp_value)</a></code></pre></div>
 <p>To better understand the assumptions in the theory, we can also
 plot how talent and size change as a function of the rank of
 respectively the CEO and the firm. I glossed over the details
@@ -502,21 +434,25 @@ talent at the top of the distribution (<code>n = 1</code>) is not that
 large, the difference in firm sizes is much more pronounced and
 is driving the difference in wages according to this theory.</p>
 
-<pre class="sourceCode r"><code class="sourceCode r">p_talent &lt;-<span class="st"> </span><span class="kw">qplot</span>(<span class="dt">data =</span> simulated_data, <span class="dt">y =</span> talent, <span class="dt">x =</span> n)
-p_size &lt;-<span class="st"> </span><span class="kw">qplot</span>(<span class="dt">data =</span> simulated_data, <span class="dt">y =</span> size, <span class="dt">x =</span> n) 
-cowplot<span class="op">::</span><span class="kw">plot_grid</span>(p_talent, p_size, <span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">labels =</span> <span class="st">&quot;AUTO&quot;</span>)</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:assumptions"></span>
-<img src="method_accfin_files/figure-html/assumptions-1.png" alt="Relation between talent and rank of CEO (A) and between size and rank of the firm (B)." width="288" />
-<p class="caption">
-Figure 5.3: Relation between talent and rank of CEO (A) and between size and rank of the firm (B).
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span id="fig:assumptions"></span>
+<img src="method_accfin_files/figure-html/assumptions-1.png" alt="Relation between talent and rank of CEO (A) and between size and rank of the firm (B)." width="288"><!--
+<p class="caption marginnote">-->Figure 5.3: Relation between talent and rank of CEO (A) and between size and rank of the firm (B).<!--</p>-->
+<!--</div>--></span>
 </p>
-</div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">p_talent &lt;-<span class="st"> </span><span class="kw">qplot</span>(<span class="dt">data =</span> simulated_data, <span class="dt">y =</span> talent, <span class="dt">x =</span> n)</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">p_size &lt;-<span class="st"> </span><span class="kw">qplot</span>(<span class="dt">data =</span> simulated_data, <span class="dt">y =</span> size, <span class="dt">x =</span> n) </a>
+<a class="sourceLine" id="cb34-3" data-line-number="3">cowplot<span class="op">::</span><span class="kw">plot_grid</span>(p_talent, p_size, <span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">labels =</span> <span class="st">"AUTO"</span>)</a></code></pre></div>
 <p>In the code, I use a function from the <code>cowplot</code> package to plot
 different plots (<code>p_talent</code> and <code>p_size</code>) in 1 column. The
 automatic labels will add the A and B labels for the plots.</p>
 </div>
 <div id="functions-in-r" class="section level2">
-<h2><span class="header-section-number">5.7</span> Functions in <code>R</code></h2>
+<h2>
+<span class="header-section-number">5.7</span> Functions in <code>R</code>
+</h2>
 <p>One of the most valuable aspects of <code>R</code> is that you can write
 new functions. Functions allow you to create your own verbs to
 apply to objects. In the previous section, we simulated data with
@@ -535,41 +471,45 @@ external functions like I do to create the <code>tibble</code>.</p>
 <p>I do nothing in the function that I have not done before. The
 only addition is that at the end, the function <code>return</code>s the
 simulated data. You can then use the function to create a new
-simulated dataset.<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a></p>
-<pre class="sourceCode r"><code class="sourceCode r">create_fake_data &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">size_rate =</span> <span class="dv">1</span>, 
-                             <span class="dt">talent_rate =</span> <span class="dv">1</span>,
-                             <span class="dt">w0 =</span> <span class="fl">.001</span>, <span class="dt">C =</span> <span class="dv">1</span>){
-  scale =<span class="st"> </span><span class="dv">600</span>
-  n =<span class="st"> </span><span class="dv">1</span><span class="op">:</span>obs
-  size =<span class="st"> </span>scale <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(<span class="op">-</span>size_rate) 
-  talent =<span class="st">  </span><span class="dv">-1</span><span class="op">/</span>talent_rate <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>talent_rate
-  wage =<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, obs)
-  wage[obs] =<span class="st"> </span>w0 
-  <span class="cf">for</span> (i <span class="cf">in</span> (obs <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">:</span><span class="dv">1</span>){
-    wage[i] =<span class="st">  </span>wage[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>scale <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>size[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>
-<span class="st">      </span>(talent[i] <span class="op">-</span><span class="st"> </span>talent[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])
-  }
-  fake_data =<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">tibble</span>(<span class="dt">n =</span> n, <span class="dt">size =</span> size, <span class="dt">talent =</span> talent, 
-                            <span class="dt">wage =</span> wage)
-  <span class="kw">return</span>(fake_data)
-}
-fake_data &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">talent_rate =</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">C =</span> <span class="fl">0.01</span>)</code></pre>
+simulated dataset.<label for="tufte-sn-35" class="margin-toggle sidenote-number">35</label><input type="checkbox" id="tufte-sn-35" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">35</span> I call the function <code>create_fake_data</code> because I want to
+emphasise that there is nothing special about simulated data.
+Some people prefer more dignified names. If you prefer that, you
+can use any other name for the function. Just make sure that it
+is clear what your function is doing.</span></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">create_fake_data &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">size_rate =</span> <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">                             <span class="dt">talent_rate =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb35-3" data-line-number="3">                             <span class="dt">w0 =</span> <span class="fl">.001</span>, <span class="dt">C =</span> <span class="dv">1</span>){</a>
+<a class="sourceLine" id="cb35-4" data-line-number="4">  scale =<span class="st"> </span><span class="dv">600</span></a>
+<a class="sourceLine" id="cb35-5" data-line-number="5">  n =<span class="st"> </span><span class="dv">1</span><span class="op">:</span>obs</a>
+<a class="sourceLine" id="cb35-6" data-line-number="6">  size =<span class="st"> </span>scale <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(<span class="op">-</span>size_rate) </a>
+<a class="sourceLine" id="cb35-7" data-line-number="7">  talent =<span class="st">  </span><span class="dv">-1</span><span class="op">/</span>talent_rate <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>talent_rate</a>
+<a class="sourceLine" id="cb35-8" data-line-number="8">  wage =<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, obs)</a>
+<a class="sourceLine" id="cb35-9" data-line-number="9">  wage[obs] =<span class="st"> </span>w0 </a>
+<a class="sourceLine" id="cb35-10" data-line-number="10">  <span class="cf">for</span> (i <span class="cf">in</span> (obs <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">:</span><span class="dv">1</span>){</a>
+<a class="sourceLine" id="cb35-11" data-line-number="11">    wage[i] =<span class="st">  </span>wage[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>scale <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>size[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">*</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb35-12" data-line-number="12"><span class="st">      </span>(talent[i] <span class="op">-</span><span class="st"> </span>talent[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb35-13" data-line-number="13">  }</a>
+<a class="sourceLine" id="cb35-14" data-line-number="14">  fake_data =<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">tibble</span>(<span class="dt">n =</span> n, <span class="dt">size =</span> size, <span class="dt">talent =</span> talent, </a>
+<a class="sourceLine" id="cb35-15" data-line-number="15">                            <span class="dt">wage =</span> wage)</a>
+<a class="sourceLine" id="cb35-16" data-line-number="16">  <span class="kw">return</span>(fake_data)</a>
+<a class="sourceLine" id="cb35-17" data-line-number="17">}</a>
+<a class="sourceLine" id="cb35-18" data-line-number="18">fake_data &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">talent_rate =</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">C =</span> <span class="fl">0.01</span>)</a></code></pre></div>
 <p>We can create new datasets where the talent_rate is increased to
 1 (high talent) and the effect of CEOs on the surplus is
 increased to .015 instead of .10. I choose .10 in this simulation
 instead of 10 so that all values can be interpreted in billion
 USD to mimic the real data. Again, that is a rather arbitrary
 scaling issue.</p>
-<pre class="sourceCode r"><code class="sourceCode r">data1 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">C =</span> <span class="fl">.01</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">&quot;low talent&quot;</span>, <span class="dt">C =</span> <span class="st">&quot;low effect&quot;</span>)
-data2 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">1</span>, <span class="dt">C =</span> <span class="fl">.01</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">&quot;high talent&quot;</span>, <span class="dt">C =</span> <span class="st">&quot;low effect&quot;</span>)
-data3 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">C =</span> <span class="fl">.015</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">&quot;low talent&quot;</span>, <span class="dt">C =</span> <span class="st">&quot;high effect&quot;</span>)
-data4 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">1</span>, <span class="dt">C =</span> <span class="fl">.015</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">&quot;high talent&quot;</span>, <span class="dt">C =</span> <span class="st">&quot;high effect&quot;</span>)
-data_exp &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(data1, data2, data3, data4)
-data_exp</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">data1 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">C =</span> <span class="fl">.01</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">"low talent"</span>, <span class="dt">C =</span> <span class="st">"low effect"</span>)</a>
+<a class="sourceLine" id="cb36-3" data-line-number="3">data2 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">1</span>, <span class="dt">C =</span> <span class="fl">.01</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">"high talent"</span>, <span class="dt">C =</span> <span class="st">"low effect"</span>)</a>
+<a class="sourceLine" id="cb36-5" data-line-number="5">data3 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">C =</span> <span class="fl">.015</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb36-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">"low talent"</span>, <span class="dt">C =</span> <span class="st">"high effect"</span>)</a>
+<a class="sourceLine" id="cb36-7" data-line-number="7">data4 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">1</span>, <span class="dt">C =</span> <span class="fl">.015</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb36-8" data-line-number="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">"high talent"</span>, <span class="dt">C =</span> <span class="st">"high effect"</span>)</a>
+<a class="sourceLine" id="cb36-9" data-line-number="9">data_exp &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(data1, data2, data3, data4)</a>
+<a class="sourceLine" id="cb36-10" data-line-number="10">data_exp</a></code></pre></div>
 <pre><code>## # A tibble: 2,000 x 6
 ##        n  size talent   wage talent_rate C         
 ##    &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;     
@@ -583,7 +523,7 @@ data_exp</code></pre>
 ##  8     8  75    -6.00 0.0120 low talent  low effect
 ##  9     9  66.7  -6.49 0.0114 low talent  low effect
 ## 10    10  60    -6.96 0.0110 low talent  low effect
-## # ... with 1,990 more rows</code></pre>
+## # … with 1,990 more rows</code></pre>
 <p>The <code>bind_rows</code> function allows you to combine the four datasets
 in one big dataset <code>data_exp</code>. This will help us to plot the data
 in Figure @(fig:sim-combined) with the more complicated but
@@ -591,27 +531,31 @@ also more flexible <code>ggplot</code> function. In the function, we first
 define the data we want to use. Within the <code>aes()</code> specification,
 we define the variables that are going to be plotted. We tell
 ggplot that we want the data to be plot by the <em>geom</em>etric
-elements of a point and a line.<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a> I make the line colour
+elements of a point and a line.<label for="tufte-sn-36" class="margin-toggle sidenote-number">36</label><input type="checkbox" id="tufte-sn-36" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">36</span> Obviously, you do not need both.
+This is just to show you what you can do.</span> I make the line colour
 grey. The <code>facet_grid</code> creates different subplots depending on
 whether an observation has a different value for the
 <code>talent_rate</code> variable and the <code>C</code> variable.</p>
 
-<pre class="sourceCode r"><code class="sourceCode r">plot_exp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data_exp, <span class="kw">aes</span>(<span class="dt">x =</span> size, <span class="dt">y =</span> wage)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">colour =</span> <span class="st">&quot;gray&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">facet_grid</span>(talent_rate <span class="op">~</span><span class="st"> </span>C)
-<span class="kw">print</span>(plot_exp)</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:sim-combined"></span>
-<img src="method_accfin_files/figure-html/sim-combined-1.png" alt="Four simulated fake datasets on the relation between firm size and CEO compensation." width="384" />
-<p class="caption">
-Figure 5.4: Four simulated fake datasets on the relation between firm size and CEO compensation.
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span id="fig:sim-combined"></span>
+<img src="method_accfin_files/figure-html/sim-combined-1.png" alt="Four simulated fake datasets on the relation between firm size and CEO compensation." width="384"><!--
+<p class="caption marginnote">-->Figure 5.4: Four simulated fake datasets on the relation between firm size and CEO compensation.<!--</p>-->
+<!--</div>--></span>
 </p>
-</div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">plot_exp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data_exp, <span class="kw">aes</span>(<span class="dt">x =</span> size, <span class="dt">y =</span> wage)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">colour =</span> <span class="st">"gray"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb38-4" data-line-number="4"><span class="st">  </span><span class="kw">facet_grid</span>(talent_rate <span class="op">~</span><span class="st"> </span>C)</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5"><span class="kw">print</span>(plot_exp)</a></code></pre></div>
 <p>It looks like our theory is much more sensitive to changes in
 the talent rate than in changes to the scaling effect.</p>
 </div>
 <div id="why-should-you-simulate-data" class="section level2">
-<h2><span class="header-section-number">5.8</span> Why should you simulate data?</h2>
+<h2>
+<span class="header-section-number">5.8</span> Why should you simulate data?</h2>
 <p>In these notes, I will come back to the idea of simulation
 over and over. For three big reasons:</p>
 <ol style="list-style-type: decimal">
@@ -651,99 +595,19 @@ your statistical test.</p>
 <p>Tervio, Marko. 2008. “The Difference That CEOs Make: An Assignment Model Approach.” <em>American Economic Review</em> 98 (3): 642–68. <a href="https://doi.org/10.1257/aer.98.3.642">https://doi.org/10.1257/aer.98.3.642</a>.</p>
 </div>
 </div>
-<div class="footnotes">
-<hr />
-<ol start="29">
-<li id="fn29"><p>The scaling factor is not crucial to the theory. If performance
-is measured in millions of dollars or in billions of dollars, the
-scaling factor will differ but that is not telling us anything
-about the economic mechanism.<a href="maths-sim.html#fnref29" class="footnote-back">↩</a></p></li>
-<li id="fn30"><p>The idea is that if a CEO is good at managing people, the
-impact of the CEO will be better if they are managing more
-people.<a href="maths-sim.html#fnref30" class="footnote-back">↩</a></p></li>
-<li id="fn31"><p>This is not necessarily a fudge. The theory does not say
-anything about whether we should measure firm size in USD, in AUD
-or in CNY. So the scale we use is arbitrary.<a href="maths-sim.html#fnref31" class="footnote-back">↩</a></p></li>
-<li id="fn32"><p>The <code>rep</code> function creates a vector of <code>obs</code> <em>rep</em>ititions of
-<code>NA</code><a href="maths-sim.html#fnref32" class="footnote-back">↩</a></p></li>
-<li id="fn33"><p>Again <code>scale</code> and <code>C</code> just scale
-some of the values so that they are easier to interpret. These
-parameters are less important for the economic intuition.<a href="maths-sim.html#fnref33" class="footnote-back">↩</a></p></li>
-<li id="fn34"><p><code>qplot</code> is a funtion to make <em>q</em>uick plots and it is part of the
-<code>ggplot</code> package which is part of the <code>tidyverse</code>.<a href="maths-sim.html#fnref34" class="footnote-back">↩</a></p></li>
-<li id="fn35"><p>I call the function <code>create_fake_data</code> because I want to
-emphasise that there is nothing special about simulated data.
-Some people prefer more dignified names. If you prefer that, you
-can use any other name for the function. Just make sure that it
-is clear what your function is doing.<a href="maths-sim.html#fnref35" class="footnote-back">↩</a></p></li>
-<li id="fn36"><p>Obviously, you do not need both.
-This is just to show you what you can do.<a href="maths-sim.html#fnref36" class="footnote-back">↩</a></p></li>
-</ol>
+</body></html>
+
+<p style="text-align: center;">
+<a href="research-tools-data-analysis.html"><button class="btn btn-default">Previous</button></a>
+<a href="linear-regression.html"><button class="btn btn-default">Next</button></a>
+</p>
+<p class="build-date">Page built: 
+2019-09-10
+</p>
 </div>
-            </section>
+</div>
 
-          </div>
-        </div>
-      </div>
-<a href="research-tools-data-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="linear-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"google": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"download": ["method_accfin.pdf"],
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
+
 </body>
-
 </html>

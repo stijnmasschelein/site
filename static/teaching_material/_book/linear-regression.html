@@ -1,64 +1,61 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 6 Linear regression in R | Just Enough To Be Dangerous</title>
-  <meta name="description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
-
-  <meta property="og:title" content="Chapter 6 Linear regression in R | Just Enough To Be Dangerous />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance." />
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Linear regression in R | Just Enough To Be Dangerous />
-  
-  <meta name="twitter:description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance." />
-  
-
-<meta name="author" content="Stijn Masschelein">
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Chapter 6 Linear regression in R | Just Enough To Be Dangerous" />
+<meta property="og:type" content="book" />
 
 
-<meta name="date" content="2019-03-12">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  
-  
-<link rel="prev" href="maths-sim.html">
-<link rel="next" href="measurement-and-theory.html">
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<meta property="og:description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance." />
 
 
+<meta name="author" content="Stijn Masschelein" />
+
+<meta name="date" content="2019-09-10" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance.">
+
+<title>Chapter 6 Linear regression in R | Just Enough To Be Dangerous</title>
+
+<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/envisioned.css" rel="stylesheet" />
+<link href="libs/msmb-css-0/msmb.css" rel="stylesheet" />
+<script>
+function toggle_visibility(id1, id2) {
+var e = document.getElementById(id1);
+var f = document.getElementById(id2);
+
+e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+
+if(f.classList.contains('fa-plus-square')) {
+    f.classList.add('fa-minus-square')
+    f.classList.remove('fa-plus-square')
+} else {
+    f.classList.add('fa-plus-square')
+    f.classList.remove('fa-minus-square')
+}
+
+}
+</script>
 
 
-
-
-
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<script src="libs/viz-0.3/viz.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
-
-
+<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
+
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -118,147 +115,56 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
+
 </head>
 
 <body>
 
 
 
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preamble</a></li>
-<li class="chapter" data-level="2" data-path="research-ceocomp.html"><a href="research-ceocomp.html"><i class="fa fa-check"></i><b>2</b> A Research Project: CEO Compensation</a><ul>
-<li class="chapter" data-level="2.1" data-path="research-ceocomp.html"><a href="research-ceocomp.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
-<li class="chapter" data-level="2.2" data-path="research-ceocomp.html"><a href="research-ceocomp.html#theory"><i class="fa fa-check"></i><b>2.2</b> Theory</a></li>
-<li class="chapter" data-level="2.3" data-path="research-ceocomp.html"><a href="research-ceocomp.html#empirical-test"><i class="fa fa-check"></i><b>2.3</b> Empirical Test</a></li>
-<li class="chapter" data-level="2.4" data-path="research-ceocomp.html"><a href="research-ceocomp.html#conclusion"><i class="fa fa-check"></i><b>2.4</b> Conclusion</a></li>
-<li class="chapter" data-level="2.5" data-path="research-ceocomp.html"><a href="research-ceocomp.html#appendix-2"><i class="fa fa-check"></i><b>2.5</b> Appendix: WRDS</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="research-tools-theory.html"><a href="research-tools-theory.html"><i class="fa fa-check"></i><b>3</b> Research Tools - Theory</a><ul>
-<li class="chapter" data-level="3.1" data-path="research-tools-theory.html"><a href="research-tools-theory.html#literature-search"><i class="fa fa-check"></i><b>3.1</b> Literature Search</a></li>
-<li class="chapter" data-level="3.2" data-path="research-tools-theory.html"><a href="research-tools-theory.html#writing-under-construction"><i class="fa fa-check"></i><b>3.2</b> Writing (Under Construction)</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="research-tools-theory.html"><a href="research-tools-theory.html#levels"><i class="fa fa-check"></i><b>3.2.1</b> Different levels in a research paper or thesis.</a></li>
-<li class="chapter" data-level="3.2.2" data-path="research-tools-theory.html"><a href="research-tools-theory.html#concepts"><i class="fa fa-check"></i><b>3.2.2</b> Explain important concepts and theories.</a></li>
-<li class="chapter" data-level="3.2.3" data-path="research-tools-theory.html"><a href="research-tools-theory.html#theory-first"><i class="fa fa-check"></i><b>3.2.3</b> Theory before literature review.</a></li>
-<li class="chapter" data-level="3.2.4" data-path="research-tools-theory.html"><a href="research-tools-theory.html#unecessary"><i class="fa fa-check"></i><b>3.2.4</b> Delete unnecessary words.</a></li>
-<li class="chapter" data-level="3.2.5" data-path="research-tools-theory.html"><a href="research-tools-theory.html#hedging"><i class="fa fa-check"></i><b>3.2.5</b> Avoid vague or hedging words as much as possible.</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html"><i class="fa fa-check"></i><b>4</b> Research tools - Data Analysis</a><ul>
-<li class="chapter" data-level="4.1" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#data-analysis-tools"><i class="fa fa-check"></i><b>4.1</b> Data analysis tools</a></li>
-<li class="chapter" data-level="4.2" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#the-r-console"><i class="fa fa-check"></i><b>4.2</b> The R console</a></li>
-<li class="chapter" data-level="4.3" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#r-packages"><i class="fa fa-check"></i><b>4.3</b> R packages</a></li>
-<li class="chapter" data-level="4.4" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#useful-code"><i class="fa fa-check"></i><b>4.4</b> Finally some useful code!</a></li>
-<li class="chapter" data-level="4.5" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#looking-for-help"><i class="fa fa-check"></i><b>4.5</b> Looking for help</a></li>
-<li class="chapter" data-level="4.6" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#rmarkdown-markdown-r"><i class="fa fa-check"></i><b>4.6</b> RMarkdown = Markdown + R</a><ul>
-<li class="chapter" data-level="4.6.1" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#markdown"><i class="fa fa-check"></i><b>4.6.1</b> Markdown</a></li>
-<li class="chapter" data-level="4.6.2" data-path="research-tools-data-analysis.html"><a href="research-tools-data-analysis.html#r-code-in-markdown-r-chunks"><i class="fa fa-check"></i><b>4.6.2</b> R-code in markdown: R chunks</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="maths-sim.html"><a href="maths-sim.html"><i class="fa fa-check"></i><b>5</b> Theory: Maths and Simulations</a><ul>
-<li class="chapter" data-level="5.1" data-path="maths-sim.html"><a href="maths-sim.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.2" data-path="maths-sim.html"><a href="maths-sim.html#new-theory-ceo-firm-matching."><i class="fa fa-check"></i><b>5.2</b> New theory: CEO-firm matching.</a></li>
-<li class="chapter" data-level="5.3" data-path="maths-sim.html"><a href="maths-sim.html#three-firms---three-ceos-model"><i class="fa fa-check"></i><b>5.3</b> Three firms - three CEOs model</a></li>
-<li class="chapter" data-level="5.4" data-path="maths-sim.html"><a href="maths-sim.html#n-firms---n-ceos-model"><i class="fa fa-check"></i><b>5.4</b> N firms - N CEOs model</a></li>
-<li class="chapter" data-level="5.5" data-path="maths-sim.html"><a href="maths-sim.html#simulation"><i class="fa fa-check"></i><b>5.5</b> Simulation</a></li>
-<li class="chapter" data-level="5.6" data-path="maths-sim.html"><a href="maths-sim.html#visualisations"><i class="fa fa-check"></i><b>5.6</b> Visualisations</a></li>
-<li class="chapter" data-level="5.7" data-path="maths-sim.html"><a href="maths-sim.html#functions-in-r"><i class="fa fa-check"></i><b>5.7</b> Functions in <code>R</code></a></li>
-<li class="chapter" data-level="5.8" data-path="maths-sim.html"><a href="maths-sim.html#why-should-you-simulate-data"><i class="fa fa-check"></i><b>5.8</b> Why should you simulate data?</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>6</b> Linear regression in <code>R</code></a><ul>
-<li class="chapter" data-level="6.1" data-path="linear-regression.html"><a href="linear-regression.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
-<li class="chapter" data-level="6.2" data-path="linear-regression.html"><a href="linear-regression.html#linear-regression-with-non-linear-theories"><i class="fa fa-check"></i><b>6.2</b> Linear regression with non-linear theories</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html"><i class="fa fa-check"></i><b>7</b> Measurement and Theory</a><ul>
-<li class="chapter" data-level="7.1" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
-<li class="chapter" data-level="7.2" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#assumptions-about-ceos"><i class="fa fa-check"></i><b>7.2</b> Assumptions About CEOs</a></li>
-<li class="chapter" data-level="7.3" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#optimal-incentives"><i class="fa fa-check"></i><b>7.3</b> Optimal CEO incentives</a></li>
-<li class="chapter" data-level="7.4" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#data-sensitivity"><i class="fa fa-check"></i><b>7.4</b> What does the data say?</a></li>
-<li class="chapter" data-level="7.5" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#three-pay-performance-sensitivities"><i class="fa fa-check"></i><b>7.5</b> Three pay-performance sensitivities</a></li>
-<li class="chapter" data-level="7.6" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#comparison-plot"><i class="fa fa-check"></i><b>7.6</b> Comparison plot</a></li>
-<li class="chapter" data-level="7.7" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#libby-boxes"><i class="fa fa-check"></i><b>7.7</b> Libby boxes</a></li>
-<li class="chapter" data-level="7.8" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#are-incentives-independent-of-size"><i class="fa fa-check"></i><b>7.8</b> Are incentives independent of size?</a><ul>
-<li class="chapter" data-level="7.8.1" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#randomisation-test"><i class="fa fa-check"></i><b>7.8.1</b> Randomisation Test</a></li>
-<li class="chapter" data-level="7.8.2" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#bootstrap"><i class="fa fa-check"></i><b>7.8.2</b> Bootstrap</a></li>
-<li class="chapter" data-level="7.8.3" data-path="measurement-and-theory.html"><a href="measurement-and-theory.html#p-values"><i class="fa fa-check"></i><b>7.8.3</b> P-values</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html"><i class="fa fa-check"></i><b>8</b> Control Variables (Under Construction)</a><ul>
-<li class="chapter" data-level="8.1" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#the-data"><i class="fa fa-check"></i><b>8.1</b> The data</a></li>
-<li class="chapter" data-level="8.2" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#controlling-for-measurement-error"><i class="fa fa-check"></i><b>8.2</b> Controlling for measurement error</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#directed-acyclical-graph-or-dag"><i class="fa fa-check"></i><b>8.2.1</b> Directed Acyclical Graph (or DAG)</a></li>
-<li class="chapter" data-level="8.2.2" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#simulation-1"><i class="fa fa-check"></i><b>8.2.2</b> Simulation</a></li>
-<li class="chapter" data-level="8.2.3" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#real-data"><i class="fa fa-check"></i><b>8.2.3</b> Real data</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#interaction-effects"><i class="fa fa-check"></i><b>8.3</b> Interaction effects</a></li>
-<li class="chapter" data-level="8.4" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#controlling-for-confounds"><i class="fa fa-check"></i><b>8.4</b> Controlling for confounds</a></li>
-<li class="chapter" data-level="8.5" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#bad-controls-and-tricky-specifications"><i class="fa fa-check"></i><b>8.5</b> Bad controls and tricky specifications</a><ul>
-<li class="chapter" data-level="8.5.1" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#performance-as-control"><i class="fa fa-check"></i><b>8.5.1</b> Performance as control</a></li>
-<li class="chapter" data-level="8.5.2" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#performance-as-dependent-variable"><i class="fa fa-check"></i><b>8.5.2</b> Performance as dependent variable</a></li>
-<li class="chapter" data-level="8.5.3" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#colliders"><i class="fa fa-check"></i><b>8.5.3</b> Colliders</a></li>
-<li class="chapter" data-level="8.5.4" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#selection-bias"><i class="fa fa-check"></i><b>8.5.4</b> Selection bias</a></li>
-</ul></li>
-<li class="chapter" data-level="8.6" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#example-fixed-effects"><i class="fa fa-check"></i><b>8.6</b> Example: Fixed effects</a></li>
-<li class="chapter" data-level="8.7" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#instrumental-variables-and-expectations"><i class="fa fa-check"></i><b>8.7</b> Instrumental Variables and Expectations</a></li>
-<li class="chapter" data-level="8.8" data-path="control-variables-under-construction.html"><a href="control-variables-under-construction.html#natural-experiments-and-research-design"><i class="fa fa-check"></i><b>8.8</b> Natural Experiments and Research Design</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="assessment.html"><a href="assessment.html"><i class="fa fa-check"></i><b>9</b> Assessment</a><ul>
-<li class="chapter" data-level="9.1" data-path="assessment.html"><a href="assessment.html#overview"><i class="fa fa-check"></i><b>9.1</b> Overview</a></li>
-<li class="chapter" data-level="9.2" data-path="assessment.html"><a href="assessment.html#proposal-5000-words"><i class="fa fa-check"></i><b>9.2</b> Proposal (5000 words)</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="assessment.html"><a href="assessment.html#deadline"><i class="fa fa-check"></i><b>9.2.1</b> Deadline</a></li>
-<li class="chapter" data-level="9.2.2" data-path="assessment.html"><a href="assessment.html#guidelines"><i class="fa fa-check"></i><b>9.2.2</b> Guidelines</a></li>
-<li class="chapter" data-level="9.2.3" data-path="assessment.html"><a href="assessment.html#assessment-criteria"><i class="fa fa-check"></i><b>9.2.3</b> Assessment Criteria</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="assessment.html"><a href="assessment.html#presentation-10-minutes"><i class="fa fa-check"></i><b>9.3</b> Presentation (10 minutes)</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="assessment.html"><a href="assessment.html#deadline-1"><i class="fa fa-check"></i><b>9.3.1</b> Deadline</a></li>
-<li class="chapter" data-level="9.3.2" data-path="assessment.html"><a href="assessment.html#structure"><i class="fa fa-check"></i><b>9.3.2</b> Structure</a></li>
-<li class="chapter" data-level="9.3.3" data-path="assessment.html"><a href="assessment.html#assessment-1"><i class="fa fa-check"></i><b>9.3.3</b> Assessment</a></li>
-<li class="chapter" data-level="9.3.4" data-path="assessment.html"><a href="assessment.html#content"><i class="fa fa-check"></i><b>9.3.4</b> Content</a></li>
-<li class="chapter" data-level="9.3.5" data-path="assessment.html"><a href="assessment.html#presentation-style"><i class="fa fa-check"></i><b>9.3.5</b> Presentation style</a></li>
-</ul></li>
-<li class="chapter" data-level="9.4" data-path="assessment.html"><a href="assessment.html#thesis."><i class="fa fa-check"></i><b>9.4</b> Thesis.</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="assessment.html"><a href="assessment.html#deadline-2"><i class="fa fa-check"></i><b>9.4.1</b> Deadline</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path="assessment.html"><a href="assessment.html#pitching-document"><i class="fa fa-check"></i><b>9.5</b> Pitching Document</a></li>
-<li class="chapter" data-level="9.6" data-path="assessment.html"><a href="assessment.html#assignments-and-homework-35"><i class="fa fa-check"></i><b>9.6</b> Assignments and Homework (35%)</a><ul>
-<li class="chapter" data-level="9.6.1" data-path="assessment.html"><a href="assessment.html#homework-1"><i class="fa fa-check"></i><b>9.6.1</b> Homework 1</a></li>
-<li class="chapter" data-level="9.6.2" data-path="assessment.html"><a href="assessment.html#homework-2"><i class="fa fa-check"></i><b>9.6.2</b> Homework 2</a></li>
-<li class="chapter" data-level="9.6.3" data-path="assessment.html"><a href="assessment.html#assignment-1"><i class="fa fa-check"></i><b>9.6.3</b> Assignment 1</a></li>
-<li class="chapter" data-level="9.6.4" data-path="assessment.html"><a href="assessment.html#assignment-2"><i class="fa fa-check"></i><b>9.6.4</b> Assignment 2</a></li>
-</ul></li>
-<li class="chapter" data-level="9.7" data-path="assessment.html"><a href="assessment.html#marking-guide"><i class="fa fa-check"></i><b>9.7</b> Honours Marking Guide</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul class="navbar">
+<li class="msmb"><p class="title">Just Enough To Be Dangerous<p><p class="author">Stijn Masschelein</p>
+<li class="dropdown" style="float:right">
+<a href="javascript:void(0)" class="dropbtn">&#x25BE; Chapters</a>
+<div class="dropdown-content">
+<a href="index.html"><span class="toc-section-number">1</span> Preamble</a>
+<a href="research-ceocomp.html"><span class="toc-section-number">2</span> A Research Project: CEO Compensation</a>
+<a href="research-tools-theory.html"><span class="toc-section-number">3</span> Research Tools - Theory</a>
+<a href="research-tools-data-analysis.html"><span class="toc-section-number">4</span> Research tools - Data Analysis</a>
+<a href="maths-sim.html"><span class="toc-section-number">5</span> Theory: Maths and Simulations</a>
+<a id="active-page" href="linear-regression.html"><span class="toc-section-number">6</span> Linear regression in <code>R</code></a><ul class="toc-sections">
+<li class="toc"><a href="#introduction-2"> Introduction</a></li>
+<li class="toc"><a href="#linear-regression-with-non-linear-theories"> Linear regression with non-linear theories</a></li>
 </ul>
-
-      </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Just Enough To Be Dangerous</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="linear-regression" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Linear regression in <code>R</code></h1>
+<a href="measurement.html"><span class="toc-section-number">7</span> Measurement and Theory</a>
+<a href="control-variables.html"><span class="toc-section-number">8</span> Control Variables</a>
+<a href="assessment.html"><span class="toc-section-number">9</span> Assessment</a>
+<a href="references.html">References</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div id="linear-regression" class="section level1">
+<h1>
+<span class="header-section-number">Chapter 6</span> Linear regression in <code>R</code>
+</h1>
 <p>Most of the statistical tests in accounting and finance are some
 variation on a linear regression. In this section, I am assuming
 that you vaguely know what a linear regression is. I am not going
 into the mathematical details but I am focusing on the how to
 run these tests in <code>R</code>.</p>
 <div id="introduction-2" class="section level2">
-<h2><span class="header-section-number">6.1</span> Introduction</h2>
+<h2>
+<span class="header-section-number">6.1</span> Introduction</h2>
 <p>There are a number of different ways how we can represent a
 linear regression. The first expression shows how the outcome
 vector <span class="math inline">\(\mathbf{y}\)</span> is a linear combination of a number of
@@ -277,11 +183,12 @@ random component.</p>
 \end{align}\]</span></p>
 <p>To esimate the coefficients <span class="math inline">\(a\)</span>, <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span> in R,
 we have to run the following piece of code.</p>
-<pre class="sourceCode r"><code class="sourceCode r">reg &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dt">data =</span> my_data_set)
-<span class="kw">summary</span>(reg)</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">reg &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dt">data =</span> my_data_set)</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="kw">summary</span>(reg)</a></code></pre></div>
 </div>
 <div id="linear-regression-with-non-linear-theories" class="section level2">
-<h2><span class="header-section-number">6.2</span> Linear regression with non-linear theories</h2>
+<h2>
+<span class="header-section-number">6.2</span> Linear regression with non-linear theories</h2>
 <p>Linear regressions can be used with a non-linear theory with some
 transformations. The matching theory of CEO compensation implies
 that when there are an infinite amount of firms, the relation
@@ -294,17 +201,19 @@ W = aV_0^b \implies ln(W) = ln(a) + b \times ln(V_0)
 <p>We can see how well the logarithmic transformation works on the
 simulated data by transformating the scale of Figure <a href="maths-sim.html#fig:sim-combined">5.4</a></p>
 
-<pre class="sourceCode r"><code class="sourceCode r">plot_exp <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">&quot;log&quot;</span>, 
-                     <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">pretty_breaks</span>(<span class="dt">n =</span> <span class="dv">2</span>))  <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">&quot;log&quot;</span>, 
-                     <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">pretty_breaks</span>(<span class="dt">n =</span> <span class="dv">2</span>))</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:log-transform"></span>
-<img src="method_accfin_files/figure-html/log-transform-1.png" alt="The logarithmic transformation of simulated data" width="288" />
-<p class="caption">
-Figure 6.1: The logarithmic transformation of simulated data
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span id="fig:log-transform"></span>
+<img src="method_accfin_files/figure-html/log-transform-1.png" alt="The logarithmic transformation of simulated data" width="288"><!--
+<p class="caption marginnote">-->Figure 6.1: The logarithmic transformation of simulated data<!--</p>-->
+<!--</div>--></span>
 </p>
-</div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">plot_exp <span class="op">+</span></a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>, </a>
+<a class="sourceLine" id="cb40-3" data-line-number="3">                     <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">pretty_breaks</span>(<span class="dt">n =</span> <span class="dv">2</span>))  <span class="op">+</span></a>
+<a class="sourceLine" id="cb40-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>, </a>
+<a class="sourceLine" id="cb40-5" data-line-number="5">                     <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">pretty_breaks</span>(<span class="dt">n =</span> <span class="dv">2</span>))</a></code></pre></div>
 <p>One reason why it does not work perfectly is that the reservation
 wage <span class="math inline">\(w_0\)</span> might be set too low in the simulation. You can see
 that the line is approximately linear for the largest firms. The
@@ -316,12 +225,12 @@ better. One of the homework exercises asks you to check whether
 the transformation works better once you simulate more firms.</p>
 <p>Let us now see how well the log transformation works on the
 real S&amp;P500 compensation data. First, we load the data in.</p>
-<pre class="sourceCode r"><code class="sourceCode r">us_comp &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">&quot;data/us-compensation.RDS&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">rename</span>(<span class="dt">total_comp =</span> tdc1)
-us_value &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">&quot;data/us-value.RDS&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">rename</span>(<span class="dt">year =</span> fyear, <span class="dt">market_value =</span> mkvalt)
-<span class="kw">summary</span>(us_value<span class="op">$</span>market_value)</code></pre>
-<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max.      NA&#39;s 
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">us_comp &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-compensation.RDS"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">total_comp =</span> tdc1)</a>
+<a class="sourceLine" id="cb41-3" data-line-number="3">us_value &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-value.RDS"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb41-4" data-line-number="4"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">year =</span> fyear, <span class="dt">market_value =</span> mkvalt)</a>
+<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="kw">summary</span>(us_value<span class="op">$</span>market_value)</a></code></pre></div>
+<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max.      NA's 
 ##     117.3    9142.3   16006.8   37036.0   33581.9 1073390.5       682</code></pre>
 <p>We have a bunch of observations with missing values (<code>NA</code>) for
 the market value of the firm. I will not further investigate this
@@ -333,23 +242,23 @@ which observations from one dataset should be matched with which
 observations from the other dataset. The join functions in the
 <code>tidyverse</code> can be a lifesaver if you are working with multiple
 datasets that need to be merged.</p>
-<pre class="sourceCode r"><code class="sourceCode r">us_comp_value &lt;-<span class="st"> </span><span class="kw">left_join</span>(<span class="kw">select</span>(us_comp, gvkey, year, total_comp),
-                          us_value, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;gvkey&quot;</span>))
-<span class="kw">glimpse</span>(us_comp_value)</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">us_comp_value &lt;-<span class="st"> </span><span class="kw">left_join</span>(<span class="kw">select</span>(us_comp, gvkey, year, total_comp),</a>
+<a class="sourceLine" id="cb43-2" data-line-number="2">                          us_value, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">"year"</span>, <span class="st">"gvkey"</span>))</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="kw">glimpse</span>(us_comp_value)</a></code></pre></div>
 <pre><code>## Observations: 4,564
 ## Variables: 5
-## $ gvkey        &lt;chr&gt; &quot;001045&quot;, &quot;001045&quot;, &quot;001045&quot;, &quot;001045&quot;, &quot;001045&quot;, &quot;001...
-## $ year         &lt;dbl&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2011, 2011, ...
-## $ total_comp   &lt;dbl&gt; 5526.835, 656.226, 19092.978, 12301.976, 11418.547, 14...
-## $ market_value &lt;dbl&gt; 117.3438, 266.5571, 6591.9923, 37405.5843, 26452.7417,...
-## $ ni           &lt;dbl&gt; -1979.000, -1876.000, -1834.000, 2882.000, 7610.000, 2...</code></pre>
+## $ gvkey        &lt;chr&gt; "001045", "001045", "001045", "001045", "001045", "00104…
+## $ year         &lt;dbl&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2011, 2011, 20…
+## $ total_comp   &lt;dbl&gt; 5526.835, 656.226, 19092.978, 12301.976, 11418.547, 140.…
+## $ market_value &lt;dbl&gt; 117.3438, 266.5571, 6591.9923, 37405.5843, 26452.7417, 2…
+## $ ni           &lt;dbl&gt; -1979.000, -1876.000, -1834.000, 2882.000, 7610.000, 267…</code></pre>
 <p>Because there are some CEOs with <span class="math inline">\(0\$\)</span> compensation, I use the
 <span class="math inline">\(log(x+1)\)</span> transformation. Another option would have been to
 exclude these obervations.</p>
-<pre class="sourceCode r"><code class="sourceCode r">reg &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(total_comp <span class="op">+</span><span class="st"> </span><span class="dv">1</span>) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(market_value <span class="op">+</span><span class="st"> </span><span class="dv">1</span>), 
-          <span class="dt">data =</span> us_comp_value)
-<span class="co"># summary(reg)</span>
-<span class="kw">print</span>(<span class="kw">summary</span>(reg), <span class="dt">digits =</span> 1L)</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">reg &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(total_comp <span class="op">+</span><span class="st"> </span><span class="dv">1</span>) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(market_value <span class="op">+</span><span class="st"> </span><span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb45-2" data-line-number="2">          <span class="dt">data =</span> us_comp_value)</a>
+<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="co"># summary(reg)</span></a>
+<a class="sourceLine" id="cb45-4" data-line-number="4"><span class="kw">print</span>(<span class="kw">summary</span>(reg), <span class="dt">digits =</span> 1L)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(total_comp + 1) ~ log(market_value + 1), data = us_comp_value)
@@ -363,7 +272,7 @@ exclude these obervations.</p>
 ## (Intercept)               6.77       0.14      47   &lt;2e-16 ***
 ## log(market_value + 1)     0.23       0.01      16   &lt;2e-16 ***
 ## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 1 on 3946 degrees of freedom
 ##   (616 observations deleted due to missingness)
@@ -375,47 +284,51 @@ biggest concern. You can just use <code>summary(reg)</code>. We can also
 plot the log-log relation between firm value and CEO compensation
 in figure.</p>
 
-<pre class="sourceCode r"><code class="sourceCode r">plot_check &lt;-
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">data =</span> us_comp_value, 
-         <span class="kw">aes</span>(<span class="dt">y =</span> total_comp, <span class="dt">x =</span> market_value)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">.25</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">&quot;log1p&quot;</span>,
-               <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),
-               <span class="dt">labels =</span> <span class="cf">function</span>(x)<span class="kw">format</span>(x<span class="op">/</span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">2</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">&quot;log1p&quot;</span>,
-               <span class="dt">labels =</span> <span class="cf">function</span>(x)<span class="kw">format</span>(x<span class="op">/</span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">2</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;compensation ($ million)&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;market value ($ billion)&quot;</span>)
-<span class="kw">print</span>(plot_check)</code></pre>
-<pre><code>## Warning: Removed 616 rows containing missing values (geom_point).</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:log-log"></span>
-<img src="method_accfin_files/figure-html/log-log-1.png" alt="CEO compensation and firm value on the log-log scale" width="384" />
-<p class="caption">
-Figure 6.2: CEO compensation and firm value on the log-log scale
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span id="fig:log-log"></span>
+<img src="method_accfin_files/figure-html/log-log-1.png" alt="CEO compensation and firm value on the log-log scale" width="384"><!--
+<p class="caption marginnote">-->Figure 6.2: CEO compensation and firm value on the log-log scale<!--</p>-->
+<!--</div>--></span>
 </p>
-</div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">plot_check &lt;-</a>
+<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">data =</span> us_comp_value, </a>
+<a class="sourceLine" id="cb47-3" data-line-number="3">         <span class="kw">aes</span>(<span class="dt">y =</span> total_comp, <span class="dt">x =</span> market_value)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb47-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">.25</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb47-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">"log1p"</span>,</a>
+<a class="sourceLine" id="cb47-6" data-line-number="6">               <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb47-7" data-line-number="7">               <span class="dt">labels =</span> <span class="cf">function</span>(x)<span class="kw">format</span>(x<span class="op">/</span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">2</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb47-8" data-line-number="8"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">"log1p"</span>,</a>
+<a class="sourceLine" id="cb47-9" data-line-number="9">               <span class="dt">labels =</span> <span class="cf">function</span>(x)<span class="kw">format</span>(x<span class="op">/</span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">2</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb47-10" data-line-number="10"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">"compensation ($ million)"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb47-11" data-line-number="11"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">"market value ($ billion)"</span>)</a>
+<a class="sourceLine" id="cb47-12" data-line-number="12"><span class="kw">print</span>(plot_check)</a></code></pre></div>
+<pre><code>## Warning: Removed 616 rows containing missing values (geom_point).</code></pre>
 <p>On the log-log scale, we see that there are some CEOs with very
 low compensation compared to the bulk of the observations. In the
 next figure, we will just ignore those.</p>
-<pre class="sourceCode r"><code class="sourceCode r">plot_check2 &lt;-<span class="st"> </span>plot_check <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">&quot;log1p&quot;</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">500</span>, <span class="ot">NA</span>),
-               <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),
-               <span class="dt">labels =</span> <span class="cf">function</span>(x)<span class="kw">format</span>(x<span class="op">/</span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">2</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">&quot;log1p&quot;</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">500</span>, <span class="ot">NA</span>),
-               <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),
-               <span class="dt">labels =</span> <span class="cf">function</span>(x)<span class="kw">format</span>(x<span class="op">/</span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">2</span>)) </code></pre>
-<pre><code>## Scale for &#39;x&#39; is already present. Adding another scale for &#39;x&#39;, which
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">plot_check2 &lt;-<span class="st"> </span>plot_check <span class="op">+</span></a>
+<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">"log1p"</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">500</span>, <span class="ot">NA</span>),</a>
+<a class="sourceLine" id="cb49-3" data-line-number="3">               <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb49-4" data-line-number="4">               <span class="dt">labels =</span> <span class="cf">function</span>(x)<span class="kw">format</span>(x<span class="op">/</span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">2</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb49-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">"log1p"</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">500</span>, <span class="ot">NA</span>),</a>
+<a class="sourceLine" id="cb49-6" data-line-number="6">               <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb49-7" data-line-number="7">               <span class="dt">labels =</span> <span class="cf">function</span>(x)<span class="kw">format</span>(x<span class="op">/</span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">2</span>)) </a></code></pre></div>
+<pre><code>## Scale for 'x' is already present. Adding another scale for 'x', which
 ## will replace the existing scale.</code></pre>
-<pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which
+<pre><code>## Scale for 'y' is already present. Adding another scale for 'y', which
 ## will replace the existing scale.</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(plot_check2)</code></pre>
-<pre><code>## Warning: Removed 665 rows containing missing values (geom_point).</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:log-log-clean"></span>
-<img src="method_accfin_files/figure-html/log-log-clean-1.png" alt="CEO compensation and firm value on the log-log scale" width="384" />
-<p class="caption">
-Figure 6.3: CEO compensation and firm value on the log-log scale
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span id="fig:log-log-clean"></span>
+<img src="method_accfin_files/figure-html/log-log-clean-1.png" alt="CEO compensation and firm value on the log-log scale" width="384"><!--
+<p class="caption marginnote">-->Figure 6.3: CEO compensation and firm value on the log-log scale<!--</p>-->
+<!--</div>--></span>
 </p>
-</div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">print</span>(plot_check2)</a></code></pre></div>
+<pre><code>## Warning: Removed 665 rows containing missing values (geom_point).</code></pre>
 <p>Although there still a lot of variation visible, the relation
 in Figure <a href="linear-regression.html#fig:log-log-clean">6.3</a> looks reasonably linear. The
 goal of plotting the data is to get an idea whether the data
@@ -428,71 +341,19 @@ want to investigate why this is the case. For instance, you might
 have an error in the database.</p>
 
 </div>
+</div></body></html>
+
+<p style="text-align: center;">
+<a href="maths-sim.html"><button class="btn btn-default">Previous</button></a>
+<a href="measurement.html"><button class="btn btn-default">Next</button></a>
+</p>
+<p class="build-date">Page built: 
+2019-09-10
+</p>
 </div>
-            </section>
+</div>
 
-          </div>
-        </div>
-      </div>
-<a href="maths-sim.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="measurement-and-theory.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"google": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"download": ["method_accfin.pdf"],
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
+
 </body>
-
 </html>
