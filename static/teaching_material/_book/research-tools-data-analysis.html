@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="Chapter 4 Research tools - Data Analysis | Just Enough To Be Dangerous" />
@@ -15,7 +14,7 @@
 
 <meta name="author" content="Stijn Masschelein" />
 
-<meta name="date" content="2019-09-10" />
+<meta name="date" content="2020-02-18" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -147,7 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a href="measurement.html"><span class="toc-section-number">7</span> Measurement and Theory</a>
 <a href="control-variables.html"><span class="toc-section-number">8</span> Control Variables</a>
 <a href="assessment.html"><span class="toc-section-number">9</span> Assessment</a>
-<a href="references.html">References</a>
+<a href="references.html"><span class="toc-section-number">10</span> References</a>
 </div>
 </li>
 </ul>
@@ -335,16 +334,8 @@ the observations from the company that has the key <code>001045</code>.</p>
 ## 5  2015 0010… 0237… William Doug… AMERI… CEO    46191      0   232.
 ## 6  2016 0010… 0237… William Doug… AMERI… CEO    46191      0     0 
 ## 7  2017 0010… 0237… William Doug… AMERI… CEO    46191      0     0 
-##   stock_awards_fv stock_unvest_val eip_unearn_num eip_unearn_val
-##             &lt;dbl&gt;            &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;
-## 1           4020.               0              0              0 
-## 2              0              310.           152.           122.
-## 3           4200.               0              0              0 
-## 4           7000            31258.           410.         21994.
-## 5          10330            14654.           112.          4749.
-## 6              0             1487.           144.             0 
-## 7          17914            12464.           372.         19334.
-## # … with 9 more variables: option_awards &lt;dbl&gt;,
+## # … with 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
+## #   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
 ## #   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
 ## #   tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;, becameceo &lt;date&gt;, joined_co &lt;date&gt;,
 ## #   reason &lt;chr&gt;</code></pre>
@@ -371,22 +362,11 @@ a salary over $1,000,000.</p>
 ##  8  2014 0014… 1055… Daniel Paul … AFLAC… CEO    00013     0   1441.
 ##  9  2014 0014… 2687… Robert Herma… AMERI… CEO    20972     0   1385.
 ## 10  2014 0015… 3110… Frank S. Her… AMETE… CEO    04252   520.  1182.
-##    stock_awards_fv stock_unvest_val eip_unearn_num eip_unearn_val
-##              &lt;dbl&gt;            &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;
-##  1           4200.           11416.           220.         14999.
-##  2           4650.               0            315.         14169.
-##  3           5073.            2008.          2149.          5695.
-##  4              0                0              0              0 
-##  5           7820.            9818.           348.         25675.
-##  6           6720.            6688.           215.         26086.
-##  7          14965.               0            423.         39325.
-##  8           2141.               0            326.         19928.
-##  9           6887.               0            418.         23409.
-## 10              0             5582.             0              0 
-## # … with 261 more rows, and 9 more variables: option_awards &lt;dbl&gt;,
-## #   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
-## #   tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;, becameceo &lt;date&gt;, joined_co &lt;date&gt;,
-## #   reason &lt;chr&gt;</code></pre>
+## # … with 261 more rows, and 13 more variables: stock_awards_fv &lt;dbl&gt;,
+## #   stock_unvest_val &lt;dbl&gt;, eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;,
+## #   option_awards &lt;dbl&gt;, option_awards_blk_value &lt;dbl&gt;,
+## #   option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;, tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;,
+## #   becameceo &lt;date&gt;, joined_co &lt;date&gt;, reason &lt;chr&gt;</code></pre>
 <p>You can also select some variables if you are only interested in
 those. If a variable has an undescriptive name, you can use
 select to rename the variable. For instance, <code>tdc1</code> is the total
@@ -558,7 +538,7 @@ distribution with mean 4 and standard deviation 3.</p>
 <a href="maths-sim.html"><button class="btn btn-default">Next</button></a>
 </p>
 <p class="build-date">Page built: 
-2019-09-10
+2020-02-18
 </p>
 </div>
 </div>

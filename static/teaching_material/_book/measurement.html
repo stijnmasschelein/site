@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="Chapter 7 Measurement and Theory | Just Enough To Be Dangerous" />
@@ -15,7 +14,7 @@
 
 <meta name="author" content="Stijn Masschelein" />
 
-<meta name="date" content="2019-09-10" />
+<meta name="date" content="2020-02-18" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -149,7 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <a href="control-variables.html"><span class="toc-section-number">8</span> Control Variables</a>
 <a href="assessment.html"><span class="toc-section-number">9</span> Assessment</a>
-<a href="references.html">References</a>
+<a href="references.html"><span class="toc-section-number">10</span> References</a>
 </div>
 </li>
 </ul>
@@ -168,7 +167,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb54-3" data-line-number="3">  <span class="kw">options</span>(<span class="dt">knitr.table.format =</span> <span class="st">"latex"</span>)</a>
 <a class="sourceLine" id="cb54-4" data-line-number="4">} <span class="cf">else</span> {</a>
 <a class="sourceLine" id="cb54-5" data-line-number="5">  <span class="kw">options</span>(<span class="dt">knitr.table.format =</span> <span class="st">"html"</span>)</a>
-<a class="sourceLine" id="cb54-6" data-line-number="6">}</a></code></pre></div>
+<a class="sourceLine" id="cb54-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb54-7" data-line-number="7">remake_diagrams &lt;-<span class="st"> </span><span class="ot">FALSE</span></a></code></pre></div>
 <div id="introduction-3" class="section level2">
 <h2>
 <span class="header-section-number">7.1</span> Introduction</h2>
@@ -669,7 +669,7 @@ to underestimate the pay-performance sensitivity for CEOs.</p>
 <h2>
 <span class="header-section-number">7.7</span> Libby boxes</h2>
 <p>An empirical study can often be represented in the form of a
-diagram as in Figure <a href="#fig:libby-boxes2"><strong>??</strong></a>. These diagrams are
+diagram as in Figure <a href="measurement.html#fig:libby-boxes">7.4</a>. These diagrams are
 often referred to as the Predictive Validity Framework or, in
 the accounting literature, Libby Boxes
 <span class="citation">(Libby, Bloomfield, and Nelson <a href="#ref-libby_experimental_2002">2002</a>)</span>. The top of the diagram (1) represents
@@ -692,7 +692,6 @@ link between the two measures (2), ´change_log_wealth´ and
 ´change_log_performance´ in our case. This is the next step in
 this Chapter. Later in the notes, I wil look at the issue of
 control variables.</p>
-
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">library</span>(DiagrammeR)</a>
 <a class="sourceLine" id="cb75-2" data-line-number="2">libby_boxes &lt;-<span class="st"> </span><span class="kw">grViz</span>(<span class="st">"</span></a>
 <a class="sourceLine" id="cb75-3" data-line-number="3"><span class="st">    digraph libby_boxes{</span></a>
@@ -724,12 +723,13 @@ control variables.</p>
 <a class="sourceLine" id="cb75-29" data-line-number="29">                             <span class="st">"_bookdown_files/libby_boxes.pdf"</span>)</a>
 <a class="sourceLine" id="cb75-30" data-line-number="30">trelliscope<span class="op">::</span><span class="kw">widgetThumbnail</span>(libby_boxes,</a>
 <a class="sourceLine" id="cb75-31" data-line-number="31">                             <span class="st">"_bookdown_files/libby_boxes.png"</span>)</a></code></pre></div>
+
 <p>
 <span class="marginnote shownote">
 <!--
-<div class="figure">-->
+<div class="figure">--><span id="fig:libby-boxes"></span>
 <img src="_bookdown_files/libby_boxes.png" alt="Predictive Validity Framework or Libby Boxes for pay-performance sensitivity" width="307"><!--
-<p class="caption marginnote">-->(#fig:libby_boxes2)Predictive Validity Framework or Libby Boxes for pay-performance sensitivity<!--</p>-->
+<p class="caption marginnote">-->Figure 7.4: Predictive Validity Framework or Libby Boxes for pay-performance sensitivity<!--</p>-->
 <!--</div>--></span>
 </p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">"_bookdown_files/libby_boxes.png"</span>, </a>
@@ -747,7 +747,7 @@ explained by random variation.</p>
 <p>I will illustrate this issue with the new pay-performance
 sensitivity. The optimal performance contract should not depend
 on the size of the firm only on the performance of the firm.
-Figure <a href="measurement.html#fig:hypothesis">7.4</a> shows the relation between
+Figure <a href="measurement.html#fig:hypothesis">7.5</a> shows the relation between
 pay-performance sensitivity and the size of the firm. The figure
 does not show any strong relation between firm size and
 pay-performance sensitivity.</p>
@@ -757,7 +757,7 @@ pay-performance sensitivity.</p>
 <!--
 <div class="figure">--><span id="fig:hypothesis"></span>
 <img src="method_accfin_files/figure-html/hypothesis-1.png" alt="Relation between pay-performance sensitivity and market value" width="384"><!--
-<p class="caption marginnote">-->Figure 7.4: Relation between pay-performance sensitivity and market value<!--</p>-->
+<p class="caption marginnote">-->Figure 7.5: Relation between pay-performance sensitivity and market value<!--</p>-->
 <!--</div>--></span>
 </p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1">hypothesis =<span class="st"> </span><span class="kw">ggplot</span>(us_comp_value,</a>
@@ -816,7 +816,7 @@ vector with randomly created correlations.</p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1">simulate_cor =<span class="st"> </span><span class="cf">function</span>(data){</a>
 <a class="sourceLine" id="cb81-2" data-line-number="2">  <span class="kw">return</span>(<span class="kw">cor</span>(data<span class="op">$</span>sensitivity, <span class="kw">sample</span>(data<span class="op">$</span>market_value)))}</a>
 <a class="sourceLine" id="cb81-3" data-line-number="3">rand_cor =<span class="st"> </span><span class="kw">replicate</span>(<span class="fl">1e4</span>, <span class="kw">simulate_cor</span>(data_hypo))</a></code></pre></div>
-<p>Figure <a href="measurement.html#fig:sample-plot">7.5</a> visualises the test. We plot a
+<p>Figure <a href="measurement.html#fig:sample-plot">7.6</a> visualises the test. We plot a
 histogram of the random correlations and compare them to the size
 of the of the real correlation. We want to test whether the value
 of the real correlation is extreme, so we compare the random
@@ -828,7 +828,7 @@ the real correlation in orange.</p>
 <!--
 <div class="figure">--><span id="fig:sample-plot"></span>
 <img src="method_accfin_files/figure-html/sample-plot-1.png" alt="Random correlation compared to real correlation" width="288"><!--
-<p class="caption marginnote">-->Figure 7.5: Random correlation compared to real correlation<!--</p>-->
+<p class="caption marginnote">-->Figure 7.6: Random correlation compared to real correlation<!--</p>-->
 <!--</div>--></span>
 </p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">hist_sim &lt;-<span class="st"> </span><span class="kw">qplot</span>(rand_cor, <span class="dt">bins =</span> <span class="dv">100</span>, </a>
@@ -872,7 +872,7 @@ sampling from the larger population.</p>
 <a class="sourceLine" id="cb85-7" data-line-number="7">}</a>
 <a class="sourceLine" id="cb85-8" data-line-number="8">boot_corr &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">2000</span>, <span class="kw">calc_corr</span>(data_hypo))</a></code></pre></div>
 <p>We visualise the sampling variation in the correlation in
-Figure <a href="measurement.html#fig:boot-corr">7.6</a>. We can now compare this distribution
+Figure <a href="measurement.html#fig:boot-corr">7.7</a>. We can now compare this distribution
 to a <span class="math inline">\(0\)</span> correlation. If the distribution is (almost) entirely on
 one side of a null effect, we would conclude that sampling
 variation around a nulll effect is not a good explanation for the
@@ -886,7 +886,7 @@ there is anything more than random variation around a null effect.</p>
 <!--
 <div class="figure">--><span id="fig:boot-corr"></span>
 <img src="method_accfin_files/figure-html/boot-corr-1.png" alt="2000 bootstrapped correlations" width="288"><!--
-<p class="caption marginnote">-->Figure 7.6: 2000 bootstrapped correlations<!--</p>-->
+<p class="caption marginnote">-->Figure 7.7: 2000 bootstrapped correlations<!--</p>-->
 <!--</div>--></span>
 </p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">qplot</span>(boot_corr, <span class="dt">bins =</span> <span class="dv">100</span>) <span class="op">+</span><span class="st"> </span></a>
@@ -1039,7 +1039,7 @@ traps that have been laid for you in the literature.</p>
 <a href="control-variables.html"><button class="btn btn-default">Next</button></a>
 </p>
 <p class="build-date">Page built: 
-2019-09-10
+2020-02-18
 </p>
 </div>
 </div>

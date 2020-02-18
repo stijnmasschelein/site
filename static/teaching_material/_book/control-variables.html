@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="Chapter 8 Control Variables | Just Enough To Be Dangerous" />
@@ -15,7 +14,7 @@
 
 <meta name="author" content="Stijn Masschelein" />
 
-<meta name="date" content="2019-09-10" />
+<meta name="date" content="2020-02-18" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -144,7 +143,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="toc"><a href="#controlling-for-measurement-error"> Controlling for measurement error</a></li>
 </ul>
 <a href="assessment.html"><span class="toc-section-number">9</span> Assessment</a>
-<a href="references.html">References</a>
+<a href="references.html"><span class="toc-section-number">10</span> References</a>
 </div>
 </li>
 </ul>
@@ -174,7 +173,7 @@ which is link (2) in the boxes.</p>
 <p>
 <span class="marginnote shownote">
 <!--
-<div class="figure">--><span id="fig:unnamed-chunk-17"></span>
+<div class="figure">--><span id="fig:libby-boxes-revision"></span>
 <img src="_bookdown_files/libby_boxes.png" alt="Predictive Validity Framework or Libby Boxes for pay-performance sensitivity" width="307"><!--
 <p class="caption marginnote">-->Figure 8.1: Predictive Validity Framework or Libby Boxes for pay-performance sensitivity<!--</p>-->
 <!--</div>--></span>
@@ -183,7 +182,7 @@ which is link (2) in the boxes.</p>
 <h2>
 <span class="header-section-number">8.1</span> R housecleaning.</h2>
 <p>We are going to run a lot of regressions in this chapter. I load
-the <code>broom</code> package which helps to make tables of regressions.</p>
+the <code>stargazer</code> package which helps to make tables of regressions.</p>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="kw">suppressMessages</span>(<span class="kw">library</span>(stargazer))</a>
 <a class="sourceLine" id="cb90-2" data-line-number="2"><span class="kw">suppressMessages</span>(<span class="kw">library</span>(tidyverse))</a>
 <a class="sourceLine" id="cb90-3" data-line-number="3"><span class="kw">library</span>(DiagrammeR)</a>
@@ -269,7 +268,7 @@ ownership affects the information environment.</p>
 <p>Figure <a href="control-variables.html#fig:dag-joey2">8.2</a> serves as an example of what a DAG for
 a single study can look like. For a typical study, the DAG can
 quickly become quite complex. One of the reasons is that a social
-science observational study always has to account for a large
+science observational study always have to account for a large
 number of potential effects. The second reason is that DAGs
 do not allow for direct feedback loops<label for="tufte-sn-54" class="margin-toggle sidenote-number">54</label><input type="checkbox" id="tufte-sn-54" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">54</span> That is what acyclical
 means</span> and we have to account for the feedback between
@@ -298,8 +297,6 @@ it affects the outcome.</p>
 <p class="caption marginnote">-->Figure 8.3: Measurement error<!--</p>-->
 <!--</div>--></span>
 </p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">"_bookdown_files/dag_measurement.png"</span>, </a>
-<a class="sourceLine" id="cb92-2" data-line-number="2">                        <span class="dt">auto_pdf =</span> <span class="ot">TRUE</span>, <span class="dt">dpi =</span> <span class="dv">300</span>)</a></code></pre></div>
 </div>
 <div id="simulation-1" class="section level3">
 <h3>
@@ -309,19 +306,19 @@ interested in the effect of <code>x</code> on <code>y</code> and there is anothe
 factor <code>z</code> with a large effect on <code>z</code>. We print the regression
 of <code>y</code> on <code>x</code> with and without <code>z</code> as a control variable with the
 <code>stargazer</code> package <span class="citation">(Hlavac <a href="#ref-R-stargazer">2018</a>)</span>.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">12345</span>)</a>
-<a class="sourceLine" id="cb93-2" data-line-number="2">obs =<span class="st"> </span><span class="dv">500</span></a>
-<a class="sourceLine" id="cb93-3" data-line-number="3">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> obs); z &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> obs)</a>
-<a class="sourceLine" id="cb93-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> obs, <span class="dt">mean =</span> <span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">20</span> <span class="op">*</span><span class="st"> </span>z, <span class="dt">sd =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb93-5" data-line-number="5">d &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">y =</span> y, <span class="dt">x =</span> x, <span class="dt">z =</span> z)</a>
-<a class="sourceLine" id="cb93-6" data-line-number="6">yx &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> d)</a>
-<a class="sourceLine" id="cb93-7" data-line-number="7">yxz &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span>z, <span class="dt">data =</span> d)</a>
-<a class="sourceLine" id="cb93-8" data-line-number="8"><span class="kw">stargazer</span>(yx, yxz, <span class="dt">type =</span> tab_format, </a>
-<a class="sourceLine" id="cb93-9" data-line-number="9">          <span class="dt">label =</span> <span class="st">"measurement_error"</span>,</a>
-<a class="sourceLine" id="cb93-10" data-line-number="10">          <span class="dt">omit =</span> <span class="kw">c</span>(<span class="st">"Constant"</span>), <span class="dt">digits =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb93-11" data-line-number="11">          <span class="dt">intercept.bottom =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb93-12" data-line-number="12">          <span class="dt">star.cutoffs =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span>),</a>
-<a class="sourceLine" id="cb93-13" data-line-number="13">          <span class="dt">keep.stat =</span> <span class="kw">c</span>(<span class="st">"n"</span>, <span class="st">"rsq"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">12345</span>)</a>
+<a class="sourceLine" id="cb92-2" data-line-number="2">obs =<span class="st"> </span><span class="dv">500</span></a>
+<a class="sourceLine" id="cb92-3" data-line-number="3">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> obs); z &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> obs)</a>
+<a class="sourceLine" id="cb92-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> obs, <span class="dt">mean =</span> <span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">20</span> <span class="op">*</span><span class="st"> </span>z, <span class="dt">sd =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb92-5" data-line-number="5">d &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">y =</span> y, <span class="dt">x =</span> x, <span class="dt">z =</span> z)</a>
+<a class="sourceLine" id="cb92-6" data-line-number="6">yx &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> d)</a>
+<a class="sourceLine" id="cb92-7" data-line-number="7">yxz &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span>z, <span class="dt">data =</span> d)</a>
+<a class="sourceLine" id="cb92-8" data-line-number="8"><span class="kw">stargazer</span>(yx, yxz, <span class="dt">type =</span> tab_format, </a>
+<a class="sourceLine" id="cb92-9" data-line-number="9">          <span class="dt">label =</span> <span class="st">"measurement_error"</span>,</a>
+<a class="sourceLine" id="cb92-10" data-line-number="10">          <span class="dt">omit =</span> <span class="kw">c</span>(<span class="st">"Constant"</span>), <span class="dt">digits =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb92-11" data-line-number="11">          <span class="dt">intercept.bottom =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb92-12" data-line-number="12">          <span class="dt">star.cutoffs =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span>),</a>
+<a class="sourceLine" id="cb92-13" data-line-number="13">          <span class="dt">keep.stat =</span> <span class="kw">c</span>(<span class="st">"n"</span>, <span class="st">"rsq"</span>))</a></code></pre></div>
 <table style="text-align:center">
 <tr>
 <td colspan="3" style="border-bottom: 1px solid black">
@@ -458,7 +455,10 @@ R<sup>2</sup>
 </table>
 <p>The estimate of the effect of <code>x</code> regressions is close to the
 true value, 1, but the standard error is much smaller when we
-include <code>z</code> as a control variable.</p>
+include <code>z</code> as a control variable. The reason to control for <code>z</code>
+is to make sure that we have a precise estimate of the effect of
+interest, however the estimate itself is not going to change when
+<code>z</code> only has an effect on <code>y</code>.</p>
 </div>
 <div id="real-data" class="section level3">
 <h3>
@@ -475,21 +475,21 @@ value of the company in Figure <a href="control-variables.html#fig:ownership-plo
 <p class="caption marginnote">-->Figure 8.4: Relation between CEO ownership and market value for SP500 firms (2011-2018).<!--</p>-->
 <!--</div>--></span>
 </p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1">meas_data &lt;-<span class="st">  </span><span class="kw">select</span>(combined, market_value, shares, ipo) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb94-2" data-line-number="2"><span class="st">              </span><span class="kw">filter</span>(<span class="kw">complete.cases</span>(.))</a>
-<a class="sourceLine" id="cb94-3" data-line-number="3">ownership &lt;-</a>
-<a class="sourceLine" id="cb94-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">data =</span> meas_data,</a>
-<a class="sourceLine" id="cb94-5" data-line-number="5">      <span class="kw">aes</span>(<span class="dt">x =</span> market_value<span class="op">/</span><span class="dv">1000</span>, <span class="dt">y =</span> shares <span class="op">+</span><span class="st"> </span><span class="fl">0.001</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb94-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb94-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>,</a>
-<a class="sourceLine" id="cb94-8" data-line-number="8">    <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb94-9" data-line-number="9">    <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x, <span class="dt">dig =</span> <span class="dv">2</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb94-10" data-line-number="10"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>,</a>
-<a class="sourceLine" id="cb94-11" data-line-number="11">    <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb94-12" data-line-number="12">    <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x, <span class="dt">dig =</span> <span class="dv">2</span>),</a>
-<a class="sourceLine" id="cb94-13" data-line-number="13">    <span class="dt">limits =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="dv">50</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb94-14" data-line-number="14"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">"CEO ownership"</span>, <span class="dt">x =</span> <span class="st">"Market Value in $ Billion"</span>)</a>
-<a class="sourceLine" id="cb94-15" data-line-number="15"><span class="kw">print</span>(ownership)</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">meas_data &lt;-<span class="st">  </span><span class="kw">select</span>(combined, market_value, shares, ipo) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb93-2" data-line-number="2"><span class="st">              </span><span class="kw">filter</span>(<span class="kw">complete.cases</span>(.))</a>
+<a class="sourceLine" id="cb93-3" data-line-number="3">ownership &lt;-</a>
+<a class="sourceLine" id="cb93-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">data =</span> meas_data,</a>
+<a class="sourceLine" id="cb93-5" data-line-number="5">      <span class="kw">aes</span>(<span class="dt">x =</span> market_value<span class="op">/</span><span class="dv">1000</span>, <span class="dt">y =</span> shares <span class="op">+</span><span class="st"> </span><span class="fl">0.001</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb93-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb93-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>,</a>
+<a class="sourceLine" id="cb93-8" data-line-number="8">    <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb93-9" data-line-number="9">    <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x, <span class="dt">dig =</span> <span class="dv">2</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb93-10" data-line-number="10"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>,</a>
+<a class="sourceLine" id="cb93-11" data-line-number="11">    <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb93-12" data-line-number="12">    <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x, <span class="dt">dig =</span> <span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb93-13" data-line-number="13">    <span class="dt">limits =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="dv">50</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb93-14" data-line-number="14"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">"CEO ownership"</span>, <span class="dt">x =</span> <span class="st">"Market Value in $ Billion"</span>)</a>
+<a class="sourceLine" id="cb93-15" data-line-number="15"><span class="kw">print</span>(ownership)</a></code></pre></div>
 <pre><code>## Warning: Removed 4 rows containing missing values (geom_point).</code></pre>
 <p>We hypothesised back in Chapter <a href="measurement.html#measurement">7</a> that
 CEOs who are founders will have higher ownership for reasons that
@@ -497,16 +497,19 @@ have nothing to do with the optimal incentives. We cannot directly
 measure whether CEOs are founders but we know wether they are
 already CEO (<code>ipo_ceo</code>) or employee (<code>ipo_employee</code>) at the time
 of the initial public offering of the company. We include those
-two variables as indicator variables in the regression.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">form &lt;-<span class="st"> </span><span class="kw">log</span>(shares <span class="op">+</span><span class="st"> </span><span class="fl">0.001</span>) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(market_value<span class="op">/</span><span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb96-2" data-line-number="2">base &lt;-<span class="st"> </span><span class="kw">lm</span>(form, <span class="dt">data =</span> combined)</a>
-<a class="sourceLine" id="cb96-3" data-line-number="3">form_error &lt;-<span class="st"> </span><span class="kw">update</span>(form, . <span class="op">~</span><span class="st"> </span>. <span class="op">+</span><span class="st"> </span>ipo_ceo <span class="op">+</span><span class="st"> </span>ipo_employee)</a>
-<a class="sourceLine" id="cb96-4" data-line-number="4">error &lt;-<span class="st"> </span><span class="kw">lm</span>(form_error, <span class="dt">data =</span> combined)</a>
-<a class="sourceLine" id="cb96-5" data-line-number="5"><span class="kw">stargazer</span>(base, error, <span class="dt">type =</span> tab_format, </a>
-<a class="sourceLine" id="cb96-6" data-line-number="6">          <span class="dt">label =</span> <span class="st">"ownership"</span>,</a>
-<a class="sourceLine" id="cb96-7" data-line-number="7">          <span class="dt">digits =</span> <span class="dv">2</span>, <span class="dt">intercept.bottom =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb96-8" data-line-number="8">          <span class="dt">star.cutoffs =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span>),</a>
-<a class="sourceLine" id="cb96-9" data-line-number="9">          <span class="dt">keep.stat =</span> <span class="kw">c</span>(<span class="st">"n"</span>, <span class="st">"rsq"</span>))</a></code></pre></div>
+two variables as indicator variables in the regression because it is
+more likely that these CEOs are also the founders of the company<label for="tufte-sn-55" class="margin-toggle sidenote-number">55</label><input type="checkbox" id="tufte-sn-55" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">55</span> I will
+ignore the fact that we lose observations in calculating the new
+variables. That is not necessarily a good idea.</span>.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">form &lt;-<span class="st"> </span><span class="kw">log</span>(shares <span class="op">+</span><span class="st"> </span><span class="fl">0.001</span>) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(market_value<span class="op">/</span><span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb95-2" data-line-number="2">base &lt;-<span class="st"> </span><span class="kw">lm</span>(form, <span class="dt">data =</span> combined)</a>
+<a class="sourceLine" id="cb95-3" data-line-number="3">form_error &lt;-<span class="st"> </span><span class="kw">update</span>(form, . <span class="op">~</span><span class="st"> </span>. <span class="op">+</span><span class="st"> </span>ipo_ceo <span class="op">+</span><span class="st"> </span>ipo_employee)</a>
+<a class="sourceLine" id="cb95-4" data-line-number="4">error &lt;-<span class="st"> </span><span class="kw">lm</span>(form_error, <span class="dt">data =</span> combined)</a>
+<a class="sourceLine" id="cb95-5" data-line-number="5"><span class="kw">stargazer</span>(base, error, <span class="dt">type =</span> tab_format, </a>
+<a class="sourceLine" id="cb95-6" data-line-number="6">          <span class="dt">label =</span> <span class="st">"ownership"</span>,</a>
+<a class="sourceLine" id="cb95-7" data-line-number="7">          <span class="dt">digits =</span> <span class="dv">2</span>, <span class="dt">intercept.bottom =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb95-8" data-line-number="8">          <span class="dt">star.cutoffs =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span>),</a>
+<a class="sourceLine" id="cb95-9" data-line-number="9">          <span class="dt">keep.stat =</span> <span class="kw">c</span>(<span class="st">"n"</span>, <span class="st">"rsq"</span>))</a></code></pre></div>
 <table style="text-align:center">
 <tr>
 <td colspan="3" style="border-bottom: 1px solid black">
@@ -697,17 +700,48 @@ R<sup>2</sup>
 </td>
 </tr>
 </table>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">combined <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(ipo_ceo, ipo_employee, year) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb97-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(year) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb97-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb97-4" data-line-number="4">    <span class="dt">ipo_both =</span> <span class="kw">mean</span>(ipo_ceo <span class="op">*</span><span class="st"> </span>ipo_employee, <span class="dt">na.rm =</span> T),</a>
-<a class="sourceLine" id="cb97-5" data-line-number="5">    <span class="dt">ipo_ceo_only =</span> <span class="kw">mean</span>(ipo_ceo <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_employee),</a>
-<a class="sourceLine" id="cb97-6" data-line-number="6">                        <span class="dt">na.rm =</span> T),</a>
-<a class="sourceLine" id="cb97-7" data-line-number="7">    <span class="dt">ipo_empl_only =</span> <span class="kw">mean</span>((<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_ceo) <span class="op">*</span><span class="st"> </span>ipo_employee,</a>
-<a class="sourceLine" id="cb97-8" data-line-number="8">                         <span class="dt">na.rm =</span> T),</a>
-<a class="sourceLine" id="cb97-9" data-line-number="9">    <span class="dt">ipo_none =</span> <span class="kw">mean</span>((<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_ceo) <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_employee),</a>
-<a class="sourceLine" id="cb97-10" data-line-number="10">                    <span class="dt">na.rm =</span> T)</a>
-<a class="sourceLine" id="cb97-11" data-line-number="11">  ) <span class="op">%&gt;%</span><span class="st"> </span>kableExtra<span class="op">::</span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p>Unfortunately, controlling for <code>ipo_ceo</code> and <code>ipo_employee</code> does not
+really improve the precision of our estimates for the effect of
+market value on ownership. The standard error for the estimate stays
+about the same (i.e. <span class="math inline">\(0.2\)</span>).</p>
+</div>
+<div id="interpretation-of-regression-outcome-or-economic-significance" class="section level3">
+<h3>
+<span class="header-section-number">8.3.4</span> Interpretation of Regression Outcome (or Economic Significance)</h3>
+<p>This is a bit of disgression of the main storay and you skip this
+section. Nevertheless, I would encourage you to go over the example as
+it gives a good example of how to interpret the numbers in a
+regression. Something, you will have to do for your thesis as well.</p>
+<p>The regression we have estimated is</p>
+<p><span class="math display">\[\begin{equation*}
+\text{log}(S + 0.001) = \beta_0 + \beta_1 \text{log}(MV) + 
+\beta_2 \text{ipo\_ceo} + \beta_3 \text{ipo\_employee}
+\end{equation*}\]</span></p>
+<p>and based on the theory, we are mainly interested in the parameter
+<span class="math inline">\(\beta_1\)</span>. However, something intriguing is going on with the
+coefficients for the two control variable. The results seem to imply
+that whether the CEO was an employee at the time of the IPO is a
+better indicator for share ownership than whether the CEO was already
+CEO at the time of the IPO.</p>
+<p>That conclusion is not correct. There are a number of ways you can
+see this. When the CEO was already CEO at the time of the IPO,
+they were also already an employee. That means that the <code>ipo_ceo</code>
+variable is dependent on the <code>ipo_employee</code> variable. If
+<code>ipo_employee = 0</code> then <code>ipo_ceo = 0</code> and if <code>ipo_ceo = 1</code> then
+<code>ipo_employee = 1</code>. You could also see this if you make a descriptive
+table with the percentage of observations with each theoretical
+combination of the <code>ipo_ceo</code> and <code>ipo_employee</code> variable.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">combined <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(ipo_ceo, ipo_employee, year) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(year) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb96-4" data-line-number="4">    <span class="dt">ipo_both =</span> <span class="kw">mean</span>(ipo_ceo <span class="op">*</span><span class="st"> </span>ipo_employee, <span class="dt">na.rm =</span> T),</a>
+<a class="sourceLine" id="cb96-5" data-line-number="5">    <span class="dt">ipo_ceo_only =</span> <span class="kw">mean</span>(ipo_ceo <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_employee),</a>
+<a class="sourceLine" id="cb96-6" data-line-number="6">                        <span class="dt">na.rm =</span> T),</a>
+<a class="sourceLine" id="cb96-7" data-line-number="7">    <span class="dt">ipo_empl_only =</span> <span class="kw">mean</span>((<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_ceo) <span class="op">*</span><span class="st"> </span>ipo_employee,</a>
+<a class="sourceLine" id="cb96-8" data-line-number="8">                         <span class="dt">na.rm =</span> T),</a>
+<a class="sourceLine" id="cb96-9" data-line-number="9">    <span class="dt">ipo_none =</span> <span class="kw">mean</span>((<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_ceo) <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_employee),</a>
+<a class="sourceLine" id="cb96-10" data-line-number="10">                    <span class="dt">na.rm =</span> T)</a>
+<a class="sourceLine" id="cb96-11" data-line-number="11">  ) <span class="op">%&gt;%</span><span class="st"> </span>kableExtra<span class="op">::</span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <table>
 <thead><tr>
 <th style="text-align:right;">
@@ -865,7 +899,311 @@ ipo_none
 </tr>
 </tbody>
 </table>
-<!-- ```{r} --><!-- own_color <- ownership +  --><!--   geom_point(aes(color = ipo)) + --><!--   scale_colour_viridis_d() --><!-- ``` --><!-- - Use ipo_ceo and ipo_employee to explain controlling as  --><!--   adjusting and the importance of independence. --><!-- - It actually looks like a confounder --><!-- ```{r} --><!-- mshares <- mean(log(meas_data$shares + 0.001)) --><!-- mvalue <- mean(log(meas_data$market_value/1000)) --><!-- meas_sum <- group_by(meas_data, ipo) %>% --><!--   summarise(shares = exp(mean(log(shares + 0.001)) + 0.001), --><!--             market_value = exp(mean(log(market_value/1000)))) --><!-- own_means <- own_color +  --><!--   geom_hline(data = meas_sum,  --><!--              mapping = aes(yintercept = shares, --><!--                            group = ipo, color = ipo)) +  --><!--   geom_vline(data = meas_sum, --><!--              mapping = aes(xintercept = market_value, --><!--                            group = ipo, color = ipo)) --><!-- meas_data_adj <- left_join(meas_data, meas_sum, by = "ipo") %>% --><!--   mutate(market_value = exp(log(market_value.x/1000) - --><!--                               log(market_value.y) + mvalue), --><!--          shares = exp(log(shares.x + 0.001)  --><!--                       - log(shares.y + 0.001) + mshares) + 0.001) --><!-- own_adjust <-  --><!--   ggplot(data = meas_data_adj,  --><!--          aes(group = ipo, colour = ipo, --><!--              y = shares, x = market_value)) +  --><!--   geom_point() +  --><!--   scale_colour_viridis_d() + --><!--   scale_x_continuous(trans = "log",  --><!--     breaks = scales::log_breaks(n = 5, base = 10), --><!--     labels = function(x) prettyNum(x, dig = 2)) +  --><!--   scale_y_continuous(trans = "log",  --><!--     breaks = scales::log_breaks(n = 5, base = 10), --><!--     labels = function(x) prettyNum(x, dig = 2), --><!--     limits = c(NA, 50)) + --><!--   labs(y = "Adjusted CEO ownership",  --><!--        x = "Adjusted Market Value in $ Billion") + --><!--   geom_hline(yintercept = exp(mshares) + 0.001) +  --><!--   geom_vline(xintercept = exp(mvalue)) --><!-- plot_meas <- plot_grid( --><!--   own_means + theme(legend.position = "top"), --><!--   own_adjust + theme(legend.position = "top"), ncol = 2) --><!-- print(plot_meas) --><!-- ``` --><!-- ## Interaction effects --><!-- This is sort of a subset of the previous.  --><!-- ```{r} --><!-- form_interaction <- update(form, . ~ log(market_value/1000)  --><!--                         * (ipo_ceo + ipo_employee)) --><!-- interaction <- lm(form_interaction, data = combined) --><!-- own_interaction <- own_color +  --><!--   geom_smooth(mapping = aes(group = ipo, color = ipo), --><!--               method = "lm", formula = y ~ x) --><!-- ``` --><!-- ## Interaction effects and measurement error --><!-- https://rubenarslan.github.io/posts/2019-03-12-moderation-vs-distributional-regression/ --><!-- ```{r} --><!-- set.seed(23031983) --><!-- c <- sqrt(1/3) --><!-- 3 * c^2 --><!-- mfc <- tibble( --><!--   mother = rnorm(obs, 0, 1), --><!--   father = rnorm(obs, 0, 1), --><!--   divorce = rbinom(obs, size = 1, prob = .2), --><!--   child = rnorm(obs, mean = c * (1 - divorce) * father  --><!--                             + c * mother,  --><!--                 sd = c) --><!-- ) --><!-- pretty_ols(lm(child ~ mother * divorce, data = mfc)) --><!-- pretty_ols(lm(child ~ mother + father * divorce, data = mfc)) --><!-- group_by(mfc, divorce) %>% --><!--   summarise(cor_mother_child = cor(child, mother), --><!--             sd_child = sd(child)) %>% --><!--   knitr::kable(digits = 2) --><!-- ``` --><!-- It depends what you mean by a stronger effect! --><!-- ```{r} --><!-- ``` --><!-- ## Controlling for confounding factors --><!-- ```{r dag-confounding} --><!-- grViz(" --><!--     digraph measurement_error{ --><!--     node [shape = box] --><!--     subgraph{ --><!--     rank = same; x; y; --><!--     } --><!--     z --><!--     x -> y --><!--     z -> {y x} --><!--     } --><!-- ") --><!-- ``` --><!-- ```{r} --><!-- xyz = tibble( --><!--   z = rnorm(obs, 0, 5), --><!--   x = rnorm(obs, 1 + z, 5), --><!--   y = rnorm(obs, 1 + 2 * z, 5), --><!-- ) --><!-- pretty_ols(lm(y ~ x, data = xyz), dig = 2) --><!-- pretty_ols(lm(y ~ x + z, data = xyz), dig = 2) --><!-- ``` --><!-- ```{r} --><!-- mean_delta <- filter(combined_change, !is.na(delta_value), --><!--                      !is.na(delta_wealth)) %>% --><!--   group_by(year) %>% --><!--   summarise(delta_market = mean(delta_value), --><!--             delta_total_market = mean(delta_total), --><!--             delta_wealth_market = mean(delta_wealth)) %>% --><!--   ungroup() --><!-- d_conf <- ungroup(combined_change) %>% --><!--   filter(!is.na(delta_value)) %>% --><!--   select(delta_value, delta_total, delta_wealth,  --><!--          gvkey, year, ipo_employee) %>% --><!--   left_join(mean_delta, by = "year") --><!-- ``` --><!-- ```{r} --><!-- form <- delta_total ~ delta_value --><!-- pretty_ols(lm(form, data = d_conf)) --><!-- form_conf <- update(form, . ~ . + delta_market) --><!-- pretty_ols(lm(form_conf, data = d_conf)) --><!-- ``` --><!-- ```{r} --><!-- plot_conf <- ggplot(data = d_conf,  --><!--                aes(y = delta_total, x = delta_value,  --><!--                    colour = delta_market)) --><!-- plot_conf <- plot_conf + geom_point(alpha = .75, na.rm = T)  --><!-- plot_conf <- plot_conf + scale_colour_viridis() --><!-- plot_conf <- plot_conf + scale_x_continuous(limits = c(-1, 1.5))  --><!-- plot_conf <- plot_conf + scale_y_continuous(limits = c(-1.5, 1.5)) --><!-- ``` --><!-- ### Fixed effects --><!-- ```{r} --><!-- form_fyear <- update(form, . ~ . - 1 + as.factor(year)) --><!-- pretty_ols(lm(form_fyear, data = d_conf), 2) --><!-- ``` --><!-- ```{r} --><!-- plot_conf <- plot_conf +  --><!--   geom_hline(aes(yintercept = delta_total_market),  --><!--              data = mean_delta) +  --><!--   geom_vline(aes(xintercept = delta_market), --><!--              data = mean_delta) --><!-- ``` --><!-- ```{r} --><!-- d_conf <-  --><!--   mutate(d_conf, --><!--          delta_total_c = delta_total - delta_total_market, --><!--          delta_wealth_c = delta_wealth - delta_wealth_market, --><!--          delta_value_c = delta_value - delta_market) --><!-- plot_conf_c <- ggplot(data = d_conf,  --><!--                aes(y = delta_total_c, x = delta_value_c,  --><!--                    colour = delta_market)) --><!-- plot_conf_c <- plot_conf_c + geom_point(alpha = .75, na.rm = T)  --><!-- plot_conf_c <- plot_conf_c + scale_colour_viridis() --><!-- plot_conf_c <- plot_conf_c + scale_x_continuous(limits = c(-1, 1.5))  --><!-- plot_conf_c <- plot_conf_c + scale_y_continuous(limits = c(-1.5, 1.5)) --><!-- plot_conf_c <- plot_conf_c +  --><!--   geom_hline(aes(yintercept = mean(delta_total_c))) --><!-- plot_conf_c <- plot_conf_c +  --><!--   geom_vline(aes(xintercept = mean(delta_value_c))) --><!-- plot_conf_c <- plot_conf_c + geom_smooth(method = "lm") --><!-- ``` --><!-- Firm fixed industry fixed effects don't really make sense --><!-- here. --><!-- ```{r} --><!-- form_fyear <- update(form, . ~ . - 1 + as.factor(gvkey)) --><!-- pretty_ols(lm(form_fyear, data = d_conf), 2) --><!-- ``` --><!-- More efficient with panel data. See code further. --><!-- ## Bad controls & Causal Salad --><!-- ### Pipes --><!-- ```{r dag-pipe} --><!-- grViz(" --><!--     digraph measurement_error{ --><!--     node [shape = box] --><!--     subgraph{rank = same; x; y; z} --><!--     z --><!--     x -> z --><!--     z -> y  --><!--     } --><!-- ") --><!-- ``` --><!-- ```{r sim-pipe} --><!-- corp_gov <- rnorm(obs, 0, 1) --><!-- acc_profit <- rnorm(obs, corp_gov, sd = 3) --><!-- market_return <- rnorm(obs, acc_profit, sd = 5) --><!-- pretty_ols(lm(acc_profit ~ corp_gov)) --><!-- pretty_ols(lm(market_return ~ corp_gov)) --><!-- pretty_ols(lm(market_return ~ corp_gov + acc_profit)) --><!-- ``` --><!-- ### Colliders  --><!-- ```{r dag-collider} --><!-- grViz(" --><!--     digraph measurement_error{ --><!--     node [shape = box] --><!--     subgraph{rank = same; x; y} --><!--     x -> {y, z} --><!--     y -> z --><!--     } --><!-- ") --><!-- ``` --><!-- ```{r corp_gov_collider} --><!-- corp_gov <- rnorm(obs, 0, 1) --><!-- acc_profit <- rnorm(obs, corp_gov, sd = 3) --><!-- market_return <- rnorm(obs, 2 * corp_gov + acc_profit, sd = 5) --><!-- pretty_ols(lm(acc_profit ~ corp_gov)) --><!-- pretty_ols(lm(acc_profit ~ corp_gov + market_return)) --><!-- ``` --><!-- ```{r} --><!-- ``` --><!-- ### Back-Door Criterion --><!-- collider bocks all = sink --><!-- flow of information does not follow arrows --><!-- ### Selection bias --><!-- https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.97.4.1278 --><!-- ### Performance as outcome --><!-- Running regressions can be / should be fruitless in equilibrium. --><!-- ```{r, eval = FALSE, include = FALSE} --><!-- d_perf <- ungroup(combined_change) %>% --><!--   mutate(sensitivity = delta_total/ delta_value) %>% --><!--   select(year, exec_fullname, gvkey,  --><!--          sensitivity, delta_value, delta_ni) %>% --><!--   group_by(exec_fullname, gvkey) %>% --><!--   arrange(year) %>% --><!--   mutate(prev_sensitivity = lag(sensitivity)) %>% --><!--   ungroup %>% --><!--   filter(complete.cases(.)) --><!-- form_perf <- delta_value ~ prev_sensitivity --><!-- pretty_ols(lm(form_perf, data = d_perf)) --><!-- form_perf2 <- update(form_perf, . ~ . + delta_ni) --><!-- pretty_ols(lm(form_perf2, data = d_perf)) --><!-- ``` --><!-- ```{r} --><!-- d_perf <-  --><!--   mutate(combined_change,  --><!--          sensitivity = delta_total/ delta_value) %>% --><!--   select(gvkey, year, sensitivity, delta_value) %>% --><!--   group_by(gvkey) %>% --><!--   summarise(med_sens = median(sensitivity[year < 2016],  --><!--                               na.rm = T), --><!--             med_perf = median(delta_value[year > 2016],  --><!--                               na.rm = T)) --><!-- pretty_ols(lm(med_perf ~ med_sens, data = d_perf)) --><!-- ggplot(d_perf, aes(y = med_perf, x= med_sens)) + --><!--   geom_point(alpha = 0.5, na.rm = T) + --><!--   scale_x_continuous(limits = c(-5, 5)) --><!-- ``` --><!-- ## Instrumental Variables and Expectations --><!-- ```{r} --><!-- ``` --><!-- https://pubs.aeaweb.org/doi/pdfplus/10.1257/pol.20160365 --><!-- ## Natural Experiments and Research Design --><!-- Example of an event study --><!-- https://www.mitpressjournals.org/doi/abs/10.1162/rest_a_00702 --><!-- Example of random assignment --><!-- https://www.mitpressjournals.org/doi/abs/10.1162/rest_a_00715 -->
+<p>The table again shows that it is impossble for a CEO to have been the
+CEO at the time of the IPO but not an employee<label for="tufte-sn-56" class="margin-toggle sidenote-number">56</label><input type="checkbox" id="tufte-sn-56" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">56</span> <code>ipo_ceo_only</code> equals
+0 in every year.</span>. This example shows the importance of using
+descriptive statistics to better understand the data. Even if you had
+not realised that there is a relation between <code>ipo_ceo</code> and
+<code>ipo_employee</code>, the table would have alerted you to it.</p>
+<p>It also shows us that we cannot interpret the coefficients separately.
+The right way to interpret the coefficients is to interpret them
+together. However, there is a second problem with interpreting our
+regression outcomes. We modelled <code>log(shares + 0.001)</code> and so the
+effect are a bit harder to interpret. With some rearrangement of the
+regression function, we can make the interpreation easier.</p>
+<p><span class="math display">\[\begin{align*}
+\text{log}(S + 0.001) &amp;= \beta_0 + \beta_1 \text{log}(MV) + 
+\beta_2 \text{ipo\_ceo} + \beta_3 \text{ipo\_employee} \\
+S + 0.001 &amp;= e^{\beta_0} e^{\beta_1 \text{log}(MV)} 
+e^{\beta\_2 \text{ipo\_ceo}} e^{\beta_3 \text{ipo\_employee}} \\
+S + 0.001 &amp;= e^{\beta_0} MV^{\beta_1}
+e^{\beta\_2 \text{ipo\_ceo}} e^{\beta_3 \text{ipo\_employee}} 
+\end{align*}\]</span></p>
+<p>This means that the relation between ownership and whether CEO is a
+(likely) founder is multiplicative. For a given firm size, the CEO
+owns <span class="math inline">\(e^{\beta_3}\)</span> times more shares when they were already an employee
+at time of the IPO, and <span class="math inline">\(e^{\beta_2 + \beta_3}\)</span> times more shares when
+they were already CEO (and thus also employee) at the time of the
+IPO<label for="tufte-sn-57" class="margin-toggle sidenote-number">57</label><input type="checkbox" id="tufte-sn-57" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">57</span> This ignores the <span class="math inline">\(0.001\)</span> adjustment but it does not really make
+a difference in this example.</span>. We can easily calculate these values
+in <code>R</code>.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">beta2 &lt;-<span class="st"> </span>error<span class="op">$</span>coefficients[<span class="st">"ipo_ceoTRUE"</span>]</a>
+<a class="sourceLine" id="cb97-2" data-line-number="2">beta3 &lt;-<span class="st"> </span>error<span class="op">$</span>coefficients[<span class="st">"ipo_employeeTRUE"</span>]</a>
+<a class="sourceLine" id="cb97-3" data-line-number="3"><span class="kw">exp</span>(beta3)</a></code></pre></div>
+<pre><code>## ipo_employeeTRUE 
+##         3.040505</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">exp</span>(beta2 <span class="op">+</span><span class="st"> </span>beta3)</a></code></pre></div>
+<pre><code>## ipo_ceoTRUE 
+##    3.494751</code></pre>
+<p>This means that the CEO who has already an employee at the time of IPO,
+has 3 times higher ownership and a CEO who
+was already CEO at the time of IPO has
+3.5 times more shares than a CEO who was
+not in their company of similar size at the time of the IPO.</p>
+</div>
+<div id="better-model-of-ceo-founders" class="section level3">
+<h3>
+<span class="header-section-number">8.3.5</span> Better model of CEO founders</h3>
+<!-- ```{r} -->
+<!-- own_color <- ownership +  -->
+<!--   geom_point(aes(color = ipo)) + -->
+<!--   scale_colour_viridis_d() -->
+<!-- ``` -->
+<!-- - Use ipo_ceo and ipo_employee to explain controlling as  -->
+<!--   adjusting and the importance of independence. -->
+<!-- - It actually looks like a confounder -->
+<!-- ```{r} -->
+<!-- mshares <- mean(log(meas_data$shares + 0.001)) -->
+<!-- mvalue <- mean(log(meas_data$market_value/1000)) -->
+<!-- meas_sum <- group_by(meas_data, ipo) %>% -->
+<!--   summarise(shares = exp(mean(log(shares + 0.001)) + 0.001), -->
+<!--             market_value = exp(mean(log(market_value/1000)))) -->
+<!-- own_means <- own_color +  -->
+<!--   geom_hline(data = meas_sum,  -->
+<!--              mapping = aes(yintercept = shares, -->
+<!--                            group = ipo, color = ipo)) +  -->
+<!--   geom_vline(data = meas_sum, -->
+<!--              mapping = aes(xintercept = market_value, -->
+<!--                            group = ipo, color = ipo)) -->
+<!-- meas_data_adj <- left_join(meas_data, meas_sum, by = "ipo") %>% -->
+<!--   mutate(market_value = exp(log(market_value.x/1000) - -->
+<!--                               log(market_value.y) + mvalue), -->
+<!--          shares = exp(log(shares.x + 0.001)  -->
+<!--                       - log(shares.y + 0.001) + mshares) + 0.001) -->
+<!-- own_adjust <-  -->
+<!--   ggplot(data = meas_data_adj,  -->
+<!--          aes(group = ipo, colour = ipo, -->
+<!--              y = shares, x = market_value)) +  -->
+<!--   geom_point() +  -->
+<!--   scale_colour_viridis_d() + -->
+<!--   scale_x_continuous(trans = "log",  -->
+<!--     breaks = scales::log_breaks(n = 5, base = 10), -->
+<!--     labels = function(x) prettyNum(x, dig = 2)) +  -->
+<!--   scale_y_continuous(trans = "log",  -->
+<!--     breaks = scales::log_breaks(n = 5, base = 10), -->
+<!--     labels = function(x) prettyNum(x, dig = 2), -->
+<!--     limits = c(NA, 50)) + -->
+<!--   labs(y = "Adjusted CEO ownership",  -->
+<!--        x = "Adjusted Market Value in $ Billion") + -->
+<!--   geom_hline(yintercept = exp(mshares) + 0.001) +  -->
+<!--   geom_vline(xintercept = exp(mvalue)) -->
+<!-- plot_meas <- plot_grid( -->
+<!--   own_means + theme(legend.position = "top"), -->
+<!--   own_adjust + theme(legend.position = "top"), ncol = 2) -->
+<!-- print(plot_meas) -->
+<!-- ``` -->
+<!-- ## Interaction effects -->
+<!-- This is sort of a subset of the previous.  -->
+<!-- ```{r} -->
+<!-- form_interaction <- update(form, . ~ log(market_value/1000)  -->
+<!--                         * (ipo_ceo + ipo_employee)) -->
+<!-- interaction <- lm(form_interaction, data = combined) -->
+<!-- own_interaction <- own_color +  -->
+<!--   geom_smooth(mapping = aes(group = ipo, color = ipo), -->
+<!--               method = "lm", formula = y ~ x) -->
+<!-- ``` -->
+<!-- ## Interaction effects and measurement error -->
+<!-- https://rubenarslan.github.io/posts/2019-03-12-moderation-vs-distributional-regression/ -->
+<!-- ```{r} -->
+<!-- set.seed(23031983) -->
+<!-- c <- sqrt(1/3) -->
+<!-- 3 * c^2 -->
+<!-- mfc <- tibble( -->
+<!--   mother = rnorm(obs, 0, 1), -->
+<!--   father = rnorm(obs, 0, 1), -->
+<!--   divorce = rbinom(obs, size = 1, prob = .2), -->
+<!--   child = rnorm(obs, mean = c * (1 - divorce) * father  -->
+<!--                             + c * mother,  -->
+<!--                 sd = c) -->
+<!-- ) -->
+<!-- pretty_ols(lm(child ~ mother * divorce, data = mfc)) -->
+<!-- pretty_ols(lm(child ~ mother + father * divorce, data = mfc)) -->
+<!-- group_by(mfc, divorce) %>% -->
+<!--   summarise(cor_mother_child = cor(child, mother), -->
+<!--             sd_child = sd(child)) %>% -->
+<!--   knitr::kable(digits = 2) -->
+<!-- ``` -->
+<!-- It depends what you mean by a stronger effect! -->
+<!-- ```{r} -->
+<!-- ``` -->
+<!-- ## Controlling for confounding factors -->
+<!-- ```{r dag-confounding} -->
+<!-- grViz(" -->
+<!--     digraph measurement_error{ -->
+<!--     node [shape = box] -->
+<!--     subgraph{ -->
+<!--     rank = same; x; y; -->
+<!--     } -->
+<!--     z -->
+<!--     x -> y -->
+<!--     z -> {y x} -->
+<!--     } -->
+<!-- ") -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- xyz = tibble( -->
+<!--   z = rnorm(obs, 0, 5), -->
+<!--   x = rnorm(obs, 1 + z, 5), -->
+<!--   y = rnorm(obs, 1 + 2 * z, 5), -->
+<!-- ) -->
+<!-- pretty_ols(lm(y ~ x, data = xyz), dig = 2) -->
+<!-- pretty_ols(lm(y ~ x + z, data = xyz), dig = 2) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- mean_delta <- filter(combined_change, !is.na(delta_value), -->
+<!--                      !is.na(delta_wealth)) %>% -->
+<!--   group_by(year) %>% -->
+<!--   summarise(delta_market = mean(delta_value), -->
+<!--             delta_total_market = mean(delta_total), -->
+<!--             delta_wealth_market = mean(delta_wealth)) %>% -->
+<!--   ungroup() -->
+<!-- d_conf <- ungroup(combined_change) %>% -->
+<!--   filter(!is.na(delta_value)) %>% -->
+<!--   select(delta_value, delta_total, delta_wealth,  -->
+<!--          gvkey, year, ipo_employee) %>% -->
+<!--   left_join(mean_delta, by = "year") -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- form <- delta_total ~ delta_value -->
+<!-- pretty_ols(lm(form, data = d_conf)) -->
+<!-- form_conf <- update(form, . ~ . + delta_market) -->
+<!-- pretty_ols(lm(form_conf, data = d_conf)) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- plot_conf <- ggplot(data = d_conf,  -->
+<!--                aes(y = delta_total, x = delta_value,  -->
+<!--                    colour = delta_market)) -->
+<!-- plot_conf <- plot_conf + geom_point(alpha = .75, na.rm = T)  -->
+<!-- plot_conf <- plot_conf + scale_colour_viridis() -->
+<!-- plot_conf <- plot_conf + scale_x_continuous(limits = c(-1, 1.5))  -->
+<!-- plot_conf <- plot_conf + scale_y_continuous(limits = c(-1.5, 1.5)) -->
+<!-- ``` -->
+<!-- ### Fixed effects -->
+<!-- ```{r} -->
+<!-- form_fyear <- update(form, . ~ . - 1 + as.factor(year)) -->
+<!-- pretty_ols(lm(form_fyear, data = d_conf), 2) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- plot_conf <- plot_conf +  -->
+<!--   geom_hline(aes(yintercept = delta_total_market),  -->
+<!--              data = mean_delta) +  -->
+<!--   geom_vline(aes(xintercept = delta_market), -->
+<!--              data = mean_delta) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- d_conf <-  -->
+<!--   mutate(d_conf, -->
+<!--          delta_total_c = delta_total - delta_total_market, -->
+<!--          delta_wealth_c = delta_wealth - delta_wealth_market, -->
+<!--          delta_value_c = delta_value - delta_market) -->
+<!-- plot_conf_c <- ggplot(data = d_conf,  -->
+<!--                aes(y = delta_total_c, x = delta_value_c,  -->
+<!--                    colour = delta_market)) -->
+<!-- plot_conf_c <- plot_conf_c + geom_point(alpha = .75, na.rm = T)  -->
+<!-- plot_conf_c <- plot_conf_c + scale_colour_viridis() -->
+<!-- plot_conf_c <- plot_conf_c + scale_x_continuous(limits = c(-1, 1.5))  -->
+<!-- plot_conf_c <- plot_conf_c + scale_y_continuous(limits = c(-1.5, 1.5)) -->
+<!-- plot_conf_c <- plot_conf_c +  -->
+<!--   geom_hline(aes(yintercept = mean(delta_total_c))) -->
+<!-- plot_conf_c <- plot_conf_c +  -->
+<!--   geom_vline(aes(xintercept = mean(delta_value_c))) -->
+<!-- plot_conf_c <- plot_conf_c + geom_smooth(method = "lm") -->
+<!-- ``` -->
+<!-- Firm fixed industry fixed effects don't really make sense -->
+<!-- here. -->
+<!-- ```{r} -->
+<!-- form_fyear <- update(form, . ~ . - 1 + as.factor(gvkey)) -->
+<!-- pretty_ols(lm(form_fyear, data = d_conf), 2) -->
+<!-- ``` -->
+<!-- More efficient with panel data. See code further. -->
+<!-- ## Bad controls & Causal Salad -->
+<!-- ### Pipes -->
+<!-- ```{r dag-pipe} -->
+<!-- grViz(" -->
+<!--     digraph measurement_error{ -->
+<!--     node [shape = box] -->
+<!--     subgraph{rank = same; x; y; z} -->
+<!--     z -->
+<!--     x -> z -->
+<!--     z -> y  -->
+<!--     } -->
+<!-- ") -->
+<!-- ``` -->
+<!-- ```{r sim-pipe} -->
+<!-- corp_gov <- rnorm(obs, 0, 1) -->
+<!-- acc_profit <- rnorm(obs, corp_gov, sd = 3) -->
+<!-- market_return <- rnorm(obs, acc_profit, sd = 5) -->
+<!-- pretty_ols(lm(acc_profit ~ corp_gov)) -->
+<!-- pretty_ols(lm(market_return ~ corp_gov)) -->
+<!-- pretty_ols(lm(market_return ~ corp_gov + acc_profit)) -->
+<!-- ``` -->
+<!-- ### Colliders  -->
+<!-- ```{r dag-collider} -->
+<!-- grViz(" -->
+<!--     digraph measurement_error{ -->
+<!--     node [shape = box] -->
+<!--     subgraph{rank = same; x; y} -->
+<!--     x -> {y, z} -->
+<!--     y -> z -->
+<!--     } -->
+<!-- ") -->
+<!-- ``` -->
+<!-- ```{r corp_gov_collider} -->
+<!-- corp_gov <- rnorm(obs, 0, 1) -->
+<!-- acc_profit <- rnorm(obs, corp_gov, sd = 3) -->
+<!-- market_return <- rnorm(obs, 2 * corp_gov + acc_profit, sd = 5) -->
+<!-- pretty_ols(lm(acc_profit ~ corp_gov)) -->
+<!-- pretty_ols(lm(acc_profit ~ corp_gov + market_return)) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- ``` -->
+<!-- ### Back-Door Criterion -->
+<!-- collider bocks all = sink -->
+<!-- flow of information does not follow arrows -->
+<!-- ### Selection bias -->
+<!-- https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.97.4.1278 -->
+<!-- ### Performance as outcome -->
+<!-- Running regressions can be / should be fruitless in equilibrium. -->
+<!-- ```{r, eval = FALSE, include = FALSE} -->
+<!-- d_perf <- ungroup(combined_change) %>% -->
+<!--   mutate(sensitivity = delta_total/ delta_value) %>% -->
+<!--   select(year, exec_fullname, gvkey,  -->
+<!--          sensitivity, delta_value, delta_ni) %>% -->
+<!--   group_by(exec_fullname, gvkey) %>% -->
+<!--   arrange(year) %>% -->
+<!--   mutate(prev_sensitivity = lag(sensitivity)) %>% -->
+<!--   ungroup %>% -->
+<!--   filter(complete.cases(.)) -->
+<!-- form_perf <- delta_value ~ prev_sensitivity -->
+<!-- pretty_ols(lm(form_perf, data = d_perf)) -->
+<!-- form_perf2 <- update(form_perf, . ~ . + delta_ni) -->
+<!-- pretty_ols(lm(form_perf2, data = d_perf)) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- d_perf <-  -->
+<!--   mutate(combined_change,  -->
+<!--          sensitivity = delta_total/ delta_value) %>% -->
+<!--   select(gvkey, year, sensitivity, delta_value) %>% -->
+<!--   group_by(gvkey) %>% -->
+<!--   summarise(med_sens = median(sensitivity[year < 2016],  -->
+<!--                               na.rm = T), -->
+<!--             med_perf = median(delta_value[year > 2016],  -->
+<!--                               na.rm = T)) -->
+<!-- pretty_ols(lm(med_perf ~ med_sens, data = d_perf)) -->
+<!-- ggplot(d_perf, aes(y = med_perf, x= med_sens)) + -->
+<!--   geom_point(alpha = 0.5, na.rm = T) + -->
+<!--   scale_x_continuous(limits = c(-5, 5)) -->
+<!-- ``` -->
+<!-- ## Instrumental Variables and Expectations -->
+<!-- ```{r} -->
+<!-- ``` -->
+<!-- https://pubs.aeaweb.org/doi/pdfplus/10.1257/pol.20160365 -->
+<!-- ## Natural Experiments and Research Design -->
+<!-- Example of an event study -->
+<!-- https://www.mitpressjournals.org/doi/abs/10.1162/rest_a_00702 -->
+<!-- Example of random assignment -->
+<!-- https://www.mitpressjournals.org/doi/abs/10.1162/rest_a_00715 -->
+
 </div>
 </div>
 </div>
@@ -894,7 +1232,7 @@ ipo_none
 <a href="assessment.html"><button class="btn btn-default">Next</button></a>
 </p>
 <p class="build-date">Page built: 
-2019-09-10
+2020-02-18
 </p>
 </div>
 </div>
