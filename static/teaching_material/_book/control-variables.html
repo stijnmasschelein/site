@@ -714,8 +714,8 @@ it gives a good example of how to interpret the numbers in a
 regression. Something, you will have to do for your thesis as well.</p>
 <p>The regression we have estimated is</p>
 <p><span class="math display">\[\begin{equation*}
-\text{log}(S + 0.001) = \beta_0 + \beta_1 \text{log}(MV) + 
-\beta_2 \text{ipo\_ceo} + \beta_3 \text{ipo\_employee}
+\mathrm{log}(S + 0.001) = \beta_0 + \beta_1 \mathrm{log}(MV) + 
+\beta_2 \mathrm{ipo\_ceo} + \beta_3 \mathrm{ipo\_employee}
 \end{equation*}\]</span></p>
 <p>and based on the theory, we are mainly interested in the parameter
 <span class="math inline">\(\beta_1\)</span>. However, something intriguing is going on with the
@@ -912,12 +912,12 @@ regression outcomes. We modelled <code>log(shares + 0.001)</code> and so the
 effect are a bit harder to interpret. With some rearrangement of the
 regression function, we can make the interpreation easier.</p>
 <p><span class="math display">\[\begin{align*}
-\text{log}(S + 0.001) &amp;= \beta_0 + \beta_1 \text{log}(MV) + 
-\beta_2 \text{ipo\_ceo} + \beta_3 \text{ipo\_employee} \\
-S + 0.001 &amp;= e^{\beta_0} e^{\beta_1 \text{log}(MV)} 
-e^{\beta\_2 \text{ipo\_ceo}} e^{\beta_3 \text{ipo\_employee}} \\
+\mathrm{log}(S + 0.001) &amp;= \beta_0 + \beta_1 \mathrm{log}(MV) + 
+\beta_2 \mathrm{ipo\_ceo} + \beta_3 \mathrm{ipo\_employee} \\
+S + 0.001 &amp;= e^{\beta_0} e^{\beta_1 \mathrm{log}(MV)} 
+e^{\beta_2 \mathrm{ipo\_ceo}} e^{\beta_3 \mathrm{ipo\_employee}} \\
 S + 0.001 &amp;= e^{\beta_0} MV^{\beta_1}
-e^{\beta\_2 \text{ipo\_ceo}} e^{\beta_3 \text{ipo\_employee}} 
+e^{\beta_2 \mathrm{ipo\_ceo}} e^{\beta_3 \mathrm{ipo\_employee}} 
 \end{align*}\]</span></p>
 <p>This means that the relation between ownership and whether CEO is a
 (likely) founder is multiplicative. For a given firm size, the CEO
@@ -1207,7 +1207,7 @@ not in their company of similar size at the time of the IPO.</p>
 </div>
 </div>
 </div>
-<h3>References</h3>
+<h3> References</h3>
 <div id="refs" class="references">
 <div id="ref-cunningham_causal_2018">
 <p>Cunningham, Scott. 2018. <em>Causal Inference: The Mixtape</em>.</p>
