@@ -168,8 +168,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 analysis and graphical representation. It is a fully developed
 programming language that allows to extend it with new packages
 with new capabilities. We are going to heavily rely on some of
-those packages.<label for="tufte-sn-20" class="margin-toggle sidenote-number">20</label><input type="checkbox" id="tufte-sn-20" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">20</span> You can download R <a href="https://cran.curtin.edu.au/">from this CRAN server</a></span></p>
-<p>We are going to interact with the R software through Rstudio.<label for="tufte-sn-21" class="margin-toggle sidenote-number">21</label><input type="checkbox" id="tufte-sn-21" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">21</span> You can download <a href="https://www.rstudio.com/products/rstudio/download/#download">from the Rstudio website</a></span>
+those packages.<label for="tufte-sn-21" class="margin-toggle sidenote-number">21</label><input type="checkbox" id="tufte-sn-21" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">21</span> You can download R <a href="https://cran.curtin.edu.au/">from this CRAN server</a></span></p>
+<p>We are going to interact with the R software through Rstudio.<label for="tufte-sn-22" class="margin-toggle sidenote-number">22</label><input type="checkbox" id="tufte-sn-22" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">22</span> You can download <a href="https://www.rstudio.com/products/rstudio/download/#download">from the Rstudio website</a></span>
 Rstudio is an integrated development environment for R. It allows
 you to easily write, test, and run R code, and integrate the
 results with explanations. One advantage of R and Rstudio is that
@@ -185,7 +185,7 @@ allows you and anyone else to run the same analysis at a later
 point in time which is very important to check for mistakes
 and for teaching.</p>
 <p>We will make use of a special type of plain text files: Rmarkdown
-(<code>.Rmd</code>) files.<label for="tufte-sn-22" class="margin-toggle sidenote-number">22</label><input type="checkbox" id="tufte-sn-22" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">22</span> These notes are fully written in Rmarkdown
+(<code>.Rmd</code>) files.<label for="tufte-sn-23" class="margin-toggle sidenote-number">23</label><input type="checkbox" id="tufte-sn-23" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">23</span> These notes are fully written in Rmarkdown
 files</span>. RMarkdown is an R extension of the markdown format. The
 idea of markdown is to write plain text documents which can later
 be exported to other formats such as html, pdf, or word. The
@@ -210,7 +210,7 @@ working. Some excellent resources are the free online books
 You can also buy reasonably priced physical copies
 if you your are interested in developing your R skills further.</p>
 <p>For larger projects, you should use a project in its own
-separate folder.<label for="tufte-sn-23" class="margin-toggle sidenote-number">23</label><input type="checkbox" id="tufte-sn-23" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">23</span> See the
+separate folder.<label for="tufte-sn-24" class="margin-toggle sidenote-number">24</label><input type="checkbox" id="tufte-sn-24" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">24</span> See the
 <a href="https://r4ds.had.co.nz/workflow-projects.html">Project Chapter</a>
 of Hadley Wickham’s book</span>. Once you need multiple scripts, you
 want to make sure that you can reliably point to the results or
@@ -226,7 +226,7 @@ can start a new file by clicking <code>File &gt; New File &gt; R Script</code>.<
 R console to test the code I have written in my scripts and I
 would advice you to do the same thing. If you want to understand
 how R works. You can experiment by typing the following lines in
-the console.<label for="tufte-sn-24" class="margin-toggle sidenote-number">24</label><input type="checkbox" id="tufte-sn-24" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">24</span> It is tempting to copy and paste the code but
+the console.<label for="tufte-sn-25" class="margin-toggle sidenote-number">25</label><input type="checkbox" id="tufte-sn-25" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">25</span> It is tempting to copy and paste the code but
 retyping the code is a surprising powerful way of learning to
 code. I would advise you to try to type as much of the code as
 possible when you are trying to figure out how R works.</span></p>
@@ -268,9 +268,9 @@ have to install a package once. However, when you want to use a
 package in your script or code, you will have to load the package
 with the <code>library()</code> function. You only have to do load a package
 once at the start of your R session or at the start of your
-script.<label for="tufte-sn-25" class="margin-toggle sidenote-number">25</label><input type="checkbox" id="tufte-sn-25" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">25</span> Installing packages is another reason to use the R console.</span></p>
+script.<label for="tufte-sn-26" class="margin-toggle sidenote-number">26</label><input type="checkbox" id="tufte-sn-26" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">26</span> Installing packages is another reason to use the R console.</span></p>
 <p><code>dplyr</code> is another part of the <code>tidyverse</code> we will use
-extensively. With 5 verbs<label for="tufte-sn-26" class="margin-toggle sidenote-number">26</label><input type="checkbox" id="tufte-sn-26" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">26</span> i.e. functions to <em>do</em> something with
+extensively. With 5 verbs<label for="tufte-sn-27" class="margin-toggle sidenote-number">27</label><input type="checkbox" id="tufte-sn-27" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">27</span> i.e. functions to <em>do</em> something with
 a dataset.</span> and one pipe operator to glue them together helps
 you to explore the data.<code>filter()</code> let’s you filter out a subset
 of the observations. <code>select()</code> selects a subset of the variables.
@@ -290,7 +290,7 @@ in the <code>tidyverse</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>Next, we have a look at the data I used to draw the plot of the
 compensation of CEOs of S&amp;P500 companies. First, we have to assign
-the file with the data to an object, <code>us_comp</code> in this case.<label for="tufte-sn-27" class="margin-toggle sidenote-number">27</label><input type="checkbox" id="tufte-sn-27" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">27</span> The data is available on LMS or through the code in the
+the file with the data to an object, <code>us_comp</code> in this case.<label for="tufte-sn-28" class="margin-toggle sidenote-number">28</label><input type="checkbox" id="tufte-sn-28" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">28</span> The data is available on LMS or through the code in the
 Appendix <a href="research-ceocomp.html#appendix-2">2.5</a></span>
 The glimpse function gives an overview of the variables in the
 data, the type of the variables, and a couple of examples of the
@@ -477,7 +477,7 @@ easily combine explanations with your analysis in <code>.Rmd</code> files.
 The assignements can all be completed in Rmarkdown. You can find
 a lot of good resources on
 <a href="https://rmarkdown.rstudio.com/">Rmarkdown on the Rstudio website</a>.<br>
-In short, markdown is a simple markup language<label for="tufte-sn-28" class="margin-toggle sidenote-number">28</label><input type="checkbox" id="tufte-sn-28" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">28</span> This means that you can
+In short, markdown is a simple markup language<label for="tufte-sn-29" class="margin-toggle sidenote-number">29</label><input type="checkbox" id="tufte-sn-29" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">29</span> This means that you can
 add little bits of code to your text that indicated how the text
 should look</span> that lets you include R code.</p>
 <div id="markdown" class="section level3">

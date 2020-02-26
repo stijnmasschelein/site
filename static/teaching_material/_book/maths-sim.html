@@ -197,7 +197,7 @@ time <span class="math inline">\(0\)</span> to time <span class="math inline">\(
 V_1(n) - V_0(n) = C V_0(n) T(m)
 \end{equation}\]</span></p>
 <p>The increase in value depends on the <span class="math inline">\(T\)</span>alent of the CEO, the
-inital <span class="math inline">\(V\)</span>alue of the firm, and a scaling factor <span class="math inline">\(C\)</span>.<label for="tufte-sn-29" class="margin-toggle sidenote-number">29</label><input type="checkbox" id="tufte-sn-29" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">29</span> The scaling factor is not crucial to the theory. If performance
+inital <span class="math inline">\(V\)</span>alue of the firm, and a scaling factor <span class="math inline">\(C\)</span>.<label for="tufte-sn-30" class="margin-toggle sidenote-number">30</label><input type="checkbox" id="tufte-sn-30" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">30</span> The scaling factor is not crucial to the theory. If performance
 is measured in millions of dollars or in billions of dollars, the
 scaling factor will differ but that is not telling us anything
 about the economic mechanism.</span> <span class="math inline">\(n\)</span> is the rank of the size of the
@@ -216,7 +216,7 @@ will need a compensation above <span class="math inline">\(w_0\)</span>.</p>
 means that the most talented CEO works for the largest firm,
 the second most talented CEO works for the second largest firm,
 until we reach the least talented CEO and the smallest firm. The
-intuition is that CEOs have a larger impact in larger firms.<label for="tufte-sn-30" class="margin-toggle sidenote-number">30</label><input type="checkbox" id="tufte-sn-30" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">30</span> The idea is that if a CEO is good at managing people, the
+intuition is that CEOs have a larger impact in larger firms.<label for="tufte-sn-31" class="margin-toggle sidenote-number">31</label><input type="checkbox" id="tufte-sn-31" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">31</span> The idea is that if a CEO is good at managing people, the
 impact of the CEO will be better if they are managing more
 people.</span> Therefor, most value is created when the largest firms
 are managed by the best CEOs. The difficulty is to determine
@@ -341,7 +341,7 @@ is something similar for the Talent of the CEOs. A larger number
 for both rate parameters implies that differences between sizes
 or CEOs become larger at the top. <code>C</code> is the <span class="math inline">\(C\)</span> constant in the
 model. <code>scale</code> is an additional parameter that helps me scale the
-size of the firms so that I get similar numbers as the real data.<label for="tufte-sn-31" class="margin-toggle sidenote-number">31</label><input type="checkbox" id="tufte-sn-31" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">31</span> This is not necessarily a fudge. The theory does not say
+size of the firms so that I get similar numbers as the real data.<label for="tufte-sn-32" class="margin-toggle sidenote-number">32</label><input type="checkbox" id="tufte-sn-32" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">32</span> This is not necessarily a fudge. The theory does not say
 anything about whether we should measure firm size in USD, in AUD
 or in CNY. So the scale we use is arbitrary.</span> <code>w0</code> is the base
 wage for the least talented CEO.</p>
@@ -363,14 +363,14 @@ value for the size of each firm from 1 to 500 and for the talent
 of each CEO from 1 to 500.</p>
 <p>We can also calculate the wage of each CEO-firm combination from
 equation <a href="maths-sim.html#eq:matching-equality-general">(5.5)</a>. We start by creating
-a wage vector with 500 <code>NA</code> values.<label for="tufte-sn-32" class="margin-toggle sidenote-number">32</label><input type="checkbox" id="tufte-sn-32" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">32</span> The <code>rep</code> function creates a vector of <code>obs</code> <em>rep</em>ititions of
+a wage vector with 500 <code>NA</code> values.<label for="tufte-sn-33" class="margin-toggle sidenote-number">33</label><input type="checkbox" id="tufte-sn-33" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">33</span> The <code>rep</code> function creates a vector of <code>obs</code> <em>rep</em>ititions of
 <code>NA</code></span>
 At the last (<code>obs = 500</code>) position of the vector, we set the wage
 equal to <code>w0</code> for the least talented CEO and the smallest firm.
 Than <em>for</em> each firm (we go from <code>i = 499</code> to <code>i = 1</code>), we set the
 wage as the wage of the smaller firm (<code>i + 1</code>) and subtract the
 surplus our CEO would generate in the smaller firm over what
-their CEO is now generating.<label for="tufte-sn-33" class="margin-toggle sidenote-number">33</label><input type="checkbox" id="tufte-sn-33" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">33</span> Again <code>scale</code> and <code>C</code> just scale
+their CEO is now generating.<label for="tufte-sn-34" class="margin-toggle sidenote-number">34</label><input type="checkbox" id="tufte-sn-34" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">34</span> Again <code>scale</code> and <code>C</code> just scale
 some of the values so that they are easier to interpret. These
 parameters are less important for the economic intuition.</span></p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">wage &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, obs)</a>
@@ -401,7 +401,7 @@ will give you an idea of what the data should look like.</p>
 simulated CEO wage and simulated firm size. It’s not
 perfect but the plot does follow a similar non-linear pattern as
 what we found in Chapter <a href="research-ceocomp.html#research-ceocomp">2</a> (see Figure
-<a href="maths-sim.html#fig:wage-size-data">5.2</a>).<label for="tufte-sn-34" class="margin-toggle sidenote-number">34</label><input type="checkbox" id="tufte-sn-34" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">34</span> <code>qplot</code> is a funtion to make <em>q</em>uick plots and it is part of the
+<a href="maths-sim.html#fig:wage-size-data">5.2</a>).<label for="tufte-sn-35" class="margin-toggle sidenote-number">35</label><input type="checkbox" id="tufte-sn-35" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">35</span> <code>qplot</code> is a funtion to make <em>q</em>uick plots and it is part of the
 <code>ggplot</code> package which is part of the <code>tidyverse</code>.</span></p>
 
 <p>
@@ -470,7 +470,7 @@ external functions like I do to create the <code>tibble</code>.</p>
 <p>I do nothing in the function that I have not done before. The
 only addition is that at the end, the function <code>return</code>s the
 simulated data. You can then use the function to create a new
-simulated dataset.<label for="tufte-sn-35" class="margin-toggle sidenote-number">35</label><input type="checkbox" id="tufte-sn-35" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">35</span> I call the function <code>create_fake_data</code> because I want to
+simulated dataset.<label for="tufte-sn-36" class="margin-toggle sidenote-number">36</label><input type="checkbox" id="tufte-sn-36" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">36</span> I call the function <code>create_fake_data</code> because I want to
 emphasise that there is nothing special about simulated data.
 Some people prefer more dignified names. If you prefer that, you
 can use any other name for the function. Just make sure that it
@@ -530,7 +530,7 @@ also more flexible <code>ggplot</code> function. In the function, we first
 define the data we want to use. Within the <code>aes()</code> specification,
 we define the variables that are going to be plotted. We tell
 ggplot that we want the data to be plot by the <em>geom</em>etric
-elements of a point and a line.<label for="tufte-sn-36" class="margin-toggle sidenote-number">36</label><input type="checkbox" id="tufte-sn-36" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">36</span> Obviously, you do not need both.
+elements of a point and a line.<label for="tufte-sn-37" class="margin-toggle sidenote-number">37</label><input type="checkbox" id="tufte-sn-37" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">37</span> Obviously, you do not need both.
 This is just to show you what you can do.</span> I make the line colour
 grey. The <code>facet_grid</code> creates different subplots depending on
 whether an observation has a different value for the

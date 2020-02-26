@@ -232,10 +232,18 @@ difficult, they are just a bit tedious.</p>
 point of view. That is, the CEO will try to attract the amount of
 capital that will maximise their wage. Mathematically, that means
 that we need to find the level of <span class="math inline">\(K\)</span> for which the first
-derivative of the CEO’s wage to <span class="math inline">\(K\)</span> equals 0.</p>
+derivative of the CEO’s wage to <span class="math inline">\(K\)</span> equals 0.<label for="tufte-sn-8" class="margin-toggle sidenote-number">8</label><input type="checkbox" id="tufte-sn-8" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">8</span> The <span class="math inline">\(\frac{\alpha_K}{\alpha_K}\)</span> is a bit weird and obviously it
+cancels out. It’s the result of using the
+<a href="https://en.wikipedia.org/wiki/Chain_rule">chain rule</a>. The
+numerator is the result of taking the derivative of an exponential
+function. The denominator is the result of fact that we need to
+multiply the derivative of the exponential function with the
+derivative of <span class="math inline">\(\frac{K}{\alpha_K}\)</span>. The whole reason why <span class="math inline">\(V\)</span> was
+set-up this way was because it makes things cancel out; it’s
+mathematically convenient.</span></p>
 <p><span class="math display">\[\begin{align*}
 0 = \frac{\partial W_T}{\partial K} &amp;=  T^{\alpha_T}  
-\Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K - 1} 
+\frac{\alpha_K}{\alpha_K} \Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K - 1} 
 \Bigl( \frac{L}{\alpha_L} \Bigl)^{\alpha_L} - r
 \\
 T^{\alpha_T} \Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K} 
@@ -268,7 +276,7 @@ derivation is straightforward and (some of) the implicit
 assumptions are relatively easy to accept. The effect of the CEO
 depends on the size of the firm (<span class="math inline">\(V\)</span>). When there is more capital
 and labour available a more talented CEO will have a bigger
-impact.<label for="tufte-sn-8" class="margin-toggle sidenote-number">8</label><input type="checkbox" id="tufte-sn-8" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">8</span> If a CEO is a talented people manager, the advantage of
+impact.<label for="tufte-sn-9" class="margin-toggle sidenote-number">9</label><input type="checkbox" id="tufte-sn-9" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">9</span> If a CEO is a talented people manager, the advantage of
 this talent will be larger when there are more employees working
 in the company.</span> The model also predicts a clear quantitative
 relationship between firm size, <span class="math inline">\(V\)</span>, and CEO compensation, <span class="math inline">\(W_T\)</span>,
@@ -283,7 +291,7 @@ value because they keep the all the value after workers and
 investors have been paid. As it turns out when you assume
 competitive labour and financial markets, that assumptions does
 not really matter a lot for the predicted relationship between
-wage and firm size <span class="citation">(Edmans and Gabaix <a href="#ref-edmans2016executive">2016</a>)</span>.<label for="tufte-sn-9" class="margin-toggle sidenote-number">9</label><input type="checkbox" id="tufte-sn-9" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">9</span> That is, you could
+wage and firm size <span class="citation">(Edmans and Gabaix <a href="#ref-edmans2016executive">2016</a>)</span>.<label for="tufte-sn-10" class="margin-toggle sidenote-number">10</label><input type="checkbox" id="tufte-sn-10" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">10</span> That is, you could
 set up the model so that investors take the final decision where
 they offer an incentive contract to the CEO who then chooses the
 number of workers that maximise the their compensation under the
@@ -304,7 +312,7 @@ and the relation is larger when the CEO is more talented.</p>
 <span class="header-section-number">2.3</span> Empirical Test</h2>
 <p>We will test the predictions of the model with data from S&amp;P500
 companies in the US. I made the data available for UWA students
-on LMS.<label for="tufte-sn-10" class="margin-toggle sidenote-number">10</label><input type="checkbox" id="tufte-sn-10" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">10</span> I really want to find an open dataset where we can test
+on LMS.<label for="tufte-sn-11" class="margin-toggle sidenote-number">11</label><input type="checkbox" id="tufte-sn-11" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">11</span> I really want to find an open dataset where we can test
 the same model. In the <a href="research-ceocomp.html#appendix-2">Appendix of this chapter</a>,
 you can find how you can download the same data straight from the
 WRDS database.</span>
@@ -313,7 +321,7 @@ will use these are similar databases in your research project. I
 did not clean or check the data for this exercise. In your own
 project, you should show a better understanding of how the data
 are gathered and what they include than what I am displaying
-here.<label for="tufte-sn-11" class="margin-toggle sidenote-number">11</label><input type="checkbox" id="tufte-sn-11" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">11</span> The CEO compensation data is fairly complete. It includes
+here.<label for="tufte-sn-12" class="margin-toggle sidenote-number">12</label><input type="checkbox" id="tufte-sn-12" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">12</span> The CEO compensation data is fairly complete. It includes
 changes in the value of equity and options. Market value also
 includes all outstanding financial instruments on the company.</span></p>
 <p>The code below does multiple things in <code>R</code>. I do not expect you
@@ -380,7 +388,7 @@ Figure 2.1: Relation between CEO compensation and market value for SP500 firms (
 have CEOs with higher compensation. However, the relationship is
 far from linear and looks more like a power function. Clearly
 there are other effects at play. In this sample, the power
-coefficient is 0.23.<label for="tufte-sn-12" class="margin-toggle sidenote-number">12</label><input type="checkbox" id="tufte-sn-12" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">12</span> Prior studies have found a coefficient more
+coefficient is 0.23.<label for="tufte-sn-13" class="margin-toggle sidenote-number">13</label><input type="checkbox" id="tufte-sn-13" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">13</span> Prior studies have found a coefficient more
 closely to 0.33 <span class="citation">(Baker, Jensen, and Murphy <a href="#ref-baker1988compensation">1988</a>)</span>.</span>
 Remember that in our setup the CEO can grow the firm at will by
 attracting more capital and more labour. That assumption is
@@ -410,7 +418,7 @@ absolutely fine and I think a worthwile way to do research.
 However, this focus away from causal relation sometimes clashes
 with the popular statistical techniques and frame of mind that is
 presented in textbooks on causal inference <span class="citation">(Angrist and Pischke <a href="#ref-angrist2008mostly">2008</a>; Cunningham <a href="#ref-cunningham_causal_2018">2018</a>)</span> and which permeates the literature in
-accounting and finance.<label for="tufte-sn-13" class="margin-toggle sidenote-number">13</label><input type="checkbox" id="tufte-sn-13" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">13</span> This has been a source of frustration
+accounting and finance.<label for="tufte-sn-14" class="margin-toggle sidenote-number">14</label><input type="checkbox" id="tufte-sn-14" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">14</span> This has been a source of frustration
 for me for awhile. I never could clearly articulate my unease.
 This <a href="https://www.preposterousuniverse.com/podcast/2018/08/13/episode-9-solo-why-is-there-something-rather-than-nothing/">podcast by physist Sean Caroll</a>
 helped me crystalise my thoughts. He explains that from for a

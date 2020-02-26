@@ -196,7 +196,7 @@ whether the CEO was already in their position when the company
 launched their initial public offering. From section
 <a href="measurement.html#data-sensitivity">7.4</a>, we know that CEOs who are present early
 in the life of the company might not have a compensation contract
-that follows the efficient incentive contract.<label for="tufte-sn-53" class="margin-toggle sidenote-number">53</label><input type="checkbox" id="tufte-sn-53" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">53</span> Not because they
+that follows the efficient incentive contract.<label for="tufte-sn-54" class="margin-toggle sidenote-number">54</label><input type="checkbox" id="tufte-sn-54" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">54</span> Not because they
 are abusing their power necessarily, but because they are
 intrinsically motivated to do well for the company and they are
 motivated to stay in control of the company which is easier if
@@ -270,7 +270,7 @@ a single study can look like. For a typical study, the DAG can
 quickly become quite complex. One of the reasons is that a social
 science observational study always have to account for a large
 number of potential effects. The second reason is that DAGs
-do not allow for direct feedback loops<label for="tufte-sn-54" class="margin-toggle sidenote-number">54</label><input type="checkbox" id="tufte-sn-54" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">54</span> That is what acyclical
+do not allow for direct feedback loops<label for="tufte-sn-55" class="margin-toggle sidenote-number">55</label><input type="checkbox" id="tufte-sn-55" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">55</span> That is what acyclical
 means</span> and we have to account for the feedback between
 institutional ownership and information environment by adding
 a time modifier (before and after) to the institutional ownership
@@ -498,7 +498,7 @@ measure whether CEOs are founders but we know wether they are
 already CEO (<code>ipo_ceo</code>) or employee (<code>ipo_employee</code>) at the time
 of the initial public offering of the company. We include those
 two variables as indicator variables in the regression because it is
-more likely that these CEOs are also the founders of the company<label for="tufte-sn-55" class="margin-toggle sidenote-number">55</label><input type="checkbox" id="tufte-sn-55" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">55</span> I will
+more likely that these CEOs are also the founders of the company<label for="tufte-sn-56" class="margin-toggle sidenote-number">56</label><input type="checkbox" id="tufte-sn-56" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">56</span> I will
 ignore the fact that we lose observations in calculating the new
 variables. That is not necessarily a good idea.</span>.</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">form &lt;-<span class="st"> </span><span class="kw">log</span>(shares <span class="op">+</span><span class="st"> </span><span class="fl">0.001</span>) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(market_value<span class="op">/</span><span class="dv">1000</span>)</a>
@@ -900,7 +900,7 @@ ipo_none
 </tbody>
 </table>
 <p>The table again shows that it is impossble for a CEO to have been the
-CEO at the time of the IPO but not an employee<label for="tufte-sn-56" class="margin-toggle sidenote-number">56</label><input type="checkbox" id="tufte-sn-56" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">56</span> <code>ipo_ceo_only</code> equals
+CEO at the time of the IPO but not an employee<label for="tufte-sn-57" class="margin-toggle sidenote-number">57</label><input type="checkbox" id="tufte-sn-57" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">57</span> <code>ipo_ceo_only</code> equals
 0 in every year.</span>. This example shows the importance of using
 descriptive statistics to better understand the data. Even if you had
 not realised that there is a relation between <code>ipo_ceo</code> and
@@ -924,7 +924,7 @@ e^{\beta_2 \mathrm{ipo\_ceo}} e^{\beta_3 \mathrm{ipo\_employee}}
 owns <span class="math inline">\(e^{\beta_3}\)</span> times more shares when they were already an employee
 at time of the IPO, and <span class="math inline">\(e^{\beta_2 + \beta_3}\)</span> times more shares when
 they were already CEO (and thus also employee) at the time of the
-IPO<label for="tufte-sn-57" class="margin-toggle sidenote-number">57</label><input type="checkbox" id="tufte-sn-57" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">57</span> This ignores the <span class="math inline">\(0.001\)</span> adjustment but it does not really make
+IPO<label for="tufte-sn-58" class="margin-toggle sidenote-number">58</label><input type="checkbox" id="tufte-sn-58" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">58</span> This ignores the <span class="math inline">\(0.001\)</span> adjustment but it does not really make
 a difference in this example.</span>. We can easily calculate these values
 in <code>R</code>.</p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">beta2 &lt;-<span class="st"> </span>error<span class="op">$</span>coefficients[<span class="st">"ipo_ceoTRUE"</span>]</a>
