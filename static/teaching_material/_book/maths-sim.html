@@ -14,7 +14,7 @@
 
 <meta name="author" content="Stijn Masschelein" />
 
-<meta name="date" content="2020-02-26" />
+<meta name="date" content="2020-03-04" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -186,7 +186,7 @@ a lot more in the rest of the notes.</p>
 <p>Let us introduce a new theory how the size of the company is
 related to the compensation of the CEO. In Chapter
 <a href="research-ceocomp.html#research-ceocomp">2</a> I presented a basic model where talented
-CEOs hire more people and attract more capital and does grow the
+CEOs hire more people and attract more capital and thus grow the
 company. This theory ignored that companies and CEOs can choose
 to work with each other. In this section, we introduce a new
 theory about matching firms and CEOs <span class="citation">(Edmans and Gabaix <a href="#ref-edmans2016executive">2016</a>; Tervio <a href="#ref-tervio_difference_2008">2008</a>)</span>.</p>
@@ -209,29 +209,30 @@ firm, <span class="math inline">\(n\)</span>.</p>
 CEO to hire and CEOs will only accept to work for a firm if they
 cannot do better in another firm. The firms have to compensate
 a manager with a <span class="math inline">\(w\)</span>age and will maximise the residual value of
-the firm, <span class="math inline">\(V_1(n) - w(m)\)</span>. The model assumes that the managers
-will need a compensation above <span class="math inline">\(w_0\)</span>.</p>
+the firm, <span class="math inline">\(V_1(n) - V_0(n) - w(m)\)</span>.
+The model assumes that the managers will need a compensation above
+<span class="math inline">\(w_0\)</span>.</p>
 <p><span class="citation">Tervio (<a href="#ref-tervio_difference_2008">2008</a>)</span> and <span class="citation">Edmans and Gabaix (<a href="#ref-edmans2016executive">2016</a>)</span> show that when
 <span class="math inline">\(m = n\)</span>, no firm or CEO can improve themselves by switching. This
 means that the most talented CEO works for the largest firm,
 the second most talented CEO works for the second largest firm,
 until we reach the least talented CEO and the smallest firm. The
-intuition is that CEOs have a larger impact in larger firms.<label for="tufte-sn-31" class="margin-toggle sidenote-number">31</label><input type="checkbox" id="tufte-sn-31" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">31</span> The idea is that if a CEO is good at managing people, the
-impact of the CEO will be better if they are managing more
-people.</span> Therefor, most value is created when the largest firms
-are managed by the best CEOs. The difficulty is to determine
-how much each firm should pay the CEO. I first go over a
-simplified mathematical model that gets some of the intuition
-across, then I explain</p>
+intuition is that CEOs have a larger impact in larger firms.<label for="tufte-sn-31" class="margin-toggle sidenote-number">31</label><input type="checkbox" id="tufte-sn-31" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">31</span> If a CEO is good at managing people, the impact of the CEO will be
+better if they are managing more people.</span> Therefor, most value is
+created when the largest firms are managed by the best CEOs. The
+difficulty is to determine how much each firm should pay the CEO. I
+first go over a simplified mathematical model that gets some of the
+intuition across, then I explain how you can simulate from the
+more complicated model</p>
 </div>
 <div id="three-firms---three-ceos-model" class="section level2">
 <h2>
 <span class="header-section-number">5.3</span> Three firms - three CEOs model</h2>
 <p>Let us assume that there are only three CEOs and only three
-firms. To make sure that the largest firm (<span class="math inline">\(n=1\)</span>) cannot do
-better than hiring the most talented CEO (<span class="math inline">\(m=1\)</span>). In other words,
-the performance of the most talented CEO after paying their
-compensation, should be higher than the residual performance of
+firms. In equilibrium, we want to make sure that the largest firm
+(<span class="math inline">\(n=1\)</span>) cannot do better than hiring the most talented CEO (<span class="math inline">\(m=1\)</span>). In
+other words, the performance of the most talented CEO after paying
+their compensation, should be higher than the residual performance of
 the other two CEOs.</p>
 <p><span class="math display" id="eq:matching-condition-1">\[\begin{equation}
 \tag{5.2}
@@ -251,14 +252,14 @@ to condition <a href="maths-sim.html#eq:matching-condition-2">(5.3)</a>. We can 
 everything and get the second condition of
 <a href="maths-sim.html#eq:matching-condition-2">(5.3)</a>.</p>
 <p><span class="math display">\[\begin{align*}
-CV_0(1) T(1) - w(1) + CV_0(2) T(2) - \color{blue}{w(2)}
-\geq CV_0(1) T(2) - \color{blue}{w(2)} + CV_0(2) T(3) - w(3)
+CV_0(1) T(1) - w(1) + CV_0(2) T(2) - {\color{blue}{w(2)}}
+\geq CV_0(1) T(2) - {\color{blue}{w(2)}} + CV_0(2) T(3) - w(3)
 \\
 CV_0(1) T(1) - w(1) \geq C(V_0(1) - V_0(2))T(2) + C(V_0(2) - 
-\color{blue}{V_0(1)})T(3) + \color{blue}{CV_0(1)T(3)}- w(3)
+{\color{blue}{V_0(1)}})T(3) + {\color{blue}{CV_0(1)T(3)}}- w(3)
 \\
 CV_0(1) T(1) - w(1) \geq 
-\color{blue}{C(V_0(1) - V_0(2))(T(2) - T(3))} + CV_0(1)T(3) - w(3)
+{\color{blue} {C(V_0(1) - V_0(2))(T(2) - T(3))}} + CV_0(1)T(3) - w(3)
 \end{align*}\]</span></p>
 <p>Because <span class="math inline">\(V_0(1) &gt; V_0(2)\)</span> and <span class="math inline">\(T_0(2) &gt; T_0(3)\)</span>, we can delete
 the first term on the right hand side. So, the two inequalities
@@ -525,23 +526,23 @@ scaling issue.</p>
 ## # … with 1,990 more rows</code></pre>
 <p>The <code>bind_rows</code> function allows you to combine the four datasets
 in one big dataset <code>data_exp</code>. This will help us to plot the data
-in Figure @(fig:sim-combined) with the more complicated but
+in Figure <a href="maths-sim.html#fig:sim-combined">5.4</a> with the more complicated but
 also more flexible <code>ggplot</code> function. In the function, we first
 define the data we want to use. Within the <code>aes()</code> specification,
 we define the variables that are going to be plotted. We tell
-ggplot that we want the data to be plot by the <em>geom</em>etric
-elements of a point and a line.<label for="tufte-sn-37" class="margin-toggle sidenote-number">37</label><input type="checkbox" id="tufte-sn-37" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">37</span> Obviously, you do not need both.
-This is just to show you what you can do.</span> I make the line colour
-grey. The <code>facet_grid</code> creates different subplots depending on
-whether an observation has a different value for the
-<code>talent_rate</code> variable and the <code>C</code> variable.</p>
+ggplot that we want the data to be plotted as the following
+<em>geom</em>etric elements a point and a line.<label for="tufte-sn-37" class="margin-toggle sidenote-number">37</label><input type="checkbox" id="tufte-sn-37" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">37</span> Obviously, you do not
+need both. This is just to show you what you can do.</span> I make the line
+colour grey. The <code>facet_grid</code> creates different subplots depending on
+whether an observation has a different value for the <code>talent_rate</code>
+variable and the <code>C</code> variable.</p>
 
 <p>
 <span class="marginnote shownote">
 <!--
 <div class="figure">--><span id="fig:sim-combined"></span>
-<img src="method_accfin_files/figure-html/sim-combined-1.png" alt="Four simulated fake datasets on the relation between firm size and CEO compensation." width="384"><!--
-<p class="caption marginnote">-->Figure 5.4: Four simulated fake datasets on the relation between firm size and CEO compensation.<!--</p>-->
+<img src="method_accfin_files/figure-html/sim-combined-1.png" alt="(ref:sim-combined)" width="384"><!--
+<p class="caption marginnote">-->Figure 5.4: (ref:sim-combined)<!--</p>-->
 <!--</div>--></span>
 </p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">plot_exp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data_exp, <span class="kw">aes</span>(<span class="dt">x =</span> size, <span class="dt">y =</span> wage)) <span class="op">+</span></a>
@@ -601,7 +602,7 @@ your statistical test.</p>
 <a href="linear-regression.html"><button class="btn btn-default">Next</button></a>
 </p>
 <p class="build-date">Page built: 
-2020-02-26
+2020-03-04
 </p>
 </div>
 </div>
