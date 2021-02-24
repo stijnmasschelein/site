@@ -14,7 +14,7 @@
 
 <meta name="author" content="Stijn Masschelein" />
 
-<meta name="date" content="2020-03-04" />
+<meta name="date" content="2021-02-24" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -182,8 +182,8 @@ random component.</p>
 \end{align}\]</span></p>
 <p>To esimate the coefficients <span class="math inline">\(a\)</span>, <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span> in R,
 we have to run the following piece of code.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">reg &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dt">data =</span> my_data_set)</a>
-<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="kw">summary</span>(reg)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">reg &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2, <span class="dt">data =</span> my_data_set)</a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="kw">summary</span>(reg)</a></code></pre></div>
 </div>
 <div id="linear-regression-with-non-linear-theories" class="section level2">
 <h2>
@@ -208,11 +208,11 @@ simulated data by transformating the scale of Figure <a href="maths-sim.html#fig
 <p class="caption marginnote">-->Figure 6.1: The logarithmic transformation of simulated data<!--</p>-->
 <!--</div>--></span>
 </p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">plot_exp <span class="op">+</span></a>
-<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>, </a>
-<a class="sourceLine" id="cb40-3" data-line-number="3">                     <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">pretty_breaks</span>(<span class="dt">n =</span> <span class="dv">2</span>))  <span class="op">+</span></a>
-<a class="sourceLine" id="cb40-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>, </a>
-<a class="sourceLine" id="cb40-5" data-line-number="5">                     <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">pretty_breaks</span>(<span class="dt">n =</span> <span class="dv">2</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">plot_exp <span class="op">+</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>, </a>
+<a class="sourceLine" id="cb41-3" data-line-number="3">                     <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">pretty_breaks</span>(<span class="dt">n =</span> <span class="dv">2</span>))  <span class="op">+</span></a>
+<a class="sourceLine" id="cb41-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>, </a>
+<a class="sourceLine" id="cb41-5" data-line-number="5">                     <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">pretty_breaks</span>(<span class="dt">n =</span> <span class="dv">2</span>))</a></code></pre></div>
 <p>One reason why it does not work perfectly is that the reservation
 wage <span class="math inline">\(w_0\)</span> might be set too low in the simulation. You can see
 that the line is approximately linear for the largest firms. The
@@ -224,13 +224,13 @@ better. One of the homework exercises asks you to check whether
 the transformation works better once you simulate more firms.</p>
 <p>Let us now see how well the log transformation works on the
 real S&amp;P500 compensation data. First, we load the data in.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">us_comp &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-compensation.RDS"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">total_comp =</span> tdc1)</a>
-<a class="sourceLine" id="cb41-3" data-line-number="3">us_value &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-value.RDS"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb41-4" data-line-number="4"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">year =</span> fyear, <span class="dt">market_value =</span> mkvalt)</a>
-<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="kw">summary</span>(us_value<span class="op">$</span>market_value)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">us_comp &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-compensation.RDS"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">total_comp =</span> tdc1)</a>
+<a class="sourceLine" id="cb42-3" data-line-number="3">us_value &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-value.RDS"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb42-4" data-line-number="4"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">year =</span> fyear, <span class="dt">market_value =</span> mkvalt)</a>
+<a class="sourceLine" id="cb42-5" data-line-number="5"><span class="kw">summary</span>(us_value<span class="op">$</span>market_value)</a></code></pre></div>
 <pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max.      NA's 
-##     117.3    9142.3   16006.8   37036.0   33581.9 1073390.5       682</code></pre>
+##       0.0     880.9    2359.4   12259.8    7836.2 1966078.9      3502</code></pre>
 <p>We have a bunch of observations with missing values (<code>NA</code>) for
 the market value of the firm. I will not further investigate this
 but you should definitely do this in your own project.</p>
@@ -241,42 +241,42 @@ which observations from one dataset should be matched with which
 observations from the other dataset. The join functions in the
 <code>tidyverse</code> can be a lifesaver if you are working with multiple
 datasets that need to be merged.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">us_comp_value &lt;-<span class="st"> </span><span class="kw">left_join</span>(<span class="kw">select</span>(us_comp, gvkey, year, total_comp),</a>
-<a class="sourceLine" id="cb43-2" data-line-number="2">                          us_value, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">"year"</span>, <span class="st">"gvkey"</span>))</a>
-<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="kw">glimpse</span>(us_comp_value)</a></code></pre></div>
-<pre><code>## Observations: 4,564
-## Variables: 5
-## $ gvkey        &lt;chr&gt; "001045", "001045", "001045", "001045", "001045", "00104…
-## $ year         &lt;dbl&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2011, 2011, 20…
-## $ total_comp   &lt;dbl&gt; 5526.835, 656.226, 19092.978, 12301.976, 11418.547, 140.…
-## $ market_value &lt;dbl&gt; 117.3438, 266.5571, 6591.9923, 37405.5843, 26452.7417, 2…
-## $ ni           &lt;dbl&gt; -1979.000, -1876.000, -1834.000, 2882.000, 7610.000, 267…</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">us_comp_value &lt;-<span class="st"> </span><span class="kw">left_join</span>(<span class="kw">select</span>(us_comp, gvkey, year, total_comp),</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2">                          us_value, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">"year"</span>, <span class="st">"gvkey"</span>))</a>
+<a class="sourceLine" id="cb44-3" data-line-number="3"><span class="kw">glimpse</span>(us_comp_value)</a></code></pre></div>
+<pre><code>## Rows: 22,948
+## Columns: 5
+## $ gvkey        &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "00100…
+## $ year         &lt;dbl&gt; 2011, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 20…
+## $ total_comp   &lt;dbl&gt; 5786.400, 5786.400, 4182.832, 5247.779, 5234.648, 3523.9…
+## $ market_value &lt;dbl&gt; 485.2897, 485.2897, 790.0029, 961.3080, 1046.3954, 842.5…
+## $ ni           &lt;dbl&gt; 67.723, NA, 55.000, 72.900, 10.200, 47.700, 56.500, 15.6…</code></pre>
 <p>Because there are some CEOs with <span class="math inline">\(0\$\)</span> compensation, I use the
 <span class="math inline">\(log(x+1)\)</span> transformation. Another option would have been to
 exclude these obervations.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">reg &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(total_comp <span class="op">+</span><span class="st"> </span><span class="dv">1</span>) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(market_value <span class="op">+</span><span class="st"> </span><span class="dv">1</span>), </a>
-<a class="sourceLine" id="cb45-2" data-line-number="2">          <span class="dt">data =</span> us_comp_value)</a>
-<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="co"># summary(reg)</span></a>
-<a class="sourceLine" id="cb45-4" data-line-number="4"><span class="kw">print</span>(<span class="kw">summary</span>(reg), <span class="dt">digits =</span> 1L)</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">reg &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(total_comp <span class="op">+</span><span class="st"> </span><span class="dv">1</span>) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(market_value), </a>
+<a class="sourceLine" id="cb46-2" data-line-number="2">          <span class="dt">data =</span> us_comp_value)</a>
+<a class="sourceLine" id="cb46-3" data-line-number="3"><span class="co"># summary(reg)</span></a>
+<a class="sourceLine" id="cb46-4" data-line-number="4"><span class="kw">print</span>(<span class="kw">summary</span>(reg), <span class="dt">digits =</span> 1L)</a></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = log(total_comp + 1) ~ log(market_value + 1), data = us_comp_value)
+## lm(formula = log(total_comp + 1) ~ log(market_value), data = us_comp_value)
 ## 
 ## Residuals:
 ##    Min     1Q Median     3Q    Max 
-##   -9.9   -0.2    0.1    0.4    2.9 
+##  -10.4   -0.3    0.1    0.5    3.5 
 ## 
 ## Coefficients:
-##                       Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)               6.77       0.14      47   &lt;2e-16 ***
-## log(market_value + 1)     0.23       0.01      16   &lt;2e-16 ***
+##                   Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)          5.260      0.030     176   &lt;2e-16 ***
+## log(market_value)    0.382      0.004     103   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 1 on 3946 degrees of freedom
-##   (616 observations deleted due to missingness)
-## Multiple R-squared:  0.06,   Adjusted R-squared:  0.06 
-## F-statistic: 2e+02 on 1 and 3946 DF,  p-value: &lt;2e-16</code></pre>
+## Residual standard error: 0.9 on 20083 degrees of freedom
+##   (2863 observations deleted due to missingness)
+## Multiple R-squared:  0.3,    Adjusted R-squared:  0.3 
+## F-statistic: 1e+04 on 1 and 20083 DF,  p-value: &lt;2e-16</code></pre>
 <p>The <code>summary</code> gives way to much information but I am just
 restricting the number of significant digits because that is my
 biggest concern. You can just use <code>summary(reg)</code>. We can also
@@ -291,29 +291,32 @@ in figure.</p>
 <p class="caption marginnote">-->Figure 6.2: CEO compensation and firm value on the log-log scale<!--</p>-->
 <!--</div>--></span>
 </p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">plot_check &lt;-</a>
-<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">data =</span> us_comp_value, </a>
-<a class="sourceLine" id="cb47-3" data-line-number="3">         <span class="kw">aes</span>(<span class="dt">y =</span> total_comp, <span class="dt">x =</span> market_value)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb47-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">.25</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb47-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">"log1p"</span>,</a>
-<a class="sourceLine" id="cb47-6" data-line-number="6">               <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb47-7" data-line-number="7">               <span class="dt">labels =</span> <span class="cf">function</span>(x)<span class="kw">format</span>(x<span class="op">/</span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">2</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb47-8" data-line-number="8"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">"log1p"</span>,</a>
-<a class="sourceLine" id="cb47-9" data-line-number="9">               <span class="dt">labels =</span> <span class="cf">function</span>(x)<span class="kw">format</span>(x<span class="op">/</span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">2</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb47-10" data-line-number="10"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">"compensation ($ million)"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb47-11" data-line-number="11"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">"market value ($ billion)"</span>)</a>
-<a class="sourceLine" id="cb47-12" data-line-number="12"><span class="kw">print</span>(plot_check)</a></code></pre></div>
-<pre><code>## Warning: Removed 616 rows containing missing values (geom_point).</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">plot_check &lt;-</a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">data =</span> us_comp_value,</a>
+<a class="sourceLine" id="cb48-3" data-line-number="3">         <span class="kw">aes</span>(<span class="dt">y =</span> total_comp, <span class="dt">x =</span> market_value)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">.10</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>,</a>
+<a class="sourceLine" id="cb48-6" data-line-number="6">                     <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">breaks_log</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb48-7" data-line-number="7">                     <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x<span class="op">/</span><span class="dv">1000</span>,</a>
+<a class="sourceLine" id="cb48-8" data-line-number="8">                                                    <span class="dt">digits =</span> <span class="dv">2</span>)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb48-9" data-line-number="9"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">"log1p"</span>,</a>
+<a class="sourceLine" id="cb48-10" data-line-number="10">                     <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="fl">10e2</span>, <span class="fl">10e3</span>, <span class="fl">10e4</span>, <span class="fl">10e5</span>, <span class="fl">10e6</span>), </a>
+<a class="sourceLine" id="cb48-11" data-line-number="11">                     <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x<span class="op">/</span><span class="dv">1000</span>,</a>
+<a class="sourceLine" id="cb48-12" data-line-number="12">                                                    <span class="dt">digits =</span> <span class="dv">2</span>)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb48-13" data-line-number="13"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">"compensation ($ million)"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-14" data-line-number="14"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">"market value ($ billion)"</span>)</a>
+<a class="sourceLine" id="cb48-15" data-line-number="15"><span class="kw">print</span>(plot_check)</a></code></pre></div>
+<pre><code>## Warning: Removed 2863 rows containing missing values (geom_point).</code></pre>
 <p>On the log-log scale, we see that there are some CEOs with very
 low compensation compared to the bulk of the observations. In the
 next figure, we will just ignore those.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">plot_check2 &lt;-<span class="st"> </span>plot_check <span class="op">+</span></a>
-<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">"log1p"</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">500</span>, <span class="ot">NA</span>),</a>
-<a class="sourceLine" id="cb49-3" data-line-number="3">               <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb49-4" data-line-number="4">               <span class="dt">labels =</span> <span class="cf">function</span>(x)<span class="kw">format</span>(x<span class="op">/</span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">2</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb49-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">"log1p"</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">500</span>, <span class="ot">NA</span>),</a>
-<a class="sourceLine" id="cb49-6" data-line-number="6">               <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb49-7" data-line-number="7">               <span class="dt">labels =</span> <span class="cf">function</span>(x)<span class="kw">format</span>(x<span class="op">/</span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">2</span>)) </a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">plot_check2 &lt;-<span class="st"> </span>plot_check <span class="op">+</span></a>
+<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="ot">NA</span>),</a>
+<a class="sourceLine" id="cb50-3" data-line-number="3">               <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb50-4" data-line-number="4">               <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x<span class="op">/</span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">2</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb50-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">"log1p"</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="ot">NA</span>),</a>
+<a class="sourceLine" id="cb50-6" data-line-number="6">               <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb50-7" data-line-number="7">               <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x<span class="op">/</span><span class="dv">1000</span>, <span class="dt">digits =</span> <span class="dv">2</span>)) </a></code></pre></div>
 <pre><code>## Scale for 'x' is already present. Adding another scale for 'x', which will
 ## replace the existing scale.</code></pre>
 <pre><code>## Scale for 'y' is already present. Adding another scale for 'y', which will
@@ -326,8 +329,8 @@ next figure, we will just ignore those.</p>
 <p class="caption marginnote">-->Figure 6.3: CEO compensation and firm value on the log-log scale<!--</p>-->
 <!--</div>--></span>
 </p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">print</span>(plot_check2)</a></code></pre></div>
-<pre><code>## Warning: Removed 665 rows containing missing values (geom_point).</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">print</span>(plot_check2)</a></code></pre></div>
+<pre><code>## Warning: Removed 2956 rows containing missing values (geom_point).</code></pre>
 <p>Although there still a lot of variation visible, the relation
 in Figure <a href="linear-regression.html#fig:log-log-clean">6.3</a> looks reasonably linear. The
 goal of plotting the data is to get an idea whether the data
@@ -347,7 +350,7 @@ have an error in the database.</p>
 <a href="measurement.html"><button class="btn btn-default">Next</button></a>
 </p>
 <p class="build-date">Page built: 
-2020-03-04
+2021-02-24
 </p>
 </div>
 </div>

@@ -14,7 +14,7 @@
 
 <meta name="author" content="Stijn Masschelein" />
 
-<meta name="date" content="2020-03-04" />
+<meta name="date" content="2021-02-24" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -205,15 +205,15 @@ fine. All theories are simplifications and too much nuance in a
 theory can make a theory worthless <span class="citation">(Healy <a href="#ref-healy2017fuck">2017</a>)</span>. We use
 (T)alent to describe how good the CEO is but you can also think
 of the CEO’s ability or connections as part of <span class="math inline">\(T\)</span>.</span></p>
-<p><span class="math display" id="eq:value-1">\[\begin{equation}
-V = T^{\alpha_T} \Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K}
-                 \Bigl( \frac{L}{\alpha_L} \Bigl)^{\alpha_L}
+<p><span class="math display" id="eq:value-1">\[\begin{align}
 \tag{2.1} 
-\end{equation}\]</span></p>
-<p><span class="math display" id="eq:condition-1">\[\begin{equation}
-\alpha_T + \alpha_K + \alpha_L = 1
+&amp;V = T^{\alpha_T} \Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K}
+                 \Bigl( \frac{L}{\alpha_L} \Bigl)^{\alpha_L}
+\end{align}\]</span></p>
+<p><span class="math display" id="eq:condition-1">\[\begin{align}
+&amp;\alpha_T + \alpha_K + \alpha_L = 1
 \tag{2.2} 
-\end{equation}\]</span></p>
+\end{align}\]</span></p>
 <p>The condition <a href="research-ceocomp.html#eq:condition-1">(2.2)</a> implies that there is nothing
 special about a specific size (<span class="math inline">\(V\)</span>) of the firm. Bigger is not
 necessarily better, smaller is not necessarily better. This is a
@@ -373,28 +373,29 @@ doing your own research project.</p>
 <a class="sourceLine" id="cb1-42" data-line-number="42"><span class="co"># Add label for the x-axis</span></a>
 <a class="sourceLine" id="cb1-43" data-line-number="43"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">"Compensation"</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb1-44" data-line-number="44"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">"Company market value (in billion USD)"</span>)</a></code></pre></div>
-
+<p>(ref:us-comp-value-plot) Relation between CEO compensation and market
+value for the largest US firms (2011-2019).</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">print</span>(plot_comp_value <span class="op">+</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">        </span><span class="kw">annotate</span>(<span class="st">"text"</span>, <span class="dt">y =</span> <span class="dv">45</span>, <span class="dt">x =</span> <span class="dv">500</span>, <span class="dt">parse =</span> <span class="ot">TRUE</span>,</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">                 <span class="dt">label =</span> <span class="kw">as.character</span>(<span class="kw">as.expression</span>(eqn_comp))))</a></code></pre></div>
 <div class="figure">
 <span id="fig:us-comp-value-plot"></span>
 <p class="caption marginnote shownote">
-Figure 2.1: Relation between CEO compensation and market value for SP500 firms (2011-2018).
+Figure 2.1: (ref:us-comp-value-plot)
 </p>
-<img src="method_accfin_files/figure-html/us-comp-value-plot-1.png" alt="Relation between CEO compensation and market value for SP500 firms (2011-2018)." width="672">
+<img src="method_accfin_files/figure-html/us-comp-value-plot-1.png" alt="(ref:us-comp-value-plot)" width="672">
 </div>
 <p>The qualitative relationship holds quite well. Larger companies
 have CEOs with higher compensation. However, the relationship is
 far from linear and looks more like a power function. Clearly
 there are other effects at play. In this sample, the power
-coefficient is 0.23.<label for="tufte-sn-13" class="margin-toggle sidenote-number">13</label><input type="checkbox" id="tufte-sn-13" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">13</span> Prior studies have found a coefficient more
-closely to 0.33 <span class="citation">(Baker, Jensen, and Murphy <a href="#ref-baker1988compensation">1988</a>)</span>.</span>
-Remember that in our setup the CEO can grow the firm at will by
-attracting more capital and more labour. That assumption is
-probably too strong. Later, we will see that there other theories
-that describe the relation between CEO compensation and firm size
-and they seem to describe the data better.</p>
+coefficient is 0.31
+.<label for="tufte-sn-13" class="margin-toggle sidenote-number">13</label><input type="checkbox" id="tufte-sn-13" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">13</span> Prior studies have found a coefficient more closely to 0.33
+<span class="citation">(Baker, Jensen, and Murphy <a href="#ref-baker1988compensation">1988</a>)</span>.</span> Remember that in our setup the CEO can
+grow the firm at will by attracting more capital and more labour. That
+assumption is probably too strong. Later, we will see that there other
+theories that describe the relation between CEO compensation and firm
+size and they seem to describe the data better.</p>
 </div>
 <div id="conclusion" class="section level2">
 <h2>
@@ -447,18 +448,18 @@ gives excellent guidelines on how to do that. You can then use
 the following code to establish a connection with the WRDS
 services.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(RPostgres)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># use your own username for `user`</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">wrds &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">Postgres</span>(),</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">                  <span class="dt">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">                  <span class="dt">port=</span><span class="dv">9737</span>,</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">                  <span class="dt">dbname=</span><span class="st">'wrds'</span>,</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">                  <span class="dt">user=</span><span class="st">'stimas'</span>, </a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">                  <span class="dt">sslmode=</span><span class="st">'require'</span>)</a></code></pre></div>
-<p>The following code choses the variables we are going to use from
-the ExecuComp and Compustat database, makes a connection with the
-database, gets the data and saves it as a <code>.RDS</code> file.</p>
+<a class="sourceLine" id="cb3-2" data-line-number="2">wrds &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">Postgres</span>(),</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">              <span class="dt">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">              <span class="dt">port=</span><span class="dv">9737</span>,</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">              <span class="dt">dbname=</span><span class="st">'wrds'</span>,</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">              <span class="dt">user=</span><span class="st">'stimas'</span>, </a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">              <span class="dt">sslmode=</span><span class="st">'require'</span>)</a></code></pre></div>
+<p>With an SQL string, we define which data we want. We send the SQL
+query to the database via de connection. We download the actual data
+and save in an R object. We close the data, see whether our dataset is
+the right one, and then save the R object as a file on our computer.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">sql1 =<span class="st"> "select year, gvkey, cusip,</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">sql1 &lt;-<span class="st"> "SELECT year, gvkey, cusip,</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">       exec_fullname, coname, ceoann, </span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">       execid, bonus, salary,</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">       stock_awards_fv, stock_unvest_val,</span></a>
@@ -467,57 +468,36 @@ database, gets the data and saves it as a <code>.RDS</code> file.</p>
 <a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">       option_awards_num, tdc1, tdc2,</span></a>
 <a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">       shrown_tot_pct, </span></a>
 <a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">       becameceo, joined_co, reason</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="st">       from EXECCOMP.ANNCOMP </span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="st">       where year &gt; 2010 and ceoann = 'CEO' and spcode = 'SP'"</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13">res =<span class="st"> </span><span class="kw">dbSendQuery</span>(wrds, sql1)</a>
-<a class="sourceLine" id="cb4-14" data-line-number="14">compensation =<span class="st"> </span><span class="kw">as_tibble</span>(<span class="kw">dbFetch</span>(res)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="st">  </span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">## rename all variable to lowercase. It's a personal</span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">## preference</span></a>
-<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="st">  </span><span class="kw">rename_all</span>(tolower)</a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="kw">dbClearResult</span>(res)</a>
-<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="kw">saveRDS</span>(compensation,</a>
-<a class="sourceLine" id="cb4-21" data-line-number="21">        <span class="st">"data/us-compensation.RDS"</span>)</a>
-<a class="sourceLine" id="cb4-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">## unique keys in the compensation data</span></a>
-<a class="sourceLine" id="cb4-24" data-line-number="24">gvkeys =<span class="st"> </span><span class="kw">unique</span>(compensation<span class="op">$</span>gvkey)</a>
-<a class="sourceLine" id="cb4-25" data-line-number="25">cusips =<span class="st"> </span><span class="kw">unique</span>(compensation<span class="op">$</span>cusip)</a>
-<a class="sourceLine" id="cb4-26" data-line-number="26">cusips8 =<span class="st"> </span>cusips[<span class="kw">str_length</span>(cusips) <span class="op">==</span><span class="st"> </span><span class="dv">8</span>]</a>
-<a class="sourceLine" id="cb4-27" data-line-number="27">cusips7 =<span class="st"> </span>cusips[<span class="kw">str_length</span>(cusips) <span class="op">==</span><span class="st"> </span><span class="dv">7</span>]</a>
-<a class="sourceLine" id="cb4-28" data-line-number="28">cusips6 =<span class="st"> </span>cusips[<span class="kw">str_length</span>(cusips) <span class="op">==</span><span class="st"> </span><span class="dv">6</span>]</a>
-<a class="sourceLine" id="cb4-29" data-line-number="29"></a>
-<a class="sourceLine" id="cb4-30" data-line-number="30"><span class="co">## Stock market value</span></a>
-<a class="sourceLine" id="cb4-31" data-line-number="31">sql2 =<span class="st"> </span><span class="kw">paste0</span>(<span class="st">"select fyear, gvkey, mkvalt, ni "</span>,</a>
-<a class="sourceLine" id="cb4-32" data-line-number="32">            <span class="st">"from COMP.FUNDA "</span>,</a>
-<a class="sourceLine" id="cb4-33" data-line-number="33">            <span class="st">"where fyear &gt; 2010 "</span>,</a>
-<a class="sourceLine" id="cb4-34" data-line-number="34">            <span class="st">"and gvkey in ('"</span>,</a>
-<a class="sourceLine" id="cb4-35" data-line-number="35">            <span class="kw">paste</span>(gvkeys, <span class="dt">collapse =</span> <span class="st">"','"</span>),</a>
-<a class="sourceLine" id="cb4-36" data-line-number="36">            <span class="st">"')"</span></a>
-<a class="sourceLine" id="cb4-37" data-line-number="37">           )</a>
-<a class="sourceLine" id="cb4-38" data-line-number="38">res =<span class="st"> </span><span class="kw">dbSendQuery</span>(wrds, sql2)</a>
-<a class="sourceLine" id="cb4-39" data-line-number="39">value =<span class="st"> </span><span class="kw">as_tibble</span>(<span class="kw">dbFetch</span>(res)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-40" data-line-number="40"><span class="st">  </span><span class="kw">rename_all</span>(tolower) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-41" data-line-number="41"><span class="st">  </span></a>
-<a class="sourceLine" id="cb4-42" data-line-number="42"><span class="co">## It turns out that there are different dataformats for </span></a>
-<a class="sourceLine" id="cb4-43" data-line-number="43"><span class="co">## some of the variables (but not market value) and there </span></a>
-<a class="sourceLine" id="cb4-44" data-line-number="44"><span class="co">## are multiple records per year-firm (one for each record).</span></a>
-<a class="sourceLine" id="cb4-45" data-line-number="45"><span class="st">  </span><span class="kw">distinct</span>()</a>
-<a class="sourceLine" id="cb4-46" data-line-number="46"><span class="kw">dbClearResult</span>(res)</a>
-<a class="sourceLine" id="cb4-47" data-line-number="47"><span class="kw">saveRDS</span>(value, </a>
-<a class="sourceLine" id="cb4-48" data-line-number="48">        <span class="st">"data/us-value.RDS"</span>)</a>
-<a class="sourceLine" id="cb4-49" data-line-number="49"></a>
-<a class="sourceLine" id="cb4-50" data-line-number="50"></a>
-<a class="sourceLine" id="cb4-51" data-line-number="51"><span class="co">## Unfortunately matching on CUSIP only works for 444</span></a>
-<a class="sourceLine" id="cb4-52" data-line-number="52"><span class="co">## companies with an 8 character CUSIP</span></a>
-<a class="sourceLine" id="cb4-53" data-line-number="53">sql3 =<span class="st"> </span><span class="kw">paste0</span>(<span class="st">"select begdat, cusip from crspa.dsfhdr "</span>,</a>
-<a class="sourceLine" id="cb4-54" data-line-number="54">              <span class="st">"where substr(cusip, 1, 8) in ('"</span>,</a>
-<a class="sourceLine" id="cb4-55" data-line-number="55">              <span class="kw">paste</span>(cusips8, <span class="dt">collapse =</span> <span class="st">"','"</span>),</a>
-<a class="sourceLine" id="cb4-56" data-line-number="56">              <span class="st">"')"</span></a>
-<a class="sourceLine" id="cb4-57" data-line-number="57">              )</a>
-<a class="sourceLine" id="cb4-58" data-line-number="58">res &lt;-<span class="st"> </span><span class="kw">dbSendQuery</span>(wrds, sql3)</a>
-<a class="sourceLine" id="cb4-59" data-line-number="59">company &lt;-<span class="st"> </span><span class="kw">dbFetch</span>(res)</a>
-<a class="sourceLine" id="cb4-60" data-line-number="60"><span class="kw">dbClearResult</span>(res)</a>
-<a class="sourceLine" id="cb4-61" data-line-number="61"><span class="kw">saveRDS</span>(company, <span class="st">"data/us-company.RDS"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="st">       FROM EXECCOMP.ANNCOMP </span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="st">       WHERE year &gt; 2010 AND ceoann = 'CEO'"</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">res &lt;-<span class="st"> </span><span class="kw">dbSendQuery</span>(wrds, sql1)</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">compensation &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(<span class="kw">dbFetch</span>(res)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="st">  </span><span class="kw">rename_all</span>(tolower)</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="kw">dbClearResult</span>(res)</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="kw">glimpse</span>(compensation)</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="kw">saveRDS</span>(compensation,</a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">        <span class="st">"../data/us-compensation-new.RDS"</span>)</a></code></pre></div>
+<p>Now, we do the same for the market value of the company.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">gvkeys &lt;-<span class="st"> </span><span class="kw">unique</span>(compensation<span class="op">$</span>gvkey)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">length</span>(gvkeys)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">sql2 &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">"SELECT fyear, gvkey, mkvalt, ni "</span>,</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">            <span class="st">"FROM COMP.FUNDA "</span>,</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">            <span class="st">"WHERE fyear &gt; 2010 "</span>,</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">            <span class="st">"AND gvkey in ('"</span>,</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">            <span class="kw">paste</span>(gvkeys, <span class="dt">collapse =</span> <span class="st">"','"</span>),</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">            <span class="st">"')"</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">           )</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">res &lt;-<span class="st"> </span><span class="kw">dbSendQuery</span>(wrds, sql2)</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">value &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(<span class="kw">dbFetch</span>(res)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="st">  </span><span class="kw">rename_all</span>(tolower)</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="kw">dbClearResult</span>(res)</a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="kw">glimpse</span>(value)</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">value &lt;-<span class="st"> </span><span class="kw">distinct</span>(value)</a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="kw">glimpse</span>(value)</a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="kw">saveRDS</span>(value, <span class="st">"../data/us-value-new.RDS"</span>)</a></code></pre></div>
 
 </div>
 </div>
@@ -549,7 +529,7 @@ database, gets the data and saves it as a <code>.RDS</code> file.</p>
 <a href="research-tools-theory.html"><button class="btn btn-default">Next</button></a>
 </p>
 <p class="build-date">Page built: 
-2020-03-04
+2021-02-24
 </p>
 </div>
 </div>

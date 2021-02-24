@@ -14,7 +14,7 @@
 
 <meta name="author" content="Stijn Masschelein" />
 
-<meta name="date" content="2020-03-04" />
+<meta name="date" content="2021-02-24" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -164,7 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>
 <span class="header-section-number">4.1</span> Data analysis tools</h2>
 <p>Our main tool for data analysis is the R statistical software
-<span class="citation">(R Core Team <a href="#ref-R-base">2019</a>)</span>. R is free software specifically aimed at statistical
+<span class="citation">(R Core Team <a href="#ref-R-base">2020</a>)</span>. R is free software specifically aimed at statistical
 analysis and graphical representation. It is a fully developed
 programming language that allows to extend it with new packages
 with new capabilities. We are going to heavily rely on some of
@@ -230,11 +230,11 @@ the console.<label for="tufte-sn-25" class="margin-toggle sidenote-number">25</l
 retyping the code is a surprising powerful way of learning to
 code. I would advise you to try to type as much of the code as
 possible when you are trying to figure out how R works.</span></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">x</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">x</a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">x &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">x</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">x &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">x</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>The little code above already shows you two things.</p>
 <ol style="list-style-type: decimal">
@@ -253,8 +253,8 @@ can do it over and over for you.</p>
 <div id="r-packages" class="section level2">
 <h2>
 <span class="header-section-number">4.3</span> R packages</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"tidyverse"</span>)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">library</span>(<span class="st">"tidyverse"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"tidyverse"</span>)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">library</span>(<span class="st">"tidyverse"</span>)</a></code></pre></div>
 <p>R packages are additions to R that give R extra functionality.
 One of the selling points of R is that it has a good way of
 integrating this extra functionality and a lot of people are
@@ -287,7 +287,7 @@ variable.</p>
 <span class="header-section-number">4.4</span> Finally some useful code!</h2>
 <p>Let’s run some code. First, we have to tell R to use the packages
 in the <code>tidyverse</code>.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>Next, we have a look at the data I used to draw the plot of the
 compensation of CEOs of S&amp;P500 companies. First, we have to assign
 the file with the data to an object, <code>us_comp</code> in this case.<label for="tufte-sn-28" class="margin-toggle sidenote-number">28</label><input type="checkbox" id="tufte-sn-28" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">28</span> The data is available on LMS or through the code in the
@@ -295,36 +295,36 @@ Appendix <a href="research-ceocomp.html#appendix-2">2.5</a></span>
 The glimpse function gives an overview of the variables in the
 data, the type of the variables, and a couple of examples of the
 values for that variable.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">us_comp &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-compensation.RDS"</span>)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">glimpse</span>(us_comp)</a></code></pre></div>
-<pre><code>## Observations: 3,458
-## Variables: 22
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">us_comp &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-compensation.RDS"</span>)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">glimpse</span>(us_comp)</a></code></pre></div>
+<pre><code>## Rows: 17,622
+## Columns: 22
 ## $ year                    &lt;dbl&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 201…
-## $ gvkey                   &lt;chr&gt; "001045", "001045", "001045", "001045", "0010…
-## $ cusip                   &lt;chr&gt; "02376R10", "02376R10", "02376R10", "02376R10…
-## $ exec_fullname           &lt;chr&gt; "Gerard J. Arpey", "Thomas W. Horton", "Thoma…
-## $ coname                  &lt;chr&gt; "AMERICAN AIRLINES GROUP INC", "AMERICAN AIRL…
+## $ gvkey                   &lt;chr&gt; "001004", "001004", "001004", "001004", "0010…
+## $ cusip                   &lt;chr&gt; "00036110", "00036110", "00036110", "00036110…
+## $ exec_fullname           &lt;chr&gt; "David P. Storch", "David P. Storch", "David …
+## $ coname                  &lt;chr&gt; "AAR CORP", "AAR CORP", "AAR CORP", "AAR CORP…
 ## $ ceoann                  &lt;chr&gt; "CEO", "CEO", "CEO", "CEO", "CEO", "CEO", "CE…
-## $ execid                  &lt;chr&gt; "14591", "26059", "26059", "46191", "46191", …
-## $ bonus                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-## $ salary                  &lt;dbl&gt; 613.842, 618.135, 591.911, 687.884, 231.538, …
-## $ stock_awards_fv         &lt;dbl&gt; 4020.380, 0.000, 4199.761, 7000.000, 10330.00…
-## $ stock_unvest_val        &lt;dbl&gt; 0.000, 309.656, 0.000, 31258.138, 14653.946, …
-## $ eip_unearn_num          &lt;dbl&gt; 0.000, 151.900, 0.000, 410.111, 112.143, 143.…
-## $ eip_unearn_val          &lt;dbl&gt; 0.000, 121.520, 0.000, 21994.253, 4749.256, 0…
-## $ option_awards           &lt;dbl&gt; 798.600, 0.000, 0.000, 0.000, 0.000, 0.000, 0…
+## $ execid                  &lt;chr&gt; "09249", "09249", "09249", "09249", "09249", …
+## $ bonus                   &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.0…
+## $ salary                  &lt;dbl&gt; 867.000, 877.838, 906.449, 906.449, 755.250, …
+## $ stock_awards_fv         &lt;dbl&gt; 2664.745, 619.200, 1342.704, 1695.200, 1150.5…
+## $ stock_unvest_val        &lt;dbl&gt; 4227.273, 6018.000, 4244.165, 4103.283, 0.000…
+## $ eip_unearn_num          &lt;dbl&gt; 32.681, 56.681, 66.929, 83.415, 0.000, 157.96…
+## $ eip_unearn_val          &lt;dbl&gt; 393.806, 1137.021, 1626.375, 2464.079, 2244.9…
+## $ option_awards           &lt;dbl&gt; 578.460, 695.520, 1622.016, 0.000, 1150.500, …
 ## $ option_awards_blk_value &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ option_awards_num       &lt;dbl&gt; 220.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0…
-## $ tdc1                    &lt;dbl&gt; 5526.835, 656.226, 19092.978, 12301.976, 1141…
-## $ tdc2                    &lt;dbl&gt; 4728.235, 656.226, 21123.739, 18975.528, 4061…
-## $ shrown_tot_pct          &lt;dbl&gt; NA, NA, 0.061, 0.240, 0.224, 0.306, 0.404, 0.…
-## $ becameceo               &lt;date&gt; 2003-04-25, 2011-11-28, 2011-11-28, 2013-12-…
-## $ joined_co               &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, 2002-12-01, 2002…
+## $ option_awards_num       &lt;dbl&gt; 49.022, 144.000, 158.400, 0.000, 0.000, 225.0…
+## $ tdc1                    &lt;dbl&gt; 5786.400, 4182.832, 5247.779, 5234.648, 3523.…
+## $ tdc2                    &lt;dbl&gt; 6105.117, 3487.312, 3809.626, 10428.375, 3523…
+## $ shrown_tot_pct          &lt;dbl&gt; 2.964, 2.893, 3.444, 3.877, 4.597, 5.417, 3.7…
+## $ becameceo               &lt;date&gt; 1996-10-09, 1996-10-09, 1996-10-09, 1996-10-…
+## $ joined_co               &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 ## $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</code></pre>
 <p>We can also look at a subset of the observations, i.e. we filter
 the observations from the company that has the key <code>001045</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">filter</span>(us_comp, gvkey <span class="op">==</span><span class="st"> "001045"</span>)</a></code></pre></div>
-<pre><code>## # A tibble: 7 x 22
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">filter</span>(us_comp, gvkey <span class="op">==</span><span class="st"> "001045"</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 22
 ##    year gvkey cusip exec_fullname coname ceoann execid bonus salary
 ##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 ## 1  2011 0010… 0237… Gerard J. Ar… AMERI… CEO    14591      0   614.
@@ -334,6 +334,8 @@ the observations from the company that has the key <code>001045</code>.</p>
 ## 5  2015 0010… 0237… William Doug… AMERI… CEO    46191      0   232.
 ## 6  2016 0010… 0237… William Doug… AMERI… CEO    46191      0     0 
 ## 7  2017 0010… 0237… William Doug… AMERI… CEO    46191      0     0 
+## 8  2018 0010… 0237… William Doug… AMERI… CEO    46191      0     0 
+## 9  2019 0010… 0237… William Doug… AMERI… CEO    46191      0     0 
 ## # … with 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
 ## #   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
 ## #   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
@@ -348,21 +350,21 @@ dataset.</p>
 <p>We can also filter data based on other variables. For instance,
 the below filters the observations from 2014 where the CEO had
 a salary over $1,000,000.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">filter</span>(us_comp, salary <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>, year <span class="op">==</span><span class="st"> </span><span class="dv">2014</span>)</a></code></pre></div>
-<pre><code>## # A tibble: 271 x 22
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">filter</span>(us_comp, salary <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>, year <span class="op">==</span><span class="st"> </span><span class="dv">2014</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 476 x 22
 ##     year gvkey cusip exec_fullname coname ceoann execid bonus salary
 ##    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1  2014 0010… 7234… Donald E. Br… PINNA… CEO    05835     0   1240 
-##  2  2014 0010… 2824… Miles D. Whi… ABBOT… CEO    14300     0   1973.
-##  3  2014 0011… 7903… Rory P. Read  ADVAN… CEO    42390     0   1000.
-##  4  2014 0013… 4385… David M. Cote HONEY… CEO    20931  5500   1866.
-##  5  2014 0013… 4280… John B. Hess  HESS … CEO    02132     0   1500 
-##  6  2014 0014… 2553… Nicholas K. … AMERI… CEO    40778     0   1241.
-##  7  2014 0014… 2581… Kenneth I. C… AMERI… CEO    02157  4500   2000 
-##  8  2014 0014… 1055… Daniel Paul … AFLAC… CEO    00013     0   1441.
-##  9  2014 0014… 2687… Robert Herma… AMERI… CEO    20972     0   1385.
-## 10  2014 0015… 3110… Frank S. Her… AMETE… CEO    04252   520.  1182.
-## # … with 261 more rows, and 13 more variables: stock_awards_fv &lt;dbl&gt;,
+##  1  2014 0010… 7234… Donald E. Br… PINNA… CEO    05835      0  1240 
+##  2  2014 0010… 0028… Miles D. Whi… ABBOT… CEO    14300      0  1973.
+##  3  2014 0011… 0079… Rory P. Read  ADVAN… CEO    42390      0  1000.
+##  4  2014 0013… 4385… David M. Cote HONEY… CEO    20931   5500  1866.
+##  5  2014 0013… 4280… John B. Hess  HESS … CEO    02132      0  1500 
+##  6  2014 0014… 0255… Nicholas K. … AMERI… CEO    40778      0  1241.
+##  7  2014 0014… 0258… Kenneth I. C… AMERI… CEO    02157   4500  2000 
+##  8  2014 0014… 0010… Daniel Paul … AFLAC… CEO    00013      0  1441.
+##  9  2014 0014… 0263… Jeffrey M. W… AMERI… CEO    11710   3640  1012.
+## 10  2014 0014… 0268… Robert Herma… AMERI… CEO    20972      0  1385.
+## # … with 466 more rows, and 13 more variables: stock_awards_fv &lt;dbl&gt;,
 ## #   stock_unvest_val &lt;dbl&gt;, eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;,
 ## #   option_awards &lt;dbl&gt;, option_awards_blk_value &lt;dbl&gt;,
 ## #   option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;, tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;,
@@ -372,40 +374,40 @@ those. If a variable has an undescriptive name, you can use
 select to rename the variable. For instance, <code>tdc1</code> is the total
 compensation of a the CEO. A more descriptive name will help you
 to remember what the variable actually means.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">select</span>(us_comp, year, coname, bonus, salary, <span class="dt">total =</span> tdc1)</a></code></pre></div>
-<pre><code>## # A tibble: 3,458 x 5
-##     year coname                      bonus salary  total
-##    &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1  2011 AMERICAN AIRLINES GROUP INC     0   614.  5527.
-##  2  2012 AMERICAN AIRLINES GROUP INC     0   618.   656.
-##  3  2013 AMERICAN AIRLINES GROUP INC     0   592. 19093.
-##  4  2014 AMERICAN AIRLINES GROUP INC     0   688. 12302.
-##  5  2015 AMERICAN AIRLINES GROUP INC     0   232. 11419.
-##  6  2016 AMERICAN AIRLINES GROUP INC     0     0    141.
-##  7  2017 AMERICAN AIRLINES GROUP INC     0     0  18115.
-##  8  2011 PINNACLE WEST CAPITAL CORP      0  1091   6698.
-##  9  2012 PINNACLE WEST CAPITAL CORP      0  1146  10123.
-## 10  2013 PINNACLE WEST CAPITAL CORP      0  1203.  7124.
-## # … with 3,448 more rows</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">select</span>(us_comp, year, coname, bonus, salary, <span class="dt">total =</span> tdc1)</a></code></pre></div>
+<pre><code>## # A tibble: 17,622 x 5
+##     year coname                      bonus salary total
+##    &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+##  1  2011 AAR CORP                        0   867  5786.
+##  2  2012 AAR CORP                        0   878. 4183.
+##  3  2013 AAR CORP                        0   906. 5248.
+##  4  2014 AAR CORP                        0   906. 5235.
+##  5  2015 AAR CORP                        0   755. 3524.
+##  6  2016 AAR CORP                        0   835  6073.
+##  7  2017 AAR CORP                        0   941  6284.
+##  8  2018 AAR CORP                        0   750  4234.
+##  9  2019 AAR CORP                        0   801. 3436.
+## 10  2011 AMERICAN AIRLINES GROUP INC     0   614. 5527.
+## # … with 17,612 more rows</code></pre>
 <p>You can also create new variables with the <code>mutate</code> function. I
 created a variable that calculates what percentage of total
 compensation is the CEO’s salary.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">select</span>(us_comp, year, coname, bonus, salary, <span class="dt">total =</span> tdc1) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">salary_percentage =</span> salary <span class="op">/</span><span class="st"> </span>total)  </a></code></pre></div>
-<pre><code>## # A tibble: 3,458 x 6
-##     year coname                      bonus salary  total salary_percentage
-##    &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;             &lt;dbl&gt;
-##  1  2011 AMERICAN AIRLINES GROUP INC     0   614.  5527.            0.111 
-##  2  2012 AMERICAN AIRLINES GROUP INC     0   618.   656.            0.942 
-##  3  2013 AMERICAN AIRLINES GROUP INC     0   592. 19093.            0.0310
-##  4  2014 AMERICAN AIRLINES GROUP INC     0   688. 12302.            0.0559
-##  5  2015 AMERICAN AIRLINES GROUP INC     0   232. 11419.            0.0203
-##  6  2016 AMERICAN AIRLINES GROUP INC     0     0    141.            0     
-##  7  2017 AMERICAN AIRLINES GROUP INC     0     0  18115.            0     
-##  8  2011 PINNACLE WEST CAPITAL CORP      0  1091   6698.            0.163 
-##  9  2012 PINNACLE WEST CAPITAL CORP      0  1146  10123.            0.113 
-## 10  2013 PINNACLE WEST CAPITAL CORP      0  1203.  7124.            0.169 
-## # … with 3,448 more rows</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">select</span>(us_comp, year, coname, bonus, salary, <span class="dt">total =</span> tdc1) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">salary_percentage =</span> salary <span class="op">/</span><span class="st"> </span>total)  </a></code></pre></div>
+<pre><code>## # A tibble: 17,622 x 6
+##     year coname                      bonus salary total salary_percentage
+##    &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;             &lt;dbl&gt;
+##  1  2011 AAR CORP                        0   867  5786.             0.150
+##  2  2012 AAR CORP                        0   878. 4183.             0.210
+##  3  2013 AAR CORP                        0   906. 5248.             0.173
+##  4  2014 AAR CORP                        0   906. 5235.             0.173
+##  5  2015 AAR CORP                        0   755. 3524.             0.214
+##  6  2016 AAR CORP                        0   835  6073.             0.138
+##  7  2017 AAR CORP                        0   941  6284.             0.150
+##  8  2018 AAR CORP                        0   750  4234.             0.177
+##  9  2019 AAR CORP                        0   801. 3436.             0.233
+## 10  2011 AMERICAN AIRLINES GROUP INC     0   614. 5527.             0.111
+## # … with 17,612 more rows</code></pre>
 <p>Remark how the <code>select</code> statement from before is chained together
 with the <code>mutate</code> statement through the pipe operator (<code>%&gt;%</code>).
 This operator pipes the results from the first statemetn to the
@@ -416,26 +418,26 @@ statistics table. I created a table with some statistics for each
 firm. I first group the observations based on the <code>gvkey</code> and
 then summarise each group with the same key by defining a number
 of new variables.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">group_by</span>(us_comp, gvkey) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">N =</span> <span class="kw">n</span>(), <span class="dt">N_CEO =</span> <span class="kw">n_distinct</span>(execid), </a>
-<a class="sourceLine" id="cb21-3" data-line-number="3">            <span class="dt">average =</span> <span class="kw">mean</span>(salary), <span class="dt">sd =</span> <span class="kw">sd</span>(salary),</a>
-<a class="sourceLine" id="cb21-4" data-line-number="4">            <span class="dt">med =</span> <span class="kw">median</span>(salary), <span class="dt">minimum =</span> <span class="kw">min</span>(salary), </a>
-<a class="sourceLine" id="cb21-5" data-line-number="5">            <span class="dt">maximum =</span> <span class="kw">max</span>(salary)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb21-6" data-line-number="6"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
-<pre><code>## # A tibble: 500 x 8
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">group_by</span>(us_comp, gvkey) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">N =</span> <span class="kw">n</span>(), <span class="dt">N_CEO =</span> <span class="kw">n_distinct</span>(execid), </a>
+<a class="sourceLine" id="cb22-3" data-line-number="3">            <span class="dt">average =</span> <span class="kw">mean</span>(salary), <span class="dt">sd =</span> <span class="kw">sd</span>(salary),</a>
+<a class="sourceLine" id="cb22-4" data-line-number="4">            <span class="dt">med =</span> <span class="kw">median</span>(salary), <span class="dt">minimum =</span> <span class="kw">min</span>(salary), </a>
+<a class="sourceLine" id="cb22-5" data-line-number="5">            <span class="dt">maximum =</span> <span class="kw">max</span>(salary)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb22-6" data-line-number="6"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 2,347 x 8
 ##    gvkey      N N_CEO average    sd   med minimum maximum
 ##    &lt;chr&gt;  &lt;int&gt; &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-##  1 001045     7     3    392. 306.   592.      0     688.
-##  2 001075     7     1   1232.  93.3 1240    1091    1355 
-##  3 001078     7     1   1910.  27.6 1900    1900    1973.
-##  4 001161     7     3    890. 155.   925.    566.   1000.
-##  5 001209     7     2   1158. 112.  1200     905.   1200 
-##  6 001230     7     2    453.  44.5  437.    410.    535.
-##  7 001300     7     2   1780. 166.  1800    1415.   1890 
-##  8 001327     7     2    738.  83.3  748.    635.    850 
-##  9 001380     7     1   1500    0   1500    1500    1500 
-## 10 001440     7     2   1233. 156.  1280.    903.   1375 
-## # … with 490 more rows</code></pre>
+##  1 001004     9     2    849.  68.3  867     750     941 
+##  2 001045     9     3    305. 316.   232.      0     688.
+##  3 001072     8     2    677. 219.   652.    450     967.
+##  4 001075     9     1   1259.  98.8 1277    1091    1395 
+##  5 001076     9     3    727. 103.   700     567.    850 
+##  6 001078     9     1   1908.  24.4 1900    1900    1973.
+##  7 001094     8     3    563.  66.2  581.    437.    626.
+##  8 001161     9     3    913. 143.   961.    566.   1026.
+##  9 001177     7     1   1049.  86.4 1000     977.   1200 
+## 10 001209     9     2   1196. 123.  1200     905.   1350 
+## # … with 2,337 more rows</code></pre>
 </div>
 <div id="looking-for-help" class="section level2">
 <h2>
@@ -518,9 +520,9 @@ Rmarkdown that the language we are using is <code>{r}</code>. The example
 below creates a code chuck where we create a random vector <code>x</code>
 with then elements where the elements are drawn from a random
 distribution with mean 4 and standard deviation 3.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="bn">```{r}</span></a>
-<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="bn">x &lt;- rnorm(n = 10, mean = 4, sd = 3)</span></a>
-<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="bn">x &lt;- rnorm(n = 10, mean = 4, sd = 3)</span></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
 
 </div>
 </div>
@@ -528,7 +530,7 @@ distribution with mean 4 and standard deviation 3.</p>
 <h3> References</h3>
 <div id="refs" class="references">
 <div id="ref-R-base">
-<p>R Core Team. 2019. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+<p>R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
 </div>
 </div>
 </body></html>
@@ -538,7 +540,7 @@ distribution with mean 4 and standard deviation 3.</p>
 <a href="maths-sim.html"><button class="btn btn-default">Next</button></a>
 </p>
 <p class="build-date">Page built: 
-2020-03-04
+2021-02-24
 </p>
 </div>
 </div>

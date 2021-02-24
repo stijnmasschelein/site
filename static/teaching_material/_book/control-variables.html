@@ -14,7 +14,7 @@
 
 <meta name="author" content="Stijn Masschelein" />
 
-<meta name="date" content="2020-03-04" />
+<meta name="date" content="2021-01-28" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -183,10 +183,10 @@ which is link (2) in the boxes.</p>
 <span class="header-section-number">8.1</span> R housecleaning.</h2>
 <p>We are going to run a lot of regressions in this chapter. I load
 the <code>stargazer</code> package which helps to make tables of regressions.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="kw">suppressMessages</span>(<span class="kw">library</span>(stargazer))</a>
-<a class="sourceLine" id="cb90-2" data-line-number="2"><span class="kw">suppressMessages</span>(<span class="kw">library</span>(tidyverse))</a>
-<a class="sourceLine" id="cb90-3" data-line-number="3"><span class="kw">library</span>(DiagrammeR)</a>
-<a class="sourceLine" id="cb90-4" data-line-number="4">tab_format &lt;-<span class="st"> </span><span class="kw">getOption</span>(<span class="st">"knitr.table.format"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="kw">suppressMessages</span>(<span class="kw">library</span>(stargazer))</a>
+<a class="sourceLine" id="cb93-2" data-line-number="2"><span class="kw">suppressMessages</span>(<span class="kw">library</span>(tidyverse))</a>
+<a class="sourceLine" id="cb93-3" data-line-number="3"><span class="kw">library</span>(DiagrammeR)</a>
+<a class="sourceLine" id="cb93-4" data-line-number="4">tab_format &lt;-<span class="st"> </span><span class="kw">getOption</span>(<span class="st">"knitr.table.format"</span>)</a></code></pre></div>
 <p>We also need to reread the data and calculate some extra variables.
 The most important feature is that we have a new dataset <code>us_firm</code>
 with two important variables. The first one is <code>ipo_employee</code> or
@@ -201,32 +201,32 @@ are abusing their power necessarily, but because they are
 intrinsically motivated to do well for the company and they are
 motivated to stay in control of the company which is easier if
 they have more shares than necessary from an incentive point of view.</span></p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">us_comp &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-compensation.RDS"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb91-2" data-line-number="2"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">total_comp =</span> tdc1, <span class="dt">shares =</span> shrown_tot_pct)</a>
-<a class="sourceLine" id="cb91-3" data-line-number="3">us_value &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-value.RDS"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb91-4" data-line-number="4"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">year =</span> fyear, <span class="dt">market_value =</span> mkvalt)</a>
-<a class="sourceLine" id="cb91-5" data-line-number="5">us_firm &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-company.RDS"</span>)</a>
-<a class="sourceLine" id="cb91-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb91-7" data-line-number="7">combined &lt;-<span class="st"> </span><span class="kw">left_join</span>(us_comp, us_firm, <span class="dt">by =</span> <span class="st">"cusip"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb91-8" data-line-number="8"><span class="st">  </span><span class="kw">left_join</span>(us_value, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">"year"</span>, <span class="st">"gvkey"</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb91-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ipo_ceo =</span> <span class="kw">I</span>(becameceo <span class="op">&lt;</span><span class="st"> </span>begdat),</a>
-<a class="sourceLine" id="cb91-10" data-line-number="10">         <span class="dt">ipo_employee =</span> <span class="kw">I</span>(joined_co <span class="op">&lt;</span><span class="st"> </span>begdat),</a>
-<a class="sourceLine" id="cb91-11" data-line-number="11">         <span class="dt">wealth =</span> shares <span class="op">*</span><span class="st"> </span>market_value <span class="op">/</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb91-12" data-line-number="12"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ipo_employee =</span> <span class="kw">if_else</span>(<span class="kw">is.na</span>(ipo_employee), ipo_ceo,</a>
-<a class="sourceLine" id="cb91-13" data-line-number="13">                                ipo_employee)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb91-14" data-line-number="14"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ipo =</span> <span class="kw">ifelse</span>(ipo_ceo, <span class="st">"ceo"</span>,</a>
-<a class="sourceLine" id="cb91-15" data-line-number="15">                      <span class="kw">ifelse</span>(ipo_employee, <span class="st">"employee"</span>, <span class="st">"none"</span>)))</a>
-<a class="sourceLine" id="cb91-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb91-17" data-line-number="17">combined_change &lt;-<span class="st"> </span><span class="kw">group_by</span>(combined, gvkey) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb91-18" data-line-number="18"><span class="st">  </span><span class="kw">arrange</span>(year) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb91-19" data-line-number="19"><span class="st">  </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb91-20" data-line-number="20">    <span class="dt">delta_total =</span> <span class="kw">log</span>(total_comp) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(<span class="kw">lag</span>(total_comp)),</a>
-<a class="sourceLine" id="cb91-21" data-line-number="21">    <span class="dt">delta_wealth =</span> <span class="kw">log</span>(wealth) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(<span class="kw">lag</span>(wealth)),</a>
-<a class="sourceLine" id="cb91-22" data-line-number="22">    <span class="dt">delta_value =</span> <span class="kw">log</span>(market_value) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(<span class="kw">lag</span>(market_value))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb91-23" data-line-number="23"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.infinite</span>(delta_total),</a>
-<a class="sourceLine" id="cb91-24" data-line-number="24">         <span class="op">!</span><span class="kw">is.infinite</span>(delta_value),</a>
-<a class="sourceLine" id="cb91-25" data-line-number="25">         <span class="op">!</span><span class="kw">is.infinite</span>(delta_wealth),</a>
-<a class="sourceLine" id="cb91-26" data-line-number="26">         year <span class="op">&gt;</span><span class="st"> </span><span class="dv">2011</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1">us_comp &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-compensation.RDS"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb94-2" data-line-number="2"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">total_comp =</span> tdc1, <span class="dt">shares =</span> shrown_tot_pct)</a>
+<a class="sourceLine" id="cb94-3" data-line-number="3">us_value &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-value.RDS"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb94-4" data-line-number="4"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">year =</span> fyear, <span class="dt">market_value =</span> mkvalt)</a>
+<a class="sourceLine" id="cb94-5" data-line-number="5">us_firm &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-company.RDS"</span>)</a>
+<a class="sourceLine" id="cb94-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb94-7" data-line-number="7">combined &lt;-<span class="st"> </span><span class="kw">left_join</span>(us_comp, us_firm, <span class="dt">by =</span> <span class="st">"cusip"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb94-8" data-line-number="8"><span class="st">  </span><span class="kw">left_join</span>(us_value, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">"year"</span>, <span class="st">"gvkey"</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb94-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ipo_ceo =</span> <span class="kw">I</span>(becameceo <span class="op">&lt;</span><span class="st"> </span>begdat),</a>
+<a class="sourceLine" id="cb94-10" data-line-number="10">         <span class="dt">ipo_employee =</span> <span class="kw">I</span>(joined_co <span class="op">&lt;</span><span class="st"> </span>begdat),</a>
+<a class="sourceLine" id="cb94-11" data-line-number="11">         <span class="dt">wealth =</span> shares <span class="op">*</span><span class="st"> </span>market_value <span class="op">/</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb94-12" data-line-number="12"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ipo_employee =</span> <span class="kw">if_else</span>(<span class="kw">is.na</span>(ipo_employee), ipo_ceo,</a>
+<a class="sourceLine" id="cb94-13" data-line-number="13">                                ipo_employee)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb94-14" data-line-number="14"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ipo =</span> <span class="kw">ifelse</span>(ipo_ceo, <span class="st">"ceo"</span>,</a>
+<a class="sourceLine" id="cb94-15" data-line-number="15">                      <span class="kw">ifelse</span>(ipo_employee, <span class="st">"employee"</span>, <span class="st">"none"</span>)))</a>
+<a class="sourceLine" id="cb94-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb94-17" data-line-number="17">combined_change &lt;-<span class="st"> </span><span class="kw">group_by</span>(combined, gvkey) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb94-18" data-line-number="18"><span class="st">  </span><span class="kw">arrange</span>(year) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb94-19" data-line-number="19"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb94-20" data-line-number="20">    <span class="dt">delta_total =</span> <span class="kw">log</span>(total_comp) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(<span class="kw">lag</span>(total_comp)),</a>
+<a class="sourceLine" id="cb94-21" data-line-number="21">    <span class="dt">delta_wealth =</span> <span class="kw">log</span>(wealth) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(<span class="kw">lag</span>(wealth)),</a>
+<a class="sourceLine" id="cb94-22" data-line-number="22">    <span class="dt">delta_value =</span> <span class="kw">log</span>(market_value) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(<span class="kw">lag</span>(market_value))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb94-23" data-line-number="23"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.infinite</span>(delta_total),</a>
+<a class="sourceLine" id="cb94-24" data-line-number="24">         <span class="op">!</span><span class="kw">is.infinite</span>(delta_value),</a>
+<a class="sourceLine" id="cb94-25" data-line-number="25">         <span class="op">!</span><span class="kw">is.infinite</span>(delta_wealth),</a>
+<a class="sourceLine" id="cb94-26" data-line-number="26">         year <span class="op">&gt;</span><span class="st"> </span><span class="dv">2011</span>)</a></code></pre></div>
 </div>
 <div id="directed-acyclical-graphs" class="section level2">
 <h2>
@@ -306,19 +306,19 @@ interested in the effect of <code>x</code> on <code>y</code> and there is anothe
 factor <code>z</code> with a large effect on <code>z</code>. We print the regression
 of <code>y</code> on <code>x</code> with and without <code>z</code> as a control variable with the
 <code>stargazer</code> package <span class="citation">(Hlavac <a href="#ref-R-stargazer">2018</a>)</span>.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">12345</span>)</a>
-<a class="sourceLine" id="cb92-2" data-line-number="2">obs =<span class="st"> </span><span class="dv">500</span></a>
-<a class="sourceLine" id="cb92-3" data-line-number="3">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> obs); z &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> obs)</a>
-<a class="sourceLine" id="cb92-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> obs, <span class="dt">mean =</span> <span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">20</span> <span class="op">*</span><span class="st"> </span>z, <span class="dt">sd =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb92-5" data-line-number="5">d &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">y =</span> y, <span class="dt">x =</span> x, <span class="dt">z =</span> z)</a>
-<a class="sourceLine" id="cb92-6" data-line-number="6">yx &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> d)</a>
-<a class="sourceLine" id="cb92-7" data-line-number="7">yxz &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span>z, <span class="dt">data =</span> d)</a>
-<a class="sourceLine" id="cb92-8" data-line-number="8"><span class="kw">stargazer</span>(yx, yxz, <span class="dt">type =</span> tab_format, </a>
-<a class="sourceLine" id="cb92-9" data-line-number="9">          <span class="dt">label =</span> <span class="st">"measurement_error"</span>,</a>
-<a class="sourceLine" id="cb92-10" data-line-number="10">          <span class="dt">omit =</span> <span class="kw">c</span>(<span class="st">"Constant"</span>), <span class="dt">digits =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb92-11" data-line-number="11">          <span class="dt">intercept.bottom =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb92-12" data-line-number="12">          <span class="dt">star.cutoffs =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span>),</a>
-<a class="sourceLine" id="cb92-13" data-line-number="13">          <span class="dt">keep.stat =</span> <span class="kw">c</span>(<span class="st">"n"</span>, <span class="st">"rsq"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">12345</span>)</a>
+<a class="sourceLine" id="cb95-2" data-line-number="2">obs =<span class="st"> </span><span class="dv">500</span></a>
+<a class="sourceLine" id="cb95-3" data-line-number="3">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> obs); z &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> obs)</a>
+<a class="sourceLine" id="cb95-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> obs, <span class="dt">mean =</span> <span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">20</span> <span class="op">*</span><span class="st"> </span>z, <span class="dt">sd =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb95-5" data-line-number="5">d &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">y =</span> y, <span class="dt">x =</span> x, <span class="dt">z =</span> z)</a>
+<a class="sourceLine" id="cb95-6" data-line-number="6">yx &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> d)</a>
+<a class="sourceLine" id="cb95-7" data-line-number="7">yxz &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span>z, <span class="dt">data =</span> d)</a>
+<a class="sourceLine" id="cb95-8" data-line-number="8"><span class="kw">stargazer</span>(yx, yxz, <span class="dt">type =</span> tab_format, </a>
+<a class="sourceLine" id="cb95-9" data-line-number="9">          <span class="dt">label =</span> <span class="st">"measurement_error"</span>,</a>
+<a class="sourceLine" id="cb95-10" data-line-number="10">          <span class="dt">omit =</span> <span class="kw">c</span>(<span class="st">"Constant"</span>), <span class="dt">digits =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb95-11" data-line-number="11">          <span class="dt">intercept.bottom =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb95-12" data-line-number="12">          <span class="dt">star.cutoffs =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span>),</a>
+<a class="sourceLine" id="cb95-13" data-line-number="13">          <span class="dt">keep.stat =</span> <span class="kw">c</span>(<span class="st">"n"</span>, <span class="st">"rsq"</span>))</a></code></pre></div>
 <table style="text-align:center">
 <tr>
 <td colspan="3" style="border-bottom: 1px solid black">
@@ -475,21 +475,21 @@ value of the company in Figure <a href="control-variables.html#fig:ownership-plo
 <p class="caption marginnote">-->Figure 8.4: Relation between CEO ownership and market value for SP500 firms (2011-2018).<!--</p>-->
 <!--</div>--></span>
 </p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">meas_data &lt;-<span class="st">  </span><span class="kw">select</span>(combined, market_value, shares, ipo) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb93-2" data-line-number="2"><span class="st">              </span><span class="kw">filter</span>(<span class="kw">complete.cases</span>(.))</a>
-<a class="sourceLine" id="cb93-3" data-line-number="3">ownership &lt;-</a>
-<a class="sourceLine" id="cb93-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">data =</span> meas_data,</a>
-<a class="sourceLine" id="cb93-5" data-line-number="5">      <span class="kw">aes</span>(<span class="dt">x =</span> market_value<span class="op">/</span><span class="dv">1000</span>, <span class="dt">y =</span> shares <span class="op">+</span><span class="st"> </span><span class="fl">0.001</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb93-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb93-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>,</a>
-<a class="sourceLine" id="cb93-8" data-line-number="8">    <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb93-9" data-line-number="9">    <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x, <span class="dt">dig =</span> <span class="dv">2</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb93-10" data-line-number="10"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>,</a>
-<a class="sourceLine" id="cb93-11" data-line-number="11">    <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
-<a class="sourceLine" id="cb93-12" data-line-number="12">    <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x, <span class="dt">dig =</span> <span class="dv">2</span>),</a>
-<a class="sourceLine" id="cb93-13" data-line-number="13">    <span class="dt">limits =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="dv">50</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb93-14" data-line-number="14"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">"CEO ownership"</span>, <span class="dt">x =</span> <span class="st">"Market Value in $ Billion"</span>)</a>
-<a class="sourceLine" id="cb93-15" data-line-number="15"><span class="kw">print</span>(ownership)</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">meas_data &lt;-<span class="st">  </span><span class="kw">select</span>(combined, market_value, shares, ipo) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="st">              </span><span class="kw">filter</span>(<span class="kw">complete.cases</span>(.))</a>
+<a class="sourceLine" id="cb96-3" data-line-number="3">ownership &lt;-</a>
+<a class="sourceLine" id="cb96-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">data =</span> meas_data,</a>
+<a class="sourceLine" id="cb96-5" data-line-number="5">      <span class="kw">aes</span>(<span class="dt">x =</span> market_value<span class="op">/</span><span class="dv">1000</span>, <span class="dt">y =</span> shares <span class="op">+</span><span class="st"> </span><span class="fl">0.001</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb96-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb96-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>,</a>
+<a class="sourceLine" id="cb96-8" data-line-number="8">    <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb96-9" data-line-number="9">    <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x, <span class="dt">dig =</span> <span class="dv">2</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb96-10" data-line-number="10"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>,</a>
+<a class="sourceLine" id="cb96-11" data-line-number="11">    <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb96-12" data-line-number="12">    <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x, <span class="dt">dig =</span> <span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb96-13" data-line-number="13">    <span class="dt">limits =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="dv">50</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb96-14" data-line-number="14"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">"CEO ownership"</span>, <span class="dt">x =</span> <span class="st">"Market Value in $ Billion"</span>)</a>
+<a class="sourceLine" id="cb96-15" data-line-number="15"><span class="kw">print</span>(ownership)</a></code></pre></div>
 <pre><code>## Warning: Removed 4 rows containing missing values (geom_point).</code></pre>
 <p>We hypothesised back in Chapter <a href="measurement.html#measurement">7</a> that
 CEOs who are founders will have higher ownership for reasons that
@@ -501,15 +501,15 @@ two variables as indicator variables in the regression because it is
 more likely that these CEOs are also the founders of the company<label for="tufte-sn-56" class="margin-toggle sidenote-number">56</label><input type="checkbox" id="tufte-sn-56" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">56</span> I will
 ignore the fact that we lose observations in calculating the new
 variables. That is not necessarily a good idea.</span>.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">form &lt;-<span class="st"> </span><span class="kw">log</span>(shares <span class="op">+</span><span class="st"> </span><span class="fl">0.001</span>) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(market_value<span class="op">/</span><span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb95-2" data-line-number="2">base &lt;-<span class="st"> </span><span class="kw">lm</span>(form, <span class="dt">data =</span> combined)</a>
-<a class="sourceLine" id="cb95-3" data-line-number="3">form_error &lt;-<span class="st"> </span><span class="kw">update</span>(form, . <span class="op">~</span><span class="st"> </span>. <span class="op">+</span><span class="st"> </span>ipo_ceo <span class="op">+</span><span class="st"> </span>ipo_employee)</a>
-<a class="sourceLine" id="cb95-4" data-line-number="4">error &lt;-<span class="st"> </span><span class="kw">lm</span>(form_error, <span class="dt">data =</span> combined)</a>
-<a class="sourceLine" id="cb95-5" data-line-number="5"><span class="kw">stargazer</span>(base, error, <span class="dt">type =</span> tab_format, </a>
-<a class="sourceLine" id="cb95-6" data-line-number="6">          <span class="dt">label =</span> <span class="st">"ownership"</span>,</a>
-<a class="sourceLine" id="cb95-7" data-line-number="7">          <span class="dt">digits =</span> <span class="dv">2</span>, <span class="dt">intercept.bottom =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb95-8" data-line-number="8">          <span class="dt">star.cutoffs =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span>),</a>
-<a class="sourceLine" id="cb95-9" data-line-number="9">          <span class="dt">keep.stat =</span> <span class="kw">c</span>(<span class="st">"n"</span>, <span class="st">"rsq"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1">form &lt;-<span class="st"> </span><span class="kw">log</span>(shares <span class="op">+</span><span class="st"> </span><span class="fl">0.001</span>) <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(market_value<span class="op">/</span><span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb98-2" data-line-number="2">base &lt;-<span class="st"> </span><span class="kw">lm</span>(form, <span class="dt">data =</span> combined)</a>
+<a class="sourceLine" id="cb98-3" data-line-number="3">form_error &lt;-<span class="st"> </span><span class="kw">update</span>(form, . <span class="op">~</span><span class="st"> </span>. <span class="op">+</span><span class="st"> </span>ipo_ceo <span class="op">+</span><span class="st"> </span>ipo_employee)</a>
+<a class="sourceLine" id="cb98-4" data-line-number="4">error &lt;-<span class="st"> </span><span class="kw">lm</span>(form_error, <span class="dt">data =</span> combined)</a>
+<a class="sourceLine" id="cb98-5" data-line-number="5"><span class="kw">stargazer</span>(base, error, <span class="dt">type =</span> tab_format, </a>
+<a class="sourceLine" id="cb98-6" data-line-number="6">          <span class="dt">label =</span> <span class="st">"ownership"</span>,</a>
+<a class="sourceLine" id="cb98-7" data-line-number="7">          <span class="dt">digits =</span> <span class="dv">2</span>, <span class="dt">intercept.bottom =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb98-8" data-line-number="8">          <span class="dt">star.cutoffs =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span>),</a>
+<a class="sourceLine" id="cb98-9" data-line-number="9">          <span class="dt">keep.stat =</span> <span class="kw">c</span>(<span class="st">"n"</span>, <span class="st">"rsq"</span>))</a></code></pre></div>
 <table style="text-align:center">
 <tr>
 <td colspan="3" style="border-bottom: 1px solid black">
@@ -731,17 +731,17 @@ variable is dependent on the <code>ipo_employee</code> variable. If
 <code>ipo_employee = 1</code>. You could also see this if you make a descriptive
 table with the percentage of observations with each theoretical
 combination of the <code>ipo_ceo</code> and <code>ipo_employee</code> variable.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">combined <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(ipo_ceo, ipo_employee, year) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(year) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb96-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb96-4" data-line-number="4">    <span class="dt">ipo_both =</span> <span class="kw">mean</span>(ipo_ceo <span class="op">*</span><span class="st"> </span>ipo_employee, <span class="dt">na.rm =</span> T),</a>
-<a class="sourceLine" id="cb96-5" data-line-number="5">    <span class="dt">ipo_ceo_only =</span> <span class="kw">mean</span>(ipo_ceo <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_employee),</a>
-<a class="sourceLine" id="cb96-6" data-line-number="6">                        <span class="dt">na.rm =</span> T),</a>
-<a class="sourceLine" id="cb96-7" data-line-number="7">    <span class="dt">ipo_empl_only =</span> <span class="kw">mean</span>((<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_ceo) <span class="op">*</span><span class="st"> </span>ipo_employee,</a>
-<a class="sourceLine" id="cb96-8" data-line-number="8">                         <span class="dt">na.rm =</span> T),</a>
-<a class="sourceLine" id="cb96-9" data-line-number="9">    <span class="dt">ipo_none =</span> <span class="kw">mean</span>((<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_ceo) <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_employee),</a>
-<a class="sourceLine" id="cb96-10" data-line-number="10">                    <span class="dt">na.rm =</span> T)</a>
-<a class="sourceLine" id="cb96-11" data-line-number="11">  ) <span class="op">%&gt;%</span><span class="st"> </span>kableExtra<span class="op">::</span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1">combined <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(ipo_ceo, ipo_employee, year) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(year) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb99-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb99-4" data-line-number="4">    <span class="dt">ipo_both =</span> <span class="kw">mean</span>(ipo_ceo <span class="op">*</span><span class="st"> </span>ipo_employee, <span class="dt">na.rm =</span> T),</a>
+<a class="sourceLine" id="cb99-5" data-line-number="5">    <span class="dt">ipo_ceo_only =</span> <span class="kw">mean</span>(ipo_ceo <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_employee),</a>
+<a class="sourceLine" id="cb99-6" data-line-number="6">                        <span class="dt">na.rm =</span> T),</a>
+<a class="sourceLine" id="cb99-7" data-line-number="7">    <span class="dt">ipo_empl_only =</span> <span class="kw">mean</span>((<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_ceo) <span class="op">*</span><span class="st"> </span>ipo_employee,</a>
+<a class="sourceLine" id="cb99-8" data-line-number="8">                         <span class="dt">na.rm =</span> T),</a>
+<a class="sourceLine" id="cb99-9" data-line-number="9">    <span class="dt">ipo_none =</span> <span class="kw">mean</span>((<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_ceo) <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>ipo_employee),</a>
+<a class="sourceLine" id="cb99-10" data-line-number="10">                    <span class="dt">na.rm =</span> T)</a>
+<a class="sourceLine" id="cb99-11" data-line-number="11">  ) <span class="op">%&gt;%</span><span class="st"> </span>kableExtra<span class="op">::</span><span class="kw">kable</span>(<span class="dt">digits =</span> <span class="dv">2</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <table>
 <thead><tr>
 <th style="text-align:right;">
@@ -927,12 +927,12 @@ they were already CEO (and thus also employee) at the time of the
 IPO<label for="tufte-sn-58" class="margin-toggle sidenote-number">58</label><input type="checkbox" id="tufte-sn-58" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">58</span> This ignores the <span class="math inline">\(0.001\)</span> adjustment but it does not really make
 a difference in this example.</span>. We can easily calculate these values
 in <code>R</code>.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">beta2 &lt;-<span class="st"> </span>error<span class="op">$</span>coefficients[<span class="st">"ipo_ceoTRUE"</span>]</a>
-<a class="sourceLine" id="cb97-2" data-line-number="2">beta3 &lt;-<span class="st"> </span>error<span class="op">$</span>coefficients[<span class="st">"ipo_employeeTRUE"</span>]</a>
-<a class="sourceLine" id="cb97-3" data-line-number="3"><span class="kw">exp</span>(beta3)</a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">beta2 &lt;-<span class="st"> </span>error<span class="op">$</span>coefficients[<span class="st">"ipo_ceoTRUE"</span>]</a>
+<a class="sourceLine" id="cb100-2" data-line-number="2">beta3 &lt;-<span class="st"> </span>error<span class="op">$</span>coefficients[<span class="st">"ipo_employeeTRUE"</span>]</a>
+<a class="sourceLine" id="cb100-3" data-line-number="3"><span class="kw">exp</span>(beta3)</a></code></pre></div>
 <pre><code>## ipo_employeeTRUE 
 ##         3.040505</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">exp</span>(beta2 <span class="op">+</span><span class="st"> </span>beta3)</a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="kw">exp</span>(beta2 <span class="op">+</span><span class="st"> </span>beta3)</a></code></pre></div>
 <pre><code>## ipo_ceoTRUE 
 ##    3.494751</code></pre>
 <p>This means that the CEO who has already an employee at the time of IPO,
@@ -1232,7 +1232,7 @@ not in their company of similar size at the time of the IPO.</p>
 <a href="assessment.html"><button class="btn btn-default">Next</button></a>
 </p>
 <p class="build-date">Page built: 
-2020-03-04
+2021-01-28
 </p>
 </div>
 </div>

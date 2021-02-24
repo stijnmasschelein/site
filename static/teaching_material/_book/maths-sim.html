@@ -14,7 +14,7 @@
 
 <meta name="author" content="Stijn Masschelein" />
 
-<meta name="date" content="2020-03-04" />
+<meta name="date" content="2021-02-24" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -333,7 +333,7 @@ program.</p>
 <h2>
 <span class="header-section-number">5.5</span> Simulation</h2>
 <p>First, let us load the <code>tidyverse</code> package.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>Next, we simulate data for <code>obs=500</code> observations. <code>size_rate</code>
 is a parameter that controls the size of firms. A value of 1
 means that firms have constant returns to size, the same
@@ -346,12 +346,12 @@ size of the firms so that I get similar numbers as the real data.<label for="tuf
 anything about whether we should measure firm size in USD, in AUD
 or in CNY. So the scale we use is arbitrary.</span> <code>w0</code> is the base
 wage for the least talented CEO.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">obs &lt;-<span class="st"> </span><span class="dv">500</span></a>
-<a class="sourceLine" id="cb29-2" data-line-number="2">size_rate &lt;-<span class="st"> </span><span class="dv">1</span>; talent_rate &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span>; </a>
-<a class="sourceLine" id="cb29-3" data-line-number="3">C &lt;-<span class="st"> </span><span class="dv">10</span>; scale &lt;-<span class="st"> </span><span class="dv">600</span>; w0 &lt;-<span class="st"> </span><span class="dv">0</span>; </a>
-<a class="sourceLine" id="cb29-4" data-line-number="4">n &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>obs)</a>
-<a class="sourceLine" id="cb29-5" data-line-number="5">size &lt;-<span class="st"> </span>scale <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(<span class="op">-</span>size_rate)</a>
-<a class="sourceLine" id="cb29-6" data-line-number="6">talent &lt;-<span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>talent_rate <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(talent_rate)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">obs &lt;-<span class="st"> </span><span class="dv">500</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">size_rate &lt;-<span class="st"> </span><span class="dv">1</span>; talent_rate &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span>; </a>
+<a class="sourceLine" id="cb30-3" data-line-number="3">C &lt;-<span class="st"> </span><span class="dv">10</span>; scale &lt;-<span class="st"> </span><span class="dv">600</span>; w0 &lt;-<span class="st"> </span><span class="dv">0</span>; </a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">n &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>obs)</a>
+<a class="sourceLine" id="cb30-5" data-line-number="5">size &lt;-<span class="st"> </span>scale <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(<span class="op">-</span>size_rate)</a>
+<a class="sourceLine" id="cb30-6" data-line-number="6">talent &lt;-<span class="st"> </span><span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>talent_rate <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(talent_rate)</a></code></pre></div>
 <p><code>n</code> is an <code>R</code> vector of length <code>obs</code> (i.e. 500) with values from
 1 to <code>obs</code>. So it is the rank in size and talent for each firm
 and CEO. You can see what <code>n</code> look like by just typing <code>n</code> and
@@ -374,21 +374,21 @@ surplus our CEO would generate in the smaller firm over what
 their CEO is now generating.<label for="tufte-sn-34" class="margin-toggle sidenote-number">34</label><input type="checkbox" id="tufte-sn-34" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">34</span> Again <code>scale</code> and <code>C</code> just scale
 some of the values so that they are easier to interpret. These
 parameters are less important for the economic intuition.</span></p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">wage &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, obs)</a>
-<a class="sourceLine" id="cb30-2" data-line-number="2">wage[obs] &lt;-<span class="st"> </span>w0</a>
-<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> (obs <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">:</span><span class="dv">1</span>){</a>
-<a class="sourceLine" id="cb30-4" data-line-number="4">  wage[i] &lt;-<span class="st"> </span>wage[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>scale <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>size[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">*</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb30-5" data-line-number="5"><span class="st">    </span>(talent[i] <span class="op">-</span><span class="st"> </span>talent[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb30-6" data-line-number="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">wage &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, obs)</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">wage[obs] &lt;-<span class="st"> </span>w0</a>
+<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> (obs <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">:</span><span class="dv">1</span>){</a>
+<a class="sourceLine" id="cb31-4" data-line-number="4">  wage[i] &lt;-<span class="st"> </span>wage[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>scale <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>size[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">*</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb31-5" data-line-number="5"><span class="st">    </span>(talent[i] <span class="op">-</span><span class="st"> </span>talent[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb31-6" data-line-number="6">}</a></code></pre></div>
 <p>Now we can put all our variables in a dataset. The <code>tidyverse</code>
 calls datasets <code>tibbles</code> and they are the main object that
 <code>tidyverse</code> functions work on.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">simulated_data &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
-<a class="sourceLine" id="cb31-2" data-line-number="2">  <span class="dt">n =</span> n,</a>
-<a class="sourceLine" id="cb31-3" data-line-number="3">  <span class="dt">size =</span> size,</a>
-<a class="sourceLine" id="cb31-4" data-line-number="4">  <span class="dt">talent =</span> talent,</a>
-<a class="sourceLine" id="cb31-5" data-line-number="5">  <span class="dt">wage =</span> wage</a>
-<a class="sourceLine" id="cb31-6" data-line-number="6">) </a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">simulated_data &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">  <span class="dt">n =</span> n,</a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">  <span class="dt">size =</span> size,</a>
+<a class="sourceLine" id="cb32-4" data-line-number="4">  <span class="dt">talent =</span> talent,</a>
+<a class="sourceLine" id="cb32-5" data-line-number="5">  <span class="dt">wage =</span> wage</a>
+<a class="sourceLine" id="cb32-6" data-line-number="6">) </a></code></pre></div>
 </div>
 <div id="visualisations" class="section level2">
 <h2>
@@ -413,16 +413,16 @@ what we found in Chapter <a href="research-ceocomp.html#research-ceocomp">2</a> 
 <p class="caption marginnote">-->Figure 5.1: Relation between simulated CEO wage and firm size.<!--</p>-->
 <!--</div>--></span>
 </p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">qplot</span>(<span class="dt">data =</span> simulated_data, <span class="dt">y =</span> wage, <span class="dt">x =</span> size)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">qplot</span>(<span class="dt">data =</span> simulated_data, <span class="dt">y =</span> wage, <span class="dt">x =</span> size)</a></code></pre></div>
 <p>
 <span class="marginnote shownote">
 <!--
 <div class="figure">--><span id="fig:wage-size-data"></span>
-<img src="method_accfin_files/figure-html/wage-size-data-1.png" alt="Relation between CEO compensation and market value for SP500 firms (2011-2018)." width="672"><!--
-<p class="caption marginnote">-->Figure 5.2: Relation between CEO compensation and market value for SP500 firms (2011-2018).<!--</p>-->
+<img src="method_accfin_files/figure-html/wage-size-data-1.png" alt="(ref:us-comp-value-plot)" width="672"><!--
+<p class="caption marginnote">-->Figure 5.2: (ref:us-comp-value-plot)<!--</p>-->
 <!--</div>--></span>
 </p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">print</span>(plot_comp_value)</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">print</span>(plot_comp_value)</a></code></pre></div>
 <p>To better understand the assumptions in the theory, we can also
 plot how talent and size change as a function of the rank of
 respectively the CEO and the firm. I glossed over the details
@@ -442,9 +442,9 @@ is driving the difference in wages according to this theory.</p>
 <p class="caption marginnote">-->Figure 5.3: Relation between talent and rank of CEO (A) and between size and rank of the firm (B).<!--</p>-->
 <!--</div>--></span>
 </p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">p_talent &lt;-<span class="st"> </span><span class="kw">qplot</span>(<span class="dt">data =</span> simulated_data, <span class="dt">y =</span> talent, <span class="dt">x =</span> n)</a>
-<a class="sourceLine" id="cb34-2" data-line-number="2">p_size &lt;-<span class="st"> </span><span class="kw">qplot</span>(<span class="dt">data =</span> simulated_data, <span class="dt">y =</span> size, <span class="dt">x =</span> n) </a>
-<a class="sourceLine" id="cb34-3" data-line-number="3">cowplot<span class="op">::</span><span class="kw">plot_grid</span>(p_talent, p_size, <span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">labels =</span> <span class="st">"AUTO"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">p_talent &lt;-<span class="st"> </span><span class="kw">qplot</span>(<span class="dt">data =</span> simulated_data, <span class="dt">y =</span> talent, <span class="dt">x =</span> n)</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">p_size &lt;-<span class="st"> </span><span class="kw">qplot</span>(<span class="dt">data =</span> simulated_data, <span class="dt">y =</span> size, <span class="dt">x =</span> n) </a>
+<a class="sourceLine" id="cb35-3" data-line-number="3">cowplot<span class="op">::</span><span class="kw">plot_grid</span>(p_talent, p_size, <span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">labels =</span> <span class="st">"AUTO"</span>)</a></code></pre></div>
 <p>In the code, I use a function from the <code>cowplot</code> package to plot
 different plots (<code>p_talent</code> and <code>p_size</code>) in 1 column. The
 automatic labels will add the A and B labels for the plots.</p>
@@ -476,40 +476,40 @@ emphasise that there is nothing special about simulated data.
 Some people prefer more dignified names. If you prefer that, you
 can use any other name for the function. Just make sure that it
 is clear what your function is doing.</span></p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">create_fake_data &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">size_rate =</span> <span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb35-2" data-line-number="2">                             <span class="dt">talent_rate =</span> <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb35-3" data-line-number="3">                             <span class="dt">w0 =</span> <span class="fl">.001</span>, <span class="dt">C =</span> <span class="dv">1</span>){</a>
-<a class="sourceLine" id="cb35-4" data-line-number="4">  scale =<span class="st"> </span><span class="dv">600</span></a>
-<a class="sourceLine" id="cb35-5" data-line-number="5">  n =<span class="st"> </span><span class="dv">1</span><span class="op">:</span>obs</a>
-<a class="sourceLine" id="cb35-6" data-line-number="6">  size =<span class="st"> </span>scale <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(<span class="op">-</span>size_rate) </a>
-<a class="sourceLine" id="cb35-7" data-line-number="7">  talent =<span class="st">  </span><span class="dv">-1</span><span class="op">/</span>talent_rate <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>talent_rate</a>
-<a class="sourceLine" id="cb35-8" data-line-number="8">  wage =<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, obs)</a>
-<a class="sourceLine" id="cb35-9" data-line-number="9">  wage[obs] =<span class="st"> </span>w0 </a>
-<a class="sourceLine" id="cb35-10" data-line-number="10">  <span class="cf">for</span> (i <span class="cf">in</span> (obs <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">:</span><span class="dv">1</span>){</a>
-<a class="sourceLine" id="cb35-11" data-line-number="11">    wage[i] =<span class="st">  </span>wage[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>scale <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>size[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">*</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb35-12" data-line-number="12"><span class="st">      </span>(talent[i] <span class="op">-</span><span class="st"> </span>talent[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb35-13" data-line-number="13">  }</a>
-<a class="sourceLine" id="cb35-14" data-line-number="14">  fake_data =<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">tibble</span>(<span class="dt">n =</span> n, <span class="dt">size =</span> size, <span class="dt">talent =</span> talent, </a>
-<a class="sourceLine" id="cb35-15" data-line-number="15">                            <span class="dt">wage =</span> wage)</a>
-<a class="sourceLine" id="cb35-16" data-line-number="16">  <span class="kw">return</span>(fake_data)</a>
-<a class="sourceLine" id="cb35-17" data-line-number="17">}</a>
-<a class="sourceLine" id="cb35-18" data-line-number="18">fake_data &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">talent_rate =</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">C =</span> <span class="fl">0.01</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">create_fake_data &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">size_rate =</span> <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">                             <span class="dt">talent_rate =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb36-3" data-line-number="3">                             <span class="dt">w0 =</span> <span class="fl">.001</span>, <span class="dt">C =</span> <span class="dv">1</span>){</a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">  scale =<span class="st"> </span><span class="dv">600</span></a>
+<a class="sourceLine" id="cb36-5" data-line-number="5">  n =<span class="st"> </span><span class="dv">1</span><span class="op">:</span>obs</a>
+<a class="sourceLine" id="cb36-6" data-line-number="6">  size =<span class="st"> </span>scale <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>(<span class="op">-</span>size_rate) </a>
+<a class="sourceLine" id="cb36-7" data-line-number="7">  talent =<span class="st">  </span><span class="dv">-1</span><span class="op">/</span>talent_rate <span class="op">*</span><span class="st"> </span>n <span class="op">^</span><span class="st"> </span>talent_rate</a>
+<a class="sourceLine" id="cb36-8" data-line-number="8">  wage =<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, obs)</a>
+<a class="sourceLine" id="cb36-9" data-line-number="9">  wage[obs] =<span class="st"> </span>w0 </a>
+<a class="sourceLine" id="cb36-10" data-line-number="10">  <span class="cf">for</span> (i <span class="cf">in</span> (obs <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">:</span><span class="dv">1</span>){</a>
+<a class="sourceLine" id="cb36-11" data-line-number="11">    wage[i] =<span class="st">  </span>wage[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>scale <span class="op">*</span><span class="st"> </span>C <span class="op">*</span><span class="st"> </span>size[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>] <span class="op">*</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb36-12" data-line-number="12"><span class="st">      </span>(talent[i] <span class="op">-</span><span class="st"> </span>talent[i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb36-13" data-line-number="13">  }</a>
+<a class="sourceLine" id="cb36-14" data-line-number="14">  fake_data =<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">tibble</span>(<span class="dt">n =</span> n, <span class="dt">size =</span> size, <span class="dt">talent =</span> talent, </a>
+<a class="sourceLine" id="cb36-15" data-line-number="15">                            <span class="dt">wage =</span> wage)</a>
+<a class="sourceLine" id="cb36-16" data-line-number="16">  <span class="kw">return</span>(fake_data)</a>
+<a class="sourceLine" id="cb36-17" data-line-number="17">}</a>
+<a class="sourceLine" id="cb36-18" data-line-number="18">fake_data &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">talent_rate =</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">C =</span> <span class="fl">0.01</span>)</a></code></pre></div>
 <p>We can create new datasets where the talent_rate is increased to
 1 (high talent) and the effect of CEOs on the surplus is
 increased to .015 instead of .10. I choose .10 in this simulation
 instead of 10 so that all values can be interpreted in billion
 USD to mimic the real data. Again, that is a rather arbitrary
 scaling issue.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">data1 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">C =</span> <span class="fl">.01</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">"low talent"</span>, <span class="dt">C =</span> <span class="st">"low effect"</span>)</a>
-<a class="sourceLine" id="cb36-3" data-line-number="3">data2 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">1</span>, <span class="dt">C =</span> <span class="fl">.01</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">"high talent"</span>, <span class="dt">C =</span> <span class="st">"low effect"</span>)</a>
-<a class="sourceLine" id="cb36-5" data-line-number="5">data3 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">C =</span> <span class="fl">.015</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb36-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">"low talent"</span>, <span class="dt">C =</span> <span class="st">"high effect"</span>)</a>
-<a class="sourceLine" id="cb36-7" data-line-number="7">data4 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">1</span>, <span class="dt">C =</span> <span class="fl">.015</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb36-8" data-line-number="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">"high talent"</span>, <span class="dt">C =</span> <span class="st">"high effect"</span>)</a>
-<a class="sourceLine" id="cb36-9" data-line-number="9">data_exp &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(data1, data2, data3, data4)</a>
-<a class="sourceLine" id="cb36-10" data-line-number="10">data_exp</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">data1 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">C =</span> <span class="fl">.01</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">"low talent"</span>, <span class="dt">C =</span> <span class="st">"low effect"</span>)</a>
+<a class="sourceLine" id="cb37-3" data-line-number="3">data2 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">1</span>, <span class="dt">C =</span> <span class="fl">.01</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb37-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">"high talent"</span>, <span class="dt">C =</span> <span class="st">"low effect"</span>)</a>
+<a class="sourceLine" id="cb37-5" data-line-number="5">data3 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">C =</span> <span class="fl">.015</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb37-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">"low talent"</span>, <span class="dt">C =</span> <span class="st">"high effect"</span>)</a>
+<a class="sourceLine" id="cb37-7" data-line-number="7">data4 &lt;-<span class="st"> </span><span class="kw">create_fake_data</span>(<span class="dt">obs =</span> <span class="dv">500</span>, <span class="dt">talent_rate =</span> <span class="dv">1</span>, <span class="dt">C =</span> <span class="fl">.015</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb37-8" data-line-number="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">talent_rate =</span> <span class="st">"high talent"</span>, <span class="dt">C =</span> <span class="st">"high effect"</span>)</a>
+<a class="sourceLine" id="cb37-9" data-line-number="9">data_exp &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(data1, data2, data3, data4)</a>
+<a class="sourceLine" id="cb37-10" data-line-number="10">data_exp</a></code></pre></div>
 <pre><code>## # A tibble: 2,000 x 6
 ##        n  size talent   wage talent_rate C         
 ##    &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;     
@@ -545,11 +545,11 @@ variable and the <code>C</code> variable.</p>
 <p class="caption marginnote">-->Figure 5.4: (ref:sim-combined)<!--</p>-->
 <!--</div>--></span>
 </p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">plot_exp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data_exp, <span class="kw">aes</span>(<span class="dt">x =</span> size, <span class="dt">y =</span> wage)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">colour =</span> <span class="st">"gray"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb38-4" data-line-number="4"><span class="st">  </span><span class="kw">facet_grid</span>(talent_rate <span class="op">~</span><span class="st"> </span>C)</a>
-<a class="sourceLine" id="cb38-5" data-line-number="5"><span class="kw">print</span>(plot_exp)</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">plot_exp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(data_exp, <span class="kw">aes</span>(<span class="dt">x =</span> size, <span class="dt">y =</span> wage)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb39-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">colour =</span> <span class="st">"gray"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb39-4" data-line-number="4"><span class="st">  </span><span class="kw">facet_grid</span>(talent_rate <span class="op">~</span><span class="st"> </span>C)</a>
+<a class="sourceLine" id="cb39-5" data-line-number="5"><span class="kw">print</span>(plot_exp)</a></code></pre></div>
 <p>It looks like our theory is much more sensitive to changes in
 the talent rate than in changes to the scaling effect.</p>
 </div>
@@ -602,7 +602,7 @@ your statistical test.</p>
 <a href="linear-regression.html"><button class="btn btn-default">Next</button></a>
 </p>
 <p class="build-date">Page built: 
-2020-03-04
+2021-02-24
 </p>
 </div>
 </div>
