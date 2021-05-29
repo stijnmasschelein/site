@@ -1,0 +1,80 @@
+---
+title: Quadratic and Cubic Terms in Linear Models.
+author: Stijn
+date: '2018-03-15'
+slug: quadratic-and-cubic-terms-in-linear-models
+categories:
+  - econometrics
+tags: []
+math: true
+---
+
+
+
+<p>In our weekly seminar, Robert Faff presented a paper with an OLS model with
+the quadratic and cubic term effects. The dependent variable in this model
+is the change in cash holdings (<span class="math inline">\(\Delta CH\)</span>) by a company and the independent
+variable is the deviation of current cash holding from the optimal level
+(<span class="math inline">\(\Delta OPT\)</span>). The paper argues that there are three different regimes of
+adjustment speed of cash holdings. Very high cash holdings will lead to the
+largest adjustment back to the optimal level, very low cash holdings will lead
+to a large but smaller adjustment towards the optimal level, the medium level
+of cash holdings leads to the smallest (or no) adjustment. This is the
+motivation to use a cubic model.</p>
+<p>The relevant part of the OLS model is</p>
+<p><span class="math display">\[
+\Delta CH_i = \beta_0 + \beta_1 \Delta OPT_i + \beta_2 \Delta OPT_i^2 
++ \beta_3 \Delta OPT_i^3 + \epsilon_i
+\]</span></p>
+<p>The results show that <span class="math inline">\(\beta_0 = -0.0038\)</span>, <span class="math inline">\(\beta_1=0.2633\)</span>, <span class="math inline">\(\beta_2=-0.0790\)</span>,
+and <span class="math inline">\(\beta_3=0.3827\)</span>. The problem is that those coefficients alone do not
+necessarily tells us anything about the three regimes and the speed of cash
+holding adjustment. Typically we are interested in the marginal effect of
+a variable. In this case the speed of adjustment which you can see as</p>
+<p><span class="math display">\[
+\frac{\partial \Delta CH}{\partial \Delta OPT} = \beta_1 + 2 \beta_2 \Delta OPT + 
+  3\beta_3 \Delta OPT^2
+\]</span></p>
+<p>You can see that the speed of adjustment depends on three coefficients and the
+value of <span class="math inline">\(\Delta OPT\)</span>. One way to represent the effect of <span class="math inline">\(\Delta OPT\)</span> on
+<span class="math inline">\(\Delta CH\)</span> is to give the effect for different levels of <span class="math inline">\(\Delta OPT\)</span> and that
+is what the paper does. Another way of doing that is to make a plot. I quickly
+show how you can do that in <code>R</code>.</p>
+<p>First of all, I have to make a couple of assumptions because I don’t have the
+full data. From the descriptive statistics, we know the meand (<code>mopt</code>) and
+(<code>sdopt</code>) for <span class="math inline">\(\Delta OPT\)</span>. From those we can generate the distribution of
+deviations. I tried two options: a normal distribution (<code>opt_dev_norm</code>) and a
+t-distribution with 3 degrees of freedom (<code>opt_dev_t</code>). The latter will give
+us larger outliers. Than we just calculate the cash holding change based on
+the ’s above and the OLS specification. Finally, you can plot the relation
+between change in cash holding and the deviation from the optimal level.</p>
+<p>What struck me was that the three regimes are much more clear with the
+t-distribution than with the normal distribution for the deviations. In other
+words, it looks like the extreme cases are doing a lot of work to identify the
+regimes.</p>
+<pre class="r"><code>require(ggplot2)</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre class="r"><code>mopt = -0.0026
+sdopt = 0.1488
+opt_dev_norm = rnorm(1e4, mopt, sdopt)
+opt_dev_t = rt(1e4, df = 3) * sqrt(sdopt^2/3) + mopt
+round(quantile(opt_dev_norm, probs = c(0.75, 0.5, 0.25)), 2)</code></pre>
+<pre><code>##  75%  50%  25% 
+##  0.1  0.0 -0.1</code></pre>
+<pre class="r"><code>round(quantile(opt_dev_t, probs = c(0.75, 0.5, 0.25)), 2)</code></pre>
+<pre><code>##   75%   50%   25% 
+##  0.06  0.00 -0.07</code></pre>
+<pre class="r"><code>cash_change_norm = -0.0038 + 0.2633 * opt_dev_norm - 0.0790 * opt_dev_norm ^ 2 + 
+  0.3827 * opt_dev_norm ^ 3
+normplot = qplot(x = opt_dev_norm, y = cash_change_norm) +
+  ggtitle(&quot;Normal distributed deviations&quot;) +
+  theme_classic()
+cash_change_t = -0.0038 + 0.2633 * opt_dev_t - 0.0790 * opt_dev_t ^ 2 + 
+  0.3827 * opt_dev_t ^ 3
+tplot = qplot(x = opt_dev_t, y = cash_change_t) +
+  ggtitle(&quot;T distributed deviations&quot;) +
+  theme_classic()
+print(normplot)</code></pre>
+<p><img src="/post/2018-03-15-quadratic-and-cubic-terms-in-linear-models_files/figure-html/cubic_ols-1.png" width="672" /></p>
+<pre class="r"><code>print(tplot)</code></pre>
+<p><img src="/post/2018-03-15-quadratic-and-cubic-terms-in-linear-models_files/figure-html/cubic_ols-2.png" width="672" /></p>
