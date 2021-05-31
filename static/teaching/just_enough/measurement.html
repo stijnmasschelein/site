@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Chapter 7 Measurement and Theory | Just Enough To Be Dangerous" />
+<meta property="og:type" content="book" />
+
+
+<meta property="og:description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance." />
+
+
+<meta name="author" content="Stijn Masschelein" />
+
+<meta name="date" content="2021-02-24" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance.">
+
+<title>Chapter 7 Measurement and Theory | Just Enough To Be Dangerous</title>
+
+<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/envisioned.css" rel="stylesheet" />
+<link href="libs/msmb-css-0/msmb.css" rel="stylesheet" />
+<script>
+function toggle_visibility(id1, id2) {
+var e = document.getElementById(id1);
+var f = document.getElementById(id2);
+
+e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+
+if(f.classList.contains('fa-plus-square')) {
+    f.classList.add('fa-minus-square')
+    f.classList.remove('fa-plus-square')
+} else {
+    f.classList.add('fa-plus-square')
+    f.classList.remove('fa-minus-square')
+}
+
+}
+</script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+
+</head>
+
+<body>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul class="navbar">
+<li class="msmb"><p class="title">Just Enough To Be Dangerous<p><p class="author">Stijn Masschelein</p>
+<li class="dropdown" style="float:right">
+<a href="javascript:void(0)" class="dropbtn">&#x25BE; Chapters</a>
+<div class="dropdown-content">
+<a href="index.html"><span class="toc-section-number">1</span> Preamble</a>
+<a href="research-ceocomp.html"><span class="toc-section-number">2</span> A Research Project: CEO Compensation</a>
+<a href="research-tools-theory.html"><span class="toc-section-number">3</span> Research Tools - Theory</a>
+<a href="research-tools-data-analysis.html"><span class="toc-section-number">4</span> Research tools - Data Analysis</a>
+<a href="maths-sim.html"><span class="toc-section-number">5</span> Theory: Maths and Simulations</a>
+<a href="linear-regression.html"><span class="toc-section-number">6</span> Linear regression in <code>R</code></a>
+<a id="active-page" href="measurement.html"><span class="toc-section-number">7</span> Measurement and Theory</a><ul class="toc-sections">
+<li class="toc"><a href="#introduction-3"> Introduction</a></li>
+<li class="toc"><a href="#assumptions-about-ceos"> Assumptions About CEOs</a></li>
+<li class="toc"><a href="#optimal-incentives"> Optimal CEO incentives</a></li>
+<li class="toc"><a href="#data-sensitivity"> What does the data say?</a></li>
+<li class="toc"><a href="#three-pay-performance-sensitivities"> Three pay-performance sensitivities</a></li>
+<li class="toc"><a href="#comparison-plot"> Comparison plot</a></li>
+<li class="toc"><a href="#libby-boxes"> Libby boxes</a></li>
+<li class="toc"><a href="#pvalue"> Are incentives independent of size?</a></li>
+</ul>
+<a href="control-variables.html"><span class="toc-section-number">8</span> Control Variables</a>
+<a href="assessment.html"><span class="toc-section-number">9</span> Assessment</a>
+<a href="references.html"><span class="toc-section-number">10</span> References</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<div id="measurement" class="section level1">
+<h1>
+<span class="header-section-number">Chapter 7</span> Measurement and Theory</h1>
+<div id="introduction-3" class="section level2">
+<h2>
+<span class="header-section-number">7.1</span> Introduction</h2>
+<p>Chapter <a href="maths-sim.html#maths-sim">5</a> explained how different functions can
+describe the relation between total CEO compensation and firm
+size (or firm value). While the total amount of CEO compensation
+is a hot-button issue, another discussion is whether CEO
+compensation reflects pay-for-performance. That is, do CEOs get
+more compensation when the firm performance better and vice
+versa.</p>
+<p>In 1990, <span class="citation">Jensen and Murphy (<a href="#ref-jensen_performance_1990">1990</a>)</span> reported that for every $1000
+loss (gain) in firm value, a CEO only loses (gains) $3.25 and
+took that as evidence that CEO compensation was not aligned with
+shareholder value.<label for="tufte-sn-5" class="margin-toggle sidenote-number">5</label><input type="checkbox" id="tufte-sn-5" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">5</span> This study is 30 years old and the authors would argue
+that CEO compensation is currently better aligned with firm
+performance.</span> In this chapter, I will use advances in the
+literature to show that their conclusion depends on how
+pay-performance sensitivity is measured. The main take-away from
+this chapter should be that the way you measure your variables is
+guided by the assumptions in your theory.</p>
+</div>
+<div id="assumptions-about-ceos" class="section level2">
+<h2>
+<span class="header-section-number">7.2</span> Assumptions About CEOs</h2>
+<p>There are two assumptions we can make about CEOS. The first is
+what the impact is of a CEO on the firm and the second is about
+the CEO’s preferences. Let us tackle these assumptions in order..<label for="tufte-sn-6" class="margin-toggle sidenote-number">6</label><input type="checkbox" id="tufte-sn-6" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">6</span> This chapter is entirely inspired by <span class="citation">Edmans and Gabaix (<a href="#ref-edmans2016executive">2016</a>)</span></span></p>
+<p>The first assumption is about whether the actions of a CEO scale
+with the size of the firm. That is, do the actions of a CEO have
+the same impact on firm value in a small firm and in a large
+firm? Some actions such as using the corporate jet or sponsoring
+a sports team have the same impact independent of the firm size.
+If the company pays for a corporate jet, they pay the same amount
+of money whether they are large or small. Other actions such as
+implementing a better strategy, attracting better employees, or
+developing better relations with investors will impact the entire
+firm and thus will have a larger monetary impact in large firms.<label for="tufte-sn-7" class="margin-toggle sidenote-number">7</label><input type="checkbox" id="tufte-sn-7" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">7</span> In a way, the question is whether shareholders should care more
+about the ability of CEOs to directly destroy value or trust in
+the CEOs ability to create value. Although, in a larger firm it
+might also be easier to fraudulently embezzle more money.</span></p>
+<p>The second assumption is how CEOs value their leisure time. They
+can see leisure time as independent of the compensation. For
+instance, they could think of the opportunity cost of being at
+work. They could value their time off work as independent of
+their income. A day with family is as important independent of
+your compensation. However, the other assumption is that leisure
+time is more valuable if you have high compensation. For
+instance, if you earn a lot of money, you can do a lot more on
+your holidays.<label for="tufte-sn-8" class="margin-toggle sidenote-number">8</label><input type="checkbox" id="tufte-sn-8" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">8</span> Elon Musk and Richard Branson seem to have a lot
+of fun when they are not working.</span> Another, possibility is that
+CEOs are already rich and they could just invest their own
+fortune and earn a lot of money that way.<label for="tufte-sn-9" class="margin-toggle sidenote-number">9</label><input type="checkbox" id="tufte-sn-9" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">9</span> Think of hedge fund
+managers who decide to close their fund and run a family fund to
+just invest their own money and that of some associates and
+family members.</span></p>
+</div>
+<div id="optimal-incentives" class="section level2">
+<h2>
+<span class="header-section-number">7.3</span> Optimal CEO incentives</h2>
+<p>When I say optimal CEO incentives I mean optimal <em>from an optimal
+contracting</em> between shareholders and CEO point of view. This
+could still be suboptimal from a social perspective. It also
+means that we take into account that the CEO might be risk averse
+and we might need to pay them more money to overcome the risk
+aversion.</p>
+<p>The two assumptions have in impact on how a firm should
+incentivise the CEO to maximise firm value. If the actions of a
+CEO are independent of firm size, then the right performance
+measure for CEOs is the increase in the monetary value of the
+firm. If the actions of the CEO have a bigger impact in large
+firms,<label for="tufte-sn-10" class="margin-toggle sidenote-number">10</label><input type="checkbox" id="tufte-sn-10" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">10</span> It’s easier to increase firm value by $1 Million for Apple than
+for a start-up company.</span>
+the right performance measure is the increase in firm value
+compared to the size of the firm.</p>
+<p>If the CEOs’ preferences for not working are independent of their
+compensation, firms can reward the CEOs independent of how wealthy
+they already are. That is, the better they perform the more money
+they get. In contrast, if the CEOs’ preferences depend on how
+wealthy they are, they expect more money if they are already
+wealthy. The reward of these CEOs should be proportional to their
+wealth.</p>
+<p>As a result, the literature has defined pay-performance
+sensitivity in three different ways.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>$ Pay - $ Firm value:</strong>
+This is the <span class="citation">Jensen and Murphy (<a href="#ref-jensen_performance_1990">1990</a>)</span> measure. For every change
+in dollar firm value, the CEOs compensation changes with a
+<em>fixed</em> dollar amount. The consequence of these assumptions is
+that you would expect CEOs to hold the same equity stake in
+small and large firms.</p></li>
+<li><p><strong>$ Pay - % Firm value:</strong>
+For every % increase in firm value, there is a <em>fixed</em> dollar
+amount paid to the CEO. You an think of this measure of
+pay-performance sensitivity as a bonus system where the CEO
+gets a bonus for every increase in the companies stock market
+return.</p></li>
+<li><p><strong>% Wealth - % Firm value:</strong>
+For every increase % increase in the value of the firm, the
+CEO should receive a fixed % increase in their wealth. This is
+the measure that is advocated for in <span class="citation">Edmans and Gabaix (<a href="#ref-edmans2016executive">2016</a>)</span> and
+I also belief that the evidence is most in favour of this
+definition and thus the assumptions that a CEO’s actions and
+preferences depend on firm size and on CEO
+wealth respectively.</p></li>
+</ol>
+<p>Mathematically, we can represent each definition as follows:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\frac{\partial W}{\partial V} = \frac{\partial W}{\partial r} \frac{1}{V_0}\)</span></li>
+<li><span class="math inline">\(\frac{\partial W}{\partial r}\)</span></li>
+<li><span class="math inline">\(\frac{\partial W}{\partial r} \frac{1}{W_0}\)</span></li>
+</ol>
+<p>Where <span class="math inline">\(V\)</span> is the value of the firm at a certain point, <span class="math inline">\(W\)</span> is the
+CEO’s wealth, and <span class="math inline">\(r\)</span> is the return of the stock compared to
+the starting value <span class="math inline">\(V_0\)</span>. Because derivatives are not empirically
+observable, we have to look at changes in wealth and firm value
+over two different time periods. The measures that follow from
+the mathematical definitions are as follows where we use the fact
+that <span class="math inline">\(\Delta W = W - W_0\)</span> and
+<span class="math inline">\(ln(W) - ln(W_0) = ln(\frac{W}{W_0})\)</span></p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\frac{\Delta Wealth}{\Delta Firm\ Value}\)</span></li>
+<li><span class="math inline">\(\frac{\Delta Wealth}{\Delta ln(Firm\ Value)}\)</span></li>
+<li><span class="math inline">\(\frac{\Delta ln(Wealth)}{\Delta ln(Firm\ Value)}\)</span></li>
+</ol>
+<p>To reiterate, we have three different measures of pay-performance
+sensitivity, i.e. how well CEO compensation reflects the
+performance. For each measure, we have assumed that the firm will
+use the optimal incentives given our assumption about the CEO’s
+actions and their preferences. The point of this exercise is that
+different assumptions determine how you should measure the
+variable you want to analyse. In the next section, we are going
+to investigate how these three measures behave in the S&amp;P500
+sample.</p>
+</div>
+<div id="data-sensitivity" class="section level2">
+<h2>
+<span class="header-section-number">7.4</span> What does the data say?</h2>
+<p>Let us first reload the data. We need a measure for the wealth
+of the CEO. I am going to assume that the most important
+component of the CEO’s wealth is their shares in the company.
+This is obviously not perfect but it is not a bad guess for
+S&amp;P500 CEOs either.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">us_comp &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-compensation.RDS"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">total_comp =</span> tdc1, <span class="dt">shares =</span> shrown_tot_pct)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">us_value &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-value.RDS"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">    </span><span class="kw">rename</span>(<span class="dt">year =</span> fyear, <span class="dt">market_value =</span> mkvalt) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>ni) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="st">    </span><span class="kw">distinct</span>()</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">us_comp_limit &lt;-<span class="st"> </span><span class="kw">select</span>(us_comp, gvkey, execid, year, shares, total_comp)</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">us_comp_value &lt;-<span class="st"> </span><span class="kw">left_join</span>(us_comp_limit, us_value,</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">                          <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">"year"</span>, <span class="st">"gvkey"</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co"># Delete the observations with missing values.</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(market_value) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span>(<span class="kw">is.na</span>(shares))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">wealth =</span> shares <span class="op">*</span><span class="st"> </span>market_value <span class="op">/</span><span class="st"> </span><span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="kw">max</span>(us_comp_value<span class="op">$</span>market_value)<span class="op">/</span><span class="fl">1e3</span></a></code></pre></div>
+<pre><code>## [1] 1540.774</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">max</span>(us_comp_value<span class="op">$</span>wealth)<span class="op">/</span><span class="fl">1e3</span></a></code></pre></div>
+<pre><code>## [1] 118.0538</code></pre>
+<p>To get an idea wheather I did not make any mistakes I let R print
+the maximum market value and the maximum CEO wealth in the
+dataset. We can compare this to some known values to check
+whether we made any mistakes in putting the dataset together.
+Apple’s market value at the time of writing hovers around $800
+billion and Jeff Bezos<label for="tufte-sn-11" class="margin-toggle sidenote-number">11</label><input type="checkbox" id="tufte-sn-11" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">11</span> before the divorce</span> is worth around $100
+billion. So the proxies are not a terrible first attempt.<label for="tufte-sn-12" class="margin-toggle sidenote-number">12</label><input type="checkbox" id="tufte-sn-12" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">12</span> Especially once you consider that some papers throw away the
+maxima for some variables because they are considered outliers.</span></p>
+<p>Above I explained that the first measure ($-$) assumes that
+the percentage share of stock the CEO owns will be independent of
+the size of the company. To test this hypothesis, Figure
+<a href="measurement.html#fig:shares-size">7.1</a> plots the percentage share the CEO owns
+against the size of the company.</p>
+
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span id="fig:shares-size"></span>
+<img src="method_accfin_files/figure-html/shares-size-1.png" alt="Relation between CEO ownership and market value for SP500 firms (2011-2018)." width="384"><!--
+<p class="caption marginnote">-->Figure 7.1: Relation between CEO ownership and market value for SP500 firms (2011-2018).<!--</p>-->
+<!--</div>--></span>
+</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">shares_size &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> us_comp_value,</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">                     <span class="kw">aes</span>(<span class="dt">x =</span> market_value<span class="op">/</span><span class="dv">1000</span>, <span class="dt">y =</span> shares)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">.20</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">"CEO Ownership"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">"Firm Market Value (in Billions)"</span>)</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="kw">plot</span>(shares_size)</a></code></pre></div>
+<p>The figure is not that instructive so let’s plot the data on the
+log-log scale in Figure <a href="measurement.html#fig:shares-size-2">7.2</a>. The bulk of
+the data now shows a downward trend. This is not consistent with
+the hypothesis of the $-$ measure of pay-performance
+sensitivity where we would expect the link between firm size and
+CEO ownership to be constant.</p>
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span id="fig:shares-size-2"></span>
+<img src="method_accfin_files/figure-html/shares-size-2-1.png" alt="Relation between CEO ownership and market value for SP500 firms (2011-2018)." width="384"><!--
+<p class="caption marginnote">-->Figure 7.2: Relation between CEO ownership and market value for SP500 firms (2011-2018).<!--</p>-->
+<!--</div>--></span>
+</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">shares_size_log &lt;-<span class="st"> </span>shares_size <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>,</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">                <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x, <span class="dt">digits =</span> <span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">                <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> <span class="st">"log"</span>,</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">                <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x, <span class="dt">digits =</span> <span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">                <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>)) </a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="kw">plot</span>(shares_size_log)</a></code></pre></div>
+<pre><code>## Warning: Transformation introduced infinite values in continuous y-axis</code></pre>
+<p>Nevertheless, there seems to be a cloud of points at the top of
+Figure <a href="measurement.html#fig:shares-size-2">7.2</a> where CEOs have a large stake in the
+company and this cloud looks largely independent of firm size. I
+suspect that these CEOs are founders who have a larger ownership
+share for other reasons than incentives. We can test this idea.
+The code below filter all the observations with a market value
+above $10 Billion and ownership stake above 1%. I then join those
+observations with the CEO’s name and the firm’s name from the
+original data, group the observations by CEO and company, and
+count the number of years they are in the new data set. The
+<code>knitr::kable</code> function formats the table for pdf and html output.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">filter</span>(us_comp_value, market_value <span class="op">&gt;</span><span class="st"> </span><span class="fl">1e5</span>, shares <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(gvkey, year) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">select</span>(us_comp, exec_fullname, coname, year, gvkey),</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">            <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">"year"</span>, <span class="st">"gvkey"</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(gvkey, exec_fullname, coname) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">nr_years =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">booktabs =</span> <span class="ot">TRUE</span>, <span class="dt">caption =</span> <span class="st">'Outliers'</span>)</a></code></pre></div>
+<p><!--
+<caption>--><span class="marginnote shownote"><span id="tab:unnamed-chunk-4">Table 7.1: </span>Outliers</span><!--</caption>--></p>
+<table>
+<thead><tr>
+<th style="text-align:left;">
+gvkey
+</th>
+<th style="text-align:left;">
+exec_fullname
+</th>
+<th style="text-align:left;">
+coname
+</th>
+<th style="text-align:right;">
+nr_years
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+002176
+</td>
+<td style="text-align:left;">
+Warren E. Buffett
+</td>
+<td style="text-align:left;">
+BERKSHIRE HATHAWAY
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+012141
+</td>
+<td style="text-align:left;">
+Steven A. Ballmer
+</td>
+<td style="text-align:left;">
+MICROSOFT CORP
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+012142
+</td>
+<td style="text-align:left;">
+Lawrence J. Ellison
+</td>
+<td style="text-align:left;">
+ORACLE CORP
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+064768
+</td>
+<td style="text-align:left;">
+Jeffrey P. Bezos
+</td>
+<td style="text-align:left;">
+AMAZON.COM INC
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+117768
+</td>
+<td style="text-align:left;">
+Jen-Hsun Huang
+</td>
+<td style="text-align:left;">
+NVIDIA CORP
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+147579
+</td>
+<td style="text-align:left;">
+Wilmot Reed Hastings, Jr.
+</td>
+<td style="text-align:left;">
+NETFLIX INC
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+157855
+</td>
+<td style="text-align:left;">
+Marc R. Benioff
+</td>
+<td style="text-align:left;">
+SALESFORCE.COM INC
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+160329
+</td>
+<td style="text-align:left;">
+Lawrence Edward Page
+</td>
+<td style="text-align:left;">
+ALPHABET INC
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+170617
+</td>
+<td style="text-align:left;">
+Mark Elliot Zuckerberg
+</td>
+<td style="text-align:left;">
+FACEBOOK INC
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+</tbody>
+</table>
+<p>My hunch looks correct.<label for="tufte-sn-13" class="margin-toggle sidenote-number">13</label><input type="checkbox" id="tufte-sn-13" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">13</span> Also, I think the <code>tidyverse</code> functions are amazing because
+they make it so easy to quickly look at the data and summarise
+the data.</span>
+This whole process of plotting the data and checking assumptions
+on a subset of the data might seem a long detour. You could ask
+yourself why we are not immediatelly calculating the three
+measures that we are actually interested in. Checking your
+assumptions and checking the validity of your dataset for your
+research question is an important part of the research process.<label for="tufte-sn-14" class="margin-toggle sidenote-number">14</label><input type="checkbox" id="tufte-sn-14" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">14</span> Remember that we derived the three performance-pay sensitivity
+measures based on the optimal contract between shareholders and
+owners. The firm needs a contract to govern the conflict of
+interest between the shareholders and the CEO. If the founder is
+the CEO, this conflict of interest is different. You could ask
+yourself whehter you should keep founder-CEOs in the dataset
+because you do not necessarily expect their contract to follow
+the optimal contract.</span>
+And as you can see you do not have to run a statistical test to
+test your assumptions.</p>
+</div>
+<div id="three-pay-performance-sensitivities" class="section level2">
+<h2>
+<span class="header-section-number">7.5</span> Three pay-performance sensitivities</h2>
+<p>Now that we understand our dataset, we can calculate the changes
+in CEO wealth, total compensation, CEO compensation and market
+value. The last <code>filter</code> is a bit of hack. There are a few wealth
+change that are infinite at the log value. That can happen when a
+CEO ends up with 0 shares and no compensation. There are only a
+handful of these observations and I am ignoring them. Ideally,
+you would have a look whether anything funky is going on.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">us_comp_value &lt;-<span class="st"> </span><span class="kw">group_by</span>(us_comp_value, gvkey, execid) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(year) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prev_market_value =</span> <span class="kw">lag</span>(market_value),</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">         <span class="dt">prev_wealth =</span> <span class="kw">lag</span>(wealth),</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">         <span class="dt">prev_comp =</span> <span class="kw">lag</span>(total_comp)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">change_market_value =</span> market_value <span class="op">-</span><span class="st"> </span>prev_market_value,</a>
+<a class="sourceLine" id="cb9-8" data-line-number="8">         <span class="dt">change_wealth =</span> wealth <span class="op">-</span><span class="st"> </span>prev_wealth,</a>
+<a class="sourceLine" id="cb9-9" data-line-number="9">         <span class="dt">change_comp =</span> total_comp <span class="op">-</span><span class="st"> </span>prev_comp,</a>
+<a class="sourceLine" id="cb9-10" data-line-number="10">         <span class="dt">change_log_value =</span> <span class="kw">log</span>(market_value) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(prev_market_value),</a>
+<a class="sourceLine" id="cb9-11" data-line-number="11">         <span class="dt">change_log_wealth =</span> <span class="kw">log</span>(wealth) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(prev_wealth),</a>
+<a class="sourceLine" id="cb9-12" data-line-number="12">         <span class="dt">change_log_comp =</span> <span class="kw">log</span>(total_comp) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(prev_comp)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.infinite</span>(change_log_wealth),</a>
+<a class="sourceLine" id="cb9-14" data-line-number="14">         <span class="op">!</span><span class="kw">is.infinite</span>(change_log_comp)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-15" data-line-number="15"><span class="st">  </span><span class="kw">arrange</span>(gvkey)</a></code></pre></div>
+<p>With these variables, we can replicate the basic approach of some
+key papers on executive compensation. The first regression takes
+the <span class="citation">Jensen and Murphy (<a href="#ref-jensen_performance_1990">1990</a>)</span> approach and investigates the
+relation between a change in market value and a change in CEO
+compensation (Measure 1 in <a href="measurement.html#optimal-incentives">7.3</a>). The second
+and third regression follow the approach of <span class="citation">Hall and Liebman (<a href="#ref-hall_are_1998">1998</a>)</span> where
+we look the relation between relative changes in market value
+and relative changes in total CEO compensation.<label for="tufte-sn-15" class="margin-toggle sidenote-number">15</label><input type="checkbox" id="tufte-sn-15" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">15</span> The difference between the two specification is that the first
+uses market returns, just like the original paper, which is not
+exactly theoretically correct but a very good approximation of
+the theory.</span>
+Finally, the fourth regression follows the <span class="citation">Core, Guay, and Thomas (<a href="#ref-core_is_2005">2005</a>)</span> and
+looks at the relation between changes in relative market value
+and relative CEO wealth.<label for="tufte-sn-16" class="margin-toggle sidenote-number">16</label><input type="checkbox" id="tufte-sn-16" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">16</span> In all cases, the authors of the original papers do a much
+better job than I do in measuring the variables they are
+interested in. Do not take the results too seriously although
+they are a good approximation of the results in the original
+papers.</span></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">jensen_murphy90 &lt;-<span class="st"> </span><span class="kw">lm</span>(change_comp <span class="op">~</span><span class="st"> </span>change_market_value,</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">                     <span class="dt">data =</span> us_comp_value)</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">hall_liebman98 &lt;-<span class="st"> </span><span class="kw">lm</span>(change_log_comp <span class="op">~</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="st">                    </span><span class="kw">I</span>(change_market_value<span class="op">/</span>prev_market_value),</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">                    <span class="dt">data =</span> us_comp_value)</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">hall_liebman98_alt &lt;-<span class="st"> </span><span class="kw">lm</span>(change_log_comp <span class="op">~</span><span class="st"> </span>change_log_value,</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">                        <span class="dt">data =</span> us_comp_value)</a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">core_guay_thomas05 &lt;-<span class="st"> </span><span class="kw">lm</span>(change_log_wealth <span class="op">~</span><span class="st"> </span>change_log_value,</a>
+<a class="sourceLine" id="cb10-9" data-line-number="9">                         <span class="dt">data =</span> us_comp_value)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">coef</span>(jensen_murphy90)[<span class="dv">2</span>] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">prettyNum</span>(., <span class="dt">digits =</span> <span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## change_market_value 
+##             "0.026"</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">coef</span>(hall_liebman98)[<span class="dv">2</span>] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">prettyNum</span>(., <span class="dt">digits =</span> <span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## I(change_market_value/prev_market_value) 
+##                                  "0.026"</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">coef</span>(hall_liebman98_alt)[<span class="dv">2</span>] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">prettyNum</span>(., <span class="dt">digits =</span> <span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## change_log_value 
+##           "0.22"</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">coef</span>(core_guay_thomas05)[<span class="dv">2</span>] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">prettyNum</span>(., <span class="dt">digits =</span> <span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## change_log_value 
+##           "0.85"</code></pre>
+<p>Jensen and Murphy found that a CEO gets $3.5 for every $1000
+change in market value. Our estimate is
+$0.026 for every
+$1000 change in market value. The difference is first
+of all an indication that this simple analysis is not the
+best estimate but it probably also means that the $-$
+incentives are not the best measure. Recall from Figure
+<a href="measurement.html#fig:shares-size-2">7.2</a> that CEO ownership decreases with firm
+size. Since the study was published, companies have become
+larger which pushes the $-$ measure lower.<label for="tufte-sn-17" class="margin-toggle sidenote-number">17</label><input type="checkbox" id="tufte-sn-17" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">17</span> <span class="citation">Jensen and Murphy (<a href="#ref-jensen_performance_1990">1990</a>)</span> looked at more than the direct
+incentives. They also estimated the potential loss of getting
+fired. Moreover, total compensation does not take into account
+wealth. Other studies have found that the $-$ incentives
+measure of pay-performance sensitivity are smaller for larger
+firms.</span></p>
+<p>The original <span class="citation">Hall and Liebman (<a href="#ref-hall_are_1998">1998</a>)</span> measure shows that CEOs see a
+0.026% increase
+in pay for every 1% increase in firm value, the alternative
+measure shows a
+0.22%
+pay-performance sensitivity. Finally, the <span class="citation">Core, Guay, and Thomas (<a href="#ref-core_is_2005">2005</a>)</span> measure
+shows a
+0.85%
+wealth-performance sensitivity.</p>
+</div>
+<div id="comparison-plot" class="section level2">
+<h2>
+<span class="header-section-number">7.6</span> Comparison plot</h2>
+<p>We can plot the results as well to get a better intuition of the
+what this results mean. The code is long and boring but not so
+difficult to understand. First, make a new dataset with all the
+change in pay and change in performance variables. Next, just
+copy the new dataset three times. Create a new variable
+<code>analysis</code> for each type of analysis. Create a new variable
+<code>incentive</code> and <code>performance</code> for each type of analysis.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">data_comparison &lt;-<span class="st"> </span><span class="kw">select</span>(us_comp_value, change_comp, </a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">                         change_market_value,</a>
+<a class="sourceLine" id="cb19-3" data-line-number="3">                         change_log_comp, change_log_value,</a>
+<a class="sourceLine" id="cb19-4" data-line-number="4">                         change_log_wealth) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">complete.cases</span>(.))</a>
+<a class="sourceLine" id="cb19-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb19-7" data-line-number="7">n &lt;-<span class="st"> </span><span class="kw">nrow</span>(data_comparison)</a>
+<a class="sourceLine" id="cb19-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb19-9" data-line-number="9">data_comparison &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(data_comparison, data_comparison,</a>
+<a class="sourceLine" id="cb19-10" data-line-number="10">                            data_comparison) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-11" data-line-number="11"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">analysis =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">"jensen_murphy90"</span>, n),</a>
+<a class="sourceLine" id="cb19-12" data-line-number="12">                     <span class="kw">rep</span>(<span class="st">"hall_liebman98_alt"</span>, n),</a>
+<a class="sourceLine" id="cb19-13" data-line-number="13">                     <span class="kw">rep</span>(<span class="st">"core_guay_thomas05"</span>, n))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-14" data-line-number="14"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb19-15" data-line-number="15">    <span class="dt">incentive =</span> <span class="kw">recode</span>(analysis,</a>
+<a class="sourceLine" id="cb19-16" data-line-number="16">                       <span class="st">"jensen_murphy90"</span> =<span class="st"> </span>change_comp<span class="op">/</span><span class="dv">1000</span>,</a>
+<a class="sourceLine" id="cb19-17" data-line-number="17">                       <span class="st">"hall_liebman98_alt"</span> =<span class="st"> </span>change_log_comp,</a>
+<a class="sourceLine" id="cb19-18" data-line-number="18">                       <span class="st">"core_guay_thomas05"</span> =<span class="st"> </span>change_log_wealth),</a>
+<a class="sourceLine" id="cb19-19" data-line-number="19">    <span class="dt">performance =</span> <span class="kw">recode</span>(analysis,</a>
+<a class="sourceLine" id="cb19-20" data-line-number="20">                         <span class="st">"jensen_murphy90"</span> =<span class="st"> </span>change_market_value<span class="op">/</span><span class="dv">1000</span>,</a>
+<a class="sourceLine" id="cb19-21" data-line-number="21">                         <span class="st">"hall_liebman98_alt"</span> =<span class="st"> </span>change_log_value,</a>
+<a class="sourceLine" id="cb19-22" data-line-number="22">                         <span class="st">"core_guay_thomas05"</span> =<span class="st"> </span>change_log_value)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-23" data-line-number="23"><span class="st">  </span><span class="kw">select</span>(analysis, performance, incentive)</a></code></pre></div>
+<p>Now, we can plot the the incentive to performance relation for
+the data in Figure <a href="measurement.html#fig:comparison-sensitivity">7.3</a>. Despite all
+all the caveats about how unpolished this analysis is, the
+figure shows that neglecting CEO ownership is going to lead you
+to underestimate the pay-performance sensitivity for CEOs.</p>
+
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span id="fig:comparison-sensitivity"></span>
+<img src="method_accfin_files/figure-html/comparison-sensitivity-1.png" alt="Comparison of three measures of pay-performance sensitivity for S&amp;P500 Companies (2011-2018)" width="384"><!--
+<p class="caption marginnote">-->Figure 7.3: Comparison of three measures of pay-performance sensitivity for S&amp;P500 Companies (2011-2018)<!--</p>-->
+<!--</div>--></span>
+</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">comparison_plot =<span class="st"> </span><span class="kw">ggplot</span>(data_comparison,</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">                         <span class="kw">aes</span>(<span class="dt">x =</span> performance, <span class="dt">y =</span> incentive)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>analysis, <span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">scales =</span> <span class="st">"free"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">pretty_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>),</a>
+<a class="sourceLine" id="cb20-6" data-line-number="6">                     <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x, <span class="dt">dig =</span> <span class="dv">2</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb20-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">pretty_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>),</a>
+<a class="sourceLine" id="cb20-8" data-line-number="8">                     <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x, <span class="dt">dig =</span> <span class="dv">2</span>)) </a>
+<a class="sourceLine" id="cb20-9" data-line-number="9"><span class="kw">print</span>(comparison_plot)</a></code></pre></div>
+</div>
+<div id="libby-boxes" class="section level2">
+<h2>
+<span class="header-section-number">7.7</span> Libby boxes</h2>
+<p>An empirical study can often be represented in the form of a
+diagram as in Figure <a href="measurement.html#fig:libby-boxes">7.4</a>. These diagrams are
+often referred to as the Predictive Validity Framework or, in
+the accounting literature, Libby Boxes
+<span class="citation">(Libby, Bloomfield, and Nelson <a href="#ref-libby_experimental_2002">2002</a>)</span>. The top of the diagram (1) represents
+the research question. We want to ask whether there is a relation
+between two theoretical concepts. In our case, we want to know
+whether there is a relation between CEO incentive pay and firm
+performance. Chapter <a href="maths-sim.html#maths-sim">5</a> dealt with how to use
+theory to predict a relation between two concepts. In reality, we
+cannot directly observe pay and performance, so we have to come
+up with a measure of these concepts (3 and 4). This Chapter has
+dealt with the issue of how we can find a good measure for our
+two concepts. The downwards arrows represent the connection
+between the theoretical concepts and the empirical measures. At
+first, you might have thought that it is obvious how to measure
+CEO performance and firm performance. The pay-performance
+sensitivity example should make you realise that you need to
+think careful about what you measure and how your measure
+connects to your theory. Most statistics textbooks focus on the
+link between the two measures (2), ´change_log_wealth´ and
+´change_log_performance´ in our case. This is the next step in
+this Chapter. Later in the notes, I wil look at the issue of
+control variables.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">library</span>(DiagrammeR)</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">libby_boxes &lt;-<span class="st"> </span><span class="kw">grViz</span>(<span class="st">"</span></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="st">    digraph libby_boxes{</span></a>
+<a class="sourceLine" id="cb21-4" data-line-number="4"><span class="st">    graph [fontsize = 18, layout = 'dot'] </span></a>
+<a class="sourceLine" id="cb21-5" data-line-number="5"><span class="st">    </span></a>
+<a class="sourceLine" id="cb21-6" data-line-number="6"><span class="st">    node [shape = box, group = 'cause_group']</span></a>
+<a class="sourceLine" id="cb21-7" data-line-number="7"><span class="st">    cause [label = 'Performance']</span></a>
+<a class="sourceLine" id="cb21-8" data-line-number="8"><span class="st">    m_cause [label = 'Change_Log_Value']</span></a>
+<a class="sourceLine" id="cb21-9" data-line-number="9"><span class="st">    node [shape = box, group = 'effect_group']</span></a>
+<a class="sourceLine" id="cb21-10" data-line-number="10"><span class="st">    effect [label = 'Pay']</span></a>
+<a class="sourceLine" id="cb21-11" data-line-number="11"><span class="st">    m_effect [label = 'Change_Log_Wealth']</span></a>
+<a class="sourceLine" id="cb21-12" data-line-number="12"><span class="st">    controls</span></a>
+<a class="sourceLine" id="cb21-13" data-line-number="13"><span class="st">    </span></a>
+<a class="sourceLine" id="cb21-14" data-line-number="14"><span class="st">    cause -&gt; effect [label = '(1)']</span></a>
+<a class="sourceLine" id="cb21-15" data-line-number="15"><span class="st">    m_cause -&gt; m_effect [label = '(2)']</span></a>
+<a class="sourceLine" id="cb21-16" data-line-number="16"><span class="st">    cause -&gt; m_cause [label = ' (3) ']</span></a>
+<a class="sourceLine" id="cb21-17" data-line-number="17"><span class="st">    effect -&gt; m_effect [label = ' (4) ']</span></a>
+<a class="sourceLine" id="cb21-18" data-line-number="18"><span class="st">    m_effect -&gt; controls [dir=back, label = '(5)']</span></a>
+<a class="sourceLine" id="cb21-19" data-line-number="19"><span class="st">    </span></a>
+<a class="sourceLine" id="cb21-20" data-line-number="20"><span class="st">    subgraph{</span></a>
+<a class="sourceLine" id="cb21-21" data-line-number="21"><span class="st">    rank = same; cause; effect;</span></a>
+<a class="sourceLine" id="cb21-22" data-line-number="22"><span class="st">    }</span></a>
+<a class="sourceLine" id="cb21-23" data-line-number="23"><span class="st">    subgraph{</span></a>
+<a class="sourceLine" id="cb21-24" data-line-number="24"><span class="st">    rank = same; m_cause; m_effect; controls;</span></a>
+<a class="sourceLine" id="cb21-25" data-line-number="25"><span class="st">    }</span></a>
+<a class="sourceLine" id="cb21-26" data-line-number="26"><span class="st">  }</span></a>
+<a class="sourceLine" id="cb21-27" data-line-number="27"><span class="st">"</span>)</a>
+<a class="sourceLine" id="cb21-28" data-line-number="28">trelliscope<span class="op">::</span><span class="kw">widgetThumbnail</span>(libby_boxes,</a>
+<a class="sourceLine" id="cb21-29" data-line-number="29">                             <span class="st">"_bookdown_files/libby_boxes.pdf"</span>)</a>
+<a class="sourceLine" id="cb21-30" data-line-number="30">trelliscope<span class="op">::</span><span class="kw">widgetThumbnail</span>(libby_boxes,</a>
+<a class="sourceLine" id="cb21-31" data-line-number="31">                             <span class="st">"_bookdown_files/libby_boxes.png"</span>)</a></code></pre></div>
+
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span id="fig:libby-boxes"></span>
+<img src="_bookdown_files/libby_boxes.png" alt="Predictive Validity Framework or Libby Boxes for pay-performance sensitivity" width="307"><!--
+<p class="caption marginnote">-->Figure 7.4: Predictive Validity Framework or Libby Boxes for pay-performance sensitivity<!--</p>-->
+<!--</div>--></span>
+</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">"_bookdown_files/libby_boxes.png"</span>, </a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">                        <span class="dt">auto_pdf =</span> <span class="ot">TRUE</span>, <span class="dt">dpi =</span> <span class="dv">300</span>)</a></code></pre></div>
+</div>
+<div id="pvalue" class="section level2">
+<h2>
+<span class="header-section-number">7.8</span> Are incentives independent of size?</h2>
+<p>Section <a href="measurement.html#data-sensitivity">7.4</a> showed that there was a negative
+relation between CEO ownership and the size of the company. The
+relation is pretty strong and we did not look at it in more
+detail. In a real study with more subtle effects, you want to get
+some sense whether the relation is real or whether it can be
+explained by random variation.</p>
+<p>I will illustrate this issue with the new pay-performance
+sensitivity. The optimal performance contract should not depend
+on the size of the firm only on the performance of the firm.
+Figure <a href="measurement.html#fig:hypothesis">7.5</a> shows the relation between
+pay-performance sensitivity and the size of the firm. The figure
+does not show any strong relation between firm size and
+pay-performance sensitivity.</p>
+
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span id="fig:hypothesis"></span>
+<img src="method_accfin_files/figure-html/hypothesis-1.png" alt="Relation between pay-performance sensitivity and market value" width="384"><!--
+<p class="caption marginnote">-->Figure 7.5: Relation between pay-performance sensitivity and market value<!--</p>-->
+<!--</div>--></span>
+</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">hypothesis =<span class="st"> </span><span class="kw">ggplot</span>(us_comp_value,</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">                    <span class="kw">aes</span>(<span class="dt">y =</span> change_log_wealth <span class="op">/</span><span class="st"> </span>change_log_value,</a>
+<a class="sourceLine" id="cb23-3" data-line-number="3">                        <span class="dt">x =</span> market_value<span class="op">/</span><span class="dv">1000</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">.2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb23-6" data-line-number="6">    <span class="dt">trans =</span> <span class="st">"log"</span>, </a>
+<a class="sourceLine" id="cb23-7" data-line-number="7">    <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw">log_breaks</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb23-8" data-line-number="8">    <span class="dt">labels =</span> <span class="cf">function</span>(x) <span class="kw">prettyNum</span>(x, <span class="dt">dig =</span> <span class="dv">2</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-9" data-line-number="9"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb23-10" data-line-number="10">    <span class="dt">limits =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">50</span>, <span class="dv">50</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-11" data-line-number="11"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">"market value"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-12" data-line-number="12"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">"sensitivity"</span>)</a>
+<a class="sourceLine" id="cb23-13" data-line-number="13"><span class="kw">print</span>(hypothesis)</a></code></pre></div>
+<pre><code>## Warning: Removed 3901 rows containing missing values (geom_point).</code></pre>
+<p>There a number of different ways to test whether this relation is
+real or whether it can be explained by random fluctuations. I
+first present two simulation based approaches and then present an
+approach based on formulas. Statistical software typically
+implements the formulas for you so you do not have to remember
+them.</p>
+<p>The starting point for each of these tests is that if there is no
+relation, the true effect that we are interested in<label for="tufte-sn-18" class="margin-toggle sidenote-number">18</label><input type="checkbox" id="tufte-sn-18" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">18</span> That is the top half of the Libby Boxes</span> equals <span class="math inline">\(0\)</span>. Because
+of random variation, the number in the statistical analysis<label for="tufte-sn-19" class="margin-toggle sidenote-number">19</label><input type="checkbox" id="tufte-sn-19" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">19</span> The bottom half of the Libby Boxes</span> might be slightly off. Each
+of the three approaches tries to quantify that random variation
+around a the null effect.</p>
+<div id="randomisation-test" class="section level3">
+<h3>
+<span class="header-section-number">7.8.1</span> Randomisation Test</h3>
+<p>The first way to quantify the random variation is to randomly
+assign one observation of the firm-year to another obervation
+of a CEO-year. That is we create a dataset where we link the
+sensitivity of a CEO’s pay with the market value of another
+firm. The general idea of a randomisation test is that you break
+the relation that you want to test and see whether the value
+in the real dataset is extreme compared to the randomised dataset.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">data_hypo &lt;-<span class="st"> </span><span class="kw">mutate</span>(us_comp_value,</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">                    <span class="dt">sensitivity =</span> change_log_wealth <span class="op">/</span><span class="st"> </span>change_log_value) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(sensitivity, market_value) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">complete.cases</span>(.))</a>
+<a class="sourceLine" id="cb25-5" data-line-number="5">true_cor &lt;-<span class="st"> </span><span class="kw">cor</span>(</a>
+<a class="sourceLine" id="cb25-6" data-line-number="6">  data_hypo<span class="op">$</span>sensitivity, data_hypo<span class="op">$</span>market_value)</a>
+<a class="sourceLine" id="cb25-7" data-line-number="7">rand_cor &lt;-<span class="st"> </span><span class="kw">cor</span>(</a>
+<a class="sourceLine" id="cb25-8" data-line-number="8">  data_hypo<span class="op">$</span>sensitivity, <span class="kw">sample</span>(data_hypo<span class="op">$</span>market_value))</a>
+<a class="sourceLine" id="cb25-9" data-line-number="9"><span class="kw">print</span>(<span class="kw">prettyNum</span>(<span class="kw">c</span>(true_cor, rand_cor), <span class="dt">dig =</span> <span class="dv">3</span>))</a></code></pre></div>
+<pre><code>## [1] "-0.00457" "0.0137"</code></pre>
+<p>So, we find that the correlation in the real dataset is different
+from the correlation in the random dataset but it does not allow
+us to draw any conclusions. We need to draw a lot of random
+datasets and compare that random dataset to the real correlation.
+That is what the next lines of code do. First, create a function
+that resamples the market value and calculates the correlation.
+Second, rerun that function <span class="math inline">\(10,000\)</span> times. <code>rand_cor</code> is a
+vector with randomly created correlations.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">simulate_cor &lt;-<span class="st"> </span><span class="cf">function</span>(data){</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">  <span class="kw">return</span>(<span class="kw">cor</span>(data<span class="op">$</span>sensitivity, <span class="kw">sample</span>(data<span class="op">$</span>market_value)))}</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">rand_cor &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="fl">1e4</span>, <span class="kw">simulate_cor</span>(data_hypo))</a></code></pre></div>
+<p>Figure <a href="measurement.html#fig:sample-plot">7.6</a> visualises the test. We plot a
+histogram of the random correlations and compare them to the size
+of the of the real correlation. We want to test whether the value
+of the real correlation is extreme, so we compare the random
+distribution to correlations with an absolute value larger than
+absolute value of the sample correlation.</p>
+
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span id="fig:sample-plot"></span>
+<img src="method_accfin_files/figure-html/sample-plot-1.png" alt="Random correlation compared to real correlation" width="384"><!--
+<p class="caption marginnote">-->Figure 7.6: Random correlation compared to real correlation<!--</p>-->
+<!--</div>--></span>
+</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">hist_sim &lt;-<span class="st"> </span><span class="kw">qplot</span>(rand_cor, <span class="dt">bins =</span> <span class="dv">100</span>, </a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">                  <span class="dt">fill =</span> <span class="kw">abs</span>(rand_cor) <span class="op">&lt;</span><span class="st"> </span><span class="kw">abs</span>(true_cor)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">"Random Correlations"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">"none"</span>)</a>
+<a class="sourceLine" id="cb28-6" data-line-number="6"><span class="kw">print</span>(hist_sim)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">pvalue_sim =<span class="st">  </span><span class="kw">mean</span>(<span class="kw">ifelse</span>(<span class="kw">abs</span>(rand_cor) <span class="op">&gt;</span><span class="st"> </span><span class="kw">abs</span>(true_cor), <span class="dv">1</span>, <span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="kw">print</span>(<span class="kw">prettyNum</span>(pvalue_sim, <span class="dt">digits =</span> <span class="dv">2</span>))</a></code></pre></div>
+<pre><code>## [1] "0.29"</code></pre>
+<p>We can calculate how likely it is that a random correlation is
+larger (in absolute value) than the true correlation. We find
+that there is 0.29 probability of
+getting a random value larger than the value for the sample
+correlation. That means that there is little evidence of a relation
+between pay-performance sensitivity and firm size that cannot be
+explained by random variation.</p>
+</div>
+<div id="bootstrap" class="section level3">
+<h3>
+<span class="header-section-number">7.8.2</span> Bootstrap</h3>
+<p>Another way to test whether there is a relation between two
+variables is the bootstrap <span class="citation">(Efron and Hastie <a href="#ref-efron_computer_2017">2017</a>)</span>. The idea of
+the bootstrap is that the sample of firms that we have is a
+good reprentation of a bigger population of (very large) firms.<label for="tufte-sn-20" class="margin-toggle sidenote-number">20</label><input type="checkbox" id="tufte-sn-20" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">20</span> You could think of for instance the same firms in 2019 and 2020
+or 2008 and 2009.</span>
+In this procedure, we assume that the random variation comes from
+the sampling error compared to the full population. The bootstrap
+will resample the observations in the real dataset with
+replacement. We keep CEOs and firms together this time but in the
+newly created datasets some observations might occur more than
+once. If we create enough of these datasets, we will get a good
+representation of the correlations we get from repeatedly
+sampling from the larger population.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">calc_corr &lt;-<span class="st"> </span><span class="cf">function</span>(d){</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">  n &lt;-<span class="st"> </span><span class="kw">nrow</span>(d)</a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">  id_sample &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span>n, <span class="dt">size =</span> n, <span class="dt">replace =</span> <span class="ot">TRUE</span>) </a>
+<a class="sourceLine" id="cb31-4" data-line-number="4">  sample &lt;-<span class="st"> </span>d[id_sample, ] </a>
+<a class="sourceLine" id="cb31-5" data-line-number="5">  corr &lt;-<span class="st"> </span><span class="kw">cor</span>(sample<span class="op">$</span>sensitivity, sample<span class="op">$</span>market_value)</a>
+<a class="sourceLine" id="cb31-6" data-line-number="6">  <span class="kw">return</span>(corr)</a>
+<a class="sourceLine" id="cb31-7" data-line-number="7">}</a>
+<a class="sourceLine" id="cb31-8" data-line-number="8">boot_corr &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">2000</span>, <span class="kw">calc_corr</span>(data_hypo))</a></code></pre></div>
+<p>We visualise the sampling variation in the correlation in
+Figure <a href="measurement.html#fig:boot-corr">7.7</a>. We can now compare this distribution
+to a <span class="math inline">\(0\)</span> correlation. If the distribution is (almost) entirely on
+one side of a null effect, we would conclude that sampling
+variation around a nulll effect is not a good explanation for the
+effect that we found in the real sample. However, in this case, we
+find that a considerable amount of the distribution is on either
+side of the orange line. Again, we find no good reason to belief
+there is anything more than random variation around a null effect.</p>
+
+<p>
+<span class="marginnote shownote">
+<!--
+<div class="figure">--><span id="fig:boot-corr"></span>
+<img src="method_accfin_files/figure-html/boot-corr-1.png" alt="2000 bootstrapped correlations" width="288"><!--
+<p class="caption marginnote">-->Figure 7.7: 2000 bootstrapped correlations<!--</p>-->
+<!--</div>--></span>
+</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">qplot</span>(boot_corr, <span class="dt">bins =</span> <span class="dv">100</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>), <span class="dt">col =</span> <span class="st">"darkorange"</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-3" data-line-number="3"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">"Bootstrapped Correlation"</span>)</a></code></pre></div>
+<p>The way I set up the bootstrap was actually quite primitive but it
+gets the message across. In case you need to do a proper bootstrap
+analysis, it’s much better to use the <code>boot</code> package in <code>R</code>. Below,
+you can find the minimal code to work with the package. The advantage
+of the package is that it give you many more option to tweak the
+bootstrap algorithm to make it more appropriate for your specific
+research question. The details of this go way beyond these lecture
+notes.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">library</span>(boot)</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">corr &lt;-<span class="st"> </span><span class="cf">function</span>(d, indices){</a>
+<a class="sourceLine" id="cb33-3" data-line-number="3">    d &lt;-<span class="st"> </span>d[indices, ]</a>
+<a class="sourceLine" id="cb33-4" data-line-number="4">    corr &lt;-<span class="st"> </span><span class="kw">cor</span>(d<span class="op">$</span>sensitivity, d<span class="op">$</span>market_value)</a>
+<a class="sourceLine" id="cb33-5" data-line-number="5">    }</a>
+<a class="sourceLine" id="cb33-6" data-line-number="6">bootstrap &lt;-<span class="st"> </span><span class="kw">boot</span>(data_hypo, <span class="dt">statistic =</span> corr,</a>
+<a class="sourceLine" id="cb33-7" data-line-number="7">                  <span class="dt">R =</span> <span class="dv">2000</span>, <span class="dt">parallel =</span> <span class="st">"multicore"</span>,</a>
+<a class="sourceLine" id="cb33-8" data-line-number="8">                  <span class="dt">ncpus =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb33-9" data-line-number="9"><span class="kw">boot.ci</span>(bootstrap, <span class="dt">type =</span> <span class="st">"norm"</span>)</a></code></pre></div>
+<pre><code>## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+## Based on 2000 bootstrap replicates
+## 
+## CALL : 
+## boot.ci(boot.out = bootstrap, type = "norm")
+## 
+## Intervals : 
+## Level      Normal        
+## 95%   (-0.0113,  0.0029 )  
+## Calculations and Intervals on Original Scale</code></pre>
+</div>
+<div id="p-values" class="section level3">
+<h3>
+<span class="header-section-number">7.8.3</span> P-values</h3>
+<p>Randomisation and bootstrapping make different assumptions about
+where the random variation comes from and what it means that
+there is no effect. There is an active discussion in the
+econometrics literature about which assumptions are more
+appropriate under which conditions. However, most empirical
+researchers ignore these questions and trust in formula based
+p-values. The interpretation of p-values is closer to the
+bootstrap. We test whether the real correlation is extreme enough
+so that it is unlikely that it arises sampling variation around a
+null effect.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">cor =<span class="st"> </span><span class="kw">cor.test</span>(data_hypo<span class="op">$</span>sensitivity, data_hypo<span class="op">$</span>market_value)</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">pvalue_cor =<span class="st"> </span>cor<span class="op">$</span>p.value</a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="kw">print</span>(<span class="kw">prettyNum</span>(pvalue_cor, <span class="dt">dig =</span> <span class="dv">2</span>))</a></code></pre></div>
+<pre><code>## [1] "0.62"</code></pre>
+<p>We can let R do the calculation for us and we see that the
+p-value for the correlation between sensitivity and market value
+is 0.62. Again, it looks
+like that the correlation is quite likely to emerge from
+sampling variation around a null hypothesis.</p>
+<p>Finally, I would like to point out the relation between linear
+regression and a correlation. When there is only one independent
+variable in a regression model, the correlation test is
+equivalent to the statistics we get from a regression.</p>
+<p><span class="math display">\[\begin{align*}
+y &amp;\sim \mathcal{N}(\alpha + \beta x, \sigma) \\
+\beta &amp;= \frac{sd(y)}{sd(x)} cor(x, y)
+\end{align*}\]</span></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">regr_sens =<span class="st"> </span><span class="kw">lm</span>(sensitivity <span class="op">~</span><span class="st"> </span><span class="kw">I</span>(market_value<span class="op">/</span><span class="fl">1e6</span>), <span class="dt">data =</span> data_hypo)</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="kw">coefficients</span>(<span class="kw">summary</span>(regr_sens)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">dig =</span> <span class="dv">2</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>, <span class="dt">caption =</span> <span class="st">'Regression Results'</span>)</a></code></pre></div>
+<p><!--
+<caption>--><span class="marginnote shownote"><span id="tab:regr-corr">Table 7.2: </span>Regression Results</span><!--</caption>--></p>
+<table>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+t value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|t|)
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+1.78
+</td>
+<td style="text-align:right;">
+1.27
+</td>
+<td style="text-align:right;">
+1.40
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+I(market_value/1e+06)
+</td>
+<td style="text-align:right;">
+-13.20
+</td>
+<td style="text-align:right;">
+26.75
+</td>
+<td style="text-align:right;">
+-0.49
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+</tbody>
+</table>
+<p>In summary, most empirical researchers use p-values to estimate
+how far away the estimated coefficient is from the null effect.
+To do that they use formulas that estimate the standard error
+of the coefficient. If the coefficient is large and the standard
+error is small, we expect the effect to be extreme compared to
+the null effect. To estimate how likely it is that the real
+coefficient is the result of random variation around the null,
+your software calculates a statistic, the coefficient divided
+by the standard error. This t-statistic is expected to follow
+a t-distribution and from this distribution we can calculate the
+p-value.</p>
+<p>Most empirical papers will try to find small p-values. That is
+they try to show that there is a relation. I deliberately chose
+an example where there is no relation between the two variables
+of interest because and where that is also what we hoped to find.
+Our theory said that there should not be a relation between
+sensitivity and size and after looking at the data we have no
+reason to believe otherwise. This type of test is a natural fit
+for p-values and this is why I introduced them in this way.</p>
+<p>There is a lot of discussion in the literatur about abuses
+and misinterpretations of p-values. My hope is that I put you
+on the right path to interpreting p-values despite all the
+traps that have been laid for you in the literature.</p>
+
+</div>
+</div>
+</div>
+<h3> References</h3>
+<div id="refs" class="references">
+<div id="ref-core_is_2005">
+<p>Core, John E., Wayne R. Guay, and Randall S. Thomas. 2005. “Is U.S. CEO Compensation Broken?” <em>Journal of Applied Corporate Finance</em> 17 (4): 97–104. <a href="https://doi.org/10.1111/j.1745-6622.2005.00063.x">https://doi.org/10.1111/j.1745-6622.2005.00063.x</a>.</p>
+</div>
+<div id="ref-edmans2016executive">
+<p>Edmans, Alex, and Xavier Gabaix. 2016. “Executive Compensation: A Modern Primer.” <em>Journal of Economic Literature</em> 54 (4): 1232–87.</p>
+</div>
+<div id="ref-efron_computer_2017">
+<p>Efron, Bradley, and Trevor Hastie. 2017. <em>Computer Age Statistical Inference</em>.</p>
+</div>
+<div id="ref-hall_are_1998">
+<p>Hall, Brian J., and Jeffrey B. Liebman. 1998. “Are CEOs Really Paid Like Bureaucrats?” <em>The Quarterly Journal of Economics</em> 113 (3): 653–91. <a href="https://doi.org/10.1162/003355398555702">https://doi.org/10.1162/003355398555702</a>.</p>
+</div>
+<div id="ref-jensen_performance_1990">
+<p>Jensen, Michael C., and Kevin J. Murphy. 1990. “Performance Pay and Top-Management Incentives.” <em>Journal of Political Economy</em> 98 (2): 225–64. <a href="https://doi.org/10.1086/261677">https://doi.org/10.1086/261677</a>.</p>
+</div>
+<div id="ref-libby_experimental_2002">
+<p>Libby, Robert, Robert J Bloomfield, and M Nelson. 2002. “Experimental Research in Financial Accounting.” <em>Accounting, Organizations and Society</em> 27 (8): 775–810. <a href="https://doi.org/10.1016/S0361-3682(01)00011-3">https://doi.org/10.1016/S0361-3682(01)00011-3</a>.</p>
+</div>
+</div>
+</body></html>
+
+<p style="text-align: center;">
+<a href="linear-regression.html"><button class="btn btn-default">Previous</button></a>
+<a href="control-variables.html"><button class="btn btn-default">Next</button></a>
+</p>
+<p class="build-date">Page built: 
+2021-02-24
+</p>
+</div>
+</div>
+
+
+
+</body>
+</html>
