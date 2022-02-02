@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stijn Masschelein</title>
+    <link>/</link>
+      <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <description>Stijn Masschelein</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Jun 2030 13:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/stijn_profile.jpg</url>
+      <title>Stijn Masschelein</title>
+      <link>/</link>
+    </image>
+    
+    <item>
+      <title>Example Talk</title>
+      <link>/talk/example/</link>
+      <pubDate>Sat, 01 Jun 2030 13:00:00 +0000</pubDate>
+      <guid>/talk/example/</guid>
+      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Slides can be added in a few ways:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Create&lt;/strong&gt; slides using Academic&amp;rsquo;s 
+&lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#create-slides&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;Slides&lt;/em&gt;&lt;/a&gt; feature and link using &lt;code&gt;slides&lt;/code&gt; parameter in the front matter of the talk file&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Upload&lt;/strong&gt; an existing slide deck to &lt;code&gt;static/&lt;/code&gt; and link using &lt;code&gt;url_slides&lt;/code&gt; parameter in the front matter of the talk file&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Embed&lt;/strong&gt; your slides (e.g. Google Slides) or presentation video on this page using 
+&lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;shortcodes&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Further talk details can easily be added to this page using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Testing for Complementarities Between Accounting Practices</title>
+      <link>/publication/aos2020/</link>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/aos2020/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Slides</title>
+      <link>/slides/example/</link>
+      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>/slides/example/</guid>
+      <description>&lt;h1 id=&#34;create-slides-in-markdown-with-academic&#34;&gt;Create slides in Markdown with Academic&lt;/h1&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://sourcethemes.com/academic/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Academic&lt;/a&gt; | 
+&lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#create-slides&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;features&#34;&gt;Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Efficiently write slides in Markdown&lt;/li&gt;
+&lt;li&gt;3-in-1: Create, Present, and Publish your slides&lt;/li&gt;
+&lt;li&gt;Supports speaker notes&lt;/li&gt;
+&lt;li&gt;Mobile friendly slides&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;controls&#34;&gt;Controls&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Next: &lt;code&gt;Right Arrow&lt;/code&gt; or &lt;code&gt;Space&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Previous: &lt;code&gt;Left Arrow&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Start: &lt;code&gt;Home&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Finish: &lt;code&gt;End&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Overview: &lt;code&gt;Esc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Speaker notes: &lt;code&gt;S&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Fullscreen: &lt;code&gt;F&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Zoom: &lt;code&gt;Alt + Click&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://github.com/hakimel/reveal.js#pdf-export&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PDF Export&lt;/a&gt;: &lt;code&gt;E&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;code-highlighting&#34;&gt;Code Highlighting&lt;/h2&gt;
+&lt;p&gt;Inline code: &lt;code&gt;variable&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Code block:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;porridge = &amp;quot;blueberry&amp;quot;
+if porridge == &amp;quot;blueberry&amp;quot;:
+    print(&amp;quot;Eating...&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;math&#34;&gt;Math&lt;/h2&gt;
+&lt;p&gt;In-line math: $x + y = z$&lt;/p&gt;
+&lt;p&gt;Block math:&lt;/p&gt;
+&lt;p&gt;$$
+f\left( x \right) = ;\frac{{2\left( {x + 4} \right)\left( {x - 4} \right)}}{{\left( {x + 4} \right)\left( {x + 1} \right)}}
+$$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;fragments&#34;&gt;Fragments&lt;/h2&gt;
+&lt;p&gt;Make content appear incrementally&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{% fragment %}} One {{% /fragment %}}
+{{% fragment %}} **Two** {{% /fragment %}}
+{{% fragment %}} Three {{% /fragment %}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Press &lt;code&gt;Space&lt;/code&gt; to play!&lt;/p&gt;
+&lt;span class=&#34;fragment &#34; &gt;
+   One 
+&lt;/span&gt;
+&lt;span class=&#34;fragment &#34; &gt;
+   **Two** 
+&lt;/span&gt;
+&lt;span class=&#34;fragment &#34; &gt;
+   Three 
+&lt;/span&gt;
+&lt;hr&gt;
+&lt;p&gt;A fragment can accept two optional parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;class&lt;/code&gt;: use a custom style (requires definition in custom CSS)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weight&lt;/code&gt;: sets the order in which a fragment appears&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;speaker-notes&#34;&gt;Speaker Notes&lt;/h2&gt;
+&lt;p&gt;Add speaker notes to your presentation&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;{{% speaker_note %}}
+- Only the speaker can read these notes
+- Press `S` key to view
+{{% /speaker_note %}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Press the &lt;code&gt;S&lt;/code&gt; key to view the speaker notes!&lt;/p&gt;
+&lt;aside class=&#34;notes&#34;&gt;
+  &lt;ul&gt;
+&lt;li&gt;Only the speaker can read these notes&lt;/li&gt;
+&lt;li&gt;Press &lt;code&gt;S&lt;/code&gt; key to view&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/aside&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;themes&#34;&gt;Themes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;black: Black background, white text, blue links (default)&lt;/li&gt;
+&lt;li&gt;white: White background, black text, blue links&lt;/li&gt;
+&lt;li&gt;league: Gray background, white text, blue links&lt;/li&gt;
+&lt;li&gt;beige: Beige background, dark text, brown links&lt;/li&gt;
+&lt;li&gt;sky: Blue background, thin dark text, blue links&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;night: Black background, thick white text, orange links&lt;/li&gt;
+&lt;li&gt;serif: Cappuccino background, gray text, brown links&lt;/li&gt;
+&lt;li&gt;simple: White background, black text, blue links&lt;/li&gt;
+&lt;li&gt;solarized: Cream-colored background, dark green text, blue links&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;/img/boards.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;custom-slide&#34;&gt;Custom Slide&lt;/h2&gt;
+&lt;p&gt;Customize the slide style and background&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;{{&amp;lt; slide background-image=&amp;quot;/img/boards.jpg&amp;quot; &amp;gt;}}
+{{&amp;lt; slide background-color=&amp;quot;#0000FF&amp;quot; &amp;gt;}}
+{{&amp;lt; slide class=&amp;quot;my-style&amp;quot; &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;custom-css-example&#34;&gt;Custom CSS Example&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s make headers navy colored.&lt;/p&gt;
+&lt;p&gt;Create &lt;code&gt;assets/css/reveal_custom.css&lt;/code&gt; with:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;.reveal section h1,
+.reveal section h2,
+.reveal section h3 {
+  color: navy;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;questions&#34;&gt;Questions?&lt;/h1&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://spectrum.chat/academic&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ask&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#create-slides&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The effect of performance evaluation schemes on predicted transfer prices: Do leadership tone and perceived fairness concerns matter?</title>
+      <link>/publication/mar2018/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>/publication/mar2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Quadratic and Cubic Terms in Linear Models.</title>
+      <link>/post/quadratic-and-cubic-terms-in-linear-models/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>/post/quadratic-and-cubic-terms-in-linear-models/</guid>
+      <description>
+
+
+&lt;p&gt;In our weekly seminar, Robert Faff presented a paper with an OLS model with
+the quadratic and cubic term effects. The dependent variable in this model
+is the change in cash holdings (&lt;span class=&#34;math inline&#34;&gt;\(\Delta CH\)&lt;/span&gt;) by a company and the independent
+variable is the deviation of current cash holding from the optimal level
+(&lt;span class=&#34;math inline&#34;&gt;\(\Delta OPT\)&lt;/span&gt;). The paper argues that there are three different regimes of
+adjustment speed of cash holdings. Very high cash holdings will lead to the
+largest adjustment back to the optimal level, very low cash holdings will lead
+to a large but smaller adjustment towards the optimal level, the medium level
+of cash holdings leads to the smallest (or no) adjustment. This is the
+motivation to use a cubic model.&lt;/p&gt;
+&lt;p&gt;The relevant part of the OLS model is&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\Delta CH_i = \beta_0 + \beta_1 \Delta OPT_i + \beta_2 \Delta OPT_i^2 
++ \beta_3 \Delta OPT_i^3 + \epsilon_i
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The results show that &lt;span class=&#34;math inline&#34;&gt;\(\beta_0 = -0.0038\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\beta_1=0.2633\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\beta_2=-0.0790\)&lt;/span&gt;,
+and &lt;span class=&#34;math inline&#34;&gt;\(\beta_3=0.3827\)&lt;/span&gt;. The problem is that those coefficients alone do not
+necessarily tells us anything about the three regimes and the speed of cash
+holding adjustment. Typically we are interested in the marginal effect of
+a variable. In this case the speed of adjustment which you can see as&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\frac{\partial \Delta CH}{\partial \Delta OPT} = \beta_1 + 2 \beta_2 \Delta OPT + 
+  3\beta_3 \Delta OPT^2
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;You can see that the speed of adjustment depends on three coefficients and the
+value of &lt;span class=&#34;math inline&#34;&gt;\(\Delta OPT\)&lt;/span&gt;. One way to represent the effect of &lt;span class=&#34;math inline&#34;&gt;\(\Delta OPT\)&lt;/span&gt; on
+&lt;span class=&#34;math inline&#34;&gt;\(\Delta CH\)&lt;/span&gt; is to give the effect for different levels of &lt;span class=&#34;math inline&#34;&gt;\(\Delta OPT\)&lt;/span&gt; and that
+is what the paper does. Another way of doing that is to make a plot. I quickly
+show how you can do that in &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;First of all, I have to make a couple of assumptions because I don’t have the
+full data. From the descriptive statistics, we know the meand (&lt;code&gt;mopt&lt;/code&gt;) and
+(&lt;code&gt;sdopt&lt;/code&gt;) for &lt;span class=&#34;math inline&#34;&gt;\(\Delta OPT\)&lt;/span&gt;. From those we can generate the distribution of
+deviations. I tried two options: a normal distribution (&lt;code&gt;opt_dev_norm&lt;/code&gt;) and a
+t-distribution with 3 degrees of freedom (&lt;code&gt;opt_dev_t&lt;/code&gt;). The latter will give
+us larger outliers. Than we just calculate the cash holding change based on
+the ’s above and the OLS specification. Finally, you can plot the relation
+between change in cash holding and the deviation from the optimal level.&lt;/p&gt;
+&lt;p&gt;What struck me was that the three regimes are much more clear with the
+t-distribution than with the normal distribution for the deviations. In other
+words, it looks like the extreme cases are doing a lot of work to identify the
+regimes.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(ggplot2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: ggplot2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mopt = -0.0026
+sdopt = 0.1488
+opt_dev_norm = rnorm(1e4, mopt, sdopt)
+opt_dev_t = rt(1e4, df = 3) * sqrt(sdopt^2/3) + mopt
+round(quantile(opt_dev_norm, probs = c(0.75, 0.5, 0.25)), 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  75%  50%  25% 
+##  0.1  0.0 -0.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;round(quantile(opt_dev_t, probs = c(0.75, 0.5, 0.25)), 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   75%   50%   25% 
+##  0.06  0.00 -0.07&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cash_change_norm = -0.0038 + 0.2633 * opt_dev_norm - 0.0790 * opt_dev_norm ^ 2 + 
+  0.3827 * opt_dev_norm ^ 3
+normplot = qplot(x = opt_dev_norm, y = cash_change_norm) +
+  ggtitle(&amp;quot;Normal distributed deviations&amp;quot;) +
+  theme_classic()
+cash_change_t = -0.0038 + 0.2633 * opt_dev_t - 0.0790 * opt_dev_t ^ 2 + 
+  0.3827 * opt_dev_t ^ 3
+tplot = qplot(x = opt_dev_t, y = cash_change_t) +
+  ggtitle(&amp;quot;T distributed deviations&amp;quot;) +
+  theme_classic()
+print(normplot)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-03-15-quadratic-and-cubic-terms-in-linear-models_files/figure-html/cubic_ols-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print(tplot)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-03-15-quadratic-and-cubic-terms-in-linear-models_files/figure-html/cubic_ols-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>On nuance</title>
+      <link>/post/on-nuance/</link>
+      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>/post/on-nuance/</guid>
+      <description>&lt;p&gt;Keeping in theme with the swearing, another paper I would like to present is
+
+&lt;a href=&#34;https://kieranhealy.org/files/papers/fuck-nuance.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;Fuck Nuance&amp;rdquo; by Kieran Healy&lt;/a&gt;, a sociology
+professor. He describes the trap of trying to explain complex social science
+problems with ever more complex theories. It&amp;rsquo;s akin to the tendency of asking
+the seminar question: &amp;ldquo;Have you thought about all these other factors that
+also might play a role?&amp;rdquo; &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. I see it a lot and when my
+undergraduates, honours and Phd students try to improve on a theory. They
+just try to add more bells and whistles. I guess in some of the accounting
+literature it shows up as tesing for more and more variables that explain
+earnings management or that moderate the effect of incentives on performance.&lt;/p&gt;
+&lt;p&gt;Healy gives three reasons why too much nuance in a theory is possibe and
+should be avoided.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;If theories can be ever more expanded upon by making them more nuanced it
+becomes more difficult to refute them. In that sense, Agency Theory is not
+really a theory. You can always come up with a new Agency Theory model that
+fits your data. A single Agency Theory model can be seen as a theory and
+can be refuted by data. A good theory does not need to be adapted for each
+new application.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Less nuance can be interesting. Healy explains that the interestingness of
+a theory is not just an attribute of a theory, it also depends on who is
+communicating and who is the audience. In a literature full of nuanced
+theories, where every effect depends on country specific institutions, a
+simple theory that holds universally is interesting.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;There are also strategic reasons to not care too much about nuanced
+theories. Simpeler theories are easier to communicate and understand. They
+can spread easier.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Which is a different question from &amp;ldquo;Is it possible that your effect is driven by this other explanation?&amp;rdquo;. This is basically saying you need a different theory &lt;em&gt;not&lt;/em&gt; make your theory more complicated.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Everything is fucked: Econometrics Edition</title>
+      <link>/post/everything-is-fucked-econometrics-edition/</link>
+      <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>/post/everything-is-fucked-econometrics-edition/</guid>
+      <description>&lt;p&gt;Following Sanjay Srivastava&amp;rsquo;s (fake) 
+&lt;a href=&#34;https://hardsci.wordpress.com/2016/08/11/everything-is-fucked-the-syllabus/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;syllabus on pychological
+research&lt;/a&gt;, I thought I summarise a couple of recent econometrics related papers with
+a similar message.&lt;/p&gt;
+&lt;h3 id=&#34;clustered-standard-errors&#34;&gt;Clustered standard errors&lt;/h3&gt;
+&lt;p&gt;The first paper by 
+&lt;a href=&#34;http://www.nber.org/papers/w24003&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Abadie, Athey, Imbens, and Wooldridge&lt;/a&gt;
+explains why we should think more carefully about the level at which clustering
+of standard errors is applied (and if it is necessary at all). A good summary
+is found at the 
+&lt;a href=&#34;http://marcfbellemare.com/wordpress/12712&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Metrics Monday blog&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The take-a-way message is that clustering is not an empirical issue but a
+research design decisions.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Moreover, we show that the question whether, and at what level, to adjust
+standard errors for clustering is a substantive question that cannot be informed
+solely by the data (Abadie et al.)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;What that means is that it is not enough to run the analysis with and without
+clustered standard errors and check whether there is any difference.&lt;/p&gt;
+&lt;p&gt;There are two things two consider:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Sampling:&lt;/em&gt; If you randomly sample a subset of the clusters in the population
+and leave some out. A research design like that is not uncommon with hand
+collected data where the hand collected data is only collected for a subset
+of firms in the ASX200 but for multiple time periods. In this case, you
+should cluster at the firm level if you want to say something about the
+ASX200 firms that are not in your dataset. This is probably the less
+important issue for most accounting and finance studies.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Causal effect:&lt;/em&gt; If you have a causal effect (e.g. a change in regulation),
+and that is administered to a cluster and not to individual observations,
+you should cluster at that level. For instance, if you do a study with US
+data, and you look at a regulatory change in some states but not in other
+states, you should cluster &lt;em&gt;at the state level&lt;/em&gt;. Similar for cross-country
+studies.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;PS: Adding fixed effects only absolves you of clustering standard errors if you
+think that your causal effect is the same for each observation. That is if you
+think that some firms will react differently to a change in regulation, fixed
+effects don&amp;rsquo;t solve the need for clustering.&lt;/p&gt;
+&lt;h3 id=&#34;instrumental-variables&#34;&gt;Instrumental variables.&lt;/h3&gt;
+&lt;p&gt;The second one by
+
+&lt;a href=&#34;http://personal.lse.ac.uk/YoungA/ConsistencyWithoutInference.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Young&lt;/a&gt;
+focuses on (weak) instrumental variables and their standard errors. It does
+not look very good for the traditional 2SLS estimators.&lt;/p&gt;
+&lt;p&gt;The paper uses the bootstrap to test whether the standard errors of 2SLS are
+appropriate. They are not. 2SLS underestimates the standard errors and leads
+to more false positives. You should use the bootstrap to estimate standard
+errors of 2SLS. The intuition is that least squared standard errors are not very
+robust to deviations from normally distributed residuals. The two equations
+in 2SLS multiply the bias in standard errors compared to the one equation in
+OLS.&lt;/p&gt;
+&lt;p&gt;The paper actually show that in a lot of cases, you are better of to use regular
+OLS than &lt;em&gt;2SLS with bootstrap&lt;/em&gt;. Long story short, if you want to use 2SLS you
+have to have a setting that resembles a natural experiment.&lt;/p&gt;
+&lt;h3 id=&#34;residuals-as-dependent-variables&#34;&gt;Residuals as dependent variables&lt;/h3&gt;
+&lt;p&gt;The last one by 
+&lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2597429&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Chen, Hribar, and Melessa&lt;/a&gt;
+is especially relevant for the accountants.  The link is to the working paper.
+The paper has been accepted in JAR. The paper deals with research designs
+where in a first step, a researcher runs a regression to measure the unexpected
+component of a variable (e.g. abnormal returns, unexpected audit fees,
+unexpected earnings) and then in a second step the researcher runs a regression
+on the unexpected component.&lt;/p&gt;
+&lt;p&gt;The basic problem is that if the independent variables from step 1 are not
+included in step 2, you get biased estimates. The results suggests that there
+are some false positives in the literature. The solution is relatively simple&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Do not run two different regressions but run one regression with all
+independent variables from step 1 and step 2.&lt;/li&gt;
+&lt;li&gt;If that is not possible, you can run 2 regressions but you have to use all
+independent variables from step 1 in step 2 regression.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>External Project</title>
+      <link>/project/external-project/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>/project/external-project/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Internal Project</title>
+      <link>/project/internal-project/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>/project/internal-project/</guid>
+      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
+&lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
+&lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
+&lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
+&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>To risk or not to risk: Anxiety and the calibration between risk perception and danger mitigation.</title>
+      <link>/publication/jep_lmc2015/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>/publication/jep_lmc2015/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>How Leader Alignment of Words and Deeds Affects Followers: A Meta-analysis of Behavioral Integrity Research</title>
+      <link>/publication/jbe2015/</link>
+      <pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate>
+      <guid>/publication/jbe2015/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ABC Information, Fairness Perceptions, and Interfirm Negotiations</title>
+      <link>/publication/tar2012/</link>
+      <pubDate>Sat, 01 Dec 2012 00:00:00 +0000</pubDate>
+      <guid>/publication/tar2012/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/post/2020-06-05-theorising/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/post/2020-06-05-theorising/</guid>
+      <description>&lt;p&gt;:e:ew&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

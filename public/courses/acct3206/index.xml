@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ACCT3206 - Performance Measurement and Evaluation | Stijn Masschelein</title>
+    <link>/courses/acct3206/</link>
+      <atom:link href="/courses/acct3206/index.xml" rel="self" type="application/rss+xml" />
+    <description>ACCT3206 - Performance Measurement and Evaluation</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 30 May 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/stijn_profile.jpg</url>
+      <title>ACCT3206 - Performance Measurement and Evaluation</title>
+      <link>/courses/acct3206/</link>
+    </image>
+    
+  </channel>
+</rss>

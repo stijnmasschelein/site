@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stijn Masschelein</title>
+    <link>/author/stijn-masschelein/</link>
+      <atom:link href="/author/stijn-masschelein/index.xml" rel="self" type="application/rss+xml" />
+    <description>Stijn Masschelein</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/stijn_profile.jpg</url>
+      <title>Stijn Masschelein</title>
+      <link>/author/stijn-masschelein/</link>
+    </image>
+    
+    <item>
+      <title>Testing for Complementarities Between Accounting Practices</title>
+      <link>/publication/aos2020/</link>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/aos2020/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The effect of performance evaluation schemes on predicted transfer prices: Do leadership tone and perceived fairness concerns matter?</title>
+      <link>/publication/mar2018/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>/publication/mar2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>To risk or not to risk: Anxiety and the calibration between risk perception and danger mitigation.</title>
+      <link>/publication/jep_lmc2015/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>/publication/jep_lmc2015/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>How Leader Alignment of Words and Deeds Affects Followers: A Meta-analysis of Behavioral Integrity Research</title>
+      <link>/publication/jbe2015/</link>
+      <pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate>
+      <guid>/publication/jbe2015/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ABC Information, Fairness Perceptions, and Interfirm Negotiations</title>
+      <link>/publication/tar2012/</link>
+      <pubDate>Sat, 01 Dec 2012 00:00:00 +0000</pubDate>
+      <guid>/publication/tar2012/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

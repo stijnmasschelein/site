@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Chapter 4 Research tools - Data Analysis | Just Enough To Be Dangerous" />
+<meta property="og:type" content="book" />
+
+
+<meta property="og:description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance." />
+
+
+<meta name="author" content="Stijn Masschelein" />
+
+<meta name="date" content="2021-02-24" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance.">
+
+<title>Chapter 4 Research tools - Data Analysis | Just Enough To Be Dangerous</title>
+
+<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/envisioned.css" rel="stylesheet" />
+<link href="libs/msmb-css-0/msmb.css" rel="stylesheet" />
+<script>
+function toggle_visibility(id1, id2) {
+var e = document.getElementById(id1);
+var f = document.getElementById(id2);
+
+e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+
+if(f.classList.contains('fa-plus-square')) {
+    f.classList.add('fa-minus-square')
+    f.classList.remove('fa-plus-square')
+} else {
+    f.classList.add('fa-plus-square')
+    f.classList.remove('fa-minus-square')
+}
+
+}
+</script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+
+</head>
+
+<body>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul class="navbar">
+<li class="msmb"><p class="title">Just Enough To Be Dangerous<p><p class="author">Stijn Masschelein</p>
+<li class="dropdown" style="float:right">
+<a href="javascript:void(0)" class="dropbtn">&#x25BE; Chapters</a>
+<div class="dropdown-content">
+<a href="index.html"><span class="toc-section-number">1</span> Preamble</a>
+<a href="research-ceocomp.html"><span class="toc-section-number">2</span> A Research Project: CEO Compensation</a>
+<a href="research-tools-theory.html"><span class="toc-section-number">3</span> Research Tools - Theory</a>
+<a id="active-page" href="research-tools-data-analysis.html"><span class="toc-section-number">4</span> Research tools - Data Analysis</a><ul class="toc-sections">
+<li class="toc"><a href="#data-analysis-tools"> Data analysis tools</a></li>
+<li class="toc"><a href="#the-r-console"> The R console</a></li>
+<li class="toc"><a href="#r-packages"> R packages</a></li>
+<li class="toc"><a href="#useful-code"> Finally some useful code!</a></li>
+<li class="toc"><a href="#looking-for-help"> Looking for help</a></li>
+<li class="toc"><a href="#rmarkdown-markdown-r"> RMarkdown = Markdown + R</a></li>
+</ul>
+<a href="maths-sim.html"><span class="toc-section-number">5</span> Theory: Maths and Simulations</a>
+<a href="linear-regression.html"><span class="toc-section-number">6</span> Linear regression in <code>R</code></a>
+<a href="measurement.html"><span class="toc-section-number">7</span> Measurement and Theory</a>
+<a href="control-variables.html"><span class="toc-section-number">8</span> Control Variables</a>
+<a href="assessment.html"><span class="toc-section-number">9</span> Assessment</a>
+<a href="references.html"><span class="toc-section-number">10</span> References</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<div id="research-tools---data-analysis" class="section level1">
+<h1>
+<span class="header-section-number">Chapter 4</span> Research tools - Data Analysis</h1>
+<div id="data-analysis-tools" class="section level2">
+<h2>
+<span class="header-section-number">4.1</span> Data analysis tools</h2>
+<p>Our main tool for data analysis is the R statistical software
+<span class="citation">(R Core Team <a href="#ref-R-base">2020</a>)</span>. R is free software specifically aimed at statistical
+analysis and graphical representation. It is a fully developed
+programming language that allows to extend it with new packages
+with new capabilities. We are going to heavily rely on some of
+those packages.<label for="tufte-sn-21" class="margin-toggle sidenote-number">21</label><input type="checkbox" id="tufte-sn-21" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">21</span> You can download R <a href="https://cran.curtin.edu.au/">from this CRAN server</a></span></p>
+<p>We are going to interact with the R software through Rstudio.<label for="tufte-sn-22" class="margin-toggle sidenote-number">22</label><input type="checkbox" id="tufte-sn-22" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">22</span> You can download <a href="https://www.rstudio.com/products/rstudio/download/#download">from the Rstudio website</a></span>
+Rstudio is an integrated development environment for R. It allows
+you to easily write, test, and run R code, and integrate the
+results with explanations. One advantage of R and Rstudio is that
+you can install them on as many computers as you want. You do not
+need a special license. This means that you do not have to be
+affiliated with the university to use the sofware.</p>
+<p>In Rstudio, you write code and ask the R software to execute that
+code. You can save the different steps in your analysis in an R
+script which is just a plain text file with the <code>.R</code>-extenstion.
+The advantage of plain text file is that they are easy to share
+across different operating systems. The code in your script
+allows you and anyone else to run the same analysis at a later
+point in time which is very important to check for mistakes
+and for teaching.</p>
+<p>We will make use of a special type of plain text files: Rmarkdown
+(<code>.Rmd</code>) files.<label for="tufte-sn-23" class="margin-toggle sidenote-number">23</label><input type="checkbox" id="tufte-sn-23" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">23</span> These notes are fully written in Rmarkdown
+files</span>. RMarkdown is an R extension of the markdown format. The
+idea of markdown is to write plain text documents which can later
+be exported to other formats such as html, pdf, or word. The
+advantage of plain text scripts and markdown. The beauty of
+RMarkdown is that it lets you combine both R scripts and markdown
+into one document. This allows you to integrate your analysis and
+your description of your analysis in one document. When you go
+back to your analysis after a couple of weeks, you will be happy
+that you have more than the raw code to look at.</p>
+<p>Finally, I am going to introduce you to a specific dialect of the
+R language which is informally known as the tidyverse. If you
+want to be a good R programmer this might not be the best entry
+point into R. However, I assume that you want to quickly pick up
+some tools to facilitate your research project and for that
+purpose I believe the tidyverse will be excellent. I will
+introduce the most important bits and pieces throughout my
+lectures however I don’t have the time to go into detail. Now and
+then, you will have to experiment on your own to get your code
+working. Some excellent resources are the free online books
+<a href="https://r4ds.had.co.nz/">R for datascience</a> and
+<a href="https://socviz.co/">Data Visualization: A practical introduction</a>.
+You can also buy reasonably priced physical copies
+if you your are interested in developing your R skills further.</p>
+<p>For larger projects, you should use a project in its own
+separate folder.<label for="tufte-sn-24" class="margin-toggle sidenote-number">24</label><input type="checkbox" id="tufte-sn-24" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">24</span> See the
+<a href="https://r4ds.had.co.nz/workflow-projects.html">Project Chapter</a>
+of Hadley Wickham’s book</span>. Once you need multiple scripts, you
+want to make sure that you can reliably point to the results or
+functions in different scripts. Projects help you manage all
+the parts of a larger piece of work. You can start a</p>
+<p>You start a new project by clicking <code>File &gt; New Project ...</code> You
+can start a new file by clicking <code>File &gt; New File &gt; R Script</code>.</p>
+</div>
+<div id="the-r-console" class="section level2">
+<h2>
+<span class="header-section-number">4.2</span> The R console</h2>
+<p>In Rstudio, you can use the R console directly. I mainly use the
+R console to test the code I have written in my scripts and I
+would advice you to do the same thing. If you want to understand
+how R works. You can experiment by typing the following lines in
+the console.<label for="tufte-sn-25" class="margin-toggle sidenote-number">25</label><input type="checkbox" id="tufte-sn-25" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">25</span> It is tempting to copy and paste the code but
+retyping the code is a surprising powerful way of learning to
+code. I would advise you to try to type as much of the code as
+possible when you are trying to figure out how R works.</span></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">x</a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">x &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">x</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>The little code above already shows you two things.</p>
+<ol style="list-style-type: decimal">
+<li>You can assign (and overwrite) a numerical value to an object <code>x</code>
+</li>
+<li>The right-hand side is assigned to the left-hand side. You can’t just
+switch them around.</li>
+</ol>
+<p>We will see further that we can assign almost anything to an
+object <code>x</code>. When <code>x</code> is a vector or a data set with multiple
+elements, this will allow us to perform the same function on each
+element of <code>x</code>. That is the basic advantage of programming. You
+can tell your computer how to do a thing and than the computer
+can do it over and over for you.</p>
+</div>
+<div id="r-packages" class="section level2">
+<h2>
+<span class="header-section-number">4.3</span> R packages</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"tidyverse"</span>)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">library</span>(<span class="st">"tidyverse"</span>)</a></code></pre></div>
+<p>R packages are additions to R that give R extra functionality.
+One of the selling points of R is that it has a good way of
+integrating this extra functionality and a lot of people are
+highly motivated to add this extra functionality. We will heavily
+rely on one meta-packages. <code>tidyverse</code> is a package that helps
+with data transformations and working with tabular data in a tidy
+fashion. One of the packages in the <code>tidyverse</code> is <code>ggplot2</code>
+which provides tools to make pretty plots. The code above shows
+you how to install packages and use them. Normally, you will only
+have to install a package once. However, when you want to use a
+package in your script or code, you will have to load the package
+with the <code>library()</code> function. You only have to do load a package
+once at the start of your R session or at the start of your
+script.<label for="tufte-sn-26" class="margin-toggle sidenote-number">26</label><input type="checkbox" id="tufte-sn-26" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">26</span> Installing packages is another reason to use the R console.</span></p>
+<p><code>dplyr</code> is another part of the <code>tidyverse</code> we will use
+extensively. With 5 verbs<label for="tufte-sn-27" class="margin-toggle sidenote-number">27</label><input type="checkbox" id="tufte-sn-27" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">27</span> i.e. functions to <em>do</em> something with
+a dataset.</span> and one pipe operator to glue them together helps
+you to explore the data.<code>filter()</code> let’s you filter out a subset
+of the observations. <code>select()</code> selects a subset of the variables.
+<code>mutate()</code> changes variables and creates new ones. <code>group_by()</code>
+and <code>summarise()</code> group subsets of observations and summarise
+them. <code>%&gt;%</code> is the pipe operator and joins together the verbs
+to create compound statements where you for instance filter a
+subset of the observations, create a new variable, create groups,
+and summarise the groups based on the average for the new
+variable.</p>
+</div>
+<div id="useful-code" class="section level2">
+<h2>
+<span class="header-section-number">4.4</span> Finally some useful code!</h2>
+<p>Let’s run some code. First, we have to tell R to use the packages
+in the <code>tidyverse</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<p>Next, we have a look at the data I used to draw the plot of the
+compensation of CEOs of S&amp;P500 companies. First, we have to assign
+the file with the data to an object, <code>us_comp</code> in this case.<label for="tufte-sn-28" class="margin-toggle sidenote-number">28</label><input type="checkbox" id="tufte-sn-28" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">28</span> The data is available on LMS or through the code in the
+Appendix <a href="research-ceocomp.html#appendix-2">2.5</a></span>
+The glimpse function gives an overview of the variables in the
+data, the type of the variables, and a couple of examples of the
+values for that variable.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">us_comp &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">"data/us-compensation.RDS"</span>)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">glimpse</span>(us_comp)</a></code></pre></div>
+<pre><code>## Rows: 17,622
+## Columns: 22
+## $ year                    &lt;dbl&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 201…
+## $ gvkey                   &lt;chr&gt; "001004", "001004", "001004", "001004", "0010…
+## $ cusip                   &lt;chr&gt; "00036110", "00036110", "00036110", "00036110…
+## $ exec_fullname           &lt;chr&gt; "David P. Storch", "David P. Storch", "David …
+## $ coname                  &lt;chr&gt; "AAR CORP", "AAR CORP", "AAR CORP", "AAR CORP…
+## $ ceoann                  &lt;chr&gt; "CEO", "CEO", "CEO", "CEO", "CEO", "CEO", "CE…
+## $ execid                  &lt;chr&gt; "09249", "09249", "09249", "09249", "09249", …
+## $ bonus                   &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.0…
+## $ salary                  &lt;dbl&gt; 867.000, 877.838, 906.449, 906.449, 755.250, …
+## $ stock_awards_fv         &lt;dbl&gt; 2664.745, 619.200, 1342.704, 1695.200, 1150.5…
+## $ stock_unvest_val        &lt;dbl&gt; 4227.273, 6018.000, 4244.165, 4103.283, 0.000…
+## $ eip_unearn_num          &lt;dbl&gt; 32.681, 56.681, 66.929, 83.415, 0.000, 157.96…
+## $ eip_unearn_val          &lt;dbl&gt; 393.806, 1137.021, 1626.375, 2464.079, 2244.9…
+## $ option_awards           &lt;dbl&gt; 578.460, 695.520, 1622.016, 0.000, 1150.500, …
+## $ option_awards_blk_value &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ option_awards_num       &lt;dbl&gt; 49.022, 144.000, 158.400, 0.000, 0.000, 225.0…
+## $ tdc1                    &lt;dbl&gt; 5786.400, 4182.832, 5247.779, 5234.648, 3523.…
+## $ tdc2                    &lt;dbl&gt; 6105.117, 3487.312, 3809.626, 10428.375, 3523…
+## $ shrown_tot_pct          &lt;dbl&gt; 2.964, 2.893, 3.444, 3.877, 4.597, 5.417, 3.7…
+## $ becameceo               &lt;date&gt; 1996-10-09, 1996-10-09, 1996-10-09, 1996-10-…
+## $ joined_co               &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+## $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</code></pre>
+<p>We can also look at a subset of the observations, i.e. we filter
+the observations from the company that has the key <code>001045</code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">filter</span>(us_comp, gvkey <span class="op">==</span><span class="st"> "001045"</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 22
+##    year gvkey cusip exec_fullname coname ceoann execid bonus salary
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1  2011 0010… 0237… Gerard J. Ar… AMERI… CEO    14591      0   614.
+## 2  2012 0010… 0237… Thomas W. Ho… AMERI… CEO    26059      0   618.
+## 3  2013 0010… 0237… Thomas W. Ho… AMERI… CEO    26059      0   592.
+## 4  2014 0010… 0237… William Doug… AMERI… CEO    46191      0   688.
+## 5  2015 0010… 0237… William Doug… AMERI… CEO    46191      0   232.
+## 6  2016 0010… 0237… William Doug… AMERI… CEO    46191      0     0 
+## 7  2017 0010… 0237… William Doug… AMERI… CEO    46191      0     0 
+## 8  2018 0010… 0237… William Doug… AMERI… CEO    46191      0     0 
+## 9  2019 0010… 0237… William Doug… AMERI… CEO    46191      0     0 
+## # … with 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
+## #   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
+## #   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
+## #   tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;, becameceo &lt;date&gt;, joined_co &lt;date&gt;,
+## #   reason &lt;chr&gt;</code></pre>
+<p>You can see that the company, American Airlines, has had three
+CEOs since 2011. I used the <code>gvkey</code> to select a company and not
+its name. You will often use an id or a database key especially
+if you are working with multiple datasets and you want to link
+observations from one dataset to observations in the other
+dataset.</p>
+<p>We can also filter data based on other variables. For instance,
+the below filters the observations from 2014 where the CEO had
+a salary over $1,000,000.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">filter</span>(us_comp, salary <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>, year <span class="op">==</span><span class="st"> </span><span class="dv">2014</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 476 x 22
+##     year gvkey cusip exec_fullname coname ceoann execid bonus salary
+##    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1  2014 0010… 7234… Donald E. Br… PINNA… CEO    05835      0  1240 
+##  2  2014 0010… 0028… Miles D. Whi… ABBOT… CEO    14300      0  1973.
+##  3  2014 0011… 0079… Rory P. Read  ADVAN… CEO    42390      0  1000.
+##  4  2014 0013… 4385… David M. Cote HONEY… CEO    20931   5500  1866.
+##  5  2014 0013… 4280… John B. Hess  HESS … CEO    02132      0  1500 
+##  6  2014 0014… 0255… Nicholas K. … AMERI… CEO    40778      0  1241.
+##  7  2014 0014… 0258… Kenneth I. C… AMERI… CEO    02157   4500  2000 
+##  8  2014 0014… 0010… Daniel Paul … AFLAC… CEO    00013      0  1441.
+##  9  2014 0014… 0263… Jeffrey M. W… AMERI… CEO    11710   3640  1012.
+## 10  2014 0014… 0268… Robert Herma… AMERI… CEO    20972      0  1385.
+## # … with 466 more rows, and 13 more variables: stock_awards_fv &lt;dbl&gt;,
+## #   stock_unvest_val &lt;dbl&gt;, eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;,
+## #   option_awards &lt;dbl&gt;, option_awards_blk_value &lt;dbl&gt;,
+## #   option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;, tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;,
+## #   becameceo &lt;date&gt;, joined_co &lt;date&gt;, reason &lt;chr&gt;</code></pre>
+<p>You can also select some variables if you are only interested in
+those. If a variable has an undescriptive name, you can use
+select to rename the variable. For instance, <code>tdc1</code> is the total
+compensation of a the CEO. A more descriptive name will help you
+to remember what the variable actually means.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">select</span>(us_comp, year, coname, bonus, salary, <span class="dt">total =</span> tdc1)</a></code></pre></div>
+<pre><code>## # A tibble: 17,622 x 5
+##     year coname                      bonus salary total
+##    &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+##  1  2011 AAR CORP                        0   867  5786.
+##  2  2012 AAR CORP                        0   878. 4183.
+##  3  2013 AAR CORP                        0   906. 5248.
+##  4  2014 AAR CORP                        0   906. 5235.
+##  5  2015 AAR CORP                        0   755. 3524.
+##  6  2016 AAR CORP                        0   835  6073.
+##  7  2017 AAR CORP                        0   941  6284.
+##  8  2018 AAR CORP                        0   750  4234.
+##  9  2019 AAR CORP                        0   801. 3436.
+## 10  2011 AMERICAN AIRLINES GROUP INC     0   614. 5527.
+## # … with 17,612 more rows</code></pre>
+<p>You can also create new variables with the <code>mutate</code> function. I
+created a variable that calculates what percentage of total
+compensation is the CEO’s salary.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">select</span>(us_comp, year, coname, bonus, salary, <span class="dt">total =</span> tdc1) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">salary_percentage =</span> salary <span class="op">/</span><span class="st"> </span>total)  </a></code></pre></div>
+<pre><code>## # A tibble: 17,622 x 6
+##     year coname                      bonus salary total salary_percentage
+##    &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;             &lt;dbl&gt;
+##  1  2011 AAR CORP                        0   867  5786.             0.150
+##  2  2012 AAR CORP                        0   878. 4183.             0.210
+##  3  2013 AAR CORP                        0   906. 5248.             0.173
+##  4  2014 AAR CORP                        0   906. 5235.             0.173
+##  5  2015 AAR CORP                        0   755. 3524.             0.214
+##  6  2016 AAR CORP                        0   835  6073.             0.138
+##  7  2017 AAR CORP                        0   941  6284.             0.150
+##  8  2018 AAR CORP                        0   750  4234.             0.177
+##  9  2019 AAR CORP                        0   801. 3436.             0.233
+## 10  2011 AMERICAN AIRLINES GROUP INC     0   614. 5527.             0.111
+## # … with 17,612 more rows</code></pre>
+<p>Remark how the <code>select</code> statement from before is chained together
+with the <code>mutate</code> statement through the pipe operator (<code>%&gt;%</code>).
+This operator pipes the results from the first statemetn to the
+second statement. The second statement implicitly uses the result
+from the first statement as the data it is going to work with.</p>
+<p>You can use pipe statement to make your own descriptive
+statistics table. I created a table with some statistics for each
+firm. I first group the observations based on the <code>gvkey</code> and
+then summarise each group with the same key by defining a number
+of new variables.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">group_by</span>(us_comp, gvkey) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">N =</span> <span class="kw">n</span>(), <span class="dt">N_CEO =</span> <span class="kw">n_distinct</span>(execid), </a>
+<a class="sourceLine" id="cb22-3" data-line-number="3">            <span class="dt">average =</span> <span class="kw">mean</span>(salary), <span class="dt">sd =</span> <span class="kw">sd</span>(salary),</a>
+<a class="sourceLine" id="cb22-4" data-line-number="4">            <span class="dt">med =</span> <span class="kw">median</span>(salary), <span class="dt">minimum =</span> <span class="kw">min</span>(salary), </a>
+<a class="sourceLine" id="cb22-5" data-line-number="5">            <span class="dt">maximum =</span> <span class="kw">max</span>(salary)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb22-6" data-line-number="6"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 2,347 x 8
+##    gvkey      N N_CEO average    sd   med minimum maximum
+##    &lt;chr&gt;  &lt;int&gt; &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1 001004     9     2    849.  68.3  867     750     941 
+##  2 001045     9     3    305. 316.   232.      0     688.
+##  3 001072     8     2    677. 219.   652.    450     967.
+##  4 001075     9     1   1259.  98.8 1277    1091    1395 
+##  5 001076     9     3    727. 103.   700     567.    850 
+##  6 001078     9     1   1908.  24.4 1900    1900    1973.
+##  7 001094     8     3    563.  66.2  581.    437.    626.
+##  8 001161     9     3    913. 143.   961.    566.   1026.
+##  9 001177     7     1   1049.  86.4 1000     977.   1200 
+## 10 001209     9     2   1196. 123.  1200     905.   1350 
+## # … with 2,337 more rows</code></pre>
+</div>
+<div id="looking-for-help" class="section level2">
+<h2>
+<span class="header-section-number">4.5</span> Looking for help</h2>
+<p>Programming is hard work. You will make mistakes. You will get
+error messages. An important programming skill is to efficiently
+debug your code and find out what is going wrong.</p>
+<ul>
+<li><p>The most important technique is trial and error. Change one
+thing in your code and see what the output is. Do you get an
+error message? What does the error message tell you? If you
+are carefull and do not change everything at once, this should
+at least help you to find out which part of the code does not
+work. This is one reason why scripts are so important. Because
+a script contains your entire analyis, you can always go back
+and (let your computer) redo the analysis from the start.</p></li>
+<li><p>If you are not sure how you should use a certain function in R,
+you can read its help files in the Rstudio <em>Help</em> window. You
+can search for more information what a function is doing.</p></li>
+<li><p>R is a very popular language. If you have a problem it is likely
+that someone else had the same problem before you. If you
+<a href="https://www.google.com">Google</a> the error message, there is a
+decent chance you will find a solution to your problem.</p></li>
+<li><p>A specific website where a lot of these questions are asked is<br><a href="https://www.stackoverflow.com">StackOverflow</a>. You can often
+directly search for your error on the website and find multiple
+solutions. You can improve your chances of finding a related
+answer to your problem by adding the <code>[r]</code>, <code>[tidyverse]</code>,
+<code>[dplyr]</code>, <code>[ggplot]</code> tags to your error message.</p></li>
+<li><p>You can also ask me directly for help on LMS. I set up a forum
+for questions and I promise to help you with any R questions
+you might have for the unit and for your thesis.</p></li>
+</ul>
+</div>
+<div id="rmarkdown-markdown-r" class="section level2">
+<h2>
+<span class="header-section-number">4.6</span> RMarkdown = Markdown + R</h2>
+<p>One of the big advantages of the R world is that you can
+easily combine explanations with your analysis in <code>.Rmd</code> files.
+The assignements can all be completed in Rmarkdown. You can find
+a lot of good resources on
+<a href="https://rmarkdown.rstudio.com/">Rmarkdown on the Rstudio website</a>.<br>
+In short, markdown is a simple markup language<label for="tufte-sn-29" class="margin-toggle sidenote-number">29</label><input type="checkbox" id="tufte-sn-29" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">29</span> This means that you can
+add little bits of code to your text that indicate how the text
+should look</span> that lets you include R code.</p>
+<div id="markdown" class="section level3">
+<h3>
+<span class="header-section-number">4.6.1</span> Markdown</h3>
+<p>You can have titles in markdown.</p>
+<pre><code># Title
+## Subtitle
+### Lower level titles.</code></pre>
+<p>You can emphasise some words.</p>
+<p>*<em>Italic</em>*, **<strong>bold</strong>**</p>
+<p>Add links to pages and include pictures.</p>
+<pre><code>[weblink](https://www.google.com)
+![pictures](https://rstudio.com/wp-content/uploads/2015/10/r-packages.png)</code></pre>
+<p>You can write enumerations and lists.</p>
+<pre><code>1. Item 1
+2. Item 2 
+3. Item 3 
+
+- one
+- two 
+- three </code></pre>
+<p>You can also write tables. You will rarely have to use tables.
+Typically, you can directly create the tables from R without the
+need to type in the results of your analysis.</p>
+<pre><code>First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell</code></pre>
+</div>
+<div id="r-code-in-markdown-r-chunks" class="section level3">
+<h3>
+<span class="header-section-number">4.6.2</span> R-code in markdown: R chunks</h3>
+<p>The largest advantage of Rmarkdown files is that we can include
+pieces of R code.[^ Again, all these notes are written in
+Rmarkdown. Code chuncks go between three backticks and we tell
+Rmarkdown that the language we are using is <code>{r}</code>. The example
+below creates a code chuck where we create a random vector <code>x</code>
+with then elements where the elements are drawn from a random
+distribution with mean 4 and standard deviation 3.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="bn">```{r}</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="bn">x &lt;- rnorm(n = 10, mean = 4, sd = 3)</span></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="bn">```</span></a></code></pre></div>
+
+</div>
+</div>
+</div>
+<h3> References</h3>
+<div id="refs" class="references">
+<div id="ref-R-base">
+<p>R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+</div>
+</div>
+</body></html>
+
+<p style="text-align: center;">
+<a href="research-tools-theory.html"><button class="btn btn-default">Previous</button></a>
+<a href="maths-sim.html"><button class="btn btn-default">Next</button></a>
+</p>
+<p class="build-date">Page built: 
+2021-02-24
+</p>
+</div>
+</div>
+
+
+
+</body>
+</html>

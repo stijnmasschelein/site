@@ -16,4 +16,3 @@ weight: 1
 
 # [Lecture Notes](/teaching/pme.pdf)
 
-# [SSRN link](http://dx.doi.org/10.2139/ssrn.3126609)

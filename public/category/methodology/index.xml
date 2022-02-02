@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>methodology | Stijn Masschelein</title>
+    <link>/category/methodology/</link>
+      <atom:link href="/category/methodology/index.xml" rel="self" type="application/rss+xml" />
+    <description>methodology</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/stijn_profile.jpg</url>
+      <title>methodology</title>
+      <link>/category/methodology/</link>
+    </image>
+    
+    <item>
+      <title>Everything is fucked: Econometrics Edition</title>
+      <link>/post/everything-is-fucked-econometrics-edition/</link>
+      <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>/post/everything-is-fucked-econometrics-edition/</guid>
+      <description>&lt;p&gt;Following Sanjay Srivastava&amp;rsquo;s (fake) 
+&lt;a href=&#34;https://hardsci.wordpress.com/2016/08/11/everything-is-fucked-the-syllabus/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;syllabus on pychological
+research&lt;/a&gt;, I thought I summarise a couple of recent econometrics related papers with
+a similar message.&lt;/p&gt;
+&lt;h3 id=&#34;clustered-standard-errors&#34;&gt;Clustered standard errors&lt;/h3&gt;
+&lt;p&gt;The first paper by 
+&lt;a href=&#34;http://www.nber.org/papers/w24003&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Abadie, Athey, Imbens, and Wooldridge&lt;/a&gt;
+explains why we should think more carefully about the level at which clustering
+of standard errors is applied (and if it is necessary at all). A good summary
+is found at the 
+&lt;a href=&#34;http://marcfbellemare.com/wordpress/12712&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Metrics Monday blog&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The take-a-way message is that clustering is not an empirical issue but a
+research design decisions.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Moreover, we show that the question whether, and at what level, to adjust
+standard errors for clustering is a substantive question that cannot be informed
+solely by the data (Abadie et al.)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;What that means is that it is not enough to run the analysis with and without
+clustered standard errors and check whether there is any difference.&lt;/p&gt;
+&lt;p&gt;There are two things two consider:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Sampling:&lt;/em&gt; If you randomly sample a subset of the clusters in the population
+and leave some out. A research design like that is not uncommon with hand
+collected data where the hand collected data is only collected for a subset
+of firms in the ASX200 but for multiple time periods. In this case, you
+should cluster at the firm level if you want to say something about the
+ASX200 firms that are not in your dataset. This is probably the less
+important issue for most accounting and finance studies.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Causal effect:&lt;/em&gt; If you have a causal effect (e.g. a change in regulation),
+and that is administered to a cluster and not to individual observations,
+you should cluster at that level. For instance, if you do a study with US
+data, and you look at a regulatory change in some states but not in other
+states, you should cluster &lt;em&gt;at the state level&lt;/em&gt;. Similar for cross-country
+studies.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;PS: Adding fixed effects only absolves you of clustering standard errors if you
+think that your causal effect is the same for each observation. That is if you
+think that some firms will react differently to a change in regulation, fixed
+effects don&amp;rsquo;t solve the need for clustering.&lt;/p&gt;
+&lt;h3 id=&#34;instrumental-variables&#34;&gt;Instrumental variables.&lt;/h3&gt;
+&lt;p&gt;The second one by
+
+&lt;a href=&#34;http://personal.lse.ac.uk/YoungA/ConsistencyWithoutInference.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Young&lt;/a&gt;
+focuses on (weak) instrumental variables and their standard errors. It does
+not look very good for the traditional 2SLS estimators.&lt;/p&gt;
+&lt;p&gt;The paper uses the bootstrap to test whether the standard errors of 2SLS are
+appropriate. They are not. 2SLS underestimates the standard errors and leads
+to more false positives. You should use the bootstrap to estimate standard
+errors of 2SLS. The intuition is that least squared standard errors are not very
+robust to deviations from normally distributed residuals. The two equations
+in 2SLS multiply the bias in standard errors compared to the one equation in
+OLS.&lt;/p&gt;
+&lt;p&gt;The paper actually show that in a lot of cases, you are better of to use regular
+OLS than &lt;em&gt;2SLS with bootstrap&lt;/em&gt;. Long story short, if you want to use 2SLS you
+have to have a setting that resembles a natural experiment.&lt;/p&gt;
+&lt;h3 id=&#34;residuals-as-dependent-variables&#34;&gt;Residuals as dependent variables&lt;/h3&gt;
+&lt;p&gt;The last one by 
+&lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2597429&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Chen, Hribar, and Melessa&lt;/a&gt;
+is especially relevant for the accountants.  The link is to the working paper.
+The paper has been accepted in JAR. The paper deals with research designs
+where in a first step, a researcher runs a regression to measure the unexpected
+component of a variable (e.g. abnormal returns, unexpected audit fees,
+unexpected earnings) and then in a second step the researcher runs a regression
+on the unexpected component.&lt;/p&gt;
+&lt;p&gt;The basic problem is that if the independent variables from step 1 are not
+included in step 2, you get biased estimates. The results suggests that there
+are some false positives in the literature. The solution is relatively simple&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Do not run two different regressions but run one regression with all
+independent variables from step 1 and step 2.&lt;/li&gt;
+&lt;li&gt;If that is not possible, you can run 2 regressions but you have to use all
+independent variables from step 1 in step 2 regression.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

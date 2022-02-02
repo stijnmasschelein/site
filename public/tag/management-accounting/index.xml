@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Management Accounting | Stijn Masschelein</title>
+    <link>/tag/management-accounting/</link>
+      <atom:link href="/tag/management-accounting/index.xml" rel="self" type="application/rss+xml" />
+    <description>Management Accounting</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/stijn_profile.jpg</url>
+      <title>Management Accounting</title>
+      <link>/tag/management-accounting/</link>
+    </image>
+    
+    <item>
+      <title>Testing for Complementarities Between Accounting Practices</title>
+      <link>/publication/aos2020/</link>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/aos2020/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The effect of performance evaluation schemes on predicted transfer prices: Do leadership tone and perceived fairness concerns matter?</title>
+      <link>/publication/mar2018/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>/publication/mar2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ABC Information, Fairness Perceptions, and Interfirm Negotiations</title>
+      <link>/publication/tar2012/</link>
+      <pubDate>Sat, 01 Dec 2012 00:00:00 +0000</pubDate>
+      <guid>/publication/tar2012/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

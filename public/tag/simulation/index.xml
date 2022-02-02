@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Simulation | Stijn Masschelein</title>
+    <link>/tag/simulation/</link>
+      <atom:link href="/tag/simulation/index.xml" rel="self" type="application/rss+xml" />
+    <description>Simulation</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/stijn_profile.jpg</url>
+      <title>Simulation</title>
+      <link>/tag/simulation/</link>
+    </image>
+    
+    <item>
+      <title>Testing for Complementarities Between Accounting Practices</title>
+      <link>/publication/aos2020/</link>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/aos2020/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

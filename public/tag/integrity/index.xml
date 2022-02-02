@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Integrity | Stijn Masschelein</title>
+    <link>/tag/integrity/</link>
+      <atom:link href="/tag/integrity/index.xml" rel="self" type="application/rss+xml" />
+    <description>Integrity</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 06 Sep 2014 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/stijn_profile.jpg</url>
+      <title>Integrity</title>
+      <link>/tag/integrity/</link>
+    </image>
+    
+    <item>
+      <title>How Leader Alignment of Words and Deeds Affects Followers: A Meta-analysis of Behavioral Integrity Research</title>
+      <link>/publication/jbe2015/</link>
+      <pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate>
+      <guid>/publication/jbe2015/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

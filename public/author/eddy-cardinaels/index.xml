@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eddy Cardinaels | Stijn Masschelein</title>
+    <link>/author/eddy-cardinaels/</link>
+      <atom:link href="/author/eddy-cardinaels/index.xml" rel="self" type="application/rss+xml" />
+    <description>Eddy Cardinaels</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Dec 2012 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/stijn_profile.jpg</url>
+      <title>Eddy Cardinaels</title>
+      <link>/author/eddy-cardinaels/</link>
+    </image>
+    
+    <item>
+      <title>ABC Information, Fairness Perceptions, and Interfirm Negotiations</title>
+      <link>/publication/tar2012/</link>
+      <pubDate>Sat, 01 Dec 2012 00:00:00 +0000</pubDate>
+      <guid>/publication/tar2012/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

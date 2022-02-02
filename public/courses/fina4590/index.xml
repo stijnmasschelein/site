@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Just Enough To Be Dangerous | Stijn Masschelein</title>
+    <link>/courses/fina4590/</link>
+      <atom:link href="/courses/fina4590/index.xml" rel="self" type="application/rss+xml" />
+    <description>Just Enough To Be Dangerous</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 30 May 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/stijn_profile.jpg</url>
+      <title>Just Enough To Be Dangerous</title>
+      <link>/courses/fina4590/</link>
+    </image>
+    
+  </channel>
+</rss>

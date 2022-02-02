@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>David Woodliff | Stijn Masschelein</title>
+    <link>/author/david-woodliff/</link>
+      <atom:link href="/author/david-woodliff/index.xml" rel="self" type="application/rss+xml" />
+    <description>David Woodliff</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/stijn_profile.jpg</url>
+      <title>David Woodliff</title>
+      <link>/author/david-woodliff/</link>
+    </image>
+    
+    <item>
+      <title>The effect of performance evaluation schemes on predicted transfer prices: Do leadership tone and perceived fairness concerns matter?</title>
+      <link>/publication/mar2018/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>/publication/mar2018/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

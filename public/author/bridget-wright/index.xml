@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bridget Wright | Stijn Masschelein</title>
+    <link>/author/bridget-wright/</link>
+      <atom:link href="/author/bridget-wright/index.xml" rel="self" type="application/rss+xml" />
+    <description>Bridget Wright</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/stijn_profile.jpg</url>
+      <title>Bridget Wright</title>
+      <link>/author/bridget-wright/</link>
+    </image>
+    
+    <item>
+      <title>To risk or not to risk: Anxiety and the calibration between risk perception and danger mitigation.</title>
+      <link>/publication/jep_lmc2015/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>/publication/jep_lmc2015/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Chapter 2 A Research Project: CEO Compensation | Just Enough To Be Dangerous" />
+<meta property="og:type" content="book" />
+
+
+<meta property="og:description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance." />
+
+
+<meta name="author" content="Stijn Masschelein" />
+
+<meta name="date" content="2021-02-24" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance.">
+
+<title>Chapter 2 A Research Project: CEO Compensation | Just Enough To Be Dangerous</title>
+
+<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/envisioned.css" rel="stylesheet" />
+<link href="libs/msmb-css-0/msmb.css" rel="stylesheet" />
+<script>
+function toggle_visibility(id1, id2) {
+var e = document.getElementById(id1);
+var f = document.getElementById(id2);
+
+e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+
+if(f.classList.contains('fa-plus-square')) {
+    f.classList.add('fa-minus-square')
+    f.classList.remove('fa-plus-square')
+} else {
+    f.classList.add('fa-plus-square')
+    f.classList.remove('fa-minus-square')
+}
+
+}
+</script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+
+</head>
+
+<body>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul class="navbar">
+<li class="msmb"><p class="title">Just Enough To Be Dangerous<p><p class="author">Stijn Masschelein</p>
+<li class="dropdown" style="float:right">
+<a href="javascript:void(0)" class="dropbtn">&#x25BE; Chapters</a>
+<div class="dropdown-content">
+<a href="index.html"><span class="toc-section-number">1</span> Preamble</a>
+<a id="active-page" href="research-ceocomp.html"><span class="toc-section-number">2</span> A Research Project: CEO Compensation</a><ul class="toc-sections">
+<li class="toc"><a href="#introduction"> Introduction</a></li>
+<li class="toc"><a href="#theory"> Theory</a></li>
+<li class="toc"><a href="#empirical-test"> Empirical Test</a></li>
+<li class="toc"><a href="#conclusion"> Conclusion</a></li>
+<li class="toc"><a href="#appendix-2"> Appendix: WRDS</a></li>
+</ul>
+<a href="research-tools-theory.html"><span class="toc-section-number">3</span> Research Tools - Theory</a>
+<a href="research-tools-data-analysis.html"><span class="toc-section-number">4</span> Research tools - Data Analysis</a>
+<a href="maths-sim.html"><span class="toc-section-number">5</span> Theory: Maths and Simulations</a>
+<a href="linear-regression.html"><span class="toc-section-number">6</span> Linear regression in <code>R</code></a>
+<a href="measurement.html"><span class="toc-section-number">7</span> Measurement and Theory</a>
+<a href="control-variables.html"><span class="toc-section-number">8</span> Control Variables</a>
+<a href="assessment.html"><span class="toc-section-number">9</span> Assessment</a>
+<a href="references.html"><span class="toc-section-number">10</span> References</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<div id="research-ceocomp" class="section level1">
+<h1>
+<span class="header-section-number">Chapter 2</span> A Research Project: CEO Compensation</h1>
+<div id="introduction" class="section level2">
+<h2>
+<span class="header-section-number">2.1</span> Introduction</h2>
+<p>CEO compensation is something that people in finance, accounting,
+economics, and outside of academia are interested in. The topic
+is probably the one with the most overlap between accounting and
+finance. In these notes, I will focus on two research questions:</p>
+<ol style="list-style-type: decimal">
+<li><p>How high can we expect the total compensation of a CEO to be
+based on some simple economic assumptions. Too high CEO
+compensation is sometimes seen as a signal of bad corporate
+goverance. To measure what ‘too high’ means, we first need to
+establish a baseline of what normal levels of compensation
+actually mean.</p></li>
+<li><p>How should CEOs be incentivised: equity or options? And how
+schould we measure whether CEOs have appropriate incentives?
+Pay-for-performance is a big topic in accounting, finance, and
+economics and there is a long standing discussion of what the
+best performance measure is for a CEO.</p></li>
+</ol>
+<p>Altough I am not a specialist in this literature, I am comforable
+with the type of economic theories that researchers test in this
+literature.<label for="tufte-sn-5" class="margin-toggle sidenote-number">5</label><input type="checkbox" id="tufte-sn-5" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">5</span> The theories in these notes are all based on the
+overview paper by <span class="citation">Edmans and Gabaix (<a href="#ref-edmans2016executive">2016</a>)</span>. Finding a good overview
+paper is the best start to any research project.</span>
+I am going to stress the role of theory in data analysis a lot.
+Some of you will have a topic that is at first sight less theory
+driven or rely more strongly on very specific knowledge about
+your setting. One of my goals is to convince you that even with
+these projects it is useful to think about the underlying story
+that you are testing.<label for="tufte-sn-6" class="margin-toggle sidenote-number">6</label><input type="checkbox" id="tufte-sn-6" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">6</span> I have been mocked by multiple people in
+the department for asking one too many times: “I understand, but
+what is the story?”</span></p>
+</div>
+<div id="theory" class="section level2">
+<h2>
+<span class="header-section-number">2.2</span> Theory</h2>
+<p>The first theory on CEO compensation is mathematically easy to
+follow. We assume that the value of a firm depends (<span class="math inline">\(V\)</span>) on three
+variables: how good the CEO is (<span class="math inline">\(T\)</span>), how much labour is
+available to the firm (<span class="math inline">\(L\)</span>), and how much capital the firm has
+available (<span class="math inline">\(K\)</span>).<label for="tufte-sn-7" class="margin-toggle sidenote-number">7</label><input type="checkbox" id="tufte-sn-7" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">7</span> This is obviously a simplification and that is
+fine. All theories are simplifications and too much nuance in a
+theory can make a theory worthless <span class="citation">(Healy <a href="#ref-healy2017fuck">2017</a>)</span>. We use
+(T)alent to describe how good the CEO is but you can also think
+of the CEO’s ability or connections as part of <span class="math inline">\(T\)</span>.</span></p>
+<p><span class="math display" id="eq:value-1">\[\begin{align}
+\tag{2.1} 
+&amp;V = T^{\alpha_T} \Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K}
+                 \Bigl( \frac{L}{\alpha_L} \Bigl)^{\alpha_L}
+\end{align}\]</span></p>
+<p><span class="math display" id="eq:condition-1">\[\begin{align}
+&amp;\alpha_T + \alpha_K + \alpha_L = 1
+\tag{2.2} 
+\end{align}\]</span></p>
+<p>The condition <a href="research-ceocomp.html#eq:condition-1">(2.2)</a> implies that there is nothing
+special about a specific size (<span class="math inline">\(V\)</span>) of the firm. Bigger is not
+necessarily better, smaller is not necessarily better. This is a
+very traditional constant returns to scale assumption.</p>
+<p>We also assume that the total compensation or wage (<span class="math inline">\(W\)</span>) of the
+CEO is whatever value they create over the cost of labor (<span class="math inline">\(w_L\)</span>)
+and the cost of capital (<span class="math inline">\(r\)</span>).</p>
+<p><span class="math display" id="eq:compensation-1">\[\begin{equation}
+W^*_T = \max_{K, L} V - w_L L - rK
+\tag{2.3}
+\end{equation}\]</span></p>
+<p>With these equations in hand we can derive an empirical relation
+that we can test with data. The derivations are not very
+difficult, they are just a bit tedious.</p>
+<p>First, let us find the optimal level of capital from the CEO’s
+point of view. That is, the CEO will try to attract the amount of
+capital that will maximise their wage. Mathematically, that means
+that we need to find the level of <span class="math inline">\(K\)</span> for which the first
+derivative of the CEO’s wage to <span class="math inline">\(K\)</span> equals 0.<label for="tufte-sn-8" class="margin-toggle sidenote-number">8</label><input type="checkbox" id="tufte-sn-8" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">8</span> The <span class="math inline">\(\frac{\alpha_K}{\alpha_K}\)</span> is a bit weird and obviously it
+cancels out. It’s the result of using the
+<a href="https://en.wikipedia.org/wiki/Chain_rule">chain rule</a>. The
+numerator is the result of taking the derivative of an exponential
+function. The denominator is the result of fact that we need to
+multiply the derivative of the exponential function with the
+derivative of <span class="math inline">\(\frac{K}{\alpha_K}\)</span>. The whole reason why <span class="math inline">\(V\)</span> was
+set-up this way was because it makes things cancel out; it’s
+mathematically convenient.</span></p>
+<p><span class="math display">\[\begin{align*}
+0 = \frac{\partial W_T}{\partial K} &amp;=  T^{\alpha_T}  
+\frac{\alpha_K}{\alpha_K} \Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K - 1} 
+\Bigl( \frac{L}{\alpha_L} \Bigl)^{\alpha_L} - r
+\\
+T^{\alpha_T} \Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K} 
+\Bigl( \frac{L}{\alpha_L} \Bigl)^{\alpha_L}
+\frac{\alpha_K}{K}
+&amp;= r 
+\\
+\frac{V \alpha_K}{K} &amp;= r
+\\
+\frac{V}{r} &amp;= \frac{K}{\alpha_K}
+\end{align*}\]</span></p>
+<p>Next, we can find the optimal level of labour that the CEO should attract.</p>
+<p><span class="math display">\[\begin{align*}
+0 = \frac{\partial V}{\partial K} &amp;=  T^{\alpha_T}  
+\Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K} 
+\Bigl( \frac{L}{\alpha_L} \Bigl)^{\alpha_L - 1} - w_L
+\\
+T^{\alpha_T} \Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K} 
+\Bigl( \frac{L}{\alpha_L} \Bigl)^{\alpha_L}
+\frac{\alpha_L}{L} &amp;= w_L
+\\
+\frac{V}{w_L} &amp;= \frac{L}{\alpha_L}
+\end{align*}\]</span></p>
+<p>We can plug these results into equation <a href="research-ceocomp.html#eq:compensation-1">(2.3)</a> and we get</p>
+<p><span class="math display">\[\begin{equation}
+W^*_T = V - V \alpha_K - V\alpha_L = (1 - \alpha_K - \alpha_L) V = \alpha_T V
+\end{equation}\]</span></p>
+<p>I like the basic intuition and deriviation of the model. The
+derivation is straightforward and (some of) the implicit
+assumptions are relatively easy to accept. The effect of the CEO
+depends on the size of the firm (<span class="math inline">\(V\)</span>). When there is more capital
+and labour available a more talented CEO will have a bigger
+impact.<label for="tufte-sn-9" class="margin-toggle sidenote-number">9</label><input type="checkbox" id="tufte-sn-9" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">9</span> If a CEO is a talented people manager, the advantage of
+this talent will be larger when there are more employees working
+in the company.</span> The model also predicts a clear quantitative
+relationship between firm size, <span class="math inline">\(V\)</span>, and CEO compensation, <span class="math inline">\(W_T\)</span>,
+i.e. that relationship should be linear. This is a nice result
+that we can test with data. In contrast we would not be able to
+test the relationship between CEO talent and compensation because
+talent is very difficult to measure. We can measure <span class="math inline">\(V\)</span> but not
+<span class="math inline">\(T\)</span>.</p>
+<p>One of the assumptions in the model is that the CEO takes the
+ultimate decision and they have an incentive to maximise firm
+value because they keep the all the value after workers and
+investors have been paid. As it turns out when you assume
+competitive labour and financial markets, that assumptions does
+not really matter a lot for the predicted relationship between
+wage and firm size <span class="citation">(Edmans and Gabaix <a href="#ref-edmans2016executive">2016</a>)</span>.<label for="tufte-sn-10" class="margin-toggle sidenote-number">10</label><input type="checkbox" id="tufte-sn-10" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">10</span> That is, you could
+set up the model so that investors take the final decision where
+they offer an incentive contract to the CEO who then chooses the
+number of workers that maximise the their compensation under the
+contract. The predictions for the model would be very similar to
+what we have here and we would have to deal with the contract as
+an extra complication. Good theory papers will explain when
+simplifications matter and when they do not.</span>
+Nevertheless, This model is too simple to capture reality
+perfectly, but that is not the goal of the model and of this
+exercise. The idea is to see whether we can find a reasonable
+baseline for CEO compensation that we can test against the data.
+Here, we have established that there should be a positive
+relation between the company’s size and the CEO’s compensation
+and the relation is larger when the CEO is more talented.</p>
+</div>
+<div id="empirical-test" class="section level2">
+<h2>
+<span class="header-section-number">2.3</span> Empirical Test</h2>
+<p>We will test the predictions of the model with data from S&amp;P500
+companies in the US. I made the data available for UWA students
+on LMS.<label for="tufte-sn-11" class="margin-toggle sidenote-number">11</label><input type="checkbox" id="tufte-sn-11" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">11</span> I really want to find an open dataset where we can test
+the same model. In the <a href="research-ceocomp.html#appendix-2">Appendix of this chapter</a>,
+you can find how you can download the same data straight from the
+WRDS database.</span>
+The data is downloaded from Compustat and Execucomp. A lot of you
+will use these are similar databases in your research project. I
+did not clean or check the data for this exercise. In your own
+project, you should show a better understanding of how the data
+are gathered and what they include than what I am displaying
+here.<label for="tufte-sn-12" class="margin-toggle sidenote-number">12</label><input type="checkbox" id="tufte-sn-12" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">12</span> The CEO compensation data is fairly complete. It includes
+changes in the value of equity and options. Market value also
+includes all outstanding financial instruments on the company.</span></p>
+<p>The code below does multiple things in <code>R</code>. I do not expect you
+to understand or even replicate what I have done here. I include
+it as a reminder of what is possible with some coding. I hope it
+may serve as an inspiration further down the track when you are
+doing your own research project.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(cowplot)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co"># Read the data from a custom folder. If the data is not in this</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># folder, change the path to the folder. Rename some of the</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co"># variables to make them easier to work with.</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">folder =<span class="st"> "data/"</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">us_comp =<span class="st"> </span><span class="kw">readRDS</span>(<span class="kw">paste0</span>(folder, <span class="st">"us-compensation.RDS"</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">total_comp =</span> tdc1)</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">us_value =<span class="st"> </span><span class="kw">readRDS</span>(<span class="kw">paste0</span>(folder, <span class="st">"us-value.RDS"</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">year =</span> fyear, <span class="dt">market_value =</span> mkvalt)</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co"># Match the compensation data with the value data based on</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co"># company key and year</span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">us_comp_value =<span class="st"> </span><span class="kw">left_join</span>(<span class="kw">select</span>(us_comp, gvkey, year, total_comp),</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">                          us_value, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">"year"</span>, <span class="st">"gvkey"</span>))</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co"># Run the non-linear regression and save the results as an</span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co"># equation to put on the figure. This goes beyond what we are</span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co"># going to do in this module.</span></a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">power_law_start =<span class="st"> </span><span class="kw">list</span>(<span class="dt">a=</span> <span class="dv">5</span>, <span class="dt">b =</span> <span class="fl">.15</span>)</a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">power_law_comp =</a>
+<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="st">  </span><span class="kw">nls</span>(total_comp<span class="op">/</span><span class="dv">1000</span> <span class="op">~</span><span class="st"> </span>a <span class="op">*</span><span class="st"> </span>(market_value<span class="op">/</span><span class="dv">1000</span>)<span class="op">^</span>b,</a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">      <span class="dt">data =</span> us_comp_value, <span class="dt">start =</span> power_law_start)</a>
+<a class="sourceLine" id="cb1-22" data-line-number="22">eqn_comp =<span class="st"> </span><span class="kw">substitute</span>(</a>
+<a class="sourceLine" id="cb1-23" data-line-number="23">  <span class="kw">italic</span>(<span class="st">"compensation"</span>) <span class="op">==</span><span class="st"> </span>a <span class="op">*</span><span class="st"> </span><span class="kw">italic</span>(<span class="st">"MV"</span>) <span class="op">^</span><span class="st"> </span>b,</a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">  <span class="kw">list</span>(<span class="dt">a =</span> <span class="kw">as.numeric</span>(<span class="kw">format</span>(<span class="kw">coef</span>(power_law_comp)[<span class="dv">1</span>],</a>
+<a class="sourceLine" id="cb1-25" data-line-number="25">                             <span class="dt">digits =</span> <span class="dv">2</span>)),</a>
+<a class="sourceLine" id="cb1-26" data-line-number="26">       <span class="dt">b =</span> <span class="kw">as.numeric</span>(<span class="kw">format</span>(<span class="kw">coef</span>(power_law_comp)[<span class="dv">2</span>],</a>
+<a class="sourceLine" id="cb1-27" data-line-number="27">                             <span class="dt">digits =</span> <span class="dv">2</span>))))</a>
+<a class="sourceLine" id="cb1-28" data-line-number="28"><span class="co"># create the plot</span></a>
+<a class="sourceLine" id="cb1-29" data-line-number="29">plot_comp_value =</a>
+<a class="sourceLine" id="cb1-30" data-line-number="30"><span class="co"># Add dataset and define x and y axis</span></a>
+<a class="sourceLine" id="cb1-31" data-line-number="31"><span class="st">  </span><span class="kw">ggplot</span>(us_comp_value, <span class="kw">aes</span>(<span class="dt">x =</span> market_value<span class="op">/</span><span class="dv">1000</span>,</a>
+<a class="sourceLine" id="cb1-32" data-line-number="32">                            <span class="dt">y =</span> total_comp<span class="op">/</span><span class="dv">1000</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb1-33" data-line-number="33"><span class="co"># Add the observations as points to the plot</span></a>
+<a class="sourceLine" id="cb1-34" data-line-number="34"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">.125</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb1-35" data-line-number="35"><span class="co"># Draw the results of the power_law regression on the plot</span></a>
+<a class="sourceLine" id="cb1-36" data-line-number="36"><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span></a>
+<a class="sourceLine" id="cb1-37" data-line-number="37">                <span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb1-38" data-line-number="38">                  <span class="kw">coef</span>(power_law_comp)[<span class="dv">1</span>] <span class="op">*</span></a>
+<a class="sourceLine" id="cb1-39" data-line-number="39"><span class="st">                    </span>x <span class="op">^</span><span class="st"> </span><span class="kw">coef</span>(power_law_comp)[<span class="dv">2</span>]},</a>
+<a class="sourceLine" id="cb1-40" data-line-number="40">                <span class="dt">colour =</span> <span class="st">"blue"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb1-41" data-line-number="41"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">"CEO compensation (in million USD)"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb1-42" data-line-number="42"><span class="co"># Add label for the x-axis</span></a>
+<a class="sourceLine" id="cb1-43" data-line-number="43"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">"Compensation"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb1-44" data-line-number="44"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">"Company market value (in billion USD)"</span>)</a></code></pre></div>
+<p>(ref:us-comp-value-plot) Relation between CEO compensation and market
+value for the largest US firms (2011-2019).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">print</span>(plot_comp_value <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">        </span><span class="kw">annotate</span>(<span class="st">"text"</span>, <span class="dt">y =</span> <span class="dv">45</span>, <span class="dt">x =</span> <span class="dv">500</span>, <span class="dt">parse =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">                 <span class="dt">label =</span> <span class="kw">as.character</span>(<span class="kw">as.expression</span>(eqn_comp))))</a></code></pre></div>
+<div class="figure">
+<span id="fig:us-comp-value-plot"></span>
+<p class="caption marginnote shownote">
+Figure 2.1: (ref:us-comp-value-plot)
+</p>
+<img src="method_accfin_files/figure-html/us-comp-value-plot-1.png" alt="(ref:us-comp-value-plot)" width="672">
+</div>
+<p>The qualitative relationship holds quite well. Larger companies
+have CEOs with higher compensation. However, the relationship is
+far from linear and looks more like a power function. Clearly
+there are other effects at play. In this sample, the power
+coefficient is 0.31
+.<label for="tufte-sn-13" class="margin-toggle sidenote-number">13</label><input type="checkbox" id="tufte-sn-13" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">13</span> Prior studies have found a coefficient more closely to 0.33
+<span class="citation">(Baker, Jensen, and Murphy <a href="#ref-baker1988compensation">1988</a>)</span>.</span> Remember that in our setup the CEO can
+grow the firm at will by attracting more capital and more labour. That
+assumption is probably too strong. Later, we will see that there other
+theories that describe the relation between CEO compensation and firm
+size and they seem to describe the data better.</p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>
+<span class="header-section-number">2.4</span> Conclusion</h2>
+<p>There are two things you should take away from this section. What
+we have just done here is a research project in a nutshell.
+First, we used theory to derive an empirical relation between two
+observable variables. Second, we tested the prediction against
+data. The evidence I present is not in the form of a complicated
+statistical analysis but in a graph. You will see in the
+remainder of this notes that I refer over and over to the
+connection between theory (‘your story’) and the data. The
+structure I used in this chapter (Introduction, Theory, Data
+Analysis, Conclusion ) is also the structure of most research
+papers and your thesis.</p>
+<p>An other important message is that I did not speak about a
+<em>causal</em> relation between market value and compensation. Our
+theory gave us a mathematical relation between the two variables
+and it is that relation we tried to find in the data. This is
+absolutely fine and I think a worthwile way to do research.
+However, this focus away from causal relation sometimes clashes
+with the popular statistical techniques and frame of mind that is
+presented in textbooks on causal inference <span class="citation">(Angrist and Pischke <a href="#ref-angrist2008mostly">2008</a>; Cunningham <a href="#ref-cunningham_causal_2018">2018</a>)</span> and which permeates the literature in
+accounting and finance.<label for="tufte-sn-14" class="margin-toggle sidenote-number">14</label><input type="checkbox" id="tufte-sn-14" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">14</span> This has been a source of frustration
+for me for awhile. I never could clearly articulate my unease.
+This <a href="https://www.preposterousuniverse.com/podcast/2018/08/13/episode-9-solo-why-is-there-something-rather-than-nothing/">podcast by physist Sean Caroll</a>
+helped me crystalise my thoughts. He explains that from for a
+physicist on a fundamental level there are no causes. Fundamental
+particles follow equations and that is it. What we think of as
+causal relations, happens at a higher level of abstraction. If
+you have the time, give it a listen. The title of the podcast is
+appropriate: ‘Mindscape’.</span>.
+I have seen students and established researchers alike get
+confused when their theory includes both equilibrium relations
+and a causal story. Throughout these notes I will try to explain
+the differences so that you can avoid the confusion when you
+start your own research project.</p>
+</div>
+<div id="appendix-2" class="section level2">
+<h2>
+<span class="header-section-number">2.5</span> Appendix: WRDS</h2>
+<p>To get access to the <a href="https://wrds-web.wharton.upenn.edu/wrds/">Wharton Research Data
+Services</a>, you first
+will have to obtain a username and password through your
+university’s subscription. To get access to the databases, you
+have to install the <code>Rpostgres</code> package <span class="citation">(Wickham, Ooms, and Müller <a href="#ref-R-RPostgres">2019</a>)</span> and make a
+file where you can securely store your password. The <a href="https://wrds-www.wharton.upenn.edu/pages/support/programming-wrds/programming-r/r-from-your-computer/">WRDS
+website</a>
+gives excellent guidelines on how to do that. You can then use
+the following code to establish a connection with the WRDS
+services.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(RPostgres)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">wrds &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">Postgres</span>(),</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">              <span class="dt">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">              <span class="dt">port=</span><span class="dv">9737</span>,</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">              <span class="dt">dbname=</span><span class="st">'wrds'</span>,</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">              <span class="dt">user=</span><span class="st">'stimas'</span>, </a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">              <span class="dt">sslmode=</span><span class="st">'require'</span>)</a></code></pre></div>
+<p>With an SQL string, we define which data we want. We send the SQL
+query to the database via de connection. We download the actual data
+and save in an R object. We close the data, see whether our dataset is
+the right one, and then save the R object as a file on our computer.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">sql1 &lt;-<span class="st"> "SELECT year, gvkey, cusip,</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">       exec_fullname, coname, ceoann, </span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">       execid, bonus, salary,</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">       stock_awards_fv, stock_unvest_val,</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">       eip_unearn_num, eip_unearn_val,</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">       option_awards, option_awards_blk_value, </span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">       option_awards_num, tdc1, tdc2,</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">       shrown_tot_pct, </span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">       becameceo, joined_co, reason</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="st">       FROM EXECCOMP.ANNCOMP </span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="st">       WHERE year &gt; 2010 AND ceoann = 'CEO'"</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">res &lt;-<span class="st"> </span><span class="kw">dbSendQuery</span>(wrds, sql1)</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">compensation &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(<span class="kw">dbFetch</span>(res)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="st">  </span><span class="kw">rename_all</span>(tolower)</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="kw">dbClearResult</span>(res)</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="kw">glimpse</span>(compensation)</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="kw">saveRDS</span>(compensation,</a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">        <span class="st">"../data/us-compensation-new.RDS"</span>)</a></code></pre></div>
+<p>Now, we do the same for the market value of the company.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">gvkeys &lt;-<span class="st"> </span><span class="kw">unique</span>(compensation<span class="op">$</span>gvkey)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">length</span>(gvkeys)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">sql2 &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">"SELECT fyear, gvkey, mkvalt, ni "</span>,</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">            <span class="st">"FROM COMP.FUNDA "</span>,</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">            <span class="st">"WHERE fyear &gt; 2010 "</span>,</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">            <span class="st">"AND gvkey in ('"</span>,</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">            <span class="kw">paste</span>(gvkeys, <span class="dt">collapse =</span> <span class="st">"','"</span>),</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">            <span class="st">"')"</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">           )</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">res &lt;-<span class="st"> </span><span class="kw">dbSendQuery</span>(wrds, sql2)</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">value &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(<span class="kw">dbFetch</span>(res)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="st">  </span><span class="kw">rename_all</span>(tolower)</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="kw">dbClearResult</span>(res)</a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="kw">glimpse</span>(value)</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">value &lt;-<span class="st"> </span><span class="kw">distinct</span>(value)</a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="kw">glimpse</span>(value)</a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="kw">saveRDS</span>(value, <span class="st">"../data/us-value-new.RDS"</span>)</a></code></pre></div>
+
+</div>
+</div>
+<h3> References</h3>
+<div id="refs" class="references">
+<div id="ref-angrist2008mostly">
+<p>Angrist, Joshua D, and Jörn-Steffen Pischke. 2008. <em>Mostly Harmless Econometrics: An Empiricist’s Companion</em>. Princeton university press.</p>
+</div>
+<div id="ref-baker1988compensation">
+<p>Baker, George P, Michael C Jensen, and Kevin J Murphy. 1988. “Compensation and Incentives: Practice Vs. Theory.” <em>The Journal of Finance</em> 43 (3). Wiley Online Library: 593–616.</p>
+</div>
+<div id="ref-cunningham_causal_2018">
+<p>Cunningham, Scott. 2018. <em>Causal Inference: The Mixtape</em>.</p>
+</div>
+<div id="ref-edmans2016executive">
+<p>Edmans, Alex, and Xavier Gabaix. 2016. “Executive Compensation: A Modern Primer.” <em>Journal of Economic Literature</em> 54 (4): 1232–87.</p>
+</div>
+<div id="ref-healy2017fuck">
+<p>Healy, Kieran. 2017. “Fuck Nuance.” <em>Sociological Theory</em> 35 (2). SAGE Publications Sage CA: Los Angeles, CA: 118–27.</p>
+</div>
+<div id="ref-R-RPostgres">
+<p>Wickham, Hadley, Jeroen Ooms, and Kirill Müller. 2019. <em>RPostgres: ’Rcpp’ Interface to ’Postgresql’</em>. <a href="https://CRAN.R-project.org/package=RPostgres">https://CRAN.R-project.org/package=RPostgres</a>.</p>
+</div>
+</div>
+</body></html>
+
+<p style="text-align: center;">
+<a href="index.html"><button class="btn btn-default">Previous</button></a>
+<a href="research-tools-theory.html"><button class="btn btn-default">Next</button></a>
+</p>
+<p class="build-date">Page built: 
+2021-02-24
+</p>
+</div>
+</div>
+
+
+
+</body>
+</html>

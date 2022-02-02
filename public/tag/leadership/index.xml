@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Leadership | Stijn Masschelein</title>
+    <link>/tag/leadership/</link>
+      <atom:link href="/tag/leadership/index.xml" rel="self" type="application/rss+xml" />
+    <description>Leadership</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/stijn_profile.jpg</url>
+      <title>Leadership</title>
+      <link>/tag/leadership/</link>
+    </image>
+    
+    <item>
+      <title>The effect of performance evaluation schemes on predicted transfer prices: Do leadership tone and perceived fairness concerns matter?</title>
+      <link>/publication/mar2018/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>/publication/mar2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>How Leader Alignment of Words and Deeds Affects Followers: A Meta-analysis of Behavioral Integrity Research</title>
+      <link>/publication/jbe2015/</link>
+      <pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate>
+      <guid>/publication/jbe2015/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
