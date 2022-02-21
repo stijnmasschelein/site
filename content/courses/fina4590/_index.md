@@ -14,4 +14,13 @@ type: docs
 weight: 1
 ---
 
+### The lecture notes in html format
+
 [Lecture Notes](/teaching/just_enough)
+
+### The lecture slides
+
+1. [Introduction](/teaching/slides_fina4590/slides1.html)
+2. [Simulation and Regression](/teaching/slides_fina4590/slides2.html)
+3. [Control Variables and Instrumental Variables](/teaching/slides_fina4590/slides3.html)
+4. [Research Design 1: Fixed Effects and Instrumental Variables](/teaching/slides_fina4590/slides4.html)
