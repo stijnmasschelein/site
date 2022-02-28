@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Chapter 2 A Research Project: CEO Compensation | Just Enough To Be Dangerous" />
+<meta property="og:type" content="book" />
+
+
+<meta property="og:description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance." />
+
+
+<meta name="author" content="Stijn Masschelein" />
+
+<meta name="date" content="2022-02-01" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="description" content="This book aims to give you just enough information so that you can start a research thesis in accounting and finance.">
+
+<title>Chapter 2 A Research Project: CEO Compensation | Just Enough To Be Dangerous</title>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/envisioned.css" rel="stylesheet" />
+<link href="libs/msmb-css-0/msmb.css" rel="stylesheet" />
+<script>
+function toggle_visibility(id1, id2) {
+var e = document.getElementById(id1);
+var f = document.getElementById(id2);
+
+e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+
+if(f.classList.contains('fa-plus-square')) {
+    f.classList.add('fa-minus-square')
+    f.classList.remove('fa-plus-square')
+} else {
+    f.classList.add('fa-plus-square')
+    f.classList.remove('fa-minus-square')
+}
+
+}
+</script>
+<script>
+function copy_link(id) {
+  var dummy = document.createElement('input'),
+  text = window.location.href.split(/[?#]/)[0] + '#' + id;
+  document.body.appendChild(dummy);
+  dummy.value = text;
+  dummy.select();
+  document.execCommand('copy');
+  document.body.removeChild(dummy);
+  
+  var tooltip = document.getElementById(id + '-tooltip');
+  tooltip.innerHTML = 'Copied!';
+}
+
+function reset_tooltip(id) {
+  var tooltip = document.getElementById(id);
+  tooltip.innerHTML = 'Copy link';
+}
+</script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+</head>
+
+<body>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul class="navbar">
+<li class="msmb"><p class="title">Just Enough To Be Dangerous<p><p class="author">Stijn Masschelein</p>
+<li class="dropdown" style="float:right">
+<a href="javascript:void(0)" class="dropbtn">&#x25BE; Chapters</a>
+<div class="dropdown-content">
+<a href="index.html"><span class="toc-section-number">1</span> Preamble</a>
+<a id="active-page" href="research-ceocomp.html"><span class="toc-section-number">2</span> A Research Project: CEO Compensation</a><ul class="toc-sections">
+<li class="toc"><a href="#introduction"> Introduction</a></li>
+<li class="toc"><a href="#theory"> Theory</a></li>
+<li class="toc"><a href="#empirical-test"> Empirical Test</a></li>
+<li class="toc"><a href="#conclusion"> Conclusion</a></li>
+<li class="toc"><a href="#appendix-2"> Appendix: WRDS</a></li>
+</ul>
+<a href="research-tools---theory.html"><span class="toc-section-number">3</span> Research Tools - Theory</a>
+<a href="research-tools---data-analysis.html"><span class="toc-section-number">4</span> Research tools - Data Analysis</a>
+<a href="maths-sim.html"><span class="toc-section-number">5</span> Theory: Maths and Simulations</a>
+<a href="linear-regression.html"><span class="toc-section-number">6</span> Linear regression in <code>R</code></a>
+<a href="measurement.html"><span class="toc-section-number">7</span> Measurement and Theory</a>
+<a href="control-variables.html"><span class="toc-section-number">8</span> Control Variables</a>
+<a href="assessment.html"><span class="toc-section-number">9</span> Assessment</a>
+<a href="references.html"><span class="toc-section-number">10</span> References</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<div id="research-ceocomp" class="section level1" number="2">
+<h1>
+<span class="header-section-number">Chapter 2</span> A Research Project: CEO Compensation</h1>
+<div id="introduction" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> Introduction<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('introduction')" onmouseout="reset_tooltip('introduction-tooltip')"><span class="tooltiptext" id="introduction-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<p>CEO compensation is something that people in finance, accounting,
+economics, and outside of academia are interested in. The topic
+is probably the one with the most overlap between accounting and
+finance. In these notes, I will focus on two research questions:</p>
+<ol style="list-style-type: decimal">
+<li><p>How high can we expect the total compensation of a CEO to be
+based on some simple economic assumptions. Too high CEO
+compensation is sometimes seen as a signal of bad corporate
+goverance. To measure what ‘too high’ means, we first need to
+establish a baseline of what normal levels of compensation
+actually mean.</p></li>
+<li><p>How should CEOs be incentivised: equity or options? And how
+schould we measure whether CEOs have appropriate incentives?
+Pay-for-performance is a big topic in accounting, finance, and
+economics and there is a long standing discussion of what the
+best performance measure is for a CEO.</p></li>
+</ol>
+<p>Altough I am not a specialist in this literature, I am comforable
+with the type of economic theories that researchers test in this
+literature.<label for="tufte-sn-5" class="margin-toggle sidenote-number">5</label><input type="checkbox" id="tufte-sn-5" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">5</span> The theories in these notes are all based on the
+overview paper by <span class="citation"><a href="#ref-edmans2016executive" role="doc-biblioref">Edmans and Gabaix</a> (<a href="#ref-edmans2016executive" role="doc-biblioref">2016</a>)</span>. Finding a good overview
+paper is the best start to any research project.</span>
+I am going to stress the role of theory in data analysis a lot.
+Some of you will have a topic that is at first sight less theory
+driven or rely more strongly on very specific knowledge about
+your setting. One of my goals is to convince you that even with
+these projects it is useful to think about the underlying story
+that you are testing.<label for="tufte-sn-6" class="margin-toggle sidenote-number">6</label><input type="checkbox" id="tufte-sn-6" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">6</span> I have been mocked by multiple people in
+the department for asking one too many times: “I understand, but
+what is the story?”</span></p>
+</div>
+<div id="theory" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Theory<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('theory')" onmouseout="reset_tooltip('theory-tooltip')"><span class="tooltiptext" id="theory-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<p>The first theory on CEO compensation is mathematically easy to
+follow. We assume that the value of a firm depends (<span class="math inline">\(V\)</span>) on three
+variables: how good the CEO is (<span class="math inline">\(T\)</span>), how much labour is
+available to the firm (<span class="math inline">\(L\)</span>), and how much capital the firm has
+available (<span class="math inline">\(K\)</span>).<label for="tufte-sn-7" class="margin-toggle sidenote-number">7</label><input type="checkbox" id="tufte-sn-7" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">7</span> This is obviously a simplification and that is
+fine. All theories are simplifications and too much nuance in a
+theory can make a theory worthless <span class="citation">(<a href="#ref-healy2017fuck" role="doc-biblioref">Healy 2017</a>)</span>. We use
+(T)alent to describe how good the CEO is but you can also think
+of the CEO’s ability or connections as part of <span class="math inline">\(T\)</span>.</span></p>
+<div class="eqn-mouseover"><p><div class="tooltip-eqn"><button class="internal-link-eqn" onclick="copy_link('eq:value-1')" onmouseout="reset_tooltip('eq:value-1-tooltip')"><span class="tooltiptext" id="eq:value-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div><span class="math display" id="eq:value-1">\[\begin{align}
+\tag{2.1} 
+&amp;V = T^{\alpha_T} \Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K}
+                 \Bigl( \frac{L}{\alpha_L} \Bigl)^{\alpha_L}
+\end{align}\]</span></p></div>
+<div class="eqn-mouseover"><p><div class="tooltip-eqn"><button class="internal-link-eqn" onclick="copy_link('eq:condition-1')" onmouseout="reset_tooltip('eq:condition-1-tooltip')"><span class="tooltiptext" id="eq:condition-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div><span class="math display" id="eq:condition-1">\[\begin{align}
+&amp;\alpha_T + \alpha_K + \alpha_L = 1
+\tag{2.2} 
+\end{align}\]</span></p></div>
+<p>The condition <a href="research-ceocomp.html#eq:condition-1">(2.2)</a> implies that there is nothing
+special about a specific size (<span class="math inline">\(V\)</span>) of the firm. Bigger is not
+necessarily better, smaller is not necessarily better. This is a
+very traditional constant returns to scale assumption.</p>
+<p>We also assume that the total compensation or wage (<span class="math inline">\(W\)</span>) of the
+CEO is whatever value they create over the cost of labor (<span class="math inline">\(w_L\)</span>)
+and the cost of capital (<span class="math inline">\(r\)</span>).</p>
+<div class="eqn-mouseover"><p><div class="tooltip-eqn"><button class="internal-link-eqn" onclick="copy_link('eq:compensation-1')" onmouseout="reset_tooltip('eq:compensation-1-tooltip')"><span class="tooltiptext" id="eq:compensation-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div><span class="math display" id="eq:compensation-1">\[\begin{equation}
+W^*_T = \max_{K, L} V - w_L L - rK
+\tag{2.3}
+\end{equation}\]</span></p></div>
+<p>With these equations in hand we can derive an empirical relation
+that we can test with data. The derivations are not very
+difficult, they are just a bit tedious.</p>
+<p>First, let us find the optimal level of capital from the CEO’s
+point of view. That is, the CEO will try to attract the amount of
+capital that will maximise their wage. Mathematically, that means
+that we need to find the level of <span class="math inline">\(K\)</span> for which the first
+derivative of the CEO’s wage to <span class="math inline">\(K\)</span> equals 0.<label for="tufte-sn-8" class="margin-toggle sidenote-number">8</label><input type="checkbox" id="tufte-sn-8" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">8</span> The <span class="math inline">\(\frac{\alpha_K}{\alpha_K}\)</span> is a bit weird and obviously it
+cancels out. It’s the result of using the
+<a href="https://en.wikipedia.org/wiki/Chain_rule">chain rule</a>. The
+numerator is the result of taking the derivative of an exponential
+function. The denominator is the result of fact that we need to
+multiply the derivative of the exponential function with the
+derivative of <span class="math inline">\(\frac{K}{\alpha_K}\)</span>. The whole reason why <span class="math inline">\(V\)</span> was
+set-up this way was because it makes things cancel out; it’s
+mathematically convenient.</span></p>
+<p><span class="math display">\[\begin{align*}
+0 = \frac{\partial W_T}{\partial K} &amp;=  T^{\alpha_T}  
+\frac{\alpha_K}{\alpha_K} \Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K - 1} 
+\Bigl( \frac{L}{\alpha_L} \Bigl)^{\alpha_L} - r
+\\
+T^{\alpha_T} \Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K} 
+\Bigl( \frac{L}{\alpha_L} \Bigl)^{\alpha_L}
+\frac{\alpha_K}{K}
+&amp;= r 
+\\
+\frac{V \alpha_K}{K} &amp;= r
+\\
+\frac{V}{r} &amp;= \frac{K}{\alpha_K}
+\end{align*}\]</span></p>
+<p>Next, we can find the optimal level of labour that the CEO should attract.</p>
+<p><span class="math display">\[\begin{align*}
+0 = \frac{\partial V}{\partial K} &amp;=  T^{\alpha_T}  
+\Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K} 
+\Bigl( \frac{L}{\alpha_L} \Bigl)^{\alpha_L - 1} - w_L
+\\
+T^{\alpha_T} \Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K} 
+\Bigl( \frac{L}{\alpha_L} \Bigl)^{\alpha_L}
+\frac{\alpha_L}{L} &amp;= w_L
+\\
+\frac{V}{w_L} &amp;= \frac{L}{\alpha_L}
+\end{align*}\]</span></p>
+<p>We can plug these results into equation <a href="research-ceocomp.html#eq:compensation-1">(2.3)</a> and we get</p>
+<p><span class="math display">\[\begin{equation}
+W^*_T = V - V \alpha_K - V\alpha_L = (1 - \alpha_K - \alpha_L) V = \alpha_T V
+\end{equation}\]</span></p>
+<p>I like the basic intuition and deriviation of the model. The
+derivation is straightforward and (some of) the implicit
+assumptions are relatively easy to accept. The effect of the CEO
+depends on the size of the firm (<span class="math inline">\(V\)</span>). When there is more capital
+and labour available a more talented CEO will have a bigger
+impact.<label for="tufte-sn-9" class="margin-toggle sidenote-number">9</label><input type="checkbox" id="tufte-sn-9" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">9</span> If a CEO is a talented people manager, the advantage of
+this talent will be larger when there are more employees working
+in the company.</span> The model also predicts a clear quantitative
+relationship between firm size, <span class="math inline">\(V\)</span>, and CEO compensation, <span class="math inline">\(W_T\)</span>,
+i.e. that relationship should be linear. This is a nice result
+that we can test with data. In contrast we would not be able to
+test the relationship between CEO talent and compensation because
+talent is very difficult to measure. We can measure <span class="math inline">\(V\)</span> but not
+<span class="math inline">\(T\)</span>.</p>
+<p>One of the assumptions in the model is that the CEO takes the
+ultimate decision and they have an incentive to maximise firm
+value because they keep the all the value after workers and
+investors have been paid. As it turns out when you assume
+competitive labour and financial markets, that assumptions does
+not really matter a lot for the predicted relationship between
+wage and firm size <span class="citation">(<a href="#ref-edmans2016executive" role="doc-biblioref">Edmans and Gabaix 2016</a>)</span>.<label for="tufte-sn-10" class="margin-toggle sidenote-number">10</label><input type="checkbox" id="tufte-sn-10" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">10</span> That is, you could
+set up the model so that investors take the final decision where
+they offer an incentive contract to the CEO who then chooses the
+number of workers that maximise the their compensation under the
+contract. The predictions for the model would be very similar to
+what we have here and we would have to deal with the contract as
+an extra complication. Good theory papers will explain when
+simplifications matter and when they do not.</span>
+Nevertheless, This model is too simple to capture reality
+perfectly, but that is not the goal of the model and of this
+exercise. The idea is to see whether we can find a reasonable
+baseline for CEO compensation that we can test against the data.
+Here, we have established that there should be a positive
+relation between the company’s size and the CEO’s compensation
+and the relation is larger when the CEO is more talented.</p>
+</div>
+<div id="empirical-test" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Empirical Test<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('empirical-test')" onmouseout="reset_tooltip('empirical-test-tooltip')"><span class="tooltiptext" id="empirical-test-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<p>We will test the predictions of the model with data from S&amp;P500
+companies in the US. I made the data available for UWA students
+on LMS.<label for="tufte-sn-11" class="margin-toggle sidenote-number">11</label><input type="checkbox" id="tufte-sn-11" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">11</span> I really want to find an open dataset where we can test
+the same model. In the <a href="research-ceocomp.html#appendix-2">Appendix of this chapter</a>,
+you can find how you can download the same data straight from the
+WRDS database.</span>
+The data is downloaded from Compustat and Execucomp. A lot of you
+will use these are similar databases in your research project. I
+did not clean or check the data for this exercise. In your own
+project, you should show a better understanding of how the data
+are gathered and what they include than what I am displaying
+here.<label for="tufte-sn-12" class="margin-toggle sidenote-number">12</label><input type="checkbox" id="tufte-sn-12" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">12</span> The CEO compensation data is fairly complete. It includes
+changes in the value of equity and options. Market value also
+includes all outstanding financial instruments on the company.</span></p>
+<p>The code below does multiple things in <code>R</code>. I do not expect you
+to understand or even replicate what I have done here. I include
+it as a reminder of what is possible with some coding. I hope it
+may serve as an inspiration further down the track when you are
+doing your own research project.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="research-ceocomp.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="research-ceocomp.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb1-3"><a href="research-ceocomp.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the data from a custom folder. If the data is not in this</span></span>
+<span id="cb1-4"><a href="research-ceocomp.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># folder, change the path to the folder. Rename some of the</span></span>
+<span id="cb1-5"><a href="research-ceocomp.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># variables to make them easier to work with.</span></span>
+<span id="cb1-6"><a href="research-ceocomp.html#cb1-6" aria-hidden="true" tabindex="-1"></a>folder <span class="ot">=</span> <span class="st">"data/"</span></span>
+<span id="cb1-7"><a href="research-ceocomp.html#cb1-7" aria-hidden="true" tabindex="-1"></a>us_comp <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="fu">paste0</span>(folder, <span class="st">"us-compensation.RDS"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a href="research-ceocomp.html#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">total_comp =</span> tdc1)</span>
+<span id="cb1-9"><a href="research-ceocomp.html#cb1-9" aria-hidden="true" tabindex="-1"></a>us_value <span class="ot">=</span> <span class="fu">readRDS</span>(<span class="fu">paste0</span>(folder, <span class="st">"us-value.RDS"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-10"><a href="research-ceocomp.html#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">year =</span> fyear, <span class="at">market_value =</span> mkvalt)</span>
+<span id="cb1-11"><a href="research-ceocomp.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Match the compensation data with the value data based on</span></span>
+<span id="cb1-12"><a href="research-ceocomp.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># company key and year</span></span>
+<span id="cb1-13"><a href="research-ceocomp.html#cb1-13" aria-hidden="true" tabindex="-1"></a>us_comp_value <span class="ot">=</span> <span class="fu">left_join</span>(<span class="fu">select</span>(us_comp, gvkey, year, total_comp),</span>
+<span id="cb1-14"><a href="research-ceocomp.html#cb1-14" aria-hidden="true" tabindex="-1"></a>                          us_value, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"gvkey"</span>))</span>
+<span id="cb1-15"><a href="research-ceocomp.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the non-linear regression and save the results as an</span></span>
+<span id="cb1-16"><a href="research-ceocomp.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># equation to put on the figure. This goes beyond what we are</span></span>
+<span id="cb1-17"><a href="research-ceocomp.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># going to do in this module.</span></span>
+<span id="cb1-18"><a href="research-ceocomp.html#cb1-18" aria-hidden="true" tabindex="-1"></a>power_law_start <span class="ot">=</span> <span class="fu">list</span>(<span class="at">a=</span> <span class="dv">5</span>, <span class="at">b =</span> .<span class="dv">15</span>)</span>
+<span id="cb1-19"><a href="research-ceocomp.html#cb1-19" aria-hidden="true" tabindex="-1"></a>power_law_comp <span class="ot">=</span></span>
+<span id="cb1-20"><a href="research-ceocomp.html#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nls</span>(total_comp<span class="sc">/</span><span class="dv">1000</span> <span class="sc">~</span> a <span class="sc">*</span> (market_value<span class="sc">/</span><span class="dv">1000</span>)<span class="sc">^</span>b,</span>
+<span id="cb1-21"><a href="research-ceocomp.html#cb1-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> us_comp_value, <span class="at">start =</span> power_law_start)</span>
+<span id="cb1-22"><a href="research-ceocomp.html#cb1-22" aria-hidden="true" tabindex="-1"></a>eqn_comp <span class="ot">=</span> <span class="fu">substitute</span>(</span>
+<span id="cb1-23"><a href="research-ceocomp.html#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">italic</span>(<span class="st">"compensation"</span>) <span class="sc">==</span> a <span class="sc">*</span> <span class="fu">italic</span>(<span class="st">"MV"</span>) <span class="sc">^</span> b,</span>
+<span id="cb1-24"><a href="research-ceocomp.html#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">a =</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(<span class="fu">coef</span>(power_law_comp)[<span class="dv">1</span>],</span>
+<span id="cb1-25"><a href="research-ceocomp.html#cb1-25" aria-hidden="true" tabindex="-1"></a>                             <span class="at">digits =</span> <span class="dv">2</span>)),</span>
+<span id="cb1-26"><a href="research-ceocomp.html#cb1-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">b =</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(<span class="fu">coef</span>(power_law_comp)[<span class="dv">2</span>],</span>
+<span id="cb1-27"><a href="research-ceocomp.html#cb1-27" aria-hidden="true" tabindex="-1"></a>                             <span class="at">digits =</span> <span class="dv">2</span>))))</span>
+<span id="cb1-28"><a href="research-ceocomp.html#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># create the plot</span></span>
+<span id="cb1-29"><a href="research-ceocomp.html#cb1-29" aria-hidden="true" tabindex="-1"></a>plot_comp_value <span class="ot">=</span></span>
+<span id="cb1-30"><a href="research-ceocomp.html#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Add dataset and define x and y axis</span></span>
+<span id="cb1-31"><a href="research-ceocomp.html#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(us_comp_value, <span class="fu">aes</span>(<span class="at">x =</span> market_value<span class="sc">/</span><span class="dv">1000</span>,</span>
+<span id="cb1-32"><a href="research-ceocomp.html#cb1-32" aria-hidden="true" tabindex="-1"></a>                            <span class="at">y =</span> total_comp<span class="sc">/</span><span class="dv">1000</span>)) <span class="sc">+</span></span>
+<span id="cb1-33"><a href="research-ceocomp.html#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the observations as points to the plot</span></span>
+<span id="cb1-34"><a href="research-ceocomp.html#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">125</span>) <span class="sc">+</span></span>
+<span id="cb1-35"><a href="research-ceocomp.html#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw the results of the power_law regression on the plot</span></span>
+<span id="cb1-36"><a href="research-ceocomp.html#cb1-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span></span>
+<span id="cb1-37"><a href="research-ceocomp.html#cb1-37" aria-hidden="true" tabindex="-1"></a>                <span class="cf">function</span>(x){</span>
+<span id="cb1-38"><a href="research-ceocomp.html#cb1-38" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">coef</span>(power_law_comp)[<span class="dv">1</span>] <span class="sc">*</span></span>
+<span id="cb1-39"><a href="research-ceocomp.html#cb1-39" aria-hidden="true" tabindex="-1"></a>                    x <span class="sc">^</span> <span class="fu">coef</span>(power_law_comp)[<span class="dv">2</span>]},</span>
+<span id="cb1-40"><a href="research-ceocomp.html#cb1-40" aria-hidden="true" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb1-41"><a href="research-ceocomp.html#cb1-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"CEO compensation (in million USD)"</span>) <span class="sc">+</span></span>
+<span id="cb1-42"><a href="research-ceocomp.html#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Add label for the x-axis</span></span>
+<span id="cb1-43"><a href="research-ceocomp.html#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Compensation"</span>) <span class="sc">+</span></span>
+<span id="cb1-44"><a href="research-ceocomp.html#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Company market value (in billion USD)"</span>)</span></code></pre></div>
+<p>(ref:us-comp-value-plot) Relation between CEO compensation and market
+value for the largest US firms (2011-2019).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="research-ceocomp.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot_comp_value <span class="sc">+</span></span>
+<span id="cb2-2"><a href="research-ceocomp.html#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">y =</span> <span class="dv">45</span>, <span class="at">x =</span> <span class="dv">500</span>, <span class="at">parse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-3"><a href="research-ceocomp.html#cb2-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">label =</span> <span class="fu">as.character</span>(<span class="fu">as.expression</span>(eqn_comp))))</span></code></pre></div>
+<div class="figure">
+<span style="display:block;" id="fig:us-comp-value-plot"></span>
+<p class="caption marginnote shownote">
+Figure 2.1: (ref:us-comp-value-plot)
+</p>
+<img src="method_accfin_files/figure-html/us-comp-value-plot-1.png" alt="(ref:us-comp-value-plot)" width="672">
+</div>
+<p>The qualitative relationship holds quite well. Larger companies
+have CEOs with higher compensation. However, the relationship is
+far from linear and looks more like a power function. Clearly
+there are other effects at play. In this sample, the power
+coefficient is 0.31
+.<label for="tufte-sn-13" class="margin-toggle sidenote-number">13</label><input type="checkbox" id="tufte-sn-13" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">13</span> Prior studies have found a coefficient more closely to 0.33
+<span class="citation">(<a href="#ref-baker1988compensation" role="doc-biblioref">Baker, Jensen, and Murphy 1988</a>)</span>.</span> Remember that in our setup the CEO can
+grow the firm at will by attracting more capital and more labour. That
+assumption is probably too strong. Later, we will see that there other
+theories that describe the relation between CEO compensation and firm
+size and they seem to describe the data better.</p>
+</div>
+<div id="conclusion" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> Conclusion<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('conclusion')" onmouseout="reset_tooltip('conclusion-tooltip')"><span class="tooltiptext" id="conclusion-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<p>There are two things you should take away from this section. What
+we have just done here is a research project in a nutshell.
+First, we used theory to derive an empirical relation between two
+observable variables. Second, we tested the prediction against
+data. The evidence I present is not in the form of a complicated
+statistical analysis but in a graph. You will see in the
+remainder of this notes that I refer over and over to the
+connection between theory (‘your story’) and the data. The
+structure I used in this chapter (Introduction, Theory, Data
+Analysis, Conclusion ) is also the structure of most research
+papers and your thesis.</p>
+<p>An other important message is that I did not speak about a
+<em>causal</em> relation between market value and compensation. Our
+theory gave us a mathematical relation between the two variables
+and it is that relation we tried to find in the data. This is
+absolutely fine and I think a worthwile way to do research.
+However, this focus away from causal relation sometimes clashes
+with the popular statistical techniques and frame of mind that is
+presented in textbooks on causal inference <span class="citation">(<a href="#ref-angrist2008mostly" role="doc-biblioref">Angrist and Pischke 2008</a>; <a href="#ref-cunningham_causal_2018" role="doc-biblioref">Cunningham 2018</a>)</span> and which permeates the literature in
+accounting and finance.<label for="tufte-sn-14" class="margin-toggle sidenote-number">14</label><input type="checkbox" id="tufte-sn-14" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">14</span> This has been a source of frustration
+for me for awhile. I never could clearly articulate my unease.
+This <a href="https://www.preposterousuniverse.com/podcast/2018/08/13/episode-9-solo-why-is-there-something-rather-than-nothing/">podcast by physist Sean Caroll</a>
+helped me crystalise my thoughts. He explains that from for a
+physicist on a fundamental level there are no causes. Fundamental
+particles follow equations and that is it. What we think of as
+causal relations, happens at a higher level of abstraction. If
+you have the time, give it a listen. The title of the podcast is
+appropriate: ‘Mindscape.’</span>.
+I have seen students and established researchers alike get
+confused when their theory includes both equilibrium relations
+and a causal story. Throughout these notes I will try to explain
+the differences so that you can avoid the confusion when you
+start your own research project.</p>
+</div>
+<div id="appendix-2" class="section level2" number="2.5">
+<h2>
+<span class="header-section-number">2.5</span> Appendix: WRDS<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('appendix-2')" onmouseout="reset_tooltip('appendix-2-tooltip')"><span class="tooltiptext" id="appendix-2-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<p>To get access to the <a href="https://wrds-web.wharton.upenn.edu/wrds/">Wharton Research Data
+Services</a>, you first
+will have to obtain a username and password through your
+university’s subscription. To get access to the databases, you
+have to install the <code>Rpostgres</code> package <span class="citation">(<a href="#ref-R-RPostgres" role="doc-biblioref">Wickham, Ooms, and Müller 2021</a>)</span> and make a
+file where you can securely store your password. The <a href="https://wrds-www.wharton.upenn.edu/pages/support/programming-wrds/programming-r/r-from-your-computer/">WRDS
+website</a>
+gives excellent guidelines on how to do that. You can then use
+the following code to establish a connection with the WRDS
+services.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="research-ceocomp.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
+<span id="cb3-2"><a href="research-ceocomp.html#cb3-2" aria-hidden="true" tabindex="-1"></a>wrds <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">Postgres</span>(),</span>
+<span id="cb3-3"><a href="research-ceocomp.html#cb3-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</span>
+<span id="cb3-4"><a href="research-ceocomp.html#cb3-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">port=</span><span class="dv">9737</span>,</span>
+<span id="cb3-5"><a href="research-ceocomp.html#cb3-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">dbname=</span><span class="st">'wrds'</span>,</span>
+<span id="cb3-6"><a href="research-ceocomp.html#cb3-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">user=</span><span class="st">'stimas'</span>, </span>
+<span id="cb3-7"><a href="research-ceocomp.html#cb3-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">sslmode=</span><span class="st">'require'</span>)</span></code></pre></div>
+<p>With an SQL string, we define which data we want. We send the SQL
+query to the database via de connection. We download the actual data
+and save in an R object. We close the data, see whether our dataset is
+the right one, and then save the R object as a file on our computer.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="research-ceocomp.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-2"><a href="research-ceocomp.html#cb4-2" aria-hidden="true" tabindex="-1"></a>sql1 <span class="ot">&lt;-</span> <span class="st">"SELECT year, gvkey, cusip,</span></span>
+<span id="cb4-3"><a href="research-ceocomp.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">       exec_fullname, coname, ceoann, </span></span>
+<span id="cb4-4"><a href="research-ceocomp.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">       execid, bonus, salary,</span></span>
+<span id="cb4-5"><a href="research-ceocomp.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">       stock_awards_fv, stock_unvest_val,</span></span>
+<span id="cb4-6"><a href="research-ceocomp.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">       eip_unearn_num, eip_unearn_val,</span></span>
+<span id="cb4-7"><a href="research-ceocomp.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">       option_awards, option_awards_blk_value, </span></span>
+<span id="cb4-8"><a href="research-ceocomp.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">       option_awards_num, tdc1, tdc2,</span></span>
+<span id="cb4-9"><a href="research-ceocomp.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">       shrown_tot_pct, </span></span>
+<span id="cb4-10"><a href="research-ceocomp.html#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">       becameceo, joined_co, reason</span></span>
+<span id="cb4-11"><a href="research-ceocomp.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">       FROM EXECCOMP.ANNCOMP </span></span>
+<span id="cb4-12"><a href="research-ceocomp.html#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="st">       WHERE year &gt; 2010 AND ceoann = 'CEO'"</span></span>
+<span id="cb4-13"><a href="research-ceocomp.html#cb4-13" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(wrds, sql1)</span>
+<span id="cb4-14"><a href="research-ceocomp.html#cb4-14" aria-hidden="true" tabindex="-1"></a>compensation <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">dbFetch</span>(res)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-15"><a href="research-ceocomp.html#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
+<span id="cb4-16"><a href="research-ceocomp.html#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(res)</span>
+<span id="cb4-17"><a href="research-ceocomp.html#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(compensation)</span>
+<span id="cb4-18"><a href="research-ceocomp.html#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="research-ceocomp.html#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(compensation,</span>
+<span id="cb4-20"><a href="research-ceocomp.html#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"../data/us-compensation-new.RDS"</span>)</span></code></pre></div>
+<p>Now, we do the same for the market value of the company.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="research-ceocomp.html#cb5-1" aria-hidden="true" tabindex="-1"></a>gvkeys <span class="ot">&lt;-</span> <span class="fu">unique</span>(compensation<span class="sc">$</span>gvkey)</span>
+<span id="cb5-2"><a href="research-ceocomp.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(gvkeys)</span>
+<span id="cb5-3"><a href="research-ceocomp.html#cb5-3" aria-hidden="true" tabindex="-1"></a>sql2 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"SELECT fyear, gvkey, mkvalt, ni "</span>,</span>
+<span id="cb5-4"><a href="research-ceocomp.html#cb5-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">"FROM COMP.FUNDA "</span>,</span>
+<span id="cb5-5"><a href="research-ceocomp.html#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">"WHERE fyear &gt; 2010 "</span>,</span>
+<span id="cb5-6"><a href="research-ceocomp.html#cb5-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">"AND gvkey in ('"</span>,</span>
+<span id="cb5-7"><a href="research-ceocomp.html#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">paste</span>(gvkeys, <span class="at">collapse =</span> <span class="st">"','"</span>),</span>
+<span id="cb5-8"><a href="research-ceocomp.html#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">"')"</span></span>
+<span id="cb5-9"><a href="research-ceocomp.html#cb5-9" aria-hidden="true" tabindex="-1"></a>           )</span>
+<span id="cb5-10"><a href="research-ceocomp.html#cb5-10" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(wrds, sql2)</span>
+<span id="cb5-11"><a href="research-ceocomp.html#cb5-11" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">dbFetch</span>(res)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-12"><a href="research-ceocomp.html#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
+<span id="cb5-13"><a href="research-ceocomp.html#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(res)</span>
+<span id="cb5-14"><a href="research-ceocomp.html#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(value)</span>
+<span id="cb5-15"><a href="research-ceocomp.html#cb5-15" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">distinct</span>(value)</span>
+<span id="cb5-16"><a href="research-ceocomp.html#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(value)</span>
+<span id="cb5-17"><a href="research-ceocomp.html#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="research-ceocomp.html#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="research-ceocomp.html#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(value, <span class="st">"../data/us-value-new.RDS"</span>)</span></code></pre></div>
+
+</div>
+</div>
+<h3> References<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('NA')" onmouseout="reset_tooltip('NA-tooltip')"><span class="tooltiptext" id="NA-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-angrist2008mostly" class="csl-entry">
+Angrist, Joshua D, and Jörn-Steffen Pischke. 2008. <em>Mostly Harmless Econometrics: <span>An</span> Empiricist’s Companion</em>. <span>Princeton university press</span>.
+</div>
+<div id="ref-baker1988compensation" class="csl-entry">
+Baker, George P, Michael C Jensen, and Kevin J Murphy. 1988. <span>“Compensation and Incentives: <span>Practice</span> Vs. Theory.”</span> <em>The Journal of Finance</em> 43 (3): 593–616.
+</div>
+<div id="ref-cunningham_causal_2018" class="csl-entry">
+Cunningham, Scott. 2018. <em>Causal <span>Inference</span>: <span>The Mixtape</span></em>.
+</div>
+<div id="ref-edmans2016executive" class="csl-entry">
+Edmans, Alex, and Xavier Gabaix. 2016. <span>“Executive Compensation: <span>A</span> Modern Primer.”</span> <em>Journal of Economic Literature</em> 54 (4): 1232–87.
+</div>
+<div id="ref-healy2017fuck" class="csl-entry">
+Healy, Kieran. 2017. <span>“Fuck Nuance.”</span> <em>Sociological Theory</em> 35 (2): 118–27.
+</div>
+<div id="ref-R-RPostgres" class="csl-entry">
+Wickham, Hadley, Jeroen Ooms, and Kirill Müller. 2021. <em>RPostgres: Rcpp Interface to PostgreSQL</em>. <a href="https://CRAN.R-project.org/package=RPostgres">https://CRAN.R-project.org/package=RPostgres</a>.
+</div>
+</div>
+</body></html>
+
+<p style="text-align: center;">
+<a href="index.html"><button class="btn btn-default">Previous</button></a>
+<a href="research-tools---theory.html"><button class="btn btn-default">Next</button></a>
+</p>
+<p class="build-date">Page built: 
+2022-02-01
+ using 
+R version 4.1.2 (2021-11-01)
+</p>
+</div>
+</div>
+
+
+
+</body>
+</html>

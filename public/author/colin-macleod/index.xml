@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Colin MacLeod | Stijn Masschelein</title>
+    <link>/author/colin-macleod/</link>
+      <atom:link href="/author/colin-macleod/index.xml" rel="self" type="application/rss+xml" />
+    <description>Colin MacLeod</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 21 Dec 2015 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Colin MacLeod</title>
+      <link>/author/colin-macleod/</link>
+    </image>
+    
+    <item>
+      <title>To Risk or Not to Risk: Anxiety and the Calibration Between Risk Perception and Danger Mitigation</title>
+      <link>/publication/anxiety_risk/</link>
+      <pubDate>Mon, 21 Dec 2015 00:00:00 +0000</pubDate>
+      <guid>/publication/anxiety_risk/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
