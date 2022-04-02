@@ -25,3 +25,7 @@ weight: 1
 3. [Control Variables and Instrumental Variables](/teaching/slides_fina4590/slides3.html)
 4. [Research Design 1: Fixed Effects and Instrumental Variables](/teaching/slides_fina4590/slides4.html)
 5. [Research Design 2: Event Study and Difference-in-Difference](/teaching/slides_fina4590/slides5.html)
+
+### Baker et al. Simulation
+
+[html version](/teaching/slides_fina4590/baker_simulation.html)
