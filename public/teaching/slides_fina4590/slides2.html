@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="slides2_files/libs/clipboard/clipboard.min.js"></script>
-<script src="slides2_files/libs/quarto-html/tabby.min.js"></script>
-<script src="slides2_files/libs/quarto-html/popper.min.js"></script>
-<script src="slides2_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="slides2_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="slides2_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="slides2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.313">
 
   <meta name="author" content="Stijn Masschelein">
-  <title>Simulations, Regressions, and Significance</title>
+  <title>Method Package - Simulations, Regressions, and Significance</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="slides2_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="slides2_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -112,11 +112,11 @@
       margin-left: 2em;
     }
   </style>
-  <link rel="stylesheet" href="slides2_files/libs/revealjs/dist/theme/quarto.css" id="theme">
-  <link href="slides2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="slides2_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="slides2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="slides2_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -463,10 +463,10 @@ Stijn Masschelein
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,000
 Columns: 4
-$ normal   &lt;dbl&gt; 3.19484887, 8.70301121, 2.02278554, 0.126…
-$ uniform  &lt;dbl&gt; 2.603615, 3.184779, 2.450492, 2.245161, 3…
-$ binomial &lt;int&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1,…
-$ sample   &lt;int&gt; 4, 2, 3, 2, 3, 1, 5, 7, 1, 4, 9, 2, 2, 7,…</code></pre>
+$ normal   &lt;dbl&gt; -0.08439504, -0.23675484, 5.56147404, 5.4…
+$ uniform  &lt;dbl&gt; 3.112174, 2.844248, 3.205536, 4.323327, 2…
+$ binomial &lt;int&gt; 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1,…
+$ sample   &lt;int&gt; 3, 3, 3, 4, 4, 6, 7, 4, 2, 8, 7, 6, 10, 1…</code></pre>
 </div>
 </div>
 </section>
@@ -613,9 +613,9 @@ $ sample   &lt;int&gt; 4, 2, 3, 2, 3, 1, 5, 7, 1, 4, 9, 2, 2, 7,…</code></pre>
 <span id="cb10-5"><a href="#cb10-5"></a><span class="fu">summary</span>(us_value<span class="sc">$</span>market_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-      0.0     930.3    2579.0   13685.7    8360.2 2324390.2 
+      0.0     945.9    2612.5   13796.3    8453.2 2324390.2 
      NA's 
-     3882 </code></pre>
+     3986 </code></pre>
 </div>
 </div>
 </section>
@@ -629,7 +629,7 @@ $ sample   &lt;int&gt; 4, 2, 3, 2, 3, 1, 5, 7, 1, 4, 9, 2, 2, 7,…</code></pre>
 <span id="cb12-5"><a href="#cb12-5"></a>        <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"gvkey"</span>))</span>
 <span id="cb12-6"><a href="#cb12-6"></a><span class="fu">glimpse</span>(us_comp_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 29,277
+<pre><code>Rows: 29,682
 Columns: 5
 $ gvkey        &lt;chr&gt; "001004", "001004", "001004", "001004…
 $ year         &lt;dbl&gt; 2011, 2011, 2012, 2013, 2014, 2015, 2…
@@ -756,8 +756,8 @@ y_i = a + b_1 x_{1i} + ... + b_n x_{ni} + \epsilon_i
 <span id="cb21-4"><a href="#cb21-4"></a><span class="fu">print</span>(<span class="fu">summary</span>(reg)<span class="sc">$</span>coefficients, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                      Estimate Std. Error t value Pr(&gt;|t|)
-(Intercept)                5.2     0.0266     195        0
-log(market_value + 1)      0.4     0.0033     121        0</code></pre>
+(Intercept)                5.2     0.0264     196        0
+log(market_value + 1)      0.4     0.0033     122        0</code></pre>
 </div>
 </div>
 
@@ -813,7 +813,7 @@ log(market_value + 1)      0.4     0.0033     121        0</code></pre>
 <span id="cb23-10"><a href="#cb23-10"></a>    <span class="fu">mutate</span>(<span class="at">wealth =</span> shares <span class="sc">*</span> market_value <span class="sc">/</span> <span class="dv">100</span>)</span>
 <span id="cb23-11"><a href="#cb23-11"></a><span class="fu">glimpse</span>(us_comp_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 25,093
+<pre><code>Rows: 25,423
 Columns: 7
 $ gvkey        &lt;chr&gt; "001004", "001004", "001004", "001004…
 $ execid       &lt;chr&gt; "09249", "09249", "09249", "09249", "…
@@ -972,7 +972,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <span id="cb30-12"><a href="#cb30-12"></a></span>
 <span id="cb30-13"><a href="#cb30-13"></a><span class="fu">print</span>(<span class="fu">prettyNum</span>(<span class="fu">c</span>(observed_cor, random_cor), <span class="at">dig =</span> <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "-0.00328"  "-0.000739"</code></pre>
+<pre><code>[1] "-0.00323"  "-0.000327"</code></pre>
 </div>
 </div>
 </div>
@@ -1086,8 +1086,8 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <span id="cb40-2"><a href="#cb40-2"></a><span class="fu">coefficients</span>(<span class="fu">summary</span>(regr_sens)) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">dig =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     Estimate Std. Error t value Pr(&gt;|t|)
-(Intercept)            1.5128      1.077     1.4     0.16
-I(market_value/1000)  -0.0066      0.016    -0.4     0.69</code></pre>
+(Intercept)            1.5001      1.068    1.41     0.16
+I(market_value/1000)  -0.0062      0.016   -0.39     0.69</code></pre>
 </div>
 </div>
 </div>
@@ -1112,7 +1112,7 @@ I(market_value/1000)  -0.0066      0.016    -0.4     0.69</code></pre>
 <h3 id="cheap-talk-model">Cheap Talk Model</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="https://www.dlsweb.rmit.edu.au/lsu/content/B_DSC/gsssp/graphics/iceberg.jpg"></p>
+<p><img data-src="https://www.myinterestingfacts.com/wp-content/uploads/2014/04/Iceberg.jpg"></p>
 <p></p><figcaption>Assumptions are important</figcaption><p></p>
 </figure>
 </div>
@@ -1154,6 +1154,7 @@ I(market_value/1000)  -0.0066      0.016    -0.4     0.69</code></pre>
 </section>
 <section class="slide level2 smaller scrollable" id="references">
 
+
 <div class="footer footer-default">
 
 </div>
@@ -1185,19 +1186,19 @@ Tervio, Marko. 2008. <span>“The <span>Difference That CEOs Make</span>: <span>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="slides2_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="slides2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="slides2_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="slides2_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="slides2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="slides2_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="slides2_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="slides2_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="slides2_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="slides2_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

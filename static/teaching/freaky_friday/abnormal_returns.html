@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stijn Masschelein">
+
+<title>Method Package - Abnormal returns</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar docked slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Abnormal returns</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Method Package</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Introduction</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../method_package.html" class="sidebar-item-text sidebar-link">Content</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../auxilary/introduction_to_rstudio_for_accfin.html" class="sidebar-item-text sidebar-link">Introduction to Rstudio for Accounting and Finance</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Slides</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides1.html" class="sidebar-item-text sidebar-link">Introduction to Research Methods in Finance and Accounting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides2.html" class="sidebar-item-text sidebar-link">Simulations, Regressions, and Significance</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides3.html" class="sidebar-item-text sidebar-link">Control Variables</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides4.html" class="sidebar-item-text sidebar-link">Research Design 1: Fixed Effects and Instrumental Variables</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides5.html" class="sidebar-item-text sidebar-link">Research Design 2: Event Studies and Difference-in-Difference</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Friday Earnings Announcements</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/index.html" class="sidebar-item-text sidebar-link">Research Design</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/download_linking.html" class="sidebar-item-text sidebar-link">WRDS linking data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/linking.html" class="sidebar-item-text sidebar-link">Combining databases</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/download_data.html" class="sidebar-item-text sidebar-link">Earnings announcements</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/download_stocks.html" class="sidebar-item-text sidebar-link">Stock price data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/abnormal_returns.html" class="sidebar-item-text sidebar-link active">Abnormal returns</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/descriptive.html" class="sidebar-item-text sidebar-link">Descriptive statistics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/regressions.html" class="sidebar-item-text sidebar-link">Regressions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#abnormal-returns" id="toc-abnormal-returns" class="nav-link" data-scroll-target="#abnormal-returns">Abnormal returns</a></li>
+  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together">Putting it all together</a></li>
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a></li>
+  <li><a href="#overview-of-the-datasets" id="toc-overview-of-the-datasets" class="nav-link" data-scroll-target="#overview-of-the-datasets">Overview of the datasets</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Abnormal returns</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Stijn Masschelein </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="setup" class="level1 page-columns page-full">
+<h1>Setup</h1>
+<p>The <code>lubridate</code> package is the <code>tidyverse</code> package that helps with time related data. Dates are a specific class of variables and the package helps with managing date variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.1     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/abnormal_returns.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+</div>
+</div>
+<p>In order to predict the expected market return reaction to earnings, we will want to take into account the general market reaction. <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span> only adjust for the overall market return. There are other adjustments possible for specific risk factors. The original factor model is the Fama-French 3 Factors model and the data is available via the <a href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Kenneth French data library</a>.</p>
+<p>I have downloaded the data as a <code>.csv</code> file. The code reads the data in skipping 5 lines and reading the variables as numbers (<code>d</code>ouble precision). We then need to transform the date variable to a date type with a function from the <code>lubridate</code> package. Finally, we need to scale the returns by 100 because they are expressed in percentages. For replicating the <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span> paper, we only need the market return minus the risk free rate (<code>mkt_rf</code>) and the risk free rate (<code>rf</code>). If I read this paper correctly, we need to use the raw market return which is calculated as <code>mkt</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>earn_ann <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"earn_ann.RDS"</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>analyst <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"analyst.RDS"</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>all_stocks <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"all_stocks.RDS"</span>))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>famafrench <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"F-F_Research_Data_Factors_daily.csv"</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"date"</span>, <span class="st">"mkt_rf"</span>, <span class="st">"smb"</span>, <span class="st">"hml"</span>, <span class="st">"rf"</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">skip =</span> <span class="dv">5</span>, <span class="at">col_type =</span> <span class="st">"ddddd"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">ymd</span>(date)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.numeric, <span class="sc">~</span> . <span class="sc">/</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mkt =</span> mkt_rf <span class="sc">+</span> rf) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
+e.g.:
+  dat &lt;- vroom(...)
+  problems(dat)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 25,400 × 6
+   date        mkt_rf     smb     hml      rf      mkt
+   &lt;date&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+ 1 1926-07-01  0.001  -0.0025 -0.0027 0.00009  0.00109
+ 2 1926-07-02  0.0045 -0.0033 -0.0006 0.00009  0.00459
+ 3 1926-07-06  0.0017  0.003  -0.0039 0.00009  0.00179
+ 4 1926-07-07  0.0009 -0.0058  0.0002 0.00009  0.00099
+ 5 1926-07-08  0.0021 -0.0038  0.0019 0.00009  0.00219
+ 6 1926-07-09 -0.0071  0.0043  0.0057 0.00009 -0.00701
+ 7 1926-07-10  0.0062 -0.0053 -0.001  0.00009  0.00629
+ 8 1926-07-12  0.0004 -0.0003  0.0064 0.00009  0.00049
+ 9 1926-07-13  0.0048 -0.0028 -0.002  0.00009  0.00489
+10 1926-07-14  0.0004  0.0007 -0.0043 0.00009  0.00049
+# ℹ 25,390 more rows</code></pre>
+</div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<ul>
+<li><code>shrout</code> is shares outstanding in 1000</li>
+<li><code>market_value</code> is in million USD</li>
+</ul>
+</div></div></section>
+<section id="abnormal-returns" class="level1">
+<h1>Abnormal returns</h1>
+<p>Remember that we are interested in predicting the counterfactual of what the returns would have been if there were no earnings announcement. We use the following prediction model:</p>
+<p><span class="math display">\[ R_{u,k} = \alpha_{t,k} + \beta_{t,k} R_{u,m}\]</span></p>
+<p>That means that we need to estimate <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> for each announcement based on the market return and firm return from 300 days before the earnings announcement to 46 days before the earnings announcements <span class="citation" data-cites="dellavigna2009">(<a href="#ref-dellavigna2009" role="doc-biblioref">Dellavigna and Pollet 2009</a>)</span>. This is a lot of computations!</p>
+<p>I played around with a lot of different implementations and finally settled on a completely <code>tidyverse</code> style implementation as the fastest on my machine. I did not include the other implementations in this document but I will show how you can test the timing of your code with the <code>microbenchmark</code> package.</p>
+<p>The first thing we need to do is to write the code as a function that we can call as many times as we need. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> I call this function <code>create_coefs</code>. The input of the function is <code>n</code>, the number of earnings announcements we want to run the code for. The output is a <code>tibble</code> with the coefficients <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> for each <code>permno</code> and <code>anndat</code> combination.</p>
+<p>The actual function takes the earnings announcement data and keeps the unique <code>permno</code> and <code>anndat</code> combinations. Next, the <code>start</code> and <code>end</code> data for the return data is calculated based on the earnings announcement date. Next, we merge the return data and the Fama-French data and delete the missing or infinite observations for the return.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At this point, you can see the flexibility of my approach to keep the data sets separate until we need to join them. The earnings announcement data is one row per earnings announcement date per firm. The stock data has one observation per firm per day. The Fama-French data has one observation per day. Because these data have a different level of analysis, I have kept them separate until the point that we need to analyse the data. If I have to update one of the datasets, I do not necessarily have to update all the other ones. I would strongly encourage you to do the same thing where you keep different parts of the data cleaning separate for as long as possible. This will make your code flexible and easy to adapt.</p>
+</div>
+</div>
+<p>The next two steps are the most advanced ones. First, remark that we have multiple rows for each earnings announcement. We use the summarise function to put all the returns in a vector <code>y</code> and we make a matrix <code>X</code> with all 1’s in the first column and the mkt. Remark that we are wrapping <code>y</code> and <code>X</code> in a list so that we effectively make <code>y</code> and <code>X</code> list columns in our <code>tibble</code>. The <code>tidyverse</code> lets us put almost anything in a dataset as long as we wrap it in a list. Finally, we summarise the <code>y</code> and <code>X</code> not just for the whole dataset but for each combination of <code>permno</code> and <code>anndat</code>. Thus, we end up with a dataset with a row for each earnings announcement with the returns we want to predict (<code>y</code>) from before the earnings announcement and the market returns from the same time period (<code>X</code>).</p>
+<p>In the second step, we will run the regression for each row to estimate <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. We do use a lightweight version of <code>lm</code> called <code>lm.fit</code> to speed up the estimation. <code>lm.fit</code> calculates less statistics like the standard errors that we need to calculate the p-values. Because ultimately, we need to this for 150,000 rows <code>lm.fit</code> will save considerable time compared to <code>lm</code>. <code>lm.fit</code> works slightly different in that now regression equation is specified. You need to give the predictors as the first argument and the outcome variable as the second argument. This is the reason why we formed the <code>y</code> and <code>X</code> variable in the previous step. We just need the coefficients form the fit object and we can use the <code>coef</code> function to extract them.</p>
+<p>Finally, we want to apply this <code>lm.fit</code> function to every row (i.e.&nbsp;for every earnings announcement). We use the <a href="https://purrr.tidyverse.org/reference/map.html"><code>map</code>-family</a> to apply a function to every element of a column. The <code>pmap</code> function specifically let us apply a function to multiple columns if we wrap them in a list. So, <code>pmap</code> takes the list of columns <code>X</code> and <code>y</code> and applies (<code>~</code>) the function <code>lm.fit</code> to the first (<code>..1</code>) and second (<code>..2</code>) element of that list. At the end, we extract the coefficients.</p>
+<p>The <code>microbenchmark</code> function allows us to test the time it takes to run this function for 100, 1000, and 10000 earnings announcements. The computations are done 10 times for each call to get an average/median estimate <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The surprising thing to me was that the function scales very well. The average time per announcement goes down with more announcements.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>create_coefs <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">6</span>){</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  earn_ann <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="at">n =</span> n) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>(permno, anndat) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">start =</span> anndat <span class="sc">-</span> <span class="dv">300</span>, <span class="at">end =</span> anndat <span class="sc">-</span> <span class="dv">46</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(<span class="fu">select</span>(all_stocks, permno, date, ret),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">by =</span> <span class="fu">join_by</span>(permno <span class="sc">==</span> permno, start <span class="sc">&lt;=</span> date, end <span class="sc">&gt;=</span> date)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(<span class="fu">select</span>(famafrench, mkt, rf, date),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">by =</span> <span class="fu">join_by</span>(date <span class="sc">==</span> date)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ret), <span class="sc">!</span><span class="fu">is.infinite</span>(ret)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">y =</span> <span class="fu">list</span>(<span class="fu">cbind</span>(ret)), <span class="at">X =</span> <span class="fu">list</span>(<span class="fu">cbind</span>(<span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">beta =</span> mkt)),</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">.by =</span> <span class="fu">c</span>(permno, anndat)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">coefs =</span> <span class="fu">pmap</span>(<span class="fu">list</span>(X, y), <span class="sc">~</span> <span class="fu">lm.fit</span>(..<span class="dv">1</span>, ..<span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="fu">coef</span>()),</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">.by =</span> <span class="fu">c</span>(permno, anndat)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>y, <span class="sc">-</span>X)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">create_coefs</span>(<span class="dv">100</span>),</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">create_coefs</span>(<span class="dv">1000</span>),</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">create_coefs</span>(<span class="dv">10000</span>),</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>                  <span class="at">times =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Unit: seconds
+                expr      min       lq     mean   median       uq      max
+   create_coefs(100) 1.409918 1.474293 1.534156 1.535219 1.607870 1.634923
+  create_coefs(1000) 1.624458 1.651582 1.684543 1.674286 1.704302 1.793788
+ create_coefs(10000) 3.250091 3.267919 3.321967 3.312994 3.351636 3.473761
+ neval
+    10
+    10
+    10</code></pre>
+</div>
+</div>
+<p>Next, we calculate the coefficients for all announcements and save them in the <code>results</code> object. Next, we need to calculate the abnormal returns based on the following formula in <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span>.</p>
+<p><span class="math display">\[ R_{t,k}^{(h, H)} = [\Pi_{j=h}^H (1 + R_{j,k})] - 1
+- \hat{\beta}_{t,k} [\Pi_{j=h}^H (1 + R_{j,m}) - 1]\]</span></p>
+<p>In the <code>results</code>, the <code>coef</code> column is a list column where each row has two elements: <code>alpha</code> and <code>beta</code>. The <code>unnest_wider</code> function splits the list columns in two columns <code>alpha</code> and <code>beta</code>. Next we create the date 75 days after the announcement because that is the longest time frame the paper is interested <span class="citation" data-cites="dellavigna2009">(<a href="#ref-dellavigna2009" role="doc-biblioref">Dellavigna and Pollet 2009</a>)</span>. Just like before, we add the relevant stock price data and Fama-French data. Our dataset now has a row for each day 0 to 75 days after the announcement date. <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span> are interested in the short term abnormal return on the day of the announcement and the day after (0-1 days) and the long term abnormal return (2-75 days). I create the <code>time_frame</code> variable to denote whether a day should be counted in the short or long cumulative abnormal return. As an intermediate step, I calculate the products of the (market) returns + 1 (see the equation) by announcement and time frame (and <code>beta</code> because we need it for further calculations).</p>
+<p>Finally, I use the <code>pivot_wider</code> function to transform the dataset from the long format to a wider format. Specifically, each announcement has two rows one for the short term <code>car</code> and one for the long term <code>car</code>. The transformation will create a new dataset where every row has a different announcement with a <code>car_long</code> and a <code>car_short</code>. We do that by taking the values_from the <code>car</code> variable and the name for the column from the <code>time_frame</code> variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">nrow</span>(earn_ann)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">create_coefs</span>(N)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>abnormal <span class="ot">&lt;-</span> results <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_wider</span>(coefs) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date75 =</span> anndat <span class="sc">+</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="fu">select</span>(all_stocks, permno, date, ret),</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(permno <span class="sc">==</span> permno,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                         date75 <span class="sc">&gt;=</span> date, anndat <span class="sc">&lt;=</span> date)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="fu">select</span>(famafrench,  mkt, rf, date),</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(date <span class="sc">==</span> date)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_frame =</span> <span class="fu">if_else</span>(date <span class="sc">-</span> anndat <span class="sc">&lt;=</span> <span class="dv">1</span>, <span class="st">"short"</span>, <span class="st">"long"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">raw =</span> <span class="fu">prod</span>(<span class="dv">1</span> <span class="sc">+</span> ret), <span class="at">mkt =</span> <span class="fu">prod</span>(<span class="dv">1</span> <span class="sc">+</span> mkt),</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(permno, anndat, time_frame, beta)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">car =</span> raw <span class="sc">-</span> <span class="dv">1</span> <span class="sc">-</span> beta <span class="sc">*</span> (mkt <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>beta, <span class="sc">-</span>raw, <span class="sc">-</span>mkt) <span class="sc">%&gt;%</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(car)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">values_from =</span> car, <span class="at">names_from =</span> time_frame,</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">"car_"</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(abnormal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 128,114
+Columns: 4
+$ permno    &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 10560, 10560, 88784, 8878…
+$ anndat    &lt;date&gt; 2006-04-26, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26,…
+$ car_short &lt;dbl&gt; -0.053110221, 0.036461999, -0.063605082, -0.004176757, -0.01…
+$ car_long  &lt;dbl&gt; -0.33518052, -0.20959886, 0.05661849, -0.18368085, 0.2074188…</code></pre>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html"><code>pivot_wider</code> and <code>pivot_longer</code></a> functions are really, really useful when you are working with poorly structured data. As a rule of thumb when you clean and summarise the data, you will want the data to be in a long format where each row is its own distinct unit of analysis <span class="citation" data-cites="wickham2014">(<a href="#ref-wickham2014" role="doc-biblioref">Wickham 2014</a>)</span>. For instance, in this code we had a row for each return day after the announcement for each announcement. The big advantage is that we can easily, with code, change the groups of data that we want to summarise, mutate, or filter. If we want to change what the short time frame means, we can just change that one line of code (e.g.&nbsp;to <code>data - anndat &lt;= 5</code>). The wider format is more useful to present the data. That is why I use it more often at the end of an analysis.</p>
+</div>
+</div>
+</section>
+<section id="putting-it-all-together" class="level1">
+<h1>Putting it all together</h1>
+<p>Finally, we want to put all the data together. You can see that we only merge all the data at the end. This is good practice. I would advise to not even try to build up a complete dataset by starting with for instance the I/B/E/S data and than to gradually add the variables that you need. This is a very error prone process and it is hard to make changes without redoing the whole data cleaning process.</p>
+<p>First, we need more stock price data and the market value from the CRSP data. We collect this in the <code>clean_prices</code> dataset. Remark that I remove the data where the price is negative because that means that there were no trades that day. <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span> require the price and market value 5 days before the earnings announcement. My guess is that they are trying to avoid any effects of information leaking out into the market before the earnings announcement. I then merge the earnings announcement data with the analyst estimates data, the abnormal return data and the price and market value data. Finally, I calculate the earnings <code>surprise</code> as the difference between the actual and the median predicted earnings per share divided by the price per share to get the earnings surprise per dollar of market value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>clean_prices <span class="ot">&lt;-</span> all_stocks <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(prc <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(permno, date, prc, shrout) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">market_value =</span> prc <span class="sc">*</span> shrout) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>shrout) <span class="sc">%&gt;%</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 14,339,244 × 4
+   permno date         prc market_value
+    &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;        &lt;dbl&gt;
+ 1  10002 1994-03-10 13          38987 
+ 2  10010 1994-03-10  7.62       71278.
+ 3  10011 1994-03-10  7.12       37784.
+ 4  10012 1994-03-10  2.38       34630.
+ 5  10019 1994-03-10  8.75       45832.
+ 6  10025 1994-03-10 18.1       132838.
+ 7  10026 1994-03-10 18.2       188723.
+ 8  10032 1994-03-10 16.2       104910 
+ 9  10035 1994-03-10 18.2       237779.
+10  10042 1994-03-10  3.56       90195.
+# ℹ 14,339,234 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>surprise <span class="ot">&lt;-</span> earn_ann <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(analyst,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(ticker, anndat, actual, pdf)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(abnormal,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(permno, anndat)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date_minus5 =</span> anndat <span class="sc">-</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(clean_prices,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(permno, <span class="fu">closest</span>(date_minus5 <span class="sc">&gt;=</span> date))) <span class="sc">%&gt;%</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">surprise =</span> (actual <span class="sc">-</span> median) <span class="sc">/</span> prc) </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(surprise)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 154,540
+Columns: 20
+$ ticker       &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "AA0G", "AA0G",…
+$ actual       &lt;dbl&gt; -0.08, -0.11, -0.11, -0.05, -0.07, -0.04, -0.10, -0.45, -…
+$ pdf          &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "P", "D", "D", "D", "D…
+$ anndats_act  &lt;date&gt; 2006-04-26, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-…
+$ gvkey        &lt;chr&gt; "001081", "001081", "001081", "001081", "001081", "001081…
+$ permno       &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 10560, 10560, 88784, 8…
+$ cusip        &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00392410…
+$ rdq          &lt;date&gt; 2006-04-26, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-…
+$ anndat       &lt;date&gt; 2006-04-26, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-…
+$ N            &lt;int&gt; 4, 2, 3, 2, 4, 1, 5, 2, 2, 4, 5, NA, NA, NA, NA, NA, 1, 1…
+$ median       &lt;dbl&gt; -0.07425, -0.08965, -0.05740, -0.03700, -0.10610, -0.0900…
+$ mean         &lt;dbl&gt; -0.072625, -0.089650, -0.068000, -0.037000, -0.100550, -0…
+$ mean_days    &lt;dbl&gt; 11.500000, 8.000000, 6.666667, 13.500000, 7.000000, 21.00…
+$ car_short    &lt;dbl&gt; -0.053110221, 0.036461999, -0.063605082, -0.004176757, -0…
+$ car_long     &lt;dbl&gt; -0.33518052, -0.20959886, 0.05661849, -0.18368085, 0.2074…
+$ date_minus5  &lt;date&gt; 2006-04-21, 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-…
+$ date         &lt;date&gt; 2006-04-21, 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-…
+$ prc          &lt;dbl&gt; 4.28, 5.89, 4.53, 5.00, 3.26, 5.63, 4.02, 14.50, 8.66, 8.…
+$ market_value &lt;dbl&gt; 1883949.09, 2592630.69, 1993992.84, 2200875.00, 1434970.5…
+$ surprise     &lt;dbl&gt; -0.001343458, -0.003455009, -0.011611478, -0.002600000, 0…</code></pre>
+</div>
+</div>
+</section>
+<section id="data-cleaning" class="level1">
+<h1>Data Cleaning</h1>
+<p>Finally, I apply the data cleaning rules from <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span>. I also include the a print statement so that we can track how many observations are removed after each data cleaning step. The following rules are applied:</p>
+<pre><code>- Remove the observations where `surprise` is missing.
+- Remove the observations where the median or actual estimate is larger than the price.
+- Remove penny stocks which I arbitrarily and after some googling decide to be stocks with a price lower than $2 per stock.
+- Remove the observations with earnings announcement on Saturday and Sunday.
+- I remove the observations with a car in the top and bottom .05% of observations.</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>winsorise <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">10000</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>main <span class="ot">&lt;-</span> surprise <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(surprise)) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">abs</span>(median) <span class="sc">&lt;</span> prc, <span class="fu">abs</span>(actual) <span class="sc">&lt;</span> prc) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(prc <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weekday =</span> <span class="fu">wday</span>(anndat, <span class="at">label =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span> weekday <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Sat"</span>, <span class="st">"Sun"</span>)) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">percent_rank</span>(car_long) <span class="sc">&gt;=</span> winsorise,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>         <span class="fu">percent_rank</span>(car_long) <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">-</span> winsorise,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>         <span class="fu">percent_rank</span>(car_short) <span class="sc">&gt;=</span> winsorise,</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>         <span class="fu">percent_rank</span>(car_short) <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">-</span> winsorise) <span class="sc">%&gt;%</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 137,403 × 20
+# ℹ 137,403 more rows
+# ℹ 20 variables: ticker &lt;chr&gt;, actual &lt;dbl&gt;, pdf &lt;chr&gt;, anndats_act &lt;date&gt;,
+#   gvkey &lt;chr&gt;, permno &lt;dbl&gt;, cusip &lt;chr&gt;, rdq &lt;date&gt;, anndat &lt;date&gt;, N &lt;int&gt;,
+#   median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;, car_short &lt;dbl&gt;, car_long &lt;dbl&gt;,
+#   date_minus5 &lt;date&gt;, date &lt;date&gt;, prc &lt;dbl&gt;, market_value &lt;dbl&gt;,
+#   surprise &lt;dbl&gt;
+# A tibble: 136,029 × 20
+# ℹ 136,029 more rows
+# ℹ 20 variables: ticker &lt;chr&gt;, actual &lt;dbl&gt;, pdf &lt;chr&gt;, anndats_act &lt;date&gt;,
+#   gvkey &lt;chr&gt;, permno &lt;dbl&gt;, cusip &lt;chr&gt;, rdq &lt;date&gt;, anndat &lt;date&gt;, N &lt;int&gt;,
+#   median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;, car_short &lt;dbl&gt;, car_long &lt;dbl&gt;,
+#   date_minus5 &lt;date&gt;, date &lt;date&gt;, prc &lt;dbl&gt;, market_value &lt;dbl&gt;,
+#   surprise &lt;dbl&gt;
+# A tibble: 133,703 × 20
+# ℹ 133,703 more rows
+# ℹ 20 variables: ticker &lt;chr&gt;, actual &lt;dbl&gt;, pdf &lt;chr&gt;, anndats_act &lt;date&gt;,
+#   gvkey &lt;chr&gt;, permno &lt;dbl&gt;, cusip &lt;chr&gt;, rdq &lt;date&gt;, anndat &lt;date&gt;, N &lt;int&gt;,
+#   median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;, car_short &lt;dbl&gt;, car_long &lt;dbl&gt;,
+#   date_minus5 &lt;date&gt;, date &lt;date&gt;, prc &lt;dbl&gt;, market_value &lt;dbl&gt;,
+#   surprise &lt;dbl&gt;
+# A tibble: 133,611 × 21
+# ℹ 133,611 more rows
+# ℹ 21 variables: ticker &lt;chr&gt;, actual &lt;dbl&gt;, pdf &lt;chr&gt;, anndats_act &lt;date&gt;,
+#   gvkey &lt;chr&gt;, permno &lt;dbl&gt;, cusip &lt;chr&gt;, rdq &lt;date&gt;, anndat &lt;date&gt;, N &lt;int&gt;,
+#   median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;, car_short &lt;dbl&gt;, car_long &lt;dbl&gt;,
+#   date_minus5 &lt;date&gt;, date &lt;date&gt;, prc &lt;dbl&gt;, market_value &lt;dbl&gt;,
+#   surprise &lt;dbl&gt;, weekday &lt;ord&gt;
+# A tibble: 130,807 × 21
+   ticker actual pdf   anndats_act gvkey  permno cusip    rdq        anndat    
+   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;date&gt;      &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;date&gt;     &lt;date&gt;    
+ 1 A2      -0.08 D     2006-04-26  001081  10560 00392410 2006-04-26 2006-04-26
+ 2 A2      -0.11 D     2005-01-26  001081  10560 00392410 2005-01-26 2005-01-26
+ 3 A2      -0.11 D     2005-04-27  001081  10560 00392410 2005-04-27 2005-04-27
+ 4 A2      -0.05 D     2005-07-27  001081  10560 00392410 2005-07-27 2005-07-27
+ 5 A2      -0.07 D     2005-10-26  001081  10560 00392410 2005-10-26 2005-10-26
+ 6 A2      -0.04 D     2004-10-21  001081  10560 00392410 2004-10-21 2004-10-21
+ 7 A2      -0.1  D     2006-02-01  001081  10560 00392410 2006-02-01 2006-02-01
+ 8 AA0G    -0.45 P     2001-11-13  133724  88784 00724X10 2001-11-13 2001-11-13
+ 9 AA0G    -0.3  D     2005-03-01  133724  88784 00724X10 2005-03-01 2005-03-01
+10 AA0G    -0.31 D     2005-05-05  133724  88784 00724X10 2005-05-05 2005-05-05
+# ℹ 130,797 more rows
+# ℹ 12 more variables: N &lt;int&gt;, median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;,
+#   car_short &lt;dbl&gt;, car_long &lt;dbl&gt;, date_minus5 &lt;date&gt;, date &lt;date&gt;,
+#   prc &lt;dbl&gt;, market_value &lt;dbl&gt;, surprise &lt;dbl&gt;, weekday &lt;ord&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(main, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"main.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="overview-of-the-datasets" class="level1">
+<h1>Overview of the datasets</h1>
+<table class="table">
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>earn_ann.RDS</code></td>
+<td>The information on the earnings announcements</td>
+</tr>
+<tr class="even">
+<td><code>analyst.RDS</code></td>
+<td>The analyst estimates data</td>
+</tr>
+<tr class="odd">
+<td><code>main.RDS</code></td>
+<td>The main dataset to replicate the paper</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="references" class="level1">
+
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-dellavigna2009" class="csl-entry" role="doc-biblioentry">
+Dellavigna, Stefano, and Joshua M. Pollet. 2009. <span>“Investor <span>Inattention</span> and <span>Friday Earnings Announcements</span>.”</span> <em>The Journal of Finance</em> 64 (2): 709–49. <a href="https://doi.org/10.1111/j.1540-6261.2009.01447.x">https://doi.org/10.1111/j.1540-6261.2009.01447.x</a>.
+</div>
+<div id="ref-wickham2014" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of Statistical Software</em> 59 (10): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><code>R</code> is fundamentally a programming language that is build around functions. The <code>tidyverse</code> partially works around that by making <code>tibbles</code> the primary object. Nevertheless, when you need to do some more advanced programming, creating functions is quite natural in <code>R</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>For comparison on my 2020 Mac Mini, it takes about 1.5 seconds for 100 announcements and 4.0 seconds for 10000 announcements. On my 2014 Macbook pro, that is respectively 4.3 seconds and 11.2 seconds.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

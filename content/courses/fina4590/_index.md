@@ -14,6 +14,13 @@ type: docs
 weight: 1
 ---
 
+
+## The new website
+
+[Click here to go to the update website](/teaching/method_package.html)
+
+## The old website
+
 ### The lecture notes in html format
 
 [Lecture Notes](/teaching/just_enough)
@@ -29,3 +36,5 @@ weight: 1
 ### Baker et al. Simulation
 
 [html version](/teaching/slides_fina4590/baker_simulation.html)
+
+

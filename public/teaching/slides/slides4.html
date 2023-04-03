@@ -1,0 +1,2661 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.2.313">
+
+  <meta name="author" content="Stijn Masschelein">
+  <title>Method Package - Research Design 1: Fixed Effects and Instrumental Variables</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  
+  <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+  <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Research Design 1: Fixed Effects and Instrumental Variables</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Stijn Masschelein 
+</div>
+</div>
+</div>
+
+</section>
+<section id="did-we-not-cover-that-already" class="slide level2">
+<h2>Did we not cover that already?</h2>
+<ul>
+<li><p>Yes, but briefly</p></li>
+<li><p>Yes, but starting from the perspective of a regression (and the code)</p></li>
+</ul>
+<aside class="notes">
+<p>The regression perspective is not bad. It means that we can see that more advanced regression techniques can be implemented in our linear regression framework. It’s also how most researchers in accounting and finance have been thought to think about research methods. However, there is a shift coming from economics where the focus is more on the research design.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section>
+<section id="research-design" class="title-slide slide level1 center">
+<h1>Research Design</h1>
+
+</section>
+<section id="the-focus-is-on-research-design" class="slide level2">
+<h2>The focus is on Research Design</h2>
+<div class="callout callout-important callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>Which data should we use?</li>
+<li>Which comparison <em>identifies</em> the <em>effect</em> that we are interested in?</li>
+</ol>
+</div>
+</div>
+</div>
+
+<aside class="notes">
+<p>Is there sufficient variation that can identify the effect. - See also the pitching document - A specific example is the identification of performance effects</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<ul>
+<li><p>For instance <a href="https://theeffectbook.net/ch-Identification.html#alcohol-and-mortality">Alcohol and Mortality, Chapter 5</a> in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span>.</p></li>
+<li><p>Is there sufficient variation in the treatment and the outcome?</p></li>
+<li><p>Are we reasonably sure that there are no confounders or only a few and we can measure them?</p></li>
+</ul>
+</div></aside></section>
+<section id="prevously-we-used-models-and-assumptions-to-identify-effects" class="slide level2 smaller">
+<h2>Prevously, we used models and assumptions to identify effects</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<h3 id="mathematical-models">Mathematical models</h3>
+<p><span class="math display">\[
+V = T^{\alpha_T} \Bigl( \frac{K}{\alpha_K} \Bigl)^{\alpha_K}
+                 \Bigl( \frac{L}{\alpha_L} \Bigl)^{\alpha_L}
+\]</span> <span class="math display">\[
+\alpha_T + \alpha_K + \alpha_L = 1
+\]</span></p>
+<ul>
+<li><span class="math inline">\(V =\)</span> The value of the firm</li>
+<li><span class="math inline">\(K =\)</span> Capital of the firm</li>
+<li><span class="math inline">\(L =\)</span> Labour of the firm</li>
+<li><span class="math inline">\(T =\)</span> CEO talent/skills/ability/experience</li>
+</ul>
+</div><div class="column" style="width:20%;">
+
+</div><div class="column" style="width:40%;">
+<h3 id="dags">DAGs</h3>
+<div class="cell" data-fig-width="4.5">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="432" height="480" viewbox="0.00 0.00 251.59 332.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 328)">
+<title>
+speedboat
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-328 247.59,-328 247.59,4 -4,4"></polygon> <!-- ave_ability --> <g id="node1" class="node">
+<title>
+ave_ability
+</title>
+<polygon fill="none" stroke="black" points="215.85,-108 137.45,-108 137.45,-72 215.85,-72 215.85,-108"></polygon> <text text-anchor="middle" x="176.65" y="-85.8" font-family="Times,serif" font-size="14.00">ave_ability</text> </g> <!-- ltime --> <g id="node2" class="node">
+<title>
+ltime
+</title>
+<polygon fill="none" stroke="black" points="169.65,-36 115.65,-36 115.65,0 169.65,0 169.65,-36"></polygon> <text text-anchor="middle" x="142.65" y="-13.8" font-family="Times,serif" font-size="14.00">ltime</text> </g> <!-- ave_ability&#45;&gt;ltime --> <g id="edge2" class="edge">
+<title>
+ave_ability-&gt;ltime
+</title>
+<path fill="none" stroke="black" d="M168.24,-71.7C164.37,-63.73 159.7,-54.1 155.41,-45.26"></path> <polygon fill="black" stroke="black" points="158.47,-43.57 150.96,-36.1 152.18,-46.63 158.47,-43.57"></polygon> </g> <!-- mixed_race --> <g id="node3" class="node">
+<title>
+mixed_race
+</title>
+<polygon fill="none" stroke="black" points="81.45,-108 -0.15,-108 -0.15,-72 81.45,-72 81.45,-108"></polygon> <text text-anchor="middle" x="40.65" y="-85.8" font-family="Times,serif" font-size="14.00">mixed_race</text> </g> <!-- mixed_race&#45;&gt;ltime --> <g id="edge3" class="edge">
+<title>
+mixed_race-&gt;ltime
+</title>
+<path fill="none" stroke="black" d="M65.6,-71.88C78.69,-62.89 94.91,-51.76 109.08,-42.03"></path> <polygon fill="black" stroke="black" points="111.34,-44.73 117.6,-36.19 107.37,-38.96 111.34,-44.73"></polygon> </g> <!-- female --> <g id="node4" class="node">
+<title>
+female
+</title>
+<polygon fill="none" stroke="black" points="203.73,-180 149.57,-180 149.57,-144 203.73,-144 203.73,-180"></polygon> <text text-anchor="middle" x="176.65" y="-157.8" font-family="Times,serif" font-size="14.00">female</text> </g> <!-- female&#45;&gt;ave_ability --> <g id="edge6" class="edge">
+<title>
+female-&gt;ave_ability
+</title>
+<path fill="none" stroke="black" d="M176.65,-143.7C176.65,-135.98 176.65,-126.71 176.65,-118.11"></path> <polygon fill="black" stroke="black" points="180.15,-118.1 176.65,-108.1 173.15,-118.1 180.15,-118.1"></polygon> </g> <!-- female&#45;&gt;ltime --> <g id="edge4" class="edge">
+<title>
+female-&gt;ltime
+</title>
+<path fill="none" stroke="black" d="M198.36,-143.79C208.41,-134.41 219.29,-121.9 224.65,-108 230.4,-93.07 232.3,-86.05 224.65,-72 214.87,-54.04 196.09,-41.23 178.97,-32.72"></path> <polygon fill="black" stroke="black" points="180.25,-29.45 169.7,-28.42 177.3,-35.8 180.25,-29.45"></polygon> </g> <!-- course --> <g id="node5" class="node">
+<title>
+course
+</title>
+<polygon fill="none" stroke="black" points="121.65,-324 67.65,-324 67.65,-288 121.65,-288 121.65,-324"></polygon> <text text-anchor="middle" x="94.65" y="-301.8" font-family="Times,serif" font-size="14.00">course</text> </g> <!-- circumstances --> <g id="node7" class="node">
+<title>
+circumstances
+</title>
+<polygon fill="none" stroke="black" points="190.45,-252 94.85,-252 94.85,-216 190.45,-216 190.45,-252"></polygon> <text text-anchor="middle" x="142.65" y="-229.8" font-family="Times,serif" font-size="14.00">circumstances</text> </g> <!-- course&#45;&gt;circumstances --> <g id="edge7" class="edge">
+<title>
+course-&gt;circumstances
+</title>
+<path fill="none" stroke="black" d="M106.51,-287.7C112.15,-279.47 119,-269.48 125.22,-260.42"></path> <polygon fill="black" stroke="black" points="128.15,-262.33 130.92,-252.1 122.38,-258.37 128.15,-262.33"></polygon> </g> <!-- month_location --> <g id="node6" class="node">
+<title>
+month_location
+</title>
+<polygon fill="none" stroke="black" points="243.52,-324 139.77,-324 139.77,-288 243.52,-288 243.52,-324"></polygon> <text text-anchor="middle" x="191.65" y="-301.8" font-family="Times,serif" font-size="14.00">month_location</text> </g> <!-- month_location&#45;&gt;circumstances --> <g id="edge8" class="edge">
+<title>
+month_location-&gt;circumstances
+</title>
+<path fill="none" stroke="black" d="M179.54,-287.7C173.78,-279.47 166.79,-269.48 160.44,-260.42"></path> <polygon fill="black" stroke="black" points="163.22,-258.29 154.62,-252.1 157.49,-262.3 163.22,-258.29"></polygon> </g> <!-- circumstances&#45;&gt;ltime --> <g id="edge5" class="edge">
+<title>
+circumstances-&gt;ltime
+</title>
+<path fill="none" stroke="black" d="M138.67,-215.56C132.48,-185.95 121.89,-124.03 128.65,-72 129.75,-63.51 131.81,-54.43 134.01,-46.24"></path> <polygon fill="black" stroke="black" points="137.43,-47.02 136.82,-36.44 130.7,-45.09 137.43,-47.02"></polygon> </g> <!-- circumstances&#45;&gt;female --> <g id="edge1" class="edge">
+<title>
+circumstances-&gt;female
+</title>
+<path fill="none" stroke="black" d="M151.05,-215.7C154.92,-207.73 159.6,-198.1 163.89,-189.26"></path> <polygon fill="black" stroke="black" points="167.12,-190.63 168.34,-180.1 160.82,-187.57 167.12,-190.63"></polygon> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="just-focus-on-a-setting-where-we-are-confident-in-the-assumptions" class="slide level2 smaller">
+<h2>Just focus on a setting where we are confident in the assumptions</h2>
+<div class="columns">
+<div class="column">
+<h4 id="actual-random-assignment">Actual random assignment</h4>
+<p>Speedboat racing, game shows, Vietnam draft</p>
+<h4 id="natural-experiments">Natural experiments</h4>
+<p>See <span class="citation" data-cites="gippel2015">Gippel, Smith, and Zhu (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span>, <a href="https://theeffectbook.net/ch-InstrumentalVariables.html">Chapter 19 Instrumental Variables</a> in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
+</div><div class="column">
+<h4 id="policy-changes">Policy Changes</h4>
+<p><a href="https://theeffectbook.net/ch-DifferenceinDifference.html">Chapter 18, Difference-in-Difference</a> in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
+<h4 id="discrete-cutoffs">Discrete cutoffs</h4>
+<p>e.g.&nbsp;WAM &gt; 75, <a href="https://theeffectbook.net/ch-RegressionDiscontinuity.html">Chapter 20 Regression Continuity Design</a> in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
+<h4 id="unexpected-news">Unexpected news</h4>
+<p><a href="https://theeffectbook.net/ch-EventStudies.html">Chapter 17 Event Studies</a> in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
+</div>
+</div>
+<aside class="notes">
+<p>Natural experiments is not the best terminology because most of these instances are not natural nor real experiments. Nevertheless, I still prefer the name over an instrumental variable approach. In too many proposals, I read an off hand comment that the student proposes to use a robustness test where they are going to use an instrumental variable approach. My answer to that is (1) if you have a natural experiment where you can exploit an instrumental variable, this should be the main analysis and (2) instrumental variables need to be defended as a research design based on your understanding of the setting. Calling the design a natural experiment forces you to think more about the experiment (i.e.&nbsp;the research design).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="look-for-these-designs" class="slide level2">
+<h2>Look for these designs!</h2>
+<div class="{callout-important}">
+<ul>
+<li>Based on your understanding of the industry and setting or the <em>Data Generating Process</em></li>
+<li>When you read <strong>good</strong> papers for this unit and other units.</li>
+</ul>
+</div>
+<aside class="notes">
+<p>This is one of the main reasons that I want you to read broadly. It is unlikely that you will find a paper with a good research design exactly for the research question that you are interested in. However, you might find inspiration in similar or related fields that help you to design a better study for the research question that you are interested in.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="what-is-this-effect" class="title-slide slide level1 center">
+<h1>What is this effect?</h1>
+
+</section>
+<section id="what-effect-can-we-identify" class="slide level2">
+<h2>What effect can we identify?</h2>
+<ul>
+<li><p><em>A</em>verage <em>T</em>reatment <em>E</em>ffect</p></li>
+<li><p><em>A</em>verage <em>T</em>reatment on the <em>T</em>reated</p></li>
+<li><p><em>A</em>verage <em>T</em>reatment on the <em>U</em>ntreated</p></li>
+<li><p><em>L</em>ocal <em>A</em>verage <em>T</em>reatment <em>E</em>ffect</p></li>
+<li><p><em>W</em>eigthed <em>A</em>verage <em>T</em>reatment <em>E</em>ffect</p></li>
+</ul>
+<p><a href="https://theeffectbook.net/ch-TreatmentEffects.html">Chapter 10, Treatment Effects</a> in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
+<aside class="notes">
+<ul>
+<li>Do you have an example of an effect that we might be interested in in Accounting and Finance?</li>
+<li>Average implies that not all firms will respond the same to the treatment. This is the source of a lot trouble.</li>
+<li>Average over which population?</li>
+<li>How would you put these different effects in your own words?</li>
+<li>WATE is evil and I am going to largely ignore it.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="it-all-depends-on-where-the-variation-is-coming-from." class="slide level2">
+<h2>It all depends on where the variation is coming from.</h2>
+<div class="callout callout-warning callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Different firms react differently and are differently represented in the control group and the treatment group.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>With actual random assignment, you probably have an ATE for the population that received the assignment.</li>
+<li>If you can use a control group because that is what the treated group would look like if they were not treated, you probably have an ATT.</li>
+<li>If you use a natural experiment to identify part of the variation, you probably have a LATE.</li>
+</ul>
+</div>
+</div>
+</div>
+<p><a href="https://theeffectbook.net/ch-TreatmentEffects.html#i-just-want-an-ate-it-would-make-me-feel-great-what-do-i-get">Chapter 10, Treatment Effects</a> in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
+</section>
+<section id="why-do-we-care" class="slide level2">
+<h2>Why do we care?</h2>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Research Design</strong></p>
+</div>
+<div class="callout-content">
+<p>There is a deep connection between the variation in your research design and the effect you can identify.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Policy Implications</strong></p>
+</div>
+<div class="callout-content">
+<p>Whether your study has implications for “regulators and investors” depends heavily on the type of effect you can identify.</p>
+</div>
+</div>
+</div>
+<p><a href="https://theeffectbook.net/ch-TreatmentEffects.html#who-cares">Chapter 10, Treatment Effects</a> in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
+<aside class="notes">
+<p>That is the setting of your data determines which research design you can use. The research design determines which effect you can identify. The effect you can identify determines which conclusions you can draw.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section></section>
+<section>
+<section id="a-simulated-example" class="title-slide slide level1 center">
+<h1>A simulated example</h1>
+
+</section>
+<section id="generate-the-data" class="slide level2">
+<h2>Generate the Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>rd1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">firm =</span> <span class="dv">1</span><span class="sc">:</span>N,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">high_performance =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fl">0.5</span>),</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="at">noise =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="at">donation =</span> high_performance,</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    <span class="at">performance =</span> <span class="fu">ifelse</span>(high_performance <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>),</span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="at">payoff_donation =</span> <span class="dv">4</span> <span class="sc">-</span> <span class="dv">8</span> <span class="sc">/</span> performance <span class="sc">+</span> noise,</span>
+<span id="cb1-11"><a href="#cb1-11"></a>    <span class="at">payoff_no_donation =</span> <span class="dv">1</span> <span class="sc">+</span> noise</span>
+<span id="cb1-12"><a href="#cb1-12"></a>  )</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="fu">glimpse</span>(rd1) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,000
+Columns: 7
+$ firm               &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, …
+$ high_performance   &lt;int&gt; 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1…
+$ noise              &lt;dbl&gt; 4.5840295, -1.1250390, 5.183270…
+$ donation           &lt;int&gt; 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1…
+$ performance        &lt;dbl&gt; 1, 4, 1, 4, 4, 1, 4, 4, 1, 4, 4…
+$ payoff_donation    &lt;dbl&gt; 0.5840295, 0.8749610, 1.1832700…
+$ payoff_no_donation &lt;dbl&gt; 5.5840295, -0.1250390, 6.183270…</code></pre>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>What is the effect that we are we interested in?</li>
+<li>What are the policy implications?</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="have-a-look-at-the-data" class="slide level2">
+<h2>Have a look at the data</h2>
+
+<img data-src="slides4_files/figure-revealjs/plot-effect1-1.png" width="960" class="r-stretch"><aside class="notes">
+<p>We will talk more about the <code>pivot_wider</code> and <code>pivot_longer</code> functions in week 7.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="have-a-second-look-at-the-data" class="slide level2">
+<h2>Have a second look at the data</h2>
+
+<img data-src="slides4_files/figure-revealjs/plot-effect2-1.png" width="960" class="r-stretch"></section>
+<section id="real-data-does-not-have-the-counterfactuals.-we-only-observe-blue" class="slide level2 smaller">
+<h2>Real data does not have the counterfactuals. We only observe blue!</h2>
+
+<img data-src="slides4_files/figure-revealjs/plot-effect3-1.png" width="1920" class="r-stretch"><div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The actual sample determines which comparisons we can make.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Why does this work? What effect are we identifying and how.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="lets-redo-the-simulated-example-with-averages" class="slide level2">
+<h2>Let’s redo the simulated example with averages</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>rd1 <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">mutate</span>(<span class="at">causal_effect =</span> payoff_donation <span class="sc">-</span> payoff_no_donation) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">summarise</span>(<span class="at">M_causal =</span> <span class="fu">mean</span>(causal_effect),</span>
+<span id="cb3-4"><a href="#cb3-4"></a>            <span class="at">sd_causal =</span> <span class="fu">sd</span>(causal_effect),</span>
+<span id="cb3-5"><a href="#cb3-5"></a>            <span class="at">N =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"markdown"</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">M_causal</th>
+<th style="text-align: right;">sd_causal</th>
+<th style="text-align: right;">N</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">-2.07</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>The causal effect of donating for each firm is difference in payoff between donating and not donating.</li>
+<li>What effect are we estimating here?</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="lets-redo-the-simulated-example-with-averages-1" class="slide level2 smaller">
+<h2>Let’s redo the simulated example with averages</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">M_causal</th>
+<th style="text-align: right;">sd_causal</th>
+<th style="text-align: right;">N</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">-2.07</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>rd1 <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">mutate</span>(<span class="at">causal_effect =</span> payoff_donation <span class="sc">-</span> payoff_no_donation) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">group_by</span>(donation) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">summarise</span>(<span class="at">M_causal =</span> <span class="fu">mean</span>(causal_effect),</span>
+<span id="cb4-5"><a href="#cb4-5"></a>            <span class="at">sd_causal =</span> <span class="fu">sd</span>(causal_effect),</span>
+<span id="cb4-6"><a href="#cb4-6"></a>            <span class="at">N =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"markdown"</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">donation</th>
+<th style="text-align: right;">M_causal</th>
+<th style="text-align: right;">sd_causal</th>
+<th style="text-align: right;">N</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">511</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">489</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="lets-redo-the-regression-with-averages" class="slide level2 smaller">
+<h2>Let’s redo the regression with averages</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>summary_data  <span class="ot">&lt;-</span> rd1 <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">group_by</span>(donation) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">summarise</span>(<span class="at">M_payoff_donation =</span> <span class="fu">mean</span>(payoff_donation),</span>
+<span id="cb5-4"><a href="#cb5-4"></a>            <span class="at">M_payoff_no_donation =</span> <span class="fu">mean</span>(payoff_no_donation))</span>
+<span id="cb5-5"><a href="#cb5-5"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(summary_data, <span class="at">format =</span> <span class="st">"markdown"</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">donation</th>
+<th style="text-align: right;">M_payoff_donation</th>
+<th style="text-align: right;">M_payoff_no_donation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-3.80</td>
+<td style="text-align: right;">1.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.97</td>
+<td style="text-align: right;">0.97</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>causal_effect_true <span class="ot">&lt;-</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  summary_data<span class="sc">$</span>M_payoff_donation[summary_data<span class="sc">$</span>donation <span class="sc">==</span> <span class="dv">1</span>] <span class="sc">-</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  summary_data<span class="sc">$</span>M_payoff_no_donation[summary_data<span class="sc">$</span>donation <span class="sc">==</span> <span class="dv">1</span>]</span>
+<span id="cb6-4"><a href="#cb6-4"></a>causal_effect_reg <span class="ot">&lt;-</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  summary_data<span class="sc">$</span>M_payoff_donation[summary_data<span class="sc">$</span>donation <span class="sc">==</span> <span class="dv">1</span>] <span class="sc">-</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>  summary_data<span class="sc">$</span>M_payoff_no_donation[summary_data<span class="sc">$</span>donation <span class="sc">==</span> <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>The true ATT is 1</li>
+<li>The effect estimated by the regression is 0.772</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="if-you-do-not-believe-me-here-is-the-regression" class="slide level2 smaller">
+<h2>If you do not believe me, here is the regression</h2>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>rd1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(rd1, <span class="at">actual_payoff =</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>       <span class="fu">ifelse</span>(donation, payoff_donation, payoff_no_donation))</span>
+<span id="cb7-3"><a href="#cb7-3"></a>ols <span class="ot">&lt;-</span> <span class="fu">feols</span>(actual_payoff <span class="sc">~</span> donation, <span class="at">data =</span> rd1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> &nbsp;(1) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:center;"> 1.200*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.137) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> donation </td>
+   <td style="text-align:center;"> 0.772*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.195) </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td></tr></tfoot>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-could-possibly-go-wrong" class="slide level2">
+<h2>What could possibly go wrong?</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>rd2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="at">high_performance =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fl">0.5</span>),</span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="at">noise =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="at">donation =</span> high_performance,</span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="at">performance =</span> <span class="fu">ifelse</span>(high_performance <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>),</span>
+<span id="cb8-7"><a href="#cb8-7"></a>    <span class="at">payoff_donation =</span> <span class="dv">4</span> <span class="sc">-</span> <span class="dv">8</span> <span class="sc">/</span> performance <span class="sc">+</span> noise,</span>
+<span id="cb8-8"><a href="#cb8-8"></a>    <span class="at">payoff_no_donation =</span> <span class="fu">ifelse</span>(high_performance <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">+</span> noise</span>
+<span id="cb8-9"><a href="#cb8-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="causal-effect-estimates-with-a-confounder" class="slide level2 smaller">
+<h2>Causal Effect Estimates with a Confounder</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>summary_data  <span class="ot">&lt;-</span> rd2 <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">group_by</span>(donation) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">summarise</span>(<span class="at">M_payoff_donation =</span> <span class="fu">mean</span>(payoff_donation),</span>
+<span id="cb9-4"><a href="#cb9-4"></a>            <span class="at">M_payoff_no_donation =</span> <span class="fu">mean</span>(payoff_no_donation))</span>
+<span id="cb9-5"><a href="#cb9-5"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(summary_data, <span class="at">format =</span> <span class="st">"markdown"</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">donation</th>
+<th style="text-align: right;">M_payoff_donation</th>
+<th style="text-align: right;">M_payoff_no_donation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-3.80</td>
+<td style="text-align: right;">2.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.98</td>
+<td style="text-align: right;">0.98</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>causal_effect_true <span class="ot">&lt;-</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>  summary_data<span class="sc">$</span>M_payoff_donation[summary_data<span class="sc">$</span>donation <span class="sc">==</span> <span class="dv">1</span>] <span class="sc">-</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>  summary_data<span class="sc">$</span>M_payoff_no_donation[summary_data<span class="sc">$</span>donation <span class="sc">==</span> <span class="dv">1</span>]</span>
+<span id="cb10-4"><a href="#cb10-4"></a>causal_effect_reg <span class="ot">&lt;-</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>  summary_data<span class="sc">$</span>M_payoff_donation[summary_data<span class="sc">$</span>donation <span class="sc">==</span> <span class="dv">1</span>] <span class="sc">-</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>  summary_data<span class="sc">$</span>M_payoff_no_donation[summary_data<span class="sc">$</span>donation <span class="sc">==</span> <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>The true ATT is 1</li>
+<li>The effect estimated by the regression is -0.215</li>
+</ul>
+</section></section>
+<section>
+<section id="a-simulated-example-of-panel-data" class="title-slide slide level1 center">
+<h1>A Simulated Example of Panel Data</h1>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>We want to use the counterfactual as the control group</li>
+<li>Panel data + fixed effects is the next best thing</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="where-is-the-variation-coming-from" class="slide level2">
+<h2>Where is the variation coming from?</h2>
+<div class="callout callout-warning callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>We need firms that make mistakes</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Firms that should donate but do not always do it.</li>
+<li>Firms that should not donate but sometimes donate.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="panel-data-simulation-100-firms" class="slide level2 smaller">
+<h2>Panel Data Simulation (100 firms)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>rd_firm <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="at">firm =</span> <span class="dv">1</span><span class="sc">:</span>N,</span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="at">high_performance =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fl">0.5</span>),</span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="at">other_payoff =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-7"><a href="#cb11-7"></a>    <span class="at">donation =</span> high_performance,</span>
+<span id="cb11-8"><a href="#cb11-8"></a>    <span class="at">performance =</span> <span class="fu">ifelse</span>(high_performance <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>),</span>
+<span id="cb11-9"><a href="#cb11-9"></a>    <span class="at">payoff_no_donation =</span> <span class="fu">ifelse</span>(high_performance <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">+</span> other_payoff,</span>
+<span id="cb11-10"><a href="#cb11-10"></a>    <span class="at">payoff_donation =</span> <span class="dv">4</span> <span class="sc">-</span> <span class="dv">8</span><span class="sc">/</span>performance <span class="sc">+</span> other_payoff</span>
+<span id="cb11-11"><a href="#cb11-11"></a>  )</span>
+<span id="cb11-12"><a href="#cb11-12"></a>summary_data  <span class="ot">&lt;-</span> rd_firm <span class="sc">%&gt;%</span></span>
+<span id="cb11-13"><a href="#cb11-13"></a>  <span class="fu">group_by</span>(donation) <span class="sc">%&gt;%</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a>  <span class="fu">summarise</span>(<span class="at">M_payoff_donation =</span> <span class="fu">mean</span>(payoff_donation),</span>
+<span id="cb11-15"><a href="#cb11-15"></a>            <span class="at">M_payoff_no_donation =</span> <span class="fu">mean</span>(payoff_no_donation))</span>
+<span id="cb11-16"><a href="#cb11-16"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(summary_data, <span class="at">digits =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> donation </th>
+   <th style="text-align:right;"> M_payoff_donation </th>
+   <th style="text-align:right;"> M_payoff_no_donation </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> -4.2 </td>
+   <td style="text-align:right;"> 1.8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1.3 </td>
+   <td style="text-align:right;"> 0.3 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
+<section id="panel-data-simulation-10-time-periods" class="slide level2">
+<h2>Panel Data Simulation (10 time periods)</h2>
+<h4 id="the-variation-comes-from-high-performers-not-donating-some-years">The variation comes from high performers not donating some years</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="1|3-4|5|6-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>T <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>rd_panel_forget <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="at">firm =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>N, <span class="at">each =</span> T),</span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="at">year =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>T, <span class="at">times =</span> N)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">left_join</span>(rd_firm, <span class="at">by =</span> <span class="st">"firm"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">mutate</span>(<span class="at">forget_donation =</span> <span class="fu">rbinom</span>(N <span class="sc">*</span> T, <span class="dv">1</span>, <span class="fu">plogis</span>(<span class="sc">-</span>other_payoff)),</span>
+<span id="cb12-7"><a href="#cb12-7"></a>         <span class="at">actual_donation =</span> (<span class="dv">1</span> <span class="sc">-</span> forget_donation) <span class="sc">*</span> donation,</span>
+<span id="cb12-8"><a href="#cb12-8"></a>         <span class="at">actual_payoff =</span> <span class="fu">ifelse</span>(actual_donation <span class="sc">==</span> <span class="dv">1</span>,</span>
+<span id="cb12-9"><a href="#cb12-9"></a>                                payoff_donation, payoff_no_donation))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<ul>
+<li>The way we simulate the data reflects the firm fixed effects and the time varying effects.</li>
+<li>Which effect are we identifying with this sample?</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-new-assignment" class="slide level2">
+<h2>The New Assignment</h2>
+<ol type="1">
+<li>Run a fixed effect model and interpret the result</li>
+<li>Create a new dataset where all firms make mistakes</li>
+<li>Run a fixed effect model and interpret the result</li>
+</ol>
+</section></section>
+<section>
+<section id="instrumental-variable-approach" class="title-slide slide level1 center">
+<h1>Instrumental Variable Approach</h1>
+
+</section>
+<section id="causal-diagram" class="slide level2">
+<h2>Causal Diagram</h2>
+<div class="columns">
+<div class="column">
+<div class="cell" data-fig-width="5">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="480" height="480" viewbox="0.00 0.00 134.00 188.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>
+randomisation
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 130,-184 130,4 -4,4"></polygon> <!-- x --> <g id="node1" class="node">
+<title>
+x
+</title>
+<polygon fill="none" stroke="black" points="54,-108 0,-108 0,-72 54,-72 54,-108"></polygon> <text text-anchor="middle" x="27" y="-85.8" font-family="Times,serif" font-size="14.00">x</text> </g> <!-- y --> <g id="node2" class="node">
+<title>
+y
+</title>
+<polygon fill="none" stroke="black" points="126,-108 72,-108 72,-72 126,-72 126,-108"></polygon> <text text-anchor="middle" x="99" y="-85.8" font-family="Times,serif" font-size="14.00">y</text> </g> <!-- x&#45;&gt;y --> <g id="edge5" class="edge">
+<title>
+x-&gt;y
+</title>
+<path fill="none" stroke="blue" d="M54.28,-90C56.74,-90 59.19,-90 61.65,-90"></path> <polygon fill="blue" stroke="blue" points="61.75,-93.5 71.75,-90 61.75,-86.5 61.75,-93.5"></polygon> </g> <!-- collider --> <g id="node4" class="node">
+<title>
+collider
+</title>
+<polygon fill="none" stroke="black" points="92.26,-36 33.74,-36 33.74,0 92.26,0 92.26,-36"></polygon> <text text-anchor="middle" x="63" y="-13.8" font-family="Times,serif" font-size="14.00">collider</text> </g> <!-- x&#45;&gt;collider --> <g id="edge3" class="edge">
+<title>
+x-&gt;collider
+</title>
+<path fill="none" stroke="black" d="M35.9,-71.7C40,-63.73 44.95,-54.1 49.49,-45.26"></path> <polygon fill="black" stroke="black" points="52.74,-46.6 54.2,-36.1 46.52,-43.4 52.74,-46.6"></polygon> </g> <!-- y&#45;&gt;collider --> <g id="edge4" class="edge">
+<title>
+y-&gt;collider
+</title>
+<path fill="none" stroke="black" d="M90.1,-71.7C86,-63.73 81.05,-54.1 76.51,-45.26"></path> <polygon fill="black" stroke="black" points="79.48,-43.4 71.8,-36.1 73.26,-46.6 79.48,-43.4"></polygon> </g> <!-- confounder --> <g id="node3" class="node">
+<title>
+confounder
+</title>
+<polygon fill="none" stroke="black" points="102.75,-180 23.25,-180 23.25,-144 102.75,-144 102.75,-180"></polygon> <text text-anchor="middle" x="63" y="-157.8" font-family="Times,serif" font-size="14.00">confounder</text> </g> <!-- confounder&#45;&gt;x --> <g id="edge1" class="edge">
+<title>
+confounder-&gt;x
+</title>
+<path fill="none" stroke="black" d="M54.1,-143.7C50,-135.73 45.05,-126.1 40.51,-117.26"></path> <polygon fill="black" stroke="black" points="43.48,-115.4 35.8,-108.1 37.26,-118.6 43.48,-115.4"></polygon> </g> <!-- confounder&#45;&gt;y --> <g id="edge2" class="edge">
+<title>
+confounder-&gt;y
+</title>
+<path fill="none" stroke="black" d="M71.9,-143.7C76,-135.73 80.95,-126.1 85.49,-117.26"></path> <polygon fill="black" stroke="black" points="88.74,-118.6 90.2,-108.1 82.52,-115.4 88.74,-118.6"></polygon> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+</div><div class="column">
+
+</div>
+</div>
+</section>
+<section id="causal-diagram-1" class="slide level2">
+<h2>Causal Diagram</h2>
+<div class="columns">
+<div class="column">
+<div class="cell" data-fig-width="5">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="480" height="480" viewbox="0.00 0.00 134.00 188.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>
+randomisation
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 130,-184 130,4 -4,4"></polygon> <!-- x --> <g id="node1" class="node">
+<title>
+x
+</title>
+<polygon fill="none" stroke="black" points="54,-108 0,-108 0,-72 54,-72 54,-108"></polygon> <text text-anchor="middle" x="27" y="-85.8" font-family="Times,serif" font-size="14.00">x</text> </g> <!-- y --> <g id="node2" class="node">
+<title>
+y
+</title>
+<polygon fill="none" stroke="black" points="126,-108 72,-108 72,-72 126,-72 126,-108"></polygon> <text text-anchor="middle" x="99" y="-85.8" font-family="Times,serif" font-size="14.00">y</text> </g> <!-- x&#45;&gt;y --> <g id="edge5" class="edge">
+<title>
+x-&gt;y
+</title>
+<path fill="none" stroke="blue" d="M54.28,-90C56.74,-90 59.19,-90 61.65,-90"></path> <polygon fill="blue" stroke="blue" points="61.75,-93.5 71.75,-90 61.75,-86.5 61.75,-93.5"></polygon> </g> <!-- collider --> <g id="node4" class="node">
+<title>
+collider
+</title>
+<polygon fill="none" stroke="black" points="92.26,-36 33.74,-36 33.74,0 92.26,0 92.26,-36"></polygon> <text text-anchor="middle" x="63" y="-13.8" font-family="Times,serif" font-size="14.00">collider</text> </g> <!-- x&#45;&gt;collider --> <g id="edge3" class="edge">
+<title>
+x-&gt;collider
+</title>
+<path fill="none" stroke="black" d="M35.9,-71.7C40,-63.73 44.95,-54.1 49.49,-45.26"></path> <polygon fill="black" stroke="black" points="52.74,-46.6 54.2,-36.1 46.52,-43.4 52.74,-46.6"></polygon> </g> <!-- y&#45;&gt;collider --> <g id="edge4" class="edge">
+<title>
+y-&gt;collider
+</title>
+<path fill="none" stroke="black" d="M90.1,-71.7C86,-63.73 81.05,-54.1 76.51,-45.26"></path> <polygon fill="black" stroke="black" points="79.48,-43.4 71.8,-36.1 73.26,-46.6 79.48,-43.4"></polygon> </g> <!-- confounder --> <g id="node3" class="node">
+<title>
+confounder
+</title>
+<polygon fill="none" stroke="black" points="102.75,-180 23.25,-180 23.25,-144 102.75,-144 102.75,-180"></polygon> <text text-anchor="middle" x="63" y="-157.8" font-family="Times,serif" font-size="14.00">confounder</text> </g> <!-- confounder&#45;&gt;x --> <g id="edge1" class="edge">
+<title>
+confounder-&gt;x
+</title>
+<path fill="none" stroke="black" d="M54.1,-143.7C50,-135.73 45.05,-126.1 40.51,-117.26"></path> <polygon fill="black" stroke="black" points="43.48,-115.4 35.8,-108.1 37.26,-118.6 43.48,-115.4"></polygon> </g> <!-- confounder&#45;&gt;y --> <g id="edge2" class="edge">
+<title>
+confounder-&gt;y
+</title>
+<path fill="none" stroke="black" d="M71.9,-143.7C76,-135.73 80.95,-126.1 85.49,-117.26"></path> <polygon fill="black" stroke="black" points="88.74,-118.6 90.2,-108.1 82.52,-115.4 88.74,-118.6"></polygon> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell" data-fig-width="5">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="480" height="480" viewbox="0.00 0.00 208.38 188.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>
+randomisation
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 204.38,-184 204.38,4 -4,4"></polygon> <!-- x --> <g id="node1" class="node">
+<title>
+x
+</title>
+<polygon fill="none" stroke="black" points="128.38,-108 74.38,-108 74.38,-72 128.38,-72 128.38,-108"></polygon> <text text-anchor="middle" x="101.38" y="-85.8" font-family="Times,serif" font-size="14.00">x</text> </g> <!-- y --> <g id="node2" class="node">
+<title>
+y
+</title>
+<polygon fill="none" stroke="black" points="200.38,-108 146.38,-108 146.38,-72 200.38,-72 200.38,-108"></polygon> <text text-anchor="middle" x="173.38" y="-85.8" font-family="Times,serif" font-size="14.00">y</text> </g> <!-- x&#45;&gt;y --> <g id="edge6" class="edge">
+<title>
+x-&gt;y
+</title>
+<path fill="none" stroke="blue" d="M128.66,-90C131.12,-90 133.58,-90 136.03,-90"></path> <polygon fill="blue" stroke="blue" points="136.13,-93.5 146.13,-90 136.13,-86.5 136.13,-93.5"></polygon> </g> <!-- collider --> <g id="node6" class="node">
+<title>
+collider
+</title>
+<polygon fill="none" stroke="black" points="166.64,-36 108.12,-36 108.12,0 166.64,0 166.64,-36"></polygon> <text text-anchor="middle" x="137.38" y="-13.8" font-family="Times,serif" font-size="14.00">collider</text> </g> <!-- x&#45;&gt;collider --> <g id="edge4" class="edge">
+<title>
+x-&gt;collider
+</title>
+<path fill="none" stroke="black" d="M110.28,-71.7C114.38,-63.73 119.33,-54.1 123.88,-45.26"></path> <polygon fill="black" stroke="black" points="127.13,-46.6 128.59,-36.1 120.9,-43.4 127.13,-46.6"></polygon> </g> <!-- y&#45;&gt;collider --> <g id="edge5" class="edge">
+<title>
+y-&gt;collider
+</title>
+<path fill="none" stroke="black" d="M164.48,-71.7C160.39,-63.73 155.43,-54.1 150.89,-45.26"></path> <polygon fill="black" stroke="black" points="153.87,-43.4 146.18,-36.1 147.64,-46.6 153.87,-43.4"></polygon> </g> <!-- iv --> <g id="node3" class="node">
+<title>
+iv
+</title>
+<polygon fill="none" stroke="black" points="56.38,-108 2.38,-108 2.38,-72 56.38,-72 56.38,-108"></polygon> <text text-anchor="middle" x="29.38" y="-85.8" font-family="Times,serif" font-size="14.00">iv</text> </g> <!-- iv&#45;&gt;x --> <g id="edge7" class="edge">
+<title>
+iv-&gt;x
+</title>
+<path fill="none" stroke="blue" d="M56.66,-90C59.12,-90 61.58,-90 64.03,-90"></path> <polygon fill="blue" stroke="blue" points="64.13,-93.5 74.13,-90 64.13,-86.5 64.13,-93.5"></polygon> </g> <!-- random --> <g id="node4" class="node">
+<title>
+random
+</title>
+<polygon fill="none" stroke="black" points="58.65,-180 0.12,-180 0.12,-144 58.65,-144 58.65,-180"></polygon> <text text-anchor="middle" x="29.38" y="-157.8" font-family="Times,serif" font-size="14.00">random</text> </g> <!-- random&#45;&gt;iv --> <g id="edge3" class="edge">
+<title>
+random-&gt;iv
+</title>
+<path fill="none" stroke="black" d="M29.38,-143.7C29.38,-135.98 29.38,-126.71 29.38,-118.11"></path> <polygon fill="black" stroke="black" points="32.88,-118.1 29.38,-108.1 25.88,-118.1 32.88,-118.1"></polygon> </g> <!-- confounder --> <g id="node5" class="node">
+<title>
+confounder
+</title>
+<polygon fill="none" stroke="black" points="184.14,-180 104.63,-180 104.63,-144 184.14,-144 184.14,-180"></polygon> <text text-anchor="middle" x="144.38" y="-157.8" font-family="Times,serif" font-size="14.00">confounder</text> </g> <!-- confounder&#45;&gt;x --> <g id="edge1" class="edge">
+<title>
+confounder-&gt;x
+</title>
+<path fill="none" stroke="black" d="M133.75,-143.7C128.75,-135.56 122.69,-125.69 117.17,-116.7"></path> <polygon fill="black" stroke="black" points="120.11,-114.79 111.89,-108.1 114.14,-118.46 120.11,-114.79"></polygon> </g> <!-- confounder&#45;&gt;y --> <g id="edge2" class="edge">
+<title>
+confounder-&gt;y
+</title>
+<path fill="none" stroke="black" d="M151.55,-143.7C154.82,-135.81 158.76,-126.3 162.39,-117.55"></path> <polygon fill="black" stroke="black" points="165.7,-118.68 166.3,-108.1 159.24,-116 165.7,-118.68"></polygon> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>See <a href="https://theeffectbook.net/ch-InstrumentalVariables.html">Instrumental Variables, Chapter 19</a> in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span>.</p>
+<aside class="notes">
+<p>Mechanically, there are two regressions. (2-stage-least-squares) 1. Use the IV to estimate the randomly generated variation in X -&gt; fitted(X) 2. Use fitted(X) to estimate the effect of random variation in X on Y</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="simulation-and-implementation-with-fixest" class="slide level2">
+<h2>Simulation and Implementation with <code>fixest</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#|label: simulation-iv</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="at">iv =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="at">confounder =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-6"><a href="#cb13-6"></a>    <span class="at">x =</span> <span class="fu">rnorm</span>(N, .<span class="dv">6</span> <span class="sc">*</span> iv <span class="sc">-</span> .<span class="dv">6</span> <span class="sc">*</span> confounder, .<span class="dv">6</span>),</span>
+<span id="cb13-7"><a href="#cb13-7"></a>    <span class="at">y =</span> <span class="fu">rnorm</span>(N, .<span class="dv">6</span> <span class="sc">*</span> x <span class="sc">+</span> .<span class="dv">6</span> <span class="sc">*</span> confounder, .<span class="dv">6</span>),</span>
+<span id="cb13-8"><a href="#cb13-8"></a>    <span class="at">survival =</span> <span class="fu">if_else</span>(y <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb13-9"><a href="#cb13-9"></a>  )</span>
+<span id="cb13-10"><a href="#cb13-10"></a>surv <span class="ot">&lt;-</span> <span class="fu">filter</span>(d, survival <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb13-11"><a href="#cb13-11"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, d)</span>
+<span id="cb13-12"><a href="#cb13-12"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> confounder, d)</span>
+<span id="cb13-13"><a href="#cb13-13"></a>lm3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, surv)</span>
+<span id="cb13-14"><a href="#cb13-14"></a>lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> confounder, surv)</span>
+<span id="cb13-15"><a href="#cb13-15"></a>iv1 <span class="ot">&lt;-</span> <span class="fu">feols</span>(y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> x <span class="sc">~</span> iv, <span class="at">data =</span> d)</span>
+<span id="cb13-16"><a href="#cb13-16"></a>iv2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> x <span class="sc">~</span> iv, <span class="at">data =</span> surv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p>All the exogenous variable are in the tibble statement, all the endogenous variables are in the mutate statement. That is not a coincidence. It also highlights the value and tight link between being able to simulate your theory and understanding it.</p>
+<p>Note, the collider bias is the biggest problem if the selection bias is on both <code>x</code> and <code>y</code> because then the collider bias effects the first stage regressions.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="simulation-results-with-a-real-effect-of-0.6" class="slide level2 smaller">
+<h2>Simulation results with a real effect of 0.6</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="st">"confounded"</span> <span class="ot">=</span> lm1, <span class="st">"with control"</span> <span class="ot">=</span> lm2, <span class="st">"collider"</span> <span class="ot">=</span> lm3, <span class="st">"collider"</span> <span class="ot">=</span> lm4,</span>
+<span id="cb14-2"><a href="#cb14-2"></a>              <span class="st">"iv no collider"</span> <span class="ot">=</span> iv1, <span class="st">"iv with collider"</span> <span class="ot">=</span> iv2),</span>
+<span id="cb14-3"><a href="#cb14-3"></a>         <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> confounded </th>
+   <th style="text-align:center;"> with control </th>
+   <th style="text-align:center;"> collider </th>
+   <th style="text-align:center;"> collider  </th>
+   <th style="text-align:center;"> iv no collider </th>
+   <th style="text-align:center;"> iv with collider </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:center;"> 0.110 </td>
+   <td style="text-align:center;"> 0.075 </td>
+   <td style="text-align:center;"> 0.680*** </td>
+   <td style="text-align:center;"> 0.493*** </td>
+   <td style="text-align:center;"> 0.110 </td>
+   <td style="text-align:center;"> 0.606*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.079) </td>
+   <td style="text-align:center;"> (0.057) </td>
+   <td style="text-align:center;"> (0.074) </td>
+   <td style="text-align:center;"> (0.083) </td>
+   <td style="text-align:center;"> (0.084) </td>
+   <td style="text-align:center;"> (0.090) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x </td>
+   <td style="text-align:center;"> 0.270*** </td>
+   <td style="text-align:center;"> 0.666*** </td>
+   <td style="text-align:center;"> 0.097 </td>
+   <td style="text-align:center;"> 0.379*** </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.072) </td>
+   <td style="text-align:center;"> (0.067) </td>
+   <td style="text-align:center;"> (0.068) </td>
+   <td style="text-align:center;"> (0.097) </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> confounder </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> 0.686*** </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> 0.370*** </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> (0.073) </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> (0.100) </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fit_x </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> 0.527*** </td>
+   <td style="text-align:center;"> 0.352** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> (0.117) </td>
+   <td style="text-align:center;"> (0.147) </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td></tr></tfoot>
+</table>
+
+</div>
+</div>
+<aside class="notes">
+<p>This is not strictly a collider because there is no effect of x on survival. However, it already shows that there are problems with “simple” selection bias.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="simulation-without-an-effect" class="slide level2">
+<h2>Simulation without an effect</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="at">iv =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="at">confounder =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-5"><a href="#cb15-5"></a>    <span class="at">x =</span> <span class="fu">rnorm</span>(N, .<span class="dv">6</span> <span class="sc">*</span> iv <span class="sc">-</span> .<span class="dv">6</span> <span class="sc">*</span> confounder, .<span class="dv">6</span>),</span>
+<span id="cb15-6"><a href="#cb15-6"></a>    <span class="at">y =</span> <span class="fu">rnorm</span>(N, .<span class="dv">6</span> <span class="sc">*</span> confounder, .<span class="dv">6</span>),</span>
+<span id="cb15-7"><a href="#cb15-7"></a>    <span class="at">survival =</span> <span class="fu">if_else</span>(y <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb15-8"><a href="#cb15-8"></a>  )</span>
+<span id="cb15-9"><a href="#cb15-9"></a>surv <span class="ot">&lt;-</span> <span class="fu">filter</span>(d, survival <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb15-10"><a href="#cb15-10"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, d)</span>
+<span id="cb15-11"><a href="#cb15-11"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> confounder, d)</span>
+<span id="cb15-12"><a href="#cb15-12"></a>lm3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, surv)</span>
+<span id="cb15-13"><a href="#cb15-13"></a>lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> confounder, surv)</span>
+<span id="cb15-14"><a href="#cb15-14"></a>iv1 <span class="ot">&lt;-</span> <span class="fu">feols</span>(y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> x <span class="sc">~</span> iv, <span class="at">data =</span> d)</span>
+<span id="cb15-15"><a href="#cb15-15"></a>iv2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> x <span class="sc">~</span> iv, <span class="at">data =</span> surv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="simulation-without-an-effect-1" class="slide level2 smaller">
+<h2>Simulation without an effect</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="st">"confounded"</span> <span class="ot">=</span> lm1, <span class="st">"with control"</span> <span class="ot">=</span> lm2, <span class="st">"collider"</span> <span class="ot">=</span> lm3, <span class="st">"collider"</span> <span class="ot">=</span> lm4,</span>
+<span id="cb16-2"><a href="#cb16-2"></a>              <span class="st">"iv no collider"</span> <span class="ot">=</span> iv1, <span class="st">"iv with collider"</span> <span class="ot">=</span> iv2),</span>
+<span id="cb16-3"><a href="#cb16-3"></a>         <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> confounded </th>
+   <th style="text-align:center;"> with control </th>
+   <th style="text-align:center;"> collider </th>
+   <th style="text-align:center;"> collider  </th>
+   <th style="text-align:center;"> iv no collider </th>
+   <th style="text-align:center;"> iv with collider </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:center;"> 0.019 </td>
+   <td style="text-align:center;"> 0.032 </td>
+   <td style="text-align:center;"> 0.615*** </td>
+   <td style="text-align:center;"> 0.473*** </td>
+   <td style="text-align:center;"> 0.016 </td>
+   <td style="text-align:center;"> 0.641*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.077) </td>
+   <td style="text-align:center;"> (0.060) </td>
+   <td style="text-align:center;"> (0.084) </td>
+   <td style="text-align:center;"> (0.077) </td>
+   <td style="text-align:center;"> (0.082) </td>
+   <td style="text-align:center;"> (0.087) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x </td>
+   <td style="text-align:center;"> −0.253*** </td>
+   <td style="text-align:center;"> 0.003 </td>
+   <td style="text-align:center;"> −0.123* </td>
+   <td style="text-align:center;"> 0.033 </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.076) </td>
+   <td style="text-align:center;"> (0.067) </td>
+   <td style="text-align:center;"> (0.070) </td>
+   <td style="text-align:center;"> (0.068) </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> confounder </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> 0.575*** </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> 0.387*** </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> (0.072) </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> (0.085) </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fit_x </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> 0.020 </td>
+   <td style="text-align:center;"> −0.039 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> (0.122) </td>
+   <td style="text-align:center;"> (0.088) </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td></tr></tfoot>
+</table>
+
+</div>
+</div>
+</section>
+<section id="examplesitting-duck-governors-by-falk2018" class="slide level2">
+<h2>Example:Sitting Duck Governors by <span class="citation" data-cites="falk2018">Falk and Shelton (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></h2>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Research Question: Does political uncertainty effect investment?</li>
+<li>More uncertainty in a state when governor does not come up for reelection.</li>
+<li>State level laws with term limits (~ Random)</li>
+</ul>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>An exercise to be run in class</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="data" class="slide level2">
+<h2>Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">library</span>(readit)</span>
+<span id="cb17-2"><a href="#cb17-2"></a>duck <span class="ot">&lt;-</span> <span class="fu">readit</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"LameDuckData.dta"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">"nstate"</span>), <span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">"stdum"</span>),</span>
+<span id="cb17-4"><a href="#cb17-4"></a>         <span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">"yd_alt"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>  <span class="fu">group_by</span>(statename) <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a>  <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a>  <span class="fu">mutate</span>(<span class="at">log_I_1 =</span> <span class="fu">lag</span>(log_I), <span class="at">log_I_2 =</span> <span class="fu">lag</span>(log_I, <span class="dv">2</span>),</span>
+<span id="cb17-8"><a href="#cb17-8"></a>         <span class="at">log_Y_1 =</span> <span class="fu">lag</span>(log_Y), <span class="at">log_Y_2 =</span> <span class="fu">lag</span>(log_Y, <span class="dv">2</span>),</span>
+<span id="cb17-9"><a href="#cb17-9"></a>         <span class="at">log_real_GDP_1 =</span> <span class="fu">lag</span>(log_real_GDP),</span>
+<span id="cb17-10"><a href="#cb17-10"></a>         <span class="at">log_real_GDP_2 =</span> <span class="fu">lag</span>(log_real_GDP, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-11"><a href="#cb17-11"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb17-12"><a href="#cb17-12"></a>  <span class="fu">arrange</span>(statename) <span class="sc">%&gt;%</span></span>
+<span id="cb17-13"><a href="#cb17-13"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1967</span>, year <span class="sc">&lt;=</span> <span class="dv">2004</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="reduced-form" class="slide level2">
+<h2>Reduced Form</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>form_red <span class="ot">&lt;-</span> <span class="fu">formula</span>(</span>
+<span id="cb18-2"><a href="#cb18-2"></a>  log_I <span class="sc">~</span> gov_exogenous_middling <span class="sc">+</span> log_I_1 <span class="sc">+</span> log_I_2 <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>  log_Y <span class="sc">+</span> log_Y_1 <span class="sc">+</span> log_Y_2 <span class="sc">+</span> log_real_GDP <span class="sc">+</span> log_real_GDP_1 <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>  log_real_GDP_2 <span class="sc">|</span> statename</span>
+<span id="cb18-5"><a href="#cb18-5"></a>  )</span>
+<span id="cb18-6"><a href="#cb18-6"></a>red_reg <span class="ot">&lt;-</span> <span class="fu">feols</span>(form_red, <span class="at">data =</span> duck)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="stage-least-squares-2sls" class="slide level2">
+<h2>2 Stage Least Squares (2SLS)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>form_iv <span class="ot">&lt;-</span> <span class="fu">formula</span>(log_I <span class="sc">~</span> log_I_1 <span class="sc">+</span> log_I_2 <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>  log_Y <span class="sc">+</span> log_Y_1 <span class="sc">+</span> log_Y_2 <span class="sc">+</span> log_real_GDP <span class="sc">+</span> log_real_GDP_1 <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>  log_real_GDP_2</span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="co"># fixed effects</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>  <span class="sc">|</span> statename</span>
+<span id="cb19-6"><a href="#cb19-6"></a>  <span class="co"># 1st regression</span></span>
+<span id="cb19-7"><a href="#cb19-7"></a>  <span class="sc">|</span> uncertainty_continuous <span class="sc">~</span> gov_exogenous_middling</span>
+<span id="cb19-8"><a href="#cb19-8"></a>  )</span>
+<span id="cb19-9"><a href="#cb19-9"></a>iv_reg <span class="ot">&lt;-</span> <span class="fu">feols</span>(form_iv, <span class="at">data =</span> duck)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="results" class="slide level2 smaller">
+<h2>Results</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>coef_map <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"gov_exogenous_middling"</span> <span class="ot">=</span> <span class="st">"lame duck governor"</span>,</span>
+<span id="cb20-2"><a href="#cb20-2"></a>             <span class="st">"fit_uncertainty_continuous"</span> <span class="ot">=</span> <span class="st">"uncertainty"</span>)</span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="st">"reduced"</span> <span class="ot">=</span> red_reg,</span>
+<span id="cb20-4"><a href="#cb20-4"></a>              <span class="st">"first stage iv"</span> <span class="ot">=</span> <span class="fu">summary</span>(iv_reg, <span class="at">stage =</span> <span class="dv">1</span>),</span>
+<span id="cb20-5"><a href="#cb20-5"></a>              <span class="st">"second stage iv"</span> <span class="ot">=</span> iv_reg),</span>
+<span id="cb20-6"><a href="#cb20-6"></a>         <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars,</span>
+<span id="cb20-7"><a href="#cb20-7"></a>         <span class="at">coef_map =</span> coef_map)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> reduced </th>
+   <th style="text-align:center;"> first stage iv </th>
+   <th style="text-align:center;"> second stage iv </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> lame duck governor </td>
+   <td style="text-align:center;"> −0.049** </td>
+   <td style="text-align:center;"> 1.801*** </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.021) </td>
+   <td style="text-align:center;"> (0.112) </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> uncertainty </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> −0.027** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> (0.012) </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td></tr></tfoot>
+</table>
+
+</div>
+</div>
+</section>
+<section id="diagnostics-test-for-endogeneity-durbin-wu-hausmann" class="slide level2">
+<h2>Diagnostics: Test for endogeneity (Durbin-Wu-Hausmann)</h2>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Is the IV result different from the OLS result?</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>summ_iv <span class="ot">&lt;-</span> <span class="fu">summary</span>(iv_reg)</span>
+<span id="cb21-2"><a href="#cb21-2"></a>summ_1st <span class="ot">&lt;-</span> <span class="fu">summary</span>(iv_reg, <span class="at">stage =</span> <span class="dv">1</span>)</span>
+<span id="cb21-3"><a href="#cb21-3"></a>summ_iv<span class="sc">$</span>iv_wh<span class="sc">$</span>stat  <span class="co"># iv wu hausmann</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.829033</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>summ_iv<span class="sc">$</span>iv_wh<span class="sc">$</span>p     <span class="co"># iv wu hausmann</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.05054677</code></pre>
+</div>
+</div>
+<p><a href="https://theeffectbook.net/ch-InstrumentalVariables.html#how-is-it-performed-3">Instrumental Variables, Chapter 19</a> in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
+</section>
+<section id="diagnostics-test-for-weak-instrument" class="slide level2">
+<h2>Diagnostics: Test for weak instrument</h2>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Is the instrument predicting the variable we want it to predict?</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">fitstat</span>(iv_reg, <span class="at">type =</span> <span class="st">"ivf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>F-test (1st stage), uncertainty_continuous: stat = 331.0, p &lt; 2.2e-16, on 1 and 1,640 DoF.</code></pre>
+</div>
+</div>
+</section>
+<section id="new-assignment" class="slide level2">
+<h2>New Assignment</h2>
+<h3 id="lets-assume-that-firms-are-less-likely-to-donate-when-there-is-a-local-election">Let’s assume that firms are <em>less</em> likely to donate when there is a local election</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27" data-code-line-numbers="5|7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>N <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>rd_iv_el <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="at">high_performance =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, .<span class="dv">5</span>),</span>
+<span id="cb27-4"><a href="#cb27-4"></a>  <span class="at">extra_payoff =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">3</span>),</span>
+<span id="cb27-5"><a href="#cb27-5"></a>  <span class="at">local_election =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, .<span class="dv">33</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb27-7"><a href="#cb27-7"></a>    <span class="at">actual_donation =</span> <span class="fu">ifelse</span>(high_performance <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span> <span class="sc">-</span> local_election, <span class="dv">0</span>),</span>
+<span id="cb27-8"><a href="#cb27-8"></a>    <span class="at">payoff_donation =</span> <span class="fu">ifelse</span>(high_performance <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">2</span>, <span class="sc">-</span> <span class="dv">4</span>) <span class="sc">+</span> extra_payoff,</span>
+<span id="cb27-9"><a href="#cb27-9"></a>    <span class="at">payoff_no_donation =</span> <span class="fu">ifelse</span>(high_performance <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">+</span> extra_payoff,</span>
+<span id="cb27-10"><a href="#cb27-10"></a>    <span class="at">actual_payoff =</span> <span class="fu">ifelse</span>(actual_donation <span class="sc">==</span> <span class="dv">1</span>,</span>
+<span id="cb27-11"><a href="#cb27-11"></a>                           payoff_donation, payoff_no_donation))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<ul>
+<li>Which effect can we identify with this data?</li>
+<li>Run the instrumental variable analyses and interpret the results.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="a-published-iv-example" class="title-slide slide level1 center">
+<h1>A Published IV example</h1>
+<p>How Do Quasi-Random Option Grants Affect CEO Risk-Taking? by <span class="citation" data-cites="shue2017">Shue and Townsend (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span> in The Journal of Finance</p>
+</section>
+<section id="this-paper-is-a-finished-product-your-pitch-proposal-or-dissertation-is-not." class="slide level2 smaller">
+<h2>This paper is a finished product, your pitch, proposal, or dissertation is not.</h2>
+<p>We are grateful to Michael Roberts (the Editor), the Associate Editor, two anonymous referees, Marianne Bertrand, Ing-Haw Cheng, Ken French, Ed Glaeser, Todd Gormley, Ben Iverson (discus- sant), Steve Kaplan, Borja Larrain (discussant), Jonathan Lewellen, Katharina Lewellen, David Matsa (discussant), David Metzger (discussant), Toby Moskowitz, Candice Prendergast, Enrichetta Ravina (discussant), Amit Seru, and Wei Wang (discussant) for helpful suggestions. We thank seminar participants at AFA, BYU, CICF Conference, Depaul, Duke, Gerzensee ESSFM, Harvard, HKUST Finance Symposium, McGill Todai Conference, Finance UC Chile, Helsinki, IDC Herzliya Finance Conference, NBER Corporate Finance and Personnel Meetings, SEC, Simon Fraser Uni- versity, Stanford, Stockholm School of Economics, University of Amsterdam, UC Berkeley, UCLA, and Wharton for helpful comments. We thank David Yermack for his generosity in sharing data. We thank Matt Turner at Pearl Meyer, Don Delves at the Delves Group, and Stephen O’Byrne at Shareholder Value Advisors for helping us understand the intricacies of executive stock option plans. Menaka Hampole provided excellent research assistance. We acknowledge financial support from the Initiative on Global Markets.</p>
+<aside class="notes">
+<p>On the one hand, we do not expect you to come up with a design like this. On the other hand, why not use these hard won insights.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="this-paper-has-1-one-research-question.-this-is-a-good-thing" class="slide level2">
+<h2>This paper has 1 (one!) research question. This is a good thing!</h2>
+<aside class="notes">
+<p>It’s not necessarily advantageous to have too many hypotheses. You want to answer one question well.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="do-increases-in-option-grants-increase-risk-taking" class="slide level2">
+<h2>Do increases in option grants increase risk taking?</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="960" height="480" viewbox="0.00 0.00 206.27 116.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>
+options
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 202.27,-112 202.27,4 -4,4"></polygon> <!-- Option Grants --> <g id="node1" class="node">
+<title>
+Option Grants
+</title>
+<polygon fill="none" stroke="black" points="95.57,-36 0.14,-36 0.14,0 95.57,0 95.57,-36"></polygon> <text text-anchor="middle" x="47.86" y="-13.8" font-family="Times,serif" font-size="14.00">Option Grants</text> </g> <!-- Risk Taking --> <g id="node2" class="node">
+<title>
+Risk Taking
+</title>
+<polygon fill="none" stroke="black" points="198.19,-36 113.53,-36 113.53,0 198.19,0 198.19,-36"></polygon> <text text-anchor="middle" x="155.86" y="-13.8" font-family="Times,serif" font-size="14.00">Risk Taking</text> </g> <!-- Option Grants&#45;&gt;Risk Taking --> <g id="edge3" class="edge">
+<title>
+Option Grants-&gt;Risk Taking
+</title>
+<path fill="none" stroke="#daaa00" d="M95.95,-18C98.39,-18 100.82,-18 103.26,-18"></path> <polygon fill="#daaa00" stroke="#daaa00" points="103.27,-21.5 113.27,-18 103.27,-14.5 103.27,-21.5"></polygon> </g> <!-- Annoyances --> <g id="node3" class="node">
+<title>
+Annoyances
+</title>
+<polygon fill="none" stroke="black" points="144.56,-108 59.16,-108 59.16,-72 144.56,-72 144.56,-108"></polygon> <text text-anchor="middle" x="101.86" y="-85.8" font-family="Times,serif" font-size="14.00">Annoyances</text> </g> <!-- Annoyances&#45;&gt;Option Grants --> <g id="edge1" class="edge">
+<title>
+Annoyances-&gt;Option Grants
+</title>
+<path fill="none" stroke="black" d="M88.51,-71.7C82.1,-63.39 74.3,-53.28 67.25,-44.14"></path> <polygon fill="black" stroke="black" points="69.93,-41.88 61.05,-36.1 64.39,-46.16 69.93,-41.88"></polygon> </g> <!-- Annoyances&#45;&gt;Risk Taking --> <g id="edge2" class="edge">
+<title>
+Annoyances-&gt;Risk Taking
+</title>
+<path fill="none" stroke="black" d="M115.21,-71.7C121.61,-63.39 129.41,-53.28 136.46,-44.14"></path> <polygon fill="black" stroke="black" points="139.33,-46.16 142.66,-36.1 133.78,-41.88 139.33,-46.16"></polygon> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Example of annoyances: Risk averse CEOs might take less risks and therefore receive more option grants.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="iv-1-scheduled-discrete-increases-in-fixed-value-option-grants" class="slide level2 smaller">
+<h2>IV 1: Scheduled Discrete Increases in Fixed-Value Option Grants</h2>
+<div class="cell" data-fig-height="3">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="960" height="288" viewbox="0.00 0.00 394.58 116.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>
+options
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 390.58,-112 390.58,4 -4,4"></polygon> <!-- Predicted New Grant Cycle --> <g id="node1" class="node">
+<title>
+Predicted New Grant Cycle
+</title>
+<polygon fill="none" stroke="black" points="170.5,-36 -0.17,-36 -0.17,0 170.5,0 170.5,-36"></polygon> <text text-anchor="middle" x="85.17" y="-13.8" font-family="Times,serif" font-size="14.00">Predicted New Grant Cycle</text> </g> <!-- Option Grants --> <g id="node2" class="node">
+<title>
+Option Grants
+</title>
+<polygon fill="none" stroke="black" points="283.88,-36 188.45,-36 188.45,0 283.88,0 283.88,-36"></polygon> <text text-anchor="middle" x="236.17" y="-13.8" font-family="Times,serif" font-size="14.00">Option Grants</text> </g> <!-- Predicted New Grant Cycle&#45;&gt;Option Grants --> <g id="edge3" class="edge">
+<title>
+Predicted New Grant Cycle-&gt;Option Grants
+</title>
+<path fill="none" stroke="black" d="M170.4,-18C173.02,-18 175.65,-18 178.27,-18"></path> <polygon fill="black" stroke="black" points="178.38,-21.5 188.38,-18 178.38,-14.5 178.38,-21.5"></polygon> </g> <!-- Risk Taking --> <g id="node3" class="node">
+<title>
+Risk Taking
+</title>
+<polygon fill="none" stroke="black" points="386.5,-36 301.84,-36 301.84,0 386.5,0 386.5,-36"></polygon> <text text-anchor="middle" x="344.17" y="-13.8" font-family="Times,serif" font-size="14.00">Risk Taking</text> </g> <!-- Option Grants&#45;&gt;Risk Taking --> <g id="edge4" class="edge">
+<title>
+Option Grants-&gt;Risk Taking
+</title>
+<path fill="none" stroke="#daaa00" d="M284.26,-18C286.7,-18 289.13,-18 291.57,-18"></path> <polygon fill="#daaa00" stroke="#daaa00" points="291.58,-21.5 301.58,-18 291.58,-14.5 291.58,-21.5"></polygon> </g> <!-- Annoyances --> <g id="node4" class="node">
+<title>
+Annoyances
+</title>
+<polygon fill="none" stroke="black" points="332.87,-108 247.47,-108 247.47,-72 332.87,-72 332.87,-108"></polygon> <text text-anchor="middle" x="290.17" y="-85.8" font-family="Times,serif" font-size="14.00">Annoyances</text> </g> <!-- Annoyances&#45;&gt;Option Grants --> <g id="edge1" class="edge">
+<title>
+Annoyances-&gt;Option Grants
+</title>
+<path fill="none" stroke="black" d="M276.82,-71.7C270.41,-63.39 262.61,-53.28 255.56,-44.14"></path> <polygon fill="black" stroke="black" points="258.24,-41.88 249.36,-36.1 252.7,-46.16 258.24,-41.88"></polygon> </g> <!-- Annoyances&#45;&gt;Risk Taking --> <g id="edge2" class="edge">
+<title>
+Annoyances-&gt;Risk Taking
+</title>
+<path fill="none" stroke="black" d="M303.52,-71.7C309.92,-63.39 317.73,-53.28 324.77,-44.14"></path> <polygon fill="black" stroke="black" points="327.64,-46.16 330.97,-36.1 322.09,-41.88 327.64,-46.16"></polygon> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+<blockquote>
+<p>For our first instrument, we use fixed-value firms, for which option grants can increase only at regularly prescheduled intervals (i.e., when new cycles start). For example, consider a fixed-value firm on regular three-year cycles. Other time-varying factors may drive trends in risk for this firm. However, these trends are unlikely to coincide exactly with the timing of when new cycles are scheduled to start.</p>
+</blockquote>
+<aside class="notes">
+<p>Basically saying the beginning of a cycle effect on option grants is not affected by the annoyances.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="iv-2-within-cycle-grant-increases-due-to-industry-shocks-in-fixed-number-option-grants" class="slide level2 smaller">
+<h2>IV 2: Within Cycle Grant Increases due to Industry Shocks in Fixed-Number Option Grants</h2>
+<div class="cell" data-fig-height="1.5">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="960" height="144" viewbox="0.00 0.00 424.77 116.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>
+options
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 420.77,-112 420.77,4 -4,4"></polygon> <!-- Industry Shocks (Fixed Number) --> <g id="node1" class="node">
+<title>
+Industry Shocks (Fixed Number)
+</title>
+<polygon fill="none" stroke="black" points="200.55,-36 0.15,-36 0.15,0 200.55,0 200.55,-36"></polygon> <text text-anchor="middle" x="100.35" y="-13.8" font-family="Times,serif" font-size="14.00">Industry Shocks (Fixed Number)</text> </g> <!-- Option Grants --> <g id="node2" class="node">
+<title>
+Option Grants
+</title>
+<polygon fill="none" stroke="black" points="314.06,-36 218.64,-36 218.64,0 314.06,0 314.06,-36"></polygon> <text text-anchor="middle" x="266.35" y="-13.8" font-family="Times,serif" font-size="14.00">Option Grants</text> </g> <!-- Industry Shocks (Fixed Number)&#45;&gt;Option Grants --> <g id="edge3" class="edge">
+<title>
+Industry Shocks (Fixed Number)-&gt;Option Grants
+</title>
+<path fill="none" stroke="black" d="M200.86,-18C203.34,-18 205.82,-18 208.3,-18"></path> <polygon fill="black" stroke="black" points="208.51,-21.5 218.51,-18 208.51,-14.5 208.51,-21.5"></polygon> </g> <!-- Risk Taking --> <g id="node3" class="node">
+<title>
+Risk Taking
+</title>
+<polygon fill="none" stroke="black" points="416.68,-36 332.02,-36 332.02,0 416.68,0 416.68,-36"></polygon> <text text-anchor="middle" x="374.35" y="-13.8" font-family="Times,serif" font-size="14.00">Risk Taking</text> </g> <!-- Option Grants&#45;&gt;Risk Taking --> <g id="edge4" class="edge">
+<title>
+Option Grants-&gt;Risk Taking
+</title>
+<path fill="none" stroke="#daaa00" d="M314.44,-18C316.88,-18 319.31,-18 321.75,-18"></path> <polygon fill="#daaa00" stroke="#daaa00" points="321.76,-21.5 331.76,-18 321.76,-14.5 321.76,-21.5"></polygon> </g> <!-- Annoyances --> <g id="node4" class="node">
+<title>
+Annoyances
+</title>
+<polygon fill="none" stroke="black" points="363.05,-108 277.65,-108 277.65,-72 363.05,-72 363.05,-108"></polygon> <text text-anchor="middle" x="320.35" y="-85.8" font-family="Times,serif" font-size="14.00">Annoyances</text> </g> <!-- Annoyances&#45;&gt;Option Grants --> <g id="edge1" class="edge">
+<title>
+Annoyances-&gt;Option Grants
+</title>
+<path fill="none" stroke="black" d="M307,-71.7C300.59,-63.39 292.79,-53.28 285.74,-44.14"></path> <polygon fill="black" stroke="black" points="288.42,-41.88 279.54,-36.1 282.88,-46.16 288.42,-41.88"></polygon> </g> <!-- Annoyances&#45;&gt;Risk Taking --> <g id="edge2" class="edge">
+<title>
+Annoyances-&gt;Risk Taking
+</title>
+<path fill="none" stroke="black" d="M333.7,-71.7C340.11,-63.39 347.91,-53.28 354.96,-44.14"></path> <polygon fill="black" stroke="black" points="357.82,-46.16 361.16,-36.1 352.28,-41.88 357.82,-46.16"></polygon> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+<blockquote>
+<p>For our second instrument, we focus on fixed-number firms. The value of options granted in any particular year varies with aggregate returns within a fixed-number cycle. This means that the timing of increases in option pay within a cycle will be random in the sense that the increases are driven in part by industry shocks that are beyond the control of the firm and are largely unpredictable. To account for the possibility that aggregate returns can directly affect risk, we use fixed-value firms as a control group because their option compensation must remain fixed despite changes in aggregate returns.</p>
+</blockquote>
+<aside class="notes">
+<p>The identifying assumption is that fixed-number vs fixed-value might be a part of the annoyances. So might the industry shocks. However, the IV assumes that the industry shocks are not different except in how they effect the option grant value.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-authors-know-their-setting" class="slide level2">
+<h2>The authors know their setting!</h2>
+<blockquote>
+<p>Our identification strategy builds on Hall’s (1999)) observation that firms often award options according to multiyear plans. Two types of plans are commonly used: fixed-number and fixed-value. Under a fixed-number plan, an executive receives the same number of options each year within a cycle. Under a fixed-value plan, an executive receives the same value of options each year within a cycle.</p>
+</blockquote>
+<div class="fragment">
+<blockquote>
+<p>Our conversations with leading compensation consultants suggest that multiyear plans are used to minimize contracting costs, as option compensation only has to be set once every few years. Hall (1999, p.&nbsp;97) argues that firms sort into the two types of plans somewhat arbitrarily, observing that “Boards seem to substitute one plan for another without much analysis or understanding of their differences.”</p>
+</blockquote>
+<aside class="notes">
+<ul>
+<li>Read qualitative studies and descriptions of actual practice!</li>
+<li>We are looking at “slightly suboptimal” decision making to get variation.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="key-assumption-1---relevance-iv-is-related-to-option-grants" class="slide level2 smaller">
+<h2>Key Assumption 1 - Relevance: IV is related to Option Grants</h2>
+<blockquote>
+<p>We find that the first-year indicator corresponds to a 15% larger increase in the Black-Scholes value of new option grants than in other years.</p>
+</blockquote>
+<blockquote>
+<p>All estimates are highly significant, with F-statistics greatly exceeding 10, the rule of thumb threshold for concerns related to weak instruments (Staiger and Stock (1997). (III A.)</p>
+</blockquote>
+<p><a href="https://theeffectbook.net/ch-InstrumentalVariables.html#assumptions-for-instrumental-variables">Chapter 19 Instrumental Variables</a> in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
+</section>
+<section id="key-assumption-2---exclusion-or-validity-only-path-from-iv-to-risk-taking-is-through-option-grants." class="slide level2 smaller">
+<h2>Key Assumption 2 - Exclusion (or validity): Only path from IV to Risk Taking is through Option Grants.</h2>
+<blockquote>
+<p>One might be concerned that predicted first years provide exogenously timed but potentially anticipated increases in option compensation. However, this is not an issue for our empirical strategy. […] He would have no incentive to increase risk prior to an anticipated increase in the value of his option compensation next period.</p>
+</blockquote>
+<blockquote>
+<p>In addition, we directly examine whether fixed-value cycles appear to be correlated with other firm cycles […]</p>
+</blockquote>
+<p><a href="https://theeffectbook.net/ch-InstrumentalVariables.html#assumptions-for-instrumental-variables">Chapter 19 Instrumental Variables</a> in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
+<aside class="notes">
+<p>The key for the exclusion assumption is that anticipation would have an impact on the risk taking prior to the new cycle. This than would have an impact on the actual measure, i.e.&nbsp;the <em>change</em> in risk.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="one-criticism" class="slide level2 smaller">
+<h2>One Criticism</h2>
+<blockquote>
+<p>First, option compensation tends to follow an increasing step function for executives on fixed-value plans. This is because compensation tends to drift upward over time, yet executives on fixed-value plans cannot experience an upward drift within a cycle.</p>
+</blockquote>
+<blockquote>
+<p>While these two stylized facts do not hold in all cases—as can also be seen in Figure 1—our identification strategy only requires that they hold <strong>on average.</strong></p>
+</blockquote>
+<div class="fragment">
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Some more terminology</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Compliers</li>
+<li>Always-takers/never-takers</li>
+<li>Defiers</li>
+</ul>
+</div>
+</div>
+</div>
+<p><a href="https://theeffectbook.net/ch-InstrumentalVariables.html#instrumental-variables-and-treatment-effects">Chapter 19 Instrumental Variables</a> in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></p>
+<aside class="notes">
+<p>The LATE is identified for the compliers. IV assumes that there are no defiers because now our estimated effect becomes an average of the defiers and compliers. One solution is to just remove the defiers if you can (which they do in the paper as a robustness check).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section></section>
+<section id="references" class="title-slide slide level1 smaller scrollable">
+<h1>References</h1>
+
+<div class="footer footer-default">
+
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-falk2018" class="csl-entry" role="doc-biblioentry">
+Falk, Nathan, and Cameron A. Shelton. 2018. <span>“Fleeing a <span>Lame Duck</span>: <span>Policy Uncertainty</span> and <span>Manufacturing Investment</span> in <span>US States</span>.”</span> <em>American Economic Journal: Economic Policy</em> 10 (4): 135–52. <a href="https://doi.org/10.1257/pol.20160365">https://doi.org/10.1257/pol.20160365</a>.
+</div>
+<div id="ref-gippel2015" class="csl-entry" role="doc-biblioentry">
+Gippel, Jennifer, Tom Smith, and Yushu Zhu. 2015. <span>“Endogeneity in <span>Accounting</span> and <span>Finance Research</span>: <span>Natural Experiments</span> as a <span class="nocase">State-of-the-Art Solution</span>.”</span> <em>Abacus</em> 51 (2): n/a–. <a href="https://doi.org/10.1111/abac.12048">https://doi.org/10.1111/abac.12048</a>.
+</div>
+<div id="ref-huntington-klein2021" class="csl-entry" role="doc-biblioentry">
+Huntington-Klein, Nick. 2021. <em>The <span>Effect</span>: <span>An Introduction</span> to <span>Research Design</span> and <span>Causality</span></em>. First. <span>Boca Raton</span>: <span>Chapman and Hall/CRC</span>. <a href="https://doi.org/10.1201/9781003226055">https://doi.org/10.1201/9781003226055</a>.
+</div>
+<div id="ref-shue2017" class="csl-entry" role="doc-biblioentry">
+Shue, Kelly, and Richard R. Townsend. 2017. <span>“How <span>Do Quasi-Random Option Grants Affect CEO Risk-Taking</span>?”</span> <em>The Journal of Finance</em> 72 (6): 2551–88. <a href="https://doi.org/10.1111/jofi.12545">https://doi.org/10.1111/jofi.12545</a>.
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

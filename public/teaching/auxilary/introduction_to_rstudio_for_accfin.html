@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stijn Masschelein">
+
+<title>Method Package - Introduction to Rstudio for Accounting and Finance</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Introduction to Rstudio for Accounting and Finance</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Method Package</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Introduction</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../method_package.html" class="sidebar-item-text sidebar-link">Content</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../auxilary/introduction_to_rstudio_for_accfin.html" class="sidebar-item-text sidebar-link active">Introduction to Rstudio for Accounting and Finance</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Slides</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides1.html" class="sidebar-item-text sidebar-link">Introduction to Research Methods in Finance and Accounting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides2.html" class="sidebar-item-text sidebar-link">Simulations, Regressions, and Significance</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides3.html" class="sidebar-item-text sidebar-link">Control Variables</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides4.html" class="sidebar-item-text sidebar-link">Research Design 1: Fixed Effects and Instrumental Variables</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides5.html" class="sidebar-item-text sidebar-link">Research Design 2: Event Studies and Difference-in-Difference</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Friday Earnings Announcements</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/index.html" class="sidebar-item-text sidebar-link">Research Design</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/download_linking.html" class="sidebar-item-text sidebar-link">WRDS linking data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/linking.html" class="sidebar-item-text sidebar-link">Combining databases</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/download_data.html" class="sidebar-item-text sidebar-link">Earnings announcements</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/download_stocks.html" class="sidebar-item-text sidebar-link">Stock price data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/abnormal_returns.html" class="sidebar-item-text sidebar-link">Abnormal returns</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/descriptive.html" class="sidebar-item-text sidebar-link">Descriptive statistics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/regressions.html" class="sidebar-item-text sidebar-link">Regressions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#get-the-data" id="toc-get-the-data" class="nav-link active" data-scroll-target="#get-the-data">Get the data</a></li>
+  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data">Explore the data</a>
+  <ul class="collapse">
+  <li><a href="#with-the-tidyverse" id="toc-with-the-tidyverse" class="nav-link" data-scroll-target="#with-the-tidyverse">With the tidyverse</a></li>
+  <li><a href="#a-gamestop-to-introduce-the-pipe" id="toc-a-gamestop-to-introduce-the-pipe" class="nav-link" data-scroll-target="#a-gamestop-to-introduce-the-pipe">A Gamestop to introduce the pipe</a></li>
+  <li><a href="#moving-on" id="toc-moving-on" class="nav-link" data-scroll-target="#moving-on">Moving on</a></li>
+  <li><a href="#quick-descriptive-statistics" id="toc-quick-descriptive-statistics" class="nav-link" data-scroll-target="#quick-descriptive-statistics">Quick descriptive statistics</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Introduction to Rstudio for Accounting and Finance</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Stijn Masschelein </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>This setup code loads a package, <code>here</code>, that helps to navigate the folder structure in which I will create files. The <code>tidyverse</code> package is the main package, we will use to manipulate datasets. There are other ways to program in <code>R</code>. I think that to start of the <code>tidyverse</code> way of looking at data is quite intuitive and it is very well supported. The intuition and how quickly you can do meaningful things will hopefully be clear by the end of this document.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"auxilary/introduction_to_rstudio_for_accfin.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.1     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+<section id="get-the-data" class="level1">
+<h1>Get the data</h1>
+<p>We establish a connection with the WRDS databases with my account. <a href="https://wrds-www.wharton.upenn.edu/">WRDS</a> is the data provider the university subscribes to and it has a lot of good tutorials on how to connect to their databases from R. The website. However, you will first have to ask for an account from the person in charge of the databases in the department. I will give a more extensive example later in the unit.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>wrds <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">Postgres</span>(),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">port=</span><span class="dv">9737</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">dbname=</span><span class="st">'wrds'</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">user=</span><span class="st">'stimas'</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">sslmode=</span><span class="st">'require'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>With an SQL string, we define which data we want. This is one of the cool things of these kind of files. You can combine different programming languages. Behind the scene, I have given the code a name, <code>wrds_data</code> for the output of the SQL query. You can see this if you are looking at the <code>.qmd</code> file.</p>
+<div class="cell" data-output.var="wrds_data">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="dt">year</span>, gvkey, cusip, exec_fullname, coname, ceoann,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>execid, bonus, salary, stock_awards_fv, stock_unvest_val,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>eip_unearn_num, eip_unearn_val, option_awards,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>option_awards_blk_value, option_awards_num, tdc1, tdc2,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>shrown_tot_pct, becameceo, joined_co, reason</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> EXECCOMP.ANNCOMP</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">year</span> <span class="op">&gt;</span> <span class="dv">2010</span> <span class="kw">AND</span> ceoann <span class="op">=</span> <span class="st">'CEO'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>compensation <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(wrds_data) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(compensation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 21,855
+Columns: 22
+$ year                    &lt;dbl&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018…
+$ gvkey                   &lt;chr&gt; "001004", "001004", "001004", "001004", "00100…
+$ cusip                   &lt;chr&gt; "36110", "36110", "36110", "36110", "36110", "…
+$ exec_fullname           &lt;chr&gt; "David P. Storch", "David P. Storch", "David P…
+$ coname                  &lt;chr&gt; "AAR CORP", "AAR CORP", "AAR CORP", "AAR CORP"…
+$ ceoann                  &lt;chr&gt; "CEO", "CEO", "CEO", "CEO", "CEO", "CEO", "CEO…
+$ execid                  &lt;chr&gt; "09249", "09249", "09249", "09249", "09249", "…
+$ bonus                   &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.00…
+$ salary                  &lt;dbl&gt; 867.000, 877.838, 906.449, 906.449, 755.250, 8…
+$ stock_awards_fv         &lt;dbl&gt; 2664.745, 619.200, 1342.704, 1695.200, 1150.50…
+$ stock_unvest_val        &lt;dbl&gt; 4227.273, 6018.000, 4244.165, 4103.283, 1334.0…
+$ eip_unearn_num          &lt;dbl&gt; 32.681, 56.681, 66.929, 83.415, 91.969, 157.96…
+$ eip_unearn_val          &lt;dbl&gt; 393.806, 1137.021, 1626.375, 2464.079, 2244.96…
+$ option_awards           &lt;dbl&gt; 578.460, 695.520, 1622.016, 0.000, 1150.500, 1…
+$ option_awards_blk_value &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ option_awards_num       &lt;dbl&gt; 49.022, 144.000, 158.400, 0.000, 153.810, 225.…
+$ tdc1                    &lt;dbl&gt; 5786.400, 4182.832, 5247.779, 5234.648, 4674.4…
+$ tdc2                    &lt;dbl&gt; 6105.117, 3487.312, 3809.626, 10428.375, 3523.…
+$ shrown_tot_pct          &lt;dbl&gt; 2.964, 2.893, 3.444, 3.877, 4.597, 5.417, 3.71…
+$ becameceo               &lt;date&gt; 1996-10-09, 1996-10-09, 1996-10-09, 1996-10-0…
+$ joined_co               &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(compensation, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, we do the same for the market value of the company. Unfortunately, we need to do it the old fashioned way, completely in <code>R</code>. The reason is that I don’t want to download all market values. Only for the firms that are already in our compensation data. The firms are</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>gvkeys <span class="ot">&lt;-</span> <span class="fu">unique</span>(compensation<span class="sc">$</span>gvkey)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(gvkeys)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2477</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>key_string <span class="ot">&lt;-</span> <span class="fu">paste</span>(gvkeys, <span class="at">collapse =</span> <span class="st">"','"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sql2 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"SELECT fyear, gvkey, mkvalt, ni "</span>,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">"FROM COMP.FUNDA "</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">"WHERE fyear &gt; 2010 "</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">"AND gvkey in ('"</span>, key_string, <span class="st">"')"</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>           )</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(wrds, sql2) <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 49,863
+Columns: 4
+$ fyear  &lt;dbl&gt; 2011, 2011, 2012, 2013, 2013, 2014, 2014, 2015, 2015, 2016, 201…
+$ gvkey  &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004", "00…
+$ mkvalt &lt;dbl&gt; 485.2897, 485.2897, 790.0029, 961.3080, 961.3080, 1046.3954, 10…
+$ ni     &lt;dbl&gt; 67.723, NA, 55.000, 72.900, 72.900, 10.200, 10.200, 47.700, 47.…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">distinct</span>(value)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 32,884
+Columns: 4
+$ fyear  &lt;dbl&gt; 2011, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 202…
+$ gvkey  &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004", "00…
+$ mkvalt &lt;dbl&gt; 485.2897, 485.2897, 790.0029, 961.3080, 1046.3954, 842.5112, 12…
+$ ni     &lt;dbl&gt; 67.723, NA, 55.000, 72.900, 10.200, 47.700, 56.500, 15.600, 7.5…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(value, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-value-new.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="explore-the-data" class="level1">
+<h1>Explore the data</h1>
+<section id="with-the-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="with-the-tidyverse">With the tidyverse</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>us_comp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(us_comp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 21,855
+Columns: 22
+$ year                    &lt;dbl&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018…
+$ gvkey                   &lt;chr&gt; "001004", "001004", "001004", "001004", "00100…
+$ cusip                   &lt;chr&gt; "36110", "36110", "36110", "36110", "36110", "…
+$ exec_fullname           &lt;chr&gt; "David P. Storch", "David P. Storch", "David P…
+$ coname                  &lt;chr&gt; "AAR CORP", "AAR CORP", "AAR CORP", "AAR CORP"…
+$ ceoann                  &lt;chr&gt; "CEO", "CEO", "CEO", "CEO", "CEO", "CEO", "CEO…
+$ execid                  &lt;chr&gt; "09249", "09249", "09249", "09249", "09249", "…
+$ bonus                   &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.00…
+$ salary                  &lt;dbl&gt; 867.000, 877.838, 906.449, 906.449, 755.250, 8…
+$ stock_awards_fv         &lt;dbl&gt; 2664.745, 619.200, 1342.704, 1695.200, 1150.50…
+$ stock_unvest_val        &lt;dbl&gt; 4227.273, 6018.000, 4244.165, 4103.283, 1334.0…
+$ eip_unearn_num          &lt;dbl&gt; 32.681, 56.681, 66.929, 83.415, 91.969, 157.96…
+$ eip_unearn_val          &lt;dbl&gt; 393.806, 1137.021, 1626.375, 2464.079, 2244.96…
+$ option_awards           &lt;dbl&gt; 578.460, 695.520, 1622.016, 0.000, 1150.500, 1…
+$ option_awards_blk_value &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ option_awards_num       &lt;dbl&gt; 49.022, 144.000, 158.400, 0.000, 153.810, 225.…
+$ tdc1                    &lt;dbl&gt; 5786.400, 4182.832, 5247.779, 5234.648, 4674.4…
+$ tdc2                    &lt;dbl&gt; 6105.117, 3487.312, 3809.626, 10428.375, 3523.…
+$ shrown_tot_pct          &lt;dbl&gt; 2.964, 2.893, 3.444, 3.877, 4.597, 5.417, 3.71…
+$ becameceo               &lt;date&gt; 1996-10-09, 1996-10-09, 1996-10-09, 1996-10-0…
+$ joined_co               &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, gvkey <span class="sc">==</span> <span class="st">"001004"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 11 × 22
+    year gvkey  cusip exec_fullname            coname ceoann execid bonus salary
+   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;                    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1  2011 001004 36110 David P. Storch          AAR C… CEO    09249      0   867 
+ 2  2012 001004 36110 David P. Storch          AAR C… CEO    09249      0   878.
+ 3  2013 001004 36110 David P. Storch          AAR C… CEO    09249      0   906.
+ 4  2014 001004 36110 David P. Storch          AAR C… CEO    09249      0   906.
+ 5  2015 001004 36110 David P. Storch          AAR C… CEO    09249      0   755.
+ 6  2016 001004 36110 David P. Storch          AAR C… CEO    09249      0   835 
+ 7  2017 001004 36110 David P. Storch          AAR C… CEO    09249      0   941 
+ 8  2018 001004 36110 John McClain Holmes, III AAR C… CEO    48195      0   750 
+ 9  2019 001004 36110 John McClain Holmes, III AAR C… CEO    48195      0   801.
+10  2020 001004 36110 John McClain Holmes, III AAR C… CEO    48195      0   781.
+11  2021 001004 36110 John McClain Holmes, III AAR C… CEO    48195      0   925 
+# ℹ 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
+#   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
+#   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
+#   tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;, becameceo &lt;date&gt;, joined_co &lt;date&gt;,
+#   reason &lt;chr&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, bonus <span class="sc">==</span> <span class="dv">0</span>, year <span class="sc">==</span> <span class="dv">2012</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,669 × 22
+    year gvkey  cusip    exec_fullname         coname ceoann execid bonus salary
+   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;                 &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1  2012 001004 36110    David P. Storch       AAR C… CEO    09249      0   878.
+ 2  2012 001045 02376R10 Thomas W. Horton      AMERI… CEO    26059      0   618.
+ 3  2012 001075 72348410 Donald E. Brandt, CPA PINNA… CEO    05835      0  1146 
+ 4  2012 001076 74319R10 Ronald W. Allen       PROG … CEO    00283      0   850 
+ 5  2012 001078 282410   Miles D. White, M.B.… ABBOT… CEO    14300      0  1900 
+ 6  2012 001094 444610   Albert L. Eilender    ACETO… CEO    46204      0   626.
+ 7  2012 001161 790310   Rory P. Read          ADVAN… CEO    42390      0  1000.
+ 8  2012 001177 00817Y10 Mark Thomas Bertolini AETNA… CEO    31029      0   977.
+ 9  2012 001209 915810   John E. McGlade       AIR P… CEO    27315      0  1200 
+10  2012 001230 1165910  Bradley D. Tilden     ALASK… CEO    21308      0   420.
+# ℹ 1,659 more rows
+# ℹ 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
+#   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
+#   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
+#   tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;, becameceo &lt;date&gt;, joined_co &lt;date&gt;,
+#   reason &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="a-gamestop-to-introduce-the-pipe" class="level2">
+<h2 class="anchored" data-anchor-id="a-gamestop-to-introduce-the-pipe">A Gamestop to introduce the pipe</h2>
+<ol type="1">
+<li>Look for any company where “gamestop” is in the name of the company.</li>
+<li>Look for the <code>gvkey</code> of Gamestop. Then use <code>filter</code> with exactly that key.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, <span class="fu">str_detect</span>(<span class="fu">tolower</span>(coname),</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"gamestop"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 11 × 22
+    year gvkey  cusip    exec_fullname     coname     ceoann execid bonus salary
+   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;             &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1  2011 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  2254.  1028.
+ 2  2012 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  1515   1050.
+ 3  2013 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719   975   1059.
+ 4  2014 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1201.
+ 5  2015 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1247.
+ 6  2016 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1285.
+ 7  2017 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1293.
+ 8  2018 145049 36467W10 Shane S. Kim      GAMESTOP … CEO    56940    25    963.
+ 9  2019 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080   150    846.
+10  2020 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080     0   1005.
+11  2021 145049 36467W10 Matthew Furlong   GAMESTOP … CEO    61979  1595.   115.
+# ℹ 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
+#   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
+#   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
+#   tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;, becameceo &lt;date&gt;, joined_co &lt;date&gt;,
+#   reason &lt;chr&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, gvkey <span class="sc">==</span> <span class="st">"145049"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 11 × 22
+    year gvkey  cusip    exec_fullname     coname     ceoann execid bonus salary
+   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;             &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1  2011 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  2254.  1028.
+ 2  2012 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  1515   1050.
+ 3  2013 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719   975   1059.
+ 4  2014 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1201.
+ 5  2015 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1247.
+ 6  2016 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1285.
+ 7  2017 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1293.
+ 8  2018 145049 36467W10 Shane S. Kim      GAMESTOP … CEO    56940    25    963.
+ 9  2019 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080   150    846.
+10  2020 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080     0   1005.
+11  2021 145049 36467W10 Matthew Furlong   GAMESTOP … CEO    61979  1595.   115.
+# ℹ 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
+#   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
+#   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
+#   tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;, becameceo &lt;date&gt;, joined_co &lt;date&gt;,
+#   reason &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="moving-on" class="level2">
+<h2 class="anchored" data-anchor-id="moving-on">Moving on</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(us_comp, year, coname, bonus, salary, <span class="at">total =</span> tdc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 21,855 × 5
+    year coname   bonus salary total
+   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+ 1  2011 AAR CORP     0   867  5786.
+ 2  2012 AAR CORP     0   878. 4183.
+ 3  2013 AAR CORP     0   906. 5248.
+ 4  2014 AAR CORP     0   906. 5235.
+ 5  2015 AAR CORP     0   755. 4674.
+ 6  2016 AAR CORP     0   835  6073.
+ 7  2017 AAR CORP     0   941  6284.
+ 8  2018 AAR CORP     0   750  3344.
+ 9  2019 AAR CORP     0   801. 4736.
+10  2020 AAR CORP     0   781. 4123.
+# ℹ 21,845 more rows</code></pre>
+</div>
+</div>
+<p>We first build up the dataset with <code>select</code> and <code>mutate</code> and the pipe <code>%&gt;%</code>. When we are satisfied with the result, we can save the dataset as an R object with the name <code>us_comp_small</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>us_comp_small <span class="ot">&lt;-</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(us_comp, year, coname, bonus,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>       salary, <span class="at">total =</span> tdc1) <span class="sc">%&gt;%</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">salary_percentage =</span> salary<span class="sc">/</span>total)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(us_comp_small)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 21,855 × 6
+    year coname   bonus salary total salary_percentage
+   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;             &lt;dbl&gt;
+ 1  2011 AAR CORP     0   867  5786.             0.150
+ 2  2012 AAR CORP     0   878. 4183.             0.210
+ 3  2013 AAR CORP     0   906. 5248.             0.173
+ 4  2014 AAR CORP     0   906. 5235.             0.173
+ 5  2015 AAR CORP     0   755. 4674.             0.162
+ 6  2016 AAR CORP     0   835  6073.             0.138
+ 7  2017 AAR CORP     0   941  6284.             0.150
+ 8  2018 AAR CORP     0   750  3344.             0.224
+ 9  2019 AAR CORP     0   801. 4736.             0.169
+10  2020 AAR CORP     0   781. 4123.             0.189
+# ℹ 21,845 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="quick-descriptive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="quick-descriptive-statistics">Quick descriptive statistics</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(us_comp, gvkey) <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>(), <span class="at">N_CEO =</span> <span class="fu">n_distinct</span>(execid),</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">average =</span> <span class="fu">mean</span>(salary),</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd =</span> <span class="fu">sd</span>(salary),</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">med =</span> <span class="fu">median</span>(salary),</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">min =</span> <span class="fu">min</span>(salary),</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">max =</span> <span class="fu">max</span>(salary)) <span class="sc">%&gt;%</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(med <span class="sc">&gt;</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 573 × 8
+   gvkey      N N_CEO average    sd   med   min   max
+   &lt;chr&gt;  &lt;int&gt; &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 001075    11     2   1230. 109.  1240  1091  1395 
+ 2 001078    11     2   1814. 214.  1900  1298. 1973.
+ 3 001161    11     3    944. 146.  1000.  566. 1096.
+ 4 001209    12     2   1239. 131.  1200   905. 1402.
+ 5 001274    11     1   1082. 101.  1030  1000  1250 
+ 6 001300    11     2   1716. 159.  1800  1415. 1890 
+ 7 001380    11     1   1500    0   1500  1500  1500 
+ 8 001440    11     2   1324. 176.  1325.  903. 1522.
+ 9 001447    11     2   1821. 257.  2000  1488. 2038.
+10 001449    11     1   1437.  12.7 1441. 1399. 1441.
+# ℹ 563 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(us_comp, <span class="at">N =</span> <span class="fu">n</span>(), <span class="at">N_CEO =</span> <span class="fu">n_distinct</span>(execid),</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">average =</span> <span class="fu">mean</span>(salary),</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd =</span> <span class="fu">sd</span>(salary),</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">med =</span> <span class="fu">median</span>(salary),</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">min =</span> <span class="fu">min</span>(salary),</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">max =</span> <span class="fu">max</span>(salary),</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">.by =</span> gvkey) <span class="sc">%&gt;%</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(med <span class="sc">&gt;</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 573 × 8
+   gvkey      N N_CEO average    sd   med   min   max
+   &lt;chr&gt;  &lt;int&gt; &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 001075    11     2   1230. 109.  1240  1091  1395 
+ 2 001078    11     2   1814. 214.  1900  1298. 1973.
+ 3 001161    11     3    944. 146.  1000.  566. 1096.
+ 4 001209    12     2   1239. 131.  1200   905. 1402.
+ 5 001274    11     1   1082. 101.  1030  1000  1250 
+ 6 001300    11     2   1716. 159.  1800  1415. 1890 
+ 7 001380    11     1   1500    0   1500  1500  1500 
+ 8 001440    11     2   1324. 176.  1325.  903. 1522.
+ 9 001447    11     2   1821. 257.  2000  1488. 2038.
+10 001449    11     1   1437.  12.7 1441. 1399. 1441.
+# ℹ 563 more rows</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
