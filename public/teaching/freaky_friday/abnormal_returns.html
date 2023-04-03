@@ -146,7 +146,7 @@ div.csl-indent {
 
 </head>
 
-<body class="nav-sidebar docked slimcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -177,12 +177,12 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Introduction</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Introduction</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../method_package.html" class="sidebar-item-text sidebar-link">Content</a>
@@ -197,12 +197,12 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Slides</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Slides</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../slides/slides1.html" class="sidebar-item-text sidebar-link">Introduction to Research Methods in Finance and Accounting</a>
@@ -299,7 +299,7 @@ div.csl-indent {
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -324,7 +324,7 @@ div.csl-indent {
 
 </header>
 
-<section id="setup" class="level1 page-columns page-full">
+<section id="setup" class="level1">
 <h1>Setup</h1>
 <p>The <code>lubridate</code> package is the <code>tidyverse</code> package that helps with time related data. Dates are a specific class of variables and the package helps with managing date variables.</p>
 <div class="cell">
@@ -387,13 +387,11 @@ e.g.:
 # ℹ 25,390 more rows</code></pre>
 </div>
 </div>
-
-<div class="no-row-height column-margin column-container"><div class="">
 <ul>
 <li><code>shrout</code> is shares outstanding in 1000</li>
 <li><code>market_value</code> is in million USD</li>
 </ul>
-</div></div></section>
+</section>
 <section id="abnormal-returns" class="level1">
 <h1>Abnormal returns</h1>
 <p>Remember that we are interested in predicting the counterfactual of what the returns would have been if there were no earnings announcement. We use the following prediction model:</p>
@@ -444,9 +442,9 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: seconds
                 expr      min       lq     mean   median       uq      max
-   create_coefs(100) 1.409918 1.474293 1.534156 1.535219 1.607870 1.634923
-  create_coefs(1000) 1.624458 1.651582 1.684543 1.674286 1.704302 1.793788
- create_coefs(10000) 3.250091 3.267919 3.321967 3.312994 3.351636 3.473761
+   create_coefs(100) 1.407859 1.446122 1.518119 1.528158 1.551032 1.704107
+  create_coefs(1000) 1.612557 1.651831 1.704545 1.681781 1.767483 1.790900
+ create_coefs(10000) 3.105122 3.142150 3.206076 3.217348 3.260459 3.291156
  neval
     10
     10
@@ -482,10 +480,10 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 128,114
 Columns: 4
-$ permno    &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 10560, 10560, 88784, 8878…
-$ anndat    &lt;date&gt; 2006-04-26, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26,…
-$ car_short &lt;dbl&gt; -0.053110221, 0.036461999, -0.063605082, -0.004176757, -0.01…
-$ car_long  &lt;dbl&gt; -0.33518052, -0.20959886, 0.05661849, -0.18368085, 0.2074188…</code></pre>
+$ permno    &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 10560, 10560, 10656, 1065…
+$ anndat    &lt;date&gt; 2005-10-26, 2006-02-01, 2005-01-26, 2005-04-27, 2005-07-27,…
+$ car_short &lt;dbl&gt; -0.014869448, -0.015708137, 0.036461999, -0.063605082, -0.00…
+$ car_long  &lt;dbl&gt; 0.20741889, 0.10569961, -0.20959886, 0.05661849, -0.18368085…</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -542,50 +540,52 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 154,540
 Columns: 20
-$ ticker       &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "AA0G", "AA0G",…
-$ actual       &lt;dbl&gt; -0.08, -0.11, -0.11, -0.05, -0.07, -0.04, -0.10, -0.45, -…
-$ pdf          &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "P", "D", "D", "D", "D…
-$ anndats_act  &lt;date&gt; 2006-04-26, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-…
+$ ticker       &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "AA0A", "AA0A",…
+$ actual       &lt;dbl&gt; -0.0700, -0.1000, -0.1100, -0.1100, -0.0500, -0.0800, -0.…
+$ pdf          &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D…
+$ anndats_act  &lt;date&gt; 2005-10-26, 2006-02-01, 2005-01-26, 2005-04-27, 2005-07-…
 $ gvkey        &lt;chr&gt; "001081", "001081", "001081", "001081", "001081", "001081…
-$ permno       &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 10560, 10560, 88784, 8…
+$ permno       &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 10560, 10560, 10656, 1…
 $ cusip        &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00392410…
-$ rdq          &lt;date&gt; 2006-04-26, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-…
-$ anndat       &lt;date&gt; 2006-04-26, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-…
-$ N            &lt;int&gt; 4, 2, 3, 2, 4, 1, 5, 2, 2, 4, 5, NA, NA, NA, NA, NA, 1, 1…
-$ median       &lt;dbl&gt; -0.07425, -0.08965, -0.05740, -0.03700, -0.10610, -0.0900…
-$ mean         &lt;dbl&gt; -0.072625, -0.089650, -0.068000, -0.037000, -0.100550, -0…
-$ mean_days    &lt;dbl&gt; 11.500000, 8.000000, 6.666667, 13.500000, 7.000000, 21.00…
-$ car_short    &lt;dbl&gt; -0.053110221, 0.036461999, -0.063605082, -0.004176757, -0…
-$ car_long     &lt;dbl&gt; -0.33518052, -0.20959886, 0.05661849, -0.18368085, 0.2074…
-$ date_minus5  &lt;date&gt; 2006-04-21, 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-…
-$ date         &lt;date&gt; 2006-04-21, 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-…
-$ prc          &lt;dbl&gt; 4.28, 5.89, 4.53, 5.00, 3.26, 5.63, 4.02, 14.50, 8.66, 8.…
-$ market_value &lt;dbl&gt; 1883949.09, 2592630.69, 1993992.84, 2200875.00, 1434970.5…
-$ surprise     &lt;dbl&gt; -0.001343458, -0.003455009, -0.011611478, -0.002600000, 0…</code></pre>
+$ rdq          &lt;date&gt; 2005-10-26, 2006-02-01, 2005-01-26, 2005-04-27, 2005-07-…
+$ anndat       &lt;date&gt; 2005-10-26, 2006-02-01, 2005-01-26, 2005-04-27, 2005-07-…
+$ N            &lt;int&gt; 4, 5, 2, 3, 2, 4, 1, 1, NA, 1, 1, NA, 2, 4, 3, 3, 1, 1, 1…
+$ median       &lt;dbl&gt; -0.10610, -0.07830, -0.08965, -0.05740, -0.03700, -0.0742…
+$ mean         &lt;dbl&gt; -0.10055000, -0.07658000, -0.08965000, -0.06800000, -0.03…
+$ mean_days    &lt;dbl&gt; 7.000000, 9.200000, 8.000000, 6.666667, 13.500000, 11.500…
+$ car_short    &lt;dbl&gt; -0.014869448, -0.015708137, 0.036461999, -0.063605082, -0…
+$ car_long     &lt;dbl&gt; 0.20741889, 0.10569961, -0.20959886, 0.05661849, -0.18368…
+$ date_minus5  &lt;date&gt; 2005-10-21, 2006-01-27, 2005-01-21, 2005-04-22, 2005-07-…
+$ date         &lt;date&gt; 2005-10-21, 2006-01-27, 2005-01-21, 2005-04-22, 2005-07-…
+$ prc          &lt;dbl&gt; 3.26, 4.02, 5.89, 4.53, 5.00, 4.28, 5.63, 16.75, 19.01, 1…
+$ market_value &lt;dbl&gt; 1434970.5, 1769503.5, 2592630.7, 1993992.8, 2200875.0, 18…
+$ surprise     &lt;dbl&gt; 0.0110736197, -0.0053980100, -0.0034550086, -0.0116114785…</code></pre>
 </div>
 </div>
 </section>
 <section id="data-cleaning" class="level1">
 <h1>Data Cleaning</h1>
 <p>Finally, I apply the data cleaning rules from <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span>. I also include the a print statement so that we can track how many observations are removed after each data cleaning step. The following rules are applied:</p>
-<pre><code>- Remove the observations where `surprise` is missing.
-- Remove the observations where the median or actual estimate is larger than the price.
-- Remove penny stocks which I arbitrarily and after some googling decide to be stocks with a price lower than $2 per stock.
-- Remove the observations with earnings announcement on Saturday and Sunday.
-- I remove the observations with a car in the top and bottom .05% of observations.</code></pre>
+<ul>
+<li>Remove the observations where <code>surprise</code> is missing.</li>
+<li>Remove the observations where the median or actual estimate is larger than the price.</li>
+<li>Remove penny stocks which I arbitrarily and after some googling decide to be stocks with a price lower than $2 per stock.</li>
+<li>Remove the observations with earnings announcement on Saturday and Sunday.</li>
+<li>I remove the observations with a car in the top and bottom .05% of observations.</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>winsorise <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">10000</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>main <span class="ot">&lt;-</span> surprise <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(surprise)) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">abs</span>(median) <span class="sc">&lt;</span> prc, <span class="fu">abs</span>(actual) <span class="sc">&lt;</span> prc) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(prc <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weekday =</span> <span class="fu">wday</span>(anndat, <span class="at">label =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span> weekday <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Sat"</span>, <span class="st">"Sun"</span>)) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">percent_rank</span>(car_long) <span class="sc">&gt;=</span> winsorise,</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>         <span class="fu">percent_rank</span>(car_long) <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">-</span> winsorise,</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>         <span class="fu">percent_rank</span>(car_short) <span class="sc">&gt;=</span> winsorise,</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>         <span class="fu">percent_rank</span>(car_short) <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">-</span> winsorise) <span class="sc">%&gt;%</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>winsorise <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">10000</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>main <span class="ot">&lt;-</span> surprise <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(surprise)) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">abs</span>(median) <span class="sc">&lt;</span> prc, <span class="fu">abs</span>(actual) <span class="sc">&lt;</span> prc) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(prc <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weekday =</span> <span class="fu">wday</span>(anndat, <span class="at">label =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span> weekday <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Sat"</span>, <span class="st">"Sun"</span>)) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">percent_rank</span>(car_long) <span class="sc">&gt;=</span> winsorise,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>         <span class="fu">percent_rank</span>(car_long) <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">-</span> winsorise,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>         <span class="fu">percent_rank</span>(car_short) <span class="sc">&gt;=</span> winsorise,</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>         <span class="fu">percent_rank</span>(car_short) <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">-</span> winsorise) <span class="sc">%&gt;%</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 137,403 × 20
 # ℹ 137,403 more rows
@@ -618,22 +618,22 @@ $ surprise     &lt;dbl&gt; -0.001343458, -0.003455009, -0.011611478, -0.00260000
 # A tibble: 130,807 × 21
    ticker actual pdf   anndats_act gvkey  permno cusip    rdq        anndat    
    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;date&gt;      &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;date&gt;     &lt;date&gt;    
- 1 A2      -0.08 D     2006-04-26  001081  10560 00392410 2006-04-26 2006-04-26
- 2 A2      -0.11 D     2005-01-26  001081  10560 00392410 2005-01-26 2005-01-26
- 3 A2      -0.11 D     2005-04-27  001081  10560 00392410 2005-04-27 2005-04-27
- 4 A2      -0.05 D     2005-07-27  001081  10560 00392410 2005-07-27 2005-07-27
- 5 A2      -0.07 D     2005-10-26  001081  10560 00392410 2005-10-26 2005-10-26
- 6 A2      -0.04 D     2004-10-21  001081  10560 00392410 2004-10-21 2004-10-21
- 7 A2      -0.1  D     2006-02-01  001081  10560 00392410 2006-02-01 2006-02-01
- 8 AA0G    -0.45 P     2001-11-13  133724  88784 00724X10 2001-11-13 2001-11-13
- 9 AA0G    -0.3  D     2005-03-01  133724  88784 00724X10 2005-03-01 2005-03-01
-10 AA0G    -0.31 D     2005-05-05  133724  88784 00724X10 2005-05-05 2005-05-05
+ 1 A2     -0.07  D     2005-10-26  001081  10560 00392410 2005-10-26 2005-10-26
+ 2 A2     -0.1   D     2006-02-01  001081  10560 00392410 2006-02-01 2006-02-01
+ 3 A2     -0.11  D     2005-01-26  001081  10560 00392410 2005-01-26 2005-01-26
+ 4 A2     -0.11  D     2005-04-27  001081  10560 00392410 2005-04-27 2005-04-27
+ 5 A2     -0.05  D     2005-07-27  001081  10560 00392410 2005-07-27 2005-07-27
+ 6 A2     -0.08  D     2006-04-26  001081  10560 00392410 2006-04-26 2006-04-26
+ 7 A2     -0.04  D     2004-10-21  001081  10560 00392410 2004-10-21 2004-10-21
+ 8 AA0A    0.107 D     2003-05-08  001094  10656 00444610 2003-05-08 2003-05-08
+ 9 AA0A    0.129 D     2003-11-06  001094  10656 00444610 2003-11-06 2003-11-06
+10 AA0A    0.127 D     2004-02-11  001094  10656 00444610 2004-02-11 2004-02-11
 # ℹ 130,797 more rows
 # ℹ 12 more variables: N &lt;int&gt;, median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;,
 #   car_short &lt;dbl&gt;, car_long &lt;dbl&gt;, date_minus5 &lt;date&gt;, date &lt;date&gt;,
 #   prc &lt;dbl&gt;, market_value &lt;dbl&gt;, surprise &lt;dbl&gt;, weekday &lt;ord&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(main, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"main.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(main, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"main.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="overview-of-the-datasets" class="level1">
