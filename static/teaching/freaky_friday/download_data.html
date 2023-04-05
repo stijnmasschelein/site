@@ -113,6 +113,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../freaky_friday/download_stocks.html" rel="next">
+<link href="../freaky_friday/linking.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -327,24 +329,22 @@ div.csl-indent {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.1     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.1     
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.0     ✔ purrr   1.0.1
+✔ tibble  3.1.8     ✔ dplyr   1.1.0
+✔ tidyr   1.3.0     ✔ stringr 1.5.0
+✔ readr   2.1.3     ✔ forcats 1.0.0
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/download_data.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dtplyr)</span>
@@ -389,16 +389,16 @@ div.csl-indent {
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,046,677
 Columns: 10
-$ ticker      &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "AA", "AA"…
+$ ticker      &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2"…
 $ cusip       &lt;chr&gt; "0039241X", "0039241X", "0039241X", "0039241X", "0039241X"…
 $ fpi         &lt;chr&gt; "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6"…
-$ anndats     &lt;date&gt; 2005-07-27, 2005-07-27, 2005-07-27, 2005-08-16, 2005-09-0…
-$ revdats     &lt;date&gt; 2005-07-29, 2005-10-24, 2005-08-08, 2005-08-17, 2005-10-2…
-$ pdf         &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "P", "D", "P"…
-$ value       &lt;dbl&gt; -0.0571, -0.1400, 0.0082, 0.0331, -0.1013, 0.0300, -0.0500…
-$ anndats_act &lt;date&gt; 2005-10-26, 2005-10-26, 2005-10-26, 2005-10-26, 2005-10-2…
-$ actual      &lt;dbl&gt; -0.070, -0.070, -0.070, -0.070, -0.070, -0.070, -0.070, -0…
-$ analys      &lt;dbl&gt; 44775, 478, 5469, 87125, 43594, 87125, 87125, 44775, 127, …</code></pre>
+$ anndats     &lt;date&gt; 2006-02-02, 2006-02-01, 2006-02-01, 2006-02-01, 2006-02-0…
+$ revdats     &lt;date&gt; 2006-02-20, 2006-02-06, 2006-02-06, 2006-02-06, 2006-02-0…
+$ pdf         &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"…
+$ value       &lt;dbl&gt; -0.0523, -0.0785, -0.0800, -0.0785, -0.0960, -0.0800, -0.0…
+$ anndats_act &lt;date&gt; 2006-04-26, 2006-04-26, 2006-04-26, 2006-04-26, 2006-04-2…
+$ actual      &lt;dbl&gt; -0.0800, -0.0800, -0.0800, -0.0800, -0.0800, -0.0800, -0.0…
+$ analys      &lt;dbl&gt; 43594, 84303, 87125, 5469, 44775, 478, 43594, 87125, 71785…</code></pre>
 </div>
 </div>
 </section>
@@ -454,11 +454,10 @@ $ gvkey &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004", 
 <span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">anndat =</span> <span class="fu">pmin</span>(anndats_act, rdq)) <span class="sc">%&gt;%</span></span>
 <span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>anndat_begin, <span class="sc">-</span>anndat_end)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning in left_join(., simple_link, by = join_by(ticker)): Detected an unexpected many-to-many relationship between `x` and `y`.
-ℹ Row 86 of `x` matches multiple rows in `y`.
-ℹ Row 11209 of `y` matches multiple rows in `x`.
-ℹ If a many-to-many relationship is expected, set `relationship =
-  "many-to-many"` to silence this warning.</code></pre>
+<pre><code>Warning in left_join(., simple_link, by = join_by(ticker)): Each row in `x` is expected to match at most 1 row in `y`.
+ℹ Row 125 of `x` matches multiple rows.
+ℹ If multiple matches are expected, set `multiple = "all"` to silence this
+  warning.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(earn_ann, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"earn_ann.RDS"</span>))</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(earn_ann)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -466,14 +465,14 @@ $ gvkey &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004", 
 <pre><code>Rows: 154,540
 Columns: 9
 $ ticker      &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "AA0A", "AA0A", …
-$ actual      &lt;dbl&gt; -0.0700, -0.1000, -0.1100, -0.1100, -0.0500, -0.0800, -0.0…
+$ actual      &lt;dbl&gt; -0.0800, -0.0400, -0.1100, -0.1100, -0.0500, -0.0700, -0.1…
 $ pdf         &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"…
-$ anndats_act &lt;date&gt; 2005-10-26, 2006-02-01, 2005-01-26, 2005-04-27, 2005-07-2…
+$ anndats_act &lt;date&gt; 2006-04-26, 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-2…
 $ gvkey       &lt;chr&gt; "001081", "001081", "001081", "001081", "001081", "001081"…
 $ permno      &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 10560, 10560, 10656, 10…
 $ cusip       &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00392410"…
-$ rdq         &lt;date&gt; 2005-10-26, 2006-02-01, 2005-01-26, 2005-04-27, 2005-07-2…
-$ anndat      &lt;date&gt; 2005-10-26, 2006-02-01, 2005-01-26, 2005-04-27, 2005-07-2…</code></pre>
+$ rdq         &lt;date&gt; 2006-04-26, 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-2…
+$ anndat      &lt;date&gt; 2006-04-26, 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-2…</code></pre>
 </div>
 </div>
 <p><code>earn_ann</code> serves as a linking table to match different earnings announcements (as opposed to firms and their securities in <code>linking_table</code>)</p>
@@ -715,6 +714,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../freaky_friday/linking.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Combining databases</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../freaky_friday/download_stocks.html" class="pagination-link">
+        <span class="nav-page-text">Stock price data</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

@@ -94,6 +94,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../freaky_friday/download_data.html" rel="next">
+<link href="../freaky_friday/download_linking.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -309,24 +311,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.1     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.1     
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.0     ✔ purrr   1.0.1
+✔ tibble  3.1.8     ✔ dplyr   1.1.0
+✔ tidyr   1.3.0     ✔ stringr 1.5.0
+✔ readr   2.1.3     ✔ forcats 1.0.0
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/linking.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 </div>
 <section id="read-the-data" class="level1">
@@ -481,7 +481,7 @@ $ enddt  &lt;date&gt; 1978-06-30, 1986-07-31, 1973-06-05, 1989-08-16, NA, 1983-0
  8 012127  19289 1984-03-01 1987-06-29     3
  9 014064  19289 1987-06-30 2006-08-29     3
 10 003923  29787 1977-10-18 1979-12-31     3
-# ℹ 1,477 more rows</code></pre>
+# … with 1,477 more rows</code></pre>
 </div>
 </div>
 <p>It looks like sometimes the identifier for the company in compustat (<code>gvkey</code>) switches but the financial instrument is still the same (<code>permno</code>). That probably means that we will have to take into account the dates. That is we will have to match on the identifiers and the date when matching observations form Compustat and CRSP.</p>
@@ -497,13 +497,6 @@ $ enddt  &lt;date&gt; 1978-06-30, 1986-07-31, 1973-06-05, 1989-08-16, NA, 1983-0
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ticker =</span> ibtic, <span class="at">start_date =</span> stdt, <span class="at">end_date =</span> enddt) <span class="sc">%&gt;%</span></span>
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in inner_join(., crsp_compu, by = join_by(gvkey == gvkey), multiple = "all"): Detected an unexpected many-to-many relationship between `x` and `y`.
-ℹ Row 17 of `x` matches multiple rows in `y`.
-ℹ Row 98 of `y` matches multiple rows in `x`.
-ℹ If a many-to-many relationship is expected, set `relationship =
-  "many-to-many"` to silence this warning.</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 24,235 × 7
    gvkey  ticker isin         cusip     permno start_date end_date  
@@ -518,9 +511,9 @@ $ enddt  &lt;date&gt; 1978-06-30, 1986-07-31, 1973-06-05, 1989-08-16, NA, 1983-0
  8 001020 AFGN   &lt;NA&gt;         001054931  68806 1972-12-14 1988-04-05
  9 001021 AFPC   US0010582056 001058205  10218 1980-10-14 1999-03-19
 10 001023 AGS    US0012401008 001240100  66755 1982-06-09 1988-10-05
-# ℹ 24,225 more rows</code></pre>
+# … with 24,225 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(linking_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(linking_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 24,235
 Columns: 7
@@ -532,7 +525,7 @@ $ permno     &lt;dbl&gt; 10015, 10031, 54594, 10074, 10082, 50906, 10154, 68806,
 $ start_date &lt;date&gt; 1983-09-20, 1983-12-07, 1972-04-24, 1982-01-18, 1983-03-21…
 $ end_date   &lt;date&gt; 1986-07-31, 1989-08-16, NA, 1996-03-13, 1995-09-28, 2010-1…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(linking_table, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"linking_table.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(linking_table, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"linking_table.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This linking table is a full linking table for all U.S. companies that are in I/B/E/S, Compustat, and CRSP. It’s always a good idea to make your own documentation for important datasets. So, I made an overview table.</p>
 <table class="table">
@@ -585,14 +578,14 @@ $ end_date   &lt;date&gt; 1986-07-31, 1989-08-16, NA, 1996-03-13, 1995-09-28, 20
 <section id="linking-ibes" class="level2">
 <h2 class="anchored" data-anchor-id="linking-ibes">Linking I/B/E/S</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>linking_table <span class="sc">%&gt;%</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, ticker) <span class="sc">%&gt;%</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>(), <span class="at">.by =</span> ticker) <span class="sc">%&gt;%</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(N <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>linking_table <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, ticker) <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>(), <span class="at">.by =</span> ticker) <span class="sc">%&gt;%</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(N <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 0 × 2
-# ℹ 2 variables: ticker &lt;chr&gt;, N &lt;int&gt;</code></pre>
+# … with 2 variables: ticker &lt;chr&gt;, N &lt;int&gt;</code></pre>
 </div>
 </div>
 <p>There are no <code>tickers</code> linked with multiple <code>gvkeys</code>. This means that <code>left_join</code> from I/B/E/S is the way to start the joining process. That way, there will be no duplicate matches from Compustat.</p>
@@ -741,6 +734,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../freaky_friday/download_linking.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">WRDS linking data</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../freaky_friday/download_data.html" class="pagination-link">
+        <span class="nav-page-text">Earnings announcements</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
