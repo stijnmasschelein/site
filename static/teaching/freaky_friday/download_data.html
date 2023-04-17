@@ -279,6 +279,11 @@ div.csl-indent {
   <a href="../freaky_friday/regressions.html" class="sidebar-item-text sidebar-link">Regressions</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -329,22 +334,24 @@ div.csl-indent {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-✔ ggplot2 3.4.0     ✔ purrr   1.0.1
-✔ tibble  3.1.8     ✔ dplyr   1.1.0
-✔ tidyr   1.3.0     ✔ stringr 1.5.0
-✔ readr   2.1.3     ✔ forcats 1.0.0
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.1     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()</code></pre>
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/download_data.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dtplyr)</span>
@@ -389,16 +396,16 @@ div.csl-indent {
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,046,677
 Columns: 10
-$ ticker      &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2"…
-$ cusip       &lt;chr&gt; "0039241X", "0039241X", "0039241X", "0039241X", "0039241X"…
+$ ticker      &lt;chr&gt; "AA", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "AA"…
+$ cusip       &lt;chr&gt; "02224910", "0039241X", "0039241X", "0039241X", "0039241X"…
 $ fpi         &lt;chr&gt; "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6"…
-$ anndats     &lt;date&gt; 2006-02-02, 2006-02-01, 2006-02-01, 2006-02-01, 2006-02-0…
-$ revdats     &lt;date&gt; 2006-02-20, 2006-02-06, 2006-02-06, 2006-02-06, 2006-02-0…
-$ pdf         &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"…
-$ value       &lt;dbl&gt; -0.0523, -0.0785, -0.0800, -0.0785, -0.0960, -0.0800, -0.0…
-$ anndats_act &lt;date&gt; 2006-04-26, 2006-04-26, 2006-04-26, 2006-04-26, 2006-04-2…
-$ actual      &lt;dbl&gt; -0.0800, -0.0800, -0.0800, -0.0800, -0.0800, -0.0800, -0.0…
-$ analys      &lt;dbl&gt; 43594, 84303, 87125, 5469, 44775, 478, 43594, 87125, 71785…</code></pre>
+$ anndats     &lt;date&gt; 1995-04-07, 2005-07-27, 2005-07-27, 2005-07-27, 2005-08-1…
+$ revdats     &lt;date&gt; 1995-04-07, 2005-07-29, 2005-10-24, 2005-08-08, 2005-08-1…
+$ pdf         &lt;chr&gt; "P", "D", "D", "D", "D", "D", "D", "D", "D", "P", "P", "D"…
+$ value       &lt;dbl&gt; 0.6300, -0.0571, -0.1400, 0.0082, 0.0331, -0.1013, 0.0300,…
+$ anndats_act &lt;date&gt; 1995-04-07, 2005-10-26, 2005-10-26, 2005-10-26, 2005-10-2…
+$ actual      &lt;dbl&gt; 0.8100, -0.0700, -0.0700, -0.0700, -0.0700, -0.0700, -0.07…
+$ analys      &lt;dbl&gt; 18096, 44775, 478, 5469, 87125, 43594, 87125, 87125, 44775…</code></pre>
 </div>
 </div>
 </section>
@@ -423,7 +430,7 @@ $ analys      &lt;dbl&gt; 43594, 84303, 87125, 5469, 44775, 478, 43594, 87125, 7
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(ann_compu, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"ann_compu.RDS"</span>))</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ann_compu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 328,000
+<pre><code>Rows: 327,964
 Columns: 3
 $ cusip &lt;chr&gt; "00036110", "00036110", "00036110", "00036110", "00036110", "000…
 $ rdq   &lt;date&gt; 1995-03-15, 1995-07-06, 1995-09-13, 1995-12-12, 1996-03-14, 199…
@@ -454,25 +461,26 @@ $ gvkey &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004", 
 <span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">anndat =</span> <span class="fu">pmin</span>(anndats_act, rdq)) <span class="sc">%&gt;%</span></span>
 <span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>anndat_begin, <span class="sc">-</span>anndat_end)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning in left_join(., simple_link, by = join_by(ticker)): Each row in `x` is expected to match at most 1 row in `y`.
-ℹ Row 125 of `x` matches multiple rows.
-ℹ If multiple matches are expected, set `multiple = "all"` to silence this
-  warning.</code></pre>
+<pre><code>Warning in left_join(., simple_link, by = join_by(ticker)): Detected an unexpected many-to-many relationship between `x` and `y`.
+ℹ Row 104 of `x` matches multiple rows in `y`.
+ℹ Row 11208 of `y` matches multiple rows in `x`.
+ℹ If a many-to-many relationship is expected, set `relationship =
+  "many-to-many"` to silence this warning.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(earn_ann, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"earn_ann.RDS"</span>))</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(earn_ann)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 154,540
 Columns: 9
-$ ticker      &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "AA0A", "AA0A", …
-$ actual      &lt;dbl&gt; -0.0800, -0.0400, -0.1100, -0.1100, -0.0500, -0.0700, -0.1…
+$ ticker      &lt;chr&gt; "A2", "A2", "A2", "A2", "AA0A", "A2", "AA0A", "AA0A", "AA0…
+$ actual      &lt;dbl&gt; -0.0700, -0.1100, -0.1100, -0.0500, 0.1067, -0.0800, 0.110…
 $ pdf         &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"…
-$ anndats_act &lt;date&gt; 2006-04-26, 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-2…
-$ gvkey       &lt;chr&gt; "001081", "001081", "001081", "001081", "001081", "001081"…
-$ permno      &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 10560, 10560, 10656, 10…
-$ cusip       &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00392410"…
-$ rdq         &lt;date&gt; 2006-04-26, 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-2…
-$ anndat      &lt;date&gt; 2006-04-26, 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-2…</code></pre>
+$ anndats_act &lt;date&gt; 2005-10-26, 2005-01-26, 2005-04-27, 2005-07-27, 2003-05-0…
+$ gvkey       &lt;chr&gt; "001081", "001081", "001081", "001081", "001094", "001081"…
+$ permno      &lt;dbl&gt; 10560, 10560, 10560, 10560, 10656, 10560, 10656, 10656, 10…
+$ cusip       &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00444610"…
+$ rdq         &lt;date&gt; 2005-10-26, 2005-01-26, 2005-04-27, 2005-07-27, 2003-05-0…
+$ anndat      &lt;date&gt; 2005-10-26, 2005-01-26, 2005-04-27, 2005-07-27, 2003-05-0…</code></pre>
 </div>
 </div>
 <p><code>earn_ann</code> serves as a linking table to match different earnings announcements (as opposed to firms and their securities in <code>linking_table</code>)</p>
