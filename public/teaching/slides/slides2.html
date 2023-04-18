@@ -463,10 +463,10 @@ Stijn Masschelein
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,000
 Columns: 4
-$ normal   &lt;dbl&gt; 2.30126973, 0.04423514, -1.67749352, 1.03…
-$ uniform  &lt;dbl&gt; 4.671801, 1.997800, 1.860382, 4.033766, 2…
-$ binomial &lt;int&gt; 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-$ sample   &lt;int&gt; 6, 9, 6, 9, 5, 8, 7, 3, 3, 2, 3, 5, 9, 4,…</code></pre>
+$ normal   &lt;dbl&gt; 10.9578770, -0.2808676, -0.0516203, 1.638…
+$ uniform  &lt;dbl&gt; 3.385180, 3.162932, 1.341290, 1.148682, 2…
+$ binomial &lt;int&gt; 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,…
+$ sample   &lt;int&gt; 3, 3, 6, 8, 10, 8, 4, 8, 2, 4, 2, 7, 9, 8…</code></pre>
 </div>
 </div>
 </section>
@@ -613,7 +613,7 @@ $ sample   &lt;int&gt; 6, 9, 6, 9, 5, 8, 7, 3, 3, 2, 3, 5, 9, 4,…</code></pre>
 <span id="cb10-5"><a href="#cb10-5"></a><span class="fu">summary</span>(us_value<span class="sc">$</span>market_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-      0.0     926.3    2574.4   13591.3    8236.7 2324390.2 
+      0.0     925.7    2573.0   13586.4    8236.7 2324390.2 
      NA's 
      4086 </code></pre>
 </div>
@@ -629,7 +629,7 @@ $ sample   &lt;int&gt; 6, 9, 6, 9, 5, 8, 7, 3, 3, 2, 3, 5, 9, 4,…</code></pre>
 <span id="cb12-5"><a href="#cb12-5"></a>        <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"gvkey"</span>))</span>
 <span id="cb12-6"><a href="#cb12-6"></a><span class="fu">glimpse</span>(us_comp_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 30,054
+<pre><code>Rows: 30,068
 Columns: 5
 $ gvkey        &lt;chr&gt; "001004", "001004", "001004", "001004…
 $ year         &lt;dbl&gt; 2011, 2011, 2012, 2013, 2014, 2015, 2…
@@ -813,7 +813,7 @@ log(market_value + 1)      0.4     0.0032     122        0</code></pre>
 <span id="cb23-10"><a href="#cb23-10"></a>    <span class="fu">mutate</span>(<span class="at">wealth =</span> shares <span class="sc">*</span> market_value <span class="sc">/</span> <span class="dv">100</span>)</span>
 <span id="cb23-11"><a href="#cb23-11"></a><span class="fu">glimpse</span>(us_comp_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 25,694
+<pre><code>Rows: 25,707
 Columns: 7
 $ gvkey        &lt;chr&gt; "001004", "001004", "001004", "001004…
 $ execid       &lt;chr&gt; "09249", "09249", "09249", "09249", "…
@@ -972,7 +972,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <span id="cb30-12"><a href="#cb30-12"></a></span>
 <span id="cb30-13"><a href="#cb30-13"></a><span class="fu">print</span>(<span class="fu">prettyNum</span>(<span class="fu">c</span>(observed_cor, random_cor), <span class="at">dig =</span> <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "-0.00322" "0.0023"  </code></pre>
+<pre><code>[1] "-0.00322" "0.000549"</code></pre>
 </div>
 </div>
 </div>

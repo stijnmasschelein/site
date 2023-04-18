@@ -94,6 +94,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../freaky_friday/abnormal_returns.html" rel="next">
+<link href="../freaky_friday/download_data.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -258,6 +260,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../freaky_friday/regressions.html" class="sidebar-item-text sidebar-link">Regressions</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -335,9 +342,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 8,759
 Columns: 3
-$ permno &lt;dbl&gt; 10560, 10656, 88784, 10574, 80585, 84606, 88836, 88790, 87771, …
-$ begin  &lt;date&gt; 2003-12-26, 2002-07-12, 2001-01-17, 2001-07-04, 2003-05-06, 20…
-$ end    &lt;date&gt; 2006-07-10, 2006-07-19, 2006-07-18, 2006-07-24, 2006-04-11, 20…</code></pre>
+$ permno &lt;dbl&gt; 10560, 10656, 88784, 10574, 10659, 87771, 87832, 84606, 88790, …
+$ begin  &lt;date&gt; 2003-12-26, 2002-07-12, 2001-01-17, 2001-07-04, 2001-11-09, 20…
+$ end    &lt;date&gt; 2006-07-10, 2006-07-19, 2006-07-18, 2006-07-24, 2006-05-23, 20…</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>begin_date <span class="ot">&lt;-</span> <span class="fu">min</span>(crsp_input<span class="sc">$</span>begin)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>end_date <span class="ot">&lt;-</span> <span class="fu">max</span>(crsp_input<span class="sc">$</span>end)</span>
@@ -511,6 +518,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../freaky_friday/download_data.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Earnings announcements</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../freaky_friday/abnormal_returns.html" class="pagination-link">
+        <span class="nav-page-text">Abnormal returns</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
