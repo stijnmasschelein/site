@@ -287,6 +287,31 @@ div.csl-indent {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Machine Learning</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/predictions.html" class="sidebar-item-text sidebar-link">Predictions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/theory.html" class="sidebar-item-text sidebar-link">Theory</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">Peer Firms</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -338,9 +363,9 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.1     ✔ readr     2.1.4
+✔ dplyr     1.1.2     ✔ readr     2.1.4
 ✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.1     ✔ tibble    3.2.1
+✔ ggplot2   3.4.2     ✔ tibble    3.2.1
 ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
 ✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -351,11 +376,11 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/abnormal_returns.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 </div>
 <p>In order to predict the expected market return reaction to earnings, we will want to take into account the general market reaction. <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span> only adjust for the overall market return. There are other adjustments possible for specific risk factors. The original factor model is the Fama-French 3 Factors model and the data is available via the <a href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Kenneth French data library</a>.</p>
@@ -435,7 +460,7 @@ Note
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">by =</span> <span class="fu">join_by</span>(date <span class="sc">==</span> date)) <span class="sc">%&gt;%</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ret), <span class="sc">!</span><span class="fu">is.infinite</span>(ret)) <span class="sc">%&gt;%</span></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">y =</span> <span class="fu">list</span>(<span class="fu">cbind</span>(ret)), <span class="at">X =</span> <span class="fu">list</span>(<span class="fu">cbind</span>(<span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">beta =</span> mkt)),</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">.by =</span> <span class="fu">c</span>(permno, anndat)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">.by =</span> <span class="fu">c</span>(permno, anndat)) <span class="sc">%&gt;%</span></span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">coefs =</span> <span class="fu">pmap</span>(<span class="fu">list</span>(X, y), <span class="sc">~</span> <span class="fu">lm.fit</span>(..<span class="dv">1</span>, ..<span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="fu">coef</span>()),</span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">.by =</span> <span class="fu">c</span>(permno, anndat)) <span class="sc">%&gt;%</span></span>
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>y, <span class="sc">-</span>X)</span>
@@ -449,9 +474,9 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: seconds
                 expr      min       lq     mean   median       uq      max
-   create_coefs(100) 1.380604 1.402289 1.471420 1.468977 1.526643 1.561929
-  create_coefs(1000) 1.602055 1.650330 1.689714 1.681888 1.710439 1.784175
- create_coefs(10000) 3.091237 3.155316 3.214193 3.194619 3.275110 3.408200
+   create_coefs(100) 2.411606 2.511097 2.988970 2.851544 3.089185 4.171850
+  create_coefs(1000) 3.060438 3.212490 3.392713 3.399388 3.535181 3.831634
+ create_coefs(10000) 5.557674 5.943498 6.396329 6.346569 6.684151 7.976207
  neval
     10
     10
@@ -465,32 +490,33 @@ Note
 <p>Finally, I use the <code>pivot_wider</code> function to transform the dataset from the long format to a wider format. Specifically, each announcement has two rows one for the short term <code>car</code> and one for the long term <code>car</code>. The transformation will create a new dataset where every row has a different announcement with a <code>car_long</code> and a <code>car_short</code>. We do that by taking the values_from the <code>car</code> variable and the name for the column from the <code>time_frame</code> variable.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">nrow</span>(earn_ann)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">create_coefs</span>(N)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>abnormal <span class="ot">&lt;-</span> results <span class="sc">%&gt;%</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_wider</span>(coefs) <span class="sc">%&gt;%</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date75 =</span> anndat <span class="sc">+</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="fu">select</span>(all_stocks, permno, date, ret),</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(permno <span class="sc">==</span> permno,</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                         date75 <span class="sc">&gt;=</span> date, anndat <span class="sc">&lt;=</span> date)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="fu">select</span>(famafrench,  mkt, rf, date),</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(date <span class="sc">==</span> date)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_frame =</span> <span class="fu">if_else</span>(date <span class="sc">-</span> anndat <span class="sc">&lt;=</span> <span class="dv">1</span>, <span class="st">"short"</span>, <span class="st">"long"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">raw =</span> <span class="fu">prod</span>(<span class="dv">1</span> <span class="sc">+</span> ret), <span class="at">mkt =</span> <span class="fu">prod</span>(<span class="dv">1</span> <span class="sc">+</span> mkt),</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(permno, anndat, time_frame, beta)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">car =</span> raw <span class="sc">-</span> <span class="dv">1</span> <span class="sc">-</span> beta <span class="sc">*</span> (mkt <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>beta, <span class="sc">-</span>raw, <span class="sc">-</span>mkt) <span class="sc">%&gt;%</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(car)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">values_from =</span> car, <span class="at">names_from =</span> time_frame,</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">"car_"</span>)</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(abnormal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">create_coefs</span>()</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">create_coefs</span>(N)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>abnormal <span class="ot">&lt;-</span> results <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_wider</span>(coefs) <span class="sc">%&gt;%</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date75 =</span> anndat <span class="sc">+</span> <span class="dv">75</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="fu">select</span>(all_stocks, permno, date, ret),</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(permno <span class="sc">==</span> permno,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                         date75 <span class="sc">&gt;=</span> date, anndat <span class="sc">&lt;=</span> date)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="fu">select</span>(famafrench, mkt, rf, date),</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(date <span class="sc">==</span> date)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_frame =</span> <span class="fu">if_else</span>(date <span class="sc">-</span> anndat <span class="sc">&lt;=</span> <span class="dv">1</span>, <span class="st">"short"</span>, <span class="st">"long"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">raw =</span> <span class="fu">prod</span>(<span class="dv">1</span> <span class="sc">+</span> ret), <span class="at">mkt =</span> <span class="fu">prod</span>(<span class="dv">1</span> <span class="sc">+</span> mkt),</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(permno, anndat, time_frame, beta)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">car =</span> raw <span class="sc">-</span> <span class="dv">1</span> <span class="sc">-</span> beta <span class="sc">*</span> (mkt <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>beta, <span class="sc">-</span>raw, <span class="sc">-</span>mkt) <span class="sc">%&gt;%</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(car)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">values_from =</span> car, <span class="at">names_from =</span> time_frame,</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">"car_"</span>)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(abnormal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 128,114
+<pre><code>Rows: 128,103
 Columns: 4
-$ permno    &lt;dbl&gt; 10560, 10560, 10560, 10560, 10656, 10560, 10656, 10656, 1065…
-$ anndat    &lt;date&gt; 2005-10-26, 2005-01-26, 2005-04-27, 2005-07-27, 2003-05-08,…
-$ car_short &lt;dbl&gt; -1.486945e-02, 3.646200e-02, -6.360508e-02, -4.176757e-03, 1…
-$ car_long  &lt;dbl&gt; 0.207418886, -0.209598864, 0.056618491, -0.183680852, 0.0522…</code></pre>
+$ permno    &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 88784, 10560, 88784, 8460…
+$ anndat    &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-21,…
+$ car_short &lt;dbl&gt; 0.036461999, -0.063605082, -0.004176757, -0.014869448, 0.097…
+$ car_long  &lt;dbl&gt; -0.20959886, 0.05661849, -0.18368085, 0.20741889, 0.01028760…</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -519,20 +545,20 @@ Note
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>shrout) <span class="sc">%&gt;%</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 14,339,244 × 4
+<pre><code># A tibble: 14,336,092 × 4
    permno date         prc market_value
     &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;        &lt;dbl&gt;
- 1  10002 1994-03-10 13          38987 
- 2  10010 1994-03-10  7.62       71278.
- 3  10011 1994-03-10  7.12       37784.
- 4  10012 1994-03-10  2.38       34630.
- 5  10019 1994-03-10  8.75       45832.
- 6  10025 1994-03-10 18.1       132838.
- 7  10026 1994-03-10 18.2       188723.
- 8  10032 1994-03-10 16.2       104910 
- 9  10035 1994-03-10 18.2       237779.
-10  10042 1994-03-10  3.56       90195.
-# ℹ 14,339,234 more rows</code></pre>
+ 1  10002 1994-03-10  13         38987 
+ 2  10002 1994-03-11  13.8       41236.
+ 3  10002 1994-03-16  13.2       39737.
+ 4  10002 1994-03-22  13.4       40112.
+ 5  10002 1994-03-24  13.1       39362.
+ 6  10002 1994-04-07  12.5       37488.
+ 7  10002 1994-04-15  14         41986 
+ 8  10002 1994-04-18  14         41986 
+ 9  10002 1994-04-22  12.5       37488.
+10  10002 1994-04-28  14         41986 
+# ℹ 14,336,082 more rows</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>surprise <span class="ot">&lt;-</span> earn_ann <span class="sc">%&gt;%</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(analyst,</span>
@@ -545,28 +571,28 @@ Note
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">surprise =</span> (actual <span class="sc">-</span> median) <span class="sc">/</span> prc) </span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(surprise)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 154,540
+<pre><code>Rows: 154,507
 Columns: 20
-$ ticker       &lt;chr&gt; "A2", "A2", "A2", "A2", "AA0A", "A2", "AA0A", "AA0A", "AA…
-$ actual       &lt;dbl&gt; -0.0700, -0.1100, -0.1100, -0.0500, 0.1067, -0.0800, 0.11…
+$ ticker       &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "AA0G", "A2", "AA0G", "AA1N…
+$ actual       &lt;dbl&gt; -0.110, -0.110, -0.050, -0.070, -0.040, -0.410, -0.080, -…
 $ pdf          &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D…
-$ anndats_act  &lt;date&gt; 2005-10-26, 2005-01-26, 2005-04-27, 2005-07-27, 2003-05-…
-$ gvkey        &lt;chr&gt; "001081", "001081", "001081", "001081", "001094", "001081…
-$ permno       &lt;dbl&gt; 10560, 10560, 10560, 10560, 10656, 10560, 10656, 10656, 1…
-$ cusip        &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00444610…
-$ rdq          &lt;date&gt; 2005-10-26, 2005-01-26, 2005-04-27, 2005-07-27, 2003-05-…
-$ anndat       &lt;date&gt; 2005-10-26, 2005-01-26, 2005-04-27, 2005-07-27, 2003-05-…
-$ N            &lt;int&gt; 4, 2, 3, 2, 1, 4, 1, 1, NA, 1, 1, NA, 5, NA, 1, NA, 1, 2,…
-$ median       &lt;dbl&gt; -0.10610, -0.08965, -0.05740, -0.03700, 0.08000, -0.07425…
-$ mean         &lt;dbl&gt; -0.1005500, -0.0896500, -0.0680000, -0.0370000, 0.0800000…
-$ mean_days    &lt;dbl&gt; 7.000000, 8.000000, 6.666667, 13.500000, 28.000000, 11.50…
-$ car_short    &lt;dbl&gt; -1.486945e-02, 3.646200e-02, -6.360508e-02, -4.176757e-03…
-$ car_long     &lt;dbl&gt; 0.207418886, -0.209598864, 0.056618491, -0.183680852, 0.0…
-$ date_minus5  &lt;date&gt; 2005-10-21, 2005-01-21, 2005-04-22, 2005-07-22, 2003-05-…
-$ date         &lt;date&gt; 2005-10-21, 2005-01-21, 2005-04-22, 2005-07-22, 2003-05-…
-$ prc          &lt;dbl&gt; 3.260, 5.890, 4.530, 5.000, 16.750, 4.280, 6.750, 7.430, …
-$ market_value &lt;dbl&gt; 1434970.50, 2592630.69, 1993992.84, 2200875.00, 166243.75…
-$ surprise     &lt;dbl&gt; 0.0110736197, -0.0034550086, -0.0116114785, -0.0026000000…</code></pre>
+$ anndats_act  &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-…
+$ gvkey        &lt;chr&gt; "001081", "001081", "001081", "001081", "001081", "133724…
+$ permno       &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 88784, 10560, 88784, 8…
+$ cusip        &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00392410…
+$ rdq          &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-…
+$ anndat       &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-…
+$ N            &lt;int&gt; 2, 3, 2, 4, 1, 7, 4, 5, NA, 3, 3, 2, 1, NA, 1, 3, 2, 1, N…
+$ median       &lt;dbl&gt; -0.08965, -0.05740, -0.03700, -0.10610, -0.09000, -0.4100…
+$ mean         &lt;dbl&gt; -0.08965000, -0.06800000, -0.03700000, -0.10055000, -0.09…
+$ mean_days    &lt;dbl&gt; 8.000000, 6.666667, 13.500000, 7.000000, 21.000000, 16.57…
+$ car_short    &lt;dbl&gt; 0.036461999, -0.063605082, -0.004176757, -0.014869448, 0.…
+$ car_long     &lt;dbl&gt; -0.20959886, 0.05661849, -0.18368085, 0.20741889, 0.01028…
+$ date_minus5  &lt;date&gt; 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-21, 2004-10-…
+$ date         &lt;date&gt; 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-21, 2004-10-…
+$ prc          &lt;dbl&gt; 5.890, 4.530, 5.000, 3.260, 5.630, 26.530, 4.280, 23.520,…
+$ market_value &lt;dbl&gt; 2592630.69, 1993992.84, 2200875.00, 1434970.50, 2478185.3…
+$ surprise     &lt;dbl&gt; -0.0034550086, -0.0116114785, -0.0026000000, 0.0110736197…</code></pre>
 </div>
 </div>
 </section>
@@ -594,48 +620,48 @@ $ surprise     &lt;dbl&gt; 0.0110736197, -0.0034550086, -0.0116114785, -0.002600
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>         <span class="fu">percent_rank</span>(car_short) <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">-</span> winsorise) <span class="sc">%&gt;%</span></span>
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 137,403 × 20
-# ℹ 137,403 more rows
+<pre><code># A tibble: 137,370 × 20
+# ℹ 137,370 more rows
 # ℹ 20 variables: ticker &lt;chr&gt;, actual &lt;dbl&gt;, pdf &lt;chr&gt;, anndats_act &lt;date&gt;,
 #   gvkey &lt;chr&gt;, permno &lt;dbl&gt;, cusip &lt;chr&gt;, rdq &lt;date&gt;, anndat &lt;date&gt;, N &lt;int&gt;,
 #   median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;, car_short &lt;dbl&gt;, car_long &lt;dbl&gt;,
 #   date_minus5 &lt;date&gt;, date &lt;date&gt;, prc &lt;dbl&gt;, market_value &lt;dbl&gt;,
 #   surprise &lt;dbl&gt;
-# A tibble: 136,029 × 20
-# ℹ 136,029 more rows
+# A tibble: 135,996 × 20
+# ℹ 135,996 more rows
 # ℹ 20 variables: ticker &lt;chr&gt;, actual &lt;dbl&gt;, pdf &lt;chr&gt;, anndats_act &lt;date&gt;,
 #   gvkey &lt;chr&gt;, permno &lt;dbl&gt;, cusip &lt;chr&gt;, rdq &lt;date&gt;, anndat &lt;date&gt;, N &lt;int&gt;,
 #   median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;, car_short &lt;dbl&gt;, car_long &lt;dbl&gt;,
 #   date_minus5 &lt;date&gt;, date &lt;date&gt;, prc &lt;dbl&gt;, market_value &lt;dbl&gt;,
 #   surprise &lt;dbl&gt;
-# A tibble: 133,703 × 20
-# ℹ 133,703 more rows
+# A tibble: 133,670 × 20
+# ℹ 133,670 more rows
 # ℹ 20 variables: ticker &lt;chr&gt;, actual &lt;dbl&gt;, pdf &lt;chr&gt;, anndats_act &lt;date&gt;,
 #   gvkey &lt;chr&gt;, permno &lt;dbl&gt;, cusip &lt;chr&gt;, rdq &lt;date&gt;, anndat &lt;date&gt;, N &lt;int&gt;,
 #   median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;, car_short &lt;dbl&gt;, car_long &lt;dbl&gt;,
 #   date_minus5 &lt;date&gt;, date &lt;date&gt;, prc &lt;dbl&gt;, market_value &lt;dbl&gt;,
 #   surprise &lt;dbl&gt;
-# A tibble: 133,611 × 21
-# ℹ 133,611 more rows
+# A tibble: 133,578 × 21
+# ℹ 133,578 more rows
 # ℹ 21 variables: ticker &lt;chr&gt;, actual &lt;dbl&gt;, pdf &lt;chr&gt;, anndats_act &lt;date&gt;,
 #   gvkey &lt;chr&gt;, permno &lt;dbl&gt;, cusip &lt;chr&gt;, rdq &lt;date&gt;, anndat &lt;date&gt;, N &lt;int&gt;,
 #   median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;, car_short &lt;dbl&gt;, car_long &lt;dbl&gt;,
 #   date_minus5 &lt;date&gt;, date &lt;date&gt;, prc &lt;dbl&gt;, market_value &lt;dbl&gt;,
 #   surprise &lt;dbl&gt;, weekday &lt;ord&gt;
-# A tibble: 130,807 × 21
+# A tibble: 130,796 × 21
    ticker actual pdf   anndats_act gvkey  permno cusip    rdq        anndat    
    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;date&gt;      &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;date&gt;     &lt;date&gt;    
- 1 A2     -0.07  D     2005-10-26  001081  10560 00392410 2005-10-26 2005-10-26
- 2 A2     -0.11  D     2005-01-26  001081  10560 00392410 2005-01-26 2005-01-26
- 3 A2     -0.11  D     2005-04-27  001081  10560 00392410 2005-04-27 2005-04-27
- 4 A2     -0.05  D     2005-07-27  001081  10560 00392410 2005-07-27 2005-07-27
- 5 AA0A    0.107 D     2003-05-08  001094  10656 00444610 2003-05-08 2003-05-08
- 6 A2     -0.08  D     2006-04-26  001081  10560 00392410 2006-04-26 2006-04-26
- 7 AA0A    0.11  D     2005-05-05  001094  10656 00444610 2005-05-05 2005-05-05
- 8 AA0A    0.11  D     2005-09-09  001094  10656 00444610 2005-09-08 2005-09-08
- 9 AA0A    0.129 D     2003-11-06  001094  10656 00444610 2003-11-06 2003-11-06
-10 AA0A    0.127 D     2004-02-11  001094  10656 00444610 2004-02-11 2004-02-11
-# ℹ 130,797 more rows
+ 1 A2      -0.11 D     2005-01-26  001081  10560 00392410 2005-01-26 2005-01-26
+ 2 A2      -0.11 D     2005-04-27  001081  10560 00392410 2005-04-27 2005-04-27
+ 3 A2      -0.05 D     2005-07-27  001081  10560 00392410 2005-07-27 2005-07-27
+ 4 A2      -0.07 D     2005-10-26  001081  10560 00392410 2005-10-26 2005-10-26
+ 5 A2      -0.04 D     2004-10-21  001081  10560 00392410 2004-10-21 2004-10-21
+ 6 AA0G    -0.41 D     2006-03-02  133724  88784 00724X10 2006-03-02 2006-03-02
+ 7 A2      -0.08 D     2006-04-26  001081  10560 00392410 2006-04-26 2006-04-26
+ 8 AA0G    -0.42 D     2006-05-04  133724  88784 00724X10 2006-05-04 2006-05-04
+ 9 AA1N     0.01 D     2003-07-29  064536  84606 29873610 2003-07-29 2003-07-29
+10 AA1N     0.24 D     2006-02-21  064536  84606 29873610 2006-02-21 2006-02-21
+# ℹ 130,786 more rows
 # ℹ 12 more variables: N &lt;int&gt;, median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;,
 #   car_short &lt;dbl&gt;, car_long &lt;dbl&gt;, date_minus5 &lt;date&gt;, date &lt;date&gt;,
 #   prc &lt;dbl&gt;, market_value &lt;dbl&gt;, surprise &lt;dbl&gt;, weekday &lt;ord&gt;</code></pre>

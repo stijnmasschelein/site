@@ -289,6 +289,31 @@ div.csl-indent {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Machine Learning</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/predictions.html" class="sidebar-item-text sidebar-link">Predictions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/theory.html" class="sidebar-item-text sidebar-link">Theory</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">Peer Firms</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -344,9 +369,9 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.1     ✔ readr     2.1.4
+✔ dplyr     1.1.2     ✔ readr     2.1.4
 ✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.1     ✔ tibble    3.2.1
+✔ ggplot2   3.4.2     ✔ tibble    3.2.1
 ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
 ✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -357,14 +382,14 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fixest)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>gof_omit <span class="ot">&lt;-</span> <span class="st">"Adj|RMS|IC"</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/regressions.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 </div>
 </section>
@@ -390,36 +415,36 @@ div.csl-indent {
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 130,807
+<pre><code>Rows: 130,796
 Columns: 28
-$ ticker       &lt;chr&gt; "A2", "A2", "A2", "A2", "AA0A", "A2", "AA0A", "AA0A", "AA…
-$ actual       &lt;dbl&gt; -0.0700, -0.1100, -0.1100, -0.0500, 0.1067, -0.0800, 0.11…
+$ ticker       &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "AA0G", "A2", "AA0G", "AA1N…
+$ actual       &lt;dbl&gt; -0.110, -0.110, -0.050, -0.070, -0.040, -0.410, -0.080, -…
 $ pdf          &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D…
-$ anndats_act  &lt;date&gt; 2005-10-26, 2005-01-26, 2005-04-27, 2005-07-27, 2003-05-…
-$ gvkey        &lt;chr&gt; "001081", "001081", "001081", "001081", "001094", "001081…
-$ permno       &lt;dbl&gt; 10560, 10560, 10560, 10560, 10656, 10560, 10656, 10656, 1…
-$ cusip        &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00444610…
-$ rdq          &lt;date&gt; 2005-10-26, 2005-01-26, 2005-04-27, 2005-07-27, 2003-05-…
-$ anndat       &lt;date&gt; 2005-10-26, 2005-01-26, 2005-04-27, 2005-07-27, 2003-05-…
-$ N            &lt;int&gt; 4, 2, 3, 2, 1, 4, 1, 1, 1, 1, 5, 1, 1, 2, 1, 1, 3, 1, 3, …
-$ median       &lt;dbl&gt; -0.10610, -0.08965, -0.05740, -0.03700, 0.08000, -0.07425…
-$ mean         &lt;dbl&gt; -0.1005500, -0.0896500, -0.0680000, -0.0370000, 0.0800000…
-$ mean_days    &lt;dbl&gt; 7.000000, 8.000000, 6.666667, 13.500000, 28.000000, 11.50…
-$ car_short    &lt;dbl&gt; -1.486945e-02, 3.646200e-02, -6.360508e-02, -4.176757e-03…
-$ car_long     &lt;dbl&gt; 0.20741889, -0.20959886, 0.05661849, -0.18368085, 0.05226…
-$ date_minus5  &lt;date&gt; 2005-10-21, 2005-01-21, 2005-04-22, 2005-07-22, 2003-05-…
-$ date         &lt;date&gt; 2005-10-21, 2005-01-21, 2005-04-22, 2005-07-22, 2003-05-…
-$ prc          &lt;dbl&gt; 3.260, 5.890, 4.530, 5.000, 16.750, 4.280, 6.750, 7.430, …
-$ market_value &lt;dbl&gt; 1434970.50, 2592630.69, 1993992.84, 2200875.00, 166243.75…
-$ surprise     &lt;dbl&gt; 0.0110736197, -0.0034550086, -0.0116114785, -0.0026000000…
-$ weekday      &lt;ord&gt; Wed, Wed, Wed, Wed, Thu, Wed, Thu, Thu, Thu, Wed, Thu, We…
-$ friday       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-$ year         &lt;dbl&gt; 2005, 2005, 2005, 2005, 2003, 2006, 2005, 2005, 2003, 200…
-$ month        &lt;dbl&gt; 10, 1, 4, 7, 5, 4, 5, 9, 11, 2, 5, 5, 11, 9, 1, 3, 5, 8, …
-$ quarter      &lt;dbl&gt; 4, 1, 2, 3, 2, 2, 2, 3, 4, 1, 2, 2, 4, 3, 1, 1, 2, 3, 4, …
-$ sign         &lt;chr&gt; "positive", "negative", "negative", "negative", "positive…
-$ quintile     &lt;int&gt; 5, 2, 1, 3, 3, 3, 1, 3, 3, 5, 4, 5, 4, 1, 4, 1, 2, 3, 2, …
-$ quantile     &lt;dbl&gt; 11, 2, 1, 3, 9, 3, 6, 9, 9, 5, 4, 11, 10, 7, 10, 6, 2, 9,…</code></pre>
+$ anndats_act  &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-…
+$ gvkey        &lt;chr&gt; "001081", "001081", "001081", "001081", "001081", "133724…
+$ permno       &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 88784, 10560, 88784, 8…
+$ cusip        &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00392410…
+$ rdq          &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-…
+$ anndat       &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-…
+$ N            &lt;int&gt; 2, 3, 2, 4, 1, 7, 4, 5, 3, 3, 2, 1, 1, 3, 2, 1, 2, 1, 3, …
+$ median       &lt;dbl&gt; -0.08965, -0.05740, -0.03700, -0.10610, -0.09000, -0.4100…
+$ mean         &lt;dbl&gt; -0.08965000, -0.06800000, -0.03700000, -0.10055000, -0.09…
+$ mean_days    &lt;dbl&gt; 8.000000, 6.666667, 13.500000, 7.000000, 21.000000, 16.57…
+$ car_short    &lt;dbl&gt; 0.036461999, -0.063605082, -0.004176757, -0.014869448, 0.…
+$ car_long     &lt;dbl&gt; -0.20959886, 0.05661849, -0.18368085, 0.20741889, 0.01028…
+$ date_minus5  &lt;date&gt; 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-21, 2004-10-…
+$ date         &lt;date&gt; 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-21, 2004-10-…
+$ prc          &lt;dbl&gt; 5.890, 4.530, 5.000, 3.260, 5.630, 26.530, 4.280, 23.520,…
+$ market_value &lt;dbl&gt; 2592630.69, 1993992.84, 2200875.00, 1434970.50, 2478185.3…
+$ surprise     &lt;dbl&gt; -0.0034550086, -0.0116114785, -0.0026000000, 0.0110736197…
+$ weekday      &lt;ord&gt; Wed, Wed, Wed, Wed, Thu, Thu, Wed, Thu, Tue, Tue, Fri, We…
+$ friday       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, …
+$ year         &lt;dbl&gt; 2005, 2005, 2005, 2005, 2004, 2006, 2006, 2006, 2003, 200…
+$ month        &lt;dbl&gt; 1, 4, 7, 10, 10, 3, 4, 5, 7, 2, 3, 5, 11, 3, 5, 10, 9, 1,…
+$ quarter      &lt;dbl&gt; 1, 2, 3, 4, 4, 1, 2, 2, 3, 1, 1, 2, 4, 1, 2, 4, 3, 1, 2, …
+$ sign         &lt;chr&gt; "negative", "negative", "negative", "positive", "positive…
+$ quintile     &lt;int&gt; 2, 1, 3, 5, 5, 1, 3, 4, 3, 5, 5, 2, 4, 5, 5, 3, 1, 4, 5, …
+$ quantile     &lt;dbl&gt; 2, 1, 3, 11, 11, 6, 3, 4, 3, 5, 11, 2, 10, 11, 11, 9, 7, …</code></pre>
 </div>
 </div>
 <p>The main regression table only compares the bottom quintile to the top quintile. <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span> also specify a number of indicator variables based on year, month, and the size of the firm (adjusted for the average of the logarithm of the size).</p>
@@ -477,9 +502,9 @@ Warning
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">times =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: milliseconds
-   expr      min       lq     mean   median       uq      max neval
-    vol 3.804861 4.469421 5.080400 4.597728 4.737642 10.20916    20
- vol_dt 6.107001 6.637135 7.378563 7.005827 7.196420 13.16127    20</code></pre>
+   expr       min        lq      mean    median        uq      max neval
+    vol  6.350056  7.658087  9.605379  8.458203  8.959253 18.29012    20
+ vol_dt 10.881482 11.872568 14.100758 13.082582 14.847137 27.46113    20</code></pre>
 </div>
 </div>
 <p>We can now use the faster function to calculate the volatility measures with the other control variables.</p>
@@ -593,15 +618,15 @@ The variable 'top' has been removed because of collinearity (see $collin.var).</
   </tr>
   <tr>
    <td style="text-align:left;"> Num.Obs. </td>
-   <td style="text-align:center;"> 22495 </td>
-   <td style="text-align:center;"> 22495 </td>
-   <td style="text-align:center;"> 15655 </td>
+   <td style="text-align:center;"> 22493 </td>
+   <td style="text-align:center;"> 22493 </td>
+   <td style="text-align:center;"> 15653 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> R2 </td>
    <td style="text-align:center;"> 0.086 </td>
-   <td style="text-align:center;"> 0.095 </td>
-   <td style="text-align:center;"> 0.110 </td>
+   <td style="text-align:center;"> 0.096 </td>
+   <td style="text-align:center;"> 0.111 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> R2 Within </td>
@@ -693,7 +718,7 @@ The variable 'top' has been removed because of collinearity (see $collin.var).</
   </tr>
   <tr>
    <td style="text-align:left;"> friday </td>
-   <td style="text-align:center;"> −0.011 </td>
+   <td style="text-align:center;"> −0.012 </td>
    <td style="text-align:center;"> −0.012 </td>
    <td style="text-align:center;"> −0.022 </td>
   </tr>
@@ -717,7 +742,7 @@ The variable 'top' has been removed because of collinearity (see $collin.var).</
   </tr>
   <tr>
    <td style="text-align:left;"> friday × top </td>
-   <td style="text-align:center;"> 0.040** </td>
+   <td style="text-align:center;"> 0.041** </td>
    <td style="text-align:center;"> 0.043** </td>
    <td style="text-align:center;"> 0.052** </td>
   </tr>
@@ -729,9 +754,9 @@ The variable 'top' has been removed because of collinearity (see $collin.var).</
   </tr>
   <tr>
    <td style="text-align:left;"> Num.Obs. </td>
-   <td style="text-align:center;"> 22495 </td>
-   <td style="text-align:center;"> 22495 </td>
-   <td style="text-align:center;"> 15655 </td>
+   <td style="text-align:center;"> 22493 </td>
+   <td style="text-align:center;"> 22493 </td>
+   <td style="text-align:center;"> 15653 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> R2 </td>
@@ -880,10 +905,10 @@ The variable 'top' has been removed because of collinearity (see $collin.var).</
   </tr>
   <tr>
    <td style="text-align:left;"> Num.Obs. </td>
-   <td style="text-align:center;"> 130807 </td>
-   <td style="text-align:center;"> 130807 </td>
-   <td style="text-align:center;"> 130807 </td>
-   <td style="text-align:center;"> 130807 </td>
+   <td style="text-align:center;"> 130796 </td>
+   <td style="text-align:center;"> 130796 </td>
+   <td style="text-align:center;"> 130796 </td>
+   <td style="text-align:center;"> 130796 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> R2 </td>

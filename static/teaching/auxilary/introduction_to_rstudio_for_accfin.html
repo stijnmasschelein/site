@@ -260,6 +260,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../freaky_friday/regressions.html" class="sidebar-item-text sidebar-link">Regressions</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Machine Learning</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/predictions.html" class="sidebar-item-text sidebar-link">Predictions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/theory.html" class="sidebar-item-text sidebar-link">Theory</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">Peer Firms</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -320,17 +350,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2
-──</code></pre>
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>✔ ggplot2 3.4.0     ✔ purrr   1.0.1
-✔ tibble  3.1.8     ✔ dplyr   1.1.0
-✔ tidyr   1.3.0     ✔ stringr 1.5.0
-✔ readr   2.1.3     ✔ forcats 1.0.0
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()</code></pre>
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
 </div>
 <section id="get-the-data" class="level1">
@@ -361,29 +392,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(compensation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 21,855
+<pre><code>Rows: 22,019
 Columns: 22
-$ year                    &lt;dbl&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018…
-$ gvkey                   &lt;chr&gt; "001004", "001004", "001004", "001004", "00100…
-$ cusip                   &lt;chr&gt; "36110", "36110", "36110", "36110", "36110", "…
-$ exec_fullname           &lt;chr&gt; "David P. Storch", "David P. Storch", "David P…
-$ coname                  &lt;chr&gt; "AAR CORP", "AAR CORP", "AAR CORP", "AAR CORP"…
+$ year                    &lt;dbl&gt; 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011…
+$ gvkey                   &lt;chr&gt; "001004", "001045", "001072", "001075", "00107…
+$ cusip                   &lt;chr&gt; "00036110", "02376R10", "00244410", "72348410"…
+$ exec_fullname           &lt;chr&gt; "David P. Storch", "Gerard J. Arpey", "John S.…
+$ coname                  &lt;chr&gt; "AAR CORP", "AMERICAN AIRLINES GROUP INC", "AV…
 $ ceoann                  &lt;chr&gt; "CEO", "CEO", "CEO", "CEO", "CEO", "CEO", "CEO…
-$ execid                  &lt;chr&gt; "09249", "09249", "09249", "09249", "09249", "…
-$ bonus                   &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.00…
-$ salary                  &lt;dbl&gt; 867.000, 877.838, 906.449, 906.449, 755.250, 8…
-$ stock_awards_fv         &lt;dbl&gt; 2664.745, 619.200, 1342.704, 1695.200, 1150.50…
-$ stock_unvest_val        &lt;dbl&gt; 4227.273, 6018.000, 4244.165, 4103.283, 1334.0…
-$ eip_unearn_num          &lt;dbl&gt; 32.681, 56.681, 66.929, 83.415, 91.969, 157.96…
-$ eip_unearn_val          &lt;dbl&gt; 393.806, 1137.021, 1626.375, 2464.079, 2244.96…
-$ option_awards           &lt;dbl&gt; 578.460, 695.520, 1622.016, 0.000, 1150.500, 1…
+$ execid                  &lt;chr&gt; "09249", "14591", "23168", "05835", "18038", "…
+$ bonus                   &lt;dbl&gt; 0.000, 0.000, 60.800, 0.000, 0.000, 0.000, 0.0…
+$ salary                  &lt;dbl&gt; 867.000, 613.842, 794.200, 1091.000, 589.856, …
+$ stock_awards_fv         &lt;dbl&gt; 2664.745, 4020.380, 0.000, 3900.218, 1731.000,…
+$ stock_unvest_val        &lt;dbl&gt; 4227.273, 0.000, 0.000, 4897.112, 0.000, 0.000…
+$ eip_unearn_num          &lt;dbl&gt; 32.681, 0.000, 0.000, 150.107, 0.000, 419.499,…
+$ eip_unearn_val          &lt;dbl&gt; 393.806, 0.000, 0.000, 7232.156, 0.000, 23588.…
+$ option_awards           &lt;dbl&gt; 578.460, 798.600, 304.600, 0.000, 0.000, 1835.…
 $ option_awards_blk_value &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-$ option_awards_num       &lt;dbl&gt; 49.022, 144.000, 158.400, 0.000, 153.810, 225.…
-$ tdc1                    &lt;dbl&gt; 5786.400, 4182.832, 5247.779, 5234.648, 4674.4…
-$ tdc2                    &lt;dbl&gt; 6105.117, 3487.312, 3809.626, 10428.375, 3523.…
-$ shrown_tot_pct          &lt;dbl&gt; 2.964, 2.893, 3.444, 3.877, 4.597, 5.417, 3.71…
-$ becameceo               &lt;date&gt; 1996-10-09, 1996-10-09, 1996-10-09, 1996-10-0…
-$ joined_co               &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ option_awards_num       &lt;dbl&gt; 49.022, 220.000, 100.000, 0.000, 0.000, 294.70…
+$ tdc1                    &lt;dbl&gt; 5786.400, 5526.835, 1691.361, 6697.916, 2805.9…
+$ tdc2                    &lt;dbl&gt; 6105.117, 4728.235, 1386.761, 6697.916, 2805.9…
+$ shrown_tot_pct          &lt;dbl&gt; 2.964, NA, 0.022, 0.035, NA, 0.081, 0.246, 0.0…
+$ becameceo               &lt;date&gt; 1996-10-09, 2003-04-25, 2001-07-01, 2009-04-3…
+$ joined_co               &lt;date&gt; NA, NA, 1981-01-01, 2002-12-01, 1985-01-01, 1…
 $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(compensation, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -393,7 +424,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>gvkeys <span class="ot">&lt;-</span> <span class="fu">unique</span>(compensation<span class="sc">$</span>gvkey)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(gvkeys)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2477</code></pre>
+<pre><code>[1] 2481</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>key_string <span class="ot">&lt;-</span> <span class="fu">paste</span>(gvkeys, <span class="at">collapse =</span> <span class="st">"','"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -408,7 +439,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 49,896
+<pre><code>Rows: 50,044
 Columns: 4
 $ fyear  &lt;dbl&gt; 2011, 2011, 2012, 2013, 2013, 2014, 2014, 2015, 2015, 2016, 201…
 $ gvkey  &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004", "00…
@@ -418,7 +449,7 @@ $ ni     &lt;dbl&gt; 67.723, NA, 55.000, 72.900, 72.900, 10.200, 10.200, 47.700,
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">distinct</span>(value)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 32,911
+<pre><code>Rows: 33,036
 Columns: 4
 $ fyear  &lt;dbl&gt; 2011, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 202…
 $ gvkey  &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004", "00…
@@ -436,29 +467,29 @@ $ ni     &lt;dbl&gt; 67.723, NA, 55.000, 72.900, 10.200, 47.700, 56.500, 15.600,
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>us_comp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>))</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(us_comp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 21,855
+<pre><code>Rows: 22,019
 Columns: 22
-$ year                    &lt;dbl&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018…
-$ gvkey                   &lt;chr&gt; "001004", "001004", "001004", "001004", "00100…
-$ cusip                   &lt;chr&gt; "36110", "36110", "36110", "36110", "36110", "…
-$ exec_fullname           &lt;chr&gt; "David P. Storch", "David P. Storch", "David P…
-$ coname                  &lt;chr&gt; "AAR CORP", "AAR CORP", "AAR CORP", "AAR CORP"…
+$ year                    &lt;dbl&gt; 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011…
+$ gvkey                   &lt;chr&gt; "001004", "001045", "001072", "001075", "00107…
+$ cusip                   &lt;chr&gt; "00036110", "02376R10", "00244410", "72348410"…
+$ exec_fullname           &lt;chr&gt; "David P. Storch", "Gerard J. Arpey", "John S.…
+$ coname                  &lt;chr&gt; "AAR CORP", "AMERICAN AIRLINES GROUP INC", "AV…
 $ ceoann                  &lt;chr&gt; "CEO", "CEO", "CEO", "CEO", "CEO", "CEO", "CEO…
-$ execid                  &lt;chr&gt; "09249", "09249", "09249", "09249", "09249", "…
-$ bonus                   &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.00…
-$ salary                  &lt;dbl&gt; 867.000, 877.838, 906.449, 906.449, 755.250, 8…
-$ stock_awards_fv         &lt;dbl&gt; 2664.745, 619.200, 1342.704, 1695.200, 1150.50…
-$ stock_unvest_val        &lt;dbl&gt; 4227.273, 6018.000, 4244.165, 4103.283, 1334.0…
-$ eip_unearn_num          &lt;dbl&gt; 32.681, 56.681, 66.929, 83.415, 91.969, 157.96…
-$ eip_unearn_val          &lt;dbl&gt; 393.806, 1137.021, 1626.375, 2464.079, 2244.96…
-$ option_awards           &lt;dbl&gt; 578.460, 695.520, 1622.016, 0.000, 1150.500, 1…
+$ execid                  &lt;chr&gt; "09249", "14591", "23168", "05835", "18038", "…
+$ bonus                   &lt;dbl&gt; 0.000, 0.000, 60.800, 0.000, 0.000, 0.000, 0.0…
+$ salary                  &lt;dbl&gt; 867.000, 613.842, 794.200, 1091.000, 589.856, …
+$ stock_awards_fv         &lt;dbl&gt; 2664.745, 4020.380, 0.000, 3900.218, 1731.000,…
+$ stock_unvest_val        &lt;dbl&gt; 4227.273, 0.000, 0.000, 4897.112, 0.000, 0.000…
+$ eip_unearn_num          &lt;dbl&gt; 32.681, 0.000, 0.000, 150.107, 0.000, 419.499,…
+$ eip_unearn_val          &lt;dbl&gt; 393.806, 0.000, 0.000, 7232.156, 0.000, 23588.…
+$ option_awards           &lt;dbl&gt; 578.460, 798.600, 304.600, 0.000, 0.000, 1835.…
 $ option_awards_blk_value &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-$ option_awards_num       &lt;dbl&gt; 49.022, 144.000, 158.400, 0.000, 153.810, 225.…
-$ tdc1                    &lt;dbl&gt; 5786.400, 4182.832, 5247.779, 5234.648, 4674.4…
-$ tdc2                    &lt;dbl&gt; 6105.117, 3487.312, 3809.626, 10428.375, 3523.…
-$ shrown_tot_pct          &lt;dbl&gt; 2.964, 2.893, 3.444, 3.877, 4.597, 5.417, 3.71…
-$ becameceo               &lt;date&gt; 1996-10-09, 1996-10-09, 1996-10-09, 1996-10-0…
-$ joined_co               &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ option_awards_num       &lt;dbl&gt; 49.022, 220.000, 100.000, 0.000, 0.000, 294.70…
+$ tdc1                    &lt;dbl&gt; 5786.400, 5526.835, 1691.361, 6697.916, 2805.9…
+$ tdc2                    &lt;dbl&gt; 6105.117, 4728.235, 1386.761, 6697.916, 2805.9…
+$ shrown_tot_pct          &lt;dbl&gt; 2.964, NA, 0.022, 0.035, NA, 0.081, 0.246, 0.0…
+$ becameceo               &lt;date&gt; 1996-10-09, 2003-04-25, 2001-07-01, 2009-04-3…
+$ joined_co               &lt;date&gt; NA, NA, 1981-01-01, 2002-12-01, 1985-01-01, 1…
 $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
 </div>
 </div>
@@ -466,47 +497,48 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, gvkey <span class="sc">==</span> <span class="st">"001004"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 11 × 22
-    year gvkey  cusip exec_f…¹ coname ceoann execid bonus salary stock…² stock…³
-   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1  2011 001004 36110 David P… AAR C… CEO    09249      0   867    2665.  4227. 
- 2  2012 001004 36110 David P… AAR C… CEO    09249      0   878.    619.  6018  
- 3  2013 001004 36110 David P… AAR C… CEO    09249      0   906.   1343.  4244. 
- 4  2014 001004 36110 David P… AAR C… CEO    09249      0   906.   1695.  4103. 
- 5  2015 001004 36110 David P… AAR C… CEO    09249      0   755.   1150.  1334. 
- 6  2016 001004 36110 David P… AAR C… CEO    09249      0   835    1584   1029. 
- 7  2017 001004 36110 David P… AAR C… CEO    09249      0   941    1692.   845. 
- 8  2018 001004 36110 John Mc… AAR C… CEO    48195      0   750    1125.    30.1
- 9  2019 001004 36110 John Mc… AAR C… CEO    48195      0   801.   1300.     0  
-10  2020 001004 36110 John Mc… AAR C… CEO    48195      0   781.      0      0  
-11  2021 001004 36110 John Mc… AAR C… CEO    48195      0   925    8302.  7361. 
-# … with 11 more variables: eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;,
-#   option_awards &lt;dbl&gt;, option_awards_blk_value &lt;dbl&gt;,
-#   option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;, tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;,
-#   becameceo &lt;date&gt;, joined_co &lt;date&gt;, reason &lt;chr&gt;, and abbreviated variable
-#   names ¹​exec_fullname, ²​stock_awards_fv, ³​stock_unvest_val</code></pre>
+    year gvkey  cusip    exec_fullname         coname ceoann execid bonus salary
+   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;                 &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1  2011 001004 00036110 David P. Storch       AAR C… CEO    09249      0   867 
+ 2  2012 001004 00036110 David P. Storch       AAR C… CEO    09249      0   878.
+ 3  2013 001004 00036110 David P. Storch       AAR C… CEO    09249      0   906.
+ 4  2014 001004 00036110 David P. Storch       AAR C… CEO    09249      0   906.
+ 5  2015 001004 00036110 David P. Storch       AAR C… CEO    09249      0   755.
+ 6  2016 001004 00036110 David P. Storch       AAR C… CEO    09249      0   835 
+ 7  2017 001004 00036110 David P. Storch       AAR C… CEO    09249      0   941 
+ 8  2018 001004 00036110 John McClain Holmes,… AAR C… CEO    48195      0   750 
+ 9  2019 001004 00036110 John McClain Holmes,… AAR C… CEO    48195      0   801.
+10  2020 001004 00036110 John McClain Holmes,… AAR C… CEO    48195      0   781.
+11  2021 001004 00036110 John McClain Holmes,… AAR C… CEO    48195      0   925 
+# ℹ 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
+#   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
+#   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
+#   tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;, becameceo &lt;date&gt;, joined_co &lt;date&gt;,
+#   reason &lt;chr&gt;</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, bonus <span class="sc">==</span> <span class="dv">0</span>, year <span class="sc">==</span> <span class="dv">2012</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,669 × 22
-    year gvkey  cusip  exec_…¹ coname ceoann execid bonus salary stock…² stock…³
-   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1  2012 001004 36110  David … AAR C… CEO    09249      0   878.    619.   6018 
- 2  2012 001045 02376… Thomas… AMERI… CEO    26059      0   618.      0     310.
- 3  2012 001075 72348… Donald… PINNA… CEO    05835      0  1146    7100.   9056.
- 4  2012 001076 74319… Ronald… PROG … CEO    00283      0   850    2489    3210.
- 5  2012 001078 282410 Miles … ABBOT… CEO    14300      0  1900    9429.      0 
- 6  2012 001094 444610 Albert… ACETO… CEO    46204      0   626.      0     322.
- 7  2012 001161 790310 Rory P… ADVAN… CEO    42390      0  1000.   3745.   1710.
- 8  2012 001177 00817… Mark T… AETNA… CEO    31029      0   977.  11125.   9977.
- 9  2012 001209 915810 John E… AIR P… CEO    27315      0  1200    3600.  10452.
-10  2012 001230 11659… Bradle… ALASK… CEO    21308      0   420.   2579.   1689.
-# … with 1,659 more rows, 11 more variables: eip_unearn_num &lt;dbl&gt;,
-#   eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;, option_awards_blk_value &lt;dbl&gt;,
-#   option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;, tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;,
-#   becameceo &lt;date&gt;, joined_co &lt;date&gt;, reason &lt;chr&gt;, and abbreviated variable
-#   names ¹​exec_fullname, ²​stock_awards_fv, ³​stock_unvest_val</code></pre>
+<pre><code># A tibble: 1,671 × 22
+    year gvkey  cusip    exec_fullname         coname ceoann execid bonus salary
+   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;                 &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1  2012 001004 00036110 David P. Storch       AAR C… CEO    09249      0   878.
+ 2  2012 001045 02376R10 Thomas W. Horton      AMERI… CEO    26059      0   618.
+ 3  2012 001075 72348410 Donald E. Brandt, CPA PINNA… CEO    05835      0  1146 
+ 4  2012 001076 74319R10 Ronald W. Allen       PROG … CEO    00283      0   850 
+ 5  2012 001078 00282410 Miles D. White, M.B.… ABBOT… CEO    14300      0  1900 
+ 6  2012 001094 00444610 Albert L. Eilender    ACETO… CEO    46204      0   626.
+ 7  2012 001161 00790310 Rory P. Read          ADVAN… CEO    42390      0  1000.
+ 8  2012 001177 00817Y10 Mark Thomas Bertolini AETNA… CEO    31029      0   977.
+ 9  2012 001209 00915810 John E. McGlade       AIR P… CEO    27315      0  1200 
+10  2012 001230 01165910 Bradley D. Tilden     ALASK… CEO    21308      0   420.
+# ℹ 1,661 more rows
+# ℹ 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
+#   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
+#   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
+#   tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;, becameceo &lt;date&gt;, joined_co &lt;date&gt;,
+#   reason &lt;chr&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -521,46 +553,46 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"gamestop"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 11 × 22
-    year gvkey  cusip  exec_…¹ coname ceoann execid bonus salary stock…² stock…³
-   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1  2011 145049 36467… J. Pau… GAMES… CEO    35719  2254.  1028.   1042.   2408.
- 2  2012 145049 36467… J. Pau… GAMES… CEO    35719  1515   1050.   7164.   3573.
- 3  2013 145049 36467… J. Pau… GAMES… CEO    35719   975   1059.      0    4773.
- 4  2014 145049 36467… J. Pau… GAMES… CEO    35719     0   1201.      0    4464.
- 5  2015 145049 36467… J. Pau… GAMES… CEO    35719     0   1247.   5002.   3381.
- 6  2016 145049 36467… J. Pau… GAMES… CEO    35719     0   1285.   4500.   3281.
- 7  2017 145049 36467… J. Pau… GAMES… CEO    35719     0   1293.   4500.   3135.
- 8  2018 145049 36467… Shane … GAMES… CEO    56940    25    963.   1500.   1184.
- 9  2019 145049 36467… George… GAMES… CEO    46080   150    846.  10500.   2255.
-10  2020 145049 36467… George… GAMES… CEO    46080     0   1005.   6120. 428003.
-11  2021 145049 36467… Matthe… GAMES… CEO    61979  1595.   115.  14852.   7116.
-# … with 11 more variables: eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;,
-#   option_awards &lt;dbl&gt;, option_awards_blk_value &lt;dbl&gt;,
-#   option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;, tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;,
-#   becameceo &lt;date&gt;, joined_co &lt;date&gt;, reason &lt;chr&gt;, and abbreviated variable
-#   names ¹​exec_fullname, ²​stock_awards_fv, ³​stock_unvest_val</code></pre>
+    year gvkey  cusip    exec_fullname     coname     ceoann execid bonus salary
+   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;             &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1  2011 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  2254.  1028.
+ 2  2012 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  1515   1050.
+ 3  2013 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719   975   1059.
+ 4  2014 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1201.
+ 5  2015 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1247.
+ 6  2016 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1285.
+ 7  2017 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1293.
+ 8  2018 145049 36467W10 Shane S. Kim      GAMESTOP … CEO    56940    25    963.
+ 9  2019 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080   150    846.
+10  2020 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080     0   1005.
+11  2021 145049 36467W10 Matthew Furlong   GAMESTOP … CEO    61979  1595.   115.
+# ℹ 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
+#   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
+#   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
+#   tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;, becameceo &lt;date&gt;, joined_co &lt;date&gt;,
+#   reason &lt;chr&gt;</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, gvkey <span class="sc">==</span> <span class="st">"145049"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 11 × 22
-    year gvkey  cusip  exec_…¹ coname ceoann execid bonus salary stock…² stock…³
-   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1  2011 145049 36467… J. Pau… GAMES… CEO    35719  2254.  1028.   1042.   2408.
- 2  2012 145049 36467… J. Pau… GAMES… CEO    35719  1515   1050.   7164.   3573.
- 3  2013 145049 36467… J. Pau… GAMES… CEO    35719   975   1059.      0    4773.
- 4  2014 145049 36467… J. Pau… GAMES… CEO    35719     0   1201.      0    4464.
- 5  2015 145049 36467… J. Pau… GAMES… CEO    35719     0   1247.   5002.   3381.
- 6  2016 145049 36467… J. Pau… GAMES… CEO    35719     0   1285.   4500.   3281.
- 7  2017 145049 36467… J. Pau… GAMES… CEO    35719     0   1293.   4500.   3135.
- 8  2018 145049 36467… Shane … GAMES… CEO    56940    25    963.   1500.   1184.
- 9  2019 145049 36467… George… GAMES… CEO    46080   150    846.  10500.   2255.
-10  2020 145049 36467… George… GAMES… CEO    46080     0   1005.   6120. 428003.
-11  2021 145049 36467… Matthe… GAMES… CEO    61979  1595.   115.  14852.   7116.
-# … with 11 more variables: eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;,
-#   option_awards &lt;dbl&gt;, option_awards_blk_value &lt;dbl&gt;,
-#   option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;, tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;,
-#   becameceo &lt;date&gt;, joined_co &lt;date&gt;, reason &lt;chr&gt;, and abbreviated variable
-#   names ¹​exec_fullname, ²​stock_awards_fv, ³​stock_unvest_val</code></pre>
+    year gvkey  cusip    exec_fullname     coname     ceoann execid bonus salary
+   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;             &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1  2011 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  2254.  1028.
+ 2  2012 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  1515   1050.
+ 3  2013 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719   975   1059.
+ 4  2014 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1201.
+ 5  2015 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1247.
+ 6  2016 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1285.
+ 7  2017 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1293.
+ 8  2018 145049 36467W10 Shane S. Kim      GAMESTOP … CEO    56940    25    963.
+ 9  2019 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080   150    846.
+10  2020 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080     0   1005.
+11  2021 145049 36467W10 Matthew Furlong   GAMESTOP … CEO    61979  1595.   115.
+# ℹ 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
+#   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
+#   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
+#   tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;, becameceo &lt;date&gt;, joined_co &lt;date&gt;,
+#   reason &lt;chr&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -569,20 +601,20 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(us_comp, year, coname, bonus, salary, <span class="at">total =</span> tdc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 21,855 × 5
-    year coname   bonus salary total
-   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
- 1  2011 AAR CORP     0   867  5786.
- 2  2012 AAR CORP     0   878. 4183.
- 3  2013 AAR CORP     0   906. 5248.
- 4  2014 AAR CORP     0   906. 5235.
- 5  2015 AAR CORP     0   755. 4674.
- 6  2016 AAR CORP     0   835  6073.
- 7  2017 AAR CORP     0   941  6284.
- 8  2018 AAR CORP     0   750  3344.
- 9  2019 AAR CORP     0   801. 4736.
-10  2020 AAR CORP     0   781. 4123.
-# … with 21,845 more rows</code></pre>
+<pre><code># A tibble: 22,019 × 5
+    year coname                       bonus salary  total
+   &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1  2011 AAR CORP                       0     867   5786.
+ 2  2011 AMERICAN AIRLINES GROUP INC    0     614.  5527.
+ 3  2011 AVX CORP                      60.8   794.  1691.
+ 4  2011 PINNACLE WEST CAPITAL CORP     0    1091   6698.
+ 5  2011 PROG HOLDINGS INC              0     590.  2806.
+ 6  2011 ABBOTT LABORATORIES            0    1900  18592.
+ 7  2011 ACETO CORP                     0     492.  1307.
+ 8  2011 ADVANCED MICRO DEVICES       746     566.  3784.
+ 9  2011 AETNA INC                      0    1000  10551.
+10  2011 AIR PRODUCTS &amp; CHEMICALS INC   0    1200  11384.
+# ℹ 22,009 more rows</code></pre>
 </div>
 </div>
 <p>We first build up the dataset with <code>select</code> and <code>mutate</code> and the pipe <code>%&gt;%</code>. When we are satisfied with the result, we can save the dataset as an R object with the name <code>us_comp_small</code>.</p>
@@ -593,20 +625,20 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">salary_percentage =</span> salary<span class="sc">/</span>total)</span>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(us_comp_small)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 21,855 × 6
-    year coname   bonus salary total salary_percentage
-   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;             &lt;dbl&gt;
- 1  2011 AAR CORP     0   867  5786.             0.150
- 2  2012 AAR CORP     0   878. 4183.             0.210
- 3  2013 AAR CORP     0   906. 5248.             0.173
- 4  2014 AAR CORP     0   906. 5235.             0.173
- 5  2015 AAR CORP     0   755. 4674.             0.162
- 6  2016 AAR CORP     0   835  6073.             0.138
- 7  2017 AAR CORP     0   941  6284.             0.150
- 8  2018 AAR CORP     0   750  3344.             0.224
- 9  2019 AAR CORP     0   801. 4736.             0.169
-10  2020 AAR CORP     0   781. 4123.             0.189
-# … with 21,845 more rows</code></pre>
+<pre><code># A tibble: 22,019 × 6
+    year coname                       bonus salary  total salary_percentage
+   &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;             &lt;dbl&gt;
+ 1  2011 AAR CORP                       0     867   5786.            0.150 
+ 2  2011 AMERICAN AIRLINES GROUP INC    0     614.  5527.            0.111 
+ 3  2011 AVX CORP                      60.8   794.  1691.            0.470 
+ 4  2011 PINNACLE WEST CAPITAL CORP     0    1091   6698.            0.163 
+ 5  2011 PROG HOLDINGS INC              0     590.  2806.            0.210 
+ 6  2011 ABBOTT LABORATORIES            0    1900  18592.            0.102 
+ 7  2011 ACETO CORP                     0     492.  1307.            0.376 
+ 8  2011 ADVANCED MICRO DEVICES       746     566.  3784.            0.150 
+ 9  2011 AETNA INC                      0    1000  10551.            0.0948
+10  2011 AIR PRODUCTS &amp; CHEMICALS INC   0    1200  11384.            0.105 
+# ℹ 22,009 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -623,7 +655,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(med <span class="sc">&gt;</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 573 × 8
+<pre><code># A tibble: 576 × 8
    gvkey      N N_CEO average    sd   med   min   max
    &lt;chr&gt;  &lt;int&gt; &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
  1 001075    11     2   1230. 109.  1240  1091  1395 
@@ -636,7 +668,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
  8 001440    11     2   1324. 176.  1325.  903. 1522.
  9 001447    11     2   1821. 257.  2000  1488. 2038.
 10 001449    11     1   1437.  12.7 1441. 1399. 1441.
-# … with 563 more rows</code></pre>
+# ℹ 566 more rows</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -649,7 +681,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 <span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">.by =</span> gvkey) <span class="sc">%&gt;%</span></span>
 <span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(med <span class="sc">&gt;</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 573 × 8
+<pre><code># A tibble: 576 × 8
    gvkey      N N_CEO average    sd   med   min   max
    &lt;chr&gt;  &lt;int&gt; &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
  1 001075    11     2   1230. 109.  1240  1091  1395 
@@ -662,7 +694,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
  8 001440    11     2   1324. 176.  1325.  903. 1522.
  9 001447    11     2   1821. 257.  2000  1488. 2038.
 10 001449    11     1   1437.  12.7 1441. 1399. 1441.
-# … with 563 more rows</code></pre>
+# ℹ 566 more rows</code></pre>
 </div>
 </div>
 

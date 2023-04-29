@@ -286,6 +286,31 @@ div.csl-indent {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Machine Learning</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/predictions.html" class="sidebar-item-text sidebar-link">Predictions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/theory.html" class="sidebar-item-text sidebar-link">Theory</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">Peer Firms</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -335,9 +360,9 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.1     ✔ readr     2.1.4
+✔ dplyr     1.1.2     ✔ readr     2.1.4
 ✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.1     ✔ tibble    3.2.1
+✔ ggplot2   3.4.2     ✔ tibble    3.2.1
 ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
 ✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -347,11 +372,11 @@ div.csl-indent {
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/download_data.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dtplyr)</span>
@@ -396,16 +421,16 @@ div.csl-indent {
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,046,677
 Columns: 10
-$ ticker      &lt;chr&gt; "AA", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "AA"…
-$ cusip       &lt;chr&gt; "02224910", "0039241X", "0039241X", "0039241X", "0039241X"…
+$ ticker      &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2"…
+$ cusip       &lt;chr&gt; "0039241X", "0039241X", "0039241X", "0039241X", "0039241X"…
 $ fpi         &lt;chr&gt; "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6"…
-$ anndats     &lt;date&gt; 1995-04-07, 2005-07-27, 2005-07-27, 2005-07-27, 2005-08-1…
-$ revdats     &lt;date&gt; 1995-04-07, 2005-07-29, 2005-10-24, 2005-08-08, 2005-08-1…
-$ pdf         &lt;chr&gt; "P", "D", "D", "D", "D", "D", "D", "D", "D", "P", "P", "D"…
-$ value       &lt;dbl&gt; 0.6300, -0.0571, -0.1400, 0.0082, 0.0331, -0.1013, 0.0300,…
-$ anndats_act &lt;date&gt; 1995-04-07, 2005-10-26, 2005-10-26, 2005-10-26, 2005-10-2…
-$ actual      &lt;dbl&gt; 0.8100, -0.0700, -0.0700, -0.0700, -0.0700, -0.0700, -0.07…
-$ analys      &lt;dbl&gt; 18096, 44775, 478, 5469, 87125, 43594, 87125, 87125, 44775…</code></pre>
+$ anndats     &lt;date&gt; 2005-01-03, 2005-01-20, 2005-01-26, 2005-01-26, 2005-01-2…
+$ revdats     &lt;date&gt; 2005-01-10, 2005-01-26, 2005-01-27, 2005-01-27, 2005-04-1…
+$ pdf         &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"…
+$ value       &lt;dbl&gt; -0.0654, -0.1139, -0.1000, -0.0900, -0.0900, -0.0323, -0.0…
+$ anndats_act &lt;date&gt; 2005-01-26, 2005-01-26, 2005-04-27, 2005-04-27, 2005-04-2…
+$ actual      &lt;dbl&gt; -0.110, -0.110, -0.110, -0.110, -0.110, -0.110, -0.110, -0…
+$ analys      &lt;dbl&gt; 44775, 43594, 84303, 478, 87125, 43594, 5469, 44775, 43594…</code></pre>
 </div>
 </div>
 </section>
@@ -449,38 +474,39 @@ $ gvkey &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004", 
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ticker, gvkey, permno, cusip) <span class="sc">%&gt;%</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cusip =</span> <span class="fu">str_sub</span>(cusip, <span class="at">end =</span> <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>earn_ann <span class="ot">&lt;-</span> ann_ibes <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(ticker, actual, pdf, cusip, anndats_act) <span class="sc">%&gt;%</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cusip =</span> <span class="fu">str_sub</span>(cusip, <span class="at">end =</span> <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(simple_link, <span class="at">by =</span> <span class="fu">join_by</span>(ticker)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gvkey), <span class="sc">!</span>(cusip.x <span class="sc">!=</span> cusip.y)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">"cusip"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">anndat_begin =</span> anndats_act <span class="sc">-</span> <span class="dv">5</span>, <span class="at">anndat_end =</span> anndats_act <span class="sc">+</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(ann_compu, <span class="at">by =</span> <span class="fu">join_by</span>(gvkey <span class="sc">==</span> gvkey,</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>                                    anndat_begin <span class="sc">&lt;=</span> rdq,  anndat_end <span class="sc">&gt;=</span> rdq)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(rdq)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">anndat =</span> <span class="fu">pmin</span>(anndats_act, rdq)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>anndat_begin, <span class="sc">-</span>anndat_end)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>earn_ann <span class="ot">&lt;-</span> ann_ibes <span class="sc">%&gt;%</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(ticker, actual, pdf, cusip, anndats_act) <span class="sc">%&gt;%</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cusip =</span> <span class="fu">str_sub</span>(cusip, <span class="at">end =</span> <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(simple_link, <span class="at">by =</span> <span class="fu">join_by</span>(ticker)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gvkey), <span class="sc">!</span>(cusip.x <span class="sc">!=</span> cusip.y)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">"cusip"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">anndat_begin =</span> anndats_act <span class="sc">-</span> <span class="dv">5</span>, <span class="at">anndat_end =</span> anndats_act <span class="sc">+</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(ann_compu, <span class="at">by =</span> <span class="fu">join_by</span>(gvkey <span class="sc">==</span> gvkey,</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>                                    anndat_begin <span class="sc">&lt;=</span> rdq,  anndat_end <span class="sc">&gt;=</span> rdq)) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(rdq)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">anndat =</span> <span class="fu">pmin</span>(anndats_act, rdq)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>anndat_begin, <span class="sc">-</span>anndat_end)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in left_join(., simple_link, by = join_by(ticker)): Detected an unexpected many-to-many relationship between `x` and `y`.
-ℹ Row 104 of `x` matches multiple rows in `y`.
-ℹ Row 11208 of `y` matches multiple rows in `x`.
+ℹ Row 301 of `x` matches multiple rows in `y`.
+ℹ Row 34 of `y` matches multiple rows in `x`.
 ℹ If a many-to-many relationship is expected, set `relationship =
   "many-to-many"` to silence this warning.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(earn_ann, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"earn_ann.RDS"</span>))</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(earn_ann)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 154,540
+<pre><code>Rows: 154,507
 Columns: 9
-$ ticker      &lt;chr&gt; "A2", "A2", "A2", "A2", "AA0A", "A2", "AA0A", "AA0A", "AA0…
-$ actual      &lt;dbl&gt; -0.0700, -0.1100, -0.1100, -0.0500, 0.1067, -0.0800, 0.110…
+$ ticker      &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "AA0G", "A2", "AA0G", "AA1N"…
+$ actual      &lt;dbl&gt; -0.110, -0.110, -0.050, -0.070, -0.040, -0.410, -0.080, -0…
 $ pdf         &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"…
-$ anndats_act &lt;date&gt; 2005-10-26, 2005-01-26, 2005-04-27, 2005-07-27, 2003-05-0…
-$ gvkey       &lt;chr&gt; "001081", "001081", "001081", "001081", "001094", "001081"…
-$ permno      &lt;dbl&gt; 10560, 10560, 10560, 10560, 10656, 10560, 10656, 10656, 10…
-$ cusip       &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00444610"…
-$ rdq         &lt;date&gt; 2005-10-26, 2005-01-26, 2005-04-27, 2005-07-27, 2003-05-0…
-$ anndat      &lt;date&gt; 2005-10-26, 2005-01-26, 2005-04-27, 2005-07-27, 2003-05-0…</code></pre>
+$ anndats_act &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-2…
+$ gvkey       &lt;chr&gt; "001081", "001081", "001081", "001081", "001081", "133724"…
+$ permno      &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 88784, 10560, 88784, 84…
+$ cusip       &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00392410"…
+$ rdq         &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-2…
+$ anndat      &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-2…</code></pre>
 </div>
 </div>
 <p><code>earn_ann</code> serves as a linking table to match different earnings announcements (as opposed to firms and their securities in <code>linking_table</code>)</p>
@@ -531,7 +557,7 @@ $ anndat      &lt;date&gt; 2005-10-26, 2005-01-26, 2005-04-27, 2005-07-27, 2003-
 </tbody>
 </table>
 <p><code>anndat</code> is the validated way of calculating the announcement date. However, we need to keep the other dates around because we will need them to link back to the original databases.</p>
-<p>The paper states that they have 154,051 earnings announcements <span class="citation" data-cites="dellavigna2009">(<a href="#ref-dellavigna2009" role="doc-biblioref">Dellavigna and Pollet 2009</a>)</span>. We have 154540 earnings announcements.</p>
+<p>The paper states that they have 154,051 earnings announcements <span class="citation" data-cites="dellavigna2009">(<a href="#ref-dellavigna2009" role="doc-biblioref">Dellavigna and Pollet 2009</a>)</span>. We have 154507 earnings announcements.</p>
 </section>
 </section>
 <section id="analyst-expectations" class="level1">
@@ -560,7 +586,7 @@ override using the `.groups` argument.</code></pre>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(analyst, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"analyst.RDS"</span>))</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(analyst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 133,129
+<pre><code>Rows: 133,118
 Columns: 8
 $ ticker    &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "AA0A", "AA0A", "A…
 $ anndat    &lt;date&gt; 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26,…

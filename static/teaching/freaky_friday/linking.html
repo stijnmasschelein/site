@@ -267,6 +267,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Machine Learning</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/predictions.html" class="sidebar-item-text sidebar-link">Predictions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/theory.html" class="sidebar-item-text sidebar-link">Theory</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">Peer Firms</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -317,9 +342,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.1     ✔ readr     2.1.4
+✔ dplyr     1.1.2     ✔ readr     2.1.4
 ✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.1     ✔ tibble    3.2.1
+✔ ggplot2   3.4.2     ✔ tibble    3.2.1
 ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
 ✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -329,11 +354,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/linking.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 </div>
 <section id="read-the-data" class="level1">
@@ -404,7 +429,7 @@ $ last_date_ibes  &lt;date&gt; 2014-03-20, 2020-10-15, 2014-06-19, 2014-02-20, 2
 <pre><code># A tibble: 1 × 2
   ibtic cusip
   &lt;int&gt; &lt;int&gt;
-1 27100 26644</code></pre>
+1 27102 26646</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ibes_compu <span class="sc">%&gt;%</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">lcusip =</span> <span class="fu">str_length</span>(cusip)) <span class="sc">%&gt;%</span></span>
@@ -413,14 +438,14 @@ $ last_date_ibes  &lt;date&gt; 2014-03-20, 2020-10-15, 2014-06-19, 2014-02-20, 2
 <pre><code># A tibble: 1 × 2
   lcusip     N
    &lt;int&gt; &lt;int&gt;
-1      9 28638</code></pre>
+1      9 28641</code></pre>
 </div>
 </div>
 <p>At this point, I decided that the best approach is to stick with the <code>ibes_compu</code> dataset to match I/B/E/S and Compustat data. I also checked the overlap between the two linking databases and it’s decent. About 19000 of the 22000 unique identifiers in <code>ibes_id</code> are in the <code>ibes_compu</code> dataset.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ibes_compu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 28,638
+<pre><code>Rows: 28,641
 Columns: 15
 $ tic     &lt;chr&gt; "AMFD.", "ANTQ", "AIR", "ABSI.1", "ACSE", "ADCT.1", "AELNA", "…
 $ gvkey   &lt;chr&gt; "001001", "001003", "001004", "001009", "001011", "001013", "0…
@@ -440,7 +465,7 @@ $ dldtei  &lt;date&gt; 1986-07-31, 2017-10-12, NA, 2007-02-15, 1995-10-31, 2010-
 </div>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unique</span>(ibes_clean<span class="sc">$</span>ticker) <span class="sc">%in%</span> <span class="fu">unique</span>(ibes_compu<span class="sc">$</span>ibtic))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 19050</code></pre>
+<pre><code>[1] 19051</code></pre>
 </div>
 </div>
 <p>The reason why I leave this false trail in is that is typically what happens when you are working on a bigger data project. You need to interrogate the data to check who reliable the data is and to be aware of its shortcomings.</p>
@@ -512,7 +537,7 @@ $ enddt  &lt;date&gt; 1978-06-30, 1986-07-31, 1973-06-05, 1989-08-16, NA, 1983-0
   "many-to-many"` to silence this warning.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 24,234 × 7
+<pre><code># A tibble: 24,235 × 7
    gvkey  ticker isin         cusip     permno start_date end_date  
    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;date&gt;     &lt;date&gt;    
  1 001001 AMFD   US0001651001 000165100  10015 1983-09-20 1986-07-31
@@ -525,11 +550,11 @@ $ enddt  &lt;date&gt; 1978-06-30, 1986-07-31, 1973-06-05, 1989-08-16, NA, 1983-0
  8 001020 AFGN   &lt;NA&gt;         001054931  68806 1972-12-14 1988-04-05
  9 001021 AFPC   US0010582056 001058205  10218 1980-10-14 1999-03-19
 10 001023 AGS    US0012401008 001240100  66755 1982-06-09 1988-10-05
-# ℹ 24,224 more rows</code></pre>
+# ℹ 24,225 more rows</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(linking_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 24,234
+<pre><code>Rows: 24,235
 Columns: 7
 $ gvkey      &lt;chr&gt; "001001", "001003", "001004", "001009", "001011", "001013",…
 $ ticker     &lt;chr&gt; "AMFD", "ANTQ", "AIR", "ABSI", "ACSE", "ADCT", "AELN", "AFG…
