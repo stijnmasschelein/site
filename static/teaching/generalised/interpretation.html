@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stijn Masschelein">
+
+<title>Method Package - Interpretation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar docked fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Interpretation</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Method Package</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Introduction</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../method_package.html" class="sidebar-item-text sidebar-link">Content</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../auxilary/introduction_to_rstudio_for_accfin.html" class="sidebar-item-text sidebar-link">Introduction to Rstudio for Accounting and Finance</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Slides</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides1.html" class="sidebar-item-text sidebar-link">Introduction to Research Methods in Finance and Accounting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides2.html" class="sidebar-item-text sidebar-link">Simulations, Regressions, and Significance</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides3.html" class="sidebar-item-text sidebar-link">Control Variables</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides4.html" class="sidebar-item-text sidebar-link">Research Design 1: Fixed Effects and Instrumental Variables</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides5.html" class="sidebar-item-text sidebar-link">Research Design 2: Event Studies and Difference-in-Difference</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Friday Earnings Announcements</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/index.html" class="sidebar-item-text sidebar-link">Research Design</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/download_linking.html" class="sidebar-item-text sidebar-link">WRDS linking data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/linking.html" class="sidebar-item-text sidebar-link">Combining databases</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/download_data.html" class="sidebar-item-text sidebar-link">Earnings announcements</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/download_stocks.html" class="sidebar-item-text sidebar-link">Stock price data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/abnormal_returns.html" class="sidebar-item-text sidebar-link">Abnormal returns</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/descriptive.html" class="sidebar-item-text sidebar-link">Descriptive statistics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/regressions.html" class="sidebar-item-text sidebar-link">Regressions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Machine Learning</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/predictions.html" class="sidebar-item-text sidebar-link">Predictions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/theory.html" class="sidebar-item-text sidebar-link">Theory</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">Peer Firms</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Generalised Linear Models</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/introduction.html" class="sidebar-item-text sidebar-link">Introduction and Theory</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Interpretation</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Stijn Masschelein </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'cowplot'
+
+The following object is masked from 'package:lubridate':
+
+    stamp</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fixest)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>(<span class="at">font_size =</span> <span class="dv">18</span>))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"generalised/introduction.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+</div>
+</div>
+</section>
+<section id="interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
+<section id="the-problem" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem">The problem</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1001</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>interpretation <span class="ot">&lt;-</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y1 =</span> <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">y2 =</span> <span class="fu">plogis</span>(<span class="sc">+</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>interpretation <span class="sc">%&gt;%</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(y1, y2)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> value, <span class="at">x =</span> x,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">colour =</span> name)) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="interpretation_files/figure-html/interpretation-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>y1_effect <span class="ot">&lt;-</span> <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">1</span>) <span class="sc">-</span> <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">0</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>y2_effect <span class="ot">&lt;-</span> <span class="fu">plogis</span>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">1</span>) <span class="sc">-</span> <span class="fu">plogis</span>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">0</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">c</span>(y1_effect, y2_effect))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6118557 0.1125101</code></pre>
+</div>
+</div>
+<ul>
+<li>Are we trying to predict (<span class="math inline">\(\hat{y}\)</span>) or are we trying to estimate (<span class="math inline">\(\hat{\beta}\)</span>)</li>
+<li>Which scale are we really interested in?</li>
+<li>Even the value of the intercept matters and that spells trouble for fixed effects.</li>
+</ul>
+</section>
+<section id="the-solutions" class="level3">
+<h3 class="anchored" data-anchor-id="the-solutions">The solutions</h3>
+<p>The solution if we are interested in the effect on the probability scale.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>solutions <span class="ot">&lt;-</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fl">0.5</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y1 =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x)),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y2 =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fu">plogis</span>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x)))</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>solutions <span class="sc">%&gt;%</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(y1, y2), mean), <span class="at">.by =</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+      x    y1    y2
+  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     0 0.126 0.850
+2     1 0.728 0.994</code></pre>
+</div>
+</div>
+<section id="linear-model" class="level4">
+<h4 class="anchored" data-anchor-id="linear-model">Linear model</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ols <span class="ot">&lt;-</span> <span class="fu">feols</span>(y1 <span class="sc">~</span> x, <span class="at">data =</span> solutions, <span class="at">se =</span> <span class="st">"hetero"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> x, <span class="at">data =</span> solutions, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>probit <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> x, <span class="at">data =</span> solutions, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(ols, logit, probit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> &nbsp;(1) </th>
+   <th style="text-align:center;"> &nbsp;&nbsp;(2) </th>
+   <th style="text-align:center;"> &nbsp;&nbsp;(3) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:center;"> 0.126 </td>
+   <td style="text-align:center;"> −1.937 </td>
+   <td style="text-align:center;"> −1.146 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.015) </td>
+   <td style="text-align:center;"> (0.134) </td>
+   <td style="text-align:center;"> (0.071) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x </td>
+   <td style="text-align:center;"> 0.602 </td>
+   <td style="text-align:center;"> 2.922 </td>
+   <td style="text-align:center;"> 1.753 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.025) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.168) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.093) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 1001 </td>
+   <td style="text-align:center;"> 1001 </td>
+   <td style="text-align:center;"> 1001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 </td>
+   <td style="text-align:center;"> 0.371 </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 Adj. </td>
+   <td style="text-align:center;"> 0.371 </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AIC </td>
+   <td style="text-align:center;"> 967.9 </td>
+   <td style="text-align:center;"> 965.6 </td>
+   <td style="text-align:center;"> 965.6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BIC </td>
+   <td style="text-align:center;"> 977.7 </td>
+   <td style="text-align:center;"> 975.4 </td>
+   <td style="text-align:center;"> 975.4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Log.Lik. </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> −480.798 </td>
+   <td style="text-align:center;"> −480.798 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> 303.661 </td>
+   <td style="text-align:center;"> 352.899 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> RMSE </td>
+   <td style="text-align:center;"> 0.39 </td>
+   <td style="text-align:center;"> 0.39 </td>
+   <td style="text-align:center;"> 0.39 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Std.Errors </td>
+   <td style="text-align:center;"> Heteroskedasticity-robust </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
+<section id="marginal-effects" class="level4">
+<h4 class="anchored" data-anchor-id="marginal-effects">Marginal Effects</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>solutions <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">predictions =</span> <span class="fu">fitted</span>(logit)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(predictions), <span class="at">.by =</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+      x  mean
+  &lt;int&gt; &lt;dbl&gt;
+1     0 0.126
+2     1 0.728</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sol_controls <span class="ot">&lt;-</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fl">0.5</span>),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">control =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>), N, <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> control)))</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>logit_controls <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x <span class="sc">+</span> control, <span class="at">data =</span> sol_controls,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit))</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>sol_controls <span class="sc">%&gt;%</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">predictions =</span> <span class="fu">fitted</span>(logit_controls)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prob =</span> <span class="fu">mean</span>(predictions), <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(x, control)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">values_from =</span> <span class="fu">c</span>(prob, n), <span class="at">names_from =</span> x) <span class="sc">%&gt;%</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">effect =</span> prob_1 <span class="sc">-</span> prob_0, <span class="at">n =</span> n_1 <span class="sc">+</span> n_0) <span class="sc">%&gt;%</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">AME =</span> <span class="fu">sum</span>(effect <span class="sc">*</span> n)<span class="sc">/</span><span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  control prob_0 prob_1   n_0   n_1 effect     n
+    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;int&gt;
+1       1 0.514   0.946   111   104  0.432   215
+2       0 0.142   0.733   125   164  0.591   289
+3      -1 0.0251  0.300   246   251  0.275   497</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+    AME
+  &lt;dbl&gt;
+1 0.400</code></pre>
+</div>
+</div>
+<p><a href="https://vincentarelbundock.github.io/marginaleffects/articles/slopes.html">Marginal Effects Package</a></p>
+<p><a href="https://www.andrewheiss.com/blog/2022/05/20/marginalia/">Marginal Effects Theory</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>pred_new <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">control =</span> <span class="dv">1</span>){</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plogis</span>(<span class="fu">predict</span>(logit_controls, <span class="at">newdata =</span> <span class="fu">tibble</span>(<span class="at">x =</span> x, <span class="at">control =</span> control)))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>sol_controls <span class="sc">%&gt;%</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_x1 =</span> <span class="fu">map_dbl</span>(control, <span class="sc">~</span> <span class="fu">pred_new</span>(<span class="dv">1</span>, ..<span class="dv">1</span>)),</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">pred_x0 =</span> <span class="fu">map_dbl</span>(control, <span class="sc">~</span> <span class="fu">pred_new</span>(<span class="dv">0</span>, ..<span class="dv">1</span>)),</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">effect =</span> pred_x1 <span class="sc">-</span> pred_x0) <span class="sc">%&gt;%</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">AME =</span> <span class="fu">mean</span>(effect))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,001 × 6
+       x control     y pred_x1 pred_x0 effect
+   &lt;int&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+ 1     0       1     1   0.946  0.514   0.432
+ 2     0       0     0   0.733  0.142   0.591
+ 3     1      -1     0   0.300  0.0251  0.275
+ 4     1       1     1   0.946  0.514   0.432
+ 5     0       0     0   0.733  0.142   0.591
+ 6     0      -1     0   0.300  0.0251  0.275
+ 7     0      -1     0   0.300  0.0251  0.275
+ 8     1      -1     1   0.300  0.0251  0.275
+ 9     0      -1     0   0.300  0.0251  0.275
+10     0       0     0   0.733  0.142   0.591
+# ℹ 991 more rows</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+    AME
+  &lt;dbl&gt;
+1 0.400</code></pre>
+</div>
+</div>
+<p>Marginal effects in regressions.</p>
+</section>
+</section>
+</section>
+<section id="the-case-for-a-poisson-model" class="level2">
+<h2 class="anchored" data-anchor-id="the-case-for-a-poisson-model">The Case for a Poisson Model</h2>
+<p>The code should not be shown</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">830323</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>n_firm <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>overdispersion <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># 0.5 is more typical for real data</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>hetero <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="sc">-</span> <span class="fl">0.2</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>firm <span class="ot">&lt;-</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">firm =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">fixed =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, .<span class="dv">5</span>))</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>panel <span class="ot">&lt;-</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">firm =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, N, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">2</span>),</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1_noise =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, .<span class="dv">5</span>),</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">noise =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, .<span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(firm) <span class="sc">%&gt;%</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> fixed <span class="sc">+</span> x1_noise,</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">yhetero =</span> <span class="fu">exp</span>(beta <span class="sc">*</span> x1 <span class="sc">+</span> x2 <span class="sc">+</span> hetero <span class="sc">*</span> x1 <span class="sc">*</span> noise),</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">ydiscrete =</span> <span class="fu">rnbinom</span>(<span class="at">n =</span> N, <span class="at">mu =</span> <span class="fu">exp</span>(beta <span class="sc">*</span> x1 <span class="sc">+</span> x2),</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>                        <span class="at">size =</span> <span class="dv">1</span><span class="sc">/</span>overdispersion),</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">ycontinuous =</span> <span class="fu">rchisq</span>(<span class="at">n =</span> N, ydiscrete))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(firm)`</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>poisson_disc <span class="ot">&lt;-</span> <span class="fu">feglm</span>(ydiscrete <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> panel)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>poisson_cont <span class="ot">&lt;-</span> <span class="fu">feglm</span>(ycontinuous <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> panel)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>log_plus1_disc <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="fu">log</span>(ydiscrete <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> panel)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>log_plus1_cont <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="fu">log</span>(ycontinuous <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> panel)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>ols_disc <span class="ot">&lt;-</span><span class="fu">feols</span>(ydiscrete <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>ols_cont <span class="ot">&lt;-</span><span class="fu">feols</span>(ycontinuous <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>rate_disc <span class="ot">&lt;-</span><span class="fu">feols</span>(<span class="fu">I</span>(ydiscrete <span class="sc">/</span> x2) <span class="sc">~</span> x1 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>rate_cont <span class="ot">&lt;-</span><span class="fu">feols</span>(<span class="fu">I</span>(ycontinuous <span class="sc">/</span> x2) <span class="sc">~</span> x1 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(poisson_disc, log_plus1_disc, ols_disc, rate_disc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> &nbsp;(1) </th>
+   <th style="text-align:center;"> &nbsp;&nbsp;(2) </th>
+   <th style="text-align:center;"> &nbsp;&nbsp;(3) </th>
+   <th style="text-align:center;"> &nbsp;&nbsp;(4) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> x1 </td>
+   <td style="text-align:center;"> −0.283 </td>
+   <td style="text-align:center;"> −0.061 </td>
+   <td style="text-align:center;"> −2.864 </td>
+   <td style="text-align:center;"> 6.562 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.088) </td>
+   <td style="text-align:center;"> (0.023) </td>
+   <td style="text-align:center;"> (1.057) </td>
+   <td style="text-align:center;"> (4.550) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x2 </td>
+   <td style="text-align:center;"> 1.003 </td>
+   <td style="text-align:center;"> 0.371 </td>
+   <td style="text-align:center;"> 6.581 </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.041) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.010) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.811) </td>
+   <td style="text-align:center;box-shadow: 0px 1px">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 5000 </td>
+   <td style="text-align:center;"> 5000 </td>
+   <td style="text-align:center;"> 5000 </td>
+   <td style="text-align:center;"> 5000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 </td>
+   <td style="text-align:center;"> 0.741 </td>
+   <td style="text-align:center;"> 0.423 </td>
+   <td style="text-align:center;"> 0.094 </td>
+   <td style="text-align:center;"> 0.020 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 Adj. </td>
+   <td style="text-align:center;"> 0.740 </td>
+   <td style="text-align:center;"> 0.411 </td>
+   <td style="text-align:center;"> 0.075 </td>
+   <td style="text-align:center;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 Within </td>
+   <td style="text-align:center;"> 0.705 </td>
+   <td style="text-align:center;"> 0.407 </td>
+   <td style="text-align:center;"> 0.075 </td>
+   <td style="text-align:center;"> 0.002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 Within Adj. </td>
+   <td style="text-align:center;"> 0.705 </td>
+   <td style="text-align:center;"> 0.406 </td>
+   <td style="text-align:center;"> 0.075 </td>
+   <td style="text-align:center;"> 0.002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AIC </td>
+   <td style="text-align:center;"> 48585.4 </td>
+   <td style="text-align:center;"> 13123.6 </td>
+   <td style="text-align:center;"> 52565.7 </td>
+   <td style="text-align:center;"> 57594.1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BIC </td>
+   <td style="text-align:center;"> 49250.1 </td>
+   <td style="text-align:center;"> 13788.3 </td>
+   <td style="text-align:center;"> 53230.4 </td>
+   <td style="text-align:center;"> 58252.4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> RMSE </td>
+   <td style="text-align:center;"> 26.10 </td>
+   <td style="text-align:center;"> 0.88 </td>
+   <td style="text-align:center;"> 45.48 </td>
+   <td style="text-align:center;"> 75.21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Std.Errors </td>
+   <td style="text-align:center;"> by: firm </td>
+   <td style="text-align:center;"> by: firm </td>
+   <td style="text-align:center;"> by: firm </td>
+   <td style="text-align:center;"> by: firm </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> FE: firm </td>
+   <td style="text-align:center;"> X </td>
+   <td style="text-align:center;"> X </td>
+   <td style="text-align:center;"> X </td>
+   <td style="text-align:center;"> X </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<ul>
+<li>The OLS version are more noisy. log+1 is biased.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
