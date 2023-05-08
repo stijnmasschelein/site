@@ -309,6 +309,36 @@ div.csl-indent {
   <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">Peer Firms</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Generalised Linear Models</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/introduction.html" class="sidebar-item-text sidebar-link">Introduction and Theory</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/interpretation.html" class="sidebar-item-text sidebar-link">Interpretation</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/poisson.html" class="sidebar-item-text sidebar-link">Poisson Regression</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -360,9 +390,9 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ dplyr     1.1.1     ✔ readr     2.1.4
 ✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+✔ ggplot2   3.4.1     ✔ tibble    3.2.1
 ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
 ✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -372,11 +402,11 @@ div.csl-indent {
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/download_data.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dtplyr)</span>
@@ -424,13 +454,13 @@ Columns: 10
 $ ticker      &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2"…
 $ cusip       &lt;chr&gt; "0039241X", "0039241X", "0039241X", "0039241X", "0039241X"…
 $ fpi         &lt;chr&gt; "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6"…
-$ anndats     &lt;date&gt; 2005-01-03, 2005-01-20, 2005-01-26, 2005-01-26, 2005-01-2…
-$ revdats     &lt;date&gt; 2005-01-10, 2005-01-26, 2005-01-27, 2005-01-27, 2005-04-1…
-$ pdf         &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"…
-$ value       &lt;dbl&gt; -0.0654, -0.1139, -0.1000, -0.0900, -0.0900, -0.0323, -0.0…
-$ anndats_act &lt;date&gt; 2005-01-26, 2005-01-26, 2005-04-27, 2005-04-27, 2005-04-2…
-$ actual      &lt;dbl&gt; -0.110, -0.110, -0.110, -0.110, -0.110, -0.110, -0.110, -0…
-$ analys      &lt;dbl&gt; 44775, 43594, 84303, 478, 87125, 43594, 5469, 44775, 43594…</code></pre>
+$ anndats     &lt;date&gt; 2005-10-26, 2005-10-27, 2005-10-27, 2005-10-31, 2005-11-2…
+$ revdats     &lt;date&gt; 2005-12-23, 2005-10-29, 2006-01-02, 2006-01-31, 2005-12-2…
+$ pdf         &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "P", "P"…
+$ value       &lt;dbl&gt; -0.0500, -0.0935, -0.0425, -0.0800, -0.0684, -0.0600, -0.0…
+$ anndats_act &lt;date&gt; 2006-02-01, 2006-02-01, 2006-02-01, 2006-02-01, 2006-02-0…
+$ actual      &lt;dbl&gt; -0.10, -0.10, -0.10, -0.10, -0.10, -0.10, -0.10, -0.10, -0…
+$ analys      &lt;dbl&gt; 87125, 44775, 43594, 478, 5469, 84303, 43594, 44775, 87125…</code></pre>
 </div>
 </div>
 </section>
@@ -488,25 +518,25 @@ $ gvkey &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004", 
 <span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>anndat_begin, <span class="sc">-</span>anndat_end)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in left_join(., simple_link, by = join_by(ticker)): Detected an unexpected many-to-many relationship between `x` and `y`.
-ℹ Row 301 of `x` matches multiple rows in `y`.
-ℹ Row 34 of `y` matches multiple rows in `x`.
+ℹ Row 101 of `x` matches multiple rows in `y`.
+ℹ Row 11209 of `y` matches multiple rows in `x`.
 ℹ If a many-to-many relationship is expected, set `relationship =
   "many-to-many"` to silence this warning.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(earn_ann, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"earn_ann.RDS"</span>))</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(earn_ann)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 154,507
+<pre><code>Rows: 154,469
 Columns: 9
-$ ticker      &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "AA0G", "A2", "AA0G", "AA1N"…
-$ actual      &lt;dbl&gt; -0.110, -0.110, -0.050, -0.070, -0.040, -0.410, -0.080, -0…
+$ ticker      &lt;chr&gt; "A2", "A2", "A2", "AA0A", "AA0A", "AA0A", "AA0A", "AA0A", …
+$ actual      &lt;dbl&gt; -0.1000, -0.0400, -0.1100, 0.1067, 0.1022, 0.1289, 0.1267,…
 $ pdf         &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"…
-$ anndats_act &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-2…
-$ gvkey       &lt;chr&gt; "001081", "001081", "001081", "001081", "001081", "133724"…
-$ permno      &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 88784, 10560, 88784, 84…
-$ cusip       &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00392410"…
-$ rdq         &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-2…
-$ anndat      &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-2…</code></pre>
+$ anndats_act &lt;date&gt; 2006-02-01, 2004-10-21, 2005-01-26, 2003-05-08, 2003-09-0…
+$ gvkey       &lt;chr&gt; "001081", "001081", "001081", "001094", "001094", "001094"…
+$ permno      &lt;dbl&gt; 10560, 10560, 10560, 10656, 10656, 10656, 10656, 10656, 10…
+$ cusip       &lt;chr&gt; "00392410", "00392410", "00392410", "00444610", "00444610"…
+$ rdq         &lt;date&gt; 2006-02-01, 2004-10-21, 2005-01-26, 2003-05-08, 2003-09-0…
+$ anndat      &lt;date&gt; 2006-02-01, 2004-10-21, 2005-01-26, 2003-05-08, 2003-09-0…</code></pre>
 </div>
 </div>
 <p><code>earn_ann</code> serves as a linking table to match different earnings announcements (as opposed to firms and their securities in <code>linking_table</code>)</p>
@@ -557,7 +587,7 @@ $ anndat      &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-
 </tbody>
 </table>
 <p><code>anndat</code> is the validated way of calculating the announcement date. However, we need to keep the other dates around because we will need them to link back to the original databases.</p>
-<p>The paper states that they have 154,051 earnings announcements <span class="citation" data-cites="dellavigna2009">(<a href="#ref-dellavigna2009" role="doc-biblioref">Dellavigna and Pollet 2009</a>)</span>. We have 154507 earnings announcements.</p>
+<p>The paper states that they have 154,051 earnings announcements <span class="citation" data-cites="dellavigna2009">(<a href="#ref-dellavigna2009" role="doc-biblioref">Dellavigna and Pollet 2009</a>)</span>. We have 154469 earnings announcements.</p>
 </section>
 </section>
 <section id="analyst-expectations" class="level1">
@@ -586,7 +616,7 @@ override using the `.groups` argument.</code></pre>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(analyst, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"analyst.RDS"</span>))</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(analyst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 133,118
+<pre><code>Rows: 133,081
 Columns: 8
 $ ticker    &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "AA0A", "AA0A", "A…
 $ anndat    &lt;date&gt; 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26,…

@@ -291,6 +291,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">Peer Firms</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Generalised Linear Models</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/introduction.html" class="sidebar-item-text sidebar-link">Introduction and Theory</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/interpretation.html" class="sidebar-item-text sidebar-link">Interpretation</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/poisson.html" class="sidebar-item-text sidebar-link">Poisson Regression</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -343,9 +373,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ dplyr     1.1.1     ✔ readr     2.1.4
 ✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+✔ ggplot2   3.4.1     ✔ tibble    3.2.1
 ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
 ✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -366,11 +396,11 @@ The following object is masked from 'package:lubridate':
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>(<span class="at">font_size =</span> <span class="dv">18</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/assignment.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 </div>
 <p>Let’s restrict the data to two years. So that the computations do not take too long.</p>
@@ -460,7 +490,7 @@ e.g.:
 <p>In the first parts of the next code, we will calculate the coefficients for all announcements in the 2 year dataset. This is computationally the most intensive step and I could take up to two minutes to finish. When finished, we have an object <code>results</code> that contains the <code>alphas</code> and <code>betas</code>, we need to calculate the abnormal returns.</p>
 <p>In the next step, we need to calculate the abnormal returns for every announcement in our data based on the three factors (<code>mkt</code>, <code>smb</code>, <code>hlm</code>). That is, we have to subtract the actual return on a day, <span class="math inline">\(h\)</span>, after the announcement from the expected return based on the three-factor model.</p>
 <p><span class="math display">\[ R_{t,k} ^ {h} = R_{h, k} - \alpha_{t,k} - \beta^{mkt}_{t,k} R_{h,m}
-+ \beta^{size}_{t,k} smb_{h,m} - \beta^{value}_{t,k} hlm_{h,m}\]</span></p>
+- \beta^{size}_{t,k} smb_{h,m} - \beta^{value}_{t,k} hlm_{h,m}\]</span></p>
 <p><span class="math inline">\(R_{t,k}^h\)</span> is the abnormal return on day <span class="math inline">\(h\)</span> after the announcement, <span class="math inline">\(R_{h,m}\)</span> is the market return on day <span class="math inline">\(h\)</span>, <span class="math inline">\(smb_{h,m}\)</span> is the size factor and <span class="math inline">\(hlm_{h,m}\)</span> is the value factor.</p>
 <p>In the last change, you need to add up the abnormal returns for the days 0 and 1 for the short window after the announcement and the for the days 2-75 after the announcement. That is you need to calculate <code>car_sum</code></p>
 <p>I also give the accumulation with the product which is more correct but the literature typically works with the sum as far as I could discern. You will also see further in the code that it does not really matter for our results even in the restricted dataset. You can use <code>car_prod</code> as an example for <code>car_sum</code> where <code>car_sum</code> is simpler.</p>
@@ -504,7 +534,7 @@ e.g.:
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>shrout) <span class="sc">%&gt;%</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 14,336,092 × 4
+<pre><code># A tibble: 14,333,348 × 4
    permno date         prc market_value
     &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;        &lt;dbl&gt;
  1  10002 1994-03-10  13         38987 
@@ -517,7 +547,7 @@ e.g.:
  8  10002 1994-04-18  14         41986 
  9  10002 1994-04-22  12.5       37488.
 10  10002 1994-04-28  14         41986 
-# ℹ 14,336,082 more rows</code></pre>
+# ℹ 14,333,338 more rows</code></pre>
 </div>
 </div>
 <div class="cell">

@@ -94,6 +94,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../generalised/poisson.html" rel="next">
+<link href="../generalised/introduction.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -130,7 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="nav-sidebar docked fullcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -292,19 +294,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">Peer Firms</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Generalised Linear Models</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Generalised Linear Models</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../generalised/introduction.html" class="sidebar-item-text sidebar-link">Introduction and Theory</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/interpretation.html" class="sidebar-item-text sidebar-link active">Interpretation</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/poisson.html" class="sidebar-item-text sidebar-link">Poisson Regression</a>
   </div>
 </li>
       </ul>
@@ -313,7 +330,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
 </nav>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a>
+  <ul class="collapse">
+  <li><a href="#the-problem" id="toc-the-problem" class="nav-link" data-scroll-target="#the-problem">The problem</a></li>
+  <li><a href="#why-does-it-matter" id="toc-why-does-it-matter" class="nav-link" data-scroll-target="#why-does-it-matter">Why does it matter?</a></li>
+  </ul></li>
+  <li><a href="#solution-without-controls" id="toc-solution-without-controls" class="nav-link" data-scroll-target="#solution-without-controls">Solution without controls</a>
+  <ul class="collapse">
+  <li><a href="#linear-model" id="toc-linear-model" class="nav-link" data-scroll-target="#linear-model">Linear model</a></li>
+  <li><a href="#marginal-effects" id="toc-marginal-effects" class="nav-link" data-scroll-target="#marginal-effects">Marginal Effects</a></li>
+  </ul></li>
+  <li><a href="#solution-with-controls" id="toc-solution-with-controls" class="nav-link" data-scroll-target="#solution-with-controls">Solution with controls</a>
+  <ul class="collapse">
+  <li><a href="#solution-with-continuous-variable" id="toc-solution-with-continuous-variable" class="nav-link" data-scroll-target="#solution-with-continuous-variable">Solution with continuous variable</a></li>
+  </ul></li>
+  <li><a href="#further-information" id="toc-further-information" class="nav-link" data-scroll-target="#further-information">Further information</a></li>
+  <li><a href="#the-case-for-a-poisson-model" id="toc-the-case-for-a-poisson-model" class="nav-link" data-scroll-target="#the-case-for-a-poisson-model">The Case for a Poisson Model</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -346,9 +387,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ dplyr     1.1.1     ✔ readr     2.1.4
 ✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+✔ ggplot2   3.4.1     ✔ tibble    3.2.1
 ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
 ✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -358,7 +399,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -374,156 +415,167 @@ The following object is masked from 'package:lubridate':
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>(<span class="at">font_size =</span> <span class="dv">18</span>))</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"generalised/introduction.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1001</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>gof_map <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"r.squared"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">230383</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="interpretation" class="level2">
 <h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
 <section id="the-problem" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem">The problem</h3>
+<p>The problem with non-linear, generalised linear models is that the interpretation of the coefficients is more murky than in our linear models. In a linear model, we can interpret the coefficient, <span class="math inline">\(\beta\)</span>, of the variable <span class="math inline">\(x\)</span> easily. When <span class="math inline">\(x\)</span> is a continuous variable, we can interpret the coefficient as the increase in <span class="math inline">\(y\)</span> when <span class="math inline">\(x\)</span> increases by 1. When <span class="math inline">\(x\)</span> indicates whether an observation is in the treatment group (<span class="math inline">\(x=1\)</span>) or in the control group (<span class="math inline">\(x=0\)</span>), the coefficient estimates the difference between the control and treatment group for <span class="math inline">\(y\)</span>.</p>
+<p>Unfortunately, the non-linear transformation for the generalised linear models complicates the interpretation. Let’s illustrate this with an example where we know the true model for the probability that a firm has a female CEO (<span class="math inline">\(y_1\)</span>) and the probability that the firm has a female CFO (<span class="math inline">\(y_2\)</span>). The true probabilities are given by the following logistic models.</p>
+<p><span class="math display">\[
+\begin{aligned}
+y_1 &amp;= \frac{e^{2 + 3x}}{1 + e^{2 + 3x}} &amp;&amp;= g(2 + 3x) \\
+y_2 &amp;= \frac{e^{-2 + 3x}}{1 + e^{-2 + 3x}} &amp;&amp;= g(-2 + 3x)
+\end{aligned}
+\]</span></p>
+<p>You can think of <span class="math inline">\(x\)</span> as a characteristic of the company that increases the likelihood of female executives in the company. A casual glance of the equations would give the impression that the effect of the on the CEOs and CFOs is the same because <span class="math inline">\(\beta = 3\)</span> is the same in both equations. We can also plot the two probabilities as functions of <span class="math inline">\(x\)</span> and you can see that that one curve is just the other one shifted horizontally.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1001</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>interpretation <span class="ot">&lt;-</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y1 =</span> <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">y2 =</span> <span class="fu">plogis</span>(<span class="sc">+</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x))</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>interpretation <span class="sc">%&gt;%</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(y1, y2)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> value, <span class="at">x =</span> x,</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">colour =</span> name)) <span class="sc">+</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>interpretation <span class="ot">&lt;-</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y1 =</span> <span class="fu">plogis</span>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y2 =</span> <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>interpretation <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(y1, y2)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> value, <span class="at">x =</span> x,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">colour =</span> name)) <span class="sc">+</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="interpretation_files/figure-html/interpretation-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>y1_effect <span class="ot">&lt;-</span> <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">1</span>) <span class="sc">-</span> <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">0</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>y2_effect <span class="ot">&lt;-</span> <span class="fu">plogis</span>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">1</span>) <span class="sc">-</span> <span class="fu">plogis</span>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">0</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">c</span>(y1_effect, y2_effect))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6118557 0.1125101</code></pre>
 </div>
-</div>
-<ul>
-<li>Are we trying to predict (<span class="math inline">\(\hat{y}\)</span>) or are we trying to estimate (<span class="math inline">\(\hat{\beta}\)</span>)</li>
-<li>Which scale are we really interested in?</li>
-<li>Even the value of the intercept matters and that spells trouble for fixed effects.</li>
-</ul>
-</section>
-<section id="the-solutions" class="level3">
-<h3 class="anchored" data-anchor-id="the-solutions">The solutions</h3>
-<p>The solution if we are interested in the effect on the probability scale.</p>
+<p>However, from the plots you can already see that firms at <span class="math inline">\(x = 0\)</span> will see a larger increase in the probability of having a female CFO (<span class="math inline">\(y_2\)</span>) than a female CEO (<span class="math inline">\(y_1\)</span>) when <span class="math inline">\(x\)</span> increases. Because at <span class="math inline">\(x=0\)</span> most firms already are more likely to have a female CEO and thus the effect of <span class="math inline">\(x\)</span> cannot be very large. In other words, despite the fact that the two probabilities follow a very similar function, the effect of an increase in <span class="math inline">\(x\)</span> can be very different depending on the value of <span class="math inline">\(x\)</span>.</p>
+<p>Another way to look at the problem is to think of <span class="math inline">\(x\)</span> as a policy that is either present (<span class="math inline">\(x=1\)</span>) or not (<span class="math inline">\(x=0\)</span>). We can calculate the causal effect of the policy as follows.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>solutions <span class="ot">&lt;-</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fl">0.5</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y1 =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x)),</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y2 =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fu">plogis</span>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x)))</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>solutions <span class="sc">%&gt;%</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(y1, y2), mean), <span class="at">.by =</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>y1_effect <span class="ot">&lt;-</span> <span class="fu">plogis</span>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">1</span>) <span class="sc">-</span> <span class="fu">plogis</span>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">0</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y2_effect <span class="ot">&lt;-</span> <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">1</span>) <span class="sc">-</span> <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">0</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">c</span>(y1_effect, y2_effect))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1125101 0.6118557</code></pre>
+</div>
+</div>
+<p>Again, we see that the policy has a large effect (0.61) for <span class="math inline">\(y_2\)</span> and a small effect for <span class="math inline">\(y_1\)</span> (0.11). y</p>
+</section>
+<section id="why-does-it-matter" class="level3">
+<h3 class="anchored" data-anchor-id="why-does-it-matter">Why does it matter?</h3>
+<p>There are a number of reasons when this will matter. First of all, the coefficient (<span class="math inline">\(\beta = 3\)</span>) does not directly map onto the causal effect. The same coefficient can lead to <em>different causal effects</em> depending on the value of <span class="math inline">\(x\)</span> and depending on other parts of the model (e.g.&nbsp;the intercept). That means that we cannot just rely on the coefficient.</p>
+<p>Because the true effect depends on <em>other parts</em> of the model, generalised linear models make the use of fixed effects and robust standard errors more tricky as well. I am not going to go into the details of these issues but that is the overall problem with generalised linear model: the effect of each term is dependent on the other parts of the model.</p>
+<p>There are two questions to ask whether this is a problem for your research question.</p>
+<ol type="1">
+<li><p>The first question is whether you are interested in predicting the variable <span class="math inline">\(y\)</span> or whether you are interested in estimating an effect on the variable <span class="math inline">\(y\)</span>. As I discussed in the <a href="../machine_learning/predictions.html">introduction to machine learning</a>, when we are mainly interested in prediction, the coefficients or effects are less important. In the case of predictions, we definitely want to use a model that does not allow to make impossible predictions (e.g.&nbsp;probabilities that are higher than 1).</p></li>
+<li><p>The second question is whether we are interested in the effect on the linear scale (<span class="math inline">\(\alpha + \beta x\)</span>) or on the transformed scale (<span class="math inline">\(g(\alpha + \beta x)\)</span>). In the working example I have used so far, you probably would be interested in the transformed scale, i.e.&nbsp;the <em>probability</em> that the firm has a female CEO. In a lot of cases in accounting and finance, we would be interested directly in those probabilities e.g.&nbsp;the probability that a firm goes bankrupt, or discloses certain information. In contrast, studies in consumer finance or behavioural economics are more interested in the <em>utility</em> that consumers derive from certain interventions. While the utility is often unobserved, we can observe the consumers choices (e.g.&nbsp;which mortgage they choose). A typical approach is to model the unobserved utility on the a linear scale (<span class="math inline">\(z\)</span>) and model the probability of a choice as a transformation of the utility (<span class="math inline">\(g(z)\)</span>). In fact, the logistic transformation is the workhorse function in this literature. Finally, there is literature that prefers the linear scale for logistic models because they argue that we can interpret the effects on the <em>log odds scale</em>, <span class="math inline">\(\textrm{log}(\frac{p}{1-p})\)</span>. That is, the effect on the linear represents an effect on the relative probability.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Betting markets often present winning probabilities as odds or relative probabilities.</p></li>
+</ol>
+</section>
+</section>
+<section id="solution-without-controls" class="level2">
+<h2 class="anchored" data-anchor-id="solution-without-controls">Solution without controls</h2>
+<p>In the next, section I am going to assume that we are on interested in the effect on the probability scale and we would like to summarise the effect in one number. We will start with the simplest case where the variable of interest is a simple treatment (<span class="math inline">\(x = 1\)</span>) versus control (<span class="math inline">\(x = 0\)</span>). We generate data according to the two functions above. In this simple case, it’s relatively easy to estimate the causal effects by just looking at the difference between the treatment and the control condition for both variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>solutions <span class="ot">&lt;-</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fl">0.5</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y1 =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fu">plogis</span>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x)),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y2 =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x)))</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>solutions <span class="sc">%&gt;%</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(y1, y2), mean), <span class="at">.by =</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
       x    y1    y2
   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     0 0.126 0.850
-2     1 0.728 0.994</code></pre>
+1     1 0.986 0.708
+2     0 0.886 0.136</code></pre>
 </div>
 </div>
-<section id="linear-model" class="level4">
-<h4 class="anchored" data-anchor-id="linear-model">Linear model</h4>
+<p>You can see that the differences are pretty close to the theoretical effects <code>y1_effect</code> = 0.11 and <code>y2_effect</code> = 0.61 that we calculated before.</p>
+<section id="linear-model" class="level3">
+<h3 class="anchored" data-anchor-id="linear-model">Linear model</h3>
+<p>The next step is to figure out which regression approach gives us similar estimates. You can see that the OLS model, where we ignore that the outcome variable is restricted, gives us the estimate that we are interested in. To account for the distribution of the outcome variable, it is a good idea to specify <code>se = "hetero"</code>. This way, <code>feols</code> uses a more robust estimation for the standard errors, accounting for the likely non-normal distribution of the error term.</p>
+<p>The code also shows who you can run a logit or probit regression in <code>R</code> with the <code>glm</code> function. The main difference with the <code>lm</code> function is that you need to specify the <code>family</code> of models and the transformation <code>link</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ols <span class="ot">&lt;-</span> <span class="fu">feols</span>(y1 <span class="sc">~</span> x, <span class="at">data =</span> solutions, <span class="at">se =</span> <span class="st">"hetero"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> x, <span class="at">data =</span> solutions, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit))</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>probit <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> x, <span class="at">data =</span> solutions, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit))</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(ols, logit, probit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ols1 <span class="ot">&lt;-</span> <span class="fu">feols</span>(y1 <span class="sc">~</span> x, <span class="at">data =</span> solutions, <span class="at">se =</span> <span class="st">"hetero"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>logit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> x, <span class="at">data =</span> solutions, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>probit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> x, <span class="at">data =</span> solutions, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>ols2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(y2 <span class="sc">~</span> x, <span class="at">data =</span> solutions, <span class="at">se =</span> <span class="st">"hetero"</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>logit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y2 <span class="sc">~</span> x, <span class="at">data =</span> solutions, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>probit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y2 <span class="sc">~</span> x, <span class="at">data =</span> solutions, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="at">ols1 =</span> ols1, <span class="at">logit1 =</span> logit1, <span class="at">probit1 =</span> probit1,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">ols2 =</span> ols2, <span class="at">logit2 =</span> logit2, <span class="at">probit2 =</span> probit2),</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">gof_map =</span> gof_map, <span class="at">fmt =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;">   </th>
-   <th style="text-align:center;"> &nbsp;(1) </th>
-   <th style="text-align:center;"> &nbsp;&nbsp;(2) </th>
-   <th style="text-align:center;"> &nbsp;&nbsp;(3) </th>
+   <th style="text-align:center;"> ols1 </th>
+   <th style="text-align:center;"> logit1 </th>
+   <th style="text-align:center;"> probit1 </th>
+   <th style="text-align:center;"> &nbsp;ols2 </th>
+   <th style="text-align:center;"> &nbsp;logit2 </th>
+   <th style="text-align:center;"> &nbsp;probit2 </th>
   </tr>
  </thead>
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:center;"> 0.126 </td>
-   <td style="text-align:center;"> −1.937 </td>
-   <td style="text-align:center;"> −1.146 </td>
+   <td style="text-align:center;"> 0.89 </td>
+   <td style="text-align:center;"> 2.05 </td>
+   <td style="text-align:center;"> 1.21 </td>
+   <td style="text-align:center;"> 0.14 </td>
+   <td style="text-align:center;"> −1.85 </td>
+   <td style="text-align:center;"> −1.10 </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
-   <td style="text-align:center;"> (0.015) </td>
-   <td style="text-align:center;"> (0.134) </td>
-   <td style="text-align:center;"> (0.071) </td>
+   <td style="text-align:center;"> (0.01) </td>
+   <td style="text-align:center;"> (0.14) </td>
+   <td style="text-align:center;"> (0.07) </td>
+   <td style="text-align:center;"> (0.02) </td>
+   <td style="text-align:center;"> (0.13) </td>
+   <td style="text-align:center;"> (0.07) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> x </td>
-   <td style="text-align:center;"> 0.602 </td>
-   <td style="text-align:center;"> 2.922 </td>
-   <td style="text-align:center;"> 1.753 </td>
+   <td style="text-align:center;"> 0.10 </td>
+   <td style="text-align:center;"> 2.22 </td>
+   <td style="text-align:center;"> 1.00 </td>
+   <td style="text-align:center;"> 0.57 </td>
+   <td style="text-align:center;"> 2.73 </td>
+   <td style="text-align:center;"> 1.64 </td>
   </tr>
   <tr>
    <td style="text-align:left;box-shadow: 0px 1px">  </td>
-   <td style="text-align:center;box-shadow: 0px 1px"> (0.025) </td>
-   <td style="text-align:center;box-shadow: 0px 1px"> (0.168) </td>
-   <td style="text-align:center;box-shadow: 0px 1px"> (0.093) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.02) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.41) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.16) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.03) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.16) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.09) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Num.Obs. </td>
    <td style="text-align:center;"> 1001 </td>
    <td style="text-align:center;"> 1001 </td>
    <td style="text-align:center;"> 1001 </td>
+   <td style="text-align:center;"> 1001 </td>
+   <td style="text-align:center;"> 1001 </td>
+   <td style="text-align:center;"> 1001 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> R2 </td>
-   <td style="text-align:center;"> 0.371 </td>
+   <td style="text-align:center;"> 0.043 </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> R2 Adj. </td>
-   <td style="text-align:center;"> 0.371 </td>
-   <td style="text-align:center;">  </td>
-   <td style="text-align:center;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> AIC </td>
-   <td style="text-align:center;"> 967.9 </td>
-   <td style="text-align:center;"> 965.6 </td>
-   <td style="text-align:center;"> 965.6 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> BIC </td>
-   <td style="text-align:center;"> 977.7 </td>
-   <td style="text-align:center;"> 975.4 </td>
-   <td style="text-align:center;"> 975.4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Log.Lik. </td>
-   <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> −480.798 </td>
-   <td style="text-align:center;"> −480.798 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> 303.661 </td>
-   <td style="text-align:center;"> 352.899 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> RMSE </td>
-   <td style="text-align:center;"> 0.39 </td>
-   <td style="text-align:center;"> 0.39 </td>
-   <td style="text-align:center;"> 0.39 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Std.Errors </td>
-   <td style="text-align:center;"> Heteroskedasticity-robust </td>
+   <td style="text-align:center;"> 0.333 </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
   </tr>
@@ -533,135 +585,391 @@ The following object is masked from 'package:lubridate':
 </div>
 </div>
 </section>
-<section id="marginal-effects" class="level4">
-<h4 class="anchored" data-anchor-id="marginal-effects">Marginal Effects</h4>
+<section id="marginal-effects" class="level3">
+<h3 class="anchored" data-anchor-id="marginal-effects">Marginal Effects</h3>
+<p>You can get the best of both worlds in this simple case. We can use the non-linear models to give predictions on the probability scale with <code>fitted</code> and then look at the average between the treatment and the control group.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>solutions <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">predictions =</span> <span class="fu">fitted</span>(logit)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(predictions), <span class="at">.by =</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>solutions <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_logit =</span> <span class="fu">fitted</span>(logit1),</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">pred_probit =</span> <span class="fu">fitted</span>(probit1)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">logit =</span> <span class="fu">mean</span>(pred_logit),</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">probit =</span> <span class="fu">mean</span>(pred_probit), <span class="at">.by =</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-      x  mean
-  &lt;int&gt; &lt;dbl&gt;
-1     0 0.126
-2     1 0.728</code></pre>
+<pre><code># A tibble: 2 × 3
+      x logit probit
+  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;
+1     1 0.986  0.986
+2     0 0.886  0.886</code></pre>
 </div>
 </div>
+<p>With the regression objects, we can use the <code>marginaleffects</code> package to get these estimates directly.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sol_controls <span class="ot">&lt;-</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fl">0.5</span>),</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">control =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>), N, <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> control)))</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>logit_controls <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x <span class="sc">+</span> control, <span class="at">data =</span> sol_controls,</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit))</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>sol_controls <span class="sc">%&gt;%</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">predictions =</span> <span class="fu">fitted</span>(logit_controls)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prob =</span> <span class="fu">mean</span>(predictions), <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(x, control)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">values_from =</span> <span class="fu">c</span>(prob, n), <span class="at">names_from =</span> x) <span class="sc">%&gt;%</span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">effect =</span> prob_1 <span class="sc">-</span> prob_0, <span class="at">n =</span> n_1 <span class="sc">+</span> n_0) <span class="sc">%&gt;%</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">AME =</span> <span class="fu">sum</span>(effect <span class="sc">*</span> n)<span class="sc">/</span><span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(marginaleffects)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_comparisons</span>(logit1, <span class="at">variables =</span> <span class="st">"x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Term Contrast Estimate Std. Error    z Pr(&gt;|z|)  2.5 % 97.5 %
+    x    1 - 0      0.1     0.0152 6.58   &lt;0.001 0.0705   0.13
+
+Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_comparisons</span>(probit1, <span class="at">variables =</span> <span class="st">"x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Term Contrast Estimate Std. Error    z Pr(&gt;|z|)  2.5 % 97.5 %
+    x    1 - 0      0.1     0.0152 6.58   &lt;0.001 0.0705   0.13
+
+Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="solution-with-controls" class="level2">
+<h2 class="anchored" data-anchor-id="solution-with-controls">Solution with controls</h2>
+<p>Things become more complicated when we introduce control variables. Remember, the effect of a variable is not constant in a non-linear model and it depends on other parts of the model. That means that the size of effect of <code>x</code> depends on the value of the control variable. Below, I simulate a dataset with a discrete control variable that takes three values (-1, 0, 1) with different probabilities. We can then run our three models and report them as before.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sol_controls <span class="ot">&lt;-</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fl">0.5</span>),</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">control =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>), N, <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> control)))</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>ols_controls <span class="ot">&lt;-</span> <span class="fu">feols</span>(y <span class="sc">~</span> x <span class="sc">+</span> control, <span class="at">data =</span> sol_controls,</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">se =</span> <span class="st">"hetero"</span>)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>logit_controls <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x <span class="sc">+</span> control, <span class="at">data =</span> sol_controls,</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit))</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>probit_controls <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x <span class="sc">+</span> control, <span class="at">data =</span> sol_controls,</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>                       <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit))</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="at">ols =</span> ols_controls, <span class="at">logit =</span> logit_controls,</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>              <span class="at">probit =</span> probit_controls),</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">gof_map =</span> gof_map, <span class="at">fmt =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> ols </th>
+   <th style="text-align:center;"> logit </th>
+   <th style="text-align:center;"> probit </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:center;"> 0.24 </td>
+   <td style="text-align:center;"> −1.99 </td>
+   <td style="text-align:center;"> −1.10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.02) </td>
+   <td style="text-align:center;"> (0.16) </td>
+   <td style="text-align:center;"> (0.09) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x </td>
+   <td style="text-align:center;"> 0.42 </td>
+   <td style="text-align:center;"> 3.19 </td>
+   <td style="text-align:center;"> 1.74 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.02) </td>
+   <td style="text-align:center;"> (0.24) </td>
+   <td style="text-align:center;"> (0.12) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> control </td>
+   <td style="text-align:center;"> 0.29 </td>
+   <td style="text-align:center;"> 2.06 </td>
+   <td style="text-align:center;"> 1.14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.02) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.15) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.08) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 1001 </td>
+   <td style="text-align:center;"> 1001 </td>
+   <td style="text-align:center;"> 1001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 </td>
+   <td style="text-align:center;"> 0.418 </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Let’s now calculate the effect for each value of the control variable <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. We use the same procedure but we just do it by <code>control</code>. We calculate the difference between the predicted probability for the control and treatment group . We also keep track of the number of observations in each cell. You can see in the printed intermediate calculation that the estimated effect differs for the three different values of the control variable. Because we want a one number summary, we can take the weighted (by number of observation) average of the effect to get the <em>Average Marginal Effect</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sol_controls <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">predictions =</span> <span class="fu">fitted</span>(logit_controls)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prob =</span> <span class="fu">mean</span>(predictions), <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(x, control)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">values_from =</span> <span class="fu">c</span>(prob, n), <span class="at">names_from =</span> x) <span class="sc">%&gt;%</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">effect =</span> prob_1 <span class="sc">-</span> prob_0, <span class="at">n =</span> n_1 <span class="sc">+</span> n_0) <span class="sc">%&gt;%</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">AME =</span> <span class="fu">sum</span>(effect <span class="sc">*</span> n)<span class="sc">/</span><span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 7
   control prob_0 prob_1   n_0   n_1 effect     n
     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;int&gt;
-1       1 0.514   0.946   111   104  0.432   215
-2       0 0.142   0.733   125   164  0.591   289
-3      -1 0.0251  0.300   246   251  0.275   497</code></pre>
+1      -1 0.0171  0.296   249   254  0.279   503
+2       1 0.517   0.963    99   100  0.446   199
+3       0 0.120   0.768   146   153  0.648   299</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
     AME
   &lt;dbl&gt;
-1 0.400</code></pre>
+1 0.422</code></pre>
 </div>
 </div>
-<p><a href="https://vincentarelbundock.github.io/marginaleffects/articles/slopes.html">Marginal Effects Package</a></p>
-<p><a href="https://www.andrewheiss.com/blog/2022/05/20/marginalia/">Marginal Effects Theory</a></p>
+<p>There is another way of doing the calculation. We can also predict the probability assuming that an observation is in the treatment group (<code>pred_x1</code>) and assuming that an observation is in the control group (<code>pred_x2</code>). We can then calculate the <em>Average Marginal Effect</em> as the mean effect within the sample and we get a very similar result.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>pred_new <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">control =</span> <span class="dv">1</span>){</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plogis</span>(<span class="fu">predict</span>(logit_controls, <span class="at">newdata =</span> <span class="fu">tibble</span>(<span class="at">x =</span> x, <span class="at">control =</span> control)))</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>sol_controls <span class="sc">%&gt;%</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_x1 =</span> <span class="fu">map_dbl</span>(control, <span class="sc">~</span> <span class="fu">pred_new</span>(<span class="dv">1</span>, ..<span class="dv">1</span>)),</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">pred_x0 =</span> <span class="fu">map_dbl</span>(control, <span class="sc">~</span> <span class="fu">pred_new</span>(<span class="dv">0</span>, ..<span class="dv">1</span>)),</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">effect =</span> pred_x1 <span class="sc">-</span> pred_x0) <span class="sc">%&gt;%</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">AME =</span> <span class="fu">mean</span>(effect))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pred_new <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">control =</span> <span class="dv">1</span>){</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plogis</span>(<span class="fu">predict</span>(logit_controls, <span class="at">newdata =</span> <span class="fu">tibble</span>(<span class="at">x =</span> x, <span class="at">control =</span> control)))</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>sol_controls <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_x1 =</span> <span class="fu">map_dbl</span>(control, <span class="sc">~</span> <span class="fu">pred_new</span>(<span class="dv">1</span>, ..<span class="dv">1</span>)),</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">pred_x0 =</span> <span class="fu">map_dbl</span>(control, <span class="sc">~</span> <span class="fu">pred_new</span>(<span class="dv">0</span>, ..<span class="dv">1</span>)),</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">effect =</span> pred_x1 <span class="sc">-</span> pred_x0) <span class="sc">%&gt;%</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">AME =</span> <span class="fu">mean</span>(effect))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,001 × 6
        x control     y pred_x1 pred_x0 effect
    &lt;int&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
- 1     0       1     1   0.946  0.514   0.432
- 2     0       0     0   0.733  0.142   0.591
- 3     1      -1     0   0.300  0.0251  0.275
- 4     1       1     1   0.946  0.514   0.432
- 5     0       0     0   0.733  0.142   0.591
- 6     0      -1     0   0.300  0.0251  0.275
- 7     0      -1     0   0.300  0.0251  0.275
- 8     1      -1     1   0.300  0.0251  0.275
- 9     0      -1     0   0.300  0.0251  0.275
-10     0       0     0   0.733  0.142   0.591
+ 1     0      -1     0   0.296  0.0171  0.279
+ 2     1       1     1   0.963  0.517   0.446
+ 3     1       0     1   0.768  0.120   0.648
+ 4     0       1     0   0.963  0.517   0.446
+ 5     0      -1     0   0.296  0.0171  0.279
+ 6     1       1     1   0.963  0.517   0.446
+ 7     0      -1     0   0.296  0.0171  0.279
+ 8     0      -1     0   0.296  0.0171  0.279
+ 9     1      -1     1   0.296  0.0171  0.279
+10     0      -1     0   0.296  0.0171  0.279
 # ℹ 991 more rows</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
     AME
   &lt;dbl&gt;
-1 0.400</code></pre>
+1 0.422</code></pre>
 </div>
 </div>
-<p>Marginal effects in regressions.</p>
+<p>The last approach is what the <code>avg_comparisons</code> package does. One advantage of the last approach is that it scales better if we have multiple control variables and some of them are continuous. The predictions will account for the differences in the effect because of the differences in the control variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_comparisons</span>(logit_controls, <span class="at">variables =</span> <span class="st">"x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Term Contrast Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %
+    x    1 - 0    0.422     0.0225 18.8   &lt;0.001 0.378  0.466
+
+Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_comparisons</span>(probit_controls, <span class="at">variables =</span> <span class="st">"x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Term Contrast Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %
+    x    1 - 0    0.419     0.0229 18.3   &lt;0.001 0.374  0.464
+
+Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that the linear model <code>ols_controls</code> recovers the average marginal effect directly in the regression. If you are interested in a treatment effect of a treatment compared to a control group, in my opinion, you should just use a linear model with robustly estimated standard errors. The linear model makes it easy to incorporate fixed effects, deal with panel data, and expand the model to two-stage-least-squares or difference-in-differences while giving the estimate that you care about.</p>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The average marginal effect calculation highlights that the effect that we estimate depends on the values of the control variables. As a result, we need to be careful about extrapolating the effect to different settings where the control variables might take different values.</p>
+</div>
+</div>
+<section id="solution-with-continuous-variable" class="level3">
+<h3 class="anchored" data-anchor-id="solution-with-continuous-variable">Solution with continuous variable</h3>
+<p>The case of a continuous variable <code>x</code> is slightly more complicated because we already know that the relation between the outcome variable <code>y</code> and <code>x</code> is not perfectly linear. However, even with a continuous outcome variable, we also have to make the assumption of a linear relation. However, if we can make the assumption that the relation between <code>y</code> and <code>x</code> is roughly linear, the OLS estimate will be a good approximation of the average marginal effect as we can see below. As before, we can easily incorporate all the benefits of using <code>feols</code> while getting the estimate that we are targeting.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>sol_continuous <span class="ot">&lt;-</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">control =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> control)))</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>ols_continuous <span class="ot">&lt;-</span> <span class="fu">feols</span>(y <span class="sc">~</span> x <span class="sc">+</span> control, <span class="at">data =</span> sol_continuous,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">se =</span> <span class="st">"hetero"</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>logit_continuous <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x <span class="sc">+</span> control, <span class="at">data =</span> sol_continuous,</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit))</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>probit_continuous <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x <span class="sc">+</span> control, <span class="at">data =</span> sol_continuous,</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="at">ols =</span> ols_continuous, <span class="at">logit =</span> logit_continuous,</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">probit =</span> probit_continuous),</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">gof_map =</span> gof_map, <span class="at">fmt =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> ols </th>
+   <th style="text-align:center;"> logit </th>
+   <th style="text-align:center;"> probit </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:center;"> 0.30 </td>
+   <td style="text-align:center;"> −2.41 </td>
+   <td style="text-align:center;"> −1.35 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.01) </td>
+   <td style="text-align:center;"> (0.18) </td>
+   <td style="text-align:center;"> (0.09) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x </td>
+   <td style="text-align:center;"> 0.26 </td>
+   <td style="text-align:center;"> 3.46 </td>
+   <td style="text-align:center;"> 1.92 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.01) </td>
+   <td style="text-align:center;"> (0.25) </td>
+   <td style="text-align:center;"> (0.13) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> control </td>
+   <td style="text-align:center;"> 0.19 </td>
+   <td style="text-align:center;"> 2.43 </td>
+   <td style="text-align:center;"> 1.35 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.01) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.19) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.10) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 1001 </td>
+   <td style="text-align:center;"> 1001 </td>
+   <td style="text-align:center;"> 1001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 </td>
+   <td style="text-align:center;"> 0.487 </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>To get the average marginal effect with a continuous <code>x</code>, we use the <code>avg_slopes</code> function from <code>marginaleffects</code>. The function does something similar as <code>avg_comparisons</code> does for the discrete <code>x</code>. It will predict the probability of the outcome <code>y</code> for <code>x</code> and for <code>x + 0.001</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> and then take the difference. In other words, the function will approximate the estimate slope between <code>y</code> and <code>x</code> for each observations. The <em>average marginal effect</em> is again the average for the whole sample.</p>
+<p>The fact that the calculation needs to be done for every observation can be a disadvantage of you have a lot of observations and a lot of effects to estimate.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_slopes</span>(logit_continuous, <span class="at">variables =</span> <span class="st">"x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Term Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %
+    x    0.265    0.00703 37.6   &lt;0.001 0.251  0.278
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_slopes</span>(probit_continuous, <span class="at">variables =</span> <span class="st">"x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Term Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %
+    x    0.263    0.00703 37.4   &lt;0.001 0.249  0.276
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+</div>
+<p>All estimates point to the following effect: if <code>x</code> increases by .01, we expect the probability of <code>y</code> to increase by about .25% in our sample.</p>
 </section>
 </section>
+<section id="further-information" class="level2">
+<h2 class="anchored" data-anchor-id="further-information">Further information</h2>
+<p>There is a lot more that can be done to with marginal effects and they can also be used to estimate non-linear effects in linear models. <a href="https://www.andrewheiss.com/blog/2022/05/20/marginalia/">Andrew Heiss</a> has a good overview of the theory and the <a href="https://vincentarelbundock.github.io/marginaleffects/articles/slopes.html"><code>marginaleffects</code> package</a> has excellent vignettes on how to implement the different possibilities.</p>
 </section>
 <section id="the-case-for-a-poisson-model" class="level2">
 <h2 class="anchored" data-anchor-id="the-case-for-a-poisson-model">The Case for a Poisson Model</h2>
 <p>The code should not be shown</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">830323</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>n_firm <span class="ot">&lt;-</span> <span class="dv">500</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>overdispersion <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># 0.5 is more typical for real data</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>hetero <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="sc">-</span> <span class="fl">0.2</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>firm <span class="ot">&lt;-</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">firm =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">fixed =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, .<span class="dv">5</span>))</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>panel <span class="ot">&lt;-</span></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">firm =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, N, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">2</span>),</span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1_noise =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, .<span class="dv">5</span>),</span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">noise =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, .<span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(firm) <span class="sc">%&gt;%</span></span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> fixed <span class="sc">+</span> x1_noise,</span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">yhetero =</span> <span class="fu">exp</span>(beta <span class="sc">*</span> x1 <span class="sc">+</span> x2 <span class="sc">+</span> hetero <span class="sc">*</span> x1 <span class="sc">*</span> noise),</span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">ydiscrete =</span> <span class="fu">rnbinom</span>(<span class="at">n =</span> N, <span class="at">mu =</span> <span class="fu">exp</span>(beta <span class="sc">*</span> x1 <span class="sc">+</span> x2),</span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>                        <span class="at">size =</span> <span class="dv">1</span><span class="sc">/</span>overdispersion),</span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">ycontinuous =</span> <span class="fu">rchisq</span>(<span class="at">n =</span> N, ydiscrete))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">830323</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>n_firm <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>overdispersion <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># 0.5 is more typical for real data</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>hetero <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="sc">-</span> <span class="fl">0.2</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>firm <span class="ot">&lt;-</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">firm =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">fixed =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, .<span class="dv">5</span>))</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>panel <span class="ot">&lt;-</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">firm =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, N, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">2</span>),</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1_noise =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, .<span class="dv">5</span>),</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">noise =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, .<span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(firm) <span class="sc">%&gt;%</span></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> fixed <span class="sc">+</span> x1_noise,</span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">yhetero =</span> <span class="fu">exp</span>(beta <span class="sc">*</span> x1 <span class="sc">+</span> x2 <span class="sc">+</span> hetero <span class="sc">*</span> x1 <span class="sc">*</span> noise),</span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">ydiscrete =</span> <span class="fu">rnbinom</span>(<span class="at">n =</span> N, <span class="at">mu =</span> <span class="fu">exp</span>(beta <span class="sc">*</span> x1 <span class="sc">+</span> x2),</span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>                        <span class="at">size =</span> <span class="dv">1</span><span class="sc">/</span>overdispersion),</span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">ycontinuous =</span> <span class="fu">rchisq</span>(<span class="at">n =</span> N, ydiscrete))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(firm)`</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>poisson_disc <span class="ot">&lt;-</span> <span class="fu">feglm</span>(ydiscrete <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> panel)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>poisson_cont <span class="ot">&lt;-</span> <span class="fu">feglm</span>(ycontinuous <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> panel)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>log_plus1_disc <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="fu">log</span>(ydiscrete <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> panel)</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>log_plus1_cont <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="fu">log</span>(ycontinuous <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> panel)</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>ols_disc <span class="ot">&lt;-</span><span class="fu">feols</span>(ydiscrete <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>ols_cont <span class="ot">&lt;-</span><span class="fu">feols</span>(ycontinuous <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>rate_disc <span class="ot">&lt;-</span><span class="fu">feols</span>(<span class="fu">I</span>(ydiscrete <span class="sc">/</span> x2) <span class="sc">~</span> x1 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>rate_cont <span class="ot">&lt;-</span><span class="fu">feols</span>(<span class="fu">I</span>(ycontinuous <span class="sc">/</span> x2) <span class="sc">~</span> x1 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(poisson_disc, log_plus1_disc, ols_disc, rate_disc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>poisson_disc <span class="ot">&lt;-</span> <span class="fu">feglm</span>(ydiscrete <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> panel)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>poisson_cont <span class="ot">&lt;-</span> <span class="fu">feglm</span>(ycontinuous <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> panel)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>log_plus1_disc <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="fu">log</span>(ydiscrete <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> panel)</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>log_plus1_cont <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="fu">log</span>(ycontinuous <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> panel)</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>ols_disc <span class="ot">&lt;-</span><span class="fu">feols</span>(ydiscrete <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>ols_cont <span class="ot">&lt;-</span><span class="fu">feols</span>(ycontinuous <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>rate_disc <span class="ot">&lt;-</span><span class="fu">feols</span>(<span class="fu">I</span>(ydiscrete <span class="sc">/</span> x2) <span class="sc">~</span> x1 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>rate_cont <span class="ot">&lt;-</span><span class="fu">feols</span>(<span class="fu">I</span>(ycontinuous <span class="sc">/</span> x2) <span class="sc">~</span> x1 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(poisson_disc, log_plus1_disc, ols_disc, rate_disc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -778,14 +1086,29 @@ The following object is masked from 'package:lubridate':
 
 </div>
 </div>
-<ul>
-<li>The OLS version are more noisy. log+1 is biased.</li>
-</ul>
+<pre><code>- The OLS version are more noisy. log+1 is biased.</code></pre>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><span class="math display">\[
+\begin{aligned}
+p &amp;= \frac{e^z}{1 + e^z} \\
+p &amp;= \frac{1}{e^{-z} + 1} \\
+\frac{1}{p} &amp;= e^{-z} + 1 \\
+\frac{1 - p}{p} &amp;= e^{-z} \\
+\frac{p}{1-p} &amp;= e^z \\
+\textrm{log}(\frac{p}{1-p}) &amp;= z
+\end{aligned}
+\]</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>This is the reason why I used a discrete control variable. It makes all of this a bit easier to illustrate.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>or another amount that can be chosen in the function.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -919,6 +1242,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../generalised/introduction.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction and Theory</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../generalised/poisson.html" class="pagination-link">
+        <span class="nav-page-text">Poisson Regression</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

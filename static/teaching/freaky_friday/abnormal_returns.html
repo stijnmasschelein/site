@@ -310,6 +310,36 @@ div.csl-indent {
   <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">Peer Firms</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Generalised Linear Models</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/introduction.html" class="sidebar-item-text sidebar-link">Introduction and Theory</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/interpretation.html" class="sidebar-item-text sidebar-link">Interpretation</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/poisson.html" class="sidebar-item-text sidebar-link">Poisson Regression</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -363,9 +393,9 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ dplyr     1.1.1     ✔ readr     2.1.4
 ✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+✔ ggplot2   3.4.1     ✔ tibble    3.2.1
 ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
 ✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -376,11 +406,11 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/abnormal_returns.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 </div>
 <p>In order to predict the expected market return reaction to earnings, we will want to take into account the general market reaction. <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span> only adjust for the overall market return. There are other adjustments possible for specific risk factors. The original factor model is the Fama-French 3 Factors model and the data is available via the <a href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Kenneth French data library</a>.</p>
@@ -474,9 +504,9 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: seconds
                 expr      min       lq     mean   median       uq      max
-   create_coefs(100) 2.411606 2.511097 2.988970 2.851544 3.089185 4.171850
-  create_coefs(1000) 3.060438 3.212490 3.392713 3.399388 3.535181 3.831634
- create_coefs(10000) 5.557674 5.943498 6.396329 6.346569 6.684151 7.976207
+   create_coefs(100) 1.610958 1.650493 1.731385 1.701752 1.803726 1.878032
+  create_coefs(1000) 1.840934 1.883535 1.970014 1.992723 2.029292 2.130045
+ create_coefs(10000) 3.457095 3.511570 3.616896 3.557511 3.712100 3.909630
  neval
     10
     10
@@ -511,12 +541,12 @@ Note
 <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">"car_"</span>)</span>
 <span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(abnormal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 128,103
+<pre><code>Rows: 128,066
 Columns: 4
-$ permno    &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 88784, 10560, 88784, 8460…
-$ anndat    &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-21,…
-$ car_short &lt;dbl&gt; 0.036461999, -0.063605082, -0.004176757, -0.014869448, 0.097…
-$ car_long  &lt;dbl&gt; -0.20959886, 0.05661849, -0.18368085, 0.20741889, 0.01028760…</code></pre>
+$ permno    &lt;dbl&gt; 10560, 10560, 10560, 10656, 10656, 10656, 10656, 10656, 1057…
+$ anndat    &lt;date&gt; 2006-02-01, 2004-10-21, 2005-01-26, 2003-05-08, 2003-09-05,…
+$ car_short &lt;dbl&gt; -0.015708137, 0.097290996, 0.036461999, 0.162866519, -0.1485…
+$ car_long  &lt;dbl&gt; 0.10569961, 0.01028760, -0.20959886, 0.05226982, 0.03282961,…</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -545,7 +575,7 @@ Note
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>shrout) <span class="sc">%&gt;%</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 14,336,092 × 4
+<pre><code># A tibble: 14,333,348 × 4
    permno date         prc market_value
     &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;        &lt;dbl&gt;
  1  10002 1994-03-10  13         38987 
@@ -558,7 +588,7 @@ Note
  8  10002 1994-04-18  14         41986 
  9  10002 1994-04-22  12.5       37488.
 10  10002 1994-04-28  14         41986 
-# ℹ 14,336,082 more rows</code></pre>
+# ℹ 14,333,338 more rows</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>surprise <span class="ot">&lt;-</span> earn_ann <span class="sc">%&gt;%</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(analyst,</span>
@@ -571,28 +601,28 @@ Note
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">surprise =</span> (actual <span class="sc">-</span> median) <span class="sc">/</span> prc) </span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(surprise)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 154,507
+<pre><code>Rows: 154,469
 Columns: 20
-$ ticker       &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "AA0G", "A2", "AA0G", "AA1N…
-$ actual       &lt;dbl&gt; -0.110, -0.110, -0.050, -0.070, -0.040, -0.410, -0.080, -…
+$ ticker       &lt;chr&gt; "A2", "A2", "A2", "AA0A", "AA0A", "AA0A", "AA0A", "AA0A",…
+$ actual       &lt;dbl&gt; -0.1000, -0.0400, -0.1100, 0.1067, 0.1022, 0.1289, 0.1267…
 $ pdf          &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D…
-$ anndats_act  &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-…
-$ gvkey        &lt;chr&gt; "001081", "001081", "001081", "001081", "001081", "133724…
-$ permno       &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 88784, 10560, 88784, 8…
-$ cusip        &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00392410…
-$ rdq          &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-…
-$ anndat       &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2004-10-…
-$ N            &lt;int&gt; 2, 3, 2, 4, 1, 7, 4, 5, NA, 3, 3, 2, 1, NA, 1, 3, 2, 1, N…
-$ median       &lt;dbl&gt; -0.08965, -0.05740, -0.03700, -0.10610, -0.09000, -0.4100…
-$ mean         &lt;dbl&gt; -0.08965000, -0.06800000, -0.03700000, -0.10055000, -0.09…
-$ mean_days    &lt;dbl&gt; 8.000000, 6.666667, 13.500000, 7.000000, 21.000000, 16.57…
-$ car_short    &lt;dbl&gt; 0.036461999, -0.063605082, -0.004176757, -0.014869448, 0.…
-$ car_long     &lt;dbl&gt; -0.20959886, 0.05661849, -0.18368085, 0.20741889, 0.01028…
-$ date_minus5  &lt;date&gt; 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-21, 2004-10-…
-$ date         &lt;date&gt; 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-21, 2004-10-…
-$ prc          &lt;dbl&gt; 5.890, 4.530, 5.000, 3.260, 5.630, 26.530, 4.280, 23.520,…
-$ market_value &lt;dbl&gt; 2592630.69, 1993992.84, 2200875.00, 1434970.50, 2478185.3…
-$ surprise     &lt;dbl&gt; -0.0034550086, -0.0116114785, -0.0026000000, 0.0110736197…</code></pre>
+$ anndats_act  &lt;date&gt; 2006-02-01, 2004-10-21, 2005-01-26, 2003-05-08, 2003-09-…
+$ gvkey        &lt;chr&gt; "001081", "001081", "001081", "001094", "001094", "001094…
+$ permno       &lt;dbl&gt; 10560, 10560, 10560, 10656, 10656, 10656, 10656, 10656, 1…
+$ cusip        &lt;chr&gt; "00392410", "00392410", "00392410", "00444610", "00444610…
+$ rdq          &lt;date&gt; 2006-02-01, 2004-10-21, 2005-01-26, 2003-05-08, 2003-09-…
+$ anndat       &lt;date&gt; 2006-02-01, 2004-10-21, 2005-01-26, 2003-05-08, 2003-09-…
+$ N            &lt;int&gt; 5, 1, 2, 1, NA, 1, 1, NA, NA, NA, NA, NA, NA, NA, 3, 2, 4…
+$ median       &lt;dbl&gt; -0.07830, -0.09000, -0.08965, 0.08000, NA, 0.10670, 0.133…
+$ mean         &lt;dbl&gt; -0.0765800, -0.0900000, -0.0896500, 0.0800000, NA, 0.1067…
+$ mean_days    &lt;dbl&gt; 9.200000, 21.000000, 8.000000, 28.000000, NA, 24.000000, …
+$ car_short    &lt;dbl&gt; -0.015708137, 0.097290996, 0.036461999, 0.162866519, -0.1…
+$ car_long     &lt;dbl&gt; 0.10569961, 0.01028760, -0.20959886, 0.05226982, 0.032829…
+$ date_minus5  &lt;date&gt; 2006-01-27, 2004-10-16, 2005-01-21, 2003-05-03, 2003-08-…
+$ date         &lt;date&gt; 2006-01-27, 2004-10-15, 2005-01-21, 2003-05-02, 2003-08-…
+$ prc          &lt;dbl&gt; 4.020, 5.630, 5.890, 16.750, 19.010, 15.660, 15.520, 13.6…
+$ market_value &lt;dbl&gt; 1769503.5, 2478185.3, 2592630.7, 166243.8, 195536.9, 1620…
+$ surprise     &lt;dbl&gt; -0.0053980100, 0.0088809945, -0.0034550086, 0.0015940299,…</code></pre>
 </div>
 </div>
 </section>
@@ -620,48 +650,48 @@ $ surprise     &lt;dbl&gt; -0.0034550086, -0.0116114785, -0.0026000000, 0.011073
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>         <span class="fu">percent_rank</span>(car_short) <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">-</span> winsorise) <span class="sc">%&gt;%</span></span>
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 137,370 × 20
-# ℹ 137,370 more rows
+<pre><code># A tibble: 137,333 × 20
+# ℹ 137,333 more rows
 # ℹ 20 variables: ticker &lt;chr&gt;, actual &lt;dbl&gt;, pdf &lt;chr&gt;, anndats_act &lt;date&gt;,
 #   gvkey &lt;chr&gt;, permno &lt;dbl&gt;, cusip &lt;chr&gt;, rdq &lt;date&gt;, anndat &lt;date&gt;, N &lt;int&gt;,
 #   median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;, car_short &lt;dbl&gt;, car_long &lt;dbl&gt;,
 #   date_minus5 &lt;date&gt;, date &lt;date&gt;, prc &lt;dbl&gt;, market_value &lt;dbl&gt;,
 #   surprise &lt;dbl&gt;
-# A tibble: 135,996 × 20
-# ℹ 135,996 more rows
+# A tibble: 135,959 × 20
+# ℹ 135,959 more rows
 # ℹ 20 variables: ticker &lt;chr&gt;, actual &lt;dbl&gt;, pdf &lt;chr&gt;, anndats_act &lt;date&gt;,
 #   gvkey &lt;chr&gt;, permno &lt;dbl&gt;, cusip &lt;chr&gt;, rdq &lt;date&gt;, anndat &lt;date&gt;, N &lt;int&gt;,
 #   median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;, car_short &lt;dbl&gt;, car_long &lt;dbl&gt;,
 #   date_minus5 &lt;date&gt;, date &lt;date&gt;, prc &lt;dbl&gt;, market_value &lt;dbl&gt;,
 #   surprise &lt;dbl&gt;
-# A tibble: 133,670 × 20
-# ℹ 133,670 more rows
+# A tibble: 133,633 × 20
+# ℹ 133,633 more rows
 # ℹ 20 variables: ticker &lt;chr&gt;, actual &lt;dbl&gt;, pdf &lt;chr&gt;, anndats_act &lt;date&gt;,
 #   gvkey &lt;chr&gt;, permno &lt;dbl&gt;, cusip &lt;chr&gt;, rdq &lt;date&gt;, anndat &lt;date&gt;, N &lt;int&gt;,
 #   median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;, car_short &lt;dbl&gt;, car_long &lt;dbl&gt;,
 #   date_minus5 &lt;date&gt;, date &lt;date&gt;, prc &lt;dbl&gt;, market_value &lt;dbl&gt;,
 #   surprise &lt;dbl&gt;
-# A tibble: 133,578 × 21
-# ℹ 133,578 more rows
+# A tibble: 133,541 × 21
+# ℹ 133,541 more rows
 # ℹ 21 variables: ticker &lt;chr&gt;, actual &lt;dbl&gt;, pdf &lt;chr&gt;, anndats_act &lt;date&gt;,
 #   gvkey &lt;chr&gt;, permno &lt;dbl&gt;, cusip &lt;chr&gt;, rdq &lt;date&gt;, anndat &lt;date&gt;, N &lt;int&gt;,
 #   median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;, car_short &lt;dbl&gt;, car_long &lt;dbl&gt;,
 #   date_minus5 &lt;date&gt;, date &lt;date&gt;, prc &lt;dbl&gt;, market_value &lt;dbl&gt;,
 #   surprise &lt;dbl&gt;, weekday &lt;ord&gt;
-# A tibble: 130,796 × 21
+# A tibble: 130,759 × 21
    ticker actual pdf   anndats_act gvkey  permno cusip    rdq        anndat    
    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;date&gt;      &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;date&gt;     &lt;date&gt;    
- 1 A2      -0.11 D     2005-01-26  001081  10560 00392410 2005-01-26 2005-01-26
- 2 A2      -0.11 D     2005-04-27  001081  10560 00392410 2005-04-27 2005-04-27
- 3 A2      -0.05 D     2005-07-27  001081  10560 00392410 2005-07-27 2005-07-27
- 4 A2      -0.07 D     2005-10-26  001081  10560 00392410 2005-10-26 2005-10-26
- 5 A2      -0.04 D     2004-10-21  001081  10560 00392410 2004-10-21 2004-10-21
- 6 AA0G    -0.41 D     2006-03-02  133724  88784 00724X10 2006-03-02 2006-03-02
- 7 A2      -0.08 D     2006-04-26  001081  10560 00392410 2006-04-26 2006-04-26
- 8 AA0G    -0.42 D     2006-05-04  133724  88784 00724X10 2006-05-04 2006-05-04
- 9 AA1N     0.01 D     2003-07-29  064536  84606 29873610 2003-07-29 2003-07-29
-10 AA1N     0.24 D     2006-02-21  064536  84606 29873610 2006-02-21 2006-02-21
-# ℹ 130,786 more rows
+ 1 A2     -0.1   D     2006-02-01  001081  10560 00392410 2006-02-01 2006-02-01
+ 2 A2     -0.04  D     2004-10-21  001081  10560 00392410 2004-10-21 2004-10-21
+ 3 A2     -0.11  D     2005-01-26  001081  10560 00392410 2005-01-26 2005-01-26
+ 4 AA0A    0.107 D     2003-05-08  001094  10656 00444610 2003-05-08 2003-05-08
+ 5 AA0A    0.129 D     2003-11-06  001094  10656 00444610 2003-11-06 2003-11-06
+ 6 AA0A    0.127 D     2004-02-11  001094  10656 00444610 2004-02-11 2004-02-11
+ 7 A2     -0.11  D     2005-04-27  001081  10560 00392410 2005-04-27 2005-04-27
+ 8 A2     -0.05  D     2005-07-27  001081  10560 00392410 2005-07-27 2005-07-27
+ 9 A2     -0.07  D     2005-10-26  001081  10560 00392410 2005-10-26 2005-10-26
+10 AA0A    0.1   D     2005-02-03  001094  10656 00444610 2005-02-03 2005-02-03
+# ℹ 130,749 more rows
 # ℹ 12 more variables: N &lt;int&gt;, median &lt;dbl&gt;, mean &lt;dbl&gt;, mean_days &lt;dbl&gt;,
 #   car_short &lt;dbl&gt;, car_long &lt;dbl&gt;, date_minus5 &lt;date&gt;, date &lt;date&gt;,
 #   prc &lt;dbl&gt;, market_value &lt;dbl&gt;, surprise &lt;dbl&gt;, weekday &lt;ord&gt;</code></pre>
