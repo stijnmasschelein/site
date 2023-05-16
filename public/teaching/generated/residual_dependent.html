@@ -789,9 +789,9 @@ The following object is masked from 'package:lubridate':
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bias =</span> two_estimate <span class="sc">-</span> one_estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, we can summarise the results and we see that the two step approach is likely to overestimate the effect of <code>x</code>.</p>
-<div class="cell" data-hash="residual_dependent_cache/html/unnamed-chunk-9_8ca5b882aee469655294d39f5647a476">
+<div class="cell" data-hash="residual_dependent_cache/html/unnamed-chunk-9_59ab9b74564678f9fc89a0ef05c48999">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">M =</span> <span class="fu">mean</span>(bias), <span class="at">se =</span> <span class="fu">sd</span>(bias)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()),</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">M =</span> <span class="fu">mean</span>(bias), <span class="at">se =</span> <span class="fu">sd</span>(bias)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()), </span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">M_one =</span> <span class="fu">mean</span>(one_estimate), <span class="at">M_two =</span> <span class="fu">mean</span>(two_estimate))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
@@ -800,18 +800,18 @@ The following object is masked from 'package:lubridate':
 1 0.0860 0.00427  1.02  1.10</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="residual_dependent_cache/html/unnamed-chunk-10_5fa38fab4f030bd4ea6d9c8f8e4a2714">
+<div class="cell" data-hash="residual_dependent_cache/html/unnamed-chunk-10_9f2cd4017dcd50a309db3991ac46f607">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span> <span class="fu">select</span>(sample, two_pvalue, one_pvalue) <span class="sc">%&gt;%</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(two_pvalue, one_pvalue),</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"variable"</span>, <span class="at">values_to =</span> <span class="st">"pvalue"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"var"</span>, <span class="at">values_to =</span> <span class="st">"pvalue"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_sign =</span> <span class="fu">if_else</span>(pvalue <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(is_sign), <span class="at">.by =</span> variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(is_sign), <span class="at">.by =</span> var)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
-  variable    mean
+  var         mean
   &lt;chr&gt;      &lt;dbl&gt;
-1 two_pvalue  0.21
-2 one_pvalue  1   </code></pre>
+1 two_pvalue 0.21 
+2 one_pvalue 0.173</code></pre>
 </div>
 </div>
 
