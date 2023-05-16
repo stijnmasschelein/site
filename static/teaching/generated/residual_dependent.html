@@ -736,7 +736,7 @@ The following object is masked from 'package:lubridate':
 <section id="run-simulations-as-a-large-dataframe" class="level2">
 <h2 class="anchored" data-anchor-id="run-simulations-as-a-large-dataframe">Run simulations as a large dataframe</h2>
 <p>We can use a simulation approach to see whether that bias is persistent. First, we create the two functions that run the two step and one step approach and return the estimate and the p-value from the coefficient table.</p>
-<div class="cell" data-hash="residual_dependent_cache/html/sim-functions_0c37d74ce23162a9555e2261f6e14662">
+<div class="cell" data-hash="residual_dependent_cache/html/sim-functions_24ce2c1935f39caa8147a5a14fedb7f0">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>two_step <span class="ot">&lt;-</span> <span class="cf">function</span>(data){</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> z1, data)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">resid</span>(lm1) <span class="sc">~</span> x <span class="sc">+</span> z3, <span class="at">data =</span> data)</span>
@@ -747,7 +747,7 @@ The following object is masked from 'package:lubridate':
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>one_step <span class="ot">&lt;-</span> <span class="cf">function</span>(data){</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> z1 <span class="sc">+</span> z3, <span class="at">data =</span> data)</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  coefs <span class="ot">&lt;-</span> <span class="fu">summary</span>(lm2)<span class="sc">$</span>coefficients</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  coefs <span class="ot">&lt;-</span> <span class="fu">summary</span>(lm)<span class="sc">$</span>coefficients</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> coefs[<span class="st">"x"</span>, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)]</span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(result) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"estimate"</span>, <span class="st">"pvalue"</span>)</span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
@@ -759,8 +759,8 @@ The following object is masked from 'package:lubridate':
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">one_step</span>(d3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    estimate       pvalue 
-0.9608625835 0.0003626557 </code></pre>
+<pre><code>   estimate      pvalue 
+0.929023153 0.001822299 </code></pre>
 </div>
 </div>
 <p>Next, we set up the simulation for 1000 simulations with 100 observations per data set. One trick for efficient simulations is to generate the data in one big data frame. You can see that we can still use the two step approach with <code>tibble</code> and <code>mutate</code> for exogenous and endogenous variables. We just need to be careful with the number of observations and use <code>ntotal</code>.</p>
@@ -779,28 +779,27 @@ The following object is masked from 'package:lubridate':
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">rnorm</span>(ntotal, x <span class="sc">+</span> z1 <span class="sc">+</span> z3, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can than use <code>nest</code> to create separate data by sample and calculate the estimate and p-value for each sample with our functions. The results are a vector with two values and we use <code>unnest_wider</code> to create separate columns. Finally, I calculate the difference between the two estimates.</p>
-<div class="cell" data-hash="residual_dependent_cache/html/unnamed-chunk-8_ea781a0a6f35b9b7e1461660e2d21756">
+<div class="cell" data-hash="residual_dependent_cache/html/unnamed-chunk-8_8788a825a3e3cb4372706363e2a6ac2e">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> simdata <span class="sc">%&gt;%</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">.by =</span> sample) <span class="sc">%&gt;%</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">two =</span> <span class="fu">map</span>(<span class="at">.x =</span> data, <span class="at">.f =</span> <span class="sc">~</span> <span class="fu">two_step</span>(.x)),</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">one =</span> <span class="fu">map</span>(<span class="at">.x =</span> data, <span class="at">.f =</span> <span class="sc">~</span> <span class="fu">one_step</span>(.x))) <span class="sc">%&gt;%</span></span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>data) <span class="sc">%&gt;%</span></span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_wider</span>(<span class="fu">c</span>(one, two), <span class="at">names_sep =</span> <span class="st">"_"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> two_estimate <span class="sc">-</span> one_estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bias =</span> two_estimate <span class="sc">-</span> one_estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, we can summarise the results and we see that the two step approach is likely to overestimate the effect of <code>x</code>.</p>
-<div class="cell" data-hash="residual_dependent_cache/html/unnamed-chunk-9_30978cdbdd5b2c358b50800812c0a701">
+<div class="cell" data-hash="residual_dependent_cache/html/unnamed-chunk-9_8ca5b882aee469655294d39f5647a476">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">M =</span> <span class="fu">mean</span>(diff), <span class="at">se =</span> <span class="fu">sd</span>(diff)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()),</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">M =</span> <span class="fu">mean</span>(bias), <span class="at">se =</span> <span class="fu">sd</span>(bias)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()),</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">M_one =</span> <span class="fu">mean</span>(one_estimate), <span class="at">M_two =</span> <span class="fu">mean</span>(two_estimate))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
-      M     se M_one M_two
-  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 0.142 0.0285 0.961  1.10</code></pre>
+       M      se M_one M_two
+   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 0.0860 0.00427  1.02  1.10</code></pre>
 </div>
 </div>
-<p>We can also have a look at the p-values of both approaches which shows that the two-step approach is also often less precise and only reports a significant effect about 20% of the simulations while the one-step approach always reports a significant effect even though the samples only have 100 observations each.</p>
 <div class="cell" data-hash="residual_dependent_cache/html/unnamed-chunk-10_5fa38fab4f030bd4ea6d9c8f8e4a2714">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span> <span class="fu">select</span>(sample, two_pvalue, one_pvalue) <span class="sc">%&gt;%</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(two_pvalue, one_pvalue),</span>
