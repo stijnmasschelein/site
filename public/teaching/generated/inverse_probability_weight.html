@@ -559,7 +559,7 @@ Call:
  bayesboot(data = sim_data, statistic = ipw, R = 200, use.weights = TRUE)</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/unnamed-chunk-8_5a528e806211fa013337ab9aa11124ab">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/unnamed-chunk-8_18aad91beeefa498912f90e320914b66">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(furrr)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cores <span class="ot">&lt;-</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>()</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> cores <span class="sc">-</span> <span class="dv">2</span>)</span>
@@ -571,17 +571,16 @@ Call:
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> sim_data <span class="sc">%&gt;%</span></span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">.by =</span> sim) <span class="sc">%&gt;%</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(.) <span class="sc">%&gt;%</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">se =</span> <span class="fu">future_map_dbl</span>(<span class="at">.x =</span> data, <span class="at">.f =</span> <span class="sc">~</span> <span class="fu">boot_function</span>(.x),</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>                             <span class="at">.options =</span> <span class="fu">furrr_options</span>(<span class="at">seed =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>                             <span class="at">.progress =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(sim, <span class="at">mean =</span> <span class="fu">mean</span>(se), <span class="at">sd =</span> <span class="fu">sd</span>(se))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">se =</span> <span class="fu">future_map_dbl</span>(<span class="at">.x =</span> data, <span class="at">.f =</span> <span class="sc">~</span> <span class="fu">boot_function</span>(.x),</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>                             <span class="at">.options =</span> <span class="fu">furrr_options</span>(<span class="at">seed =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>                             <span class="at">.progress =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(sim, <span class="at">mean =</span> <span class="fu">mean</span>(se), <span class="at">sd =</span> <span class="fu">sd</span>(se))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
    mean    sd
   &lt;dbl&gt; &lt;dbl&gt;
-1  2.18 0.479</code></pre>
+1  2.37 0.523</code></pre>
 </div>
 </div>
 
