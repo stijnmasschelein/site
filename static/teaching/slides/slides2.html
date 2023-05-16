@@ -451,7 +451,7 @@ Stijn Masschelein
 </section>
 <section id="simulating-distributions-in-r" class="slide level2">
 <h2>Simulating distributions in <code>R</code></h2>
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/random-number_5ef89314fa664775425eeb1a7fe17345">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>random <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">normal =</span> <span class="fu">rnorm</span>(N, <span class="dv">2</span>, <span class="dv">5</span>),</span>
@@ -463,16 +463,16 @@ Stijn Masschelein
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,000
 Columns: 4
-$ normal   &lt;dbl&gt; 3.46984938, -8.47868880, 0.03630236, 10.5…
-$ uniform  &lt;dbl&gt; 2.403534, 1.164901, 1.893901, 2.469179, 1…
-$ binomial &lt;int&gt; 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,…
-$ sample   &lt;int&gt; 2, 10, 2, 7, 7, 7, 6, 3, 7, 4, 9, 2, 5, 3…</code></pre>
+$ normal   &lt;dbl&gt; 2.46781982, -5.75669489, 1.83979037, 0.29…
+$ uniform  &lt;dbl&gt; 2.574179, 4.010491, 1.030518, 3.872609, 4…
+$ binomial &lt;int&gt; 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ sample   &lt;int&gt; 1, 4, 1, 7, 5, 3, 10, 2, 1, 10, 10, 4, 2,…</code></pre>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/random-plot1_58585e22ef56f9d54450545d9d7fb3c3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span> <span class="fu">geom_density</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">plot_grid</span>(p1, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
@@ -480,7 +480,7 @@ $ sample   &lt;int&gt; 2, 10, 2, 7, 7, 7, 6, 3, 7, 4, 9, 2, 5, 3…</code></pre>
 <img data-src="slides2_files/figure-revealjs/random-plot1-1.png" width="1920" class="r-stretch"></section>
 <section class="slide level2">
 
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/random-plot2_4371c995ecf06a1962acc9e5dc532a0e">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span> <span class="fu">geom_density</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> uniform)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"uniform histogram"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="fu">plot_grid</span>(p1, p2, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -489,7 +489,7 @@ $ sample   &lt;int&gt; 2, 10, 2, 7, 7, 7, 6, 3, 7, 4, 9, 2, 5, 3…</code></pre>
 <img data-src="slides2_files/figure-revealjs/random-plot2-1.png" width="1920" class="r-stretch"></section>
 <section class="slide level2">
 
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/random-plot3_a64f54020adda51ebd4db27e80336e8a">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span> <span class="fu">geom_density</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> uniform)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"uniform histogram"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> binomial, <span class="at">y =</span> normal)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"binomal-normal"</span>)</span>
@@ -499,7 +499,7 @@ $ sample   &lt;int&gt; 2, 10, 2, 7, 7, 7, 6, 3, 7, 4, 9, 2, 5, 3…</code></pre>
 <img data-src="slides2_files/figure-revealjs/random-plot3-1.png" width="1920" class="r-stretch"></section>
 <section class="slide level2">
 
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/random-plot4_b64c24e2370e40d59771036f146357ee">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span> <span class="fu">geom_density</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> uniform)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"uniform histogram"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> binomial, <span class="at">y =</span> normal)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"binomal-normal"</span>)</span>
@@ -511,7 +511,7 @@ $ sample   &lt;int&gt; 2, 10, 2, 7, 7, 7, 6, 3, 7, 4, 9, 2, 5, 3…</code></pre>
 <img data-src="slides2_files/figure-revealjs/random-plot4-1.png" width="1920" class="r-stretch"></section>
 <section id="better-code-formatting" class="slide level2">
 <h2>Better Code Formatting</h2>
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/code-formatting_95bbc6044b7eb6155702a586557d3f6e">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
@@ -559,7 +559,7 @@ $ sample   &lt;int&gt; 2, 10, 2, 7, 7, 7, 6, 3, 7, 4, 9, 2, 5, 3…</code></pre>
 <h2>Visualisation of matching theory</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/matching-viz_492fcb79c927e6f995f30c1abde403f3">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>obs <span class="ot">&lt;-</span> <span class="dv">500</span></span>
@@ -585,7 +585,7 @@ $ sample   &lt;int&gt; 2, 10, 2, 7, 7, 7, 6, 3, 7, 4, 9, 2, 5, 3…</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/mathing-log_037911a4222a1cbe4a377e8b52487015">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">plot</span>(matching_plot <span class="sc">+</span></span>
@@ -605,7 +605,7 @@ $ sample   &lt;int&gt; 2, 10, 2, 7, 7, 7, 6, 3, 7, 4, 9, 2, 5, 3…</code></pre>
 </section>
 <section id="ceo-compensation-data" class="slide level2">
 <h2>CEO compensation data</h2>
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/read-data_982a974d0e898aa131587c2b30335e6a">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>us_comp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">rename</span>(<span class="at">total_comp =</span> tdc1)</span>
 <span id="cb10-3"><a href="#cb10-3"></a>us_value <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-value-new.RDS"</span>)) <span class="sc">%&gt;%</span></span>
@@ -613,7 +613,7 @@ $ sample   &lt;int&gt; 2, 10, 2, 7, 7, 7, 6, 3, 7, 4, 9, 2, 5, 3…</code></pre>
 <span id="cb10-5"><a href="#cb10-5"></a><span class="fu">summary</span>(us_value<span class="sc">$</span>market_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-      0.0     926.1    2570.5   13490.1    8178.4 2324390.2 
+      0.0     926.5    2570.5   13488.2    8181.1 2324390.2 
      NA's 
      4182 </code></pre>
 </div>
@@ -621,7 +621,7 @@ $ sample   &lt;int&gt; 2, 10, 2, 7, 7, 7, 6, 3, 7, 4, 9, 2, 5, 3…</code></pre>
 </section>
 <section id="putting-it-all-together-with-_join" class="slide level2">
 <h2>Putting it all together with <code>_join</code></h2>
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-11_9419efc9badbeba42dc6f673e169ec54">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>us_comp_value <span class="ot">&lt;-</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a>    <span class="fu">select</span>(us_comp, gvkey, year, total_comp) <span class="sc">%&gt;%</span> </span>
 <span id="cb12-3"><a href="#cb12-3"></a>    <span class="fu">left_join</span>(</span>
@@ -629,7 +629,7 @@ $ sample   &lt;int&gt; 2, 10, 2, 7, 7, 7, 6, 3, 7, 4, 9, 2, 5, 3…</code></pre>
 <span id="cb12-5"><a href="#cb12-5"></a>        <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"gvkey"</span>))</span>
 <span id="cb12-6"><a href="#cb12-6"></a><span class="fu">glimpse</span>(us_comp_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 31,687
+<pre><code>Rows: 31,692
 Columns: 5
 $ gvkey        &lt;chr&gt; "001004", "001004", "001004", "001004…
 $ year         &lt;dbl&gt; 2011, 2011, 2012, 2013, 2014, 2015, 2…
@@ -650,7 +650,7 @@ $ ni           &lt;dbl&gt; 67.723, NA, 55.000, 72.900, 10.200, 4…</code></pre>
 <div id="tabset-1-1">
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-12_be75d240caea463a3dacb5d681dafd9f">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>plot_comp_value <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
 <span id="cb14-2"><a href="#cb14-2"></a>    us_comp_value,</span>
 <span id="cb14-3"><a href="#cb14-3"></a>    <span class="fu">aes</span>(<span class="at">y =</span> total_comp, <span class="at">x =</span> market_value)) <span class="sc">+</span></span>
@@ -659,7 +659,7 @@ $ ni           &lt;dbl&gt; 67.723, NA, 55.000, 72.900, 10.200, 4…</code></pre>
 <span id="cb14-6"><a href="#cb14-6"></a>    <span class="fu">xlab</span>(<span class="st">"market value ($ million)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-13_06528f55221c104a96f2614e8c48cdbd">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">print</span>(plot_comp_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
@@ -671,7 +671,7 @@ $ ni           &lt;dbl&gt; 67.723, NA, 55.000, 72.900, 10.200, 4…</code></pre>
 <div id="tabset-1-2">
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-14_028f23f6561bb8a004b937b1a9c73c62">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>plot_log <span class="ot">&lt;-</span> plot_comp_value <span class="sc">+</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>    <span class="fu">scale_x_continuous</span>(</span>
 <span id="cb16-3"><a href="#cb16-3"></a>        <span class="at">trans =</span> <span class="st">"log1p"</span>,</span>
@@ -687,7 +687,7 @@ $ ni           &lt;dbl&gt; 67.723, NA, 55.000, 72.900, 10.200, 4…</code></pre>
 <span id="cb16-13"><a href="#cb16-13"></a>    <span class="fu">xlab</span>(<span class="st">"market value ($ billion)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-15_733d79445175a65b4e410a3af20e8d1d">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">print</span>(plot_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
@@ -699,13 +699,13 @@ $ ni           &lt;dbl&gt; 67.723, NA, 55.000, 72.900, 10.200, 4…</code></pre>
 <div id="tabset-1-3">
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-16_ea22bd45ce80dbfd626ddad6069cbbcb">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>plot_zoom <span class="ot">&lt;-</span> plot_log <span class="sc">+</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a>    <span class="fu">coord_cartesian</span>(</span>
 <span id="cb18-3"><a href="#cb18-3"></a>        <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">1e1</span>, <span class="cn">NA</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">1e2</span>, <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-17_ce5ad1e07d536448747a7a348c2dc98a">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">print</span>(plot_zoom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
@@ -740,7 +740,7 @@ y_i = a + b_1 x_{1i} + ... + b_n x_{ni} + \epsilon_i
 \end{equation}\]</span></p>
 <p>See also <a href="https://theeffectbook.net/ch-StatisticalAdjustment.html">Chapter 13 in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (</span></a><a href="#/references" role="doc-biblioref" onclick="">2021</a>)</p>
 </div><div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-18_e5be7ac535dd6ce0b9a1700a40a1a463">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">data =</span> my_data_set)</span>
 <span id="cb20-2"><a href="#cb20-2"></a><span class="fu">summary</span>(reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -749,7 +749,7 @@ y_i = a + b_1 x_{1i} + ... + b_n x_{ni} + \epsilon_i
 </section>
 <section id="finally-the-regression" class="slide level2">
 <h2>Finally, the regression</h2>
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-19_e79b9e50f7ccc9a86d80ff072cc340af">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(total_comp <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">~</span> <span class="fu">log</span>(market_value <span class="sc">+</span> <span class="dv">1</span>),</span>
 <span id="cb21-2"><a href="#cb21-2"></a>         <span class="at">data =</span> us_comp_value)</span>
 <span id="cb21-3"><a href="#cb21-3"></a><span class="co"># summary(reg)</span></span>
@@ -800,7 +800,7 @@ log(market_value + 1)      0.4     0.0032     124        0</code></pre>
 </section>
 <section id="stock-holding-data" class="slide level2">
 <h2>Stock holding data</h2>
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-20_58a019d77a0774f0e18eef699723e2b9">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>us_comp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a>    <span class="fu">rename</span>(<span class="at">total_comp =</span> tdc1, <span class="at">shares =</span> shrown_tot_pct) <span class="sc">%&gt;%</span></span>
 <span id="cb23-3"><a href="#cb23-3"></a>    <span class="fu">select</span>(gvkey, execid, year, shares, total_comp)</span>
@@ -813,7 +813,7 @@ log(market_value + 1)      0.4     0.0032     124        0</code></pre>
 <span id="cb23-10"><a href="#cb23-10"></a>    <span class="fu">mutate</span>(<span class="at">wealth =</span> shares <span class="sc">*</span> market_value <span class="sc">/</span> <span class="dv">100</span>)</span>
 <span id="cb23-11"><a href="#cb23-11"></a><span class="fu">glimpse</span>(us_comp_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 27,203
+<pre><code>Rows: 27,207
 Columns: 7
 $ gvkey        &lt;chr&gt; "001004", "001004", "001004", "001004…
 $ execid       &lt;chr&gt; "09249", "09249", "09249", "09249", "…
@@ -829,7 +829,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <h2>Shares to Market Value</h2>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-21_2c4ecdaa5b23f0748777d68952978272">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>plot_shares <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
 <span id="cb25-2"><a href="#cb25-2"></a>    <span class="at">data =</span> us_comp_value,</span>
 <span id="cb25-3"><a href="#cb25-3"></a>    <span class="fu">aes</span>(<span class="at">x =</span> market_value<span class="sc">/</span><span class="dv">1000</span>, <span class="at">y =</span> shares)) <span class="sc">+</span></span>
@@ -853,7 +853,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <span id="cb25-21"><a href="#cb25-21"></a>                               <span class="at">base =</span> <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-22_693d42627dae2e2cf730bf13922e30d2">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">print</span>(plot_shares)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
@@ -868,7 +868,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Data</a></li><li><a href="#tabset-2-2">Plot</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-23_d04d3beb49c7ce57d81a6573b9bcd8c3">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>us_sens <span class="ot">&lt;-</span> us_comp_value <span class="sc">%&gt;%</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a>    <span class="fu">group_by</span>(gvkey, execid) <span class="sc">%&gt;%</span></span>
 <span id="cb27-3"><a href="#cb27-3"></a>    <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
@@ -906,7 +906,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <div id="tabset-2-2">
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-24_32ce7cd5e9915d8e8e41b906ae53a9f7">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>plot_hypothesis <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
 <span id="cb28-2"><a href="#cb28-2"></a>    us_sens,</span>
 <span id="cb28-3"><a href="#cb28-3"></a>    <span class="fu">aes</span>(<span class="at">y =</span> change_log_wealth <span class="sc">/</span> change_log_value,</span>
@@ -922,7 +922,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <span id="cb28-13"><a href="#cb28-13"></a>  <span class="fu">ylab</span>(<span class="st">"sensitivity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-25_7d0dac461d5dd0fbe9732017acd52198">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">print</span>(plot_hypothesis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
@@ -957,7 +957,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Randomisation</a></li><li><a href="#tabset-3-2">Test</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-26_ffed09e2f7ede0892519bfb59af41fb9">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>data_hypo <span class="ot">&lt;-</span> us_sens <span class="sc">%&gt;%</span></span>
 <span id="cb30-2"><a href="#cb30-2"></a>    <span class="fu">mutate</span>(</span>
 <span id="cb30-3"><a href="#cb30-3"></a>      <span class="at">sensitivity =</span> change_log_wealth <span class="sc">/</span> change_log_value) <span class="sc">%&gt;%</span></span>
@@ -972,21 +972,21 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <span id="cb30-12"><a href="#cb30-12"></a></span>
 <span id="cb30-13"><a href="#cb30-13"></a><span class="fu">print</span>(<span class="fu">prettyNum</span>(<span class="fu">c</span>(observed_cor, random_cor), <span class="at">dig =</span> <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "-0.00192" "0.00745" </code></pre>
+<pre><code>[1] "-0.00192" "0.00512" </code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-3-2">
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-27_131bfb66a240b7821d5bb8dbe973ef0f">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>simulate_cor <span class="ot">&lt;-</span> <span class="cf">function</span>(data){</span>
 <span id="cb32-2"><a href="#cb32-2"></a>    <span class="fu">return</span>(<span class="fu">cor</span>(data<span class="sc">$</span>sensitivity,</span>
 <span id="cb32-3"><a href="#cb32-3"></a>               <span class="fu">sample</span>(data<span class="sc">$</span>market_value)))}</span>
 <span id="cb32-4"><a href="#cb32-4"></a>rand_cor <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="fl">1e4</span>,</span>
 <span id="cb32-5"><a href="#cb32-5"></a>                      <span class="fu">simulate_cor</span>(data_hypo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-28_665640af002b90aa1ef68f6a8f0fe379">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>hist_sim <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
 <span id="cb33-2"><a href="#cb33-2"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
 <span id="cb33-3"><a href="#cb33-3"></a>        <span class="at">x =</span> rand_cor,</span>
@@ -999,7 +999,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <span id="cb33-10"><a href="#cb33-10"></a>        <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">0.1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-29_cf1bf0258353b298a47ac259597bba24">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">plot</span>(hist_sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
@@ -1015,7 +1015,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <h2>Bootstrap</h2>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-30_ba244f422628ca589b009c4e8d008c1b">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>calc_corr <span class="ot">&lt;-</span> <span class="cf">function</span>(d){</span>
 <span id="cb35-2"><a href="#cb35-2"></a>  n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(d)</span>
 <span id="cb35-3"><a href="#cb35-3"></a>  id_sample <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="at">size =</span> n,</span>
@@ -1028,7 +1028,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <span id="cb35-10"><a href="#cb35-10"></a>boot_corr <span class="ot">&lt;-</span> <span class="fu">replicate</span>(</span>
 <span id="cb35-11"><a href="#cb35-11"></a>    <span class="dv">2000</span>, <span class="fu">calc_corr</span>(data_hypo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-31_066ef18534719d2fee8200f04432c59a">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>plot_boot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
 <span id="cb36-2"><a href="#cb36-2"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> boot_corr)) <span class="sc">+</span></span>
 <span id="cb36-3"><a href="#cb36-3"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">100</span>, <span class="at">colour =</span> uwa_blue,</span>
@@ -1038,7 +1038,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <span id="cb36-7"><a href="#cb36-7"></a>    <span class="fu">xlab</span>(<span class="st">"Bootstrapped Correlation"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-32_433f15b48a5d8af3456d271cc4195ee0">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">print</span>(plot_boot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img data-src="slides2_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
@@ -1072,7 +1072,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 </section>
 <section id="formula-based-p-value" class="slide level2">
 <h2>Formula Based P-value</h2>
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-33_56be1bbbad5e5536f57ab7c9308701b3">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>cor <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(data_hypo<span class="sc">$</span>sensitivity, data_hypo<span class="sc">$</span>market_value)</span>
 <span id="cb38-2"><a href="#cb38-2"></a>pvalue_cor <span class="ot">&lt;-</span> cor<span class="sc">$</span>p.value</span>
 <span id="cb38-3"><a href="#cb38-3"></a><span class="fu">print</span>(<span class="fu">prettyNum</span>(pvalue_cor, <span class="at">dig =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1081,7 +1081,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-34_e4cd704ccd7f21f95adb953923aaff32">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>regr_sens <span class="ot">&lt;-</span> <span class="fu">lm</span>(sensitivity <span class="sc">~</span> <span class="fu">I</span>(market_value<span class="sc">/</span><span class="fl">1e3</span>), <span class="at">data =</span> data_hypo)</span>
 <span id="cb40-2"><a href="#cb40-2"></a><span class="fu">coefficients</span>(<span class="fu">summary</span>(regr_sens)) <span class="sc">%&gt;%</span> <span class="fu">print</span>(<span class="at">dig =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1121,7 +1121,7 @@ I(market_value/1000)  -0.0037      0.015   -0.24     0.81</code></pre>
 </section>
 <section id="answers" class="slide level2">
 <h2>Answers</h2>
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-35_65e2a88ef82943beef148f3491b050ae">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb42-2"><a href="#cb42-2"></a>high_performance <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(.x, .y, .z)</span>
 <span id="cb42-3"><a href="#cb42-3"></a>donation <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(.x, <span class="dv">1</span>, <span class="dv">0</span>)</span>
@@ -1134,14 +1134,14 @@ I(market_value/1000)  -0.0037      0.015   -0.24     0.81</code></pre>
 <span id="cb42-10"><a href="#cb42-10"></a><span class="fu">glimpse</span>(sig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-36_a2d04da0dac5ed2797e27ae3754ccf84">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>sig_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(..., <span class="fu">aes</span>(<span class="at">x =</span> .x, <span class="at">y =</span> .y)) <span class="sc">+</span></span>
 <span id="cb43-2"><a href="#cb43-2"></a>    <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">3</span>)</span>
 <span id="cb43-3"><a href="#cb43-3"></a><span class="fu">plot</span>(sig_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<div class="cell">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-37_3efd1852b3fbec0fda2b56cf4381d275">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>sig_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(..., <span class="at">data =</span> sig)</span>
 <span id="cb44-2"><a href="#cb44-2"></a><span class="fu">summary</span>(...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>

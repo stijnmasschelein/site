@@ -323,6 +323,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Generated Variables</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/introduction.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/residual_dependent.html" class="sidebar-item-text sidebar-link">Generated Dependent</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link">IPW</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -369,7 +394,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For the assignment, you can just copy the code in the assignment and make the necessary changes where indicated. Do not forget to copy all the code. Not just the one where you change something.</p>
 <section id="setup" class="level1">
 <h1>Setup</h1>
-<div class="cell">
+<div class="cell" data-hash="assignment_cache/html/setup_126a235b4c68773d1f1a291d8ecb0383">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -404,12 +429,12 @@ The following object is masked from 'package:lubridate':
 </div>
 </div>
 <p>Let’s restrict the data to two years. So that the computations do not take too long.</p>
-<div class="cell">
+<div class="cell" data-hash="assignment_cache/html/date-parameters_98ec7a4b6d2ff8d2e6c1a79c58280623">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>begin <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2003-01-01"</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>end <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2005-12-31"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>I keep the full stock price data for now. This code is a slightly adapted version of the <a href="../freaky_friday/abnormal_returns.html">Abnormal returns</a> page on the website. There are two changes: (1) we have to filter only the announcements between <code>begin</code> and <code>end</code> and (2) we add more factors from the French data. I will not go into the theoretical details here. The basic idea is that stock return are not only sensitive to one set of economic factors which are captured in the market return, but also to more specific factors such as the size (<code>smb</code>) and whether the company is value or growth company (<code>hml</code>). In what follows, we will treat the returns to these factors exactly the same as the market return, i.e.&nbsp;as predictors for the returns of the company that we are interested in.</p>
-<div class="cell">
+<div class="cell" data-hash="assignment_cache/html/data_6abb16e4b668fc110057436fd9402977">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>earn_ann <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"earn_ann.RDS"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(anndat <span class="sc">&gt;=</span> begin, anndat <span class="sc">&lt;=</span> end)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>analyst <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"analyst.RDS"</span>)) <span class="sc">%&gt;%</span></span>
@@ -454,7 +479,7 @@ e.g.:
 <p>That is, we include two more factors (<code>smb</code>, and <code>hlm</code>) in the regression model that we run for each announcement. The three-factor model typically works with the stock return and market return adjusted for the risk free rate (i.e.&nbsp;<code>ret - rf</code> and <code>mkt_rf</code> respectively). The code will give us a column <code>coefs</code> with the 4 estimated parameters <code>alpha</code>, <code>beta_mkt</code>, <code>beta_size</code>, <code>beta_value</code>.</p>
 <p>You need to change the code below in two parts as indicated by the comments in the code.</p>
 <p>The code first creates a function <code>creat_coefs_3factor</code> for <code>n</code> earnings announcements where the default value for <code>n</code> is 6. You can test whether your function works by creating the test object which should be a data set with 6 rows. One for each of the 6 earnings announcements at the top of the <code>earn_ann</code></p>
-<div class="cell">
+<div class="cell" data-hash="assignment_cache/html/three-factor-estimate_3df164873adbce5fcca41e1efd05091f">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>create_coefs_3factor <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">6</span>){</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  earn_ann <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="at">n =</span> n) <span class="sc">%&gt;%</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>(permno, anndat) <span class="sc">%&gt;%</span></span>
@@ -494,7 +519,7 @@ e.g.:
 <p><span class="math inline">\(R_{t,k}^h\)</span> is the abnormal return on day <span class="math inline">\(h\)</span> after the announcement, <span class="math inline">\(R_{h,m}\)</span> is the market return on day <span class="math inline">\(h\)</span>, <span class="math inline">\(smb_{h,m}\)</span> is the size factor and <span class="math inline">\(hlm_{h,m}\)</span> is the value factor.</p>
 <p>In the last change, you need to add up the abnormal returns for the days 0 and 1 for the short window after the announcement and the for the days 2-75 after the announcement. That is you need to calculate <code>car_sum</code></p>
 <p>I also give the accumulation with the product which is more correct but the literature typically works with the sum as far as I could discern. You will also see further in the code that it does not really matter for our results even in the restricted dataset. You can use <code>car_prod</code> as an example for <code>car_sum</code> where <code>car_sum</code> is simpler.</p>
-<div class="cell">
+<div class="cell" data-hash="assignment_cache/html/abnormal-returns_8e91ce443b3910dc78967cef78316bb6">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">nrow</span>(earn_ann)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">create_coefs_3factor</span>(N)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -526,7 +551,7 @@ e.g.:
 <h1>Putting it all together</h1>
 <p>The next two code blocks gather the necessary market price and market value information. Next we combine the earning announcement data with the analyst expectations data, the abnormal returns, and the stock price data. Finally, we calculate the earnings surprise scaled by the stock price.</p>
 <p>You can just include this code as is.</p>
-<div class="cell">
+<div class="cell" data-hash="assignment_cache/html/clean-stock-prices_cb4a55704dc1dc1cdaad6a5131134a0a">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>clean_prices <span class="ot">&lt;-</span> all_stocks <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(prc <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(permno, date, prc, shrout) <span class="sc">%&gt;%</span></span>
@@ -550,7 +575,7 @@ e.g.:
 # ℹ 14,333,338 more rows</code></pre>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="assignment_cache/html/merging-everything_69911b57c4c845a54473d57e06e0e68e">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>surprise <span class="ot">&lt;-</span> earn_ann <span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(analyst,</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(ticker, anndat, actual, pdf)) <span class="sc">%&gt;%</span></span>
@@ -563,7 +588,7 @@ e.g.:
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(surprise)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The last code block here further cleans the data following the rules set in the paper and as used by me in the <a href="../freaky_friday/abnormal_returns.html">Abnormal returns</a> page. You can just include the code as is.</p>
-<div class="cell">
+<div class="cell" data-hash="assignment_cache/html/data-cleaning_74e14068b090520e44ac48ee2b33b2d9">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>winsorise <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">10000</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>main <span class="ot">&lt;-</span> surprise <span class="sc">%&gt;%</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(surprise)) <span class="sc">%&gt;%</span></span>
@@ -582,7 +607,7 @@ e.g.:
 <section id="descriptive-plot" class="level1">
 <h1>Descriptive Plot</h1>
 <p>The next code block creates the quantiles in the new <code>main</code> dataset so that we can recreate <a href="../freaky_friday/descriptive.html">one of the figures</a>.</p>
-<div class="cell">
+<div class="cell" data-hash="assignment_cache/html/quantiles_e3ba74a3883da1855809c517fca7afce">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>quantiles <span class="ot">&lt;-</span> main <span class="sc">%&gt;%</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sign =</span> <span class="fu">case_when</span>(surprise <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"positive"</span>,</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                          surprise <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"negative"</span>,</span>
@@ -599,7 +624,7 @@ e.g.:
 <span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The last part you need to do is to recreate the quick version of <a href="../freaky_friday/descriptive.html#figure-1">Figure 1a in the descriptives page</a></p>
-<div class="cell">
+<div class="cell" data-hash="assignment_cache/html/descriptive-plot_67b0e4b702b787fed1ab67773830bdbe">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(quantiles,</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(...)) <span class="sc">+</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, <span class="at">geom =</span> <span class="st">"errorbar"</span>, <span class="at">width =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
@@ -607,7 +632,7 @@ e.g.:
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_grey</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This is some free code just to demonstrate how easy it is to combine <code>pivot_longer</code> and <code>ggplot</code> to create similar plots for a bunch of similar variables where the variables are originally in different columns.</p>
-<div class="cell">
+<div class="cell" data-hash="assignment_cache/html/all-plots_04a01e9824e1b8c8de6316e31ab99e71">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>quantiles <span class="sc">%&gt;%</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(car_sum_short, car_prod_short, car_sum_long, car_prod_long),</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"car"</span>, <span class="at">names_to =</span> <span class="st">"window"</span>) <span class="sc">%&gt;%</span></span>

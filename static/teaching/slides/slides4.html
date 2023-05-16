@@ -758,7 +758,7 @@ circumstances-&gt;female
 </section>
 <section id="generate-the-data" class="slide level2">
 <h2>Generate the Data</h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/data-effect_0d22b0643069c4fee596de0958cf10fb">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>rd1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">firm =</span> <span class="dv">1</span><span class="sc">:</span>N,</span>
@@ -776,12 +776,12 @@ circumstances-&gt;female
 <pre><code>Rows: 1,000
 Columns: 7
 $ firm               &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, …
-$ high_performance   &lt;int&gt; 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0…
-$ noise              &lt;dbl&gt; 0.10712717, -0.94043044, 4.1656…
-$ donation           &lt;int&gt; 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0…
-$ performance        &lt;dbl&gt; 4, 1, 1, 1, 1, 4, 4, 1, 4, 4, 1…
-$ payoff_donation    &lt;dbl&gt; 2.1071272, -4.9404304, 0.165610…
-$ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
+$ high_performance   &lt;int&gt; 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1…
+$ noise              &lt;dbl&gt; 0.8634427, 3.9991062, -2.208085…
+$ donation           &lt;int&gt; 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1…
+$ performance        &lt;dbl&gt; 4, 1, 4, 1, 1, 1, 1, 4, 4, 4, 4…
+$ payoff_donation    &lt;dbl&gt; 2.863443e+00, -8.938289e-04, -2…
+$ payoff_no_donation &lt;dbl&gt; 1.8634427, 4.9991062, -1.208085…</code></pre>
 </div>
 </div>
 <aside class="notes">
@@ -854,7 +854,7 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 </section>
 <section id="lets-redo-the-simulated-example-with-averages" class="slide level2">
 <h2>Let’s redo the simulated example with averages</h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/causal-with-means1_7f74a4751d0e01a1fa33ae7725621318">
 <div class="sourceCode cell-code" id="cb3" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>rd1 <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">mutate</span>(<span class="at">causal_effect =</span> payoff_donation <span class="sc">-</span> payoff_no_donation) <span class="sc">%&gt;%</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">summarise</span>(<span class="at">M_causal =</span> <span class="fu">mean</span>(causal_effect),</span>
@@ -872,8 +872,8 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">-1.73</td>
-<td style="text-align: right;">2.99</td>
+<td style="text-align: right;">-2.14</td>
+<td style="text-align: right;">3</td>
 <td style="text-align: right;">1000</td>
 </tr>
 </tbody>
@@ -899,7 +899,7 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 </section>
 <section id="lets-redo-the-simulated-example-with-averages-1" class="slide level2 smaller">
 <h2>Let’s redo the simulated example with averages</h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/causal-with-means2_2f9498521c3af2bfa9b9fc22515d1e7c">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -911,15 +911,15 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">-1.73</td>
-<td style="text-align: right;">2.99</td>
+<td style="text-align: right;">-2.14</td>
+<td style="text-align: right;">3</td>
 <td style="text-align: right;">1000</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/causal-with-means-conditional_09356bd0bca94b0625deacddc094700b">
 <div class="sourceCode cell-code" id="cb4" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>rd1 <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">mutate</span>(<span class="at">causal_effect =</span> payoff_donation <span class="sc">-</span> payoff_no_donation) <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">group_by</span>(donation) <span class="sc">%&gt;%</span></span>
@@ -942,13 +942,13 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">-5</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">455</td>
+<td style="text-align: right;">523</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">545</td>
+<td style="text-align: right;">477</td>
 </tr>
 </tbody>
 </table>
@@ -957,7 +957,7 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 </section>
 <section id="lets-redo-the-regression-with-averages" class="slide level2 smaller">
 <h2>Let’s redo the regression with averages</h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/causal-regression_7bed98da925a07a3bb531e42f6090b42">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>summary_data  <span class="ot">&lt;-</span> rd1 <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">group_by</span>(donation) <span class="sc">%&gt;%</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">summarise</span>(<span class="at">M_payoff_donation =</span> <span class="fu">mean</span>(payoff_donation),</span>
@@ -975,13 +975,13 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">-3.97</td>
-<td style="text-align: right;">1.03</td>
+<td style="text-align: right;">-4.17</td>
+<td style="text-align: right;">0.83</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">1.90</td>
-<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">1.76</td>
+<td style="text-align: right;">0.76</td>
 </tr>
 </tbody>
 </table>
@@ -1004,7 +1004,7 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 <div class="callout-content">
 <ul>
 <li>The true ATT is 1</li>
-<li>The effect estimated by the regression is 0.865</li>
+<li>The effect estimated by the regression is 0.926</li>
 </ul>
 </div>
 </div>
@@ -1014,13 +1014,13 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 <h2>If you do not believe me, here is the regression</h2>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/unnamed-chunk-8_458685457cef01fd77572d23e28affc6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>rd1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(rd1, <span class="at">actual_payoff =</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>       <span class="fu">ifelse</span>(donation, payoff_donation, payoff_no_donation))</span>
 <span id="cb7-3"><a href="#cb7-3"></a>ols <span class="ot">&lt;-</span> <span class="fu">feols</span>(actual_payoff <span class="sc">~</span> donation, <span class="at">data =</span> rd1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/unnamed-chunk-9_ae0171ebf4e19552b46f447a85282568">
 <div class="cell-output-display">
 
 <table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
@@ -1033,19 +1033,19 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:center;"> 1.034*** </td>
+   <td style="text-align:center;"> 0.833*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
-   <td style="text-align:center;"> (0.134) </td>
+   <td style="text-align:center;"> (0.131) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> donation </td>
-   <td style="text-align:center;"> 0.865*** </td>
+   <td style="text-align:center;"> 0.926*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
-   <td style="text-align:center;"> (0.182) </td>
+   <td style="text-align:center;"> (0.190) </td>
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
@@ -1059,7 +1059,7 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 </section>
 <section id="what-could-possibly-go-wrong" class="slide level2">
 <h2>What could possibly go wrong?</h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/unnamed-chunk-10_c835815c1b5e58692c80d04d89dcb06c">
 <div class="sourceCode cell-code" id="cb8" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>rd2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb8-2"><a href="#cb8-2"></a>  <span class="at">high_performance =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fl">0.5</span>),</span>
 <span id="cb8-3"><a href="#cb8-3"></a>  <span class="at">noise =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
@@ -1073,7 +1073,7 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 </section>
 <section id="causal-effect-estimates-with-a-confounder" class="slide level2 smaller">
 <h2>Causal Effect Estimates with a Confounder</h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/unnamed-chunk-11_bc828e3568db74ffaaf299dd1ed3801f">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>summary_data  <span class="ot">&lt;-</span> rd2 <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">group_by</span>(donation) <span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">summarise</span>(<span class="at">M_payoff_donation =</span> <span class="fu">mean</span>(payoff_donation),</span>
@@ -1091,13 +1091,13 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">-3.87</td>
-<td style="text-align: right;">2.13</td>
+<td style="text-align: right;">-4.01</td>
+<td style="text-align: right;">1.99</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">1.92</td>
-<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">1.97</td>
+<td style="text-align: right;">0.97</td>
 </tr>
 </tbody>
 </table>
@@ -1111,7 +1111,7 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 </div>
 <ul>
 <li>The true ATT is 1</li>
-<li>The effect estimated by the regression is -0.215</li>
+<li>The effect estimated by the regression is -0.024</li>
 </ul>
 </section></section>
 <section>
@@ -1155,7 +1155,7 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 </section>
 <section id="panel-data-simulation-100-firms" class="slide level2 smaller">
 <h2>Panel Data Simulation (100 firms)</h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/unnamed-chunk-12_971a9076f6f6836961608cc1cc1a672c">
 <div class="sourceCode cell-code" id="cb11" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>rd_firm <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb11-3"><a href="#cb11-3"></a>  <span class="at">firm =</span> <span class="dv">1</span><span class="sc">:</span>N,</span>
@@ -1185,13 +1185,13 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 <tbody>
   <tr>
    <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -4.4 </td>
-   <td style="text-align:right;"> 1.6 </td>
+   <td style="text-align:right;"> -3.9 </td>
+   <td style="text-align:right;"> 2.1 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2.4 </td>
-   <td style="text-align:right;"> 1.4 </td>
+   <td style="text-align:right;"> 1.8 </td>
+   <td style="text-align:right;"> 0.8 </td>
   </tr>
 </tbody>
 </table>
@@ -1202,7 +1202,7 @@ $ payoff_no_donation &lt;dbl&gt; 1.10712717, 0.05956956, 5.16561…</code></pre>
 <section id="panel-data-simulation-10-time-periods" class="slide level2">
 <h2>Panel Data Simulation (10 time periods)</h2>
 <h4 id="the-variation-comes-from-high-performers-not-donating-some-years">The variation comes from high performers not donating some years</h4>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/unnamed-chunk-13_43397789ddafcdf0f4913785223851cc">
 <div class="sourceCode cell-code" id="cb12" data-code-line-numbers="1|3-4|5|6-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>T <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a>rd_panel_forget <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb12-3"><a href="#cb12-3"></a>  <span class="at">firm =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>N, <span class="at">each =</span> T),</span>
@@ -1445,7 +1445,7 @@ confounder-&gt;y
 </section>
 <section id="simulation-and-implementation-with-fixest" class="slide level2">
 <h2>Simulation and Implementation with <code>fixest</code></h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/unnamed-chunk-17_33a3f101355c738cd1d218ca41fa5740">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#|label: simulation-iv</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a>d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb13-3"><a href="#cb13-3"></a>  <span class="at">iv =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>),</span>
@@ -1480,7 +1480,7 @@ confounder-&gt;y
 </section>
 <section id="simulation-results-with-a-real-effect-of-0.6" class="slide level2 smaller">
 <h2>Simulation results with a real effect of 0.6</h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/results-iv_ce0d55b72833c3a13b686cfc94aacb95">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="st">"confounded"</span> <span class="ot">=</span> lm1, <span class="st">"with control"</span> <span class="ot">=</span> lm2, <span class="st">"collider"</span> <span class="ot">=</span> lm3, <span class="st">"collider"</span> <span class="ot">=</span> lm4,</span>
 <span id="cb14-2"><a href="#cb14-2"></a>              <span class="st">"iv no collider"</span> <span class="ot">=</span> iv1, <span class="st">"iv with collider"</span> <span class="ot">=</span> iv2),</span>
 <span id="cb14-3"><a href="#cb14-3"></a>         <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1501,55 +1501,55 @@ confounder-&gt;y
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:center;"> 0.117* </td>
-   <td style="text-align:center;"> 0.094 </td>
-   <td style="text-align:center;"> 0.605*** </td>
-   <td style="text-align:center;"> 0.528*** </td>
-   <td style="text-align:center;"> 0.115 </td>
-   <td style="text-align:center;"> 0.592*** </td>
+   <td style="text-align:center;"> −0.082 </td>
+   <td style="text-align:center;"> −0.082 </td>
+   <td style="text-align:center;"> 0.591*** </td>
+   <td style="text-align:center;"> 0.442*** </td>
+   <td style="text-align:center;"> −0.095 </td>
+   <td style="text-align:center;"> 0.546*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
-   <td style="text-align:center;"> (0.069) </td>
+   <td style="text-align:center;"> (0.082) </td>
    <td style="text-align:center;"> (0.061) </td>
-   <td style="text-align:center;"> (0.059) </td>
-   <td style="text-align:center;"> (0.057) </td>
    <td style="text-align:center;"> (0.072) </td>
-   <td style="text-align:center;"> (0.062) </td>
+   <td style="text-align:center;"> (0.089) </td>
+   <td style="text-align:center;"> (0.104) </td>
+   <td style="text-align:center;"> (0.082) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> x </td>
-   <td style="text-align:center;"> 0.178*** </td>
-   <td style="text-align:center;"> 0.471*** </td>
-   <td style="text-align:center;"> 0.126** </td>
-   <td style="text-align:center;"> 0.338*** </td>
+   <td style="text-align:center;"> 0.257*** </td>
+   <td style="text-align:center;"> 0.595*** </td>
+   <td style="text-align:center;"> 0.103 </td>
+   <td style="text-align:center;"> 0.293*** </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
-   <td style="text-align:center;"> (0.065) </td>
-   <td style="text-align:center;"> (0.080) </td>
-   <td style="text-align:center;"> (0.055) </td>
-   <td style="text-align:center;"> (0.075) </td>
+   <td style="text-align:center;"> (0.081) </td>
+   <td style="text-align:center;"> (0.070) </td>
+   <td style="text-align:center;"> (0.067) </td>
+   <td style="text-align:center;"> (0.097) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confounder </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> 0.454*** </td>
+   <td style="text-align:center;"> 0.644*** </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> 0.302*** </td>
+   <td style="text-align:center;"> 0.248** </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> (0.086) </td>
+   <td style="text-align:center;"> (0.070) </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> (0.081) </td>
+   <td style="text-align:center;"> (0.095) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
   </tr>
@@ -1559,8 +1559,8 @@ confounder-&gt;y
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> 0.353*** </td>
-   <td style="text-align:center;"> 0.194** </td>
+   <td style="text-align:center;"> 0.874*** </td>
+   <td style="text-align:center;"> 0.271** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -1568,8 +1568,8 @@ confounder-&gt;y
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> (0.110) </td>
-   <td style="text-align:center;"> (0.092) </td>
+   <td style="text-align:center;"> (0.195) </td>
+   <td style="text-align:center;"> (0.129) </td>
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
@@ -1594,7 +1594,7 @@ confounder-&gt;y
 </section>
 <section id="simulation-without-an-effect" class="slide level2">
 <h2>Simulation without an effect</h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/simulation-iv2_0a3064b1619f93558db6ed2864edfe19">
 <div class="sourceCode cell-code" id="cb15" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb15-2"><a href="#cb15-2"></a>  <span class="at">iv =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>),</span>
 <span id="cb15-3"><a href="#cb15-3"></a>  <span class="at">confounder =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
@@ -1614,7 +1614,7 @@ confounder-&gt;y
 </section>
 <section id="simulation-without-an-effect-1" class="slide level2 smaller">
 <h2>Simulation without an effect</h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/results-iv2_e83e6e749c7011782786b66541c6592b">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="st">"confounded"</span> <span class="ot">=</span> lm1, <span class="st">"with control"</span> <span class="ot">=</span> lm2, <span class="st">"collider"</span> <span class="ot">=</span> lm3, <span class="st">"collider"</span> <span class="ot">=</span> lm4,</span>
 <span id="cb16-2"><a href="#cb16-2"></a>              <span class="st">"iv no collider"</span> <span class="ot">=</span> iv1, <span class="st">"iv with collider"</span> <span class="ot">=</span> iv2),</span>
 <span id="cb16-3"><a href="#cb16-3"></a>         <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1635,55 +1635,55 @@ confounder-&gt;y
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:center;"> −0.009 </td>
-   <td style="text-align:center;"> 0.031 </td>
-   <td style="text-align:center;"> 0.757*** </td>
-   <td style="text-align:center;"> 0.554*** </td>
-   <td style="text-align:center;"> −0.010 </td>
-   <td style="text-align:center;"> 1.034*** </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:center;"> (0.080) </td>
-   <td style="text-align:center;"> (0.060) </td>
-   <td style="text-align:center;"> (0.096) </td>
-   <td style="text-align:center;"> (0.087) </td>
-   <td style="text-align:center;"> (0.095) </td>
-   <td style="text-align:center;"> (0.186) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> x </td>
-   <td style="text-align:center;"> −0.393*** </td>
-   <td style="text-align:center;"> 0.016 </td>
-   <td style="text-align:center;"> −0.029 </td>
-   <td style="text-align:center;"> 0.192** </td>
-   <td style="text-align:center;">  </td>
-   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> 0.017 </td>
+   <td style="text-align:center;"> 0.005 </td>
+   <td style="text-align:center;"> 0.696*** </td>
+   <td style="text-align:center;"> 0.483*** </td>
+   <td style="text-align:center;"> 0.057 </td>
+   <td style="text-align:center;"> 0.714*** </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
    <td style="text-align:center;"> (0.075) </td>
-   <td style="text-align:center;"> (0.073) </td>
-   <td style="text-align:center;"> (0.091) </td>
-   <td style="text-align:center;"> (0.085) </td>
+   <td style="text-align:center;"> (0.058) </td>
+   <td style="text-align:center;"> (0.083) </td>
+   <td style="text-align:center;"> (0.077) </td>
+   <td style="text-align:center;"> (0.083) </td>
+   <td style="text-align:center;"> (0.087) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> x </td>
+   <td style="text-align:center;"> −0.125* </td>
+   <td style="text-align:center;"> 0.151** </td>
+   <td style="text-align:center;"> −0.020 </td>
+   <td style="text-align:center;"> 0.118* </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.069) </td>
+   <td style="text-align:center;"> (0.064) </td>
+   <td style="text-align:center;"> (0.080) </td>
+   <td style="text-align:center;"> (0.068) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confounder </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> 0.615*** </td>
+   <td style="text-align:center;"> 0.619*** </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> 0.444*** </td>
+   <td style="text-align:center;"> 0.484*** </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> (0.070) </td>
+   <td style="text-align:center;"> (0.077) </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> (0.089) </td>
+   <td style="text-align:center;"> (0.093) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
   </tr>
@@ -1693,8 +1693,8 @@ confounder-&gt;y
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> 0.090 </td>
-   <td style="text-align:center;"> 0.544* </td>
+   <td style="text-align:center;"> 0.181 </td>
+   <td style="text-align:center;"> 0.035 </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
@@ -1702,8 +1702,8 @@ confounder-&gt;y
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> (0.192) </td>
-   <td style="text-align:center;"> (0.298) </td>
+   <td style="text-align:center;"> (0.112) </td>
+   <td style="text-align:center;"> (0.113) </td>
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
@@ -1748,7 +1748,7 @@ confounder-&gt;y
 </section>
 <section id="data" class="slide level2">
 <h2>Data</h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/unnamed-chunk-21_288648c9d5e1ae6a69c58ef7f9441a73">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">library</span>(readit)</span>
 <span id="cb17-2"><a href="#cb17-2"></a>duck <span class="ot">&lt;-</span> <span class="fu">readit</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"LameDuckData.dta"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">"nstate"</span>), <span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">"stdum"</span>),</span>
@@ -1766,7 +1766,7 @@ confounder-&gt;y
 </section>
 <section id="reduced-form" class="slide level2">
 <h2>Reduced Form</h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/unnamed-chunk-22_6759e9fbee1b8beb54fcf01b008a9a8a">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>form_red <span class="ot">&lt;-</span> <span class="fu">formula</span>(</span>
 <span id="cb18-2"><a href="#cb18-2"></a>  log_I <span class="sc">~</span> gov_exogenous_middling <span class="sc">+</span> log_I_1 <span class="sc">+</span> log_I_2 <span class="sc">+</span></span>
 <span id="cb18-3"><a href="#cb18-3"></a>  log_Y <span class="sc">+</span> log_Y_1 <span class="sc">+</span> log_Y_2 <span class="sc">+</span> log_real_GDP <span class="sc">+</span> log_real_GDP_1 <span class="sc">+</span></span>
@@ -1777,7 +1777,7 @@ confounder-&gt;y
 </section>
 <section id="stage-least-squares-2sls" class="slide level2">
 <h2>2 Stage Least Squares (2SLS)</h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/unnamed-chunk-23_19329d4598437d38f207be5dd437b1da">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>form_iv <span class="ot">&lt;-</span> <span class="fu">formula</span>(log_I <span class="sc">~</span> log_I_1 <span class="sc">+</span> log_I_2 <span class="sc">+</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a>  log_Y <span class="sc">+</span> log_Y_1 <span class="sc">+</span> log_Y_2 <span class="sc">+</span> log_real_GDP <span class="sc">+</span> log_real_GDP_1 <span class="sc">+</span></span>
 <span id="cb19-3"><a href="#cb19-3"></a>  log_real_GDP_2</span>
@@ -1791,7 +1791,7 @@ confounder-&gt;y
 </section>
 <section id="results" class="slide level2 smaller">
 <h2>Results</h2>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/unnamed-chunk-24_bf755104d3d612469aa65b33ddf40c72">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>coef_map <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"gov_exogenous_middling"</span> <span class="ot">=</span> <span class="st">"lame duck governor"</span>,</span>
 <span id="cb20-2"><a href="#cb20-2"></a>             <span class="st">"fit_uncertainty_continuous"</span> <span class="ot">=</span> <span class="st">"uncertainty"</span>)</span>
 <span id="cb20-3"><a href="#cb20-3"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="st">"reduced"</span> <span class="ot">=</span> red_reg,</span>
@@ -1858,7 +1858,7 @@ confounder-&gt;y
 </div>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/dwh_35f159655f9ecc7cab58f2a89a4b0f78">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>summ_iv <span class="ot">&lt;-</span> <span class="fu">summary</span>(iv_reg)</span>
 <span id="cb21-2"><a href="#cb21-2"></a>summ_1st <span class="ot">&lt;-</span> <span class="fu">summary</span>(iv_reg, <span class="at">stage =</span> <span class="dv">1</span>)</span>
 <span id="cb21-3"><a href="#cb21-3"></a>summ_iv<span class="sc">$</span>iv_wh<span class="sc">$</span>stat  <span class="co"># iv wu hausmann</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1887,7 +1887,7 @@ confounder-&gt;y
 </div>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/iv-diagnostics_30bf7f7c33e425d6f54e137659c71942">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">fitstat</span>(iv_reg, <span class="at">type =</span> <span class="st">"ivf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>F-test (1st stage), uncertainty_continuous: stat = 331.0, p &lt; 2.2e-16, on 1 and 1,640 DoF.</code></pre>
@@ -1897,7 +1897,7 @@ confounder-&gt;y
 <section id="new-assignment" class="slide level2">
 <h2>New Assignment</h2>
 <h3 id="lets-assume-that-firms-are-less-likely-to-donate-when-there-is-a-local-election">Let’s assume that firms are <em>less</em> likely to donate when there is a local election</h3>
-<div class="cell">
+<div class="cell" data-hash="slides4_cache/revealjs/rd_iv_election_21059fbb5ab4585ec30fcf3f9eb05ba9">
 <div class="sourceCode cell-code" id="cb27" data-code-line-numbers="5|7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>N <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a>rd_iv_el <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb27-3"><a href="#cb27-3"></a>  <span class="at">high_performance =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, .<span class="dv">5</span>),</span>

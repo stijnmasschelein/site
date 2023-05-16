@@ -322,6 +322,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Generated Variables</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/introduction.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/residual_dependent.html" class="sidebar-item-text sidebar-link">Generated Dependent</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link">IPW</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -356,7 +381,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p>On this page, we download the stock price data so that we can later calculate the abnormal return after the earnings announcements.</p>
-<div class="cell">
+<div class="cell" data-hash="download_stocks_cache/html/setup_60692ffcd1c7cc94cd1decb434666f07">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -381,7 +406,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>earn_ann <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"earn_ann.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="download_stocks_cache/html/setup-wrds_78df5a99d9ea40e4aea9481b025be8bb">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wrds <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">Postgres</span>(),</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">port=</span><span class="dv">9737</span>,</span>
@@ -390,16 +415,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sslmode=</span><span class="st">'require'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This section sets the <code>sql</code> parameters. The beginning date is 300 days before the first earnings announcement and the end date is 75 days after the last earnings announcement. Finally, I keep the <code>permno</code> identifiers because these are the only stocks we want the data from.</p>
-<div class="cell">
+<div class="cell" data-hash="download_stocks_cache/html/sql_params_crsp_f78401f6eae05bf63fdd99a261c1032f">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>crsp_input <span class="ot">&lt;-</span> earn_ann <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">begin =</span> <span class="fu">min</span>(anndat) <span class="sc">-</span> <span class="dv">300</span>, <span class="at">end =</span> <span class="fu">max</span>(anndat) <span class="sc">+</span> <span class="dv">75</span>, <span class="at">.by =</span> permno) <span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 8,755
 Columns: 3
-$ permno &lt;dbl&gt; 10560, 10656, 10574, 84606, 88784, 80585, 88836, 10659, 88790, …
-$ begin  &lt;date&gt; 2003-12-26, 2002-07-12, 2001-07-04, 2001-07-03, 2001-01-17, 20…
-$ end    &lt;date&gt; 2006-07-10, 2006-07-19, 2006-07-24, 2006-07-09, 2006-07-18, 20…</code></pre>
+$ permno &lt;dbl&gt; 10560, 88784, 10574, 80585, 84606, 88836, 88790, 87771, 82726, …
+$ begin  &lt;date&gt; 2003-12-26, 2001-01-17, 2001-07-04, 2003-05-06, 2001-07-03, 20…
+$ end    &lt;date&gt; 2006-07-10, 2006-07-18, 2006-07-24, 2006-04-11, 2006-07-09, 20…</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>begin_date <span class="ot">&lt;-</span> <span class="fu">min</span>(crsp_input<span class="sc">$</span>begin)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>end_date <span class="ot">&lt;-</span> <span class="fu">max</span>(crsp_input<span class="sc">$</span>end)</span>
@@ -407,13 +432,13 @@ $ end    &lt;date&gt; 2006-07-10, 2006-07-19, 2006-07-24, 2006-07-09, 2006-07-18
 </div>
 <p>I use the same syntax as before to call the WRDS databases as before with <code>sql</code> interspersed with the <code>R</code> parameters created in the previous code block. We get the daily volume, return, price, shares outstanding, cumulative factor to adjust price, and cumulative factor to adjust shares. The latter two are adjustment factors for stock splits and dividends which we probably will not need but if we do we have them.</p>
 <p>This is by far the largest download from WRDS and this is why it has it’s own page. We do not want to rerun this more than strictly necessary.</p>
-<div class="cell" data-output.var="crsp_query">
+<div class="cell" data-output.var="crsp_query" data-hash="download_stocks_cache/html/crsp-query_206576ed07af8873ec984f0667371ca6">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> permno, <span class="dt">date</span>, vol, ret, prc, shrout, cfacpr, cfacshr</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> crsp_a_stock.dsf</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> permno <span class="kw">IN</span> (?permno_sql)</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">AND</span> <span class="dt">date</span> <span class="kw">BETWEEN</span> ?begin_date <span class="kw">AND</span> ?end_date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="download_stocks_cache/html/unnamed-chunk-5_08116cfd5fc9f477ee28fc66bc834214">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>all_stocks <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(crsp_query) <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(all_stocks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

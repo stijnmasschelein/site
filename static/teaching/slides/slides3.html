@@ -678,7 +678,7 @@ TechIndustry-&gt;Performance
 <h2>Simulation</h2>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/measurement_c55dd5552d22ac67083a687cc7db8783">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">set.seed</span>(<span class="dv">230383</span>)</span>
 <span id="cb1-2"><a href="#cb1-2"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>ds <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">CG =</span> <span class="fu">runif</span>(N, <span class="dv">0</span>, <span class="dv">10</span>),</span>
@@ -686,12 +686,12 @@ TechIndustry-&gt;Performance
 <span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">mutate</span>(<span class="at">Performance =</span></span>
 <span id="cb1-6"><a href="#cb1-6"></a>           <span class="fu">rnorm</span>(N, CG <span class="sc">*</span> .<span class="dv">15</span> <span class="sc">+</span> TI <span class="sc">*</span> <span class="dv">10</span>, <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-7_2cdb1c61f1ed87507304a6b2020216b8">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> CG, <span class="at">data =</span> ds)</span>
 <span id="cb2-2"><a href="#cb2-2"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> CG <span class="sc">+</span> TI, <span class="at">data =</span> ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-8_a10e12ce7c9d788ba2ef40f4c7159aa6">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>gof_omit <span class="ot">&lt;-</span> <span class="st">"Adj|IC|Log|Pseudo"</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>stars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'*'</span> <span class="ot">=</span> .<span class="dv">1</span>, <span class="st">'**'</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">'***'</span> <span class="ot">=</span> .<span class="dv">01</span>)</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="fu">msummary</span>(<span class="fu">list</span>(lm1, lm2), <span class="at">stars =</span> stars,</span>
@@ -839,18 +839,18 @@ TechIndustry-&gt;Performance
 <h2>Simulation</h2>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/confounder_05e5e65ea7e38adb5dc01c1c35f4d3f3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>ds <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">TI =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, .<span class="dv">25</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">mutate</span>(<span class="at">CG =</span> <span class="fu">rnorm</span>(N, .<span class="dv">5</span> <span class="sc">-</span> TI, .<span class="dv">2</span>),</span>
 <span id="cb4-4"><a href="#cb4-4"></a>         <span class="at">Performance =</span> <span class="fu">rnorm</span>(N, TI <span class="sc">+</span> <span class="dv">0</span> <span class="sc">*</span> CG, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-11_8105214bbadf58d2820ac23a913c1cb5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> CG, <span class="at">data =</span> ds)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> CG <span class="sc">+</span> TI, <span class="at">data =</span> ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-12_307379673f550dd9a498d260e64708a8">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(lm1, lm2), <span class="at">stars =</span> stars,</span>
 <span id="cb6-2"><a href="#cb6-2"></a>         <span class="at">gof_omit =</span> gof_omit, <span class="at">output =</span> <span class="st">"html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -1009,7 +1009,7 @@ Industry-&gt;Performance
 </div>
 </div>
 <div id="tabset-1-2">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-14_4aadae032d7ea12cc69a812a9185b056">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>Nind <span class="ot">&lt;-</span> <span class="dv">20</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>N <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>di <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
@@ -1028,7 +1028,7 @@ Industry-&gt;Performance
 </div>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-15_afcba703c7b695a9b426e4000f95a306">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">glimpse</span>(di, <span class="at">width =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 20
@@ -1039,7 +1039,7 @@ $ ind_performance &lt;dbl&gt; 1.1335103, 1.2873377, 0.…</code></pre>
 </div>
 </div>
 </div><div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-16_205c9a9760c074fcf6cebd476ed9e900">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">glimpse</span>(ds, <span class="at">width =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 5,000
@@ -1055,13 +1055,13 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 </div>
 </div>
 <div id="tabset-1-3">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-17_a52861f6961e340ca6321d659128b279">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> CG, <span class="at">data =</span> ds)</span>
 <span id="cb12-2"><a href="#cb12-2"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> CG <span class="sc">+</span> <span class="fu">factor</span>(ind_number), <span class="at">data =</span> ds)</span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="fu">library</span>(fixest)</span>
 <span id="cb12-4"><a href="#cb12-4"></a>fe <span class="ot">&lt;-</span> <span class="fu">feols</span>(Performance <span class="sc">~</span> CG <span class="sc">|</span> ind_number, <span class="at">data =</span> ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-18_11306003acf52f745f0e22c4e747e174">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(lm1, lm2, fe), <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
@@ -1387,7 +1387,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
       }</style></aside>
 </div>
 <div id="tabset-1-4">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-19_44f2220d3f34529e760d36de6a3c58d9">
 <div class="sourceCode cell-code" id="cb14" data-code-line-numbers="3|7|8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>Nind <span class="ot">&lt;-</span> <span class="dv">20</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>N <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>correl <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">0.5</span></span>
@@ -1407,7 +1407,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 </div>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-20_a36a992b1672df37deeea614c0a67a40">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">glimpse</span>(di, <span class="at">width =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 20
@@ -1418,7 +1418,7 @@ $ ind_performance &lt;dbl&gt; -1.12284290, -0.57326559…</code></pre>
 </div>
 </div>
 </div><div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-21_4713e4f245117cbbe593b702e253aa63">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">glimpse</span>(ds, <span class="at">width =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 5,000
@@ -1434,11 +1434,11 @@ $ Performance     &lt;dbl&gt; 1.75927497, -1.39745179,…</code></pre>
 </div>
 </div>
 <div id="tabset-1-5">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-22_cf7de547c3f1b8523035c0db8454ccf7">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> CG, <span class="at">data =</span> ds)</span>
 <span id="cb19-2"><a href="#cb19-2"></a>fe <span class="ot">&lt;-</span> <span class="fu">feols</span>(Performance <span class="sc">~</span> CG <span class="sc">|</span> ind_number, <span class="at">data =</span> ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-23_891da32fd34db48c0b3a52d789004660">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(lm1, fe), <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
@@ -1534,7 +1534,7 @@ $ Performance     &lt;dbl&gt; 1.75927497, -1.39745179,…</code></pre>
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Full Sample</a></li><li><a href="#tabset-2-2">Highlight Industry</a></li><li><a href="#tabset-2-3">Remove Industry Effects</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-24_e72e2b308e5c4a24fe6374556bb51fa7">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>fe_plot <span class="ot">&lt;-</span></span>
@@ -1548,7 +1548,7 @@ $ Performance     &lt;dbl&gt; 1.75927497, -1.39745179,…</code></pre>
 </div>
 </div>
 <div id="tabset-2-2">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-25_d67ce4b28e9ae4ef19bcec099bf7dd16">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>fe_colour <span class="ot">&lt;-</span></span>
@@ -1563,7 +1563,7 @@ $ Performance     &lt;dbl&gt; 1.75927497, -1.39745179,…</code></pre>
 </div>
 </div>
 <div id="tabset-2-3">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-26_b6e7c519e9fe8aee4895dd79d0e955df">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>fe_demean <span class="ot">&lt;-</span> <span class="fu">group_by</span>(ds, ind_number) <span class="sc">%&gt;%</span></span>
@@ -1672,7 +1672,7 @@ circumstances-&gt;female
 </section>
 <section id="results-of-speedboat-races" class="slide level2 smaller">
 <h2>Results of Speedboat Races</h2>
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/speedboat-data_b86c49c91a8a188fd972d1ab651ceb84">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"booth_yamamura.Rdata"</span>))</span>
@@ -2032,7 +2032,7 @@ Performance-&gt;MarketReturn
 </div>
 </div>
 <div id="tabset-3-2">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-35_4766f5ccbebaf3d8607c03ac0ebdfc0e">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">corp_gov =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">mutate</span>(<span class="at">acc_profit =</span> <span class="fu">rnorm</span>(N, corp_gov, <span class="at">sd =</span> <span class="dv">3</span>),</span>
 <span id="cb26-3"><a href="#cb26-3"></a>         <span class="at">market_return =</span> <span class="fu">rnorm</span>(N, <span class="dv">2</span> <span class="sc">*</span> corp_gov <span class="sc">+</span> acc_profit,</span>
@@ -2042,7 +2042,7 @@ Performance-&gt;MarketReturn
 </div>
 </div>
 <div id="tabset-3-3">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-36_4384c6c83a9dc80bae6daa2e10eedca9">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(lm1, lm2),</span>
 <span id="cb27-2"><a href="#cb27-2"></a>         <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -2118,12 +2118,12 @@ Performance-&gt;MarketReturn
 <ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Simulate</a></li><li><a href="#tabset-4-2">Results</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-37_cf573d8d22330496daf3d699e966ce23">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>d <span class="ot">&lt;-</span> <span class="fu">mutate</span>(d, <span class="at">survival =</span> <span class="fu">if_else</span>(market_return <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-4-2">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-38_cea45c2fafb15adf57a0db2c484e1880">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(acc_profit <span class="sc">~</span> corp_gov, <span class="at">data =</span> <span class="fu">filter</span>(d, survival <span class="sc">==</span> <span class="dv">1</span>))</span>
 <span id="cb29-2"><a href="#cb29-2"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(acc_profit <span class="sc">~</span> corp_gov <span class="sc">*</span> survival, <span class="at">data =</span> d)</span>
 <span id="cb29-3"><a href="#cb29-3"></a><span class="fu">msummary</span>(<span class="fu">list</span>(lm1, lm2), <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2219,28 +2219,28 @@ Performance-&gt;MarketReturn
 </section>
 <section id="visualisation-of-colliders-and-interactions" class="slide level2 smaller">
 <h2>Visualisation of Colliders (and Interactions)</h2>
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-39_0370d074ced1e78208745115b710ef0f">
 
 </div>
 <div class="panel-tabset">
 <ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Full Sample</a></li><li><a href="#tabset-5-2">Survival Highlighted</a></li><li><a href="#tabset-5-3">Survival Only</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-40_a41e4d458d89d6b880a47e72bc441aa5">
 <div class="cell-output-display">
 <p><img data-src="slides3_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-5-2">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-41_26ab3643095214b8bb3bd6a6511e6f81">
 <div class="cell-output-display">
 <p><img data-src="slides3_files/figure-revealjs/unnamed-chunk-41-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-5-3">
-<div class="cell">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-42_89be318f164fdaad75438133333ab29f">
 <div class="cell-output-display">
 <p><img data-src="slides3_files/figure-revealjs/unnamed-chunk-42-1.png" width="960"></p>
 </div>

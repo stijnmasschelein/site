@@ -322,6 +322,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Generated Variables</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/introduction.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/residual_dependent.html" class="sidebar-item-text sidebar-link">Generated Dependent</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link">IPW</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -369,7 +394,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p>This setup code loads a package, <code>here</code>, that helps to navigate the folder structure in which I will create files. The <code>tidyverse</code> package is the main package, we will use to manipulate datasets. There are other ways to program in <code>R</code>. I think that to start of the <code>tidyverse</code> way of looking at data is quite intuitive and it is very well supported. The intuition and how quickly you can do meaningful things will hopefully be clear by the end of this document.</p>
-<div class="cell">
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/setup_d0d64e7f5b7208ce8639dabcccad908c">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
@@ -397,7 +422,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="get-the-data" class="level1">
 <h1>Get the data</h1>
 <p>We establish a connection with the WRDS databases with my account. <a href="https://wrds-www.wharton.upenn.edu/">WRDS</a> is the data provider the university subscribes to and it has a lot of good tutorials on how to connect to their databases from R. The website. However, you will first have to ask for an account from the person in charge of the databases in the department. I will give a more extensive example later in the unit.</p>
-<div class="cell">
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/wrds_connection_08bbcda87c18ebf48d8d2673f9ff0720">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>wrds <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">Postgres</span>(),</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</span>
@@ -407,7 +432,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">sslmode=</span><span class="st">'require'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>With an SQL string, we define which data we want. This is one of the cool things of these kind of files. You can combine different programming languages. Behind the scene, I have given the code a name, <code>wrds_data</code> for the output of the SQL query. You can see this if you are looking at the <code>.qmd</code> file.</p>
-<div class="cell" data-output.var="wrds_data">
+<div class="cell" data-output.var="wrds_data" data-hash="introduction_to_rstudio_for_accfin_cache/html/sql_query_execcomp_e4f08a7c831b72e4d70fc4a81c73e272">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="dt">year</span>, gvkey, cusip, exec_fullname, coname, ceoann,</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>execid, bonus, salary, stock_awards_fv, stock_unvest_val,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>eip_unearn_num, eip_unearn_val, option_awards,</span>
@@ -416,7 +441,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> EXECCOMP.ANNCOMP</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">year</span> <span class="op">&gt;</span> <span class="dv">2010</span> <span class="kw">AND</span> ceoann <span class="op">=</span> <span class="st">'CEO'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/wrds_execcomp_424d4e9ec8a1f36860d3c66e05b80d9c">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>compensation <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(wrds_data) <span class="sc">%&gt;%</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
@@ -450,7 +475,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(compensation, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, we do the same for the market value of the company. Unfortunately, we need to do it the old fashioned way, completely in <code>R</code>. The reason is that I don’t want to download all market values. Only for the firms that are already in our compensation data. The firms are</p>
-<div class="cell">
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/gvkeys_3c55cbaa1a417c404576540aa12d590c">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>gvkeys <span class="ot">&lt;-</span> <span class="fu">unique</span>(compensation<span class="sc">$</span>gvkey)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(gvkeys)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -458,7 +483,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>key_string <span class="ot">&lt;-</span> <span class="fu">paste</span>(gvkeys, <span class="at">collapse =</span> <span class="st">"','"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/wrds_fundamental_16e756cdede0574f8702f59079dcf315">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sql2 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"SELECT fyear, gvkey, mkvalt, ni "</span>,</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">"FROM COMP.FUNDA "</span>,</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">"WHERE fyear &gt; 2010 "</span>,</span>
@@ -469,7 +494,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 50,411
+<pre><code>Rows: 50,423
 Columns: 4
 $ fyear  &lt;dbl&gt; 2011, 2011, 2012, 2013, 2013, 2014, 2014, 2015, 2015, 2016, 201…
 $ gvkey  &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004", "00…
@@ -479,7 +504,7 @@ $ ni     &lt;dbl&gt; 67.723, NA, 55.000, 72.900, 72.900, 10.200, 10.200, 47.700,
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">distinct</span>(value)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 33,294
+<pre><code>Rows: 33,308
 Columns: 4
 $ fyear  &lt;dbl&gt; 2011, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 202…
 $ gvkey  &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004", "00…
@@ -493,7 +518,7 @@ $ ni     &lt;dbl&gt; 67.723, NA, 55.000, 72.900, 10.200, 47.700, 56.500, 15.600,
 <h1>Explore the data</h1>
 <section id="with-the-tidyverse" class="level2">
 <h2 class="anchored" data-anchor-id="with-the-tidyverse">With the tidyverse</h2>
-<div class="cell">
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/unnamed-chunk-7_40e23564081aec974c0301a4ca5befc5">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>us_comp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>))</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(us_comp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -523,7 +548,7 @@ $ joined_co               &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N
 $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/unnamed-chunk-8_92e43b635d5c1174f6159537bdd0db8e">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, gvkey <span class="sc">==</span> <span class="st">"001004"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 11 × 22
@@ -547,7 +572,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 #   reason &lt;chr&gt;</code></pre>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/unnamed-chunk-9_4254bce72f72f38ed9da80f748fef700">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, bonus <span class="sc">==</span> <span class="dv">0</span>, year <span class="sc">==</span> <span class="dv">2012</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,678 × 22
@@ -578,7 +603,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 <li>Look for any company where “gamestop” is in the name of the company.</li>
 <li>Look for the <code>gvkey</code> of Gamestop. Then use <code>filter</code> with exactly that key.</li>
 </ol>
-<div class="cell">
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/gamestop_4c25d079bcae27f504cdb1a29a7e1b54">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, <span class="fu">str_detect</span>(<span class="fu">tolower</span>(coname),</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"gamestop"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -628,7 +653,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </section>
 <section id="moving-on" class="level2">
 <h2 class="anchored" data-anchor-id="moving-on">Moving on</h2>
-<div class="cell">
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/unnamed-chunk-10_671e5a444d48fce1e8e3a1902049e0ae">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(us_comp, year, coname, bonus, salary, <span class="at">total =</span> tdc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 23,096 × 5
@@ -648,7 +673,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </div>
 </div>
 <p>We first build up the dataset with <code>select</code> and <code>mutate</code> and the pipe <code>%&gt;%</code>. When we are satisfied with the result, we can save the dataset as an R object with the name <code>us_comp_small</code>.</p>
-<div class="cell">
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/unnamed-chunk-11_9130da4fbe057cf9e2ef3904a0bf3a28">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>us_comp_small <span class="ot">&lt;-</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(us_comp, year, coname, bonus,</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>       salary, <span class="at">total =</span> tdc1) <span class="sc">%&gt;%</span></span>
@@ -674,7 +699,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </section>
 <section id="quick-descriptive-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="quick-descriptive-statistics">Quick descriptive statistics</h2>
-<div class="cell">
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/unnamed-chunk-12_858035b80eaec38d9550f63c9c3ac0f9">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(us_comp, gvkey) <span class="sc">%&gt;%</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>(), <span class="at">N_CEO =</span> <span class="fu">n_distinct</span>(execid),</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">average =</span> <span class="fu">mean</span>(salary),</span>
@@ -701,7 +726,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 # ℹ 589 more rows</code></pre>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/unnamed-chunk-13_df76e848612d56f433b3c23bc2a1ce94">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(us_comp, <span class="at">N =</span> <span class="fu">n</span>(), <span class="at">N_CEO =</span> <span class="fu">n_distinct</span>(execid),</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">average =</span> <span class="fu">mean</span>(salary),</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd =</span> <span class="fu">sd</span>(salary),</span>

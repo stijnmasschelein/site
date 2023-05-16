@@ -113,6 +113,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../generated/introduction.html" rel="next">
 <link href="../generalised/interpretation.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -344,6 +345,31 @@ div.csl-indent {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Generated Variables</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/introduction.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/residual_dependent.html" class="sidebar-item-text sidebar-link">Generated Dependent</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link">IPW</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -392,7 +418,7 @@ div.csl-indent {
 
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div class="cell">
+<div class="cell" data-hash="poisson_cache/html/setup_9047014c2ac2d5de7fb70321560fc450">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -427,7 +453,7 @@ The following object is masked from 'package:lubridate':
 <pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="poisson_cache/html/parameters_5bcc798bc6044823d4fd829d9ab87c9a">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">830323</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">4000</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>n_firm <span class="ot">&lt;-</span> <span class="dv">500</span></span>
@@ -493,7 +519,7 @@ E(y|x_1, x_2) = e^{-0.3 x_1 + x_2}
 \]</span></p>
 <p>This is the data generating process that we associate with a multiplicative process or from a Poisson count process. We will be interested in estimating the effect of <span class="math inline">\(x_1\)</span> on <span class="math inline">\(y\)</span> which in the Poisson regression should give an estimate of <span class="math inline">\(-0.3\)</span>.</p>
 <p>The data generating process also includes fixed effects and additional variation around this expected value which violates the assumptions of the naive Poisson regression. The details of this approach are not important and require knowledge of the negative binomial distribution(<code>rnbinom</code>) to get count data and the chi-squared distribution (<code>rchisq</code>).</p>
-<div class="cell">
+<div class="cell" data-hash="poisson_cache/html/simulate-count-data_afcb3c0fbac76ac5261412d5dec1b90a">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>overdispersion <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>hetero <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="sc">-</span> <span class="fl">0.3</span></span>
@@ -518,7 +544,7 @@ E(y|x_1, x_2) = e^{-0.3 x_1 + x_2}
 </div>
 </div>
 <p>I plot the data on log + 1 scale and you can see that the figure looks distorted or weird for lower values of <code>ydiscrete</code> or <code>ycontinuous</code>. This is by now means proof but it is indicative of some of the problems with the log or log plus 1 transformation.</p>
-<div class="cell">
+<div class="cell" data-hash="poisson_cache/html/unnamed-chunk-4_8d20ed497e1df7ca7d3e6117307e18fb">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>panel <span class="sc">%&gt;%</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(ydiscrete, ycontinuous), <span class="at">values_to =</span> <span class="st">"y"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> y <span class="sc">+</span> <span class="dv">1</span>, <span class="at">x =</span> x1)) <span class="sc">+</span></span>
@@ -536,7 +562,7 @@ E(y|x_1, x_2) = e^{-0.3 x_1 + x_2}
 <li>An OLS regression with <span class="math inline">\(y\)</span> as dependent variable. Because this regression is not on the rate of change scale, we do not expect a coefficient of -0.3 here. The main purpose is to show how noisy the estimate is.</li>
 <li>An OLS regression with <span class="math inline">\(\frac{y/x_2\)</span> as dependent variable. This approach will suffer from the same noisy estimates.</li>
 </ul>
-<div class="cell">
+<div class="cell" data-hash="poisson_cache/html/unnamed-chunk-5_759f12f2bacafd3cbf6250aca3fcce88">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>poisson_disc <span class="ot">&lt;-</span> <span class="fu">feglm</span>(ydiscrete <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> panel)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>poisson_cont <span class="ot">&lt;-</span> <span class="fu">feglm</span>(ycontinuous <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
@@ -874,6 +900,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../generated/introduction.html" class="pagination-link">
+        <span class="nav-page-text">Introduction</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

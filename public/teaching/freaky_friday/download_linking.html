@@ -322,6 +322,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Generated Variables</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/introduction.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/residual_dependent.html" class="sidebar-item-text sidebar-link">Generated Dependent</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link">IPW</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -370,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p>I use three packages on this page and two of them require some more explanation. The <code>here</code> package helps with managing the different files in this larger project. I can refer to different files relative to the root folder all the files are in. The only thing that I need to do is to say where this file is compared to the root folder with the <code>i_am</code> function. The second package is the <code>RPostgres</code> package that helps make a connection with the WRDS data sources.</p>
-<div class="cell">
+<div class="cell" data-hash="download_linking_cache/html/setup_e3bd6bab7a891cebe2e8798067f531fc">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -399,7 +424,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This code sets up the connection to WRDS. WRDS has a <a href="https://wrds-www.wharton.upenn.edu/pages/support/programming-wrds/programming-r/r-from-your-computer/">thorough tutorial</a> on how to set up Rstudio to connect to WRDS.</p>
 <p>In this tutorial, I will show you how you can do the whole data analysis from no data at all to the main results table. You do not have to do it this way. It is possible to just download the data files in for instance excel format from WRDS. For individual researchers this is sometimes easier. The disadvantage is that it is hard to check what researchers actually did when you do not have the full analytical pipeline. For future researchers having the full code available gives a way to check the work and improve upon it even if the data itself is not shared by the researchers.</p>
 <p>The practical benefit for you is that you can pick and choose which parts of the code you think are useful because I attempt to have everything in this tutorial.</p>
-<div class="cell">
+<div class="cell" data-hash="download_linking_cache/html/setup-wrds_a358c5091213c1c8415735f061389796">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wrds <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">Postgres</span>(),</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">port=</span><span class="dv">9737</span>,</span>
@@ -419,13 +444,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="ibes" class="level2">
 <h2 class="anchored" data-anchor-id="ibes">I/B/E/S</h2>
 <p>The <code>SQL</code> code instructs the WRDS data base to get the variables <code>ticker</code>, <code>cusip</code> (another identifier), <code>cname</code> (company name), and <code>sdates</code> (the start date for this ticker) from the <code>ibes.idsum</code> (IBES ID summary) database of WRDS. In this paper, we only want U.S. firms.</p>
-<div class="cell" data-output.var="ibes_query">
+<div class="cell" data-output.var="ibes_query" data-hash="download_linking_cache/html/ibes-ids_44cdf609cbda73d86b51751de2074196">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> ticker, cusip, cname, sdates</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> ibes.idsum</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> usfirm <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>With some R code, we clean the data and save it as a file in the <code>data &gt; wrds</code> folder in our main folder.</p>
-<div class="cell">
+<div class="cell" data-hash="download_linking_cache/html/unnamed-chunk-4_55a321392cf0bf2927e0a0dd3712f618">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ibes_id <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(ibes_query) <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(ibes_id, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrds"</span>, <span class="st">"ibes_id.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -434,11 +459,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="crsp" class="level2">
 <h2 class="anchored" data-anchor-id="crsp">CRSP</h2>
 <p>From the CRSP data, we get the <code>permno</code> and <code>ncusip</code> identifier where <code>ncusip</code> stands for the same <code>cusip</code> identifier as mentioned above. We also have the company name, start date, and end date.</p>
-<div class="cell" data-output.var="crsp_query">
+<div class="cell" data-output.var="crsp_query" data-hash="download_linking_cache/html/crsp-id_9c5e65d2ca24e6d7049f64d990755980">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> permno, ncusip, comnam, st_date, end_date</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> crsp.stocknames</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="download_linking_cache/html/write-crsp-id_74b4687f811f8b9869a98bf3130ca813">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>crsp_id <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(crsp_query) <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(crsp_id, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrds"</span>, <span class="st">"crsp_id.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -447,12 +472,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="compustat-with-ibes" class="level2">
 <h2 class="anchored" data-anchor-id="compustat-with-ibes">Compustat with I/B/E/S</h2>
 <p>From Compustat we use the security file which has all the financial securities (and their identifiers) that are linked to the firms in Compustat. We select all the variables from that dataset. We only select the ones where the <code>ib</code>es <code>tic</code>ker is available so that we can match via the ticker in the I/B/E/S files.</p>
-<div class="cell" data-output.var="compu_security_query">
+<div class="cell" data-output.var="compu_security_query" data-hash="download_linking_cache/html/compu-ibes_dac534b71eacf4259bfc5bc97ef1167f">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> comp.security</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> ibtic <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="download_linking_cache/html/write-compu-ibes_fbb63f2b7314f24adfa02f5d4937d782">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>compu_security <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(compu_security_query) <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(compu_security, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrds"</span>, <span class="st">"compu_security.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -461,11 +486,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="compustat-with-crsp" class="level2">
 <h2 class="anchored" data-anchor-id="compustat-with-crsp">Compustat with CRSP</h2>
 <p>Finally, we get the linking file in compustat. According to the documentation, not all the links are reliable and they advice to use the <code>linktype</code> variable and the <code>usedflag</code> variable to filter only the links that are most reliable. I have implemented the rules that follow best practice according to this tutorial (https://wrds-www.wharton.upenn.edu/pages/wrds-research/applications/linking-databases/linking-crsp-and-compustat/)</p>
-<div class="cell" data-output.var="compu_query">
+<div class="cell" data-output.var="compu_query" data-hash="download_linking_cache/html/compu-id_682dbb1406f5fa3edf680615b6910841">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> gvkey, linktype, usedflag, liid, lpermno, linkdt, linkenddt</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> crsp.Ccmxpf_linktable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="download_linking_cache/html/clean-crsp-compu_55f2c0bf905bf852031dad80faa2db55">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>crsp_compu <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(compu_query) <span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower) <span class="sc">%&gt;%</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, linktype, usedflag, <span class="at">iid =</span> liid, <span class="at">permno =</span> lpermno, <span class="at">stdt =</span> linkdt, <span class="at">enddt =</span> linkenddt) <span class="sc">%&gt;%</span></span>

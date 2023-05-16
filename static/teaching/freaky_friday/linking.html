@@ -322,6 +322,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Generated Variables</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/introduction.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/residual_dependent.html" class="sidebar-item-text sidebar-link">Generated Dependent</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link">IPW</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -368,7 +393,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <p>The packages are the same as before.</p>
-<div class="cell">
+<div class="cell" data-hash="linking_cache/html/setup_fb8c0f40d5cbd2dd459d018639cc997f">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -394,7 +419,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="read-the-data" class="level1">
 <h1>Read the data</h1>
 <p>We first read in the linking databases that we have downloaded. Here, you can again see the that I am separating the code in different files and I am using the saved versions of the databases. The advantage is that I do not have to wait on the WRDS download to do the data cleaning in this file.</p>
-<div class="cell">
+<div class="cell" data-hash="linking_cache/html/read-ids-links_b0fd9cdf4e5d78b5090b40c91374d2f5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ibes_id <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrds"</span>, <span class="st">"ibes_id.RDS"</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>crsp_id <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrds"</span>, <span class="st">"crsp_id.RDS"</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>crsp_compu <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrds"</span>, <span class="st">"crsp_compu.RDS"</span>))</span>
@@ -404,7 +429,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="merging-between-ibes-and-compustat" class="level1">
 <h1>Merging between IBES and Compustat</h1>
 <p>We start with the <code>ibes_id</code> dataset where we can use the <code>ticker</code> and the <code>cusip</code> as an identifier.</p>
-<div class="cell">
+<div class="cell" data-hash="linking_cache/html/unnamed-chunk-3_2caca09ed436216883e8f7e87b73c414">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ibes_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 89,961
@@ -416,7 +441,7 @@ $ sdates &lt;date&gt; 2014-02-20, 2014-03-20, 2014-02-20, 2014-03-20, 2019-06-20
 </div>
 </div>
 <p>First, I simplify the dataset a little bit. For every observation, I calculate the first and the last date for every combination of <code>ticker</code> and <code>cusip</code>. We are going to use these variables to match observations by <code>ticker</code> in one dataset and by <code>cusip</code> in another dataset. So, we really care about the combinations of (<code>ticker</code>, <code>cusip</code>). Then, I only keep the observations where the <code>sdates</code> equals <code>last_data_ibes</code>. This restricts the sample just to the identifiers and the first and last date they appeared in the data.</p>
-<div class="cell">
+<div class="cell" data-hash="linking_cache/html/create_links_c60eefcdbe296a314514886f3838f10c">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ibes_clean <span class="ot">&lt;-</span> ibes_id <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">first_date_ibes =</span> <span class="fu">min</span>(sdates),</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">last_date_ibes =</span> <span class="fu">max</span>(sdates),</span>
@@ -435,7 +460,7 @@ $ last_date_ibes  &lt;date&gt; 2014-03-20, 2020-10-15, 2014-06-19, 2014-02-20, 2
 </div>
 </div>
 <p>Unfortunately, there are some problems with this data. The number of unique tickers is relatively low compared to the number of cusips and compared to the ones in the <code>ibes_compu</code> linking data. We also have to be careful because the cusip in the <code>ibes_clean</code> data is 8 characters long and the one in the <code>ibes_compu</code> is 9 characters long. That is one of the problems with the cusip identifier that you always have to check. See the code below for the details.</p>
-<div class="cell">
+<div class="cell" data-hash="linking_cache/html/problems-ibes-compu_4194c7ffb57d1af3ad233582c09aefbc">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ibes_clean <span class="sc">%&gt;%</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">ticker =</span> <span class="fu">n_distinct</span>(ticker), <span class="at">cusip =</span> <span class="fu">n_distinct</span>(cusip))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -472,7 +497,7 @@ $ last_date_ibes  &lt;date&gt; 2014-03-20, 2020-10-15, 2014-06-19, 2014-02-20, 2
 </div>
 </div>
 <p>At this point, I decided that the best approach is to stick with the <code>ibes_compu</code> dataset to match I/B/E/S and Compustat data. I also checked the overlap between the two linking databases and it’s decent. About 19000 of the 22000 unique identifiers in <code>ibes_id</code> are in the <code>ibes_compu</code> dataset.</p>
-<div class="cell">
+<div class="cell" data-hash="linking_cache/html/unnamed-chunk-6_9d58f5f8a5f4758f404a1aa98b7679e6">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ibes_compu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 28,642
@@ -503,7 +528,7 @@ $ dldtei  &lt;date&gt; 1986-07-31, 2017-10-12, NA, 2007-02-15, 1995-10-31, 2010-
 <section id="merging-between-compustat-and-crsp" class="level1">
 <h1>Merging between Compustat and CRSP</h1>
 <p>This goes via <code>crsp_compu</code> and the <code>permno</code> and <code>gvkey</code> variables. There is no perfect match between the two variables but the number of distinct identifiers is close.</p>
-<div class="cell">
+<div class="cell" data-hash="linking_cache/html/check-crsp-compu_51facda690fe44c7a1c92c3963036ed7">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(crsp_compu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 32,713
@@ -523,7 +548,7 @@ $ enddt  &lt;date&gt; 1978-06-30, 1986-07-31, 1973-06-05, 1989-08-16, NA, 1983-0
 </div>
 </div>
 <p>Unfortunately, we also have the problem that sometimes a the <code>permno</code> identifier for CRSP is associated with multiple <code>gvkeys</code>. This is more problematic, I think and we will need to make sure we don’t run into trouble with this.</p>
-<div class="cell">
+<div class="cell" data-hash="linking_cache/html/unnamed-chunk-8_d5832fa0fcedf49800e8a782ff999e96">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>crsp_compu <span class="sc">%&gt;%</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">stdt =</span> <span class="fu">min</span>(stdt), <span class="at">enddt =</span> <span class="fu">max</span>(enddt), <span class="at">.by =</span> <span class="fu">c</span>(gvkey, permno)) <span class="sc">%&gt;%</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N =</span> <span class="fu">n</span>(), <span class="at">.by =</span> permno) <span class="sc">%&gt;%</span></span>
@@ -551,7 +576,7 @@ $ enddt  &lt;date&gt; 1978-06-30, 1986-07-31, 1973-06-05, 1989-08-16, NA, 1983-0
 <section id="full-linking-table" class="level1">
 <h1>Full Linking Table</h1>
 <p>For this study, we need the data from all three datasets, so we can make one table that links everything together. The two datasets have <code>gvkey</code> in common because of their link to Compustat. I use an <code>inner_join</code> because we need observations of all three dataset for each observation. I also rename some of the variables to make them a little bit easier to work with for me. I specifically retained the <code>isin</code> identifier. It is not necessary for the replication but it can be useful for potential extensions.</p>
-<div class="cell">
+<div class="cell" data-hash="linking_cache/html/create-save-linking-table_29a4b0e376691d1ada84c1a460df5adf">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>linking_table <span class="ot">&lt;-</span> ibes_compu <span class="sc">%&gt;%</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, ibtic, isin, cusip) <span class="sc">%&gt;%</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(crsp_compu, <span class="at">by =</span> <span class="fu">join_by</span>(gvkey <span class="sc">==</span> gvkey),</span>
@@ -646,7 +671,7 @@ $ end_date   &lt;date&gt; 1986-07-31, 1989-08-16, NA, 1996-03-13, 1995-09-28, 20
 <p>Going forward, we will only need the linking table. This makes it a good place to stop this file <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. If for future code, we need the <code>linking_table</code>. We can just read it from our RDS file. If we need to make changes to the table, we make it in this file and rerun the code from here.</p>
 <section id="linking-ibes" class="level2">
 <h2 class="anchored" data-anchor-id="linking-ibes">Linking I/B/E/S</h2>
-<div class="cell">
+<div class="cell" data-hash="linking_cache/html/unnamed-chunk-10_730c5e66eaf250b159b6191357904a87">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>linking_table <span class="sc">%&gt;%</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, ticker) <span class="sc">%&gt;%</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>

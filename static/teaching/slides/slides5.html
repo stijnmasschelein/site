@@ -423,7 +423,7 @@ Stijn Masschelein
 </section>
 <section class="slide level2">
 
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/setup_aa4d2d240ad0fe7bb0550ca3bfe0077b">
 
 </div>
 </section>
@@ -498,22 +498,22 @@ Time-&gt;Outcome
 </section>
 <section id="use-data-before-the-event-to-infer-the-counterfactual-outcome-in-yellow" class="slide level2">
 <h2>Use Data Before The Event to Infer The Counterfactual Outcome (in Yellow)</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/unnamed-chunk-3_b9ad1270a58781939a79b3a40a37ab2f">
 
 </div>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/unnamed-chunk-4_ad5c307d8defb070f2252ecdfdac1933">
 
 </div>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/unnamed-chunk-5_f872cb3b35764732c01db5404c70bd19">
 <div class="cell-output-display">
 <p><img data-src="slides5_files/figure-revealjs/unnamed-chunk-5-1.png" width="480"></p>
 </div>
 </div>
 </div><div class="column">
 <div class="fragment">
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/unnamed-chunk-6_29e0be63e92ffbe273bb4fea912c9631">
 <div class="cell-output-display">
 <p><img data-src="slides5_files/figure-revealjs/unnamed-chunk-6-1.png" width="480"></p>
 </div>
@@ -611,19 +611,19 @@ Time-&gt;Price Impact
 </section>
 <section id="what-if-we-had-an-additional-control-group-to-estimate-the-counterfactual" class="slide level2">
 <h2>What if we had an additional control group to estimate the counterfactual?</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/unnamed-chunk-8_fa1166dce027344dea30ff77983c5a63">
 
 </div>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/unnamed-chunk-9_32732764cd12c6cebfb13e537fde30f0">
 <div class="cell-output-display">
 <p><img data-src="slides5_files/figure-revealjs/unnamed-chunk-9-1.png" width="480"></p>
 </div>
 </div>
 </div><div class="column">
 <div class="fragment">
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/unnamed-chunk-10_2633c2ed60ccdebb448466c30112cefa">
 <div class="cell-output-display">
 <p><img data-src="slides5_files/figure-revealjs/unnamed-chunk-10-1.png" width="480"></p>
 </div>
@@ -634,7 +634,7 @@ Time-&gt;Price Impact
 </section>
 <section id="a-simulated-cheap-talk-example-voluntary-disclosure-in-time-2" class="slide level2 smaller">
 <h2>A Simulated Cheap Talk Example: Voluntary Disclosure in Time 2</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/unnamed-chunk-11_7061f40758cebc74910079156a5fb5f0">
 <div class="sourceCode cell-code" id="cb1" data-code-line-numbers="1,2|3|6|7|14|16,17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>N <span class="ot">&lt;-</span> <span class="dv">500</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>T <span class="ot">&lt;-</span> <span class="dv">2</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>time_effect <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">3.5</span>, <span class="dv">0</span>)</span>
@@ -671,7 +671,7 @@ Time-&gt;Price Impact
 </section>
 <section id="the-causal-effects-in-our-simulation" class="slide level2 smaller">
 <h2>The Causal Effects in Our Simulation</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/causal_did_means_2c137480b4e107e492cca9d5dd6173a5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>rd_did_panel <span class="sc">%&gt;%</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">mutate</span>(<span class="at">causal_effect =</span> profit_report <span class="sc">-</span> profit_no_report) <span class="sc">%&gt;%</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">group_by</span>(time, <span class="at">report2 =</span> performance <span class="sc">&gt;</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
@@ -695,29 +695,29 @@ Time-&gt;Price Impact
   <tr>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:right;"> 12.9 </td>
-   <td style="text-align:right;"> 7.9 </td>
+   <td style="text-align:right;"> 13.1 </td>
+   <td style="text-align:right;"> 8.1 </td>
    <td style="text-align:right;"> 5 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:left;"> TRUE </td>
-   <td style="text-align:right;"> 10.1 </td>
-   <td style="text-align:right;"> 5.1 </td>
+   <td style="text-align:right;"> 10.2 </td>
+   <td style="text-align:right;"> 5.2 </td>
    <td style="text-align:right;"> 5 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2 </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:right;"> 10.0 </td>
-   <td style="text-align:right;"> 5.0 </td>
+   <td style="text-align:right;"> 9.4 </td>
+   <td style="text-align:right;"> 4.4 </td>
    <td style="text-align:right;"> 5 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 2 </td>
    <td style="text-align:left;"> TRUE </td>
-   <td style="text-align:right;"> 6.5 </td>
-   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:right;"> 6.6 </td>
+   <td style="text-align:right;"> 1.6 </td>
    <td style="text-align:right;"> 5 </td>
   </tr>
 </tbody>
@@ -728,7 +728,7 @@ Time-&gt;Price Impact
 </section>
 <section id="a-summary-of-the-actual-profits" class="slide level2 smaller">
 <h2>A Summary of The Actual Profits</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/visual-did_6964ad0caedd6a974d0c2eaa1b8f7ce7">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>rd_did_panel <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">group_by</span>(time, <span class="at">report2 =</span> performance <span class="sc">&gt;</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">summarise</span>(<span class="at">actual_profit =</span> <span class="fu">mean</span>(actual_profit)) <span class="sc">%&gt;%</span></span>
@@ -747,13 +747,13 @@ Time-&gt;Price Impact
 <tbody>
   <tr>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:right;"> 7.9 </td>
-   <td style="text-align:right;"> 5.0 </td>
+   <td style="text-align:right;"> 8.1 </td>
+   <td style="text-align:right;"> 4.4 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> TRUE </td>
-   <td style="text-align:right;"> 5.1 </td>
-   <td style="text-align:right;"> 6.5 </td>
+   <td style="text-align:right;"> 5.2 </td>
+   <td style="text-align:right;"> 6.6 </td>
   </tr>
 </tbody>
 </table>
@@ -763,7 +763,7 @@ Time-&gt;Price Impact
 </section>
 <section id="regressions" class="slide level2 smaller">
 <h2>Regressions</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/unnamed-chunk-12_0598d5ced443625f39b95e57cd6379a4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>did_lm <span class="ot">&lt;-</span> <span class="fu">feols</span>(actual_profit <span class="sc">~</span> report, <span class="at">data =</span> rd_did_panel)</span>
 <span id="cb4-2"><a href="#cb4-2"></a>did_sub <span class="ot">&lt;-</span> <span class="fu">feols</span>(actual_profit <span class="sc">~</span> report, <span class="at">data =</span> <span class="fu">filter</span>(rd_did_panel, time <span class="sc">==</span> <span class="dv">2</span>))</span>
 <span id="cb4-3"><a href="#cb4-3"></a>did_fixed <span class="ot">&lt;-</span> <span class="fu">feols</span>(actual_profit <span class="sc">~</span> report <span class="sc">|</span> firm, <span class="at">data =</span> rd_did_panel)</span>
@@ -785,31 +785,31 @@ Time-&gt;Price Impact
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:center;"> 5.584*** </td>
-   <td style="text-align:center;"> 5.041*** </td>
+   <td style="text-align:center;"> 5.580*** </td>
+   <td style="text-align:center;"> 4.380*** </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
-   <td style="text-align:center;"> (0.156) </td>
-   <td style="text-align:center;"> (0.349) </td>
+   <td style="text-align:center;"> (0.144) </td>
+   <td style="text-align:center;"> (0.308) </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;"> report </td>
-   <td style="text-align:center;"> 0.952*** </td>
-   <td style="text-align:center;"> 1.495*** </td>
-   <td style="text-align:center;"> 1.455*** </td>
-   <td style="text-align:center;"> 4.345*** </td>
+   <td style="text-align:center;"> 1.005*** </td>
+   <td style="text-align:center;"> 2.206*** </td>
+   <td style="text-align:center;"> 1.403*** </td>
+   <td style="text-align:center;"> 5.091*** </td>
   </tr>
   <tr>
    <td style="text-align:left;box-shadow: 0px 1px">  </td>
-   <td style="text-align:center;box-shadow: 0px 1px"> (0.249) </td>
-   <td style="text-align:center;box-shadow: 0px 1px"> (0.395) </td>
-   <td style="text-align:center;box-shadow: 0px 1px"> (0.235) </td>
-   <td style="text-align:center;box-shadow: 0px 1px"> (0.481) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.233) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.352) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.208) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.428) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Num.Obs. </td>
@@ -820,24 +820,24 @@ Time-&gt;Price Impact
   </tr>
   <tr>
    <td style="text-align:left;"> R2 </td>
-   <td style="text-align:center;"> 0.014 </td>
-   <td style="text-align:center;"> 0.028 </td>
-   <td style="text-align:center;"> 0.618 </td>
-   <td style="text-align:center;"> 0.649 </td>
+   <td style="text-align:center;"> 0.018 </td>
+   <td style="text-align:center;"> 0.073 </td>
+   <td style="text-align:center;"> 0.624 </td>
+   <td style="text-align:center;"> 0.685 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> R2 Within </td>
    <td style="text-align:center;">  </td>
    <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> 0.068 </td>
-   <td style="text-align:center;"> 0.133 </td>
+   <td style="text-align:center;"> 0.071 </td>
+   <td style="text-align:center;"> 0.222 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> RMSE </td>
-   <td style="text-align:center;"> 3.84 </td>
-   <td style="text-align:center;"> 3.64 </td>
-   <td style="text-align:center;"> 2.39 </td>
-   <td style="text-align:center;"> 2.29 </td>
+   <td style="text-align:center;"> 3.58 </td>
+   <td style="text-align:center;"> 3.34 </td>
+   <td style="text-align:center;"> 2.22 </td>
+   <td style="text-align:center;"> 2.03 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Std.Errors </td>
@@ -894,7 +894,7 @@ Time-&gt;Price Impact
 </div></aside></section>
 <section id="setup-of-three-period-simulation" class="slide level2 smaller">
 <h2>Setup of three period simulation</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/unnamed-chunk-13_0ced63127b6eafe3c56811a31967f422">
 <div class="sourceCode cell-code" id="cb5" data-code-line-numbers="2|3,6|4,7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>T <span class="ot">&lt;-</span> <span class="dv">3</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>cutoff2 <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># performance cutoff to report for time 1</span></span>
@@ -911,7 +911,7 @@ Time-&gt;Price Impact
 </section>
 <section id="three-period-simulation" class="slide level2 smaller">
 <h2>Three period simulation</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/unnamed-chunk-14_ad69f5af21c0f4fc60a3988857990471">
 <div class="sourceCode cell-code" id="cb6" data-code-line-numbers="7-11|13-17|19-24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>rd_did3_panel <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb6-2"><a href="#cb6-2"></a>  <span class="at">firm =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>N, <span class="at">each =</span> T),</span>
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">time =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>T, <span class="at">times =</span> N)) <span class="sc">%&gt;%</span></span>
@@ -949,7 +949,7 @@ Time-&gt;Price Impact
 <li>Reporters in year 2 and 3 (Medium)</li>
 <li>Reporters in year 2 and 3 (High)</li>
 </ol>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/causal-three-years_fc8f2b46ccd22ec1a57511deb8ba371b">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>causal_effects <span class="ot">&lt;-</span> rd_did3_panel <span class="sc">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">mutate</span>(<span class="at">causal_effect =</span> profit_report <span class="sc">-</span> profit_no_report,</span>
 <span id="cb7-3"><a href="#cb7-3"></a>         <span class="at">group =</span> <span class="fu">case_when</span>(</span>
@@ -968,7 +968,7 @@ Time-&gt;Price Impact
 </section>
 <section id="overview-of-4-groups-of-firms-1" class="slide level2 smaller">
 <h2>Overview of 4 groups of firms</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/causal-table-three-years_35339b1d8b1a2caff0a7038ec2077aae">
 <div class="cell-output-display">
 
 <table>
@@ -988,108 +988,108 @@ Time-&gt;Price Impact
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 134 </td>
-   <td style="text-align:right;"> 8.8 </td>
-   <td style="text-align:right;"> 8.8 </td>
-   <td style="text-align:right;"> 0.0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 163 </td>
+   <td style="text-align:right;"> 141 </td>
    <td style="text-align:right;"> 7.4 </td>
    <td style="text-align:right;"> 7.4 </td>
    <td style="text-align:right;"> 0.0 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 187 </td>
-   <td style="text-align:right;"> 4.6 </td>
-   <td style="text-align:right;"> 4.6 </td>
-   <td style="text-align:right;"> 0.0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 516 </td>
-   <td style="text-align:right;"> 4.9 </td>
-   <td style="text-align:right;"> 4.9 </td>
-   <td style="text-align:right;"> 0.0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 134 </td>
-   <td style="text-align:right;"> 9.8 </td>
-   <td style="text-align:right;"> 4.8 </td>
-   <td style="text-align:right;"> 5.0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
    <td style="text-align:right;"> 2 </td>
    <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 163 </td>
-   <td style="text-align:right;"> 9.7 </td>
-   <td style="text-align:right;"> 4.7 </td>
-   <td style="text-align:right;"> 5.0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 187 </td>
-   <td style="text-align:right;"> 6.6 </td>
-   <td style="text-align:right;"> 1.6 </td>
-   <td style="text-align:right;"> 5.0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 516 </td>
-   <td style="text-align:right;"> 6.6 </td>
-   <td style="text-align:right;"> 1.6 </td>
-   <td style="text-align:right;"> 5.0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 134 </td>
-   <td style="text-align:right;"> 6.1 </td>
-   <td style="text-align:right;"> 3.8 </td>
-   <td style="text-align:right;"> 2.3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 163 </td>
-   <td style="text-align:right;"> 6.2 </td>
-   <td style="text-align:right;"> 3.8 </td>
-   <td style="text-align:right;"> 2.3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 187 </td>
-   <td style="text-align:right;"> 3.5 </td>
-   <td style="text-align:right;"> 1.1 </td>
-   <td style="text-align:right;"> 2.3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 516 </td>
+   <td style="text-align:right;"> 159 </td>
    <td style="text-align:right;"> 7.5 </td>
-   <td style="text-align:right;"> 0.9 </td>
+   <td style="text-align:right;"> 7.5 </td>
+   <td style="text-align:right;"> 0.0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 168 </td>
+   <td style="text-align:right;"> 4.9 </td>
+   <td style="text-align:right;"> 4.9 </td>
+   <td style="text-align:right;"> 0.0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 532 </td>
+   <td style="text-align:right;"> 5.0 </td>
+   <td style="text-align:right;"> 5.0 </td>
+   <td style="text-align:right;"> 0.0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 141 </td>
+   <td style="text-align:right;"> 9.3 </td>
+   <td style="text-align:right;"> 4.3 </td>
+   <td style="text-align:right;"> 5.0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 159 </td>
+   <td style="text-align:right;"> 9.3 </td>
+   <td style="text-align:right;"> 4.3 </td>
+   <td style="text-align:right;"> 5.0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 168 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 1.7 </td>
+   <td style="text-align:right;"> 5.0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 532 </td>
+   <td style="text-align:right;"> 6.7 </td>
+   <td style="text-align:right;"> 1.7 </td>
+   <td style="text-align:right;"> 5.0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 141 </td>
+   <td style="text-align:right;"> 4.7 </td>
+   <td style="text-align:right;"> 2.3 </td>
+   <td style="text-align:right;"> 2.3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 159 </td>
+   <td style="text-align:right;"> 5.4 </td>
+   <td style="text-align:right;"> 3.1 </td>
+   <td style="text-align:right;"> 2.3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 168 </td>
+   <td style="text-align:right;"> 2.9 </td>
+   <td style="text-align:right;"> 0.6 </td>
+   <td style="text-align:right;"> 2.3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 532 </td>
+   <td style="text-align:right;"> 7.2 </td>
+   <td style="text-align:right;"> 0.5 </td>
    <td style="text-align:right;"> 6.7 </td>
   </tr>
 </tbody>
@@ -1100,7 +1100,7 @@ Time-&gt;Price Impact
 </section>
 <section id="two-way-fixed-effects" class="slide level2">
 <h2>Two-way Fixed Effects</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/two-way-three-years_8b9b7e2a61b4da3e4b8e12b297b3c592">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>twoway12 <span class="ot">&lt;-</span> <span class="fu">feols</span>(actual_profit <span class="sc">~</span> report <span class="sc">|</span> firm <span class="sc">+</span> time,</span>
 <span id="cb8-2"><a href="#cb8-2"></a>                  <span class="at">data =</span> <span class="fu">filter</span>(rd_did3_panel, time <span class="sc">!=</span> <span class="dv">3</span>))</span>
 <span id="cb8-3"><a href="#cb8-3"></a>twoway13 <span class="ot">&lt;-</span> <span class="fu">feols</span>(actual_profit <span class="sc">~</span> report <span class="sc">|</span> firm <span class="sc">+</span> time,</span>
@@ -1111,7 +1111,7 @@ Time-&gt;Price Impact
 </section>
 <section id="separate-2-by-2-effects-are-larger-than-the-total-sample-effect" class="slide level2 smaller">
 <h2>Separate 2 by 2 effects are larger than the total sample effect</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/unnamed-chunk-18_8696e14d8df59e085f6c279ca2d46368">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="st">"time 1 and 2"</span> <span class="ot">=</span> twoway12, <span class="st">"time 1 and 3"</span> <span class="ot">=</span> twoway13,</span>
 <span id="cb9-2"><a href="#cb9-2"></a>              <span class="st">"time 1, 2 and 3"</span> <span class="ot">=</span> twoway123), <span class="at">gof_omit =</span> gof_omit,</span>
 <span id="cb9-3"><a href="#cb9-3"></a>         <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">"*"</span> <span class="ot">=</span> .<span class="dv">1</span>, <span class="st">"**"</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">"***"</span> <span class="ot">=</span> .<span class="dv">01</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1129,15 +1129,15 @@ Time-&gt;Price Impact
 <tbody>
   <tr>
    <td style="text-align:left;"> report </td>
-   <td style="text-align:center;"> 5.050*** </td>
-   <td style="text-align:center;"> 6.078*** </td>
-   <td style="text-align:center;"> 4.336*** </td>
+   <td style="text-align:center;"> 4.882*** </td>
+   <td style="text-align:center;"> 5.671*** </td>
+   <td style="text-align:center;"> 4.219*** </td>
   </tr>
   <tr>
    <td style="text-align:left;box-shadow: 0px 1px">  </td>
-   <td style="text-align:center;box-shadow: 0px 1px"> (0.477) </td>
-   <td style="text-align:center;box-shadow: 0px 1px"> (0.623) </td>
-   <td style="text-align:center;box-shadow: 0px 1px"> (0.399) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.488) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.647) </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.409) </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Num.Obs. </td>
@@ -1147,21 +1147,21 @@ Time-&gt;Price Impact
   </tr>
   <tr>
    <td style="text-align:left;"> R2 </td>
-   <td style="text-align:center;"> 0.590 </td>
-   <td style="text-align:center;"> 0.587 </td>
-   <td style="text-align:center;"> 0.434 </td>
+   <td style="text-align:center;"> 0.578 </td>
+   <td style="text-align:center;"> 0.565 </td>
+   <td style="text-align:center;"> 0.437 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> R2 Within </td>
-   <td style="text-align:center;"> 0.098 </td>
-   <td style="text-align:center;"> 0.078 </td>
-   <td style="text-align:center;"> 0.053 </td>
+   <td style="text-align:center;"> 0.093 </td>
+   <td style="text-align:center;"> 0.066 </td>
+   <td style="text-align:center;"> 0.051 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> RMSE </td>
-   <td style="text-align:center;"> 3.50 </td>
-   <td style="text-align:center;"> 3.57 </td>
-   <td style="text-align:center;"> 4.14 </td>
+   <td style="text-align:center;"> 3.49 </td>
+   <td style="text-align:center;"> 3.71 </td>
+   <td style="text-align:center;"> 4.15 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Std.Errors </td>
@@ -1263,7 +1263,7 @@ Time-&gt;Price Impact
 <img data-src="figures/simulation_sun_abraham.svg" class="r-stretch"></section>
 <section id="sun-and-abraham-in-practice" class="slide level2">
 <h2>Sun and Abraham in Practice</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/sun_abraham_in_r_22649005e52224e94195308d29a9bf58">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>sa_new <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"sa_new.RDS"</span>))</span>
 <span id="cb10-2"><a href="#cb10-2"></a>sa_fe <span class="ot">&lt;-</span> <span class="fu">feols</span>(roa <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fu">sunab</span>(treatment_group, year) <span class="sc">|</span> firm <span class="sc">+</span> year,</span>
 <span id="cb10-3"><a href="#cb10-3"></a>               <span class="at">cluster =</span> <span class="st">"state"</span>, <span class="at">data =</span> sa_new)</span>
@@ -1274,7 +1274,7 @@ Time-&gt;Price Impact
 <li><code>treatment_group</code>: first year of treatment</li>
 <li><code>year</code>: calendar year</li>
 </ul>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/unnamed-chunk-20_e1aa0c797108e6ea1420d578d44652c2">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">names</span>(sa_fe<span class="sc">$</span>coefficients)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "year::-18:cohort::1998" "year::-17:cohort::1998" "year::-16:cohort::1998"
@@ -1295,7 +1295,7 @@ Time-&gt;Price Impact
 </section>
 <section id="sun-and-abraham---relative-year" class="slide level2 smaller">
 <h2>Sun and Abraham - Relative Year</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/sun_abraham_rel_year_8228948a655ea1809b13c8d616752745">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">msummary</span>(sa_fe, <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars, <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
 <span id="cb13-2"><a href="#cb13-2"></a>         <span class="at">estimate =</span> <span class="st">"{estimate} ({std.error}) {stars}"</span>, <span class="at">coef_omit =</span> <span class="st">"-1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -1400,14 +1400,14 @@ Time-&gt;Price Impact
 </section>
 <section id="sun-and-abraham---relative-year-1" class="slide level2 smaller">
 <h2>Sun and Abraham - Relative Year</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/sun_abraham_rel_year_plot_a5e5e51600134da8f067e85b6ba706fc">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">iplot</span>(sa_fe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides5_files/figure-revealjs/sun_abraham_rel_year_plot-1.png" width="960" class="r-stretch"></section>
 <section id="sun-and-abraham---att" class="slide level2 smaller">
 <h2>Sun and Abraham - ATT</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/sun_abraham_att_f29538ddb4c6c64aa42e62dfd2abfc18">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">msummary</span>(sa_fe_att, <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
@@ -1465,7 +1465,7 @@ Time-&gt;Price Impact
 </section>
 <section id="sun-and-abraham---cohort-effects" class="slide level2 smaller">
 <h2>Sun and Abraham - Cohort Effects</h2>
-<div class="cell">
+<div class="cell" data-hash="slides5_cache/revealjs/sun_abraham_cohort_0218f6460563d6fae2cf2f767a5ee47f">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">msummary</span>(sa_fe_group, <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 

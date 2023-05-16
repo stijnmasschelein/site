@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stijn Masschelein">
+
+<title>Method Package - Introduction</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../generated/residual_dependent.html" rel="next">
+<link href="../generalised/poisson.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Introduction</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Method Package</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Introduction</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../method_package.html" class="sidebar-item-text sidebar-link">Content</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../auxilary/introduction_to_rstudio_for_accfin.html" class="sidebar-item-text sidebar-link">Introduction to Rstudio for Accounting and Finance</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Slides</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides1.html" class="sidebar-item-text sidebar-link">Introduction to Research Methods in Finance and Accounting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides2.html" class="sidebar-item-text sidebar-link">Simulations, Regressions, and Significance</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides3.html" class="sidebar-item-text sidebar-link">Control Variables</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides4.html" class="sidebar-item-text sidebar-link">Research Design 1: Fixed Effects and Instrumental Variables</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides5.html" class="sidebar-item-text sidebar-link">Research Design 2: Event Studies and Difference-in-Difference</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Friday Earnings Announcements</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/index.html" class="sidebar-item-text sidebar-link">Research Design</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/download_linking.html" class="sidebar-item-text sidebar-link">WRDS linking data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/linking.html" class="sidebar-item-text sidebar-link">Combining databases</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/download_data.html" class="sidebar-item-text sidebar-link">Earnings announcements</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/download_stocks.html" class="sidebar-item-text sidebar-link">Stock price data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/abnormal_returns.html" class="sidebar-item-text sidebar-link">Abnormal returns</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/descriptive.html" class="sidebar-item-text sidebar-link">Descriptive statistics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/regressions.html" class="sidebar-item-text sidebar-link">Regressions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../freaky_friday/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Machine Learning</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/predictions.html" class="sidebar-item-text sidebar-link">Predictions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/theory.html" class="sidebar-item-text sidebar-link">Theory</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">Peer Firms</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../machine_learning/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Generalised Linear Models</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/introduction.html" class="sidebar-item-text sidebar-link">Introduction and Theory</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/interpretation.html" class="sidebar-item-text sidebar-link">Interpretation</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generalised/poisson.html" class="sidebar-item-text sidebar-link">Poisson Regression</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">Generated Variables</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/introduction.html" class="sidebar-item-text sidebar-link active">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/residual_dependent.html" class="sidebar-item-text sidebar-link">Generated Dependent</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link">IPW</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#an-example-2sls" id="toc-an-example-2sls" class="nav-link" data-scroll-target="#an-example-2sls">An example: 2SLS</a></li>
+  <li><a href="#bayesian-bootstrap" id="toc-bayesian-bootstrap" class="nav-link" data-scroll-target="#bayesian-bootstrap">Bayesian Bootstrap</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Introduction</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Stijn Masschelein </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This last section is going to bring everything full circle to an extent. The topic of this section is generated variables which are variables that are the result of a regression. For instance, we could use the residuals or predicted values of one regression and use them as variables in an other regression. This is the idea behind two-stage least squares with an instrumental variable, models of abnormal returns, models of abnormal accruals and many more in the accounting and finance literature.</p>
+<p>The issue is that these generated variables might violate some of the implicit or explicit assumptions in the second regression model. I will go over some of the issues that are specific to certain models such as two-stage least squares on this page and the use of generated variables on the next page. The main message of this section is that the properties of these models that exists of more than one regression are not always well understood: the estimates could be biased or the standard software packages could give the wrong standard errors. The solutions I propose in this setting is to use <em>simulations</em> of many datasets to understand whether an approach gives biased estimates and use <em>bootstrapped standard errors</em> to check whether the multi-step approach gives reasonable standard errors. I use plenty of coding examples to illustrate these points.</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell" data-hash="introduction_cache/html/setup_aa9a27b7a18247a83b8b2ed67672fdfc">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.1     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>gof_map <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"r.squared"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fixest)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bayesboot)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"generated/introduction.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">230383</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="an-example-2sls" class="level2">
+<h2 class="anchored" data-anchor-id="an-example-2sls">An example: 2SLS</h2>
+<p>In this example, we are using a standard setting where an instrumental variable, <code>iv</code>, is used to identify the effect of a variable <code>x</code> on <code>y</code> in the presence of annoying confounding. Note that I generate the data in two steps. The initial <code>tibble</code> step simulates the variables that are exogenous and not affected by other parts of the model while the second <code>mutate</code> step simulates the endogenous variables that are causally affected by other parts of the model.</p>
+<div class="cell" data-hash="introduction_cache/html/data-2sls_1236a7dcf37a115cb3a2df8f6c052772">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>data_2sls <span class="ot">&lt;-</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">iv =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, <span class="fl">0.5</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">annoying =</span> <span class="fu">rnorm</span>(N)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">rnorm</span>(N, <span class="dv">2</span> <span class="sc">*</span> iv <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> annoying, <span class="dv">5</span>),</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">rnorm</span>(N, <span class="dv">3</span> <span class="sc">*</span> annoying <span class="sc">+</span> x, <span class="dv">5</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, we run four different models with this data.</p>
+<ul>
+<li><code>lm1</code> is the confounded regression.</li>
+<li><code>lm2</code> controls for the annoying confounding factor and provides the best possible answer to the question. Unfortunately, in reality we often are not sure that we have all the confounding factors.</li>
+<li><code>tsls</code> is the standard two-stage least squares estimate with <code>iv</code> as the instrumental variable.</li>
+<li><code>tsls_manual1</code> and <code>tsls_manual2</code> run the two regressions of two-stage least squares manually.</li>
+</ul>
+<div class="cell" data-hash="introduction_cache/html/lm-2sls_853a3460ed9dab8ed65705c016598151">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data_2sls)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> annoying, <span class="at">data =</span> data_2sls)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>tsls <span class="ot">&lt;-</span> <span class="fu">feols</span>(y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> x <span class="sc">~</span> iv, <span class="at">data =</span> data_2sls)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>tsls_manual1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(x <span class="sc">~</span> iv, <span class="at">data =</span> data_2sls)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>data_2sls <span class="ot">&lt;-</span> data_2sls <span class="sc">%&gt;%</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fit_x =</span> <span class="fu">fitted</span>(tsls_manual1))</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>tsls_manual2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> fit_x, <span class="at">data =</span> data_2sls)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>coef_map <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'x'</span> <span class="ot">=</span> <span class="st">'x'</span>, <span class="st">'annoying'</span> <span class="ot">=</span> <span class="st">'annoying'</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>              <span class="st">'fit_x'</span> <span class="ot">=</span> <span class="st">'x'</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="at">confounded =</span> lm1, <span class="at">ideal =</span> lm2, <span class="at">tsls =</span> tsls,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">manual =</span> tsls_manual2),</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">gof_map =</span> gof_map, <span class="at">coef_map =</span> coef_map)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> confounded </th>
+   <th style="text-align:center;"> ideal </th>
+   <th style="text-align:center;"> tsls </th>
+   <th style="text-align:center;"> manual </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> x </td>
+   <td style="text-align:center;"> 0.747 </td>
+   <td style="text-align:center;"> 1.007 </td>
+   <td style="text-align:center;"> 1.040 </td>
+   <td style="text-align:center;"> 1.040 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.010) </td>
+   <td style="text-align:center;"> (0.010) </td>
+   <td style="text-align:center;"> (0.061) </td>
+   <td style="text-align:center;"> (0.074) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> annoying </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> 2.970 </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.058) </td>
+   <td style="text-align:center;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 10000 </td>
+   <td style="text-align:center;"> 10000 </td>
+   <td style="text-align:center;"> 10000 </td>
+   <td style="text-align:center;"> 10000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R2 </td>
+   <td style="text-align:center;"> 0.378 </td>
+   <td style="text-align:center;"> 0.506 </td>
+   <td style="text-align:center;"> 0.320 </td>
+   <td style="text-align:center;"> 0.019 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>In the results, you can notice the following. The confounded regression is biased. We do not get the correct coefficient of <span class="math inline">\(\beta = 1\)</span>. The ideal regression estimates the coefficient precisely with a low standard error. Despite the high number of observations (10^{4}), the two-stage least squares estimates also have an unbiased estimate but the standard error is substantially larger. The manual two-stage least squares model gets exactly the same coefficient but the standard error is larger again.</p>
+<p>It turns out that the standard error is wrong in the manual version <span class="citation" data-cites="gelman2006">(<a href="#ref-gelman2006" role="doc-biblioref">Gelman and Hill 2006, 223</a>)</span>. That is why we should use the <code>fixest</code> package to estimate the two-stage least squares model. The problem is that in our second stage regression we use <code>fit_x</code> as the independent variable which is the predicted value of <code>x</code> in the first stage regression. When <code>lm</code> calculates the standard error of the coefficient, it uses the standard deviation of the residuals in the regression, i.e.&nbsp;the difference between <code>y</code> and the predicted <code>y</code> based on <code>x_fit</code>. However, we know that we should actually use <code>x</code> to predict <code>y</code>. So, we need to adjust the standard errors of the coefficient and that is what the following code does manually.</p>
+<p>The following code shows how to do that adjustment <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. First, we get the coefficient table from the summary which is just a matrix, where we can access the values based on the name or row/column number of the values that we need. I am extracting the coefficient and the standard error that we are interested in. We can also extract the unadjusted standard deviation of the residuals which is called <code>sigma</code> in the summary. Finally, we calculate the adjusted standard deviation if we use <code>x</code> instead of <code>fit_x</code> to predict <code>y</code>. The last line adjusts the standard error.</p>
+<div class="cell" data-hash="introduction_cache/html/lm-adj_e8252bd6c523e3c8ba921da0813d7eca">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>coef_table <span class="ot">&lt;-</span> <span class="fu">summary</span>(tsls_manual2)<span class="sc">$</span>coef</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>intercept <span class="ot">&lt;-</span> coef_table[<span class="st">"(Intercept)"</span>, <span class="dv">1</span>]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> coef_table[<span class="st">"fit_x"</span>, <span class="dv">1</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> coef_table[<span class="st">"fit_x"</span>, <span class="dv">2</span>]</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>sd_unadj <span class="ot">&lt;-</span> <span class="fu">summary</span>(tsls_manual2)<span class="sc">$</span>sigma</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>sd_adj <span class="ot">&lt;-</span> data_2sls <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">e =</span> y <span class="sc">-</span> intercept <span class="sc">-</span> beta <span class="sc">*</span> x) <span class="sc">%&gt;%</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sd =</span> <span class="fu">sd</span>(e)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(sd)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>se <span class="sc">*</span> sd_adj <span class="sc">/</span> sd_unadj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.06145269</code></pre>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>With two-stage least squares, statisticians and econometricians have figured out the correct adjustments to standard errors and they are build into the software packages. For more complicated models with multiple steps this might not always be possible. One possible solution is to bootstrap the standard errors.</p>
+</div>
+</div>
+</section>
+<section id="bayesian-bootstrap" class="level2">
+<h2 class="anchored" data-anchor-id="bayesian-bootstrap">Bayesian Bootstrap</h2>
+<p>I have explained <a href="../slides/slides2.html">the bootstrap</a> before. In this section, I introduce the <a href="https://twitter.com/instrumenthull/status/1487469316010389516">Bayesian Bootstrap</a> and it’s <a href="https://www.sumsar.net/blog/2015/07/easy-bayesian-bootstrap-in-r/">R implementation</a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. In the traditional bootstrap we resample observations from the data with replacement so that we create new datasets which are similar but different from the original data. The disadvantage of the traditional approach is that the implicit weight on an observation in each resampled data is discrete and can be 0. The Bayesian bootstrap bootstrap creates explicit weights based on a <a href="https://en.wikipedia.org/wiki/Dirichlet_distribution">Dirichlet distribution</a> which gives a weight between 0 and 1 for each observation so that the sum of the weights equals 1.</p>
+<p>We do not need to know this to use the Bayesian bootstrap. We can just use the <code>bayesboot</code> package. The only thing we need to do is to create a function that returns the estimate that we are interested in based on the data and the weights. We can use the <code>bootstrap</code> function and tell it to start with the <code>data_2sls</code>, resample it <code>R = 1000</code> times, calculate the beta with <code>get_beta</code>, and use weights in that calculation.</p>
+<div class="cell" data-hash="introduction_cache/html/boot-2sls_4a1c82a25f959c02be5d1fa79dbbeb66">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>get_beta <span class="ot">&lt;-</span> <span class="cf">function</span>(data, weights){</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  tsls_manual1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(x <span class="sc">~</span> iv, <span class="at">data =</span> data, <span class="at">weights =</span> weights)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>fit_x <span class="ot">&lt;-</span> <span class="fu">fitted</span>(tsls_manual1)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  tsls_manual2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> fit_x, <span class="at">data =</span> data, <span class="at">weights =</span> weights)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  beta <span class="ot">&lt;-</span> <span class="fu">coefficients</span>(tsls_manual2)[<span class="st">"fit_x"</span>]</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(beta)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">get_beta</span>(data_2sls, <span class="at">weights =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span>N, <span class="at">times =</span> N))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  fit_x 
+1.03956 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>bootstrap <span class="ot">&lt;-</span> <span class="fu">bayesboot</span>(data_2sls, get_beta, <span class="at">R =</span> <span class="dv">1000</span>,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">use.weights =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bootstrap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Bayesian bootstrap
+
+Number of posterior draws: 1000 
+
+Summary of the posterior (with 95% Highest Density Intervals):
+ statistic     mean         sd   hdi.low hdi.high
+     fit_x 1.038238 0.06325506 0.9135051 1.163498
+
+Quantiles:
+ statistic     q2.5%      q25%  median     q75%   q97.5%
+     fit_x 0.9146771 0.9978153 1.03673 1.080914 1.166789
+
+Call:
+ bayesboot(data = data_2sls, statistic = get_beta, R = 1000, use.weights = TRUE)</code></pre>
+</div>
+</div>
+<p>If you want to calculate the Bayesian bootstrap by hand, I give the code below. It’s a good introduction on how to run efficient simulations with the <code>tidyverse</code> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. I need to slightly change the function because we are going to put the simulated weights in the data. The next part is to actual create <code>nsim</code> versions of the data. The trick here is to say that we want the data <code>data_2sls</code> where we repeat each row <code>nsim</code> times.</p>
+<p>The rest of the code follows more easy to understand patterns. We first create a <code>sim</code> variable so that we can keep track of different data simulations. In this case, the data is the same but we create new weights for each simulation. The weights are derived from a Dirichlet distribution which you can generate by an exponential distribution divided by the sum of the generated values (per simulation). We only keep the variables that are necessary in our <code>get_beta_2</code> function. Then we create a dataset per simulation with the <code>nest</code> function and calculate the estimate in the last <code>mutate</code> step. And that is the Bayesian bootstrap as a simulation exercise.</p>
+<div class="cell" data-hash="introduction_cache/html/boot-by-hand_e8b74cf48be92e298e027d9831cab728">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>get_beta_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(data){</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  tsls_manual1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(x <span class="sc">~</span> iv, <span class="at">data =</span> data, <span class="at">weights =</span> weights)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>fit_x <span class="ot">&lt;-</span> <span class="fu">fitted</span>(tsls_manual1)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  tsls_manual2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> fit_x, <span class="at">data =</span> data, <span class="at">weights =</span> weights)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  beta <span class="ot">&lt;-</span> <span class="fu">coefficients</span>(tsls_manual2)[<span class="st">"fit_x"</span>]</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(beta)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>nrows <span class="ot">&lt;-</span> <span class="fu">nrow</span>(data_2sls)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>bootstrap2 <span class="ot">&lt;-</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  data_2sls[<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>nrows, <span class="at">times =</span> nsim),] <span class="sc">%&gt;%</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sim =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>nsim, <span class="at">each =</span> nrows),</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">raw_weights =</span> <span class="fu">rexp</span>(nsim <span class="sc">*</span>  nrows, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weights =</span> raw_weights<span class="sc">/</span><span class="fu">sum</span>(raw_weights), <span class="at">.by =</span> sim) <span class="sc">%&gt;%</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sim, iv, x, y, weights) <span class="sc">%&gt;%</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">.by =</span> sim) <span class="sc">%&gt;%</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta =</span> <span class="fu">map_dbl</span>(data, get_beta_2)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,000 × 3
+     sim data                   beta
+   &lt;int&gt; &lt;list&gt;                &lt;dbl&gt;
+ 1     1 &lt;tibble [10,000 × 4]&gt; 0.932
+ 2     2 &lt;tibble [10,000 × 4]&gt; 1.15 
+ 3     3 &lt;tibble [10,000 × 4]&gt; 0.994
+ 4     4 &lt;tibble [10,000 × 4]&gt; 1.01 
+ 5     5 &lt;tibble [10,000 × 4]&gt; 1.06 
+ 6     6 &lt;tibble [10,000 × 4]&gt; 1.12 
+ 7     7 &lt;tibble [10,000 × 4]&gt; 1.01 
+ 8     8 &lt;tibble [10,000 × 4]&gt; 1.04 
+ 9     9 &lt;tibble [10,000 × 4]&gt; 1.07 
+10    10 &lt;tibble [10,000 × 4]&gt; 1.08 
+# ℹ 990 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(bootstrap2,</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">estimate =</span> <span class="fu">mean</span>(beta),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">se =</span> <span class="fu">sd</span>(beta))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  estimate     se
+     &lt;dbl&gt;  &lt;dbl&gt;
+1     1.04 0.0622</code></pre>
+</div>
+</div>
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-gelman2006" class="csl-entry" role="doc-biblioentry">
+Gelman, Andrew, and Jennifer Hill. 2006. <em>Data <span>Analysis Using Regression</span> and <span>Multilevel</span>/<span>Hierarchical Models</span></em>. <span>Cambridge University Press</span>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Which you should never have to do!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>You can also find a thorough discussion <a href="https://towardsdatascience.com/the-bayesian-bootstrap-6ca4a1d45148">here</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>This advice is based on the [Grant McDermott’s advice] for <em>very</em> efficient simulations. I did not implement everything but I did use most of the principles in the <code>tidyverse</code> setting.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../generalised/poisson.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Poisson Regression</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../generated/residual_dependent.html" class="pagination-link">
+        <span class="nav-page-text">Generated Dependent</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

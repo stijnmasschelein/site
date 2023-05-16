@@ -323,6 +323,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Generated Variables</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/introduction.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/residual_dependent.html" class="sidebar-item-text sidebar-link">Generated Dependent</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link">IPW</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -391,7 +416,7 @@ g^{-1}(y_i) = \alpha + \beta x_i + \epsilon_i
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div class="cell">
+<div class="cell" data-hash="introduction_cache/html/setup_7b05f242332b068e74829d2fe6d9e8ea">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -431,7 +456,7 @@ The following object is masked from 'package:lubridate':
 <section id="logistic-transformation" class="level3">
 <h3 class="anchored" data-anchor-id="logistic-transformation">Logistic Transformation</h3>
 <p>The logistic transformation transforms the linear scale, <span class="math inline">\(z_i = \alpha + \beta x_i + \epsilon_i\)</span>, to <span class="math inline">\(\frac{e^{z_i}}{1+ e^{z_i}}\)</span>. <code>R</code> has an inbuilt function <code>plogis</code> that does the transformation for us but you can obviously just write the transformation yourself. The code below shows that you get identical results.</p>
-<div class="cell">
+<div class="cell" data-hash="introduction_cache/html/logit-transformation_415af03d19b483d62479410c95938e20">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1001</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
@@ -460,7 +485,7 @@ $ logit_probability2 &lt;dbl&gt; 4.539787e-05, 4.631492e-05, 4.725050e-05, 4.820
 <section id="cumulative-normal-or-probit" class="level3">
 <h3 class="anchored" data-anchor-id="cumulative-normal-or-probit">Cumulative Normal or Probit</h3>
 <p>There is another function that is commonly used to transform the linear scale to the probability scale, the cumulative normal or probit function. We need to take a short detour to the normal distribution to explain the cumulative normal distribution to explain this function. You can see a normal distribution below where the lower 90% of the distribution is filled in yellow while the upper 10% is filled in blue. The value for <span class="math inline">\(x\)</span> associated with the 90% is approximately 1.28. That means that we can associate a probability with each value of <span class="math inline">\(x\)</span> which tells us what the probability is that a randomly generated normal value is smaller than <span class="math inline">\(x\)</span>. This function is the probit function.</p>
-<div class="cell">
+<div class="cell" data-hash="introduction_cache/html/add-cumul-normal_63c9fed019471e762a0037a832284a1d">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">to =</span> <span class="dv">3</span>, <span class="at">length.out =</span> N)) <span class="sc">%&gt;%</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dnorm =</span> <span class="fu">dnorm</span>(x),</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">fill =</span> <span class="fu">if_else</span>(x <span class="sc">&lt;</span> <span class="fu">qnorm</span>(<span class="fl">0.90</span>), <span class="st">"below"</span>, <span class="st">"above"</span>)) <span class="sc">%&gt;%</span></span>
@@ -473,7 +498,7 @@ $ logit_probability2 &lt;dbl&gt; 4.539787e-05, 4.631492e-05, 4.725050e-05, 4.820
 </div>
 </div>
 <p>In the next code, I show the cumulative probability function for a normal distribution with mean 0 and standard deviation 1. You can see that it look quite similar to the logistic transformation. In the next, section we will compare the two transformations directly.</p>
-<div class="cell">
+<div class="cell" data-hash="introduction_cache/html/cumulative-normal_532556c6e632951430188b126cf68ad0">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>cumul_norm  <span class="ot">&lt;-</span> logit <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cumul_norm_prob =</span> <span class="fu">pnorm</span>(linear_scale))</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cumul_norm, <span class="fu">aes</span>(<span class="at">y =</span> cumul_norm_prob, <span class="at">x =</span> linear_scale)) <span class="sc">+</span></span>
@@ -487,7 +512,7 @@ $ logit_probability2 &lt;dbl&gt; 4.539787e-05, 4.631492e-05, 4.725050e-05, 4.820
 <section id="comparison" class="level3">
 <h3 class="anchored" data-anchor-id="comparison">Comparison</h3>
 <p>The main reason to show the comparison is to highlight that when we divide <span class="math inline">\(z\)</span> by 1.6 the probit transformation is very similar to the logistic transformation. This probit transformation is also equivalent to the cumulative normal probability for a normal distribution with mean 0 and standard deviation 1.6. In other words, the difference between the logistic or probit regression is often not very large.</p>
-<div class="cell">
+<div class="cell" data-hash="introduction_cache/html/combine-logit-norm_d9a02f790f10b5b6776647f859cb6664">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>combination <span class="ot">&lt;-</span> cumul_norm <span class="sc">%&gt;%</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cumul_norm_adj =</span> <span class="fu">pnorm</span>(linear_scale<span class="sc">/</span><span class="fl">1.6</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>logit_probability2) <span class="sc">%&gt;%</span></span>
@@ -520,7 +545,7 @@ Note
 <p>The poisson distribution (<code>rpois</code>) is originally developed to model the number of independent events with a fixed rate happening in a given amount of time. It is the general workhorse model for any count variable. As, you can see in the figure below, you can think of the poisson distribution as discrete random distribution (the dots) around the the exponentiated linear model (the line). It will be important further on to think of a poisson regression as a model for</p>
 <p><span class="math display">\[ g^{-1}(E(y_i | x_i)) = \alpha + \beta x_i\]</span></p>
 <p>where <span class="math inline">\(g^{-1}(z) = log(z)\)</span> and <span class="math inline">\(g(z) = exp(z)\)</span>. That is the logarithm of the expected value of <span class="math inline">\(y_i\)</span> is given by <span class="math inline">\(\alpha + \beta x_i\)</span>. Moreover, in contrast the exponent, the poisson distribution can give 0 values<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<div class="cell">
+<div class="cell" data-hash="introduction_cache/html/poisson_65b7d7f803034634d5d5388955a3fbb5">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>poisson <span class="ot">&lt;-</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">linear_scale =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">to =</span> <span class="dv">3</span>, <span class="at">length.out =</span> N)) <span class="sc">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">exp_scale =</span> <span class="fu">exp</span>(linear_scale),</span>

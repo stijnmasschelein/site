@@ -344,6 +344,31 @@ div.csl-indent {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Generated Variables</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/introduction.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/residual_dependent.html" class="sidebar-item-text sidebar-link">Generated Dependent</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link">IPW</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -395,7 +420,7 @@ div.csl-indent {
 
 <section id="setup" class="level1">
 <h1>Setup</h1>
-<div class="cell">
+<div class="cell" data-hash="regressions_cache/html/setup_28dd0642bd22272bc90759559a2d5910">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -425,7 +450,7 @@ div.csl-indent {
 </section>
 <section id="data" class="level1">
 <h1>Data</h1>
-<div class="cell">
+<div class="cell" data-hash="regressions_cache/html/data_a1c1a9ac4d886b5dccb860c0d9419b43">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>main <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"main.RDS"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">friday =</span> <span class="fu">if_else</span>(weekday <span class="sc">==</span> <span class="st">"Fri"</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">year =</span> <span class="fu">year</span>(anndat),</span>
@@ -447,34 +472,34 @@ div.csl-indent {
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 130,759
 Columns: 28
-$ ticker       &lt;chr&gt; "A2", "A2", "A2", "AA0A", "AA0A", "AA0A", "A2", "A2", "A2…
-$ actual       &lt;dbl&gt; -0.1000, -0.0400, -0.1100, 0.1067, 0.1289, 0.1267, -0.110…
-$ pdf          &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D…
-$ anndats_act  &lt;date&gt; 2006-02-01, 2004-10-21, 2005-01-26, 2003-05-08, 2003-11-…
-$ gvkey        &lt;chr&gt; "001081", "001081", "001081", "001094", "001094", "001094…
-$ permno       &lt;dbl&gt; 10560, 10560, 10560, 10656, 10656, 10656, 10560, 10560, 1…
-$ cusip        &lt;chr&gt; "00392410", "00392410", "00392410", "00444610", "00444610…
-$ rdq          &lt;date&gt; 2006-02-01, 2004-10-21, 2005-01-26, 2003-05-08, 2003-11-…
-$ anndat       &lt;date&gt; 2006-02-01, 2004-10-21, 2005-01-26, 2003-05-08, 2003-11-…
-$ N            &lt;int&gt; 5, 1, 2, 1, 1, 1, 3, 2, 4, 1, 1, 1, 4, 3, 3, 1, 1, 3, 3, …
-$ median       &lt;dbl&gt; -0.07830, -0.09000, -0.08965, 0.08000, 0.10670, 0.13330, …
-$ mean         &lt;dbl&gt; -0.07658000, -0.09000000, -0.08965000, 0.08000000, 0.1067…
-$ mean_days    &lt;dbl&gt; 9.200000, 21.000000, 8.000000, 28.000000, 24.000000, 8.00…
-$ car_short    &lt;dbl&gt; -0.015708137, 0.097290996, 0.036461999, 0.162866519, 0.17…
-$ car_long     &lt;dbl&gt; 0.10569961, 0.01028760, -0.20959886, 0.05226982, 0.210851…
-$ date_minus5  &lt;date&gt; 2006-01-27, 2004-10-16, 2005-01-21, 2003-05-03, 2003-11-…
-$ date         &lt;date&gt; 2006-01-27, 2004-10-15, 2005-01-21, 2003-05-02, 2003-10-…
-$ prc          &lt;dbl&gt; 4.02, 5.63, 5.89, 16.75, 15.66, 15.52, 4.53, 5.00, 3.26, …
-$ market_value &lt;dbl&gt; 1769503.5, 2478185.3, 2592630.7, 166243.8, 162002.7, 2416…
-$ surprise     &lt;dbl&gt; -0.0053980100, 0.0088809945, -0.0034550086, 0.0015940299,…
-$ weekday      &lt;ord&gt; Wed, Thu, Wed, Thu, Thu, Wed, Wed, Wed, Wed, Thu, Thu, Th…
+$ ticker       &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "AA0G", "AA0H", "AA0H…
+$ actual       &lt;dbl&gt; -0.11, -0.11, -0.05, -0.07, -0.10, -0.04, -0.45, 0.01, 0.…
+$ pdf          &lt;chr&gt; "D", "D", "D", "D", "D", "D", "P", "D", "D", "D", "D", "D…
+$ anndats_act  &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2006-02-…
+$ gvkey        &lt;chr&gt; "001081", "001081", "001081", "001081", "001081", "001081…
+$ permno       &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 10560, 88784, 10574, 1…
+$ cusip        &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00392410…
+$ rdq          &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2006-02-…
+$ anndat       &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2006-02-…
+$ N            &lt;int&gt; 2, 3, 2, 4, 5, 1, 2, 1, 1, 1, 1, 2, 1, 5, 3, 2, 1, 4, 2, …
+$ median       &lt;dbl&gt; -0.08965, -0.05740, -0.03700, -0.10610, -0.07830, -0.0900…
+$ mean         &lt;dbl&gt; -0.0896500, -0.0680000, -0.0370000, -0.1005500, -0.076580…
+$ mean_days    &lt;dbl&gt; 8.000000, 6.666667, 13.500000, 7.000000, 9.200000, 21.000…
+$ car_short    &lt;dbl&gt; 0.036461999, -0.063605082, -0.004176757, -0.014869448, -0…
+$ car_long     &lt;dbl&gt; -0.20959886, 0.05661849, -0.18368085, 0.20741889, 0.10569…
+$ date_minus5  &lt;date&gt; 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-21, 2006-01-…
+$ date         &lt;date&gt; 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-21, 2006-01-…
+$ prc          &lt;dbl&gt; 5.89, 4.53, 5.00, 3.26, 4.02, 5.63, 14.50, 11.47, 10.85, …
+$ market_value &lt;dbl&gt; 2592630.7, 1993992.8, 2200875.0, 1434970.5, 1769503.5, 24…
+$ surprise     &lt;dbl&gt; -0.0034550086, -0.0116114785, -0.0026000000, 0.0110736197…
+$ weekday      &lt;ord&gt; Wed, Wed, Wed, Wed, Wed, Thu, Tue, Tue, Tue, Wed, Tue, We…
 $ friday       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-$ year         &lt;dbl&gt; 2006, 2004, 2005, 2003, 2003, 2004, 2005, 2005, 2005, 200…
-$ month        &lt;dbl&gt; 2, 10, 1, 5, 11, 2, 4, 7, 10, 2, 5, 9, 5, 8, 11, 3, 4, 4,…
-$ quarter      &lt;dbl&gt; 1, 4, 1, 2, 4, 1, 2, 3, 4, 1, 2, 3, 2, 3, 4, 1, 2, 2, 3, …
-$ sign         &lt;chr&gt; "negative", "positive", "negative", "positive", "positive…
-$ quintile     &lt;int&gt; 2, 5, 2, 3, 3, 5, 1, 3, 5, 2, 1, 3, 5, 1, 2, 1, 5, 5, 3, …
-$ quantile     &lt;dbl&gt; 2, 11, 2, 9, 9, 5, 1, 3, 11, 2, 6, 9, 11, 1, 2, 1, 11, 11…</code></pre>
+$ year         &lt;dbl&gt; 2005, 2005, 2005, 2005, 2006, 2004, 2001, 2002, 2002, 200…
+$ month        &lt;dbl&gt; 1, 4, 7, 10, 2, 10, 11, 4, 8, 10, 4, 7, 10, 2, 2, 4, 7, 1…
+$ quarter      &lt;dbl&gt; 1, 2, 3, 4, 1, 4, 4, 2, 3, 4, 2, 3, 4, 1, 1, 2, 3, 4, 4, …
+$ sign         &lt;chr&gt; "negative", "negative", "negative", "positive", "negative…
+$ quintile     &lt;int&gt; 2, 1, 3, 5, 2, 5, 2, 4, 4, 4, 1, 3, 3, 2, 1, 2, 4, 3, 1, …
+$ quantile     &lt;dbl&gt; 2, 1, 3, 11, 2, 11, 2, 10, 10, 4, 6, 9, 9, 2, 6, 8, 4, 9,…</code></pre>
 </div>
 </div>
 <p>The main regression table only compares the bottom quintile to the top quintile. <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span> also specify a number of indicator variables based on year, month, and the size of the firm (adjusted for the average of the logarithm of the size).</p>
@@ -492,7 +517,7 @@ Warning
 <p>It turns out that the speed gain is in the advantage of the <code>tidyverse</code> implementation on my Mac Mini. This could be because I have installed a more recent version on my Mac Mini of the <code>tidyverse</code>. I am going to investigate this further at some point. Nevertheless it shows the advantage of timing the different implementations. So I am going to leave them here.</p>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="regressions_cache/html/get-volatility_99afcd53be22b2a82b607ed1ed6c296e">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>get_volatility <span class="ot">&lt;-</span> <span class="cf">function</span>(gvkey_in, anndat_in, <span class="at">lag =</span> <span class="dv">4</span>){</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  anndat_min_lag <span class="ot">&lt;-</span> anndat_in <span class="sc">-</span> lag <span class="sc">*</span> <span class="dv">365</span> <span class="sc">-</span> <span class="dv">1</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  surprises <span class="ot">&lt;-</span> main <span class="sc">%&gt;%</span></span>
@@ -533,12 +558,12 @@ Warning
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: milliseconds
    expr      min       lq     mean   median       uq      max neval
-    vol 3.722995 5.159867 5.862939 5.524386 5.598466 11.32781    20
- vol_dt 6.827550 7.758878 8.773553 8.495651 9.002848 14.05607    20</code></pre>
+    vol 4.641323 4.707876 5.066754 4.759633 4.891806 10.46621    20
+ vol_dt 6.113596 7.144397 7.832512 7.311755 7.512789 13.35067    20</code></pre>
 </div>
 </div>
 <p>We can now use the faster function to calculate the volatility measures with the other control variables.</p>
-<div class="cell">
+<div class="cell" data-hash="regressions_cache/html/subset-for-regressions_dd007d5de8b1cd3ca0e1bdf7ec26fab7">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>subset <span class="ot">&lt;-</span> main <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(quantile <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">11</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">top =</span> <span class="fu">if_else</span>(quantile <span class="sc">==</span> <span class="dv">11</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
@@ -566,7 +591,7 @@ Warning
 </ul>
 <section id="panel-a-short-term-car" class="level3">
 <h3 class="anchored" data-anchor-id="panel-a-short-term-car">Panel A: Short Term CAR</h3>
-<div class="cell">
+<div class="cell" data-hash="regressions_cache/html/unnamed-chunk-5_65937795a53f14e867e0b65eb6acfc3a">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>subset <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"subset.RDS"</span>))</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: table2a</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>model1a <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_short <span class="sc">~</span> friday <span class="sc">*</span> top,</span>
@@ -648,9 +673,9 @@ The variable 'top' has been removed because of collinearity (see $collin.var).</
   </tr>
   <tr>
    <td style="text-align:left;"> Num.Obs. </td>
-   <td style="text-align:center;"> 22487 </td>
-   <td style="text-align:center;"> 22487 </td>
-   <td style="text-align:center;"> 15648 </td>
+   <td style="text-align:center;"> 22486 </td>
+   <td style="text-align:center;"> 22486 </td>
+   <td style="text-align:center;"> 15647 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> R2 </td>
@@ -704,7 +729,7 @@ The variable 'top' has been removed because of collinearity (see $collin.var).</
 </section>
 <section id="panel-b-long-term-car" class="level3">
 <h3 class="anchored" data-anchor-id="panel-b-long-term-car">Panel B: Long Term CAR</h3>
-<div class="cell">
+<div class="cell" data-hash="regressions_cache/html/table2b_09e7f36425ccdbe58523f16b464cbe53">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>model1b <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_long <span class="sc">~</span> friday <span class="sc">*</span> top,</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> subset)</span>
@@ -784,9 +809,9 @@ The variable 'top' has been removed because of collinearity (see $collin.var).</
   </tr>
   <tr>
    <td style="text-align:left;"> Num.Obs. </td>
-   <td style="text-align:center;"> 22487 </td>
-   <td style="text-align:center;"> 22487 </td>
-   <td style="text-align:center;"> 15648 </td>
+   <td style="text-align:center;"> 22486 </td>
+   <td style="text-align:center;"> 22486 </td>
+   <td style="text-align:center;"> 15647 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> R2 </td>
@@ -841,7 +866,7 @@ The variable 'top' has been removed because of collinearity (see $collin.var).</
 </section>
 <section id="table-3" class="level2">
 <h2 class="anchored" data-anchor-id="table-3">Table 3</h2>
-<div class="cell">
+<div class="cell" data-hash="regressions_cache/html/table3_189bcb608a1b2d9fe3e834bf6ea00c6e">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>main_extra <span class="ot">&lt;-</span> main <span class="sc">%&gt;%</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_size =</span> <span class="fu">log</span>(market_value))  <span class="sc">%&gt;%</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_size_adj =</span> log_size <span class="sc">-</span> <span class="fu">mean</span>(log_size, <span class="at">na.rm =</span> T),</span>
