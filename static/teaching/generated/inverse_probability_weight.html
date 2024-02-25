@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -18,9 +18,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -47,48 +48,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -102,8 +74,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -139,10 +110,12 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -151,11 +124,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">IPW</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../generated/introduction.html">Generated Variables</a></li><li class="breadcrumb-item"><a href="../generated/inverse_probability_weight.html">IPW</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -163,205 +141,249 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Method Package</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Introduction</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../method_package.html" class="sidebar-item-text sidebar-link">Content</a>
+  <a href="../method_package.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Content</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../auxilary/introduction_to_rstudio_for_accfin.html" class="sidebar-item-text sidebar-link">Introduction to Rstudio for Accounting and Finance</a>
+  <a href="../auxilary/introduction_to_r_rstudio_tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rstudio installation and first code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../auxilary/introduction_to_rstudio_for_accfin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Rstudio for Accounting and Finance</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Slides</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Slides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/slides1.html" class="sidebar-item-text sidebar-link">Introduction to Research Methods in Finance and Accounting</a>
+  <a href="../slides/slides1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Research Methods in Finance and Accounting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/slides2.html" class="sidebar-item-text sidebar-link">Simulations, Regressions, and Significance</a>
+  <a href="../slides/slides2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simulations, Regressions, and Significance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/slides3.html" class="sidebar-item-text sidebar-link">Control Variables</a>
+  <a href="../slides/slides3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Control Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/slides4.html" class="sidebar-item-text sidebar-link">Research Design 1: Fixed Effects and Instrumental Variables</a>
+  <a href="../slides/slides4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Design 1: Fixed Effects and Instrumental Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/slides5.html" class="sidebar-item-text sidebar-link">Research Design 2: Event Studies and Difference-in-Difference</a>
+  <a href="../slides/slides5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Design 2: Event Studies and Difference-in-Difference</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../auxilary/matching_theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matching theory</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Friday Earnings Announcements</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Friday Earnings Announcements</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/index.html" class="sidebar-item-text sidebar-link">Research Design</a>
+  <a href="../freaky_friday/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Design</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/download_linking.html" class="sidebar-item-text sidebar-link">WRDS linking data</a>
+  <a href="../freaky_friday/download_linking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WRDS linking data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/linking.html" class="sidebar-item-text sidebar-link">Combining databases</a>
+  <a href="../freaky_friday/linking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Combining databases</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/download_data.html" class="sidebar-item-text sidebar-link">Earnings announcements</a>
+  <a href="../freaky_friday/download_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Earnings announcements</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/download_stocks.html" class="sidebar-item-text sidebar-link">Stock price data</a>
+  <a href="../freaky_friday/download_stocks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stock price data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/abnormal_returns.html" class="sidebar-item-text sidebar-link">Abnormal returns</a>
+  <a href="../freaky_friday/abnormal_returns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Abnormal returns</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/descriptive.html" class="sidebar-item-text sidebar-link">Descriptive statistics</a>
+  <a href="../freaky_friday/descriptive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descriptive statistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/regressions.html" class="sidebar-item-text sidebar-link">Regressions</a>
+  <a href="../freaky_friday/regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regressions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  <a href="../freaky_friday/assignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Machine Learning</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../machine_learning/predictions.html" class="sidebar-item-text sidebar-link">Predictions</a>
+  <a href="../machine_learning/predictions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Predictions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../machine_learning/theory.html" class="sidebar-item-text sidebar-link">Theory</a>
+  <a href="../machine_learning/theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theory</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">Peer Firms</a>
+  <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Peer Firms</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../machine_learning/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  <a href="../machine_learning/assignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Generalised Linear Models</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Generalised Linear Models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../generalised/introduction.html" class="sidebar-item-text sidebar-link">Introduction and Theory</a>
+  <a href="../generalised/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction and Theory</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../generalised/interpretation.html" class="sidebar-item-text sidebar-link">Interpretation</a>
+  <a href="../generalised/interpretation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interpretation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../generalised/poisson.html" class="sidebar-item-text sidebar-link">Poisson Regression</a>
+  <a href="../generalised/poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Poisson Regression</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">Generated Variables</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Generated Variables</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../generated/introduction.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  <a href="../generated/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../generated/residual_dependent.html" class="sidebar-item-text sidebar-link">Generated Dependent</a>
+  <a href="../generated/residual_dependent.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generated Independent</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link active">IPW</a>
+  <a href="../generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">IPW</span></a>
   </div>
 </li>
       </ul>
@@ -369,6 +391,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -388,7 +411,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">IPW</h1>
+<h1 class="title">IPW</h1>
 <p class="subtitle lead">Inverse Probability Weights</p>
 </div>
 
@@ -412,14 +435,14 @@ div.csl-indent {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>The previous pages highlighted the dangers to <a href="../generated/residual_dependent.html">coefficients</a> and <a href="../generated/introduction.html">standard errors</a> of using two-step approaches in the research design. If they are done well, they can benefit your analysis and make it more robust. This is the general idea of <a href="https://theeffectbook.net/ch-Matching.html#combining-matching-and-regression">double robust estimators</a>.</p>
+<p>The previous pages highlighted the dangers to <a href="../generated/residual_dependent.html">coefficients</a> and <a href="../generated/introduction.html">standard errors</a> of using two-step approaches in the research design. Still, if they are done well, they can benefit your analysis and make it more robust. This is the general idea of <a href="https://theeffectbook.net/ch-Matching.html#combining-matching-and-regression">double robust estimators</a> which is in my view a better way to think of most (propensity score) matching approaches.</p>
 <p>Specifically, we are going to look at a situation where we have a binary treatment-control <code>x</code> and an outcome of interest <code>y</code> with two confounding factors <code>z1</code> and <code>z2</code> that have a complicated effect on <code>x</code> and <code>y</code>. The two-step approach that we are using is combining matching with regression. In the matching step, we first estimate the <em>propensity</em>, <span class="math inline">\(p\)</span>, that an observation belongs to the treatment group. Then, we will use the <em>inverse predicted propensity</em> to weight the observations in the regression.</p>
 <p>Specifically, we want to put less weight on observations that are in the treatment group and that we could expect to be in the treatment group. So, the weight for those observations will be <span class="math inline">\(\frac{1}{p}\)</span> in the regression. We will also put less weight on the observations in the treatment group, so we weight them by <span class="math inline">\(\frac{1}{1 - p}\)</span>. The intuition is that we want to put more weight on observations that are not expected to be control or treatment groups because we assume that this unexpected assignment is because of some random variation <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. As we have seen before, we are trying to bring cause of the (weighted) difference between the treatment and the control group back to random variation.</p>
 <p>There is a lot more to matching, weighting and double robust estimators. An excellent introduction is Chapter 14 in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<a href="#ref-huntington-klein2021" role="doc-biblioref">2021</a>)</span>. You will also find some dedicated packages for matching and weighting estimators.</p>
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/setup_a4cd16ea760aa0333c4b263efc0041d9">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/setup_1fdb995253017e320b72405491201dd1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
@@ -428,20 +451,20 @@ div.csl-indent {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>(<span class="at">font_size =</span> <span class="dv">18</span>))</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"generated/inverse_probability_weight.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 </div>
 </section>
 <section id="simulated-data" class="level2">
 <h2 class="anchored" data-anchor-id="simulated-data">Simulated data</h2>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/parameters_b8e3e3cbf7eaacfe28c3bd3ac23c750d">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/parameters_64477c1f1727ecde39530be4a2947885">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">500</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="dv">200</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ntotal <span class="ot">&lt;-</span> N <span class="sc">*</span> nsim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The data generating process for <code>x</code> and <code>y</code> is more complicated that what I usually use. First, we have two binary variables <code>z2</code> and <code>x</code>. I use the transformation <code>1 - 2*x</code> and <code>1 - 2*z2</code> a number of times. This transformation takes a binary (0,1) and transforms it in (1, -1). The main goal with this transformation is to make sure that interactions with these variables are more meaningful. If they take the value 0, interactions without the transformation would also take a value of 0.</p>
-<p>It might not be immediately clear but <code>x</code> just follows a probit-binomial distribution which depends on the control variables <code>z1</code> and <code>z2</code> and it’s interactions. <code>y</code> is a normally distributed function of <code>x</code> and the control variables and the effect of <code>x</code> depends on the interaction between the controls.</p>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/simulation_96bac10a40e3c8175f23dd57c695f95b">
+<p>It might not be immediately clear but <code>x</code> just follows a <a href="../generalised/introduction.html">probit-binomial</a> distribution which depends on the control variables <code>z1</code> and <code>z2</code> and its interactions. <code>y</code> is a normally distributed function of <code>x</code> and the control variables and the effect of <code>x</code> depends on the interaction between the controls.</p>
+<div class="cell" data-hash="inverse_probability_weight_cache/html/simulation_770aba6b8f46a56bc2fbe4fbed3fa809">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sim_data <span class="ot">&lt;-</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sim =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>nsim, <span class="at">each =</span> N),</span>
@@ -466,24 +489,24 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="bias">Bias</h2>
 <p>At first, we want to figure out whether different regression specifications are biased. One way to do that is to work with the full data and ignore the <code>sim</code> variable.</p>
 <p>First, we run our regular regressions with different but imperfect functional forms for the control variables.</p>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/lm_a659833ebf7d8349596609f6822847c6">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/lm_21d53d96eb6ec577349d24a391fe729c">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> sim_data) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"x"</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> z1 <span class="sc">+</span> z2, <span class="at">data =</span> sim_data) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"x"</span>),</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> z1 <span class="sc">*</span> z2, <span class="at">data =</span> sim_data) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"x"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
-  term  estimate std.error statistic  p.value
-  &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 x        2.63     0.0343     76.6  0       
-2 x        0.232    0.0449      5.17 2.41e- 7
-3 x        0.289    0.0460      6.27 3.63e-10</code></pre>
+  term  estimate std.error statistic      p.value
+  &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;
+1 x        2.73     0.0344     79.3  0           
+2 x        0.207    0.0449      4.60 0.00000420  
+3 x        0.260    0.0461      5.65 0.0000000166</code></pre>
 </div>
 </div>
 <p>It’s clear that while adding the control variables (and the interaction) improves the estimate, we are still far off the correct estimate which is 1.</p>
 <p>Next, we first run a logit regression to predict the probability that an observations is in the treatment group based on the control variables. I deliberately misspecify the regression to demonstrate that even an imperfect the propensity model can already help. Nevertheless, for a method to be truly double robust either the propensity model or the regression model needs to be correctly specified.</p>
 <p>We calculate the weights and trimmed weights where I set the maximum weight to 100 which means that propensities smaller than 0.01 are winsorised at the value of 0.01 to avoid that the estimation is dominated by a couple of observations. We can run the regressions above again but now with the weights included. The disadvantage of trimming the weight is that we might be reintroducing a little bit of the bias that we are trying to avoid but the advantage is that because outliers are less likely to dominate, the standard errors are likely to be smaller.</p>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/ipw_f91d21dbcad5d3157f22b419a5d6c628">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/ipw_0e8fee05d96dedea4be1993248bf10a4">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>prop_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(x <span class="sc">~</span> z1 <span class="sc">+</span> z2, <span class="at">data =</span> sim_data,</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ipw_data <span class="ot">&lt;-</span> sim_data <span class="sc">%&gt;%</span></span>
@@ -499,9 +522,9 @@ div.csl-indent {
 <pre><code># A tibble: 3 × 5
   term  estimate std.error statistic   p.value
   &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-1 x        0.683    0.0338      20.2 9.32e- 91
-2 x        1.11     0.0335      33.2 6.71e-240
-3 x        1.12     0.0378      29.7 1.05e-192</code></pre>
+1 x        0.554    0.0323      17.2 7.76e- 66
+2 x        1.22     0.0326      37.4 2.48e-303
+3 x        1.19     0.0370      32.2 8.17e-226</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> ipw_data, <span class="at">weights =</span> trim_weight) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"x"</span>),</span>
@@ -511,19 +534,20 @@ div.csl-indent {
 <pre><code># A tibble: 3 × 5
   term  estimate std.error statistic   p.value
   &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-1 x        0.851    0.0331      25.7 4.67e-145
-2 x        0.903    0.0322      28.0 7.17e-172
-3 x        0.972    0.0355      27.4 3.05e-164</code></pre>
+1 x        0.935    0.0329      28.4 3.32e-177
+2 x        0.997    0.0319      31.3 2.40e-213
+3 x        1.09     0.0352      30.9 7.43e-209</code></pre>
 </div>
 </div>
 </section>
 <section id="bootstrap-the-standard-errors" class="level2">
 <h2 class="anchored" data-anchor-id="bootstrap-the-standard-errors">Bootstrap the standard errors</h2>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/bootstrap-ipw_754ae4ea7400487b952b101ba0d95e6b">
+<p>We know by now that the standard errors of these type of procedures with multiple steps are likely to be wrong and we can use the Bayesian bootstrap again to estimate, the standard error for our estimate of interest. The unadjusted standard errors above are around 0.035.</p>
+<div class="cell" data-hash="inverse_probability_weight_cache/html/bootstrap-ipw_7b6478903ab7abb22cd8751901010465">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ipw <span class="ot">&lt;-</span> <span class="cf">function</span>(data, weights){</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  prop_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(x <span class="sc">~</span> z1 <span class="sc">+</span> z2, <span class="at">data =</span> data,</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                 <span class="co"># this is necessary for the bayesian boostrap weights</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                 <span class="co"># otherwise R gives warnings which can slow things down </span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                 <span class="co"># the quasibinomial is necessary for the bayesian boostrap</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                 <span class="co"># weights otherwise R gives warnings which can slow things down</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="fu">quasibinomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">weights =</span> weights)</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  ipw_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
@@ -537,8 +561,8 @@ div.csl-indent {
 <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ipw</span>(sim_data, <span class="fu">rep</span>(<span class="dv">1</span>, ntotal))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        x 
-0.9723643 </code></pre>
+<pre><code>       x 
+1.087827 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>boot_ipw <span class="ot">&lt;-</span> <span class="fu">bayesboot</span>(sim_data, ipw, <span class="at">R =</span> <span class="dv">200</span>, <span class="at">use.weights =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(boot_ipw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -549,16 +573,18 @@ Number of posterior draws: 200
 
 Summary of the posterior (with 95% Highest Density Intervals):
  statistic     mean        sd   hdi.low hdi.high
-         x 1.138719 0.2023061 0.7195526 1.479771
+         x 1.211649 0.1816078 0.8545564  1.52107
 
 Quantiles:
- statistic     q2.5%     q25%   median     q75% q97.5%
-         x 0.7246761 1.013514 1.152372 1.274558 1.4802
+ statistic     q2.5%     q25%  median     q75%   q97.5%
+         x 0.8765427 1.070387 1.21436 1.342671 1.543616
 
 Call:
  bayesboot(data = sim_data, statistic = ipw, R = 200, use.weights = TRUE)</code></pre>
 </div>
 </div>
+<p>The bootstrapped standard error is around 0.20 and noticeably higher. The standard errors are also quite wide given that we are using a quite large simulated data set. Unfortunately, these type of estimators come at a cost. The estimated uncertainty can be quite high because ultimiately when the data is far from ideal, there is only so much information you can glean from it.</p>
+<p>This is only reinforced by doing the simulation properly and calculating the bootstrapped standard error separately for each of our 200 simulated datasets with 500 observations. The average standard error is more than 2.3 and thus with a sample of 500, we will never be able to report a significant effect. Again, this is not necessarily a weakness of the inverse probability approach. It just highlights that more advanced problems that correct for potential biases are not a free lunch. You cannot learn more from the data than what is in your data.</p>
 <div class="cell" data-hash="inverse_probability_weight_cache/html/unnamed-chunk-8_18aad91beeefa498912f90e320914b66">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(furrr)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cores <span class="ot">&lt;-</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>()</span>
@@ -589,8 +615,8 @@ Call:
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-huntington-klein2021" class="csl-entry" role="doc-biblioentry">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-huntington-klein2021" class="csl-entry" role="listitem">
 Huntington-Klein, Nick. 2021. <em>The <span>Effect</span>: <span>An Introduction</span> to <span>Research Design</span> and <span>Causality</span></em>. First. <span>Boca Raton</span>: <span>Chapman and Hall/CRC</span>. <a href="https://doi.org/10.1201/9781003226055">https://doi.org/10.1201/9781003226055</a>.
 </div>
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
@@ -626,9 +652,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -693,6 +733,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -735,7 +861,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../generated/residual_dependent.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Generated Dependent</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Generated Independent</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

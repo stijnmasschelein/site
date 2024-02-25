@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -18,14 +18,15 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -39,8 +40,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -50,7 +50,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./auxilary/introduction_to_rstudio_for_accfin.html" rel="next">
+<link href="./auxilary/introduction_to_r_rstudio_tidyverse.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -76,22 +76,28 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
 
 </head>
 
-<body class="nav-sidebar docked fullcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Content</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./method_package.html">Introduction</a></li><li class="breadcrumb-item"><a href="./method_package.html">Content</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -99,205 +105,249 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Method Package</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Introduction</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./method_package.html" class="sidebar-item-text sidebar-link active">Content</a>
+  <a href="./method_package.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Content</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./auxilary/introduction_to_rstudio_for_accfin.html" class="sidebar-item-text sidebar-link">Introduction to Rstudio for Accounting and Finance</a>
+  <a href="./auxilary/introduction_to_r_rstudio_tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rstudio installation and first code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./auxilary/introduction_to_rstudio_for_accfin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Rstudio for Accounting and Finance</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Slides</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Slides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides/slides1.html" class="sidebar-item-text sidebar-link">Introduction to Research Methods in Finance and Accounting</a>
+  <a href="./slides/slides1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Research Methods in Finance and Accounting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides/slides2.html" class="sidebar-item-text sidebar-link">Simulations, Regressions, and Significance</a>
+  <a href="./slides/slides2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simulations, Regressions, and Significance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides/slides3.html" class="sidebar-item-text sidebar-link">Control Variables</a>
+  <a href="./slides/slides3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Control Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides/slides4.html" class="sidebar-item-text sidebar-link">Research Design 1: Fixed Effects and Instrumental Variables</a>
+  <a href="./slides/slides4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Design 1: Fixed Effects and Instrumental Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides/slides5.html" class="sidebar-item-text sidebar-link">Research Design 2: Event Studies and Difference-in-Difference</a>
+  <a href="./slides/slides5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Design 2: Event Studies and Difference-in-Difference</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./auxilary/matching_theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matching theory</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Friday Earnings Announcements</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Friday Earnings Announcements</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./freaky_friday/index.html" class="sidebar-item-text sidebar-link">Research Design</a>
+  <a href="./freaky_friday/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Design</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./freaky_friday/download_linking.html" class="sidebar-item-text sidebar-link">WRDS linking data</a>
+  <a href="./freaky_friday/download_linking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WRDS linking data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./freaky_friday/linking.html" class="sidebar-item-text sidebar-link">Combining databases</a>
+  <a href="./freaky_friday/linking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Combining databases</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./freaky_friday/download_data.html" class="sidebar-item-text sidebar-link">Earnings announcements</a>
+  <a href="./freaky_friday/download_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Earnings announcements</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./freaky_friday/download_stocks.html" class="sidebar-item-text sidebar-link">Stock price data</a>
+  <a href="./freaky_friday/download_stocks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stock price data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./freaky_friday/abnormal_returns.html" class="sidebar-item-text sidebar-link">Abnormal returns</a>
+  <a href="./freaky_friday/abnormal_returns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Abnormal returns</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./freaky_friday/descriptive.html" class="sidebar-item-text sidebar-link">Descriptive statistics</a>
+  <a href="./freaky_friday/descriptive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descriptive statistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./freaky_friday/regressions.html" class="sidebar-item-text sidebar-link">Regressions</a>
+  <a href="./freaky_friday/regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regressions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./freaky_friday/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  <a href="./freaky_friday/assignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Machine Learning</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./machine_learning/predictions.html" class="sidebar-item-text sidebar-link">Predictions</a>
+  <a href="./machine_learning/predictions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Predictions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./machine_learning/theory.html" class="sidebar-item-text sidebar-link">Theory</a>
+  <a href="./machine_learning/theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theory</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./machine_learning/application.html" class="sidebar-item-text sidebar-link">Peer Firms</a>
+  <a href="./machine_learning/application.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Peer Firms</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./machine_learning/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  <a href="./machine_learning/assignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Generalised Linear Models</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Generalised Linear Models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./generalised/introduction.html" class="sidebar-item-text sidebar-link">Introduction and Theory</a>
+  <a href="./generalised/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction and Theory</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./generalised/interpretation.html" class="sidebar-item-text sidebar-link">Interpretation</a>
+  <a href="./generalised/interpretation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interpretation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./generalised/poisson.html" class="sidebar-item-text sidebar-link">Poisson Regression</a>
+  <a href="./generalised/poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Poisson Regression</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Generated Variables</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Generated Variables</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./generated/introduction.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  <a href="./generated/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./generated/residual_dependent.html" class="sidebar-item-text sidebar-link">Generated Dependent</a>
+  <a href="./generated/residual_dependent.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generated Independent</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link">IPW</a>
+  <a href="./generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IPW</span></a>
   </div>
 </li>
       </ul>
@@ -305,14 +355,28 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#freaky-friday-or-friday-earnings-announcements-are-weird" id="toc-freaky-friday-or-friday-earnings-announcements-are-weird" class="nav-link" data-scroll-target="#freaky-friday-or-friday-earnings-announcements-are-weird">Freaky Friday <em>or</em> Friday Earnings Announcements Are Weird</a></li>
+  <li><a href="#machine-learning" id="toc-machine-learning" class="nav-link" data-scroll-target="#machine-learning">Machine Learning</a></li>
+  <li><a href="#generalised-linear-models" id="toc-generalised-linear-models" class="nav-link" data-scroll-target="#generalised-linear-models">Generalised Linear Models</a></li>
+  <li><a href="#generated-variables" id="toc-generated-variables" class="nav-link" data-scroll-target="#generated-variables">Generated Variables</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Content</h1>
+<h1 class="title">Content</h1>
 </div>
 
 
@@ -333,31 +397,50 @@ div.csl-indent {
 
 </header>
 
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This section contains a written <a href="./auxilary/introduction_to_r_rstudio_tidyverse.html">introduction to R and Rstudio</a> with the goal of getting you up and running with the main tools for data analysis and reporting results for the unit. The <a href="./auxilary/introduction_to_rstudio_for_accfin.html">script</a> I use for this introduction is also available with some explanations. The coding is more advanced and you should see it more as a useful resource than something you should be able to do at the start of the semester.</p>
+</section>
 <section id="slides" class="level2">
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
 <p>The slides contain the lecture slides for the first half of the semester.</p>
-<ul>
-<li><a href="./slides/slides1.html">Slides 1</a></li>
-<li><a href="./slides/slides2.html">Slides 2</a></li>
-<li><a href="./slides/slides3.html">Slides 3</a></li>
-<li><a href="./slides/slides4.html">Slides 4</a></li>
-<li><a href="./slides/slides5.html">Slides 5</a></li>
-</ul>
+<p>The <a href="./slides/slides1.html" target="_blank" rel="noopener noreferrer">first set of slides</a> introduce a number of practical issues around the structure, goals,and assignments for the unit. I also demonstrate what research looks like with an example from executive compensation. You can find the data on LMS.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>The <a href="./slides/slides2.html" target="_blank" rel="noopener noreferrer">second set of slides</a> introduces the notion of simulations and simulated data. Simulations are a way to make an abstract theory more concrete and to test our intuition of statistical tests. This is exactly what we are going to do in this lecture where the theory is a matching theory of firms and CEOs. Finally, we will test whether there is a relation between pay-for-performance and the size of the firm.</p>
+<p>As background reading, I have also made a more detailed explanation of the <a href="./auxilary/matching_theory.html">matching theory of CEO compensation</a>. It reinforces the value of knowing how to simulate some data from a theory.</p>
+<p>The <a href="./slides/slides3.html" target="_blank" rel="noopener noreferrer">third set of slides</a> looks at the issue of when and how to control (and sometimes not control) for additional effects. It’s complicated!</p>
+<p>The <a href="./slides/slides5.html" target="_blank" rel="noopener noreferrer">fourth</a> and <a href="./slides/slides5.html" target="_blank" rel="noopener noreferrer">fifth</a> set of slides basically give up on trying to control for everything. The goal is to focus on the research design, i.e.&nbsp;find a situation where we can be reasonable sure that our research question is answerable. I will focus my attention on event studies and its bigger (but slower) brother difference-in-difference and instrumental variables.</p>
 </section>
-<section id="freaky-friday" class="level2">
-<h2 class="anchored" data-anchor-id="freaky-friday">Freaky Friday</h2>
-<p>Contains an attempt at a replication from downloading the data to analyzing for <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span>.</p>
-<p><a href="./freaky_friday/index.html">Introduction to the Replication</a></p>
+<section id="freaky-friday-or-friday-earnings-announcements-are-weird" class="level2">
+<h2 class="anchored" data-anchor-id="freaky-friday-or-friday-earnings-announcements-are-weird">Freaky Friday <em>or</em> Friday Earnings Announcements Are Weird</h2>
+<p>For the remainder of the unit, we will change the mode of teaching. The remaining parts are best seen as case studies into some specific topics. The first case study is an attempt at replicating the main results of <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span> from scratch. The goal is twofold. First, the study is an <em>event study</em> of the market reaction to the release of news which is the workhorse study design for many finance studies. Second, the study requires different sources of data and it is a good exercise to demonstrate how to manage data in a larger project. Start from the <a href="./freaky_friday/index.html">introduction to the replication</a> and go from there.</p>
+</section>
+<section id="machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="machine-learning">Machine Learning</h2>
+<p>This is also a two parter. The main goal is to make you aware <a href="./machine_learning/theory.html">when machine learning tools</a> are useful. The other part is a long <a href="./machine_learning/application.html"><code>R</code> implementation</a> of one of the machine learning techniques that is most related to linear regression. The last part is mainly to give you the code as a starting point.</p>
+</section>
+<section id="generalised-linear-models" class="level2">
+<h2 class="anchored" data-anchor-id="generalised-linear-models">Generalised Linear Models</h2>
+<p>Here I introduce the use of GLM models for <a href="./generalised/introduction.html">discrete outcomes</a>. As before, I first emphasise why the regulare linear model works reasonably well for a lot of typical applications and when the GLM models are more appropriate. Maybe surprisingly, there is a clear link with the machine learning arguments.</p>
+</section>
+<section id="generated-variables" class="level2">
+<h2 class="anchored" data-anchor-id="generated-variables">Generated Variables</h2>
+<p>This section looks at a diverse set of methods that all have one thing in common. They are often <a href="./generated/introduction.html">a combination of two are more regression steps</a>. I show how that might effect the uncertainty estimates and how the bootstrap can help to get the uncertainty estimates correct.</p>
 
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-dellavigna2009" class="csl-entry" role="doc-biblioentry">
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-dellavigna2009" class="csl-entry" role="listitem">
 Dellavigna, Stefano, and Joshua M. Pollet. 2009. <span>“Investor <span>Inattention</span> and <span>Friday Earnings Announcements</span>.”</span> <em>The Journal of Finance</em> 64 (2): 709–49. <a href="https://doi.org/10.1111/j.1540-6261.2009.01447.x">https://doi.org/10.1111/j.1540-6261.2009.01447.x</a>.
 </div>
-</div></section></div></main> <!-- /main -->
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Or download it yourself with the <a href="./auxilary/introduction_to_rstudio_for_accfin.html">introduction script</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -385,9 +468,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -452,6 +549,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -495,8 +678,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./auxilary/introduction_to_rstudio_for_accfin.html" class="pagination-link">
-        <span class="nav-page-text">Introduction to Rstudio for Accounting and Finance</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./auxilary/introduction_to_r_rstudio_tidyverse.html" class="pagination-link">
+        <span class="nav-page-text">Rstudio installation and first code</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

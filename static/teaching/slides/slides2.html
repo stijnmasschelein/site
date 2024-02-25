@@ -5,9 +5,10 @@
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.313">
+  <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content="Stijn Masschelein">
   <title>Method Package - Simulations, Regressions, and Significance</title>
@@ -25,9 +26,10 @@
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
       width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -92,11 +94,12 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
     }
-    .hanging div.csl-entry {
+    .hanging-indent div.csl-entry {
       margin-left:2em;
       text-indent:-2em;
     }
@@ -110,9 +113,8 @@
     }
     div.csl-indent {
       margin-left: 2em;
-    }
-  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+    }  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -155,44 +157,44 @@
     font-weight: 400;
   }
 
-  .callout.callout-captioned.callout-style-simple .callout-body {
+  .callout.callout-titled.callout-style-simple .callout-body {
     margin-top: 0.2em;
   }
 
-  .callout:not(.callout-captioned) .callout-body {
+  .callout:not(.callout-titled) .callout-body {
       display: flex;
   }
 
-  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
     padding-left: 1.6em;
   }
 
-  .callout.callout-captioned .callout-header {
+  .callout.callout-titled .callout-header {
     padding-top: 0.2em;
     margin-bottom: -0.2em;
   }
 
-  .callout.callout-captioned .callout-caption  p {
+  .callout.callout-titled .callout-title  p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
     
-  .callout.callout-captioned.callout-style-simple .callout-content  p {
+  .callout.callout-titled.callout-style-simple .callout-content  p {
     margin-top: 0;
   }
 
-  .callout.callout-captioned.callout-style-default .callout-content  p {
+  .callout.callout-titled.callout-style-default .callout-content  p {
     margin-top: 0.7em;
   }
 
-  .callout.callout-style-simple div.callout-caption {
+  .callout.callout-style-simple div.callout-title {
     border-bottom: none;
     font-size: .9rem;
     font-weight: 600;
     opacity: 75%;
   }
 
-  .callout.callout-style-default  div.callout-caption {
+  .callout.callout-style-default  div.callout-title {
     border-bottom: none;
     font-weight: 600;
     opacity: 85%;
@@ -224,7 +226,7 @@
     background-size: 0.9rem 0.9rem;
   }
 
-  .callout-caption {
+  .callout-title {
     display: flex
   }
     
@@ -237,16 +239,16 @@
     display: none !important;
   }
 
-  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
     margin-bottom: 0.5rem;
   }
 
-  .callout.callout-captioned .callout-icon::before {
+  .callout.callout-titled .callout-icon::before {
     margin-top: .5rem;
     padding-right: .5rem;
   }
 
-  .callout:not(.callout-captioned) .callout-icon::before {
+  .callout:not(.callout-titled) .callout-icon::before {
     margin-top: 1rem;
     padding-right: .5rem;
   }
@@ -261,7 +263,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
   }
 
-  div.callout-note.callout-style-default .callout-caption {
+  div.callout-note.callout-style-default .callout-title {
     background-color: #dae6fb
   }
 
@@ -273,7 +275,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
   }
 
-  div.callout-important.callout-style-default .callout-caption {
+  div.callout-important.callout-style-default .callout-title {
     background-color: #f7dddc
   }
 
@@ -285,7 +287,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
   }
 
-  div.callout-warning.callout-style-default .callout-caption {
+  div.callout-warning.callout-style-default .callout-title {
     background-color: #fcefdc
   }
 
@@ -297,7 +299,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
   }
 
-  div.callout-tip.callout-style-default .callout-caption {
+  div.callout-tip.callout-style-default .callout-title {
     background-color: #ccf1e3
   }
 
@@ -309,7 +311,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
   }
 
-  div.callout-caution.callout-style-default .callout-caption {
+  div.callout-caution.callout-style-default .callout-title {
     background-color: #ffe5d0
   }
 
@@ -430,7 +432,7 @@ Stijn Masschelein
 <li>Experimenting with and understanding statistical tests</li>
 <li>Experimenting with statistical approaches without peaking at your data</li>
 </ul>
-<p>See also <a href="https://theeffectbook.net/ch-Simulation.html">Chapter 15 in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (</span></a><a href="#/references" role="doc-biblioref" onclick="">2021</a>)</p>
+<p>See also <a href="https://theeffectbook.net/ch-Simulation.html">Chapter 15 in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<span>2021</span>)</span></a></p>
 <aside class="notes">
 <ul>
 <li>Visualising can help you sharpen your intuition for your theory and for which values are reasonable and which are not.</li>
@@ -451,28 +453,28 @@ Stijn Masschelein
 </section>
 <section id="simulating-distributions-in-r" class="slide level2">
 <h2>Simulating distributions in <code>R</code></h2>
-<div class="cell" data-hash="slides2_cache/revealjs/random-number_5ef89314fa664775425eeb1a7fe17345">
+<div class="cell" data-hash="slides2_cache/revealjs/random-number_d1b18fae14881a6e2148356d51ef5c67">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>random <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">normal =</span> <span class="fu">rnorm</span>(N, <span class="dv">2</span>, <span class="dv">5</span>),</span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">uniform =</span> <span class="fu">runif</span>(N, <span class="dv">1</span>, <span class="dv">5</span>),</span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="at">binomial =</span> <span class="fu">rbinom</span>(N, <span class="dv">1</span>, .<span class="dv">25</span>),</span>
-<span id="cb1-6"><a href="#cb1-6"></a>  <span class="at">sample =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, N, <span class="at">replace =</span> T)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">normal =</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">5</span>),</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">uniform =</span> <span class="fu">runif</span>(N, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">5</span>),</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="at">binomial =</span> <span class="fu">rbinom</span>(N, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> .<span class="dv">25</span>),</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="at">sample =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size =</span> N, <span class="at">replace =</span> T)</span>
 <span id="cb1-7"><a href="#cb1-7"></a>)</span>
 <span id="cb1-8"><a href="#cb1-8"></a><span class="fu">glimpse</span>(random)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,000
 Columns: 4
-$ normal   &lt;dbl&gt; 2.46781982, -5.75669489, 1.83979037, 0.29…
-$ uniform  &lt;dbl&gt; 2.574179, 4.010491, 1.030518, 3.872609, 4…
-$ binomial &lt;int&gt; 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-$ sample   &lt;int&gt; 1, 4, 1, 7, 5, 3, 10, 2, 1, 10, 10, 4, 2,…</code></pre>
+$ normal   &lt;dbl&gt; 2.396646, 7.447207, 6.562228, 8.130458, 8…
+$ uniform  &lt;dbl&gt; 2.814537, 4.246285, 1.423798, 2.225571, 4…
+$ binomial &lt;int&gt; 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,…
+$ sample   &lt;int&gt; 10, 4, 2, 2, 6, 4, 1, 1, 6, 10, 5, 7, 10,…</code></pre>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
-<div class="cell" data-hash="slides2_cache/revealjs/random-plot1_58585e22ef56f9d54450545d9d7fb3c3">
+<div class="cell" data-hash="slides2_cache/revealjs/random-plot1_0e399fa9620b7dd6ea2ed5ba1e6d1fc8">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span> <span class="fu">geom_density</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">plot_grid</span>(p1, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
@@ -480,7 +482,7 @@ $ sample   &lt;int&gt; 1, 4, 1, 7, 5, 3, 10, 2, 1, 10, 10, 4, 2,…</code></pre>
 <img data-src="slides2_files/figure-revealjs/random-plot1-1.png" width="1920" class="r-stretch"></section>
 <section class="slide level2">
 
-<div class="cell" data-hash="slides2_cache/revealjs/random-plot2_4371c995ecf06a1962acc9e5dc532a0e">
+<div class="cell" data-hash="slides2_cache/revealjs/random-plot2_20bd16edec8c6379aab30b5bad38b391">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span> <span class="fu">geom_density</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> uniform)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"uniform histogram"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="fu">plot_grid</span>(p1, p2, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -489,7 +491,7 @@ $ sample   &lt;int&gt; 1, 4, 1, 7, 5, 3, 10, 2, 1, 10, 10, 4, 2,…</code></pre>
 <img data-src="slides2_files/figure-revealjs/random-plot2-1.png" width="1920" class="r-stretch"></section>
 <section class="slide level2">
 
-<div class="cell" data-hash="slides2_cache/revealjs/random-plot3_a64f54020adda51ebd4db27e80336e8a">
+<div class="cell" data-hash="slides2_cache/revealjs/random-plot3_e10db01b00f14e53ab0d0d7044f2791d">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span> <span class="fu">geom_density</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> uniform)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"uniform histogram"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> binomial, <span class="at">y =</span> normal)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"binomal-normal"</span>)</span>
@@ -499,7 +501,7 @@ $ sample   &lt;int&gt; 1, 4, 1, 7, 5, 3, 10, 2, 1, 10, 10, 4, 2,…</code></pre>
 <img data-src="slides2_files/figure-revealjs/random-plot3-1.png" width="1920" class="r-stretch"></section>
 <section class="slide level2">
 
-<div class="cell" data-hash="slides2_cache/revealjs/random-plot4_b64c24e2370e40d59771036f146357ee">
+<div class="cell" data-hash="slides2_cache/revealjs/random-plot4_e6425c9c79f38605e99db2b6fe107d28">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span> <span class="fu">geom_density</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> uniform)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"uniform histogram"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> binomial, <span class="at">y =</span> normal)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"binomal-normal"</span>)</span>
@@ -511,7 +513,7 @@ $ sample   &lt;int&gt; 1, 4, 1, 7, 5, 3, 10, 2, 1, 10, 10, 4, 2,…</code></pre>
 <img data-src="slides2_files/figure-revealjs/random-plot4-1.png" width="1920" class="r-stretch"></section>
 <section id="better-code-formatting" class="slide level2">
 <h2>Better Code Formatting</h2>
-<div class="cell" data-hash="slides2_cache/revealjs/code-formatting_95bbc6044b7eb6155702a586557d3f6e">
+<div class="cell" data-hash="slides2_cache/revealjs/code-formatting_e527c6deb11372fd07e1710156578a49">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
@@ -534,9 +536,9 @@ $ sample   &lt;int&gt; 1, 4, 1, 7, 5, 3, 10, 2, 1, 10, 10, 4, 2,…</code></pre>
 </section>
 <section id="new-theory" class="slide level2">
 <h2>New theory</h2>
-<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -553,13 +555,13 @@ $ sample   &lt;int&gt; 1, 4, 1, 7, 5, 3, 10, 2, 1, 10, 10, 4, 2,…</code></pre>
 </div>
 
 <aside><div>
-<p>The model is the second one presented in <span class="citation" data-cites="edmans2016">Edmans and Gabaix (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span>. A more rigorous proof is shown in <span class="citation" data-cites="tervio2008">Tervio (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span>. A simplified explanation is in <a href="https://stijn-masschelein.netlify.app/teaching/just_enough/maths-sim.htm">Chapter 5 of my lecture notes</a></p>
+<p>The model is the second one presented in <span class="citation" data-cites="edmans2016">Edmans and Gabaix (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span>. A more rigorous proof is shown in <span class="citation" data-cites="tervio2008">Tervio (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span>. A simplified explanation is in <a href="../auxilary/matching_theory.html">the supplementary reading on theory and simulations</a></p>
 </div></aside></section>
 <section id="visualisation-of-matching-theory" class="slide level2">
 <h2>Visualisation of matching theory</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="slides2_cache/revealjs/matching-viz_492fcb79c927e6f995f30c1abde403f3">
+<div class="cell" data-hash="slides2_cache/revealjs/matching-viz_60efb7fcbf221c5e68cde10651816e44">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>obs <span class="ot">&lt;-</span> <span class="dv">500</span></span>
@@ -585,7 +587,7 @@ $ sample   &lt;int&gt; 1, 4, 1, 7, 5, 3, 10, 2, 1, 10, 10, 4, 2,…</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-hash="slides2_cache/revealjs/mathing-log_037911a4222a1cbe4a377e8b52487015">
+<div class="cell" data-hash="slides2_cache/revealjs/mathing-log_2788dd9bf8c42ae512eea4ca313797bd">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">plot</span>(matching_plot <span class="sc">+</span></span>
@@ -605,7 +607,7 @@ $ sample   &lt;int&gt; 1, 4, 1, 7, 5, 3, 10, 2, 1, 10, 10, 4, 2,…</code></pre>
 </section>
 <section id="ceo-compensation-data" class="slide level2">
 <h2>CEO compensation data</h2>
-<div class="cell" data-hash="slides2_cache/revealjs/read-data_982a974d0e898aa131587c2b30335e6a">
+<div class="cell" data-hash="slides2_cache/revealjs/read-data_d38cf785d9bfa450b7083df8506a4811">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>us_comp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">rename</span>(<span class="at">total_comp =</span> tdc1)</span>
 <span id="cb10-3"><a href="#cb10-3"></a>us_value <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-value-new.RDS"</span>)) <span class="sc">%&gt;%</span></span>
@@ -613,9 +615,9 @@ $ sample   &lt;int&gt; 1, 4, 1, 7, 5, 3, 10, 2, 1, 10, 10, 4, 2,…</code></pre>
 <span id="cb10-5"><a href="#cb10-5"></a><span class="fu">summary</span>(us_value<span class="sc">$</span>market_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-      0.0     926.5    2570.5   13488.2    8181.1 2324390.2 
+      0.0     951.9    2696.7   14799.2    8697.1 2662325.9 
      NA's 
-     4182 </code></pre>
+     2695 </code></pre>
 </div>
 </div>
 </section>
@@ -738,7 +740,7 @@ y_i = a + b_1 x_{1i} + ... + b_n x_{ni} + \epsilon_i
 <p><span class="math display">\[\begin{equation}
 \vec{y} = \mathcal{N}(a + \vec{b} X, \sigma)
 \end{equation}\]</span></p>
-<p>See also <a href="https://theeffectbook.net/ch-StatisticalAdjustment.html">Chapter 13 in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (</span></a><a href="#/references" role="doc-biblioref" onclick="">2021</a>)</p>
+<p>See also <a href="https://theeffectbook.net/ch-StatisticalAdjustment.html">Chapter 13 in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<span>2021</span>)</span></a></p>
 </div><div class="column">
 <div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-18_e5be7ac535dd6ce0b9a1700a40a1a463">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">data =</span> my_data_set)</span>
@@ -800,28 +802,27 @@ log(market_value + 1)      0.4     0.0032     124        0</code></pre>
 </section>
 <section id="stock-holding-data" class="slide level2">
 <h2>Stock holding data</h2>
-<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-20_58a019d77a0774f0e18eef699723e2b9">
+<div class="cell" data-hash="slides2_cache/revealjs/unnamed-chunk-20_c311d5ce943144080cc78ff8998e2258">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>us_comp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a>    <span class="fu">rename</span>(<span class="at">total_comp =</span> tdc1, <span class="at">shares =</span> shrown_tot_pct) <span class="sc">%&gt;%</span></span>
 <span id="cb23-3"><a href="#cb23-3"></a>    <span class="fu">select</span>(gvkey, execid, year, shares, total_comp)</span>
 <span id="cb23-4"><a href="#cb23-4"></a>us_value <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-value-new.RDS"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb23-5"><a href="#cb23-5"></a>    <span class="fu">rename</span>(<span class="at">year =</span> fyear, <span class="at">market_value =</span> mkvalt) <span class="sc">%&gt;%</span></span>
-<span id="cb23-6"><a href="#cb23-6"></a>    <span class="fu">select</span>(<span class="sc">-</span>ni) </span>
-<span id="cb23-7"><a href="#cb23-7"></a>us_comp_value <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
-<span id="cb23-8"><a href="#cb23-8"></a>    us_comp, us_value, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"gvkey"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb23-9"><a href="#cb23-9"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(market_value) <span class="sc">&amp;</span> <span class="sc">!</span>(<span class="fu">is.na</span>(shares))) <span class="sc">%&gt;%</span></span>
-<span id="cb23-10"><a href="#cb23-10"></a>    <span class="fu">mutate</span>(<span class="at">wealth =</span> shares <span class="sc">*</span> market_value <span class="sc">/</span> <span class="dv">100</span>)</span>
-<span id="cb23-11"><a href="#cb23-11"></a><span class="fu">glimpse</span>(us_comp_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-5"><a href="#cb23-5"></a>    <span class="fu">rename</span>(<span class="at">year =</span> fyear, <span class="at">market_value =</span> mkvalt)</span>
+<span id="cb23-6"><a href="#cb23-6"></a>us_comp_value <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<span id="cb23-7"><a href="#cb23-7"></a>    us_comp, us_value, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"gvkey"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(market_value) <span class="sc">&amp;</span> <span class="sc">!</span>(<span class="fu">is.na</span>(shares))) <span class="sc">%&gt;%</span></span>
+<span id="cb23-9"><a href="#cb23-9"></a>    <span class="fu">mutate</span>(<span class="at">wealth =</span> shares <span class="sc">*</span> market_value <span class="sc">/</span> <span class="dv">100</span>)</span>
+<span id="cb23-10"><a href="#cb23-10"></a><span class="fu">glimpse</span>(us_comp_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 27,207
+<pre><code>Rows: 21,262
 Columns: 7
-$ gvkey        &lt;chr&gt; "001004", "001004", "001004", "001004…
-$ execid       &lt;chr&gt; "09249", "09249", "09249", "09249", "…
-$ year         &lt;dbl&gt; 2011, 2011, 2012, 2013, 2014, 2015, 2…
-$ shares       &lt;dbl&gt; 2.964, 2.964, 2.893, 3.444, 3.877, 4.…
-$ total_comp   &lt;dbl&gt; 5786.400, 5786.400, 4182.832, 5247.77…
-$ market_value &lt;dbl&gt; 485.2897, 485.2897, 790.0029, 961.308…
-$ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
+$ gvkey        &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004…
+$ execid       &lt;chr&gt; "09249", "09249", "09249", "09249", "09249", "09249", "09…
+$ year         &lt;dbl&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 202…
+$ shares       &lt;dbl&gt; 2.964, 2.893, 3.444, 3.877, 4.597, 5.417, 3.718, 1.277, 1…
+$ total_comp   &lt;dbl&gt; 5786.400, 4182.832, 5247.779, 5234.648, 4674.464, 6072.59…
+$ market_value &lt;dbl&gt; 485.2897, 790.0029, 961.3080, 1046.3954, 842.5112, 1200.3…
+$ wealth       &lt;dbl&gt; 14.3839867, 22.8547839, 33.1074475, 40.5687497, 38.730239…</code></pre>
 </div>
 </div>
 </section>
@@ -937,9 +938,9 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <section>
 <section id="p-values" class="title-slide slide level1 center">
 <h1>p-values</h1>
-<div class="callout callout-warning callout-captioned callout-style-default">
+<div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1058,7 +1059,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <li>Calculate the statistic for each random sample</li>
 <li>Is the observed statistic more extreme than the randomly resampled statistic?</li>
 </ul>
-<p>See also <a href="https://mixtape.scunning.com/potential-outcomes.html#randomization-inference">Chapter 4.2 in <span class="citation" data-cites="cunningham2021">Cunningham (</span></a><a href="#/references" role="doc-biblioref" onclick="">2021</a>)</p>
+<p>See also <a href="https://mixtape.scunning.com/potential-outcomes.html#randomization-inference">Chapter 4.2 in <span class="citation" data-cites="cunningham2021">Cunningham (<span>2021</span>)</span></a></p>
 </div><div class="column">
 <h3 id="bootstrap-1">Bootstrap</h3>
 <ul>
@@ -1066,7 +1067,7 @@ $ wealth       &lt;dbl&gt; 14.383987, 14.383987, 22.854784, 33.1…</code></pre>
 <li>Calculate the statistic you are interested in.</li>
 <li>Is the distribution of resampled statistics unlikely to be 0 (= Null Hypothesis)?</li>
 </ul>
-<p>See also <a href="https://theeffectbook.net/ch-Simulation.html#simulation-with-existing-data-the-bootstrap">Chapter 15 in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (</span></a><a href="#/references" role="doc-biblioref" onclick="">2021</a>)</p>
+<p>See also <a href="https://theeffectbook.net/ch-Simulation.html#simulation-with-existing-data-the-bootstrap">Chapter 15 in <span class="citation" data-cites="huntington-klein2021">Huntington-Klein (<span>2021</span>)</span></a></p>
 </div>
 </div>
 </section>
@@ -1104,16 +1105,16 @@ I(market_value/1000)  -0.0037      0.015   -0.24     0.81</code></pre>
 <h3 id="signaling-model">Signaling Model</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="https://www.arts.uwa.edu.au/__data/assets/image/0010/117973/Peacock-165px.jpg"></p>
-<p></p><figcaption>Peacock’s tail as a signal</figcaption><p></p>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Peacock_at_Warwick_Castle.jpg" style="height:50.0%"></p>
+<figcaption>Peacock’s tail as a signal</figcaption>
 </figure>
 </div>
 </div><div class="column">
 <h3 id="cheap-talk-model">Cheap Talk Model</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="https://www.myinterestingfacts.com/wp-content/uploads/2014/04/Iceberg.jpg"></p>
-<p></p><figcaption>Assumptions are important</figcaption><p></p>
+<p><img data-src="https://www.myinterestingfacts.com/wp-content/uploads/2014/04/Iceberg.jpg" style="height:35.0%"></p>
+<figcaption>Assumptions are important</figcaption>
 </figure>
 </div>
 </div>
@@ -1158,26 +1159,26 @@ I(market_value/1000)  -0.0037      0.015   -0.24     0.81</code></pre>
 <div class="footer footer-default">
 
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-core2005" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-core2005" class="csl-entry" role="listitem">
 Core, John E., Wayne R. Guay, and Randall S. Thomas. 2005. <span>“Is <span>U</span>.<span>S</span>. <span>CEO Compensation Broken</span>?”</span> <em>Journal of Applied Corporate Finance</em> 17 (4): 97–104. <a href="https://doi.org/10.1111/j.1745-6622.2005.00063.x">https://doi.org/10.1111/j.1745-6622.2005.00063.x</a>.
 </div>
-<div id="ref-cunningham2021" class="csl-entry" role="doc-biblioentry">
+<div id="ref-cunningham2021" class="csl-entry" role="listitem">
 Cunningham, Scott. 2021. <em>Causal <span>Inference</span>: <span>The Mixtape</span></em>. <em>Causal Inference</em>. <span>Yale University Press</span>. <a href="https://doi.org/10.12987/9780300255881">https://doi.org/10.12987/9780300255881</a>.
 </div>
-<div id="ref-edmans2016" class="csl-entry" role="doc-biblioentry">
+<div id="ref-edmans2016" class="csl-entry" role="listitem">
 Edmans, Alex, and Xavier Gabaix. 2016. <span>“Executive Compensation: <span>A</span> Modern Primer.”</span> <em>Journal of Economic Literature</em> 54 (4): 1232–87.
 </div>
-<div id="ref-hall1998" class="csl-entry" role="doc-biblioentry">
+<div id="ref-hall1998" class="csl-entry" role="listitem">
 Hall, Brian J., and Jeffrey B. Liebman. 1998. <span>“Are <span>CEOs Really Paid Like Bureaucrats</span>?”</span> <em>The Quarterly Journal of Economics</em> 113 (3): 653–91. <a href="https://doi.org/10.1162/003355398555702">https://doi.org/10.1162/003355398555702</a>.
 </div>
-<div id="ref-huntington-klein2021" class="csl-entry" role="doc-biblioentry">
+<div id="ref-huntington-klein2021" class="csl-entry" role="listitem">
 Huntington-Klein, Nick. 2021. <em>The <span>Effect</span>: <span>An Introduction</span> to <span>Research Design</span> and <span>Causality</span></em>. First. <span>Boca Raton</span>: <span>Chapman and Hall/CRC</span>. <a href="https://doi.org/10.1201/9781003226055">https://doi.org/10.1201/9781003226055</a>.
 </div>
-<div id="ref-jensen1990" class="csl-entry" role="doc-biblioentry">
+<div id="ref-jensen1990" class="csl-entry" role="listitem">
 Jensen, Michael C., and Kevin J. Murphy. 1990. <span>“Performance <span>Pay</span> and <span>Top-Management Incentives</span>.”</span> <em>Journal of Political Economy</em> 98 (2): 225–64. <a href="https://doi.org/10.1086/261677">https://doi.org/10.1086/261677</a>.
 </div>
-<div id="ref-tervio2008" class="csl-entry" role="doc-biblioentry">
+<div id="ref-tervio2008" class="csl-entry" role="listitem">
 Tervio, Marko. 2008. <span>“The <span>Difference That CEOs Make</span>: <span>An Assignment Model Approach</span>.”</span> <em>American Economic Review</em> 98 (3): 642–68. <a href="https://doi.org/10.1257/aer.98.3.642">https://doi.org/10.1257/aer.98.3.642</a>.
 </div>
 </div>
@@ -1213,7 +1214,7 @@ Tervio, Marko. 2008. <span>“The <span>Difference That CEOs Make</span>: <span>
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1455,9 +1456,23 @@ Tervio, Marko. 2008. <span>“The <span>Difference That CEOs Make</span>: <span>
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
       const clipboard = new window.ClipboardJS('.code-copy-button', {
-        target: function(trigger) {
-          return trigger.previousElementSibling;
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
         }
       });
       clipboard.on('success', function(e) {
@@ -1505,7 +1520,7 @@ Tervio, Marko. 2008. <span>“The <span>Difference That CEOs Make</span>: <span>
           },
           interactive: true,
           interactiveBorder: 10,
-          theme: 'quarto-reveal',
+          theme: 'light-border',
           placement: 'bottom-start'
         };
           config['offset'] = [0,0];

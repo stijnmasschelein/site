@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -18,14 +18,15 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -39,8 +40,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -77,10 +77,12 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -89,11 +91,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Predictions</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../machine_learning/predictions.html">Machine Learning</a></li><li class="breadcrumb-item"><a href="../machine_learning/predictions.html">Predictions</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -101,205 +108,249 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Method Package</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Introduction</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../method_package.html" class="sidebar-item-text sidebar-link">Content</a>
+  <a href="../method_package.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Content</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../auxilary/introduction_to_rstudio_for_accfin.html" class="sidebar-item-text sidebar-link">Introduction to Rstudio for Accounting and Finance</a>
+  <a href="../auxilary/introduction_to_r_rstudio_tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rstudio installation and first code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../auxilary/introduction_to_rstudio_for_accfin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Rstudio for Accounting and Finance</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Slides</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Slides</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/slides1.html" class="sidebar-item-text sidebar-link">Introduction to Research Methods in Finance and Accounting</a>
+  <a href="../slides/slides1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Research Methods in Finance and Accounting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/slides2.html" class="sidebar-item-text sidebar-link">Simulations, Regressions, and Significance</a>
+  <a href="../slides/slides2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simulations, Regressions, and Significance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/slides3.html" class="sidebar-item-text sidebar-link">Control Variables</a>
+  <a href="../slides/slides3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Control Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/slides4.html" class="sidebar-item-text sidebar-link">Research Design 1: Fixed Effects and Instrumental Variables</a>
+  <a href="../slides/slides4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Design 1: Fixed Effects and Instrumental Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/slides5.html" class="sidebar-item-text sidebar-link">Research Design 2: Event Studies and Difference-in-Difference</a>
+  <a href="../slides/slides5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Design 2: Event Studies and Difference-in-Difference</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../auxilary/matching_theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matching theory</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Friday Earnings Announcements</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Friday Earnings Announcements</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/index.html" class="sidebar-item-text sidebar-link">Research Design</a>
+  <a href="../freaky_friday/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Design</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/download_linking.html" class="sidebar-item-text sidebar-link">WRDS linking data</a>
+  <a href="../freaky_friday/download_linking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WRDS linking data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/linking.html" class="sidebar-item-text sidebar-link">Combining databases</a>
+  <a href="../freaky_friday/linking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Combining databases</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/download_data.html" class="sidebar-item-text sidebar-link">Earnings announcements</a>
+  <a href="../freaky_friday/download_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Earnings announcements</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/download_stocks.html" class="sidebar-item-text sidebar-link">Stock price data</a>
+  <a href="../freaky_friday/download_stocks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stock price data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/abnormal_returns.html" class="sidebar-item-text sidebar-link">Abnormal returns</a>
+  <a href="../freaky_friday/abnormal_returns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Abnormal returns</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/descriptive.html" class="sidebar-item-text sidebar-link">Descriptive statistics</a>
+  <a href="../freaky_friday/descriptive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descriptive statistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/regressions.html" class="sidebar-item-text sidebar-link">Regressions</a>
+  <a href="../freaky_friday/regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regressions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../freaky_friday/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  <a href="../freaky_friday/assignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Machine Learning</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Machine Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../machine_learning/predictions.html" class="sidebar-item-text sidebar-link active">Predictions</a>
+  <a href="../machine_learning/predictions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Predictions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../machine_learning/theory.html" class="sidebar-item-text sidebar-link">Theory</a>
+  <a href="../machine_learning/theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theory</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">Peer Firms</a>
+  <a href="../machine_learning/application.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Peer Firms</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../machine_learning/assignment.html" class="sidebar-item-text sidebar-link">Assignment</a>
+  <a href="../machine_learning/assignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Generalised Linear Models</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Generalised Linear Models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../generalised/introduction.html" class="sidebar-item-text sidebar-link">Introduction and Theory</a>
+  <a href="../generalised/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction and Theory</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../generalised/interpretation.html" class="sidebar-item-text sidebar-link">Interpretation</a>
+  <a href="../generalised/interpretation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interpretation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../generalised/poisson.html" class="sidebar-item-text sidebar-link">Poisson Regression</a>
+  <a href="../generalised/poisson.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Poisson Regression</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Generated Variables</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Generated Variables</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../generated/introduction.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  <a href="../generated/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../generated/residual_dependent.html" class="sidebar-item-text sidebar-link">Generated Dependent</a>
+  <a href="../generated/residual_dependent.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generated Independent</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link">IPW</a>
+  <a href="../generated/inverse_probability_weight.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IPW</span></a>
   </div>
 </li>
       </ul>
@@ -307,6 +358,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     
 <!-- main -->
@@ -314,7 +366,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Predictions</h1>
+<h1 class="title">Predictions</h1>
 </div>
 
 
@@ -338,7 +390,7 @@ div.csl-indent {
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>So far in the course, I have made the assumption that our research is mainly interested in estimating a certain parameter of interest, i.e.&nbsp;we want to know the effect of a certain variable on a certain outcome variable. For instance, we are interested in the effect of a policy uncertainty on a firm’s investment decisions <span class="citation" data-cites="falk2018">(<a href="#ref-falk2018" role="doc-biblioref">Falk and Shelton 2018</a>)</span>, or the use of options in CEO compensation on risk taking <span class="citation" data-cites="shue2017">(<a href="#ref-shue2017" role="doc-biblioref">Shue and Townsend 2017</a>)</span>. In terms of a regression model, <span class="math inline">\(y_i = \alpha + \beta x_i + \gamma z_i + \epsilon_i\)</span>, we are interested in <span class="math inline">\(\beta\)</span>, the effect of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span> after controlling for <span class="math inline">\(z\)</span>. All the statistical and conceptual tools in the lectures had the aim of making sure that the estimate <span class="math inline">\(\hat{\beta}\)</span> is the best possible estimate of the true underlying and unobserved <span class="math inline">\(\beta\)</span> <span class="citation" data-cites="mullainathan2017">(<a href="#ref-mullainathan2017" role="doc-biblioref">Mullainathan and Spiess 2017</a>)</span>.</p>
-<p>In contrast, some research questions focus on building a model to predict the outcomes. In that case, we are not interested in the estimated parameter <span class="math inline">\(\beta\)</span> (or <span class="math inline">\(\alpha\)</span> or $). We are interested in the prediction <span class="math inline">\(\hat{y}\)</span>, especially for future or unobserved cases <span class="citation" data-cites="mullainathan2017">(<a href="#ref-mullainathan2017" role="doc-biblioref">Mullainathan and Spiess 2017</a>)</span>. One of the biggest risks for prediction tasks is that our model excels at predicting the outcomes in the data that we have but it is rubbish at predicting for new data. In that case, our model is <em>overfitting</em>. The strength of a lot of machine learning applications is that they excel at incorporating a lot of variables while at the same time guard against overfitting. If prediction is the research question these are the methods we should turn to.</p>
+<p>In contrast, some research questions focus on building a model to predict the outcomes. In that case, we are not interested in the estimated parameter <span class="math inline">\(\beta\)</span> (or <span class="math inline">\(\alpha\)</span> or <span class="math inline">\(\gamma\)</span>). We are interested in the prediction <span class="math inline">\(\hat{y}\)</span>, especially for future or unobserved cases <span class="citation" data-cites="mullainathan2017">(<a href="#ref-mullainathan2017" role="doc-biblioref">Mullainathan and Spiess 2017</a>)</span>. One of the biggest risks for prediction tasks is that our model excels at predicting the outcomes in the data that we have but it is rubbish at predicting for new data. In that case, our model is <em>overfitting</em> for the purpose of predicting future outcomes. The strength of a lot of machine learning applications is that they excel at incorporating a lot of variables while at the same time guard against overfitting. If prediction is the research question these are the methods we should turn to.</p>
 </section>
 <section id="content" class="level1">
 <h1>Content</h1>
@@ -353,26 +405,26 @@ y_i = \alpha + \beta x_i + \gamma z_i + \epsilon_i
 \]</span></p>
 <p>One way to think about this is that we are splitting up the regression in two steps. First, we <em>predict</em> the outcome variable, <span class="math inline">\(\hat{y}\)</span> based on the many predictors <span class="math inline">\(z\)</span>. Second, we estimate the parameter <span class="math inline">\(\beta\)</span> with <span class="math inline">\(y - \hat{y}\)</span> as the dependent variable <span class="citation" data-cites="mullainathan2017">(<a href="#ref-mullainathan2017" role="doc-biblioref">Mullainathan and Spiess 2017</a>)</span>.</p>
 <p>Another related application is that we want to use the machine learning techniques to predict the causal variable of interest with the predictors z, so that we can use <span class="math inline">\(x - \hat{x}\)</span> as the new causal variable and estimate it’s effect on <span class="math inline">\(y - \hat{y}\)</span>. For some research questions, it will be appropriate to say that after we removed the influence of a bunch of observable factors, we are more confident that the remaining variation in <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> is the capturing the causal effect we are interested in. However, remember that sometimes the opposite is true. In the <span class="citation" data-cites="shue2017">(<a href="#ref-shue2017" role="doc-biblioref">Shue and Townsend 2017</a>)</span> paper, we wanted to predict the changes in the option awards that followed a predictable schedule. The paper essentially used a very simple prediction model to predict the option awards that we could treat as if they are random (or exogenous).</p>
-<p>A final application is when you want to increase the dataset when you need to collect some variable by manually labelling or categorising some data. Sometimes it is possible to collect the data manually for a subset of the data. You can then use the machine learning tools to predict what variable based on the relation between predictors and your measure in the manually collected data.</p>
+<p>A final application is when you want to increase the dataset when you need to collect some variable by manually labelling or categorising some data. Sometimes it is possible to collect the data manually for a subset of the data. You can then use the machine learning tools to predict the key variable based on the relation between predictors and your measure in the manually collected data.</p>
 
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-baker2020" class="csl-entry" role="doc-biblioentry">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-baker2020" class="csl-entry" role="listitem">
 Baker, Andrew, and Jonah B. Gelbach. 2020. <span>“Machine <span>Learning</span> and <span>Predicted Returns</span> for <span>Event Studies</span> in <span>Securities Litigation</span>.”</span> <em>Journal of Law, Finance, and Accounting</em> 5 (2): 231–72. <a href="https://doi.org/10.1561/108.00000047">https://doi.org/10.1561/108.00000047</a>.
 </div>
-<div id="ref-dellavigna2009" class="csl-entry" role="doc-biblioentry">
+<div id="ref-dellavigna2009" class="csl-entry" role="listitem">
 Dellavigna, Stefano, and Joshua M. Pollet. 2009. <span>“Investor <span>Inattention</span> and <span>Friday Earnings Announcements</span>.”</span> <em>The Journal of Finance</em> 64 (2): 709–49. <a href="https://doi.org/10.1111/j.1540-6261.2009.01447.x">https://doi.org/10.1111/j.1540-6261.2009.01447.x</a>.
 </div>
-<div id="ref-falk2018" class="csl-entry" role="doc-biblioentry">
+<div id="ref-falk2018" class="csl-entry" role="listitem">
 Falk, Nathan, and Cameron A. Shelton. 2018. <span>“Fleeing a <span>Lame Duck</span>: <span>Policy Uncertainty</span> and <span>Manufacturing Investment</span> in <span>US States</span>.”</span> <em>American Economic Journal: Economic Policy</em> 10 (4): 135–52. <a href="https://doi.org/10.1257/pol.20160365">https://doi.org/10.1257/pol.20160365</a>.
 </div>
-<div id="ref-mullainathan2017" class="csl-entry" role="doc-biblioentry">
+<div id="ref-mullainathan2017" class="csl-entry" role="listitem">
 Mullainathan, Sendhil, and Jann Spiess. 2017. <span>“Machine <span>Learning</span>: <span>An Applied Econometric Approach</span>.”</span> <em>Journal of Economic Perspectives</em> 31 (2): 87–106. <a href="https://doi.org/10.1257/jep.31.2.87">https://doi.org/10.1257/jep.31.2.87</a>.
 </div>
-<div id="ref-shue2017" class="csl-entry" role="doc-biblioentry">
+<div id="ref-shue2017" class="csl-entry" role="listitem">
 Shue, Kelly, and Richard R. Townsend. 2017. <span>“How <span>Do Quasi-Random Option Grants Affect CEO Risk-Taking</span>?”</span> <em>The Journal of Finance</em> 72 (6): 2551–88. <a href="https://doi.org/10.1111/jofi.12545">https://doi.org/10.1111/jofi.12545</a>.
 </div>
 </div></section></div></main> <!-- /main -->
@@ -403,9 +455,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -470,6 +536,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

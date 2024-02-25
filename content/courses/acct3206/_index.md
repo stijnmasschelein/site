@@ -14,5 +14,6 @@ type: docs
 weight: 1
 ---
 
-# [Lecture Notes](/teaching/pme.pdf)
+1. [The new open textbook: Principles of Strategic Management Accounting](https://oercollective.caul.edu.au/principles-strategic-management-accounting/)
+2. [The old lecture notes](/teaching/pme.pdf)
 

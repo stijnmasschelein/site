@@ -1,7 +1,7 @@
 ---
 date: "2021-05-30T00:00:00Z"
 draft: false
-lastmod: "2021-05-30T00:00:00Z"
+lastmod: "2024-02-25T00:00:00Z"
 linktitle: FINA4590 - Research Methods in Finance and Accounting 
 menu:
   example:
@@ -15,26 +15,8 @@ weight: 1
 ---
 
 
-## The new website
+## The full website
 
-[Click here to go to the update website](/teaching/method_package.html)
+You will be automatically redirected or you can [click here to go to the full website](/teaching/method_package.html)
 
-## The old website
-
-### The lecture notes in html format
-
-[Lecture Notes](/teaching/just_enough)
-
-### The lecture slides
-
-1. [Introduction](/teaching/slides_fina4590/slides1.html)
-2. [Simulation and Regression](/teaching/slides_fina4590/slides2.html)
-3. [Control Variables and Instrumental Variables](/teaching/slides_fina4590/slides3.html)
-4. [Research Design 1: Fixed Effects and Instrumental Variables](/teaching/slides_fina4590/slides4.html)
-5. [Research Design 2: Event Study and Difference-in-Difference](/teaching/slides_fina4590/slides5.html)
-
-### Baker et al. Simulation
-
-[html version](/teaching/slides_fina4590/baker_simulation.html)
-
-
+<meta http-equiv="refresh" content="1; url=/teaching/method_package.html">
