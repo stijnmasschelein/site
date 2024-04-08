@@ -224,6 +224,12 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../slides/slides_proposal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Feedback on Pitch and Proposal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../auxilary/matching_theory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Matching theory</span></a>
   </div>
@@ -442,7 +448,7 @@ div.csl-indent {
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/setup_1fdb995253017e320b72405491201dd1">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/setup_a4cd16ea760aa0333c4b263efc0041d9">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
@@ -451,20 +457,20 @@ div.csl-indent {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>(<span class="at">font_size =</span> <span class="dv">18</span>))</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"generated/inverse_probability_weight.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 </div>
 </section>
 <section id="simulated-data" class="level2">
 <h2 class="anchored" data-anchor-id="simulated-data">Simulated data</h2>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/parameters_64477c1f1727ecde39530be4a2947885">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/parameters_b8e3e3cbf7eaacfe28c3bd3ac23c750d">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">500</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="dv">200</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ntotal <span class="ot">&lt;-</span> N <span class="sc">*</span> nsim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The data generating process for <code>x</code> and <code>y</code> is more complicated that what I usually use. First, we have two binary variables <code>z2</code> and <code>x</code>. I use the transformation <code>1 - 2*x</code> and <code>1 - 2*z2</code> a number of times. This transformation takes a binary (0,1) and transforms it in (1, -1). The main goal with this transformation is to make sure that interactions with these variables are more meaningful. If they take the value 0, interactions without the transformation would also take a value of 0.</p>
 <p>It might not be immediately clear but <code>x</code> just follows a <a href="../generalised/introduction.html">probit-binomial</a> distribution which depends on the control variables <code>z1</code> and <code>z2</code> and its interactions. <code>y</code> is a normally distributed function of <code>x</code> and the control variables and the effect of <code>x</code> depends on the interaction between the controls.</p>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/simulation_770aba6b8f46a56bc2fbe4fbed3fa809">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/simulation_96bac10a40e3c8175f23dd57c695f95b">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sim_data <span class="ot">&lt;-</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sim =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>nsim, <span class="at">each =</span> N),</span>
@@ -489,7 +495,7 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="bias">Bias</h2>
 <p>At first, we want to figure out whether different regression specifications are biased. One way to do that is to work with the full data and ignore the <code>sim</code> variable.</p>
 <p>First, we run our regular regressions with different but imperfect functional forms for the control variables.</p>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/lm_21d53d96eb6ec577349d24a391fe729c">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/lm_a659833ebf7d8349596609f6822847c6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> sim_data) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"x"</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> z1 <span class="sc">+</span> z2, <span class="at">data =</span> sim_data) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"x"</span>),</span>
@@ -498,15 +504,15 @@ div.csl-indent {
 <pre><code># A tibble: 3 × 5
   term  estimate std.error statistic      p.value
   &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;
-1 x        2.73     0.0344     79.3  0           
-2 x        0.207    0.0449      4.60 0.00000420  
-3 x        0.260    0.0461      5.65 0.0000000166</code></pre>
+1 x        2.67     0.0344     77.6  0           
+2 x        0.196    0.0448      4.39 0.0000115   
+3 x        0.253    0.0460      5.50 0.0000000386</code></pre>
 </div>
 </div>
 <p>It’s clear that while adding the control variables (and the interaction) improves the estimate, we are still far off the correct estimate which is 1.</p>
 <p>Next, we first run a logit regression to predict the probability that an observations is in the treatment group based on the control variables. I deliberately misspecify the regression to demonstrate that even an imperfect the propensity model can already help. Nevertheless, for a method to be truly double robust either the propensity model or the regression model needs to be correctly specified.</p>
 <p>We calculate the weights and trimmed weights where I set the maximum weight to 100 which means that propensities smaller than 0.01 are winsorised at the value of 0.01 to avoid that the estimation is dominated by a couple of observations. We can run the regressions above again but now with the weights included. The disadvantage of trimming the weight is that we might be reintroducing a little bit of the bias that we are trying to avoid but the advantage is that because outliers are less likely to dominate, the standard errors are likely to be smaller.</p>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/ipw_0e8fee05d96dedea4be1993248bf10a4">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/ipw_f91d21dbcad5d3157f22b419a5d6c628">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>prop_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(x <span class="sc">~</span> z1 <span class="sc">+</span> z2, <span class="at">data =</span> sim_data,</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ipw_data <span class="ot">&lt;-</span> sim_data <span class="sc">%&gt;%</span></span>
@@ -522,9 +528,9 @@ div.csl-indent {
 <pre><code># A tibble: 3 × 5
   term  estimate std.error statistic   p.value
   &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-1 x        0.554    0.0323      17.2 7.76e- 66
-2 x        1.22     0.0326      37.4 2.48e-303
-3 x        1.19     0.0370      32.2 8.17e-226</code></pre>
+1 x         1.13    0.0337      33.6 1.84e-246
+2 x         1.44    0.0340      42.2 0        
+3 x         1.27    0.0384      33.0 2.37e-237</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> ipw_data, <span class="at">weights =</span> trim_weight) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"x"</span>),</span>
@@ -534,16 +540,16 @@ div.csl-indent {
 <pre><code># A tibble: 3 × 5
   term  estimate std.error statistic   p.value
   &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-1 x        0.935    0.0329      28.4 3.32e-177
-2 x        0.997    0.0319      31.3 2.40e-213
-3 x        1.09     0.0352      30.9 7.43e-209</code></pre>
+1 x        0.927    0.0336      27.6 7.39e-167
+2 x        0.978    0.0328      29.8 1.50e-194
+3 x        1.04     0.0361      28.9 1.66e-182</code></pre>
 </div>
 </div>
 </section>
 <section id="bootstrap-the-standard-errors" class="level2">
 <h2 class="anchored" data-anchor-id="bootstrap-the-standard-errors">Bootstrap the standard errors</h2>
 <p>We know by now that the standard errors of these type of procedures with multiple steps are likely to be wrong and we can use the Bayesian bootstrap again to estimate, the standard error for our estimate of interest. The unadjusted standard errors above are around 0.035.</p>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/bootstrap-ipw_7b6478903ab7abb22cd8751901010465">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/bootstrap-ipw_6d9f453da7ab30b26c224fcd96586a24">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ipw <span class="ot">&lt;-</span> <span class="cf">function</span>(data, weights){</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  prop_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(x <span class="sc">~</span> z1 <span class="sc">+</span> z2, <span class="at">data =</span> data,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                 <span class="co"># the quasibinomial is necessary for the bayesian boostrap</span></span>
@@ -562,7 +568,7 @@ div.csl-indent {
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ipw</span>(sim_data, <span class="fu">rep</span>(<span class="dv">1</span>, ntotal))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       x 
-1.087827 </code></pre>
+1.043357 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>boot_ipw <span class="ot">&lt;-</span> <span class="fu">bayesboot</span>(sim_data, ipw, <span class="at">R =</span> <span class="dv">200</span>, <span class="at">use.weights =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(boot_ipw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -573,11 +579,11 @@ Number of posterior draws: 200
 
 Summary of the posterior (with 95% Highest Density Intervals):
  statistic     mean        sd   hdi.low hdi.high
-         x 1.211649 0.1816078 0.8545564  1.52107
+         x 1.244239 0.2137545 0.8754819 1.660996
 
 Quantiles:
- statistic     q2.5%     q25%  median     q75%   q97.5%
-         x 0.8765427 1.070387 1.21436 1.342671 1.543616
+ statistic     q2.5%     q25%   median     q75%   q97.5%
+         x 0.8899417 1.088038 1.236333 1.378097 1.662164
 
 Call:
  bayesboot(data = sim_data, statistic = ipw, R = 200, use.weights = TRUE)</code></pre>

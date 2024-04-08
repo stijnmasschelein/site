@@ -693,18 +693,18 @@ TechIndustry-&gt;Performance
 <span id="cb2-2"><a href="#cb2-2"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> CG <span class="sc">+</span> TI, <span class="at">data =</span> ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-8_a10e12ce7c9d788ba2ef40f4c7159aa6">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>gof_omit <span class="ot">&lt;-</span> <span class="st">"Adj|IC|Log|Pseudo"</span></span>
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-8_37488f80269066b06badf4cf7f2b06ba">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>gof_omit <span class="ot">&lt;-</span> <span class="st">"Adj|IC|Log|Pseudo|RMSE"</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>stars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'*'</span> <span class="ot">=</span> .<span class="dv">1</span>, <span class="st">'**'</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">'***'</span> <span class="ot">=</span> .<span class="dv">01</span>)</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="fu">msummary</span>(<span class="fu">list</span>(lm1, lm2), <span class="at">stars =</span> stars,</span>
-<span id="cb3-4"><a href="#cb3-4"></a>         <span class="at">gof_omit =</span> gof_omit, <span class="at">output =</span> <span class="st">"html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4"></a>         <span class="at">gof_omit =</span> gof_omit, <span class="at">output =</span> <span class="st">"markdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table" data-quarto-postprocess="true" style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;">
+<table>
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(2)</th>
+<th style="text-align: left;"></th>
+<th style="text-align: center;">(1)</th>
+<th style="text-align: center;">(2)</th>
 </tr>
 </thead>
 <tbody>
@@ -734,9 +734,9 @@ TechIndustry-&gt;Performance
 <td style="text-align: center;">10.433***</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; box-shadow: 0px 1px;"></td>
-<td style="text-align: center; box-shadow: 0px 1px;"></td>
-<td style="text-align: center; box-shadow: 0px 1px;">(0.344)</td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">(0.344)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Num.Obs.</td>
@@ -748,22 +748,9 @@ TechIndustry-&gt;Performance
 <td style="text-align: center;">0.001</td>
 <td style="text-align: center;">0.480</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">RMSE</td>
-<td style="text-align: center;">6.60</td>
-<td style="text-align: center;">4.76</td>
-</tr>
-</tbody><tfoot>
-<tr class="even">
-<td style="text-align: left; padding: 0;"><sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tfoot>
-
+</tbody>
 </table>
-
-
+<p><strong>Note:</strong> ^^ * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</p>
 </div>
 </div>
 </div>
@@ -857,16 +844,16 @@ TechIndustry-&gt;Performance
 <span id="cb5-2"><a href="#cb5-2"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> CG <span class="sc">+</span> TI, <span class="at">data =</span> ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column">
-<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-12_307379673f550dd9a498d260e64708a8">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-12_5ce52250b3c1a9e5869e5aba12ccd448">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(lm1, lm2), <span class="at">stars =</span> stars,</span>
-<span id="cb6-2"><a href="#cb6-2"></a>         <span class="at">gof_omit =</span> gof_omit, <span class="at">output =</span> <span class="st">"html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-2"><a href="#cb6-2"></a>         <span class="at">gof_omit =</span> gof_omit, <span class="at">output =</span> <span class="st">"markdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table" data-quarto-postprocess="true" style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;">
+<table>
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(2)</th>
+<th style="text-align: left;"></th>
+<th style="text-align: center;">(1)</th>
+<th style="text-align: center;">(2)</th>
 </tr>
 </thead>
 <tbody>
@@ -882,8 +869,8 @@ TechIndustry-&gt;Performance
 </tr>
 <tr class="odd">
 <td style="text-align: left;">CG</td>
-<td style="text-align: center;">−0.945***</td>
-<td style="text-align: center;">−0.090</td>
+<td style="text-align: center;">-0.945***</td>
+<td style="text-align: center;">-0.090</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
@@ -896,9 +883,9 @@ TechIndustry-&gt;Performance
 <td style="text-align: center;">1.018***</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; box-shadow: 0px 1px;"></td>
-<td style="text-align: center; box-shadow: 0px 1px;"></td>
-<td style="text-align: center; box-shadow: 0px 1px;">(0.172)</td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">(0.172)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Num.Obs.</td>
@@ -910,22 +897,9 @@ TechIndustry-&gt;Performance
 <td style="text-align: center;">0.165</td>
 <td style="text-align: center;">0.193</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">RMSE</td>
-<td style="text-align: center;">1.01</td>
-<td style="text-align: center;">0.99</td>
-</tr>
-</tbody><tfoot>
-<tr class="even">
-<td style="text-align: left; padding: 0;"><sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tfoot>
-
+</tbody>
 </table>
-
-
+<p><strong>Note:</strong> ^^ * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</p>
 </div>
 </div>
 </div>
@@ -1073,16 +1047,16 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="fu">library</span>(fixest)</span>
 <span id="cb12-4"><a href="#cb12-4"></a>fe <span class="ot">&lt;-</span> <span class="fu">feols</span>(Performance <span class="sc">~</span> CG <span class="sc">|</span> ind_number, <span class="at">data =</span> ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-18_11306003acf52f745f0e22c4e747e174">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(lm1, lm2, fe), <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-18_015281aff5cdd1daf2ceccdbf5557a49">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(lm1, lm2, fe), <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars, <span class="at">output =</span> <span class="st">"markdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table" data-quarto-postprocess="true" style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;">
+<table>
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(2)</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(3)</th>
+<th style="text-align: left;"></th>
+<th style="text-align: center;">(1)</th>
+<th style="text-align: center;">(2)</th>
+<th style="text-align: center;">(3)</th>
 </tr>
 </thead>
 <tbody>
@@ -1100,7 +1074,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">CG</td>
-<td style="text-align: center;">−0.076***</td>
+<td style="text-align: center;">-0.076***</td>
 <td style="text-align: center;">0.030</td>
 <td style="text-align: center;">0.030</td>
 </tr>
@@ -1125,7 +1099,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <tr class="odd">
 <td style="text-align: left;">factor(ind_number)3</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−0.490***</td>
+<td style="text-align: center;">-0.490***</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -1137,7 +1111,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <tr class="odd">
 <td style="text-align: left;">factor(ind_number)4</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−0.372**</td>
+<td style="text-align: center;">-0.372**</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -1149,7 +1123,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <tr class="odd">
 <td style="text-align: left;">factor(ind_number)5</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−0.410***</td>
+<td style="text-align: center;">-0.410***</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -1161,7 +1135,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <tr class="odd">
 <td style="text-align: left;">factor(ind_number)6</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−1.907***</td>
+<td style="text-align: center;">-1.907***</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -1173,7 +1147,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <tr class="odd">
 <td style="text-align: left;">factor(ind_number)7</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−0.083</td>
+<td style="text-align: center;">-0.083</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -1185,7 +1159,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <tr class="odd">
 <td style="text-align: left;">factor(ind_number)8</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−1.191***</td>
+<td style="text-align: center;">-1.191***</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -1197,7 +1171,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <tr class="odd">
 <td style="text-align: left;">factor(ind_number)9</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−0.935***</td>
+<td style="text-align: center;">-0.935***</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -1209,7 +1183,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <tr class="odd">
 <td style="text-align: left;">factor(ind_number)10</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−1.712***</td>
+<td style="text-align: center;">-1.712***</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -1221,7 +1195,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <tr class="odd">
 <td style="text-align: left;">factor(ind_number)11</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−1.162***</td>
+<td style="text-align: center;">-1.162***</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -1233,7 +1207,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <tr class="odd">
 <td style="text-align: left;">factor(ind_number)12</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−1.118***</td>
+<td style="text-align: center;">-1.118***</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -1257,7 +1231,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <tr class="odd">
 <td style="text-align: left;">factor(ind_number)14</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−0.564***</td>
+<td style="text-align: center;">-0.564***</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -1293,7 +1267,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <tr class="odd">
 <td style="text-align: left;">factor(ind_number)17</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−2.056***</td>
+<td style="text-align: center;">-2.056***</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -1305,7 +1279,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <tr class="odd">
 <td style="text-align: left;">factor(ind_number)18</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−0.503***</td>
+<td style="text-align: center;">-0.503***</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -1317,7 +1291,7 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <tr class="odd">
 <td style="text-align: left;">factor(ind_number)19</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−1.907***</td>
+<td style="text-align: center;">-1.907***</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
@@ -1333,10 +1307,10 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: left; box-shadow: 0px 1px;"></td>
-<td style="text-align: center; box-shadow: 0px 1px;"></td>
-<td style="text-align: center; box-shadow: 0px 1px;">(0.086)</td>
-<td style="text-align: center; box-shadow: 0px 1px;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">(0.086)</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Num.Obs.</td>
@@ -1357,35 +1331,20 @@ $ Performance     &lt;dbl&gt; 0.09219279, -0.37244401,…</code></pre>
 <td style="text-align: center;">0.000</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">RMSE</td>
-<td style="text-align: center;">1.34</td>
-<td style="text-align: center;">1.00</td>
-<td style="text-align: center;">1.00</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Std.Errors</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;">by: ind_number</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">FE: ind_number</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;">X</td>
 </tr>
-</tbody><tfoot>
-<tr class="odd">
-<td style="text-align: left; padding: 0;"><sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tfoot>
-
+</tbody>
 </table>
-
-
+<p><strong>Note:</strong> ^^ * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</p>
 </div>
 </div>
 <aside class="notes">
@@ -1749,27 +1708,23 @@ circumstances-&gt;female
 <td style="text-align: center;">0.001</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">RMSE</td>
-<td style="text-align: center;">0.02</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Std.Errors</td>
 <td style="text-align: center;">by: race_id</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">FE: course</td>
 <td style="text-align: center;">X</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">FE: p_id</td>
 <td style="text-align: center;">X</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">FE: yrmt_locid</td>
 <td style="text-align: center;">X</td>
 </tr>
 </tbody><tfoot>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left; padding: 0;"><sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
 <td style="text-align: center;"></td>
 </tr>
@@ -2155,24 +2110,24 @@ Performance-&gt;MarketReturn
 </div>
 </div>
 <div id="tabset-4-2">
-<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-38_cea45c2fafb15adf57a0db2c484e1880">
+<div class="cell" data-hash="slides3_cache/revealjs/unnamed-chunk-38_33640ca619f23cca71c870e440f1077e">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(acc_profit <span class="sc">~</span> corp_gov, <span class="at">data =</span> <span class="fu">filter</span>(d, survival <span class="sc">==</span> <span class="dv">1</span>))</span>
 <span id="cb29-2"><a href="#cb29-2"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(acc_profit <span class="sc">~</span> corp_gov <span class="sc">*</span> survival, <span class="at">data =</span> d)</span>
-<span id="cb29-3"><a href="#cb29-3"></a><span class="fu">msummary</span>(<span class="fu">list</span>(lm1, lm2), <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="fu">msummary</span>(<span class="fu">list</span>(lm1, lm2), <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> stars, <span class="at">output =</span> <span class="st">"markdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table" data-quarto-postprocess="true" style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;">
+<table>
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(2)</th>
+<th style="text-align: left;"></th>
+<th style="text-align: center;">(1)</th>
+<th style="text-align: center;">(2)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
 <td style="text-align: center;">3.518***</td>
-<td style="text-align: center;">−0.549***</td>
+<td style="text-align: center;">-0.549***</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
@@ -2181,7 +2136,7 @@ Performance-&gt;MarketReturn
 </tr>
 <tr class="odd">
 <td style="text-align: left;">corp_gov</td>
-<td style="text-align: center;">−0.137</td>
+<td style="text-align: center;">-0.137</td>
 <td style="text-align: center;">0.606***</td>
 </tr>
 <tr class="even">
@@ -2202,12 +2157,12 @@ Performance-&gt;MarketReturn
 <tr class="odd">
 <td style="text-align: left;">corp_gov × survival</td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">−0.743***</td>
+<td style="text-align: center;">-0.743***</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; box-shadow: 0px 1px;"></td>
-<td style="text-align: center; box-shadow: 0px 1px;"></td>
-<td style="text-align: center; box-shadow: 0px 1px;">(0.115)</td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">(0.115)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Num.Obs.</td>
@@ -2219,22 +2174,9 @@ Performance-&gt;MarketReturn
 <td style="text-align: center;">0.002</td>
 <td style="text-align: center;">0.262</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">RMSE</td>
-<td style="text-align: center;">2.43</td>
-<td style="text-align: center;">2.70</td>
-</tr>
-</tbody><tfoot>
-<tr class="even">
-<td style="text-align: left; padding: 0;"><sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tfoot>
-
+</tbody>
 </table>
-
-
+<p><strong>Note:</strong> ^^ * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</p>
 </div>
 </div>
 </div>

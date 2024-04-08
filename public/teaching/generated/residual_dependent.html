@@ -226,6 +226,12 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../slides/slides_proposal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Feedback on Pitch and Proposal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../auxilary/matching_theory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Matching theory</span></a>
   </div>
@@ -444,7 +450,7 @@ div.csl-indent {
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div class="cell" data-hash="residual_dependent_cache/html/setup_175befd4feca2df1521f9271f70f21c8">
+<div class="cell" data-hash="residual_dependent_cache/html/setup_55bb60144ac089acb03b135dbe2fa975">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>(<span class="at">font_size =</span> <span class="dv">18</span>))</span>
@@ -452,11 +458,11 @@ div.csl-indent {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"generated/residual_dependent.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="residual_dependent_cache/html/parameters_1bd6db03c472930a5dabca5e813e7767">
+<div class="cell" data-hash="residual_dependent_cache/html/parameters_640d1b0deb1fdf16ea927232df4ddea9">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>gof_map <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"r.squared"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">230383</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -465,7 +471,7 @@ div.csl-indent {
 <section id="correlated-step-1-control" class="level2">
 <h2 class="anchored" data-anchor-id="correlated-step-1-control">Correlated Step 1 control</h2>
 <p>The basic problem is that in the two-step approach researchers regularly include <code>z</code> in the first regression and not in the second regression. If <code>z</code> and <code>x</code> are correlated, the two-step procedure will be biased downwards if the second step does not control for <code>z</code>. This can be seen in the simulated example below. I also show that the bias can be avoided by running the one-step regression, add <code>z</code> as a control variable, or use <code>z</code> to residualise both <code>x</code> and <code>y</code>.</p>
-<div class="cell" data-hash="residual_dependent_cache/html/correlated-step-1_748268616984a0c098770e3c60509c90">
+<div class="cell" data-hash="residual_dependent_cache/html/correlated-step-1_1ed00370a643df3015f5373a96b463ad">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">w =</span> <span class="fu">rnorm</span>(N)) <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> <span class="fu">rnorm</span>(N, w, <span class="dv">1</span>),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="fu">rnorm</span>(N, w, <span class="dv">1</span>),</span>
@@ -544,11 +550,11 @@ div.csl-indent {
 <td style="text-align: center;">1.294</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(0.255)</td>
+<td style="text-align: left; box-shadow: 0px 1px;"></td>
+<td style="text-align: center; box-shadow: 0px 1px;"></td>
+<td style="text-align: center; box-shadow: 0px 1px;"></td>
+<td style="text-align: center; box-shadow: 0px 1px;"></td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.255)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Num.Obs.</td>
@@ -574,7 +580,7 @@ div.csl-indent {
 <section id="extra-controls-in-step-2" class="level2">
 <h2 class="anchored" data-anchor-id="extra-controls-in-step-2">Extra controls in step 2</h2>
 <p>In the next step, we can include extra controls, <code>z2</code>, in the second step. The bias will now depend on the correlations that the extra control has with the first stage controls and <code>x</code> and <code>y</code>. More importantly, the bias can now be an overestimation or underestimation. If the additional control is not correlated to <code>x</code> or <code>z1</code>, we still have the downward bias from before.</p>
-<div class="cell" data-hash="residual_dependent_cache/html/additional-controls_8ae378bddb641d597c41ff8b59d1238f">
+<div class="cell" data-hash="residual_dependent_cache/html/additional-controls_a11670635ad360f118e510b33b1b4ec9">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> d1 <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">z1 =</span> z) <span class="sc">%&gt;%</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z2 =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">1</span>),</span>
@@ -632,9 +638,9 @@ div.csl-indent {
 <td style="text-align: center;">0.929</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(0.318)</td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(0.318)</td>
+<td style="text-align: left; box-shadow: 0px 1px;"></td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.318)</td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.318)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Num.Obs.</td>
@@ -656,7 +662,7 @@ div.csl-indent {
 <section id="extra-correlated-controls-in-step-2" class="level2">
 <h2 class="anchored" data-anchor-id="extra-correlated-controls-in-step-2">Extra correlated controls in step 2</h2>
 <p>However, when the additional control is negatively correlated to both <code>z1</code> and <code>x</code> but positively to <code>y</code>, we get an upward bias.</p>
-<div class="cell" data-hash="residual_dependent_cache/html/additional-correlated-controls_6c9bfb42980a9ba4b182450f632103d5">
+<div class="cell" data-hash="residual_dependent_cache/html/additional-correlated-controls_039bd7856c2ca3b0377ee30ba9ee8cd4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>d3 <span class="ot">&lt;-</span> d2 <span class="sc">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z3 =</span> <span class="fu">rnorm</span>(N, <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> w, <span class="dv">1</span>),</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="fu">rnorm</span>(N, x <span class="sc">+</span> z1 <span class="sc">+</span> z3, <span class="dv">10</span>)) <span class="sc">%&gt;%</span></span>
@@ -711,9 +717,9 @@ div.csl-indent {
 <td style="text-align: center;">0.717</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(0.207)</td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(0.180)</td>
+<td style="text-align: left; box-shadow: 0px 1px;"></td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.207)</td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.180)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Num.Obs.</td>
@@ -735,7 +741,7 @@ div.csl-indent {
 <section id="run-simulations-as-a-large-dataframe" class="level2">
 <h2 class="anchored" data-anchor-id="run-simulations-as-a-large-dataframe">Run simulations as a large dataframe</h2>
 <p>We can use a simulation approach to see whether that bias is persistent and not just a coincedence in the simulated data. First, we create the two functions that run the two step and one step approach and return the estimate and the p-value from the coefficient table.</p>
-<div class="cell" data-hash="residual_dependent_cache/html/sim-functions_f3577552c54f154e05c468118aae3f14">
+<div class="cell" data-hash="residual_dependent_cache/html/sim-functions_24ce2c1935f39caa8147a5a14fedb7f0">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>two_step <span class="ot">&lt;-</span> <span class="cf">function</span>(data){</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> z1, data)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">resid</span>(lm1) <span class="sc">~</span> x <span class="sc">+</span> z3, <span class="at">data =</span> data)</span>
@@ -763,7 +769,7 @@ div.csl-indent {
 </div>
 </div>
 <p>Next, we set up the simulation for 1000 simulations with 100 observations per data set. One trick for efficient simulations is to generate the data in one big data frame. You can see that we can still use the two step approach with <code>tibble</code> and <code>mutate</code> for exogenous and endogenous variables. We just need to be careful with the number of observations and use <code>ntotal</code>.</p>
-<div class="cell" data-hash="residual_dependent_cache/html/sim-additional_92b40e3bf912a601436a2fc439959cb7">
+<div class="cell" data-hash="residual_dependent_cache/html/sim-additional_b81aec09effe9458203bcd66f3e23bcb">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ntotal <span class="ot">&lt;-</span> nsim <span class="sc">*</span> N</span>

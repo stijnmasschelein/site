@@ -453,7 +453,7 @@ Stijn Masschelein
 </section>
 <section id="simulating-distributions-in-r" class="slide level2">
 <h2>Simulating distributions in <code>R</code></h2>
-<div class="cell" data-hash="slides2_cache/revealjs/random-number_d1b18fae14881a6e2148356d51ef5c67">
+<div class="cell" data-hash="slides2_cache/revealjs/random-number_0e56ac98466ec063d7260970fc6a3271">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>random <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">normal =</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">5</span>),</span>
@@ -465,16 +465,16 @@ Stijn Masschelein
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,000
 Columns: 4
-$ normal   &lt;dbl&gt; 2.396646, 7.447207, 6.562228, 8.130458, 8…
-$ uniform  &lt;dbl&gt; 2.814537, 4.246285, 1.423798, 2.225571, 4…
-$ binomial &lt;int&gt; 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,…
-$ sample   &lt;int&gt; 10, 4, 2, 2, 6, 4, 1, 1, 6, 10, 5, 7, 10,…</code></pre>
+$ normal   &lt;dbl&gt; 0.1350883, 6.7537684, 4.7469134, 7.884157…
+$ uniform  &lt;dbl&gt; 1.290152, 3.891102, 3.605716, 3.845837, 2…
+$ binomial &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
+$ sample   &lt;int&gt; 1, 8, 8, 2, 3, 8, 6, 10, 7, 5, 10, 2, 3, …</code></pre>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
-<div class="cell" data-hash="slides2_cache/revealjs/random-plot1_0e399fa9620b7dd6ea2ed5ba1e6d1fc8">
+<div class="cell" data-hash="slides2_cache/revealjs/random-plot1_58585e22ef56f9d54450545d9d7fb3c3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span> <span class="fu">geom_density</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">plot_grid</span>(p1, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
@@ -482,7 +482,7 @@ $ sample   &lt;int&gt; 10, 4, 2, 2, 6, 4, 1, 1, 6, 10, 5, 7, 10,…</code></pre>
 <img data-src="slides2_files/figure-revealjs/random-plot1-1.png" width="1920" class="r-stretch"></section>
 <section class="slide level2">
 
-<div class="cell" data-hash="slides2_cache/revealjs/random-plot2_20bd16edec8c6379aab30b5bad38b391">
+<div class="cell" data-hash="slides2_cache/revealjs/random-plot2_4371c995ecf06a1962acc9e5dc532a0e">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span> <span class="fu">geom_density</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> uniform)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"uniform histogram"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="fu">plot_grid</span>(p1, p2, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -491,7 +491,7 @@ $ sample   &lt;int&gt; 10, 4, 2, 2, 6, 4, 1, 1, 6, 10, 5, 7, 10,…</code></pre>
 <img data-src="slides2_files/figure-revealjs/random-plot2-1.png" width="1920" class="r-stretch"></section>
 <section class="slide level2">
 
-<div class="cell" data-hash="slides2_cache/revealjs/random-plot3_e10db01b00f14e53ab0d0d7044f2791d">
+<div class="cell" data-hash="slides2_cache/revealjs/random-plot3_a64f54020adda51ebd4db27e80336e8a">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span> <span class="fu">geom_density</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> uniform)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"uniform histogram"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> binomial, <span class="at">y =</span> normal)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"binomal-normal"</span>)</span>
@@ -501,7 +501,7 @@ $ sample   &lt;int&gt; 10, 4, 2, 2, 6, 4, 1, 1, 6, 10, 5, 7, 10,…</code></pre>
 <img data-src="slides2_files/figure-revealjs/random-plot3-1.png" width="1920" class="r-stretch"></section>
 <section class="slide level2">
 
-<div class="cell" data-hash="slides2_cache/revealjs/random-plot4_e6425c9c79f38605e99db2b6fe107d28">
+<div class="cell" data-hash="slides2_cache/revealjs/random-plot4_b64c24e2370e40d59771036f146357ee">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span> <span class="fu">geom_density</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> uniform)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"uniform histogram"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> binomial, <span class="at">y =</span> normal)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"binomal-normal"</span>)</span>
@@ -513,7 +513,7 @@ $ sample   &lt;int&gt; 10, 4, 2, 2, 6, 4, 1, 1, 6, 10, 5, 7, 10,…</code></pre>
 <img data-src="slides2_files/figure-revealjs/random-plot4-1.png" width="1920" class="r-stretch"></section>
 <section id="better-code-formatting" class="slide level2">
 <h2>Better Code Formatting</h2>
-<div class="cell" data-hash="slides2_cache/revealjs/code-formatting_e527c6deb11372fd07e1710156578a49">
+<div class="cell" data-hash="slides2_cache/revealjs/code-formatting_95bbc6044b7eb6155702a586557d3f6e">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(random, <span class="fu">aes</span>(<span class="at">x =</span> normal)) <span class="sc">+</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">ggtitle</span>(<span class="st">"normal density"</span>)</span>
@@ -561,7 +561,7 @@ $ sample   &lt;int&gt; 10, 4, 2, 2, 6, 4, 1, 1, 6, 10, 5, 7, 10,…</code></pre>
 <h2>Visualisation of matching theory</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="slides2_cache/revealjs/matching-viz_60efb7fcbf221c5e68cde10651816e44">
+<div class="cell" data-hash="slides2_cache/revealjs/matching-viz_492fcb79c927e6f995f30c1abde403f3">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>obs <span class="ot">&lt;-</span> <span class="dv">500</span></span>
@@ -587,7 +587,7 @@ $ sample   &lt;int&gt; 10, 4, 2, 2, 6, 4, 1, 1, 6, 10, 5, 7, 10,…</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-hash="slides2_cache/revealjs/mathing-log_2788dd9bf8c42ae512eea4ca313797bd">
+<div class="cell" data-hash="slides2_cache/revealjs/mathing-log_037911a4222a1cbe4a377e8b52487015">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">plot</span>(matching_plot <span class="sc">+</span></span>
@@ -607,7 +607,7 @@ $ sample   &lt;int&gt; 10, 4, 2, 2, 6, 4, 1, 1, 6, 10, 5, 7, 10,…</code></pre>
 </section>
 <section id="ceo-compensation-data" class="slide level2">
 <h2>CEO compensation data</h2>
-<div class="cell" data-hash="slides2_cache/revealjs/read-data_d38cf785d9bfa450b7083df8506a4811">
+<div class="cell" data-hash="slides2_cache/revealjs/read-data_982a974d0e898aa131587c2b30335e6a">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>us_comp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">rename</span>(<span class="at">total_comp =</span> tdc1)</span>
 <span id="cb10-3"><a href="#cb10-3"></a>us_value <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-value-new.RDS"</span>)) <span class="sc">%&gt;%</span></span>
@@ -615,9 +615,9 @@ $ sample   &lt;int&gt; 10, 4, 2, 2, 6, 4, 1, 1, 6, 10, 5, 7, 10,…</code></pre>
 <span id="cb10-5"><a href="#cb10-5"></a><span class="fu">summary</span>(us_value<span class="sc">$</span>market_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-      0.0     951.9    2696.7   14799.2    8697.1 2662325.9 
+      0.0     951.7    2702.9   14756.3    8637.5 2662325.9 
      NA's 
-     2695 </code></pre>
+     2792 </code></pre>
 </div>
 </div>
 </section>

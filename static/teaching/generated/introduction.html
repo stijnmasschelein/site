@@ -228,6 +228,12 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../slides/slides_proposal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Feedback on Pitch and Proposal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../auxilary/matching_theory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Matching theory</span></a>
   </div>
@@ -443,7 +449,7 @@ div.csl-indent {
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div class="cell" data-hash="introduction_cache/html/setup_c291ef7a11e309a65255fb9c4c1bd5c9">
+<div class="cell" data-hash="introduction_cache/html/setup_aa9a27b7a18247a83b8b2ed67672fdfc">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
@@ -452,7 +458,7 @@ div.csl-indent {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bayesboot)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"generated/introduction.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijn/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">230383</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -460,7 +466,7 @@ div.csl-indent {
 <section id="an-example-2sls" class="level2">
 <h2 class="anchored" data-anchor-id="an-example-2sls">An example: 2SLS</h2>
 <p>In this example, we are using a standard setting where an instrumental variable, <code>iv</code>, is used to identify the effect of a variable <code>x</code> on <code>y</code> in the presence of annoying confounding. Note that I generate the data in two steps. The initial <code>tibble</code> step simulates the variables that are exogenous and not affected by other parts of the model while the second <code>mutate</code> step simulates the endogenous variables that are causally affected by other parts of the model.</p>
-<div class="cell" data-hash="introduction_cache/html/data-2sls_e071d9bb1597aeee942ae352b28fcf5e">
+<div class="cell" data-hash="introduction_cache/html/data-2sls_1236a7dcf37a115cb3a2df8f6c052772">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data_2sls <span class="ot">&lt;-</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
@@ -479,7 +485,7 @@ div.csl-indent {
 <li><code>tsls</code> is the standard two-stage least squares estimate with <code>iv</code> as the instrumental variable.</li>
 <li><code>tsls_manual1</code> and <code>tsls_manual2</code> run the two regressions of two-stage least squares manually.</li>
 </ul>
-<div class="cell" data-hash="introduction_cache/html/lm-2sls_bb89b752a6204f151db07e3abc0ccf49">
+<div class="cell" data-hash="introduction_cache/html/lm-2sls_853a3460ed9dab8ed65705c016598151">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data_2sls)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> annoying, <span class="at">data =</span> data_2sls)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tsls <span class="ot">&lt;-</span> <span class="fu">feols</span>(y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> x <span class="sc">~</span> iv, <span class="at">data =</span> data_2sls)</span>
@@ -526,11 +532,11 @@ div.csl-indent {
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(0.058)</td>
-<td style="text-align: center; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;"></td>
+<td style="text-align: left; box-shadow: 0px 1px;"></td>
+<td style="text-align: center; box-shadow: 0px 1px;"></td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.058)</td>
+<td style="text-align: center; box-shadow: 0px 1px;"></td>
+<td style="text-align: center; box-shadow: 0px 1px;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Num.Obs.</td>
@@ -555,7 +561,7 @@ div.csl-indent {
 <p>In the results, you can notice the following. The confounded regression is biased. We do not get the correct coefficient of <span class="math inline">\(\beta = 1\)</span>. The ideal regression estimates the coefficient precisely with a low standard error. Despite the high number of observations (10^{4}), the two-stage least squares estimates also have an unbiased estimate but the standard error is substantially larger. The manual two-stage least squares model gets exactly the same coefficient but the standard error is larger again.</p>
 <p>It turns out that the standard error is wrong in the manual version <span class="citation" data-cites="gelman2006">(<a href="#ref-gelman2006" role="doc-biblioref">Gelman and Hill 2006, 223</a>)</span>. That is why we should use the <code>fixest</code> package to estimate the two-stage least squares model. The problem is that in our second stage regression we use <code>fit_x</code> as the independent variable which is the predicted value of <code>x</code> in the first stage regression. When <code>lm</code> calculates the standard error of the coefficient, it uses the standard deviation of the residuals in the regression, i.e.&nbsp;the difference between <code>y</code> and the predicted <code>y</code> based on <code>x_fit</code>. However, we know that we should actually use <code>x</code> to predict <code>y</code>. So, we need to adjust the standard errors of the coefficient and that is what the following code does manually.</p>
 <p>The following code shows how to do that adjustment <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. First, we get the coefficient table from the summary which is just a matrix, where we can access the values based on the name or row/column number of the values that we need. I am extracting the coefficient and the standard error that we are interested in. We can also extract the unadjusted standard deviation of the residuals which is called <code>sigma</code> in the summary. Finally, we calculate the adjusted standard deviation if we use <code>x</code> instead of <code>fit_x</code> to predict <code>y</code>. The last line adjusts the standard error.</p>
-<div class="cell" data-hash="introduction_cache/html/lm-adj_e4cae26b81ce5d8c6f844e9616667d84">
+<div class="cell" data-hash="introduction_cache/html/lm-adj_e8252bd6c523e3c8ba921da0813d7eca">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>coef_table <span class="ot">&lt;-</span> <span class="fu">summary</span>(tsls_manual2)<span class="sc">$</span>coef</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>intercept <span class="ot">&lt;-</span> coef_table[<span class="st">"(Intercept)"</span>, <span class="dv">1</span>]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> coef_table[<span class="st">"fit_x"</span>, <span class="dv">1</span>]</span>
@@ -588,7 +594,7 @@ Note
 <h2 class="anchored" data-anchor-id="bayesian-bootstrap">Bayesian Bootstrap</h2>
 <p>I have explained <a href="../slides/slides2.html">the bootstrap</a> before. In this section, I introduce the <a href="https://twitter.com/instrumenthull/status/1487469316010389516">Bayesian Bootstrap</a> and it’s <a href="https://www.sumsar.net/blog/2015/07/easy-bayesian-bootstrap-in-r/">R implementation</a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. In the traditional bootstrap we resample observations from the data with replacement so that we create new datasets which are similar but different from the original data. The disadvantage of the traditional approach is that the implicit weight on an observation in each resampled data is discrete and can be 0. The Bayesian bootstrap bootstrap creates explicit weights based on a <a href="https://en.wikipedia.org/wiki/Dirichlet_distribution">Dirichlet distribution</a> which gives a weight between for each observation so that the sum of the weights equals 1.</p>
 <p>We do not need to know this to use the Bayesian bootstrap. We can just use the <code>bayesboot</code> package. The only thing we need to do is to create a function that returns the estimate that we are interested in based on the data and the weights. We can use the <code>bootstrap</code> function and tell it to start with the <code>data_2sls</code>, resample it <code>R = 1000</code> times, calculate the beta with <code>get_beta</code>, and use weights in that calculation.</p>
-<div class="cell" data-hash="introduction_cache/html/boot-2sls_21c7c51b68875cde424cc8e1776002a5">
+<div class="cell" data-hash="introduction_cache/html/boot-2sls_4a1c82a25f959c02be5d1fa79dbbeb66">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>get_beta <span class="ot">&lt;-</span> <span class="cf">function</span>(data, weights){</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  tsls_manual1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(x <span class="sc">~</span> iv, <span class="at">data =</span> data, <span class="at">weights =</span> weights)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>fit_x <span class="ot">&lt;-</span> <span class="fu">fitted</span>(tsls_manual1)</span>
@@ -626,7 +632,7 @@ Call:
 <h2 class="anchored" data-anchor-id="the-bayesian-bootstrap-by-hand-and">The Bayesian Bootstrap by hand and</h2>
 <p>If you want to calculate the Bayesian bootstrap by hand, I give the code below. It’s a good introduction on how to run efficient simulations with the <code>tidyverse</code> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. I need to slightly change the function because we are going to put the simulated weights in the data. The next part is to actual create <code>nsim</code> versions of the data. The trick here is to say that we want the data <code>data_2sls</code> where we repeat each row <code>nsim</code> times.</p>
 <p>The rest of the code follows more easy to understand patterns. We first create a <code>sim</code> variable so that we can keep track of different data simulations. In this case, the data is the same but we create new weights for each simulation. The weights are derived from a Dirichlet distribution which you can generate by an exponential distribution divided by the sum of the generated values (per simulation). We only keep the variables that are necessary in our <code>get_beta_2</code> function. Then we create a dataset per simulation with the <code>nest</code> function and calculate the estimate in the last <code>mutate</code> step. And that is the Bayesian bootstrap as a simulation exercise.</p>
-<div class="cell" data-hash="introduction_cache/html/boot-by-hand_5809bb339ffed8dff6769b3098b6f70a">
+<div class="cell" data-hash="introduction_cache/html/boot-by-hand_e8b74cf48be92e298e027d9831cab728">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>get_beta_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(data){</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  tsls_manual1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(x <span class="sc">~</span> iv, <span class="at">data =</span> data, <span class="at">weights =</span> weights)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>fit_x <span class="ot">&lt;-</span> <span class="fu">fitted</span>(tsls_manual1)</span>

@@ -85,7 +85,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../freaky_friday/index.html" rel="next">
-<link href="../slides/slides5.html" rel="prev">
+<link href="../slides/slides_proposal.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -221,6 +221,12 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="../slides/slides5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Research Design 2: Event Studies and Difference-in-Difference</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/slides_proposal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Feedback on Pitch and Proposal</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -494,11 +500,11 @@ CV_0(n + 1) (T(n) - T(n+1)) + w(n + 1) = w(n) \\
 <section id="simulation" class="level2">
 <h2 class="anchored" data-anchor-id="simulation">Simulation</h2>
 <p>First, let us load the <code>tidyverse</code> package.</p>
-<div class="cell" data-hash="matching_theory_cache/html/setup_70da605d06cfac847c18abdd544cf2a4">
+<div class="cell" data-hash="matching_theory_cache/html/setup_efdaba1b30bb76aeeacc4c4b32df4e00">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, we simulate data for <code>obs=500</code> observations. <code>size_rate</code> is a parameter that controls the size of firms. A value of 1 means that firms have constant returns to size, the same assumption as in <a href="../slides/slides1.html">lecture 1</a>. <code>talent_rate</code> is something similar for the Talent of the CEOs. A larger number for both rate parameters implies that differences between sizes or CEOs become larger at the top. <code>C</code> is the <span class="math inline">\(C\)</span> constant in the model. <code>scale</code> is an additional parameter that helps me scale the size of the firms so that I get similar numbers as the real data. <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <code>w0</code> is the base wage for the least talented CEO.</p>
-<div class="cell" data-hash="matching_theory_cache/html/size_talent_f193d6f23326db6ebcef4af76eded3c8">
+<div class="cell" data-hash="matching_theory_cache/html/size_talent_2673e48adca8761ac7b9fdb2c0c71322">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>obs <span class="ot">&lt;-</span> <span class="dv">500</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>size_rate <span class="ot">&lt;-</span> <span class="dv">1</span>; talent_rate <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>; </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="dv">10</span>; scale <span class="ot">&lt;-</span> <span class="dv">600</span>; w0 <span class="ot">&lt;-</span> <span class="dv">0</span>; </span>
@@ -531,7 +537,7 @@ CV_0(n + 1) (T(n) - T(n+1)) + w(n + 1) = w(n) \\
 <h2 class="anchored" data-anchor-id="visualisations">Visualisations</h2>
 <p>With the data we simulated, we can visualise the theory and see whether our theory matches our intuition. Visulising a theory is one way to understand the assumptions and to check whether it matches the data. Even if you do not have your data yet, it will give you an idea of what the data should look like.</p>
 <p><a href="#fig-wage-size">Figure&nbsp;1</a> shows the relation between the simulated CEO wage and simulated firm size. It’s not perfect but the plot does follow a similar non-linear pattern as what we found in <a href="../slides/slides1.html">the first lecture</a>. <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
-<div class="cell" data-hash="matching_theory_cache/html/fig-wage-size_067eb7b2933b0d545abe55a461ffc611">
+<div class="cell" data-hash="matching_theory_cache/html/fig-wage-size_4f44c39bbbfaf7d35f392dd5dce576b0">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data =</span> simulated_data, <span class="at">y =</span> wage, <span class="at">x =</span> size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: `qplot()` was deprecated in ggplot2 3.4.0.</code></pre>
@@ -547,7 +553,7 @@ CV_0(n + 1) (T(n) - T(n+1)) + w(n + 1) = w(n) \\
 </div>
 <p>To better understand the assumptions in the theory, we can also plot how talent and size change as a function of the rank of respectively the CEO and the firm. I glossed over the details before but that does not mean that we cannot check whether those functions make sense.</p>
 <p><a href="#fig-assumptions">Figure&nbsp;2</a> shows us which assumptions were necessary for the theory to work. We see that the difference in talent at the top of the distribution (<code>n = 1</code>) is not that large, the difference in firm sizes is much more pronounced and is driving the difference in wages according to this theory.</p>
-<div class="cell" data-hash="matching_theory_cache/html/fig-assumptions_eaf48c390335779824969227c947574b">
+<div class="cell" data-hash="matching_theory_cache/html/fig-assumptions_fa18a60b5ebfbe79b2477df4361513e3">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p_talent <span class="ot">&lt;-</span> <span class="fu">qplot</span>(<span class="at">data =</span> simulated_data, <span class="at">y =</span> talent, <span class="at">x =</span> n)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>p_size <span class="ot">&lt;-</span> <span class="fu">qplot</span>(<span class="at">data =</span> simulated_data, <span class="at">y =</span> size, <span class="at">x =</span> n) </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p_talent, p_size, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">labels =</span> <span class="st">"AUTO"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -617,7 +623,7 @@ CV_0(n + 1) (T(n) - T(n+1)) + w(n + 1) = w(n) \\
 </div>
 </div>
 <p>The <code>bind_rows</code> function allows you to combine the four datasets in one big dataset <code>data_exp</code>. This will help us to plot the data in Figure <a href="#fig-sim-combined">Figure&nbsp;3</a> with the more complicated but also more flexible <code>ggplot</code> function. In the function, we first define the data we want to use. Within the <code>aes()</code> specification, we define the variables that are going to be plotted. We tell ggplot that we want the data to be plotted as the following <em>geom</em>etric elements a point and a line.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> I make the line colour grey. The <code>facet_grid</code> creates different subplots depending on whether an observation has a different value for the <code>talent_rate</code> variable and the <code>C</code> variable.</p>
-<div class="cell" data-hash="matching_theory_cache/html/fig-sim-combined_105edc86b9bae3eeb4cb716041aa6a42">
+<div class="cell" data-hash="matching_theory_cache/html/fig-sim-combined_1dac7b2926c7e2f7bffebce1e825f648">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plot_exp <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_exp, <span class="fu">aes</span>(<span class="at">x =</span> size, <span class="at">y =</span> wage)) <span class="sc">+</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">colour =</span> <span class="st">"gray"</span>) <span class="sc">+</span></span>
@@ -905,8 +911,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../slides/slides5.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Research Design 2: Event Studies and Difference-in-Difference</span>
+      <a href="../slides/slides_proposal.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Feedback on Pitch and Proposal</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
