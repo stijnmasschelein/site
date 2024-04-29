@@ -409,7 +409,19 @@ div.csl-indent {
 \]</span></p>
 <p>The size of the penalty is given by the parameters <span class="math inline">\(\lambda &gt; 0\)</span> and consists of two parts: the sum of the squared <span class="math inline">\(\beta\)</span>s and the sum of the absolute values of the <span class="math inline">\(\beta\)</span>s. The first term is the ridge reguliser and the second one is the LASSO regulariser. They both have been shown to have useful properties as regulisers and thus they are often used together with the weight <span class="math inline">\(1 \geq \alpha \geq 0\)</span>. With <span class="math inline">\(\alpha = 1\)</span>, we only use ridge regression and with <span class="math inline">\(\alpha = 0\)</span>, we only use the LASSO.</p>
 <p>The final step is that we need to choose the right values for <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span>. A common approach is to use cross validation where we split the data that we have in roughly equal sized partitions or folds. For instance, you have 10 folds with each 10% of the data. With cross validation, we will use the 90% of the remaining data, use a number of different values for <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span> to estimate <span class="math inline">\(\beta\)</span>s and predict the 10% fold that we did not use for estimation. In other words, we use the data that we have to do a prediction task with the advantage that we can evaluate which <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span> gives us the best predictions.</p>
-<p>:::{::: {.callout-important} The key insight is that if we care about a prediction task, we can use some of the data and pretend it is data that we have never seen when we estimate our prediction model. We can then test which model is actually good at predicting on data that it has never seen. :::}</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The key insight is that if we care about a prediction task, we can use some of the data and pretend it is data that we have never seen when we estimate our prediction model. We can then test which model is actually good at predicting on data that it has never seen.</p>
+</div>
+</div>
 <p>We do need a measure to evaluate the quality of the predictions. A common choice is the Root Mean Squared Error (RMSE) which is defined as the square root of the squared difference between the actual value of the outcome and the predictions for the outcome.</p>
 <p><span class="math display">\[
 \sqrt{ \frac{\sum^N_{i=1} (y_i - \hat{y}_i)^2}{N} }
