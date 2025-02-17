@@ -116,9 +116,6 @@ div.csl-indent {
   }
 }</script>
 
-<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -449,7 +446,7 @@ div.csl-indent {
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div class="cell" data-hash="introduction_cache/html/setup_aa9a27b7a18247a83b8b2ed67672fdfc">
+<div class="cell" data-hash="introduction_cache/html/setup_c291ef7a11e309a65255fb9c4c1bd5c9">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
@@ -466,7 +463,7 @@ div.csl-indent {
 <section id="an-example-2sls" class="level2">
 <h2 class="anchored" data-anchor-id="an-example-2sls">An example: 2SLS</h2>
 <p>In this example, we are using a standard setting where an instrumental variable, <code>iv</code>, is used to identify the effect of a variable <code>x</code> on <code>y</code> in the presence of annoying confounding. Note that I generate the data in two steps. The initial <code>tibble</code> step simulates the variables that are exogenous and not affected by other parts of the model while the second <code>mutate</code> step simulates the endogenous variables that are causally affected by other parts of the model.</p>
-<div class="cell" data-hash="introduction_cache/html/data-2sls_1236a7dcf37a115cb3a2df8f6c052772">
+<div class="cell" data-hash="introduction_cache/html/data-2sls_e071d9bb1597aeee942ae352b28fcf5e">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data_2sls <span class="ot">&lt;-</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
@@ -485,7 +482,7 @@ div.csl-indent {
 <li><code>tsls</code> is the standard two-stage least squares estimate with <code>iv</code> as the instrumental variable.</li>
 <li><code>tsls_manual1</code> and <code>tsls_manual2</code> run the two regressions of two-stage least squares manually.</li>
 </ul>
-<div class="cell" data-hash="introduction_cache/html/lm-2sls_853a3460ed9dab8ed65705c016598151">
+<div class="cell" data-hash="introduction_cache/html/lm-2sls_bb89b752a6204f151db07e3abc0ccf49">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data_2sls)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> annoying, <span class="at">data =</span> data_2sls)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tsls <span class="ot">&lt;-</span> <span class="fu">feols</span>(y <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> x <span class="sc">~</span> iv, <span class="at">data =</span> data_2sls)</span>
@@ -499,69 +496,161 @@ div.csl-indent {
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">manual =</span> tsls_manual2),</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">gof_map =</span> gof_map, <span class="at">coef_map =</span> coef_map)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">confounded</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">ideal</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">tsls</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">manual</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">x</td>
-<td style="text-align: center;">0.747</td>
-<td style="text-align: center;">1.007</td>
-<td style="text-align: center;">1.040</td>
-<td style="text-align: center;">1.040</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(0.010)</td>
-<td style="text-align: center;">(0.010)</td>
-<td style="text-align: center;">(0.061)</td>
-<td style="text-align: center;">(0.074)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">annoying</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">2.970</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left; box-shadow: 0px 1px;"></td>
-<td style="text-align: center; box-shadow: 0px 1px;"></td>
-<td style="text-align: center; box-shadow: 0px 1px;">(0.058)</td>
-<td style="text-align: center; box-shadow: 0px 1px;"></td>
-<td style="text-align: center; box-shadow: 0px 1px;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Num.Obs.</td>
-<td style="text-align: center;">10000</td>
-<td style="text-align: center;">10000</td>
-<td style="text-align: center;">10000</td>
-<td style="text-align: center;">10000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">R2</td>
-<td style="text-align: center;">0.378</td>
-<td style="text-align: center;">0.506</td>
-<td style="text-align: center;">0.320</td>
-<td style="text-align: center;">0.019</td>
-</tr>
-</tbody>
-</table>
 
+<!-- preamble start -->
 
+    <script>
+      function styleCell_z0enndzrb2m5hucgec0w(i, j, css_id) {
+        var table = document.getElementById("tinytable_z0enndzrb2m5hucgec0w");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_z0enndzrb2m5hucgec0w');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_z0enndzrb2m5hucgec0w(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_z0enndzrb2m5hucgec0w");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(0, 0, 'tinytable_css_idl2s2aqgngka7r5q7s0aq') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(0, 1, 'tinytable_css_id3vwto6b2josg7qxeu5vu') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(0, 2, 'tinytable_css_id3vwto6b2josg7qxeu5vu') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(0, 3, 'tinytable_css_id3vwto6b2josg7qxeu5vu') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(0, 4, 'tinytable_css_id3vwto6b2josg7qxeu5vu') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(1, 0, 'tinytable_css_idrcefnr864nl6d40cubpa') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(1, 1, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(1, 2, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(1, 3, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(1, 4, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(2, 0, 'tinytable_css_idrcefnr864nl6d40cubpa') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(2, 1, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(2, 2, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(2, 3, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(2, 4, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(3, 0, 'tinytable_css_idrcefnr864nl6d40cubpa') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(3, 1, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(3, 2, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(3, 3, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(3, 4, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(4, 0, 'tinytable_css_idue60uw4x25npimgqmi3w') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(4, 1, 'tinytable_css_idbzz7ctzf64sdpy9yti9b') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(4, 2, 'tinytable_css_idbzz7ctzf64sdpy9yti9b') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(4, 3, 'tinytable_css_idbzz7ctzf64sdpy9yti9b') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(4, 4, 'tinytable_css_idbzz7ctzf64sdpy9yti9b') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(5, 0, 'tinytable_css_idrcefnr864nl6d40cubpa') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(5, 1, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(5, 2, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(5, 3, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(5, 4, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(6, 0, 'tinytable_css_idrcefnr864nl6d40cubpa') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(6, 1, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(6, 2, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(6, 3, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+window.addEventListener('load', function () { styleCell_z0enndzrb2m5hucgec0w(6, 4, 'tinytable_css_idv44phkueso1suhy9g3sj') })
+    </script>
+
+    <style>
+    .table td.tinytable_css_idl2s2aqgngka7r5q7s0aq, .table th.tinytable_css_idl2s2aqgngka7r5q7s0aq {  text-align: left;  border-bottom: solid 0.1em #d3d8dc; }
+    .table td.tinytable_css_id3vwto6b2josg7qxeu5vu, .table th.tinytable_css_id3vwto6b2josg7qxeu5vu {  text-align: center;  border-bottom: solid 0.1em #d3d8dc; }
+    .table td.tinytable_css_idrcefnr864nl6d40cubpa, .table th.tinytable_css_idrcefnr864nl6d40cubpa {  text-align: left; }
+    .table td.tinytable_css_idv44phkueso1suhy9g3sj, .table th.tinytable_css_idv44phkueso1suhy9g3sj {  text-align: center; }
+    .table td.tinytable_css_idue60uw4x25npimgqmi3w, .table th.tinytable_css_idue60uw4x25npimgqmi3w {  border-bottom: solid 0.05em black;  text-align: left; }
+    .table td.tinytable_css_idbzz7ctzf64sdpy9yti9b, .table th.tinytable_css_idbzz7ctzf64sdpy9yti9b {  border-bottom: solid 0.05em black;  text-align: center; }
+    </style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_z0enndzrb2m5hucgec0w" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col"> </th>
+                <th scope="col">confounded</th>
+                <th scope="col">ideal</th>
+                <th scope="col">tsls</th>
+                <th scope="col">manual</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>x       </td>
+                  <td>0.747  </td>
+                  <td>1.007  </td>
+                  <td>1.040  </td>
+                  <td>1.040  </td>
+                </tr>
+                <tr>
+                  <td>        </td>
+                  <td>(0.010)</td>
+                  <td>(0.010)</td>
+                  <td>(0.061)</td>
+                  <td>(0.074)</td>
+                </tr>
+                <tr>
+                  <td>annoying</td>
+                  <td>       </td>
+                  <td>2.970  </td>
+                  <td>       </td>
+                  <td>       </td>
+                </tr>
+                <tr>
+                  <td>        </td>
+                  <td>       </td>
+                  <td>(0.058)</td>
+                  <td>       </td>
+                  <td>       </td>
+                </tr>
+                <tr>
+                  <td>Num.Obs.</td>
+                  <td>10000  </td>
+                  <td>10000  </td>
+                  <td>10000  </td>
+                  <td>10000  </td>
+                </tr>
+                <tr>
+                  <td>R2      </td>
+                  <td>0.378  </td>
+                  <td>0.506  </td>
+                  <td>0.320  </td>
+                  <td>0.019  </td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 <p>In the results, you can notice the following. The confounded regression is biased. We do not get the correct coefficient of <span class="math inline">\(\beta = 1\)</span>. The ideal regression estimates the coefficient precisely with a low standard error. Despite the high number of observations (10^{4}), the two-stage least squares estimates also have an unbiased estimate but the standard error is substantially larger. The manual two-stage least squares model gets exactly the same coefficient but the standard error is larger again.</p>
 <p>It turns out that the standard error is wrong in the manual version <span class="citation" data-cites="gelman2006">(<a href="#ref-gelman2006" role="doc-biblioref">Gelman and Hill 2006, 223</a>)</span>. That is why we should use the <code>fixest</code> package to estimate the two-stage least squares model. The problem is that in our second stage regression we use <code>fit_x</code> as the independent variable which is the predicted value of <code>x</code> in the first stage regression. When <code>lm</code> calculates the standard error of the coefficient, it uses the standard deviation of the residuals in the regression, i.e.&nbsp;the difference between <code>y</code> and the predicted <code>y</code> based on <code>x_fit</code>. However, we know that we should actually use <code>x</code> to predict <code>y</code>. So, we need to adjust the standard errors of the coefficient and that is what the following code does manually.</p>
 <p>The following code shows how to do that adjustment <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. First, we get the coefficient table from the summary which is just a matrix, where we can access the values based on the name or row/column number of the values that we need. I am extracting the coefficient and the standard error that we are interested in. We can also extract the unadjusted standard deviation of the residuals which is called <code>sigma</code> in the summary. Finally, we calculate the adjusted standard deviation if we use <code>x</code> instead of <code>fit_x</code> to predict <code>y</code>. The last line adjusts the standard error.</p>
-<div class="cell" data-hash="introduction_cache/html/lm-adj_e8252bd6c523e3c8ba921da0813d7eca">
+<div class="cell" data-hash="introduction_cache/html/lm-adj_e4cae26b81ce5d8c6f844e9616667d84">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>coef_table <span class="ot">&lt;-</span> <span class="fu">summary</span>(tsls_manual2)<span class="sc">$</span>coef</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>intercept <span class="ot">&lt;-</span> coef_table[<span class="st">"(Intercept)"</span>, <span class="dv">1</span>]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> coef_table[<span class="st">"fit_x"</span>, <span class="dv">1</span>]</span>
@@ -594,7 +683,7 @@ Note
 <h2 class="anchored" data-anchor-id="bayesian-bootstrap">Bayesian Bootstrap</h2>
 <p>I have explained <a href="../slides/slides2.html">the bootstrap</a> before. In this section, I introduce the <a href="https://twitter.com/instrumenthull/status/1487469316010389516">Bayesian Bootstrap</a> and it’s <a href="https://www.sumsar.net/blog/2015/07/easy-bayesian-bootstrap-in-r/">R implementation</a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. In the traditional bootstrap we resample observations from the data with replacement so that we create new datasets which are similar but different from the original data. The disadvantage of the traditional approach is that the implicit weight on an observation in each resampled data is discrete and can be 0. The Bayesian bootstrap bootstrap creates explicit weights based on a <a href="https://en.wikipedia.org/wiki/Dirichlet_distribution">Dirichlet distribution</a> which gives a weight between for each observation so that the sum of the weights equals 1.</p>
 <p>We do not need to know this to use the Bayesian bootstrap. We can just use the <code>bayesboot</code> package. The only thing we need to do is to create a function that returns the estimate that we are interested in based on the data and the weights. We can use the <code>bootstrap</code> function and tell it to start with the <code>data_2sls</code>, resample it <code>R = 1000</code> times, calculate the beta with <code>get_beta</code>, and use weights in that calculation.</p>
-<div class="cell" data-hash="introduction_cache/html/boot-2sls_4a1c82a25f959c02be5d1fa79dbbeb66">
+<div class="cell" data-hash="introduction_cache/html/boot-2sls_21c7c51b68875cde424cc8e1776002a5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>get_beta <span class="ot">&lt;-</span> <span class="cf">function</span>(data, weights){</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  tsls_manual1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(x <span class="sc">~</span> iv, <span class="at">data =</span> data, <span class="at">weights =</span> weights)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>fit_x <span class="ot">&lt;-</span> <span class="fu">fitted</span>(tsls_manual1)</span>
@@ -617,11 +706,11 @@ Number of posterior draws: 1000
 
 Summary of the posterior (with 95% Highest Density Intervals):
  statistic     mean         sd   hdi.low hdi.high
-     fit_x 1.038238 0.06325506 0.9135051 1.163498
+     fit_x 1.039908 0.06227313 0.9231778 1.164988
 
 Quantiles:
- statistic     q2.5%      q25%  median     q75%   q97.5%
-     fit_x 0.9146771 0.9978153 1.03673 1.080914 1.166789
+ statistic     q2.5%      q25%   median     q75%  q97.5%
+     fit_x 0.9207118 0.9995428 1.038422 1.079479 1.16212
 
 Call:
  bayesboot(data = data_2sls, statistic = get_beta, R = 1000, use.weights = TRUE)</code></pre>
@@ -632,7 +721,7 @@ Call:
 <h2 class="anchored" data-anchor-id="the-bayesian-bootstrap-by-hand-and">The Bayesian Bootstrap by hand and</h2>
 <p>If you want to calculate the Bayesian bootstrap by hand, I give the code below. It’s a good introduction on how to run efficient simulations with the <code>tidyverse</code> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. I need to slightly change the function because we are going to put the simulated weights in the data. The next part is to actual create <code>nsim</code> versions of the data. The trick here is to say that we want the data <code>data_2sls</code> where we repeat each row <code>nsim</code> times.</p>
 <p>The rest of the code follows more easy to understand patterns. We first create a <code>sim</code> variable so that we can keep track of different data simulations. In this case, the data is the same but we create new weights for each simulation. The weights are derived from a Dirichlet distribution which you can generate by an exponential distribution divided by the sum of the generated values (per simulation). We only keep the variables that are necessary in our <code>get_beta_2</code> function. Then we create a dataset per simulation with the <code>nest</code> function and calculate the estimate in the last <code>mutate</code> step. And that is the Bayesian bootstrap as a simulation exercise.</p>
-<div class="cell" data-hash="introduction_cache/html/boot-by-hand_e8b74cf48be92e298e027d9831cab728">
+<div class="cell" data-hash="introduction_cache/html/boot-by-hand_8365c42dc7efc5bb2e92dbaef2370a97">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>get_beta_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(data){</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  tsls_manual1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(x <span class="sc">~</span> iv, <span class="at">data =</span> data, <span class="at">weights =</span> weights)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>fit_x <span class="ot">&lt;-</span> <span class="fu">fitted</span>(tsls_manual1)</span>
@@ -646,7 +735,7 @@ Call:
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  data_2sls[<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>nrows, <span class="at">times =</span> nsim),] <span class="sc">%&gt;%</span></span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sim =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>nsim, <span class="at">each =</span> nrows),</span>
 <span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">raw_weights =</span> <span class="fu">rexp</span>(nsim <span class="sc">*</span>  nrows, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weights =</span> raw_weights<span class="sc">/</span><span class="fu">sum</span>(raw_weights), <span class="at">.by =</span> sim) <span class="sc">%&gt;%</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weights =</span> raw_weights<span class="sc">/</span><span class="fu">sum</span>(raw_weights) <span class="sc">*</span> nrows, <span class="at">.by =</span> sim) <span class="sc">%&gt;%</span> </span>
 <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sim, iv, x, y, weights) <span class="sc">%&gt;%</span></span>
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">.by =</span> sim) <span class="sc">%&gt;%</span></span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta =</span> <span class="fu">map_dbl</span>(data, get_beta_2)) <span class="sc">%&gt;%</span></span>
@@ -655,16 +744,16 @@ Call:
 <pre><code># A tibble: 1,000 × 3
      sim data                   beta
    &lt;int&gt; &lt;list&gt;                &lt;dbl&gt;
- 1     1 &lt;tibble [10,000 × 4]&gt; 0.932
- 2     2 &lt;tibble [10,000 × 4]&gt; 1.15 
- 3     3 &lt;tibble [10,000 × 4]&gt; 0.994
- 4     4 &lt;tibble [10,000 × 4]&gt; 1.01 
- 5     5 &lt;tibble [10,000 × 4]&gt; 1.06 
- 6     6 &lt;tibble [10,000 × 4]&gt; 1.12 
- 7     7 &lt;tibble [10,000 × 4]&gt; 1.01 
- 8     8 &lt;tibble [10,000 × 4]&gt; 1.04 
- 9     9 &lt;tibble [10,000 × 4]&gt; 1.07 
-10    10 &lt;tibble [10,000 × 4]&gt; 1.08 
+ 1     1 &lt;tibble [10,000 × 4]&gt; 0.943
+ 2     2 &lt;tibble [10,000 × 4]&gt; 0.949
+ 3     3 &lt;tibble [10,000 × 4]&gt; 0.983
+ 4     4 &lt;tibble [10,000 × 4]&gt; 1.16 
+ 5     5 &lt;tibble [10,000 × 4]&gt; 0.933
+ 6     6 &lt;tibble [10,000 × 4]&gt; 1.17 
+ 7     7 &lt;tibble [10,000 × 4]&gt; 0.982
+ 8     8 &lt;tibble [10,000 × 4]&gt; 0.945
+ 9     9 &lt;tibble [10,000 × 4]&gt; 1.14 
+10    10 &lt;tibble [10,000 × 4]&gt; 1.14 
 # ℹ 990 more rows</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(bootstrap2,</span>
@@ -674,7 +763,7 @@ Call:
 <pre><code># A tibble: 1 × 2
   estimate     se
      &lt;dbl&gt;  &lt;dbl&gt;
-1     1.04 0.0622</code></pre>
+1     1.04 0.0588</code></pre>
 </div>
 </div>
 

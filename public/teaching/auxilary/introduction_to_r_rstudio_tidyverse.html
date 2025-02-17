@@ -440,7 +440,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-r-console" class="level2">
 <h2 class="anchored" data-anchor-id="the-r-console">The R console</h2>
 <p>In Rstudio, you can use the R console directly. I mainly use the R console to test the code I have written in my scripts and I would advice you to do the same thing. If you want to understand how R works. You can experiment by typing the following lines in the console.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
-<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/console_33f97b74d2f1942398919e7765b02915">
+<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/console_47ce43af96e55d3e16f56b724107eb32">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -461,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="r-packages" class="level2">
 <h2 class="anchored" data-anchor-id="r-packages">R packages</h2>
-<div class="cell" data-warnings="false" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/packages_265108b54d6c56271c8a613d5e34308e">
+<div class="cell" data-warnings="false" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/packages_db63e4e3051ab92e061888fa296a2881">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -471,27 +471,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="useful-code" class="level2">
 <h2 class="anchored" data-anchor-id="useful-code">Finally some useful code!</h2>
 <p>Let’s run some code. First, we have to tell R to use the packages in the <code>tidyverse</code>.</p>
-<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/first_package_9c3fc62437a608e4fd4e5ec0ec21278c">
+<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/first_package_cd0ab9fcc35dabf6621b92021c86509a">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
 </div>
 <p>Next, we have a look at the data of the compensation of CEOs of S&amp;P500 companies. First, we have to assign the file with the data to an object, <code>us_comp</code> in this case. <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> The <code>glimpse</code> function gives an overview of the variables in the data, the type of the variables, and a couple of examples of the values for that variable.</p>
-<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/first_data_65be49b0cd8e13c1e7af0b31b87f50d7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>us_comp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>))</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(us_comp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/first_data_a23cbd0c143683485616729137be509f">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>us_comp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(us_comp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 26,574
+<pre><code>Rows: 24,294
 Columns: 22
 $ year                    &lt;dbl&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018…
 $ gvkey                   &lt;chr&gt; "001004", "001004", "001004", "001004", "00100…
@@ -500,7 +488,7 @@ $ exec_fullname           &lt;chr&gt; "David P. Storch", "David P. Storch", "Dav
 $ coname                  &lt;chr&gt; "AAR CORP", "AAR CORP", "AAR CORP", "AAR CORP"…
 $ ceoann                  &lt;chr&gt; "CEO", "CEO", "CEO", "CEO", "CEO", "CEO", "CEO…
 $ execid                  &lt;chr&gt; "09249", "09249", "09249", "09249", "09249", "…
-$ bonus                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ bonus                   &lt;dbl&gt; 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0…
 $ salary                  &lt;dbl&gt; 867.000, 877.838, 906.449, 906.449, 755.250, 8…
 $ stock_awards_fv         &lt;dbl&gt; 2664.745, 619.200, 1342.704, 1695.200, 1150.50…
 $ stock_unvest_val        &lt;dbl&gt; 4227.273, 6018.000, 4244.165, 4103.283, 1334.0…
@@ -518,10 +506,10 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </div>
 </div>
 <p>We can also look at a subset of the observations, i.e.&nbsp;we filter the observations from the company that has the key <code>001045</code>.</p>
-<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/filter_c3342e048e3f53695530a636f567c150">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, gvkey <span class="sc">==</span> <span class="st">"001045"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/filter_89d115cbe07d227c78da2b0345d33714">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, gvkey <span class="sc">==</span> <span class="st">"001045"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 13 × 22
+<pre><code># A tibble: 12 × 22
     year gvkey  cusip    exec_fullname         coname ceoann execid bonus salary
    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;                 &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
  1  2011 001045 02376R10 Gerard J. Arpey       AMERI… CEO    14591      0   614.
@@ -536,7 +524,6 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 10  2020 001045 02376R10 William Douglas Park… AMERI… CEO    46191      0     0 
 11  2021 001045 02376R10 William Douglas Park… AMERI… CEO    46191      0     0 
 12  2022 001045 02376R10 Robert D. Isom, Jr.   AMERI… CEO    46193      0  1162.
-13  2023 001045 02376R10 Robert D. Isom, Jr.   AMERI… CEO    46193   2750  1300 
 # ℹ 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
 #   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
 #   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
@@ -546,10 +533,10 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </div>
 <p>You can see that the company, American Airlines, has had four CEOs since 2011. I used the <code>gvkey</code> to select a company and not its name. You will often use an id or a database key especially if you are working with multiple datasets and you want to link observations from one dataset to observations in the other dataset.</p>
 <p>We can also filter data based on other variables. For instance, the below filters the observations from 2014 where the CEO had a salary over $1,000,000.</p>
-<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/filter2_03de50bdb3b9b7bbb35e2b8279325846">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, salary <span class="sc">&gt;</span> <span class="dv">1000</span>, year <span class="sc">==</span> <span class="dv">2014</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/filter2_5f1e78474f3612e3be4d1a244d788ab7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, salary <span class="sc">&gt;</span> <span class="dv">1000</span>, year <span class="sc">==</span> <span class="dv">2014</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 499 × 22
+<pre><code># A tibble: 494 × 22
     year gvkey  cusip    exec_fullname         coname ceoann execid bonus salary
    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;                 &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
  1  2014 001075 72348410 Donald E. Brandt, CPA PINNA… CEO    05835      0  1240 
@@ -558,11 +545,11 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
  4  2014 001300 43851610 David M. Cote         HONEY… CEO    20931   5500  1866.
  5  2014 001380 42809H10 John B. Hess          HESS … CEO    02132      0  1500 
  6  2014 001440 02553710 Nicholas K. Akins     AMERI… CEO    40778      0  1241.
- 7  2014 001447 02581610 Kenneth Irvine Chena… AMERI… CEO    02157   4500  2000 
+ 7  2014 001447 02581610 Kenneth I. Chenault   AMERI… CEO    02157   4500  2000 
  8  2014 001449 00105510 Daniel Paul Amos      AFLAC… CEO    00013      0  1441.
  9  2014 001468 02637510 Jeffrey M. Weiss      AMERI… CEO    11710   3640  1012.
 10  2014 001487 02687478 Robert Herman Benmos… AMERI… CEO    20972      0  1385.
-# ℹ 489 more rows
+# ℹ 484 more rows
 # ℹ 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
 #   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
 #   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
@@ -571,10 +558,10 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </div>
 </div>
 <p>You can also select some variables if you are only interested in those. If a variable has an undescriptive name, you can use select to rename the variable. For instance, <code>tdc1</code> is the total compensation of a the CEO. A more descriptive name will help you to remember what the variable actually means.</p>
-<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/select_388db402bb60ade778a5b2bb134bcf24">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(us_comp, year, coname, bonus, salary, <span class="at">total =</span> tdc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/select_d42f969f6c6184385ca415cea2cf970a">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(us_comp, year, coname, bonus, salary, <span class="at">total =</span> tdc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 26,574 × 5
+<pre><code># A tibble: 24,294 × 5
     year coname   bonus salary total
    &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
  1  2011 AAR CORP     0   867  5786.
@@ -587,15 +574,15 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
  8  2018 AAR CORP     0   750  3344.
  9  2019 AAR CORP     0   801. 4736.
 10  2020 AAR CORP     0   781. 4123.
-# ℹ 26,564 more rows</code></pre>
+# ℹ 24,284 more rows</code></pre>
 </div>
 </div>
 <p>You can also create new variables with the <code>mutate</code> function. I created a variable that calculates what percentage of total compensation is the CEO’s salary.</p>
-<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/mutate_e55f8b85c1a9bf5a88a1321e79edc221">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(us_comp, year, coname, bonus, salary, <span class="at">total =</span> tdc1) <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">salary_percentage =</span> salary <span class="sc">/</span> total)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/mutate_26f9dae597e5c884926f15a2b4e9bdae">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(us_comp, year, coname, bonus, salary, <span class="at">total =</span> tdc1) <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">salary_percentage =</span> salary <span class="sc">/</span> total)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 26,574 × 6
+<pre><code># A tibble: 24,294 × 6
     year coname   bonus salary total salary_percentage
    &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;             &lt;dbl&gt;
  1  2011 AAR CORP     0   867  5786.             0.150
@@ -608,57 +595,57 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
  8  2018 AAR CORP     0   750  3344.             0.224
  9  2019 AAR CORP     0   801. 4736.             0.169
 10  2020 AAR CORP     0   781. 4123.             0.189
-# ℹ 26,564 more rows</code></pre>
+# ℹ 24,284 more rows</code></pre>
 </div>
 </div>
 <p>Remark how the <code>select</code> statement from before is chained together with the <code>mutate</code> statement through the pipe operator (<code>%&gt;%</code>). This operator pipes the results from the first statemetn to the second statement. The second statement implicitly uses the result from the first statement as the data it is going to work with.</p>
 <p>You can use pipe statement to make your own descriptive statistics table. I created a table with some statistics for each firm. I first group the observations based on the <code>gvkey</code> and then summarise each group with the same key by defining a number of new variables.</p>
-<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/summary_5f2413ef2a7f74f0503bd86b1e324e6d">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(us_comp, gvkey) <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>(), <span class="at">N_CEO =</span> <span class="fu">n_distinct</span>(execid), </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">average =</span> <span class="fu">mean</span>(salary), <span class="at">sd =</span> <span class="fu">sd</span>(salary),</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">med =</span> <span class="fu">median</span>(salary), <span class="at">minimum =</span> <span class="fu">min</span>(salary), </span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">maximum =</span> <span class="fu">max</span>(salary)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/summary_5946afcde4f4661268ac1808b1f075c4">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(us_comp, gvkey) <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>(), <span class="at">N_CEO =</span> <span class="fu">n_distinct</span>(execid), </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">average =</span> <span class="fu">mean</span>(salary), <span class="at">sd =</span> <span class="fu">sd</span>(salary),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">med =</span> <span class="fu">median</span>(salary), <span class="at">minimum =</span> <span class="fu">min</span>(salary), </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">maximum =</span> <span class="fu">max</span>(salary)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2,645 × 8
+<pre><code># A tibble: 2,571 × 8
    gvkey      N N_CEO average    sd   med minimum maximum
    &lt;chr&gt;  &lt;int&gt; &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1 001004    13     2    877.  91.8  878.    750    1050 
- 2 001045    13     4    400. 465.   232.      0    1300 
+ 1 001004    12     2    862.  78.9  872.    750    1000 
+ 2 001045    12     4    325. 395.   116.      0    1162.
  3 001072     8     2    677. 219.   652.    450     967.
- 4 001075    13     2   1212. 109.  1203.   1091    1395 
- 5 001076    13     4    774. 129.   785.    567.    975 
- 6 001078    13     2   1766. 229.  1900    1298.   1973.
+ 4 001075    12     2   1219. 111.  1222.   1091    1395 
+ 5 001076    12     4    758. 119.   743.    567.    950 
+ 6 001078    12     2   1788. 224.  1900    1298.   1973.
  7 001094     8     3    563.  66.2  581.    437.    626.
- 8 001161    13     3    980. 159.  1000.    566.   1200 
+ 8 001161    12     3    961. 151.  1000.    566.   1149.
  9 001177     7     1   1049.  86.4 1000     977.   1200 
-10 001209    14     2   1255. 127.  1255.    905.   1402.
-# ℹ 2,635 more rows</code></pre>
+10 001209    13     2   1247. 129.  1200     905.   1402.
+# ℹ 2,561 more rows</code></pre>
 </div>
 </div>
 <p>Recent updates allow you to write the same code in a shorter manner.</p>
-<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/summary_with_by_f37ba4da5ef33946d8585c9a6eac943d">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(us_comp, <span class="at">N =</span> <span class="fu">n</span>(), <span class="at">N_CEO =</span> <span class="fu">n_distinct</span>(execid), </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">average =</span> <span class="fu">mean</span>(salary), <span class="at">sd =</span> <span class="fu">sd</span>(salary),</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">med =</span> <span class="fu">median</span>(salary), <span class="at">minimum =</span> <span class="fu">min</span>(salary), </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">maximum =</span> <span class="fu">max</span>(salary),</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">.by =</span> gvkey) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="introduction_to_r_rstudio_tidyverse_cache/html/summary_with_by_bc27cc7a64a34e6e7d513e90aba782c7">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(us_comp, <span class="at">N =</span> <span class="fu">n</span>(), <span class="at">N_CEO =</span> <span class="fu">n_distinct</span>(execid), </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">average =</span> <span class="fu">mean</span>(salary), <span class="at">sd =</span> <span class="fu">sd</span>(salary),</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">med =</span> <span class="fu">median</span>(salary), <span class="at">minimum =</span> <span class="fu">min</span>(salary), </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">maximum =</span> <span class="fu">max</span>(salary),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">.by =</span> gvkey) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2,645 × 8
+<pre><code># A tibble: 2,571 × 8
    gvkey      N N_CEO average    sd   med minimum maximum
    &lt;chr&gt;  &lt;int&gt; &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1 001004    13     2    877.  91.8  878.    750    1050 
- 2 001045    13     4    400. 465.   232.      0    1300 
+ 1 001004    12     2    862.  78.9  872.    750    1000 
+ 2 001045    12     4    325. 395.   116.      0    1162.
  3 001072     8     2    677. 219.   652.    450     967.
- 4 001075    13     2   1212. 109.  1203.   1091    1395 
- 5 001076    13     4    774. 129.   785.    567.    975 
- 6 001078    13     2   1766. 229.  1900    1298.   1973.
+ 4 001075    12     2   1219. 111.  1222.   1091    1395 
+ 5 001076    12     4    758. 119.   743.    567.    950 
+ 6 001078    12     2   1788. 224.  1900    1298.   1973.
  7 001094     8     3    563.  66.2  581.    437.    626.
- 8 001161    13     3    980. 159.  1000.    566.   1200 
+ 8 001161    12     3    961. 151.  1000.    566.   1149.
  9 001177     7     1   1049.  86.4 1000     977.   1200 
-10 001209    14     2   1255. 127.  1255.    905.   1402.
-# ℹ 2,635 more rows</code></pre>
+10 001209    13     2   1247. 129.  1200     905.   1402.
+# ℹ 2,561 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -703,9 +690,9 @@ Content Cell  | Content Cell</code></pre>
 <section id="r-code-in-markdown-r-chunks" class="level3">
 <h3 class="anchored" data-anchor-id="r-code-in-markdown-r-chunks">R-code in markdown: R chunks</h3>
 <p>The largest advantage of Rmarkdown files is that we can include pieces of R code. <a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> Code chuncks go between three backticks and we tell Rmarkdown that the language we are using is <code>{r}</code>. The example below creates a code chuck where we create a random vector <code>x</code> with then elements where the elements are drawn from a random distribution with mean 4 and standard deviation 3.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">3</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

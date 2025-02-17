@@ -423,14 +423,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>I use four packages on this page and three of them require some more explanation. The <code>here</code> package helps with managing the different files in this larger project. I can refer to different files relative to the root folder all the files are in. The only thing that I need to do is to say where this file is compared to the root folder with the <code>i_am</code> function. You can see the simplified folder structure below for this website. By telling <code>R</code> which file this is, I can easily refer to other files and save the data we are going to download and clean in the data folder. If it is specific to the replication it will go into the <code>data/freaky_friday</code> folder as an <code>.RDS</code> file which is an efficient way of storing <code>R</code> objects.</p>
-<div class="cell" data-hash="download_linking_cache/html/setup_7ff8c2d6291f934813592d1b4448cfea">
+<div class="cell" data-hash="download_linking_cache/html/setup_df2857e99804035ce88cba19af63111c">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.1
 ✔ purrr     1.0.2     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
@@ -481,7 +481,7 @@ The following objects are masked from 'package:dplyr':
 <p>This code sets up the connection to WRDS. WRDS has a <a href="https://wrds-www.wharton.upenn.edu/pages/support/programming-wrds/programming-r/r-from-your-computer/">thorough tutorial</a> on how to set up Rstudio to connect to WRDS.</p>
 <p>In this tutorial, I will show you how you can do the whole data analysis from no data at all to the main results table. You do not have to do it this way. It is possible to just download the data files in for instance excel format from WRDS. For individual researchers this is sometimes easier. The disadvantage is that it is hard to check what researchers actually did when you do not have the full analytical pipeline. For future researchers having the full code available gives a way to check the work and improve upon it even if the data itself is not shared by the researchers.</p>
 <p>The practical benefit for you is that you can pick and choose which parts of the code you think are useful because I attempt to have everything in this tutorial.</p>
-<div class="cell" data-hash="download_linking_cache/html/setup-wrds_2dd057c047d6498b470865b417974c6c">
+<div class="cell" data-hash="download_linking_cache/html/setup-wrds_a358c5091213c1c8415735f061389796">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>wrds <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">Postgres</span>(),</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">port=</span><span class="dv">9737</span>,</span>
@@ -498,14 +498,14 @@ The following objects are masked from 'package:dplyr':
 <section id="ibes" class="level2">
 <h2 class="anchored" data-anchor-id="ibes">I/B/E/S</h2>
 <p>The code instructs the WRDS database to get the variables <code>ticker</code>, <code>cusip</code> (another identifier), <code>cname</code> (company name), and <code>sdates</code> (the start date for this ticker) from the <code>ibes.idsum</code> (IBES ID summary) database of WRDS. In this paper, we only want U.S. firms which we do by filtering by <code>usfirm == 1</code>.</p>
-<div class="cell" data-hash="download_linking_cache/html/ibes-ids_cb61bb5b6048bf8e3f119857bbff1cf7">
+<div class="cell" data-hash="download_linking_cache/html/ibes-ids_ce73456a8285345d579c64af066d4207">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ibes_query <span class="ot">&lt;-</span> <span class="fu">tbl</span>(wrds, <span class="fu">in_schema</span>(<span class="st">"ibes"</span>, <span class="st">"idsum"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(usfirm <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ticker, cusip, cname, sdates) <span class="sc">%&gt;%</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>With some R code, we clean the data and save it as a file in the <code>data &gt; wrds</code> folder in our main folder.</p>
-<div class="cell" data-hash="download_linking_cache/html/write-ibes-ids_6588242edb5e2960c193a6bf042b1606">
+<div class="cell" data-hash="download_linking_cache/html/write-ibes-ids_741468d74e564a45ca0702d1fb6324a1">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ibes_id <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(ibes_query) <span class="sc">%&gt;%</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(ibes_id, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrds"</span>, <span class="st">"ibes_id.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -514,12 +514,12 @@ The following objects are masked from 'package:dplyr':
 <section id="crsp" class="level2">
 <h2 class="anchored" data-anchor-id="crsp">CRSP</h2>
 <p>From the CRSP data, we get the <code>permno</code> and <code>ncusip</code> identifier where <code>ncusip</code> stands for the same <code>cusip</code> identifier as mentioned above. We also have the company name, start date, and end date.</p>
-<div class="cell" data-hash="download_linking_cache/html/crsp-id_c90521d6bba4448c806baeb5a712691b">
+<div class="cell" data-hash="download_linking_cache/html/crsp-id_c979bbaba3c5257f1a6fc7673302c15e">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>crsp_query <span class="ot">&lt;-</span> <span class="fu">tbl</span>(wrds, <span class="fu">in_schema</span>(<span class="st">"crsp"</span>, <span class="st">"stocknames"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(permno, ncusip, comnam, st_date, end_date) <span class="sc">%&gt;%</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="download_linking_cache/html/write-crsp-id_4ce7f2996fa0e07720f89f21aad4249f">
+<div class="cell" data-hash="download_linking_cache/html/write-crsp-id_74b4687f811f8b9869a98bf3130ca813">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>crsp_id <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(crsp_query) <span class="sc">%&gt;%</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(crsp_id, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrds"</span>, <span class="st">"crsp_id.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -528,12 +528,12 @@ The following objects are masked from 'package:dplyr':
 <section id="compustat-with-ibes" class="level2">
 <h2 class="anchored" data-anchor-id="compustat-with-ibes">Compustat with I/B/E/S</h2>
 <p>From Compustat we use the security file which has all the financial securities (and their identifiers) that are linked to the firms in Compustat. We select all the variables from that dataset. We only select the ones where the <code>ib</code>es <code>tic</code>ker is available so that we can match via the ticker in the I/B/E/S files.</p>
-<div class="cell" data-hash="download_linking_cache/html/compu-ibes_7a3a5d5f7bebf25d45c11f8cd594c1de">
+<div class="cell" data-hash="download_linking_cache/html/compu-ibes_f1e53a2327176221fea57efa671667c6">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>compu_security_query <span class="ot">&lt;-</span> <span class="fu">tbl</span>(wrds, <span class="fu">in_schema</span>(<span class="st">"comp"</span>, <span class="st">"security"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.null</span>(ibtic)) <span class="sc">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="download_linking_cache/html/write-compu-ibes_5cbc9d3621e75f5401f8ada8d3b75dd4">
+<div class="cell" data-hash="download_linking_cache/html/write-compu-ibes_fbb63f2b7314f24adfa02f5d4937d782">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>compu_security <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(compu_security_query) <span class="sc">%&gt;%</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(compu_security, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrds"</span>, <span class="st">"compu_security.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -542,14 +542,14 @@ The following objects are masked from 'package:dplyr':
 <section id="compustat-with-crsp" class="level2">
 <h2 class="anchored" data-anchor-id="compustat-with-crsp">Compustat with CRSP</h2>
 <p>Finally, we get the linking file in compustat. According to the documentation, not all the links are reliable and they advice to use the <code>linktype</code> variable and the <code>usedflag</code> variable to filter only the links that are most reliable. I have implemented the rules that follow best practice according to this tutorial (https://wrds-www.wharton.upenn.edu/pages/wrds-research/applications/linking-databases/linking-crsp-and-compustat/)</p>
-<div class="cell" data-hash="download_linking_cache/html/compu-id_ce400f3502c99afca3a26c8aa45a7391">
+<div class="cell" data-hash="download_linking_cache/html/compu-id_d1f6c1ced6f654601ca252a910c76519">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compu_query</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>compu_query <span class="ot">&lt;-</span> <span class="fu">tbl</span>(wrds, <span class="fu">in_schema</span>(<span class="st">"crsp"</span>, <span class="st">"ccmxpf_linktable"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, linktype, usedflag, <span class="at">iid =</span> liid, <span class="at">permno =</span> lpermno, <span class="at">stdt =</span> linkdt, <span class="at">enddt =</span> linkenddt) <span class="sc">%&gt;%</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(permno), linktype <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"LU"</span>, <span class="st">"LC"</span>), usedflag <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, permno, stdt, enddt) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(compu_query, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrds"</span>, <span class="st">"crsp_compu.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, permno, stdt, enddt) <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(crsp_query, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrds"</span>, <span class="st">"crsp_compu.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>

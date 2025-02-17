@@ -415,21 +415,21 @@ Stijn Masschelein
 <li><p>(Almost weekly) Assignments (70%)</p></li>
 </ul>
 <div class="{aside}">
-<pre><code>- Homework: Practical Issues (0%) (28 February)
-- Assignment 1: Theory and Regressions (10%) (7 March)
-- Assignment 2: Regression and control variables (10%) (14 March)
-- Assignment 3: Research Design (10%) (11 April)
-- Assignment 4: Event Study (10%) (25 April)
-- Assignment 5: Machine Learning (10%) (2 May)
-- Assignment 6: Simulation Research Design (20%) (27 May)</code></pre>
+<pre><code>- Homework: Practical Issues (0%) (1 March)
+- Assignment 1: Theory and Regressions (10%) (8 March)
+- Assignment 2: Regression and control variables (10%) (17 March)
+- Assignment 3: Research Design (10%) (12 April)
+- Assignment 4: Event Study (10%) (26 April)
+- Assignment 5: Machine Learning (10%) (3 May)
+- Assignment 6: Simulation Research Design (20%) (24 May)</code></pre>
 </div>
 <ul>
 <li>Proposal and presentation (30%)</li>
 </ul>
 <div class="{aside}">
-<pre><code>- Pitch (10%) (28 March)
-- Proposal (10%) (11 May)
-- Presentation (10%) (Probably Thursday 17 July)</code></pre>
+<pre><code>- Pitch (10%) (29 March)
+- Proposal (10%) (12 May)
+- Presentation (10%) (Probably Thursday 18 July)</code></pre>
 </div>
 <aside class="notes">
 <p>We want you to (1) do some data analysis and (2) be well prepared to undertake (the data analysis part of) a research project. So we are going to evaluate you by letting you (1) analyse data and (2) prepare your honours thesis.</p>
@@ -444,80 +444,6 @@ Stijn Masschelein
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
-<section id="llms-or-generative-ai" class="slide level2">
-<h2>LLMs (or generative AI)</h2>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Warning</strong></p>
-</div>
-<div class="callout-content">
-<p>Everything that follows is for this unit specifically!</p>
-</div>
-</div>
-</div>
-<ul>
-<li>Allowed for all coding and math tasks. Copy pasting code is acceptable but not recommended.</li>
-<li>Not allowed to copy and paste text. If I catch you doing that, you lose all marks for the assignment.</li>
-</ul>
-</section>
-<section id="llms---an-optimistic-cautionary-tale" class="slide level2">
-<h2>LLMs - An optimistic, cautionary tale</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">The Problem</a></li><li><a href="#tabset-1-2">Claude’s answer</a></li><li><a href="#tabset-1-3">Catching Claude</a></li><li><a href="#tabset-1-4">Oops!</a></li><li><a href="#tabset-1-5">Man-Machine FTW!</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../slides/figures/claude_matrix_sum/claude7.png"></p>
-<figcaption>The Problem</figcaption>
-</figure>
-</div>
-</div>
-<div id="tabset-1-2">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../slides/figures/claude_matrix_sum/claude6.png"></p>
-<figcaption>The First Answer</figcaption>
-</figure>
-</div>
-</div>
-<div id="tabset-1-3">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../slides/figures/claude_matrix_sum/claude5.png"></p>
-<figcaption>Catching Claude</figcaption>
-</figure>
-</div>
-</div>
-<div id="tabset-1-4">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../slides/figures/claude_matrix_sum/claude4.png"></p>
-<figcaption>Claude does an oopsie</figcaption>
-</figure>
-</div>
-</div>
-<div id="tabset-1-5">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../slides/figures/claude_matrix_sum/claude2.png"></p>
-<figcaption>FTW Man</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="../slides/figures/claude_matrix_sum/claude1.png"></p>
-<figcaption>FTW Machine</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
 </section>
 <section id="the-first-two-weeks" class="slide level2">
 <h2>The first two weeks</h2>
@@ -620,7 +546,6 @@ W_T = \alpha_T V
 <blockquote>
 <p>In this model, the driving force is that more talented CEOs grow the business to a bigger size and they earn more money when they create more value.</p>
 </blockquote>
-<p><a href="https://chatgpt.com/share/67ac6b4e-d498-8006-bd32-42f2a8387478">ChapGPT can do this. Sort of.</a></p>
 <aside class="notes">
 <p>First find the optimal level of capital …</p>
 <p><span class="math display">\[
@@ -733,20 +658,10 @@ W_T = V - V \alpha_K - V\alpha_L = (1 - \alpha_K - \alpha_L) V
 </div>
 </div>
 </div>
-<aside class="notes">
+
+<aside><div>
 <p>Note what we have just done. We started with some assumptions about the production function of a company and competitive markets to find the theoretical relation between firm size and CEO compensation. We followed up by testing this theory to data from S&amp;P500 firms. These are the steps that you should be following.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
+</div></aside></section>
 <section id="literature-search" class="slide level2">
 <h2>Literature search</h2>
 <ul>
@@ -758,7 +673,7 @@ W_T = V - V \alpha_K - V\alpha_L = (1 - \alpha_K - \alpha_L) V
 <li><a href="https://www.nber.org/papers.html">National Bureau of Economic Research</a></li>
 </ul>
 <aside class="notes">
-<p>In the CEO compensation case above, we derived the theoretical prediction. Normally, you will build on prior theoretical and empirical research to build predictions. The way to do that is by looking at research articles that have done something similar but probably different before. That’s what we call “The Literature”.</p>
+<p>In the CEO compensation case above, we derived the theoretical prediction. Normally, you will build on prior theoretical and empirical research to build predictions. The</p>
 <p>In most cases (ssrn is the exception), you will have to be on the university’s network if you want to actually read the full paper.</p>
 <ul>
 <li><p>Google Scholar is probably the most comprehensive repository. This search engine work very similar to regular Google search. There are some additional tricks you can use “author:lastname-firstname” will help you to narrow down papers from a specific author. “intitle:keyword” let’s you search for keywords in the title of papers. You can also narrow down your search based on year of publication. The advanced search features hidden in the left side bar give you additional options such as searching for certain journals. If you are on the university network, Google Scholar will tell you for every paper</p></li>
@@ -857,7 +772,7 @@ W_T = V - V \alpha_K - V\alpha_L = (1 - \alpha_K - \alpha_L) V
 <li><p>Keep writing!</p></li>
 <li><p>Reach out when you need help with planning or when you feel overwhelmed.</p>
 <ul>
-<li><a href="mailto:stijn.masschelein@uwa.edu.au">stijn.masschelein@uwa.edu.au</a></li>
+<li>stijn.masschelein@uwa.edu.au</li>
 <li><a href="https://www.student.uwa.edu.au/experience/health-wellbeing-safety/counselling">UWA Counselling services</a></li>
 </ul></li>
 </ol>
@@ -884,7 +799,7 @@ W_T = V - V \alpha_K - V\alpha_L = (1 - \alpha_K - \alpha_L) V
 <h2>Questions</h2>
 <ol type="1">
 <li><p>Answer in Quarto (<code>.qmd</code>) format. <code>File &gt; New File &gt; Quarto Document ... &gt;</code></p></li>
-<li><p>You should use the code examples that I used in the video. I have uploaded the file to LMS. Use a different level 2 header for each question. Use R chunks to</p>
+<li><p>You can use the code examples that I used in the video. I have uploaded the file to LMS. Use a different level 2 header for each question. Use R chunks to</p>
 <ul>
 <li>Load the CEO compensation data from LMS so that you can work with it.</li>
 <li>Print the dataset with only the CEOs without a cash bonus in 2013. You do not need to print the whole dataset. The default number of lines is sufficient.</li>
@@ -893,7 +808,7 @@ W_T = V - V \alpha_K - V\alpha_L = (1 - \alpha_K - \alpha_L) V
 <li><p>Click the <code>Render</code> button and upload the <code>qmd</code> and <code>html</code> version to LMS.</p></li>
 </ol>
 <aside class="notes">
-<p>There is going to be some trial-and-error and debugging. That is fine. Carefully read the errors you get and use the resouces for help. Don’t be afraid to ask me, each other, or an LLM for help.</p>
+<p>There is going to be some trial-and-error and debugging. That is fine. Carefully read the errors you get and use the resouces for help. Don’t be afraid to ask me or each other for help.</p>
 <ol type="1">
 <li>Give a name to your document and enter your name</li>
 <li>See the examples</li>

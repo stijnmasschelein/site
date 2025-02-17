@@ -448,15 +448,14 @@ div.csl-indent {
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/setup_814284e34a1b978b763d6a83ac5a9598">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/setup_a4cd16ea760aa0333c4b263efc0041d9">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bayesboot)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fwb)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>(<span class="at">font_size =</span> <span class="dv">18</span>))</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"generated/inverse_probability_weight.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>(<span class="at">font_size =</span> <span class="dv">18</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"generated/inverse_probability_weight.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
@@ -464,14 +463,14 @@ div.csl-indent {
 </section>
 <section id="simulated-data" class="level2">
 <h2 class="anchored" data-anchor-id="simulated-data">Simulated data</h2>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/parameters_64477c1f1727ecde39530be4a2947885">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/parameters_b8e3e3cbf7eaacfe28c3bd3ac23c750d">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">500</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="dv">200</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ntotal <span class="ot">&lt;-</span> N <span class="sc">*</span> nsim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The data generating process for <code>x</code> and <code>y</code> is more complicated that what I usually use. First, we have two binary variables <code>z2</code> and <code>x</code>. I use the transformation <code>1 - 2*x</code> and <code>1 - 2*z2</code> a number of times. This transformation takes a binary (0,1) and transforms it in (1, -1). The main goal with this transformation is to make sure that interactions with these variables are more meaningful. If they take the value 0, interactions without the transformation would also take a value of 0.</p>
 <p>It might not be immediately clear but <code>x</code> just follows a <a href="../generalised/introduction.html">probit-binomial</a> distribution which depends on the control variables <code>z1</code> and <code>z2</code> and its interactions. <code>y</code> is a normally distributed function of <code>x</code> and the control variables and the effect of <code>x</code> depends on the interaction between the controls.</p>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/simulation_770aba6b8f46a56bc2fbe4fbed3fa809">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/simulation_96bac10a40e3c8175f23dd57c695f95b">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sim_data <span class="ot">&lt;-</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sim =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>nsim, <span class="at">each =</span> N),</span>
@@ -496,7 +495,7 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="bias">Bias</h2>
 <p>At first, we want to figure out whether different regression specifications are biased. One way to do that is to work with the full data and ignore the <code>sim</code> variable.</p>
 <p>First, we run our regular regressions with different but imperfect functional forms for the control variables.</p>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/lm_21d53d96eb6ec577349d24a391fe729c">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/lm_a659833ebf7d8349596609f6822847c6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> sim_data) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"x"</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> z1 <span class="sc">+</span> z2, <span class="at">data =</span> sim_data) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"x"</span>),</span>
@@ -505,15 +504,15 @@ div.csl-indent {
 <pre><code># A tibble: 3 × 5
   term  estimate std.error statistic      p.value
   &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;
-1 x        2.70     0.0343     78.7  0           
-2 x        0.196    0.0448      4.38 0.0000119   
-3 x        0.249    0.0460      5.41 0.0000000634</code></pre>
+1 x        2.67     0.0344     77.6  0           
+2 x        0.196    0.0448      4.39 0.0000115   
+3 x        0.253    0.0460      5.50 0.0000000386</code></pre>
 </div>
 </div>
 <p>It’s clear that while adding the control variables (and the interaction) improves the estimate, we are still far off the correct estimate which is 1.</p>
 <p>Next, we first run a logit regression to predict the probability that an observations is in the treatment group based on the control variables. I deliberately misspecify the regression to demonstrate that even an imperfect the propensity model can already help. Nevertheless, for a method to be truly double robust either the propensity model or the regression model needs to be correctly specified.</p>
 <p>We calculate the weights and trimmed weights where I set the maximum weight to 100 which means that propensities smaller than 0.01 are winsorised at the value of 0.01 to avoid that the estimation is dominated by a couple of observations. We can run the regressions above again but now with the weights included. The disadvantage of trimming the weight is that we might be reintroducing a little bit of the bias that we are trying to avoid but the advantage is that because outliers are less likely to dominate, the standard errors are likely to be smaller.</p>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/ipw_0e8fee05d96dedea4be1993248bf10a4">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/ipw_f91d21dbcad5d3157f22b419a5d6c628">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>prop_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(x <span class="sc">~</span> z1 <span class="sc">+</span> z2, <span class="at">data =</span> sim_data,</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ipw_data <span class="ot">&lt;-</span> sim_data <span class="sc">%&gt;%</span></span>
@@ -529,9 +528,9 @@ div.csl-indent {
 <pre><code># A tibble: 3 × 5
   term  estimate std.error statistic   p.value
   &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-1 x        0.778    0.0345      22.5 4.95e-112
-2 x        1.06     0.0340      31.3 2.25e-214
-3 x        1.11     0.0380      29.2 3.83e-186</code></pre>
+1 x         1.13    0.0337      33.6 1.84e-246
+2 x         1.44    0.0340      42.2 0        
+3 x         1.27    0.0384      33.0 2.37e-237</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> ipw_data, <span class="at">weights =</span> trim_weight) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"x"</span>),</span>
@@ -541,108 +540,79 @@ div.csl-indent {
 <pre><code># A tibble: 3 × 5
   term  estimate std.error statistic   p.value
   &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-1 x        0.838    0.0337      24.9 4.62e-136
-2 x        0.856    0.0327      26.2 1.31e-150
-3 x        0.958    0.0360      26.6 9.56e-156</code></pre>
+1 x        0.927    0.0336      27.6 7.39e-167
+2 x        0.978    0.0328      29.8 1.50e-194
+3 x        1.04     0.0361      28.9 1.66e-182</code></pre>
 </div>
 </div>
 </section>
 <section id="bootstrap-the-standard-errors" class="level2">
 <h2 class="anchored" data-anchor-id="bootstrap-the-standard-errors">Bootstrap the standard errors</h2>
 <p>We know by now that the standard errors of these type of procedures with multiple steps are likely to be wrong and we can use the Bayesian bootstrap again to estimate, the standard error for our estimate of interest. The unadjusted standard errors above are around 0.035.</p>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/bootstrap-ipw_a57b2fc14caf872e4a089dd724a80f72">
+<div class="cell" data-hash="inverse_probability_weight_cache/html/bootstrap-ipw_6d9f453da7ab30b26c224fcd96586a24">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ipw <span class="ot">&lt;-</span> <span class="cf">function</span>(data, weights){</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  weights <span class="ot">&lt;-</span> weights<span class="sc">/</span><span class="fu">sum</span>(weights)<span class="sc">*</span><span class="fu">nrow</span>(data) </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  prop_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(x <span class="sc">~</span> z1 <span class="sc">+</span> z2, <span class="at">data =</span> data,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                 <span class="co"># the quasibinomial is necessary for the bayesian boostrap</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                 <span class="co"># weights otherwise R gives warnings which can slow things down</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="fu">quasibinomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">weights =</span> weights)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  ipw_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">propensity =</span> <span class="fu">fitted</span>(prop_glm),</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">weight =</span> weights <span class="sc">*</span> <span class="fu">if_else</span>(x <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span>propensity, <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">-</span> propensity)),</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">trim_weight =</span> weights <span class="sc">*</span> <span class="fu">pmin</span>(weight, <span class="dv">100</span>))</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># These weights are the propensity weights</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> z1 <span class="sc">*</span> z2, <span class="at">data =</span> ipw_data, <span class="at">weights =</span> trim_weight)</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  beta <span class="ot">&lt;-</span> <span class="fu">coefficients</span>(lm)[<span class="st">"x"</span>]</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(beta)</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ipw</span>(sim_data, <span class="fu">rep</span>(<span class="dv">1</span>, ntotal))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  prop_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(x <span class="sc">~</span> z1 <span class="sc">+</span> z2, <span class="at">data =</span> data,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                 <span class="co"># the quasibinomial is necessary for the bayesian boostrap</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                 <span class="co"># weights otherwise R gives warnings which can slow things down</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="fu">quasibinomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">weights =</span> weights)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  ipw_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">propensity =</span> <span class="fu">fitted</span>(prop_glm),</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">weight =</span> weights <span class="sc">*</span> <span class="fu">if_else</span>(x <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span>propensity, <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">-</span> propensity)),</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">trim_weight =</span> weights <span class="sc">*</span> <span class="fu">pmin</span>(weight, <span class="dv">100</span>))</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># These weights are the propensity weights</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> z1 <span class="sc">*</span> z2, <span class="at">data =</span> ipw_data, <span class="at">weights =</span> trim_weight)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  beta <span class="ot">&lt;-</span> <span class="fu">coefficients</span>(lm)[<span class="st">"x"</span>]</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(beta)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ipw</span>(sim_data, <span class="fu">rep</span>(<span class="dv">1</span>, ntotal))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        x 
-0.9583925 </code></pre>
+<pre><code>       x 
+1.043357 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>boot_ipw <span class="ot">&lt;-</span> <span class="fu">bayesboot</span>(sim_data, ipw, <span class="at">R =</span> <span class="dv">100</span>, </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">use.weights =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>fwb_ipw <span class="ot">&lt;-</span> <span class="fu">fwb</span>(sim_data, ipw, <span class="at">R =</span> <span class="dv">100</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(boot_ipw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>boot_ipw <span class="ot">&lt;-</span> <span class="fu">bayesboot</span>(sim_data, ipw, <span class="at">R =</span> <span class="dv">200</span>, <span class="at">use.weights =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(boot_ipw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Bayesian bootstrap
 
-Number of posterior draws: 100 
+Number of posterior draws: 200 
 
 Summary of the posterior (with 95% Highest Density Intervals):
- statistic      mean        sd   hdi.low hdi.high
-         x 0.8435906 0.1462273 0.5728546 1.121189
+ statistic     mean        sd   hdi.low hdi.high
+         x 1.244239 0.2137545 0.8754819 1.660996
 
 Quantiles:
- statistic     q2.5%      q25%    median      q75%   q97.5%
-         x 0.5833269 0.7535641 0.8497192 0.9466843 1.115289
+ statistic     q2.5%     q25%   median     q75%   q97.5%
+         x 0.8899417 1.088038 1.236333 1.378097 1.662164
 
 Call:
- bayesboot(data = sim_data, statistic = ipw, R = 100, use.weights = TRUE)</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fwb_ipw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Extreme order statistics used as endpoints.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Estimate Std. Error CI 2.5 % CI 97.5 %
-x    0.958      0.118    0.821     1.147</code></pre>
+ bayesboot(data = sim_data, statistic = ipw, R = 200, use.weights = TRUE)</code></pre>
 </div>
 </div>
 <p>The bootstrapped standard error is around 0.20 and noticeably higher. The standard errors are also quite wide given that we are using a quite large simulated data set. Unfortunately, these type of estimators come at a cost. The estimated uncertainty can be quite high because ultimiately when the data is far from ideal, there is only so much information you can glean from it.</p>
 <p>This is only reinforced by doing the simulation properly and calculating the bootstrapped standard error separately for each of our 200 simulated datasets with 500 observations. The average standard error is more than 2.3 and thus with a sample of 500, we will never be able to report a significant effect. Again, this is not necessarily a weakness of the inverse probability approach. It just highlights that more advanced problems that correct for potential biases are not a free lunch. You cannot learn more from the data than what is in your data.</p>
-<div class="cell" data-hash="inverse_probability_weight_cache/html/unnamed-chunk-8_f51e8227991ee32875e876861f29e47e">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(furrr)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>cores <span class="ot">&lt;-</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>()</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> cores <span class="sc">-</span> <span class="dv">2</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>boot_function <span class="ot">&lt;-</span> <span class="cf">function</span>(data){</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  bb <span class="ot">&lt;-</span> <span class="fu">bayesboot</span>(data, ipw, <span class="at">R =</span> <span class="dv">200</span>, <span class="at">use.weights =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  se <span class="ot">&lt;-</span> <span class="fu">sd</span>(bb<span class="sc">$</span>x)</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(se)</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>fwb_function <span class="ot">&lt;-</span> <span class="cf">function</span>(data){</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  fwb <span class="ot">&lt;-</span> <span class="fu">fwb</span>(data, ipw, <span class="at">R =</span> <span class="dv">200</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  se <span class="ot">&lt;-</span> <span class="fu">summary</span>(fwb)[<span class="st">"x"</span>, <span class="dv">2</span>]</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(se)</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="fu">fwb_function</span>(sim_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Extreme order statistics used as endpoints.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1248604</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> sim_data <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">.by =</span> sim) <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">se =</span> <span class="fu">future_map_dbl</span>(<span class="at">.x =</span> data, <span class="at">.f =</span> <span class="sc">~</span> <span class="fu">fwb_function</span>(.x),</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">.options =</span> <span class="fu">furrr_options</span>(<span class="at">seed =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">.progress =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: There were 29 warnings in `mutate()`.
-The first warning was:
-ℹ In argument: `se = future_map_dbl(...)`.
-Caused by warning:
-! Extreme order statistics used as endpoints.
-ℹ Run `dplyr::last_dplyr_warnings()` to see the 28 remaining warnings.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(sim, <span class="at">mean =</span> <span class="fu">mean</span>(se), <span class="at">sd =</span> <span class="fu">sd</span>(se))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="inverse_probability_weight_cache/html/unnamed-chunk-8_18aad91beeefa498912f90e320914b66">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(furrr)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cores <span class="ot">&lt;-</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>()</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> cores <span class="sc">-</span> <span class="dv">2</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>boot_function <span class="ot">&lt;-</span> <span class="cf">function</span>(data){</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  bb <span class="ot">&lt;-</span> <span class="fu">bayesboot</span>(data, ipw, <span class="at">R =</span> <span class="dv">200</span>, <span class="at">use.weights =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  se <span class="ot">&lt;-</span> <span class="fu">sd</span>(bb<span class="sc">$</span>x)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(se)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> sim_data <span class="sc">%&gt;%</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">.by =</span> sim) <span class="sc">%&gt;%</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">se =</span> <span class="fu">future_map_dbl</span>(<span class="at">.x =</span> data, <span class="at">.f =</span> <span class="sc">~</span> <span class="fu">boot_function</span>(.x),</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>                             <span class="at">.options =</span> <span class="fu">furrr_options</span>(<span class="at">seed =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>                             <span class="at">.progress =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(sim, <span class="at">mean =</span> <span class="fu">mean</span>(se), <span class="at">sd =</span> <span class="fu">sd</span>(se))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
    mean    sd
   &lt;dbl&gt; &lt;dbl&gt;
-1  1.50 0.248</code></pre>
+1  2.37 0.523</code></pre>
 </div>
 </div>
 

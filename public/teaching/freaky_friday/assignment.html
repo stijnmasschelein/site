@@ -423,15 +423,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For the assignment, you can just copy the code in the assignment and make the necessary changes where indicated. Do not forget to copy all the code. Not just the one where you change something.</p>
 <section id="setup" class="level1">
 <h1>Setup</h1>
-<div class="cell" data-hash="assignment_cache/html/setup_09f3c9523627e975ac15e94dad8239fb">
+<div class="cell" data-hash="assignment_cache/html/setup_126a235b4c68773d1f1a291d8ecb0383">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
+✔ dplyr     1.1.1     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -450,20 +450,20 @@ The following object is masked from 'package:lubridate':
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>(<span class="at">font_size =</span> <span class="dv">18</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/assignment.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 </div>
 <p>Let’s restrict the data to two years. So that the computations do not take too long.</p>
-<div class="cell" data-hash="assignment_cache/html/date-parameters_5c38c872fffa87eedffa39a1ba422b62">
+<div class="cell" data-hash="assignment_cache/html/date-parameters_98ec7a4b6d2ff8d2e6c1a79c58280623">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>begin <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2003-01-01"</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>end <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2005-12-31"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>I keep the full stock price data for now. This code is a slightly adapted version of the <a href="../freaky_friday/abnormal_returns.html">Abnormal returns</a> page on the website. There are two changes: (1) we have to filter only the announcements between <code>begin</code> and <code>end</code> and (2) we add more factors from the French data. I will not go into the theoretical details here. The basic idea is that stock return are not only sensitive to one set of economic factors which are captured in the market return, but also to more specific factors such as the size (<code>smb</code>) and whether the company is value or growth company (<code>hml</code>). In what follows, we will treat the returns to these factors exactly the same as the market return, i.e.&nbsp;as predictors for the returns of the company that we are interested in.</p>
-<div class="cell" data-hash="assignment_cache/html/data_51d55ca3a664045c268c435330a2e423">
+<div class="cell" data-hash="assignment_cache/html/data_6abb16e4b668fc110057436fd9402977">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>earn_ann <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"earn_ann.RDS"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(anndat <span class="sc">&gt;=</span> begin, anndat <span class="sc">&lt;=</span> end)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>analyst <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"analyst.RDS"</span>)) <span class="sc">%&gt;%</span></span>
@@ -510,7 +510,7 @@ R_{u,k} = \alpha_{t,k} + \beta^{mkt}_{t,k} R_{u,m}
 <p>That is, we include two more factors (<code>smb</code>, and <code>hlm</code>) in the regression model that we run for each announcement. The three-factor model typically works with the stock return and market return adjusted for the risk free rate (i.e.&nbsp;<code>ret - rf</code> and <code>mkt_rf</code> respectively). The code will give us a column <code>coefs</code> with the 4 estimated parameters <code>alpha</code>, <code>beta_mkt</code>, <code>beta_size</code>, <code>beta_value</code>.</p>
 <p>You need to change the code below in two parts as indicated by the comments in the code.</p>
 <p>The code first creates a function <code>creat_coefs_3factor</code> for <code>n</code> earnings announcements where the default value for <code>n</code> is 6. You can test whether your function works by creating the test object which should be a data set with 6 rows. One for each of the 6 earnings announcements at the top of the <code>earn_ann</code></p>
-<div class="cell" data-hash="assignment_cache/html/three-factor-estimate_1fe7fec3d1a80807300d130ddba51846">
+<div class="cell" data-hash="assignment_cache/html/three-factor-estimate_3df164873adbce5fcca41e1efd05091f">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>create_coefs_3factor <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">6</span>){</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  earn_ann <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="at">n =</span> n) <span class="sc">%&gt;%</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>(permno, anndat) <span class="sc">%&gt;%</span></span>
@@ -550,7 +550,7 @@ R_{u,k} = \alpha_{t,k} + \beta^{mkt}_{t,k} R_{u,m}
 <p><span class="math inline">\(R_{t,k}^h\)</span> is the abnormal return on day <span class="math inline">\(h\)</span> after the announcement, <span class="math inline">\(R_{h,m}\)</span> is the market return on day <span class="math inline">\(h\)</span>, <span class="math inline">\(smb_{h,m}\)</span> is the size factor and <span class="math inline">\(hlm_{h,m}\)</span> is the value factor.</p>
 <p>In the last change, you need to add up the abnormal returns for the days 0 and 1 for the short window after the announcement and the for the days 2-75 after the announcement. That is you need to calculate <code>car_sum</code></p>
 <p>I also give the accumulation with the product which is more correct but the literature typically works with the sum as far as I could discern. You will also see further in the code that it does not really matter for our results even in the restricted dataset. You can use <code>car_prod</code> as an example for <code>car_sum</code> where <code>car_sum</code> is simpler.</p>
-<div class="cell" data-hash="assignment_cache/html/abnormal-returns_7e52b843371bc0173d6784ec32a1a989">
+<div class="cell" data-hash="assignment_cache/html/abnormal-returns_8e91ce443b3910dc78967cef78316bb6">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">nrow</span>(earn_ann)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">create_coefs_3factor</span>(N)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -582,7 +582,7 @@ R_{u,k} = \alpha_{t,k} + \beta^{mkt}_{t,k} R_{u,m}
 <h1>Putting it all together</h1>
 <p>The next two code blocks gather the necessary market price and market value information. Next we combine the earning announcement data with the analyst expectations data, the abnormal returns, and the stock price data. Finally, we calculate the earnings surprise scaled by the stock price.</p>
 <p>You can just include this code as is.</p>
-<div class="cell" data-hash="assignment_cache/html/clean-stock-prices_804eb22c1922b0ad03201b7da7617142">
+<div class="cell" data-hash="assignment_cache/html/clean-stock-prices_cb4a55704dc1dc1cdaad6a5131134a0a">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>clean_prices <span class="ot">&lt;-</span> all_stocks <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(prc <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(permno, date, prc, shrout) <span class="sc">%&gt;%</span></span>
@@ -590,23 +590,23 @@ R_{u,k} = \alpha_{t,k} + \beta^{mkt}_{t,k} R_{u,m}
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>shrout) <span class="sc">%&gt;%</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 14,300,084 × 4
+<pre><code># A tibble: 14,333,348 × 4
    permno date         prc market_value
-    &lt;int&gt; &lt;date&gt;     &lt;dbl&gt;        &lt;dbl&gt;
- 1  10002 1994-03-10 13          38987 
- 2  10010 1994-03-10  7.62       71278.
- 3  10011 1994-03-10  7.12       37784.
- 4  10012 1994-03-10  2.38       34630.
- 5  10019 1994-03-10  8.75       45832.
- 6  10025 1994-03-10 18.1       132838.
- 7  10026 1994-03-10 18.2       188723.
- 8  10032 1994-03-10 16.2       104910 
- 9  10035 1994-03-10 18.2       237779.
-10  10042 1994-03-10  3.56       90195.
-# ℹ 14,300,074 more rows</code></pre>
+    &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;        &lt;dbl&gt;
+ 1  10002 1994-03-10  13         38987 
+ 2  10002 1994-03-11  13.8       41236.
+ 3  10002 1994-03-16  13.2       39737.
+ 4  10002 1994-03-22  13.4       40112.
+ 5  10002 1994-03-24  13.1       39362.
+ 6  10002 1994-04-07  12.5       37488.
+ 7  10002 1994-04-15  14         41986 
+ 8  10002 1994-04-18  14         41986 
+ 9  10002 1994-04-22  12.5       37488.
+10  10002 1994-04-28  14         41986 
+# ℹ 14,333,338 more rows</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="assignment_cache/html/merging-everything_8bf94afb6233c86107acd8ba77de3188">
+<div class="cell" data-hash="assignment_cache/html/merging-everything_69911b57c4c845a54473d57e06e0e68e">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>surprise <span class="ot">&lt;-</span> earn_ann <span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(analyst,</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(ticker, anndat, actual, pdf)) <span class="sc">%&gt;%</span></span>
@@ -619,7 +619,7 @@ R_{u,k} = \alpha_{t,k} + \beta^{mkt}_{t,k} R_{u,m}
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(surprise)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The last code block here further cleans the data following the rules set in the paper and as used by me in the <a href="../freaky_friday/abnormal_returns.html">Abnormal returns</a> page. You can just include the code as is.</p>
-<div class="cell" data-hash="assignment_cache/html/data-cleaning_4afad8708ca83658630cc2478f8b8bef">
+<div class="cell" data-hash="assignment_cache/html/data-cleaning_74e14068b090520e44ac48ee2b33b2d9">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>winsorise <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">10000</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>main <span class="ot">&lt;-</span> surprise <span class="sc">%&gt;%</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(surprise)) <span class="sc">%&gt;%</span></span>
@@ -638,7 +638,7 @@ R_{u,k} = \alpha_{t,k} + \beta^{mkt}_{t,k} R_{u,m}
 <section id="descriptive-plot" class="level1">
 <h1>Descriptive Plot</h1>
 <p>The next code block creates the quantiles in the new <code>main</code> dataset so that we can recreate <a href="../freaky_friday/descriptive.html">one of the figures</a>.</p>
-<div class="cell" data-hash="assignment_cache/html/quantiles_e1d5b46c0b6122298fccc721a942f13b">
+<div class="cell" data-hash="assignment_cache/html/quantiles_e3ba74a3883da1855809c517fca7afce">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>quantiles <span class="ot">&lt;-</span> main <span class="sc">%&gt;%</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sign =</span> <span class="fu">case_when</span>(surprise <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"positive"</span>,</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                          surprise <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"negative"</span>,</span>
@@ -655,7 +655,7 @@ R_{u,k} = \alpha_{t,k} + \beta^{mkt}_{t,k} R_{u,m}
 <span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The last part you need to do is to recreate the quick version of <a href="../freaky_friday/descriptive.html#figure-1">Figure 1a in the descriptives page</a></p>
-<div class="cell" data-hash="assignment_cache/html/descriptive-plot_521c6372a18e4d2742a9abcf7aba28b9">
+<div class="cell" data-hash="assignment_cache/html/descriptive-plot_67b0e4b702b787fed1ab67773830bdbe">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(quantiles,</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(...)) <span class="sc">+</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, <span class="at">geom =</span> <span class="st">"errorbar"</span>, <span class="at">width =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
@@ -663,7 +663,7 @@ R_{u,k} = \alpha_{t,k} + \beta^{mkt}_{t,k} R_{u,m}
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_grey</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This is some free code just to demonstrate how easy it is to combine <code>pivot_longer</code> and <code>ggplot</code> to create similar plots for a bunch of similar variables where the variables are originally in different columns.</p>
-<div class="cell" data-hash="assignment_cache/html/all-plots_39217c2e8ac81318e13a8f1fbf5e2b75">
+<div class="cell" data-hash="assignment_cache/html/all-plots_04a01e9824e1b8c8de6316e31ab99e71">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>quantiles <span class="sc">%&gt;%</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(car_sum_short, car_prod_short, car_sum_long, car_prod_long),</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"car"</span>, <span class="at">names_to =</span> <span class="st">"window"</span>) <span class="sc">%&gt;%</span></span>

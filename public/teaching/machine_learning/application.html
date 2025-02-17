@@ -434,14 +434,14 @@ div.csl-indent {
 </section>
 <section id="setup" class="level1">
 <h1>Setup</h1>
-<div class="cell" data-hash="application_cache/html/setup_a4b51f5e9c6cab8d511f78075dfe52e2">
+<div class="cell" data-hash="application_cache/html/setup_a48907665c30f63b650852c4c354d310">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.1
 ✔ purrr     1.0.2     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
@@ -450,13 +450,13 @@ div.csl-indent {
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.2.0 ──
-✔ broom        1.0.7     ✔ rsample      1.2.1
-✔ dials        1.4.0     ✔ tune         1.2.1
-✔ infer        1.0.7     ✔ workflows    1.1.4
-✔ modeldata    1.4.0     ✔ workflowsets 1.1.0
-✔ parsnip      1.3.0     ✔ yardstick    1.3.2
-✔ recipes      1.1.1     
+<pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.0.0 ──
+✔ broom        1.0.4     ✔ rsample      1.1.1
+✔ dials        1.2.0     ✔ tune         1.1.0
+✔ infer        1.0.4     ✔ workflows    1.1.3
+✔ modeldata    1.1.0     ✔ workflowsets 1.0.1
+✔ parsnip      1.0.4     ✔ yardstick    1.1.0
+✔ recipes      1.0.5     
 ── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
 ✖ scales::discard() masks purrr::discard()
 ✖ dplyr::filter()   masks stats::filter()
@@ -464,7 +464,7 @@ div.csl-indent {
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
+• Learn how to get started at https://www.tidymodels.org/start/</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -487,97 +487,85 @@ The following objects are masked from 'package:dplyr':
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">230383</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="application_cache/html/date-parameters_b274b9342762f2f14dd0a700f1207d77">
+<div class="cell" data-hash="application_cache/html/date-parameters_1ba7b048b019f48e7b48a9aec099c749">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>begin <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2003-01-01"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>end <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2005-12-31"</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>earliest <span class="ot">&lt;-</span> <span class="dv">300</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>last <span class="ot">&lt;-</span> <span class="dv">75</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="application_cache/html/data_8fd1d5394e68f46d16e8d4e7c84b46b8">
+<div class="cell" data-hash="application_cache/html/data_8dec3b50f495822cf2cf87826ee6c1d2">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>earn_ann <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"earn_ann.RDS"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(anndat <span class="sc">&gt;=</span> begin, anndat <span class="sc">&lt;=</span> end)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>analyst <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"analyst.RDS"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(anndat <span class="sc">&gt;=</span> begin, anndat <span class="sc">&lt;=</span> end)</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>all_stocks <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"all_stocks.RDS"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">&gt;=</span> begin <span class="sc">-</span> earliest, date <span class="sc">&lt;=</span> end <span class="sc">+</span> last)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>famafrench <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"F-F_Research_Data_Factors_daily.csv"</span>),</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"date"</span>, <span class="st">"mkt_rf"</span>, <span class="st">"smb"</span>, <span class="st">"hml"</span>, <span class="st">"rf"</span>),</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">skip =</span> <span class="dv">5</span>, <span class="at">col_type =</span> <span class="st">"ddddd"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">ymd</span>(date)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.numeric, <span class="sc">~</span> . <span class="sc">/</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mkt =</span> mkt_rf <span class="sc">+</span> rf) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
-e.g.:
-  dat &lt;- vroom(...)
-  problems(dat)</code></pre>
-</div>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">&gt;=</span> begin <span class="sc">-</span> earliest, date <span class="sc">&lt;=</span> end <span class="sc">+</span> last)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="similar-firms" class="level1">
 <h1>Similar Firms</h1>
 <p>Maybe surprisingly <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> one of the biggest issue is to construct the data in a way that we can use them efficiently. There are two issues that we will have to deal with: (1) who are the peer firms and (2) how to handle the fact that not every firm has the same amount of peers. I start with the first problem here.</p>
-<div class="cell" data-hash="application_cache/html/wrds_8406491e86e1ebf6c7ce1e290990e0a0">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>wrds <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">Postgres</span>(),</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">port=</span><span class="dv">9737</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">dbname=</span><span class="st">'wrds'</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">user=</span><span class="st">'stimas'</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sslmode=</span><span class="st">'require'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="application_cache/html/wrds_0c9061d40ce79d4fad4001b3405f41a1">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>wrds <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">Postgres</span>(),</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">port=</span><span class="dv">9737</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">dbname=</span><span class="st">'wrds'</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">user=</span><span class="st">'stimas'</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sslmode=</span><span class="st">'require'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>I will roughly follow the approach in <span class="citation" data-cites="baker2020">Baker and Gelbach (<a href="#ref-baker2020" role="doc-biblioref">2020</a>)</span> and use the <a href="https://wrds-www.wharton.upenn.edu/pages/support/support-articles/compustat/north-america/compfunda-tables-unable-access-sic-and-naics-variables/">SIC industry</a> classification codes. We require at least 5 peer firms within the same 4 digit SIC category or if necessary within the same 3 digit category.</p>
 <p>The first part of the code below downloads the SIC data from WRDS if the <code>dbplyr</code> data is loaded. For that you need to know in which part of WRDS the data is stored. See the documentation for the <a href="https://wrds-www.wharton.upenn.edu/pages/support/support-articles/compustat/north-america/compfunda-tables-unable-access-sic-and-naics-variables/">SIC codes</a>. We can then use <code>tidyverse</code> functions to specify the query after which the <code>collect</code> function will actually run the query on the servers of WRDS.</p>
 <p>The next part of the code summarises the industry SIC codes so that each 4 digit or 3 digit industry has enough peers for our purpose. The last part than sets the appropriate SIC code each company so that we can match them to firms in the same industry (with the same SIC) later.</p>
-<div class="cell" data-hash="application_cache/html/industries_a77e9a0154351a913352f4bba0ec91ae">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>minimum_peers <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>gvkeys <span class="ot">&lt;-</span> <span class="fu">unique</span>(earn_ann<span class="sc">$</span>gvkey)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>compu_sic <span class="ot">&lt;-</span> <span class="fu">tbl</span>(wrds, <span class="fu">in_schema</span>(<span class="st">"comp"</span>, <span class="st">"company"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gvkey <span class="sc">%in%</span> gvkeys) <span class="sc">%&gt;%</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, sic) <span class="sc">%&gt;%</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>industries <span class="ot">&lt;-</span> <span class="fu">summarise</span>(compu_sic, <span class="at">N =</span> <span class="fu">n</span>(), <span class="at">.by =</span> sic) <span class="sc">%&gt;%</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">four_sic =</span> <span class="fu">if_else</span>(N <span class="sc">&gt;=</span> minimum_peers, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sic =</span> <span class="fu">if_else</span>(four_sic, sic, <span class="fu">str_sub</span>(sic, <span class="dv">1</span>,<span class="dv">3</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">sum</span>(N), <span class="at">.by =</span> <span class="fu">c</span>(sic, four_sic)) <span class="sc">%&gt;%</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(N <span class="sc">&gt;=</span> minimum_peers) <span class="sc">%&gt;%</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(sic)</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>compu_sic_new <span class="ot">&lt;-</span> compu_sic <span class="sc">%&gt;%</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sic_new =</span> <span class="fu">if_else</span>(sic <span class="sc">%in%</span> industries, sic,</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">str_sub</span>(sic, <span class="dv">1</span>, <span class="dv">3</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, sic_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="application_cache/html/industries_e3aec95708b5fe0907e1a5b39602cadf">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>minimum_peers <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>gvkeys <span class="ot">&lt;-</span> <span class="fu">unique</span>(earn_ann<span class="sc">$</span>gvkey)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>compu_sic <span class="ot">&lt;-</span> <span class="fu">tbl</span>(wrds, <span class="fu">in_schema</span>(<span class="st">"comp"</span>, <span class="st">"company"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gvkey <span class="sc">%in%</span> gvkeys) <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, sic) <span class="sc">%&gt;%</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>industries <span class="ot">&lt;-</span> <span class="fu">summarise</span>(compu_sic, <span class="at">N =</span> <span class="fu">n</span>(), <span class="at">.by =</span> sic) <span class="sc">%&gt;%</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">four_sic =</span> <span class="fu">if_else</span>(N <span class="sc">&gt;=</span> minimum_peers, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sic =</span> <span class="fu">if_else</span>(four_sic, sic, <span class="fu">str_sub</span>(sic, <span class="dv">1</span>,<span class="dv">3</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">sum</span>(N), <span class="at">.by =</span> <span class="fu">c</span>(sic, four_sic)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(N <span class="sc">&gt;=</span> minimum_peers) <span class="sc">%&gt;%</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(sic)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>compu_sic_new <span class="ot">&lt;-</span> compu_sic <span class="sc">%&gt;%</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sic_new =</span> <span class="fu">if_else</span>(sic <span class="sc">%in%</span> industries, sic,</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">str_sub</span>(sic, <span class="dv">1</span>, <span class="dv">3</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, sic_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="application_cache/html/linking-table_4891be98e1f8866e10875e3811a1c27b">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>linking_table <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"linking_table.RDS"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, permno, start_date, end_date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="application_cache/html/linking-table_20658180332dda13bed670ab8984c566">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>linking_table <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"linking_table.RDS"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, permno, start_date, end_date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="combining-the-stocks" class="level1">
 <h1>Combining the stocks</h1>
 <p>In the next step, I create a function that will get the returns for a firm based on their permno (<code>permno_y</code>) and the <code>permnos</code> of all firms in the same industry as the firm from <code>earliest</code> (300) to <code>latest</code> (75) days before the announcement day. The <code>pivot_wider</code> code takes the long column of all returns and makes it into a wide format with one column for each firm. The last step in the function changes the name of the column with the return of the focal firm to <code>return</code>. This will make it easier to later specify the dependent variable.</p>
-<div class="cell" data-hash="application_cache/html/get-return_daf882bad8e70e317cd67e3871f3f4a6">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>returns <span class="ot">&lt;-</span> <span class="fu">select</span>(all_stocks, date, ret, permno)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>anndat <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2005-03-28"</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>permno <span class="ot">&lt;-</span> <span class="dv">10560</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>permnos <span class="ot">&lt;-</span> <span class="fu">head</span>(linking_table<span class="sc">$</span>permno)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>get_returns <span class="ot">&lt;-</span> <span class="cf">function</span>(anndat, permno_y, permnos){</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  begin <span class="ot">&lt;-</span> anndat <span class="sc">-</span> earliest</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  end <span class="ot">&lt;-</span> anndat <span class="sc">-</span> last</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> returns <span class="sc">%&gt;%</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(permno <span class="sc">%in%</span> permnos, date <span class="sc">&gt;=</span> begin, date <span class="sc">&lt;=</span> end) <span class="sc">%&gt;%</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ret)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">values_from =</span> ret, <span class="at">id_cols =</span> date, <span class="at">names_from =</span> permno) <span class="sc">%&gt;%</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">day =</span> date <span class="sc">-</span> anndat) <span class="sc">%&gt;%</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>date) <span class="sc">%&gt;%</span></span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(day)</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  vars <span class="ot">&lt;-</span> <span class="fu">names</span>(data)</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(data) <span class="ot">&lt;-</span> <span class="fu">if_else</span>(vars <span class="sc">==</span> <span class="fu">as.character</span>(permno_y),</span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"return"</span>, vars)</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="fu">get_returns</span>(anndat, permnos[<span class="dv">3</span>], permnos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="application_cache/html/get-return_e1127243722cad7e6a62362dd776157b">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>returns <span class="ot">&lt;-</span> <span class="fu">select</span>(all_stocks, date, ret, permno)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>anndat <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2005-03-28"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>permno <span class="ot">&lt;-</span> <span class="dv">10560</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>permnos <span class="ot">&lt;-</span> <span class="fu">head</span>(linking_table<span class="sc">$</span>permno)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>get_returns <span class="ot">&lt;-</span> <span class="cf">function</span>(anndat, permno_y, permnos){</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  begin <span class="ot">&lt;-</span> anndat <span class="sc">-</span> earliest</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  end <span class="ot">&lt;-</span> anndat <span class="sc">-</span> last</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> returns <span class="sc">%&gt;%</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(permno <span class="sc">%in%</span> permnos, date <span class="sc">&gt;=</span> begin, date <span class="sc">&lt;=</span> end) <span class="sc">%&gt;%</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ret)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">values_from =</span> ret, <span class="at">id_cols =</span> date, <span class="at">names_from =</span> permno) <span class="sc">%&gt;%</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">day =</span> date <span class="sc">-</span> anndat) <span class="sc">%&gt;%</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>date) <span class="sc">%&gt;%</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(day)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  vars <span class="ot">&lt;-</span> <span class="fu">names</span>(data)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(data) <span class="ot">&lt;-</span> <span class="fu">if_else</span>(vars <span class="sc">==</span> <span class="fu">as.character</span>(permno_y),</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"return"</span>, vars)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="fu">get_returns</span>(anndat, permnos[<span class="dv">3</span>], permnos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 157 × 3
     `50906`   return day      
@@ -594,16 +582,16 @@ e.g.:
 10  0.0157   0.00501 -286 days
 # ℹ 147 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">get_returns</span>(anndat, permnos[<span class="dv">3</span>], permnos),</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">times =</span> <span class="dv">10</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">get_returns</span>(anndat, permnos[<span class="dv">3</span>], permnos),</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">times =</span> <span class="dv">10</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: milliseconds
                                      expr      min       lq     mean   median
- get_returns(anndat, permnos[3], permnos) 149.1958 189.3831 204.5015 205.6286
+ get_returns(anndat, permnos[3], permnos) 109.6705 156.1715 161.4139 160.0205
        uq      max neval
- 211.1864 285.0692    10</code></pre>
+ 166.0488 221.3099    10</code></pre>
 </div>
 </div>
 </section>
@@ -611,39 +599,39 @@ e.g.:
 <h1>Combining it all</h1>
 <p>In the next step, we will collect the peers data for <code>N_announce</code> (1000) earnings announcements. I use the <code>furrr</code> package which allows us to run some of the computations in parallel with the <code>future_pmap</code> function which is the parallel version of <code>pmap</code>. If you have a computer with multiple cores this will drastically speed up the computations in this code block.</p>
 <p>Most of the initial steps are just joining the earnings announcement data, with the SIC data, and the linking table with some cleaning steps for missing data in between. We add the SIC codes twice. The first time we add the SIC code that for each firm based on the <code>gvkey</code>. The second time we add each <code>gvkey</code> as a <code>gvkey_peer</code> when they are in the same SIC code. Next, we use the <code>linking_table</code> to add the <code>permno_peer</code>. Finally, we summarise the table so that all the peers are in one list for each earnings announcement. This than enables us to get the returns of the peers in the mutate step after we made sure that there are enough peers available. The final data has a <code>data</code> column with all the return data for the focal company and its peers. This is how we deal with the issue that there might be a different number of peers for difference firms. We have one row for each firm with a variable <code>data</code> that contains all the return data necessary for the prediction for each announcement.</p>
-<div class="cell" data-hash="application_cache/html/construct-the-data_a31a8bbf763014beac26f5b8c8bfe22c">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(furrr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="application_cache/html/construct-the-data_03700b946748630d3ba9ac69e656baf1">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(furrr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: future</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>N_announce <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>cores <span class="ot">&lt;-</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>()</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>tictoc<span class="sc">::</span><span class="fu">tic</span>()</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> cores <span class="sc">-</span> <span class="dv">2</span>)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>peers <span class="ot">&lt;-</span> earn_ann <span class="sc">%&gt;%</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(N_announce) <span class="sc">%&gt;%</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(compu_sic_new, <span class="at">by =</span> <span class="fu">join_by</span>(gvkey)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sic_new)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(compu_sic_new, <span class="at">by =</span> <span class="fu">join_by</span>(sic_new),</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">relationship =</span> <span class="st">"many-to-many"</span>,</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"_peer"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(linking_table,</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(gvkey_peer <span class="sc">==</span> gvkey,</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">between</span>(anndat, start_date, end_date)),</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"_peer"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(permno_peer)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, permno, anndat, permno_peer) <span class="sc">%&gt;%</span></span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(.) <span class="sc">%&gt;%</span></span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">permnos =</span> <span class="fu">list</span>(permno_peer),</span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(gvkey, permno, anndat)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N =</span> <span class="fu">map_dbl</span>(permnos, <span class="sc">~</span> <span class="fu">length</span>(.x))) <span class="sc">%&gt;%</span></span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(N <span class="sc">&gt;</span> minimum_peers) <span class="sc">%&gt;%</span></span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data =</span> <span class="fu">future_pmap</span>(<span class="fu">list</span>(anndat, permno, permnos),</span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>                            <span class="sc">~</span> <span class="fu">get_returns</span>(..<span class="dv">1</span>, ..<span class="dv">2</span>, ..<span class="dv">3</span>),</span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.progress =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span>
-<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>tictoc<span class="sc">::</span><span class="fu">toc</span>()</span>
-<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(peers, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"machine_learning"</span>, <span class="st">"peers.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>N_announce <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>cores <span class="ot">&lt;-</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>()</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>tictoc<span class="sc">::</span><span class="fu">tic</span>()</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> cores <span class="sc">-</span> <span class="dv">2</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>peers <span class="ot">&lt;-</span> earn_ann <span class="sc">%&gt;%</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(N_announce) <span class="sc">%&gt;%</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(compu_sic_new, <span class="at">by =</span> <span class="fu">join_by</span>(gvkey)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sic_new)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(compu_sic_new, <span class="at">by =</span> <span class="fu">join_by</span>(sic_new),</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">relationship =</span> <span class="st">"many-to-many"</span>,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"_peer"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(linking_table,</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(gvkey_peer <span class="sc">==</span> gvkey,</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">between</span>(anndat, start_date, end_date)),</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"_peer"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(permno_peer)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, permno, anndat, permno_peer) <span class="sc">%&gt;%</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(.) <span class="sc">%&gt;%</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">permnos =</span> <span class="fu">list</span>(permno_peer),</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(gvkey, permno, anndat)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N =</span> <span class="fu">map_dbl</span>(permnos, <span class="sc">~</span> <span class="fu">length</span>(.x))) <span class="sc">%&gt;%</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(N <span class="sc">&gt;</span> minimum_peers) <span class="sc">%&gt;%</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data =</span> <span class="fu">future_pmap</span>(<span class="fu">list</span>(anndat, permno, permnos),</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>                            <span class="sc">~</span> <span class="fu">get_returns</span>(..<span class="dv">1</span>, ..<span class="dv">2</span>, ..<span class="dv">3</span>),</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>                     <span class="at">.progress =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>tictoc<span class="sc">::</span><span class="fu">toc</span>()</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(peers, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"machine_learning"</span>, <span class="st">"peers.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="running-a-model" class="level1">
@@ -652,10 +640,10 @@ e.g.:
 <section id="get-some-data" class="level2">
 <h2 class="anchored" data-anchor-id="get-some-data">Get Some Data</h2>
 <p>We are going to use some example data from one earnings announcement and we are going to use data from an earnings announcement where the firm has a lot of peers because in that situation prediction is more likely to suffer from overfitting. The <code>data_ml</code> data excludes all peers with missing observations because most of the algorithms do not deal well with missing values. There are more sophisticated approaches possible to deal with missing data but they are not necessary to illustrate the main workflow.</p>
-<div class="cell" data-hash="application_cache/html/example-data_142afcdd295a8da24c71a2ed12bd535d">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>peers <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"machine_learning"</span>, <span class="st">"peers.RDS"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(N <span class="sc">==</span> <span class="fu">max</span>(N))</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(peers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="application_cache/html/example-data_d5611b8205819a6ca455dc036bb4a817">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>peers <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"machine_learning"</span>, <span class="st">"peers.RDS"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(N <span class="sc">==</span> <span class="fu">max</span>(N))</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(peers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 4
 Columns: 6
@@ -663,165 +651,165 @@ $ gvkey   &lt;chr&gt; "063799", "063799", "063799", "017208"
 $ permno  &lt;dbl&gt; 84058, 84058, 84058, 83729
 $ anndat  &lt;date&gt; 2003-01-23, 2003-04-22, 2003-07-24, 2003-04-18
 $ permnos &lt;list&gt; &lt;62770, 65138, 20694, 85073, 22032, 86685, 23916, 35167, 36469…
-$ N       &lt;dbl&gt; 205, 205, 205, 205
-$ data    &lt;list&gt; [&lt;tbl_df[157 x 204]&gt;], [&lt;tbl_df[156 x 205]&gt;], [&lt;tbl_df[155 x 2…</code></pre>
+$ N       &lt;dbl&gt; 200, 200, 200, 200
+$ data    &lt;list&gt; [&lt;tbl_df[157 x 199]&gt;], [&lt;tbl_df[156 x 200]&gt;], [&lt;tbl_df[155 x 2…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data_ml <span class="ot">&lt;-</span> <span class="fu">pull</span>(peers, data)[[<span class="dv">2</span>]] <span class="sc">%&gt;%</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~!</span><span class="fu">any</span>(<span class="fu">is.na</span>(.)))</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data_ml)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>data_ml <span class="ot">&lt;-</span> <span class="fu">pull</span>(peers, data)[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~!</span><span class="fu">any</span>(<span class="fu">is.na</span>(.)))</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data_ml)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 156 × 197
-     `10002`  `10304`  `10562`  `10563`  `10623`  `10725`  `10825`   `10906`
-       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
- 1 -0.00833   0.00834  0.00277  0.0419  -0.0238  -0.0175  -0.00705 -0.00885 
- 2  0.00840   0.00953 -0.0138   0.0618   0.0251   0.0181   0.0516   0.00427 
- 3  0.0125   -0.00125  0.0455  -0.0702   0.0204   0.0202   0.00805  0.00541 
- 4 -0.0123   -0.00993 -0.0288   0.0708  -0.016   -0.0128   0.00585  0.00461 
- 5  0.0104   -0.00174 -0.0289  -0.00318 -0.0351   0.00854 -0.0311  -0.0172  
- 6 -0.0309   -0.0175  -0.0206   0       -0.00996 -0.0172  -0.0256  -0.0214  
- 7  0.0434    0.0147   0.0340   0.00121 -0.00193  0.0297   0.0211   0.0346  
- 8 -0.0334    0.00131  0.0007   0.00833  0.00194  0.00606  0.0382  -0.000769
- 9 -0.000084 -0.0153  -0.00980 -0.0170  -0.0251  -0.0244  -0.0239  -0.0189  
-10  0.0328   -0.00400 -0.0389   0.00764 -0.0401  -0.0276  -0.0191  -0.0314  
-# ℹ 146 more rows
-# ℹ 189 more variables: `10913` &lt;dbl&gt;, `10916` &lt;dbl&gt;, `11216` &lt;dbl&gt;,
-#   `11348` &lt;dbl&gt;, `11389` &lt;dbl&gt;, `11634` &lt;dbl&gt;, `11786` &lt;dbl&gt;, `11808` &lt;dbl&gt;,
-#   `11823` &lt;dbl&gt;, `12166` &lt;dbl&gt;, `16644` &lt;dbl&gt;, `20694` &lt;dbl&gt;, `22032` &lt;dbl&gt;,
-#   `23326` &lt;dbl&gt;, `23916` &lt;dbl&gt;, `24628` &lt;dbl&gt;, `27254` &lt;dbl&gt;, `35167` &lt;dbl&gt;,
-#   `35503` &lt;dbl&gt;, `35829` &lt;dbl&gt;, `35917` &lt;dbl&gt;, `36469` &lt;dbl&gt;, `39766` &lt;dbl&gt;,
-#   `41807` &lt;dbl&gt;, `44688` &lt;dbl&gt;, `47159` &lt;dbl&gt;, `52265` &lt;dbl&gt;, …</code></pre>
+<pre><code># A tibble: 157 × 193
+    `10002`  `10304`  `10562`  `10563`  `10588`   `10623`  `10725`  `10825`
+      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+ 1  0.0508  -0.00128  0.00498  0.00394 -0.00187 -0.0106    0.00609 -0.0147 
+ 2  0        0.00511  0.00142  0        0.00900  0         0.00700 -0.00199
+ 3  0.0242  -0.00551  0.00566 -0.0196   0.00747 -0.00392  -0.00474  0.0115 
+ 4  0.0142   0.00469  0.00141  0.0299   0.0221   0.000357  0.0133   0.00296
+ 5  0.0349  -0.00551  0.00351  0        0.0227   0.025     0.0282  -0.00246
+ 6  0.00674  0.0128  -0.00210 -0.0275   0.0113   0.0157    0.0146   0.0173 
+ 7  0.0179  -0.0105   0.00421  0.00806  0.0192   0.0257    0.0231   0.0155 
+ 8  0.0263   0.0195   0.0216   0.016    0.0137   0.00836   0.0349   0.00382
+ 9  0.0231  -0.0187  -0.0219   0        0.0287  -0.00166  -0.0182   0.00429
+10 -0.0141   0.0187   0.0238   0.0331   0.00952  0.0498    0.0142   0.0491 
+# ℹ 147 more rows
+# ℹ 185 more variables: `10906` &lt;dbl&gt;, `10913` &lt;dbl&gt;, `10916` &lt;dbl&gt;,
+#   `11216` &lt;dbl&gt;, `11348` &lt;dbl&gt;, `11389` &lt;dbl&gt;, `11634` &lt;dbl&gt;, `11808` &lt;dbl&gt;,
+#   `11823` &lt;dbl&gt;, `16644` &lt;dbl&gt;, `20694` &lt;dbl&gt;, `22032` &lt;dbl&gt;, `23326` &lt;dbl&gt;,
+#   `23916` &lt;dbl&gt;, `24628` &lt;dbl&gt;, `27254` &lt;dbl&gt;, `35167` &lt;dbl&gt;, `35503` &lt;dbl&gt;,
+#   `35829` &lt;dbl&gt;, `35917` &lt;dbl&gt;, `36469` &lt;dbl&gt;, `39766` &lt;dbl&gt;, `41807` &lt;dbl&gt;,
+#   `44688` &lt;dbl&gt;, `47159` &lt;dbl&gt;, `52265` &lt;dbl&gt;, `52840` &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 </section>
 <section id="linear-model" class="level2">
 <h2 class="anchored" data-anchor-id="linear-model">Linear model</h2>
 <p>We first going to run a traditional linear model within the <a href="https://www.tidymodels.org/start/"><code>tidymodels</code></a> framework. The approach is overkill for just running a linear model but it will help us to build up the full workflow. In the code, I first split the data in a proportion <span class="math inline">\(\frac{N-20}{N}\)</span> of training data and a proportion <span class="math inline">\(\frac{20}{N}\)</span> of test data, where <span class="math inline">\(N\)</span> is the number of days of data available. As a result, we will use the training data to determine the parameters and than use that model to predict the last 20 days as test data. Next, we set which type of model we want to use, a linear model. We than fit the model where we specify the return variable as the outcome variable and we use the dot <code>.</code> to indicate that we want to use all the other variables as predictors. Finally, the <code>tidy</code> function gives the estimates and statistics for the estimates in a format that works with the <code>tidyverse</code>.</p>
-<div class="cell" data-hash="application_cache/html/tidy-lm_25c5ac4d7b86bffa0185c5d161f117bd">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">nrow</span>(data_ml)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>data_split <span class="ot">&lt;-</span> <span class="fu">initial_time_split</span>(data_ml, <span class="at">prop =</span> (N <span class="sc">-</span> <span class="dv">20</span>)<span class="sc">/</span>N)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">training</span>(data_split)</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">testing</span>(data_split)</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>lm_mod <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>()</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>lm_fit <span class="ot">&lt;-</span> lm_mod <span class="sc">%&gt;%</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(return <span class="sc">~</span> ., <span class="at">data =</span> train)</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lm_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="application_cache/html/tidy-lm_f19402a36e5df2dcc1f5069f5283e9ec">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">nrow</span>(data_ml)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>data_split <span class="ot">&lt;-</span> <span class="fu">initial_time_split</span>(data_ml, <span class="at">prop =</span> (N <span class="sc">-</span> <span class="dv">20</span>)<span class="sc">/</span>N)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">training</span>(data_split)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">testing</span>(data_split)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>lm_mod <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>()</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>lm_fit <span class="ot">&lt;-</span> lm_mod <span class="sc">%&gt;%</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(return <span class="sc">~</span> ., <span class="at">data =</span> train)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lm_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 197 × 5
-   term        estimate std.error statistic p.value
-   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
- 1 (Intercept)   0.0262       NaN       NaN     NaN
- 2 `10002`      -0.835        NaN       NaN     NaN
- 3 `10304`      -4.40         NaN       NaN     NaN
- 4 `10562`      -1.04         NaN       NaN     NaN
- 5 `10563`       0.257        NaN       NaN     NaN
- 6 `10623`      -0.675        NaN       NaN     NaN
- 7 `10725`      -1.82         NaN       NaN     NaN
- 8 `10825`      -0.741        NaN       NaN     NaN
- 9 `10906`      -0.890        NaN       NaN     NaN
-10 `10913`      -2.26         NaN       NaN     NaN
-# ℹ 187 more rows</code></pre>
+<pre><code># A tibble: 193 × 5
+   term         estimate std.error statistic p.value
+   &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+ 1 (Intercept)  -0.00257       NaN       NaN     NaN
+ 2 `10002`       2.23          NaN       NaN     NaN
+ 3 `10304`     -21.6           NaN       NaN     NaN
+ 4 `10562`      -5.43          NaN       NaN     NaN
+ 5 `10563`      -2.23          NaN       NaN     NaN
+ 6 `10588`      -5.37          NaN       NaN     NaN
+ 7 `10623`       1.65          NaN       NaN     NaN
+ 8 `10725`       5.77          NaN       NaN     NaN
+ 9 `10825`      -5.45          NaN       NaN     NaN
+10 `10906`       9.65          NaN       NaN     NaN
+# ℹ 183 more rows</code></pre>
 </div>
 </div>
 <p>You can immediately see that the model does not report any standard errors or p-values. This happens because we have more predictors than we have trading days and thus we can perfectly fit the in-sample returns. This type of data is exactly why would want to use a regularised regression approach.</p>
 <p>Before we do that, we need to fix another issue. In the previous code, we used the day variable as a predictor which was not what we intended. You can see that we can get an estimate for <code>day</code> in the code below. Also notice the advantage of using <code>tidy</code> representation of the estimated coefficients is that we can use <code>filter</code> to focus on some terms. To solve the issue with the <code>day</code> variable, we will use a recipe to set the formula and do some data cleaning. Specifically, we will specify that the day variable is an <code>ID</code> variable which means that it should not be used for prediction but we want to keep it in the data for investigating the fit later.</p>
-<div class="cell" data-hash="application_cache/html/preprocess_2d17419b65afe2d5c42e2455a7b328fc">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lm_fit) <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"day"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="application_cache/html/preprocess_83f93e3282381a3a9f79f26117e30c30">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lm_fit) <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"day"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 5
   term  estimate std.error statistic p.value
   &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
 1 day         NA        NA        NA      NA</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>lm_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(return <span class="sc">~</span> ., <span class="at">data =</span> train) <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">update_role</span>(day, <span class="at">new_role =</span> <span class="st">"ID"</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_recipe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>lm_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(return <span class="sc">~</span> ., <span class="at">data =</span> train) <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">update_role</span>(day, <span class="at">new_role =</span> <span class="st">"ID"</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_recipe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 197 × 4
+<pre><code># A tibble: 193 × 4
    variable type      role      source  
    &lt;chr&gt;    &lt;list&gt;    &lt;chr&gt;     &lt;chr&gt;   
  1 10002    &lt;chr [2]&gt; predictor original
  2 10304    &lt;chr [2]&gt; predictor original
  3 10562    &lt;chr [2]&gt; predictor original
  4 10563    &lt;chr [2]&gt; predictor original
- 5 10623    &lt;chr [2]&gt; predictor original
- 6 10725    &lt;chr [2]&gt; predictor original
- 7 10825    &lt;chr [2]&gt; predictor original
- 8 10906    &lt;chr [2]&gt; predictor original
- 9 10913    &lt;chr [2]&gt; predictor original
-10 10916    &lt;chr [2]&gt; predictor original
-# ℹ 187 more rows</code></pre>
+ 5 10588    &lt;chr [2]&gt; predictor original
+ 6 10623    &lt;chr [2]&gt; predictor original
+ 7 10725    &lt;chr [2]&gt; predictor original
+ 8 10825    &lt;chr [2]&gt; predictor original
+ 9 10906    &lt;chr [2]&gt; predictor original
+10 10913    &lt;chr [2]&gt; predictor original
+# ℹ 183 more rows</code></pre>
 </div>
 </div>
 <p>Let’s put everything together in a workflow, fit the workflow and make predictions for the <code>test</code> data.</p>
-<div class="cell" data-hash="application_cache/html/workflow_b4a4d308026769111bc366bf2e8d8063">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>lm_workflow <span class="ot">&lt;-</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lm_mod) <span class="sc">%&gt;%</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(lm_recipe)</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>lm_fit <span class="ot">&lt;-</span> lm_workflow <span class="sc">%&gt;%</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(<span class="at">data =</span> train)</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit, test, <span class="at">type =</span> <span class="st">"numeric"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="application_cache/html/workflow_880a2d0a2c97d8cbeb000e3552ef46d1">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>lm_workflow <span class="ot">&lt;-</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lm_mod) <span class="sc">%&gt;%</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(lm_recipe)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>lm_fit <span class="ot">&lt;-</span> lm_workflow <span class="sc">%&gt;%</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(<span class="at">data =</span> train)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit, test, <span class="at">type =</span> <span class="st">"numeric"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in predict.lm(object = object$fit, newdata = new_data, type =
-"response", : prediction from rank-deficient fit; consider predict(.,
-rankdeficient="NA")</code></pre>
+"response"): prediction from a rank-deficient fit may be misleading</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(preds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(preds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 20
 Columns: 1
-$ .pred &lt;dbl&gt; 0.102856848, 0.362524760, -0.048175106, 0.026010177, 0.447156352…</code></pre>
+$ .pred &lt;dbl&gt; -1.0978031, -0.8385601, 2.2026579, -1.1725332, -0.4099225, 0.490…</code></pre>
 </div>
 </div>
 <p>The predictions give us 20 predictions for the days. We can also calculate the RMSE for the training data (in-sample fit) and the test data (out-of-sample fit).</p>
-<div class="cell" data-hash="application_cache/html/prediction_b3b9123c05727c743f7b84273389ff42">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(lm_fit, train) <span class="sc">%&gt;%</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmse</span>(return, .pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="application_cache/html/prediction_a073f3678829dc95ef73aacd06dfd1dd">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(lm_fit, train) <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmse</span>(return, .pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in predict.lm(object = object$fit, newdata = new_data, type =
-"response", : prediction from rank-deficient fit; consider predict(.,
-rankdeficient="NA")</code></pre>
+"response"): prediction from a rank-deficient fit may be misleading</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   .metric .estimator .estimate
   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
-1 rmse    standard    3.43e-16</code></pre>
+1 rmse    standard    8.83e-16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(lm_fit, test) <span class="sc">%&gt;%</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmse</span>(return, .pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(lm_fit, test) <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmse</span>(return, .pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in predict.lm(object = object$fit, newdata = new_data, type =
-"response", : prediction from rank-deficient fit; consider predict(.,
-rankdeficient="NA")</code></pre>
+"response"): prediction from a rank-deficient fit may be misleading</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   .metric .estimator .estimate
   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
-1 rmse    standard       0.288</code></pre>
+1 rmse    standard        1.47</code></pre>
 </div>
 </div>
-<p>While the RMSE is almost 0 within the sample, it’s 0.37 out-of-sample. That is, there is a large difference between the prediction error within the training data and the prediction error in the test data. This is the reason why we want to use a regularised regression to do out-of-sample predictions <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>While the RMSE is almost 0 within the sample, it’s 1.47 out-of-sample. That is, there is a large difference between the prediction error within the training data and the prediction error in the test data. This is the reason why we want to use a regularised regression to do out-of-sample predictions <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 </section>
 <section id="elastic-net" class="level2">
 <h2 class="anchored" data-anchor-id="elastic-net">Elastic Net</h2>
 <p>In this section, we are going to run the regularised regression as described in <a href="../machine_learning/theory.html">the theory</a>. We will center and scale the data so that all returns have a mean of 0 and a standard deviation of 1. Remember that the penalty term punishes coefficients that are higher, however the size of the coefficient also depends on the variation in the variable. To put all the coefficients on equal footing, we scale them first.</p>
 <p>We will set the penalty <span class="math inline">\(\lambda = .01\)</span> and the mixture proportion <span class="math inline">\(\alpha = 0.5\)</span> in the elastic net. We will need to install the <code>glmnet</code> package because that is the engine we use in our linear regression model. As before, we can put the updated data cleaning and the linear model in a new workflow and fit the model. Finally, we report the in-sample and out-of-sample RMSE.</p>
-<div class="cell" data-hash="application_cache/html/elastic-net_bd697084478ced772a68c69baf456fb8">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>net_recipe <span class="ot">&lt;-</span> lm_recipe <span class="sc">%&gt;%</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_center</span>(<span class="fu">all_predictors</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_scale</span>(<span class="fu">all_predictors</span>())</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>net_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>(<span class="at">penalty =</span> .<span class="dv">01</span>, <span class="at">mixture =</span> <span class="fl">0.5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>net_workflow <span class="ot">&lt;-</span></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(net_model) <span class="sc">%&gt;%</span></span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(net_recipe)</span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>net_fit <span class="ot">&lt;-</span> net_workflow <span class="sc">%&gt;%</span></span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(<span class="at">data =</span> train)</span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(net_fit) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(estimate <span class="sc">!=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="application_cache/html/elastic-net_bce98181c620579bf66e3497d54bde14">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>net_recipe <span class="ot">&lt;-</span> lm_recipe <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_center</span>(<span class="fu">all_predictors</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_scale</span>(<span class="fu">all_predictors</span>())</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>net_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>(<span class="at">penalty =</span> .<span class="dv">01</span>, <span class="at">mixture =</span> <span class="fl">0.5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>net_workflow <span class="ot">&lt;-</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(net_model) <span class="sc">%&gt;%</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(net_recipe)</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>net_fit <span class="ot">&lt;-</span> net_workflow <span class="sc">%&gt;%</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(<span class="at">data =</span> train)</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(net_fit) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(estimate <span class="sc">!=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: Matrix</code></pre>
+</div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'Matrix'</code></pre>
@@ -832,45 +820,41 @@ Attaching package: 'Matrix'</code></pre>
     expand, pack, unpack</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Loaded glmnet 4.1-8</code></pre>
+<pre><code>Loaded glmnet 4.1-7</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 7 × 3
+<pre><code># A tibble: 3 × 3
   term          estimate penalty
   &lt;chr&gt;            &lt;dbl&gt;   &lt;dbl&gt;
-1 (Intercept) -0.000872     0.01
-2 11786        0.00142      0.01
-3 35917        0.0000114    0.01
-4 82512        0.000297     0.01
-5 82584        0.0000342    0.01
-6 84578        0.00105      0.01
-7 85857        0.000391     0.01</code></pre>
+1 (Intercept) -0.000102     0.01
+2 76733        0.000169     0.01
+3 87218        0.0000706    0.01</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(net_fit, test, <span class="at">type =</span> <span class="st">"numeric"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 1
         .pred
         &lt;dbl&gt;
- 1  0.000307 
- 2 -0.00123  
- 3 -0.000273 
- 4  0.000185 
- 5 -0.00152  
- 6 -0.00149  
- 7  0.000497 
- 8 -0.00190  
- 9 -0.00221  
-10 -0.0000420
-11 -0.000492 
-12 -0.00236  
-13  0.00111  
-14 -0.00134  
-15 -0.00177  
-16 -0.000637 
-17 -0.00125  
-18 -0.00102  
-19  0.00157  
-20  0.00149  </code></pre>
+ 1  0.000138 
+ 2  0.000145 
+ 3 -0.000432 
+ 4  0.0000165
+ 5 -0.0000674
+ 6 -0.000210 
+ 7 -0.000243 
+ 8 -0.0000165
+ 9 -0.000350 
+10  0.000184 
+11 -0.000350 
+12  0.000175 
+13 -0.000147 
+14 -0.000223 
+15  0.000234 
+16 -0.000164 
+17 -0.0000728
+18 -0.000120 
+19 -0.000269 
+20 -0.000194 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(net_fit, train) <span class="sc">%&gt;%</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmse</span>(return, .pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -878,7 +862,7 @@ Attaching package: 'Matrix'</code></pre>
 <pre><code># A tibble: 1 × 3
   .metric .estimator .estimate
   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
-1 rmse    standard      0.0233</code></pre>
+1 rmse    standard      0.0241</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(net_fit, test) <span class="sc">%&gt;%</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmse</span>(return, .pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -886,7 +870,7 @@ Attaching package: 'Matrix'</code></pre>
 <pre><code># A tibble: 1 × 3
   .metric .estimator .estimate
   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
-1 rmse    standard     0.00625</code></pre>
+1 rmse    standard      0.0278</code></pre>
 </div>
 </div>
 <p>In contrast to the ordinary linear model, we see that the regularised model has a similar prediction error in-sample and out-of-sample. Furthermore, the out-of-sample prediction is much better with the regularised regression.</p>
@@ -895,7 +879,7 @@ Attaching package: 'Matrix'</code></pre>
 <h2 class="anchored" data-anchor-id="tuning-elastic-net">Tuning Elastic Net</h2>
 <p>The problem with the previous analysis is that we had to set the penalty and mixture values. We can do better and test multiple values and see which ones give us the best prediction. This process is called tuning of the hyper parameters and it is a standard procedure in many machine learning applications.</p>
 <p>The above code shows the general principle. We are dividing the training data in 10 randomly selected folds. We use the same workflow as above but we use the part of the training data that is not in a fold to predict the data in the fold. Now, we have 10 out-of-sample RMSEs. With <code>collect_metrics</code>, we get an overview of the mean RMSE and the standard error around the mean.</p>
-<div class="cell" data-hash="application_cache/html/cv_5c21de1b7ebbbd7007d5c7467afe0412">
+<div class="cell" data-hash="application_cache/html/cv_b87d929b53d2ed80f37e15c075d4e3f3">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(train, <span class="at">v =</span> <span class="dv">10</span>)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>net_fit_rf <span class="ot">&lt;-</span></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  net_workflow <span class="sc">%&gt;%</span></span>
@@ -905,32 +889,29 @@ Attaching package: 'Matrix'</code></pre>
 <pre><code># A tibble: 1 × 6
   .metric .estimator   mean     n std_err .config             
   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-1 rmse    standard   0.0221    10 0.00314 Preprocessor1_Model1</code></pre>
+1 rmse    standard   0.0238    10 0.00184 Preprocessor1_Model1</code></pre>
 </div>
 </div>
-<p>While the randomly selected folds is often appropriate, in our case it is not. We have a time series and we want to predict future returns based on earlier returns. So, we are going to use a different function to create rolling windows of all prior days to build the model to predict the next 5 days. So for instance, we use a day 1-75 to predict day 76-80. Next, we use day 1-80 to predict day 81-85. We repeat the procedure until we run out of data. When we print <code>windows</code>, you can see that we have 10 splits with an increasing number of modeling observations and 5 observations that we want to predict.</p>
-<div class="cell" data-hash="application_cache/html/rolling_9cb00c9dfd32b358ef4856e3b7fee278">
+<p>While the randomly selected folds is often appropriate, in our case it is not. We have a time series and we want to predict future returns based on earlier returns. So, we are going to use a different function to create rolling windows of 75 days of data to build the model to predict the next 5 days. So for instance, we use a day 1-75 to predict day 76-80. Next, we use day 6-80 to predict day 81-85. We repeat the procedure until we run out of data. When we print <code>windows</code>, you can see that we have 10 splits with 75 modeling observations and 5 observations that we want to predict.</p>
+<div class="cell" data-hash="application_cache/html/rolling_b7b735ae0d0e053cabbf4bc7da60482c">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>windows <span class="ot">=</span> <span class="fu">rolling_origin</span>(train, <span class="at">initial =</span> <span class="dv">75</span>, <span class="at">assess =</span> <span class="dv">5</span>,</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">skip =</span> <span class="dv">5</span>, <span class="at">cumulative =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># windows = rolling_origin(train, initial = 75, assess = 1,</span></span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                          skip = 1, cumulative = TRUE)</span></span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(windows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">skip =</span> <span class="dv">5</span>, <span class="at">cumulative =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(windows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Rolling origin forecast resampling 
 # A tibble: 10 × 2
-   splits          id     
-   &lt;list&gt;          &lt;chr&gt;  
- 1 &lt;split [75/5]&gt;  Slice01
- 2 &lt;split [81/5]&gt;  Slice02
- 3 &lt;split [87/5]&gt;  Slice03
- 4 &lt;split [93/5]&gt;  Slice04
- 5 &lt;split [99/5]&gt;  Slice05
- 6 &lt;split [105/5]&gt; Slice06
- 7 &lt;split [111/5]&gt; Slice07
- 8 &lt;split [117/5]&gt; Slice08
- 9 &lt;split [123/5]&gt; Slice09
-10 &lt;split [129/5]&gt; Slice10</code></pre>
+   splits         id     
+   &lt;list&gt;         &lt;chr&gt;  
+ 1 &lt;split [75/5]&gt; Slice01
+ 2 &lt;split [75/5]&gt; Slice02
+ 3 &lt;split [75/5]&gt; Slice03
+ 4 &lt;split [75/5]&gt; Slice04
+ 5 &lt;split [75/5]&gt; Slice05
+ 6 &lt;split [75/5]&gt; Slice06
+ 7 &lt;split [75/5]&gt; Slice07
+ 8 &lt;split [75/5]&gt; Slice08
+ 9 &lt;split [75/5]&gt; Slice09
+10 &lt;split [75/5]&gt; Slice10</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>net_fit_windows <span class="ot">&lt;-</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  net_workflow <span class="sc">%&gt;%</span></span>
@@ -940,12 +921,12 @@ Attaching package: 'Matrix'</code></pre>
 <pre><code># A tibble: 1 × 6
   .metric .estimator   mean     n std_err .config             
   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
-1 rmse    standard   0.0187    10 0.00581 Preprocessor1_Model1</code></pre>
+1 rmse    standard   0.0176    10 0.00367 Preprocessor1_Model1</code></pre>
 </div>
 </div>
 <p>Again, we find that the regularised version gives better out-of-sample predictions than the non-regularised version. In the next step, we will use different values for the penalty and the mixture. With the same procedure as before, we can estimate the mean out-of-sample RMSE for each combination of the penalty and mixture and then decide to use the combination that leads to the best predictions. This process is also called <em>cross validation</em>.</p>
 <p>First, we specify that we want a linear model with two hyper-parameters, the penalty and the mixture, that need to be tuned during the cross validation process. I specify 6 possible values for the penalty and 11 for the mixture. Next we specify the workflow and then fit the model over the grid of all 66 possible values of the penalty and the mixture.</p>
-<div class="cell" data-hash="application_cache/html/tuning_fcd21bcae7a83ae66efd80a332a958c0">
+<div class="cell" data-hash="application_cache/html/tuning_c04f85eeb0bb838bf2982cbb7386b1d3">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>net_tune_spec <span class="ot">&lt;-</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">linear_reg</span>(</span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">penalty =</span> <span class="fu">tune</span>(),</span>
@@ -970,64 +951,54 @@ Attaching package: 'Matrix'</code></pre>
 <span id="cb62-22"><a href="#cb62-22" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, we collect the RMSE measures for the out-of-sample predictions for each combination of penalty and mixture. We see that a lot of models with some regularisation give the best out-of-sample predictions. In a more realistic, complicated example, I would expect there to be one combination that is the best.</p>
-<div class="cell" data-hash="application_cache/html/compare-tune_709cdc2c53ade7b0c17332b3f42c51b2">
+<div class="cell" data-hash="application_cache/html/compare-tune_46b2a905fa5b78de4a965c6c5026a037">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(net_tune) <span class="sc">%&gt;%</span></span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 66 × 8
    penalty mixture .metric .estimator   mean     n std_err .config              
      &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                
- 1   0.04      0.1 rmse    standard   0.0186    10 0.00572 Preprocessor1_Model11
- 2   0.01      0.4 rmse    standard   0.0186    10 0.00565 Preprocessor1_Model27
- 3   0.02      0.2 rmse    standard   0.0186    10 0.00570 Preprocessor1_Model16
- 4   0.01      0.3 rmse    standard   0.0186    10 0.00548 Preprocessor1_Model21
- 5   0.005     0.7 rmse    standard   0.0187    10 0.00555 Preprocessor1_Model44
- 6   0.005     0.6 rmse    standard   0.0187    10 0.00547 Preprocessor1_Model38
- 7   0.01      0.5 rmse    standard   0.0187    10 0.00581 Preprocessor1_Model33
- 8   0.005     0.8 rmse    standard   0.0187    10 0.00563 Preprocessor1_Model50
- 9   0.005     1   rmse    standard   0.0188    10 0.00582 Preprocessor1_Model62
-10   0.02      0.3 rmse    standard   0.0188    10 0.00583 Preprocessor1_Model22
+ 1  0.0025     0.1 rmse    standard   0.0264    10 0.00433 Preprocessor1_Model07
+ 2  0.0025     0.2 rmse    standard   0.0252    10 0.00404 Preprocessor1_Model13
+ 3  0.005      0.1 rmse    standard   0.0244    10 0.00403 Preprocessor1_Model08
+ 4  0.0025     0.3 rmse    standard   0.0239    10 0.00373 Preprocessor1_Model19
+ 5  0.0025     0.4 rmse    standard   0.0230    10 0.00357 Preprocessor1_Model25
+ 6  0.0025     0.5 rmse    standard   0.0226    10 0.00344 Preprocessor1_Model31
+ 7  0.005      0.2 rmse    standard   0.0224    10 0.00359 Preprocessor1_Model14
+ 8  0.0025     0.6 rmse    standard   0.0221    10 0.00335 Preprocessor1_Model37
+ 9  0.01       0.1 rmse    standard   0.0217    10 0.00366 Preprocessor1_Model09
+10  0.0025     0.7 rmse    standard   0.0215    10 0.00330 Preprocessor1_Model43
 # ℹ 56 more rows</code></pre>
 </div>
 </div>
 <p>Next, we select the best combination of penalty and mixture and use the final model on all the training data. We can then evaluate the prediction quality based on the RMSE metric.</p>
-<div class="cell" data-hash="application_cache/html/unnamed-chunk-19_492a53c5f9fdb011a8657205313ca0cf">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>best_model <span class="ot">&lt;-</span> <span class="fu">select_best</span>(net_tune, <span class="at">metric =</span> <span class="st">"rmse"</span>)</span>
+<div class="cell" data-hash="application_cache/html/unnamed-chunk-19_da3bc958938c63ad5b6b5b9e2a8a4d01">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>best_model <span class="ot">&lt;-</span> <span class="fu">select_best</span>(net_tune, <span class="st">"rmse"</span>)</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>best_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   penalty mixture .config              
     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                
-1    0.04     0.1 Preprocessor1_Model11</code></pre>
+1     0.1     0.2 Preprocessor1_Model18</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>final_wf <span class="ot">&lt;-</span> net_tune_wf <span class="sc">%&gt;%</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">finalize_workflow</span>(best_model)</span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>final_fit <span class="ot">&lt;-</span></span>
 <span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  final_wf <span class="sc">%&gt;%</span></span>
 <span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">last_fit</span>(data_split, <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse))</span>
-<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="fu">extract_fit_parsnip</span>(final_fit) <span class="sc">%&gt;%</span> tidy <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="sc">-</span><span class="fu">abs</span>(estimate))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="fu">extract_fit_parsnip</span>(final_fit) <span class="sc">%&gt;%</span> tidy <span class="sc">%&gt;%</span> <span class="fu">filter</span>(estimate <span class="sc">!=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 196 × 3
-   term         estimate penalty
-   &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;
- 1 84578        0.000894    0.04
- 2 (Intercept) -0.000872    0.04
- 3 11786        0.000795    0.04
- 4 85857        0.000600    0.04
- 5 82512        0.000562    0.04
- 6 82584        0.000395    0.04
- 7 35917        0.000373    0.04
- 8 10916       -0.000301    0.04
- 9 77053        0.000299    0.04
-10 87809        0.000164    0.04
-# ℹ 186 more rows</code></pre>
+<pre><code># A tibble: 1 × 3
+  term         estimate penalty
+  &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;
+1 (Intercept) -0.000102     0.1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>(final_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
   .metric .estimator .estimate .config             
   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
-1 rmse    standard     0.00625 Preprocessor1_Model1</code></pre>
+1 rmse    standard      0.0278 Preprocessor1_Model1</code></pre>
 </div>
 </div>
 <p>Finally, we can calculate the predictions for the test set which we split off at the beginning and add the day column from the test set. We can than graph the deviations between the actual return and the predicted return for the 25 days in the test data.</p>
@@ -1064,7 +1035,7 @@ Defaulting to continuous.</code></pre>
 <h2 class="anchored" data-anchor-id="the-data">The data</h2>
 <p>I rewrote the function to get the returns necessary for the machine learning model. The biggest difficulty is to make sure that we have the correct dates because the training data and the test data are <em>not</em> an uninterrupted time series. So, the extra parameters are mainly to deal with the end and start day relative to the earnings date. At the end of the data cleaning pipe, I also delete all the columns with missing data. Because, we have need to run the data for a lot of earnings announcements, we might end up with some less than ideal cases with missing data, insufficient variables, or missing returns for the firm that we are interested in. There are more elegant solutions to avoid getting errors for these issues but I will just try to avoid them or try to make sure that the code keeps running even when an error occurs for one of the earnings announcements.</p>
 <p>I left some of my test code at the end of the code chunk. It’s a good idea to have these quick tests when you write more extensive functions. Over time, you might need to update the functions and you want to make sure that they still work on examples that worked before.</p>
-<div class="cell" data-hash="application_cache/html/updated-get-returns_583520d0a75798d4e710aaaead576d51">
+<div class="cell" data-hash="application_cache/html/updated-get-returns_c767d47ba0c7fd88060d7140e2e9b595">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>get_returns_event <span class="ot">&lt;-</span> <span class="cf">function</span>(anndat, permno_y, permnos,</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">before_start =</span> <span class="dv">300</span>, <span class="at">before_end =</span> <span class="dv">25</span>,</span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">after_start =</span> <span class="dv">0</span>, <span class="at">after_end =</span> <span class="dv">75</span></span>
@@ -1112,7 +1083,7 @@ Defaulting to continuous.</code></pre>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">permno_y =</span> peers<span class="sc">$</span>permno[<span class="dv">1</span>],</span>
 <span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">permnos =</span> peers<span class="sc">$</span>permnos[[<span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 243 × 197
+<pre><code># A tibble: 243 × 192
     `10002`  `10304`  `10562`  `10563`   `10623`  `10725`  `10825`   `10906`
       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
  1  0.0508  -0.00128  0.00498  0.00394 -0.0106    0.00609 -0.0147  -0.00645 
@@ -1126,16 +1097,16 @@ Defaulting to continuous.</code></pre>
  9  0.0231  -0.0187  -0.0219   0       -0.00166  -0.0182   0.00429 -0.0118  
 10 -0.0141   0.0187   0.0238   0.0331   0.0498    0.0142   0.0491   0.00824 
 # ℹ 233 more rows
-# ℹ 189 more variables: `10913` &lt;dbl&gt;, `10916` &lt;dbl&gt;, `11216` &lt;dbl&gt;,
-#   `11348` &lt;dbl&gt;, `11389` &lt;dbl&gt;, `11634` &lt;dbl&gt;, `11786` &lt;dbl&gt;, `11808` &lt;dbl&gt;,
-#   `11823` &lt;dbl&gt;, `12166` &lt;dbl&gt;, `16644` &lt;dbl&gt;, `20694` &lt;dbl&gt;, `22032` &lt;dbl&gt;,
-#   `23326` &lt;dbl&gt;, `23916` &lt;dbl&gt;, `24628` &lt;dbl&gt;, `27254` &lt;dbl&gt;, `35167` &lt;dbl&gt;,
-#   `35503` &lt;dbl&gt;, `35829` &lt;dbl&gt;, `35917` &lt;dbl&gt;, `36469` &lt;dbl&gt;, `39766` &lt;dbl&gt;,
-#   `41807` &lt;dbl&gt;, `44688` &lt;dbl&gt;, `47159` &lt;dbl&gt;, `52265` &lt;dbl&gt;, …</code></pre>
+# ℹ 184 more variables: `10913` &lt;dbl&gt;, `10916` &lt;dbl&gt;, `11216` &lt;dbl&gt;,
+#   `11348` &lt;dbl&gt;, `11389` &lt;dbl&gt;, `11634` &lt;dbl&gt;, `11808` &lt;dbl&gt;, `11823` &lt;dbl&gt;,
+#   `16644` &lt;dbl&gt;, `20694` &lt;dbl&gt;, `22032` &lt;dbl&gt;, `23326` &lt;dbl&gt;, `23916` &lt;dbl&gt;,
+#   `24628` &lt;dbl&gt;, `27254` &lt;dbl&gt;, `35167` &lt;dbl&gt;, `35503` &lt;dbl&gt;, `35829` &lt;dbl&gt;,
+#   `35917` &lt;dbl&gt;, `36469` &lt;dbl&gt;, `39766` &lt;dbl&gt;, `41807` &lt;dbl&gt;, `44688` &lt;dbl&gt;,
+#   `47159` &lt;dbl&gt;, `52265` &lt;dbl&gt;, `52840` &lt;dbl&gt;, `56232` &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <p>The next functions runs the full elastic net workflow with cross validation for the hyper parameters. As you can see in the test code at the end, you can just use the function above to get data and then pass it on to the function to run the full elastic net. I make sure that the training data is from before the event day and the test data is from after the event day. For the rolling prediction windows in the cross validation step I choose 100 observations to predict the next 15 days which will result in 5 windows in the typical situation. I also limit the number of hyper parameters to test, just to limit the computations. The remainder of the code is very similar to the code in the previous section for the single prediction task.</p>
-<div class="cell" data-hash="application_cache/html/tidy-ml-function_b78033418f1d27f93fe43902beb40450">
+<div class="cell" data-hash="application_cache/html/tidy-ml-function_a4afd0011eebc6f09fe66de052af1c47">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>run_elastic_net <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">event_day =</span> <span class="dv">0</span>){</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># split the data on day 0</span></span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>  n_total <span class="ot">&lt;-</span> <span class="fu">nrow</span>(data)</span>
@@ -1151,7 +1122,7 @@ Defaulting to continuous.</code></pre>
 <span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_center</span>(<span class="fu">all_predictors</span>()) <span class="sc">%&gt;%</span></span>
 <span id="cb80-14"><a href="#cb80-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">step_scale</span>(<span class="fu">all_predictors</span>())</span>
 <span id="cb80-15"><a href="#cb80-15" aria-hidden="true" tabindex="-1"></a>  folds <span class="ot">&lt;-</span> <span class="fu">rolling_origin</span>(train, <span class="at">initial =</span> <span class="dv">100</span>, <span class="at">assess =</span> <span class="dv">15</span>,</span>
-<span id="cb80-16"><a href="#cb80-16" aria-hidden="true" tabindex="-1"></a>                          <span class="at">skip =</span> <span class="dv">15</span>, <span class="at">cumulative =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb80-16"><a href="#cb80-16" aria-hidden="true" tabindex="-1"></a>                          <span class="at">skip =</span> <span class="dv">15</span>, <span class="at">cumulative =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb80-17"><a href="#cb80-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set up the hyper parameters</span></span>
 <span id="cb80-18"><a href="#cb80-18" aria-hidden="true" tabindex="-1"></a>  net_tune_spec <span class="ot">&lt;-</span></span>
 <span id="cb80-19"><a href="#cb80-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">linear_reg</span>(</span>
@@ -1174,7 +1145,7 @@ Defaulting to continuous.</code></pre>
 <span id="cb80-36"><a href="#cb80-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">grid =</span> grid_hyper,</span>
 <span id="cb80-37"><a href="#cb80-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse))</span>
 <span id="cb80-38"><a href="#cb80-38" aria-hidden="true" tabindex="-1"></a> <span class="co"># Get best model</span></span>
-<span id="cb80-39"><a href="#cb80-39" aria-hidden="true" tabindex="-1"></a>  best_model <span class="ot">&lt;-</span> <span class="fu">select_best</span>(net_tune, <span class="at">metric =</span> <span class="st">"rmse"</span>)</span>
+<span id="cb80-39"><a href="#cb80-39" aria-hidden="true" tabindex="-1"></a>  best_model <span class="ot">&lt;-</span> <span class="fu">select_best</span>(net_tune, <span class="st">"rmse"</span>)</span>
 <span id="cb80-40"><a href="#cb80-40" aria-hidden="true" tabindex="-1"></a>  final_wf <span class="ot">&lt;-</span> net_tune_wf <span class="sc">%&gt;%</span></span>
 <span id="cb80-41"><a href="#cb80-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">finalize_workflow</span>(best_model)</span>
 <span id="cb80-42"><a href="#cb80-42" aria-hidden="true" tabindex="-1"></a>  final_fit <span class="ot">&lt;-</span></span>
@@ -1183,103 +1154,81 @@ Defaulting to continuous.</code></pre>
 <span id="cb80-45"><a href="#cb80-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(final_fit)</span>
 <span id="cb80-46"><a href="#cb80-46" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb80-47"><a href="#cb80-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-48"><a href="#cb80-48" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">get_returns_event</span>(<span class="at">anndat =</span> peers<span class="sc">$</span>anndat[<span class="dv">2</span>],</span>
-<span id="cb80-49"><a href="#cb80-49" aria-hidden="true" tabindex="-1"></a>                  <span class="at">permno_y =</span> peers<span class="sc">$</span>permno[<span class="dv">2</span>],</span>
-<span id="cb80-50"><a href="#cb80-50" aria-hidden="true" tabindex="-1"></a>                  <span class="at">permnos =</span> peers<span class="sc">$</span>permnos[[<span class="dv">2</span>]]) <span class="sc">%&gt;%</span></span>
+<span id="cb80-48"><a href="#cb80-48" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">get_returns_event</span>(<span class="at">anndat =</span> peers<span class="sc">$</span>anndat[<span class="dv">1</span>],</span>
+<span id="cb80-49"><a href="#cb80-49" aria-hidden="true" tabindex="-1"></a>                  <span class="at">permno_y =</span> peers<span class="sc">$</span>permno[<span class="dv">1</span>],</span>
+<span id="cb80-50"><a href="#cb80-50" aria-hidden="true" tabindex="-1"></a>                  <span class="at">permnos =</span> peers<span class="sc">$</span>permnos[[<span class="dv">1</span>]]) <span class="sc">%&gt;%</span></span>
 <span id="cb80-51"><a href="#cb80-51" aria-hidden="true" tabindex="-1"></a>        <span class="fu">run_elastic_net</span>(<span class="at">event_day =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: The `...` are not used in this function but one or more objects were
 passed: ''</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>→ A | warning: A correlation computation is required, but `estimate` is constant and has 0
-               standard deviation, resulting in a divide by 0 error. `NA` will be returned.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>There were issues with some computations   A: x1
-There were issues with some computations   A: x1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
 </div>
 <p>Finally, we can combine the two functions above in one function and calculate the abnormal returns as the difference between the prediction from the elastic net and actual return. The cumulative return is the the sum of those abnormal returns. Notice that the bulk of the function is wrapped in the <code>tryCatch</code> function. This is an <code>R</code> function that let’s you control what happens if an error occurs in the code it wraps. I use the function to return <code>NA</code> in the case that any of the functions gives an error.</p>
-<div class="cell" data-hash="application_cache/html/combined-function_fa1d55ce2e45557ad150f5f195b297f3">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>calculate_car <span class="ot">&lt;-</span> <span class="cf">function</span>(anndat, permno_y, permnos,</span>
-<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">before_start =</span> <span class="dv">300</span>, <span class="at">before_end =</span> <span class="dv">25</span>,</span>
-<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">after_start =</span> <span class="dv">0</span>, <span class="at">after_end =</span> <span class="dv">75</span>,</span>
-<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">event_day =</span> <span class="dv">0</span>, <span class="at">car_short_last =</span> <span class="dv">1</span>){</span>
-<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tryCatch</span>(</span>
-<span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a>    {data <span class="ot">&lt;-</span> <span class="fu">get_returns_event</span>(anndat, permno_y, permnos,</span>
-<span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a>                              before_start, before_end,</span>
-<span id="cb85-9"><a href="#cb85-9" aria-hidden="true" tabindex="-1"></a>                              after_start, after_end)</span>
-<span id="cb85-10"><a href="#cb85-10" aria-hidden="true" tabindex="-1"></a>    fit <span class="ot">&lt;-</span> <span class="fu">run_elastic_net</span>(<span class="at">data =</span> data, <span class="at">event_day =</span> event_day)</span>
-<span id="cb85-11"><a href="#cb85-11" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">augment</span>(fit) <span class="sc">%&gt;%</span></span>
-<span id="cb85-12"><a href="#cb85-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(return, .pred, day) <span class="sc">%&gt;%</span></span>
-<span id="cb85-13"><a href="#cb85-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">ar =</span> return <span class="sc">-</span> .pred) <span class="sc">%&gt;%</span></span>
-<span id="cb85-14"><a href="#cb85-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">window =</span> <span class="fu">if_else</span>(day <span class="sc">&lt;=</span> car_short_last, <span class="st">"short"</span>, <span class="st">"long"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb85-15"><a href="#cb85-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">car =</span> <span class="fu">sum</span>(ar), <span class="at">.by =</span> window)},</span>
-<span id="cb85-16"><a href="#cb85-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">error =</span> <span class="cf">function</span>(err) {<span class="fu">return</span>(<span class="cn">NA</span>)})</span>
-<span id="cb85-17"><a href="#cb85-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb85-18"><a href="#cb85-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb85-19"><a href="#cb85-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-20"><a href="#cb85-20" aria-hidden="true" tabindex="-1"></a><span class="fu">calculate_car</span>(<span class="at">anndat =</span> peers<span class="sc">$</span>anndat[<span class="dv">2</span>], <span class="at">permno_y =</span> peers<span class="sc">$</span>permno[<span class="dv">2</span>], <span class="at">permnos =</span> peers<span class="sc">$</span>permnos[[<span class="dv">2</span>]],</span>
-<span id="cb85-21"><a href="#cb85-21" aria-hidden="true" tabindex="-1"></a>              <span class="at">event_day =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="application_cache/html/combined-function_c9953b5984298d34d16b156bf9075568">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>calculate_car <span class="ot">&lt;-</span> <span class="cf">function</span>(anndat, permno_y, permnos,</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">before_start =</span> <span class="dv">300</span>, <span class="at">before_end =</span> <span class="dv">25</span>,</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">after_start =</span> <span class="dv">0</span>, <span class="at">after_end =</span> <span class="dv">75</span>,</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">event_day =</span> <span class="dv">0</span>, <span class="at">car_short_last =</span> <span class="dv">1</span>){</span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tryCatch</span>(</span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a>    {data <span class="ot">&lt;-</span> <span class="fu">get_returns_event</span>(anndat, permno_y, permnos,</span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>                              before_start, before_end,</span>
+<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a>                              after_start, after_end)</span>
+<span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a>    fit <span class="ot">&lt;-</span> <span class="fu">run_elastic_net</span>(<span class="at">data =</span> data, <span class="at">event_day =</span> event_day)</span>
+<span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">augment</span>(fit) <span class="sc">%&gt;%</span></span>
+<span id="cb82-12"><a href="#cb82-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(return, .pred, day) <span class="sc">%&gt;%</span></span>
+<span id="cb82-13"><a href="#cb82-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">ar =</span> return <span class="sc">-</span> .pred) <span class="sc">%&gt;%</span></span>
+<span id="cb82-14"><a href="#cb82-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">window =</span> <span class="fu">if_else</span>(day <span class="sc">&lt;=</span> car_short_last, <span class="st">"short"</span>, <span class="st">"long"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb82-15"><a href="#cb82-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">car =</span> <span class="fu">sum</span>(ar), <span class="at">.by =</span> window)},</span>
+<span id="cb82-16"><a href="#cb82-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">error =</span> <span class="cf">function</span>(err) {<span class="fu">return</span>(<span class="cn">NA</span>)})</span>
+<span id="cb82-17"><a href="#cb82-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb82-18"><a href="#cb82-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb82-19"><a href="#cb82-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-20"><a href="#cb82-20" aria-hidden="true" tabindex="-1"></a><span class="fu">calculate_car</span>(<span class="at">anndat =</span> peers<span class="sc">$</span>anndat[<span class="dv">1</span>], <span class="at">permno_y =</span> peers<span class="sc">$</span>permno[<span class="dv">1</span>], <span class="at">permnos =</span> peers<span class="sc">$</span>permnos[[<span class="dv">1</span>]],</span>
+<span id="cb82-21"><a href="#cb82-21" aria-hidden="true" tabindex="-1"></a>              <span class="at">event_day =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: The `...` are not used in this function but one or more objects were
 passed: ''</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>→ A | warning: A correlation computation is required, but `estimate` is constant and has 0
-               standard deviation, resulting in a divide by 0 error. `NA` will be returned.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>There were issues with some computations   A: x1
-There were issues with some computations   A: x1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
-  window    car
-  &lt;chr&gt;   &lt;dbl&gt;
-1 short  0.0118
-2 long   0.218 </code></pre>
+  window     car
+  &lt;chr&gt;    &lt;dbl&gt;
+1 short  -0.0103
+2 long   -0.0108</code></pre>
 </div>
 </div>
 <p>In the last code block, we run the functions for <code>N_announce</code> earnings announcements. The code is very similar to the original abnormal return code. We first construct the data in a way that allows us to use the functions we just created. The last mutate step then runs the function in parallel depending on how many cores that are available in our computer. The reason I chose to only save the CARs is that in this way the function in <code>future_map</code> does not have to pass on huge amount of data as input or output which generally improves performance.</p>
-<div class="cell" data-hash="application_cache/html/full-model_be556d57e4178469561bdb1e6d0c1f28">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>N_announce <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>cores <span class="ot">&lt;-</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>()</span>
-<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>tictoc<span class="sc">::</span><span class="fu">tic</span>()</span>
-<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> cores <span class="sc">-</span> <span class="dv">2</span>)</span>
-<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>cars <span class="ot">&lt;-</span> earn_ann <span class="sc">%&gt;%</span></span>
-<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(N_announce) <span class="sc">%&gt;%</span></span>
-<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(compu_sic_new, <span class="at">by =</span> <span class="fu">join_by</span>(gvkey)) <span class="sc">%&gt;%</span></span>
-<span id="cb91-8"><a href="#cb91-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sic_new)) <span class="sc">%&gt;%</span></span>
-<span id="cb91-9"><a href="#cb91-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(compu_sic_new, <span class="at">by =</span> <span class="fu">join_by</span>(sic_new),</span>
-<span id="cb91-10"><a href="#cb91-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">relationship =</span> <span class="st">"many-to-many"</span>,</span>
-<span id="cb91-11"><a href="#cb91-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"_peer"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb91-12"><a href="#cb91-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(linking_table,</span>
-<span id="cb91-13"><a href="#cb91-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(gvkey_peer <span class="sc">==</span> gvkey,</span>
-<span id="cb91-14"><a href="#cb91-14" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">between</span>(anndat, start_date, end_date)),</span>
-<span id="cb91-15"><a href="#cb91-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"_peer"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb91-16"><a href="#cb91-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(permno_peer)) <span class="sc">%&gt;%</span></span>
-<span id="cb91-17"><a href="#cb91-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, permno, anndat, permno_peer) <span class="sc">%&gt;%</span></span>
-<span id="cb91-18"><a href="#cb91-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(.) <span class="sc">%&gt;%</span></span>
-<span id="cb91-19"><a href="#cb91-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">permnos =</span> <span class="fu">list</span>(permno_peer),</span>
-<span id="cb91-20"><a href="#cb91-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(gvkey, permno, anndat)) <span class="sc">%&gt;%</span></span>
-<span id="cb91-21"><a href="#cb91-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N =</span> <span class="fu">map_dbl</span>(permnos, <span class="sc">~</span> <span class="fu">length</span>(.x))) <span class="sc">%&gt;%</span></span>
-<span id="cb91-22"><a href="#cb91-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(N <span class="sc">&gt;</span> minimum_peers) <span class="sc">%&gt;%</span></span>
-<span id="cb91-23"><a href="#cb91-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">car =</span> <span class="fu">future_pmap</span>(<span class="fu">list</span>(anndat, permno, permnos),</span>
-<span id="cb91-24"><a href="#cb91-24" aria-hidden="true" tabindex="-1"></a>                            <span class="sc">~</span> <span class="fu">calculate_car</span>(..<span class="dv">1</span>, ..<span class="dv">2</span>, ..<span class="dv">3</span>, <span class="at">event_day =</span> <span class="dv">0</span>),</span>
-<span id="cb91-25"><a href="#cb91-25" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.options =</span> <span class="fu">furrr_options</span>(<span class="at">seed =</span> <span class="dv">230383</span>),</span>
-<span id="cb91-26"><a href="#cb91-26" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.progress =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb91-27"><a href="#cb91-27" aria-hidden="true" tabindex="-1"></a>tictoc<span class="sc">::</span><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="application_cache/html/full-model_a62f30b412aed188adc4e24fece00444">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>N_announce <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>cores <span class="ot">&lt;-</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>()</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>tictoc<span class="sc">::</span><span class="fu">tic</span>()</span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> cores <span class="sc">-</span> <span class="dv">2</span>)</span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>cars <span class="ot">&lt;-</span> earn_ann <span class="sc">%&gt;%</span></span>
+<span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(N_announce) <span class="sc">%&gt;%</span></span>
+<span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(compu_sic_new, <span class="at">by =</span> <span class="fu">join_by</span>(gvkey)) <span class="sc">%&gt;%</span></span>
+<span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sic_new)) <span class="sc">%&gt;%</span></span>
+<span id="cb85-9"><a href="#cb85-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(compu_sic_new, <span class="at">by =</span> <span class="fu">join_by</span>(sic_new),</span>
+<span id="cb85-10"><a href="#cb85-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">relationship =</span> <span class="st">"many-to-many"</span>,</span>
+<span id="cb85-11"><a href="#cb85-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"_peer"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb85-12"><a href="#cb85-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(linking_table,</span>
+<span id="cb85-13"><a href="#cb85-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(gvkey_peer <span class="sc">==</span> gvkey,</span>
+<span id="cb85-14"><a href="#cb85-14" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">between</span>(anndat, start_date, end_date)),</span>
+<span id="cb85-15"><a href="#cb85-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"_peer"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb85-16"><a href="#cb85-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(permno_peer)) <span class="sc">%&gt;%</span></span>
+<span id="cb85-17"><a href="#cb85-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, permno, anndat, permno_peer) <span class="sc">%&gt;%</span></span>
+<span id="cb85-18"><a href="#cb85-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(.) <span class="sc">%&gt;%</span></span>
+<span id="cb85-19"><a href="#cb85-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">permnos =</span> <span class="fu">list</span>(permno_peer),</span>
+<span id="cb85-20"><a href="#cb85-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(gvkey, permno, anndat)) <span class="sc">%&gt;%</span></span>
+<span id="cb85-21"><a href="#cb85-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N =</span> <span class="fu">map_dbl</span>(permnos, <span class="sc">~</span> <span class="fu">length</span>(.x))) <span class="sc">%&gt;%</span></span>
+<span id="cb85-22"><a href="#cb85-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(N <span class="sc">&gt;</span> minimum_peers) <span class="sc">%&gt;%</span></span>
+<span id="cb85-23"><a href="#cb85-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">car =</span> <span class="fu">future_pmap</span>(<span class="fu">list</span>(anndat, permno, permnos),</span>
+<span id="cb85-24"><a href="#cb85-24" aria-hidden="true" tabindex="-1"></a>                            <span class="sc">~</span> <span class="fu">calculate_car</span>(..<span class="dv">1</span>, ..<span class="dv">2</span>, ..<span class="dv">3</span>, <span class="at">event_day =</span> <span class="dv">0</span>),</span>
+<span id="cb85-25"><a href="#cb85-25" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.options =</span> <span class="fu">furrr_options</span>(<span class="at">seed =</span> <span class="dv">230383</span>),</span>
+<span id="cb85-26"><a href="#cb85-26" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.progress =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb85-27"><a href="#cb85-27" aria-hidden="true" tabindex="-1"></a>tictoc<span class="sc">::</span><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>33.561 sec elapsed</code></pre>
+<pre><code>237.189 sec elapsed</code></pre>
 </div>
 </div>
 

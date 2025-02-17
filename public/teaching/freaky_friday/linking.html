@@ -421,15 +421,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>The packages are the same as before.</p>
-<div class="cell" data-hash="linking_cache/html/setup_dec3be6e46898e9229f66f5654638690">
+<div class="cell" data-hash="linking_cache/html/setup_fb8c0f40d5cbd2dd459d018639cc997f">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
+✔ dplyr     1.1.1     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -437,17 +437,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/linking.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 </div>
 <section id="read-the-data" class="level1">
 <h1>Read the data</h1>
 <p>We first read in the linking databases that we have downloaded. Here, you can again see the that I am separating the code in different files and I am using the saved versions of the databases. The advantage is that I do not have to wait on the WRDS download to do the data cleaning in this file.</p>
-<div class="cell" data-hash="linking_cache/html/read-ids-links_b0530f60437c31c7f1b3619f833a02de">
+<div class="cell" data-hash="linking_cache/html/read-ids-links_b0fd9cdf4e5d78b5090b40c91374d2f5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ibes_id <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrds"</span>, <span class="st">"ibes_id.RDS"</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>crsp_id <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrds"</span>, <span class="st">"crsp_id.RDS"</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>crsp_compu <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrds"</span>, <span class="st">"crsp_compu.RDS"</span>))</span>
@@ -460,7 +460,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-hash="linking_cache/html/unnamed-chunk-3_2caca09ed436216883e8f7e87b73c414">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ibes_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 92,131
+<pre><code>Rows: 89,961
 Columns: 4
 $ ticker &lt;chr&gt; "0000", "0000", "0001", "0001", "0001", "0001", "0001", "0004",…
 $ cusip  &lt;chr&gt; "87482X10", "87482X10", "26878510", "26878510", "26878510", "26…
@@ -469,7 +469,7 @@ $ sdates &lt;date&gt; 2014-02-20, 2014-03-20, 2014-02-20, 2014-03-20, 2019-06-20
 </div>
 </div>
 <p>First, I simplify the dataset a little bit. For every observation, I calculate the first and the last date for every combination of <code>ticker</code> and <code>cusip</code>. We are going to use these variables to match observations by <code>ticker</code> in one dataset and by <code>cusip</code> in another dataset. So, we really care about the combinations of (<code>ticker</code>, <code>cusip</code>). Then, I only keep the observations where the <code>sdates</code> equals <code>last_data_ibes</code>. This restricts the sample just to the identifiers and the first and last date they appeared in the data.</p>
-<div class="cell" data-hash="linking_cache/html/create_links_6e79c660faccd33d3935459a83a06e2f">
+<div class="cell" data-hash="linking_cache/html/create_links_c60eefcdbe296a314514886f3838f10c">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ibes_clean <span class="ot">&lt;-</span> ibes_id <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">first_date_ibes =</span> <span class="fu">min</span>(sdates),</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">last_date_ibes =</span> <span class="fu">max</span>(sdates),</span>
@@ -478,9 +478,9 @@ $ sdates &lt;date&gt; 2014-02-20, 2014-03-20, 2014-02-20, 2014-03-20, 2019-06-20
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>sdates)</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ibes_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 34,728
+<pre><code>Rows: 33,560
 Columns: 5
-$ ticker          &lt;chr&gt; "0000", "0001", "0004", "000R", "000V", "000V", "000V"…
+$ ticker          &lt;chr&gt; "0000", "0001", "0004", "000R", "000V", "000V", "000Y"…
 $ cusip           &lt;chr&gt; "87482X10", "26878510", "02504D10", "14163310", "15117…
 $ cname           &lt;chr&gt; "TALMER BANCORP INC", "EP ENERGY CORP", "AMERICAN CAPI…
 $ first_date_ibes &lt;date&gt; 2014-02-20, 2014-02-20, 2014-02-20, 2014-02-20, 2014-…
@@ -488,14 +488,14 @@ $ last_date_ibes  &lt;date&gt; 2014-03-20, 2020-10-15, 2014-06-19, 2014-02-20, 2
 </div>
 </div>
 <p>Unfortunately, there are some problems with this data. The number of unique tickers is relatively low compared to the number of cusips and compared to the ones in the <code>ibes_compu</code> linking data. We also have to be careful because the cusip in the <code>ibes_clean</code> data is 8 characters long and the one in the <code>ibes_compu</code> is 9 characters long. That is one of the problems with the cusip identifier that you always have to check. See the code below for the details.</p>
-<div class="cell" data-hash="linking_cache/html/problems-ibes-compu_d30f85b8f287a5402c12dce761fb42be">
+<div class="cell" data-hash="linking_cache/html/problems-ibes-compu_4194c7ffb57d1af3ad233582c09aefbc">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ibes_clean <span class="sc">%&gt;%</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">ticker =</span> <span class="fu">n_distinct</span>(ticker), <span class="at">cusip =</span> <span class="fu">n_distinct</span>(cusip))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   ticker cusip
    &lt;int&gt; &lt;int&gt;
-1  22421 34647</code></pre>
+1  22075 33487</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ibes_clean <span class="sc">%&gt;%</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">lcusip =</span> <span class="fu">str_length</span>(cusip)) <span class="sc">%&gt;%</span></span>
@@ -504,7 +504,7 @@ $ last_date_ibes  &lt;date&gt; 2014-03-20, 2020-10-15, 2014-06-19, 2014-02-20, 2
 <pre><code># A tibble: 1 × 2
   lcusip     N
    &lt;int&gt; &lt;int&gt;
-1      8 34728</code></pre>
+1      8 33560</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ibes_compu <span class="sc">%&gt;%</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">ibtic =</span> <span class="fu">n_distinct</span>(ibtic), <span class="at">cusip =</span> <span class="fu">n_distinct</span>(cusip))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -512,7 +512,7 @@ $ last_date_ibes  &lt;date&gt; 2014-03-20, 2020-10-15, 2014-06-19, 2014-02-20, 2
 <pre><code># A tibble: 1 × 2
   ibtic cusip
   &lt;int&gt; &lt;int&gt;
-1 27176 26702</code></pre>
+1 27105 26646</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ibes_compu <span class="sc">%&gt;%</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">lcusip =</span> <span class="fu">str_length</span>(cusip)) <span class="sc">%&gt;%</span></span>
@@ -521,35 +521,34 @@ $ last_date_ibes  &lt;date&gt; 2014-03-20, 2020-10-15, 2014-06-19, 2014-02-20, 2
 <pre><code># A tibble: 1 × 2
   lcusip     N
    &lt;int&gt; &lt;int&gt;
-1      9 28717</code></pre>
+1      9 28642</code></pre>
 </div>
 </div>
 <p>At this point, I decided that the best approach is to stick with the <code>ibes_compu</code> dataset to match I/B/E/S and Compustat data. I also checked the overlap between the two linking databases and it’s decent. About 19000 of the 22000 unique identifiers in <code>ibes_id</code> are in the <code>ibes_compu</code> dataset.</p>
 <div class="cell" data-hash="linking_cache/html/unnamed-chunk-6_9d58f5f8a5f4758f404a1aa98b7679e6">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ibes_compu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 28,717
-Columns: 16
-$ tic             &lt;chr&gt; "AMFD.", "ANTQ", "AIR", "ABSI.1", "ACSE", "ADCT.1", "A…
-$ gvkey           &lt;chr&gt; "001001", "001003", "001004", "001009", "001011", "001…
-$ iid             &lt;chr&gt; "01", "01", "01", "01", "01", "01", "01", "02", "01", …
-$ cusip           &lt;chr&gt; "000165100", "000354100", "000361105", "000781104", "0…
-$ dlrsni          &lt;chr&gt; "01", "10", NA, "10", "01", "01", "01", "10", "10", "0…
-$ dsci            &lt;chr&gt; "COM USD.01", "COM USD.10", "COM USD1", "COM NPV", "CO…
-$ epf             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-$ exchg           &lt;int&gt; 14, 19, 11, 19, 14, 14, 14, 3, 19, 11, 13, 1, 11, 11, …
-$ excntry         &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA"…
-$ ibtic           &lt;chr&gt; "AMFD", "ANTQ", "AIR", "ABSI", "ACSE", "ADCT", "AELN",…
-$ isin            &lt;chr&gt; "US0001651001", "US0003541002", "US0003611052", "US000…
-$ secstat         &lt;chr&gt; "I", "I", "A", "I", "I", "I", "I", "I", "I", "I", "I",…
-$ sedol           &lt;chr&gt; NA, "2791283", "2001119", "2001153", NA, "B08G9Z7", NA…
-$ tpci            &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0",…
-$ dldtei          &lt;date&gt; 1986-07-31, 2017-10-12, NA, 2007-02-15, 1995-10-31, 2…
-$ curr_sp500_flag &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</code></pre>
+<pre><code>Rows: 28,642
+Columns: 15
+$ tic     &lt;chr&gt; "AMFD.", "ANTQ", "AIR", "ABSI.1", "ACSE", "ADCT.1", "AELNA", "…
+$ gvkey   &lt;chr&gt; "001001", "001003", "001004", "001009", "001011", "001013", "0…
+$ iid     &lt;chr&gt; "01", "01", "01", "01", "01", "01", "01", "02", "01", "01", "0…
+$ cusip   &lt;chr&gt; "000165100", "000354100", "000361105", "000781104", "000872309…
+$ dlrsni  &lt;chr&gt; "01", "10", NA, "10", "01", "01", "01", "10", "10", "01", "02"…
+$ dsci    &lt;chr&gt; "COM USD.01", "COM USD.10", "COM USD1", "COM NPV", "COM USD.01…
+$ epf     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ exchg   &lt;dbl&gt; 14, 19, 11, 19, 14, 14, 14, 3, 19, 11, 13, 1, 11, 11, 19, 12, …
+$ excntry &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA",…
+$ ibtic   &lt;chr&gt; "AMFD", "ANTQ", "AIR", "ABSI", "ACSE", "ADCT", "AELN", "AFGN",…
+$ isin    &lt;chr&gt; "US0001651001", "US0003541002", "US0003611052", "US0007811047"…
+$ secstat &lt;chr&gt; "I", "I", "A", "I", "I", "I", "I", "I", "I", "I", "I", "I", "I…
+$ sedol   &lt;chr&gt; NA, "2791283", "2001119", "2001153", NA, "B08G9Z7", NA, NA, "2…
+$ tpci    &lt;chr&gt; "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0…
+$ dldtei  &lt;date&gt; 1986-07-31, 2017-10-12, NA, 2007-02-15, 1995-10-31, 2010-12-1…</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">unique</span>(ibes_clean<span class="sc">$</span>ticker) <span class="sc">%in%</span> <span class="fu">unique</span>(ibes_compu<span class="sc">$</span>ibtic))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 19111</code></pre>
+<pre><code>[1] 19051</code></pre>
 </div>
 </div>
 <p>The reason why I leave this false trail in is that is typically what happens when you are working on a bigger data project. You need to interrogate the data to check how reliable the data is and to be aware of its shortcomings.</p>
@@ -557,10 +556,10 @@ $ curr_sp500_flag &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 <section id="merging-between-compustat-and-crsp" class="level1">
 <h1>Merging between Compustat and CRSP</h1>
 <p>This goes via <code>crsp_compu</code> and the <code>permno</code> and <code>gvkey</code> variables. There is no perfect match between the two variables but the number of distinct identifiers is close.</p>
-<div class="cell" data-hash="linking_cache/html/check-crsp-compu_1ec5e5c2bfb9cf6fdd1c887f6643fc55">
+<div class="cell" data-hash="linking_cache/html/check-crsp-compu_51facda690fe44c7a1c92c3963036ed7">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(crsp_compu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 33,385
+<pre><code>Rows: 32,713
 Columns: 4
 $ gvkey  &lt;chr&gt; "001000", "001001", "001002", "001003", "001004", "001005", "00…
 $ permno &lt;dbl&gt; 25881, 10015, 10023, 10031, 54594, 61903, 10058, 10058, 10066, …
@@ -573,7 +572,7 @@ $ enddt  &lt;date&gt; 1978-06-30, 1986-07-31, 1973-06-05, 1989-08-16, NA, 1983-0
 <pre><code># A tibble: 1 × 2
   permno gvkey
    &lt;int&gt; &lt;int&gt;
-1  29362 28809</code></pre>
+1  28750 28306</code></pre>
 </div>
 </div>
 <p>Unfortunately, we also have the problem that sometimes the <code>permno</code> identifier for CRSP is associated with multiple <code>gvkeys</code>. This is more problematic, I think we will need to make sure we don’t run into trouble with this.</p>
@@ -584,7 +583,7 @@ $ enddt  &lt;date&gt; 1978-06-30, 1986-07-31, 1973-06-05, 1989-08-16, NA, 1983-0
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(N <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(N), permno, stdt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,511 × 5
+<pre><code># A tibble: 1,487 × 5
    gvkey  permno stdt       enddt          N
    &lt;chr&gt;   &lt;dbl&gt; &lt;date&gt;     &lt;date&gt;     &lt;int&gt;
  1 185620  12350 2010-10-22 2012-10-02     3
@@ -597,7 +596,7 @@ $ enddt  &lt;date&gt; 1978-06-30, 1986-07-31, 1973-06-05, 1989-08-16, NA, 1983-0
  8 012127  19289 1984-03-01 1987-06-29     3
  9 014064  19289 1987-06-30 2006-08-29     3
 10 003923  29787 1977-10-18 1979-12-31     3
-# ℹ 1,501 more rows</code></pre>
+# ℹ 1,477 more rows</code></pre>
 </div>
 </div>
 <p>It looks like sometimes the identifier for the company in compustat (<code>gvkey</code>) switches but the financial instrument is still the same (<code>permno</code>). That probably means that we will have to take into account the dates. That is, we will have to match on the identifiers and the date when matching observations form Compustat and CRSP.</p>
@@ -605,7 +604,7 @@ $ enddt  &lt;date&gt; 1978-06-30, 1986-07-31, 1973-06-05, 1989-08-16, NA, 1983-0
 <section id="full-linking-table" class="level1">
 <h1>Full Linking Table</h1>
 <p>For this study, we need the data from all three datasets, so we can make one table that links everything together. The two datasets have <code>gvkey</code> in common because of their link to Compustat. I use an <code>inner_join</code> because we need observations of all three dataset for each observation. I also rename some of the variables to make them a little bit easier to work with for me. I specifically retained the <code>isin</code> identifier. It is not necessary for the replication but it can be useful for potential extensions.</p>
-<div class="cell" data-hash="linking_cache/html/create-save-linking-table_b78a873c63d383be8ae8798a74697887">
+<div class="cell" data-hash="linking_cache/html/create-save-linking-table_29a4b0e376691d1ada84c1a460df5adf">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>linking_table <span class="ot">&lt;-</span> ibes_compu <span class="sc">%&gt;%</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gvkey, ibtic, isin, cusip) <span class="sc">%&gt;%</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(crsp_compu, <span class="at">by =</span> <span class="fu">join_by</span>(gvkey <span class="sc">==</span> gvkey),</span>
@@ -621,7 +620,7 @@ $ enddt  &lt;date&gt; 1978-06-30, 1986-07-31, 1973-06-05, 1989-08-16, NA, 1983-0
   "many-to-many"` to silence this warning.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 24,375 × 7
+<pre><code># A tibble: 24,237 × 7
    gvkey  ticker isin         cusip     permno start_date end_date  
    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;date&gt;     &lt;date&gt;    
  1 001001 AMFD   US0001651001 000165100  10015 1983-09-20 1986-07-31
@@ -634,11 +633,11 @@ $ enddt  &lt;date&gt; 1978-06-30, 1986-07-31, 1973-06-05, 1989-08-16, NA, 1983-0
  8 001020 AFGN   &lt;NA&gt;         001054931  68806 1972-12-14 1988-04-05
  9 001021 AFPC   US0010582056 001058205  10218 1980-10-14 1999-03-19
 10 001023 AGS    US0012401008 001240100  66755 1982-06-09 1988-10-05
-# ℹ 24,365 more rows</code></pre>
+# ℹ 24,227 more rows</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(linking_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 24,375
+<pre><code>Rows: 24,237
 Columns: 7
 $ gvkey      &lt;chr&gt; "001001", "001003", "001004", "001009", "001011", "001013",…
 $ ticker     &lt;chr&gt; "AMFD", "ANTQ", "AIR", "ABSI", "ACSE", "ADCT", "AELN", "AFG…

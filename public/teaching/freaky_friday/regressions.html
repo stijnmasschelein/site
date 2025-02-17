@@ -116,6 +116,9 @@ div.csl-indent {
   }
 }</script>
 
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 
 </head>
 
@@ -445,15 +448,15 @@ div.csl-indent {
 
 <section id="setup" class="level1">
 <h1>Setup</h1>
-<div class="cell" data-hash="regressions_cache/html/setup_8383a36de7ece264410ddbeaf448502d">
+<div class="cell" data-hash="regressions_cache/html/setup_28dd0642bd22272bc90759559a2d5910">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
+✔ dplyr     1.1.1     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -462,83 +465,69 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fixest)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>gof_omit <span class="ot">&lt;-</span> <span class="st">"Adj|RMS|IC"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/regressions.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>`modelsummary` 2.0.0 now uses `tinytable` as its default table-drawing
-  backend. Learn more at: https://vincentarelbundock.github.io/tinytable/
-
-Revert to `kableExtra` for one session:
-
-  options(modelsummary_factory_default = 'kableExtra')
-  options(modelsummary_factory_latex = 'kableExtra')
-  options(modelsummary_factory_html = 'kableExtra')
-
-Silence this message forever:
-
-  config_modelsummary(startup_message = FALSE)</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gof_omit <span class="ot">&lt;-</span> <span class="st">"Adj|RMS|IC"</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/regressions.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
+<pre><code>here() starts at /Users/stijnmasschelein/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 </div>
 </section>
 <section id="data" class="level1">
 <h1>Data</h1>
-<div class="cell" data-hash="regressions_cache/html/data_8e8f16b354798c61c8ac315009a80ec4">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>main <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"main.RDS"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">friday =</span> <span class="fu">if_else</span>(weekday <span class="sc">==</span> <span class="st">"Fri"</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">year =</span> <span class="fu">year</span>(anndat),</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">month =</span> <span class="fu">month</span>(anndat),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">quarter =</span> (month <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">%/%</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sign =</span> <span class="fu">case_when</span>(surprise <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"positive"</span>,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                          surprise <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"negative"</span>,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                          surprise <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"zero"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintile =</span> <span class="fu">ntile</span>(surprise, <span class="dv">5</span>),</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> <span class="fu">c</span>(sign, year)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">quantile =</span> <span class="fu">case_when</span>(sign <span class="sc">==</span> <span class="st">"positive"</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">+</span> quintile,</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>                         sign <span class="sc">==</span> <span class="st">"negative"</span> <span class="sc">~</span> quintile,</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                         sign <span class="sc">==</span> <span class="st">"zero"</span> <span class="sc">~</span> <span class="dv">6</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>                         )</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="regressions_cache/html/data_a1c1a9ac4d886b5dccb860c0d9419b43">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>main <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"main.RDS"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">friday =</span> <span class="fu">if_else</span>(weekday <span class="sc">==</span> <span class="st">"Fri"</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">year =</span> <span class="fu">year</span>(anndat),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">month =</span> <span class="fu">month</span>(anndat),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">quarter =</span> (month <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">%/%</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sign =</span> <span class="fu">case_when</span>(surprise <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"positive"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                          surprise <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"negative"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                          surprise <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"zero"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintile =</span> <span class="fu">ntile</span>(surprise, <span class="dv">5</span>),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> <span class="fu">c</span>(sign, year)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">quantile =</span> <span class="fu">case_when</span>(sign <span class="sc">==</span> <span class="st">"positive"</span> <span class="sc">~</span> <span class="dv">6</span> <span class="sc">+</span> quintile,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                         sign <span class="sc">==</span> <span class="st">"negative"</span> <span class="sc">~</span> quintile,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>                         sign <span class="sc">==</span> <span class="st">"zero"</span> <span class="sc">~</span> <span class="dv">6</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>                         )</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 130,358
+<pre><code>Rows: 130,759
 Columns: 28
-$ ticker       &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "AA0A", "AA0A",…
-$ actual       &lt;dbl&gt; -0.0400, -0.1100, -0.1100, -0.0500, -0.0700, -0.1000, -0.…
-$ pdf          &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D…
-$ anndats_act  &lt;date&gt; 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-…
+$ ticker       &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "AA0G", "AA0H", "AA0H…
+$ actual       &lt;dbl&gt; -0.11, -0.11, -0.05, -0.07, -0.10, -0.04, -0.45, 0.01, 0.…
+$ pdf          &lt;chr&gt; "D", "D", "D", "D", "D", "D", "P", "D", "D", "D", "D", "D…
+$ anndats_act  &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2006-02-…
 $ gvkey        &lt;chr&gt; "001081", "001081", "001081", "001081", "001081", "001081…
-$ permno       &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 10560, 10560, 10656, 1…
+$ permno       &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 10560, 88784, 10574, 1…
 $ cusip        &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00392410…
-$ rdq          &lt;date&gt; 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-…
-$ anndat       &lt;date&gt; 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-…
-$ N            &lt;int&gt; 1, 2, 3, 2, 4, 5, 4, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 3, 2, …
-$ median       &lt;dbl&gt; -0.09000, -0.08965, -0.05740, -0.03700, -0.10610, -0.0783…
-$ mean         &lt;dbl&gt; -0.0900000, -0.0896500, -0.0680000, -0.0370000, -0.100550…
-$ mean_days    &lt;dbl&gt; 21.000000, 8.000000, 6.666667, 13.500000, 7.000000, 9.200…
-$ car_short    &lt;dbl&gt; 0.097290562, 0.036462040, -0.063605028, -0.004177245, -0.…
-$ car_long     &lt;dbl&gt; 0.01028628, -0.20959780, 0.05661647, -0.18368201, 0.20741…
-$ date_minus5  &lt;date&gt; 2004-10-16, 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-…
-$ date         &lt;date&gt; 2004-10-15, 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-…
-$ prc          &lt;dbl&gt; 5.63, 5.89, 4.53, 5.00, 3.26, 4.02, 4.28, 16.75, 15.66, 1…
-$ market_value &lt;dbl&gt; 2478185.2, 2592630.8, 1993992.8, 2200875.0, 1434970.5, 17…
-$ surprise     &lt;dbl&gt; 0.0088809947, -0.0034550085, -0.0116114790, -0.0026000000…
-$ weekday      &lt;ord&gt; Thu, Wed, Wed, Wed, Wed, Wed, Wed, Thu, Thu, Wed, Thu, Th…
-$ friday       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, …
-$ year         &lt;dbl&gt; 2004, 2005, 2005, 2005, 2005, 2006, 2006, 2003, 2003, 200…
-$ month        &lt;dbl&gt; 10, 1, 4, 7, 10, 2, 4, 5, 11, 2, 2, 5, 9, 11, 3, 5, 11, 3…
-$ quarter      &lt;dbl&gt; 4, 1, 2, 3, 4, 1, 2, 2, 4, 1, 1, 2, 3, 4, 1, 2, 4, 1, 2, …
-$ sign         &lt;chr&gt; "positive", "negative", "negative", "negative", "positive…
-$ quintile     &lt;int&gt; 5, 2, 1, 3, 5, 2, 3, 3, 3, 4, 2, 1, 3, 2, 5, 2, 4, 5, 5, …
-$ quantile     &lt;dbl&gt; 11, 2, 1, 3, 11, 2, 3, 9, 9, 4, 2, 6, 9, 2, 11, 2, 10, 11…</code></pre>
+$ rdq          &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2006-02-…
+$ anndat       &lt;date&gt; 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26, 2006-02-…
+$ N            &lt;int&gt; 2, 3, 2, 4, 5, 1, 2, 1, 1, 1, 1, 2, 1, 5, 3, 2, 1, 4, 2, …
+$ median       &lt;dbl&gt; -0.08965, -0.05740, -0.03700, -0.10610, -0.07830, -0.0900…
+$ mean         &lt;dbl&gt; -0.0896500, -0.0680000, -0.0370000, -0.1005500, -0.076580…
+$ mean_days    &lt;dbl&gt; 8.000000, 6.666667, 13.500000, 7.000000, 9.200000, 21.000…
+$ car_short    &lt;dbl&gt; 0.036461999, -0.063605082, -0.004176757, -0.014869448, -0…
+$ car_long     &lt;dbl&gt; -0.20959886, 0.05661849, -0.18368085, 0.20741889, 0.10569…
+$ date_minus5  &lt;date&gt; 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-21, 2006-01-…
+$ date         &lt;date&gt; 2005-01-21, 2005-04-22, 2005-07-22, 2005-10-21, 2006-01-…
+$ prc          &lt;dbl&gt; 5.89, 4.53, 5.00, 3.26, 4.02, 5.63, 14.50, 11.47, 10.85, …
+$ market_value &lt;dbl&gt; 2592630.7, 1993992.8, 2200875.0, 1434970.5, 1769503.5, 24…
+$ surprise     &lt;dbl&gt; -0.0034550086, -0.0116114785, -0.0026000000, 0.0110736197…
+$ weekday      &lt;ord&gt; Wed, Wed, Wed, Wed, Wed, Thu, Tue, Tue, Tue, Wed, Tue, We…
+$ friday       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ year         &lt;dbl&gt; 2005, 2005, 2005, 2005, 2006, 2004, 2001, 2002, 2002, 200…
+$ month        &lt;dbl&gt; 1, 4, 7, 10, 2, 10, 11, 4, 8, 10, 4, 7, 10, 2, 2, 4, 7, 1…
+$ quarter      &lt;dbl&gt; 1, 2, 3, 4, 1, 4, 4, 2, 3, 4, 2, 3, 4, 1, 1, 2, 3, 4, 4, …
+$ sign         &lt;chr&gt; "negative", "negative", "negative", "positive", "negative…
+$ quintile     &lt;int&gt; 2, 1, 3, 5, 2, 5, 2, 4, 4, 4, 1, 3, 3, 2, 1, 2, 4, 3, 1, …
+$ quantile     &lt;dbl&gt; 2, 1, 3, 11, 2, 11, 2, 10, 10, 4, 6, 9, 9, 2, 6, 8, 4, 9,…</code></pre>
 </div>
 </div>
 <p>The main regression table only compares the bottom quintile to the top quintile. <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span> also specify a number of indicator variables based on year, month, and the size of the firm (adjusted for the average of the logarithm of the size).</p>
@@ -556,66 +545,66 @@ Warning
 <p>It turns out that the speed gain is in the advantage of the <code>tidyverse</code> implementation on my Mac Mini. This could be because I have installed a more recent version on my Mac Mini of the <code>tidyverse</code>. I am going to investigate this further at some point. Nevertheless it shows the advantage of timing the different implementations. So I am going to leave them here.</p>
 </div>
 </div>
-<div class="cell" data-hash="regressions_cache/html/get-volatility_df5b8bc3c87256bac75b3dace7734b71">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>get_volatility <span class="ot">&lt;-</span> <span class="cf">function</span>(gvkey_in, anndat_in, <span class="at">lag =</span> <span class="dv">4</span>){</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  anndat_min_lag <span class="ot">&lt;-</span> anndat_in <span class="sc">-</span> lag <span class="sc">*</span> <span class="dv">365</span> <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  surprises <span class="ot">&lt;-</span> main <span class="sc">%&gt;%</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gvkey <span class="sc">==</span> gvkey_in, anndat <span class="sc">&lt;</span> anndat_in,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>           anndat <span class="sc">&gt;=</span> anndat_min_lag) <span class="sc">%&gt;%</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(surprise)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(surprise)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  volatility <span class="ot">&lt;-</span> <span class="fu">if_else</span>(<span class="fu">length</span>(surprises) <span class="sc">&gt;=</span> <span class="dv">4</span>, <span class="fu">sd</span>(surprises),</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                        <span class="cn">NA_real_</span>)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(volatility)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dtplyr)</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>main_dt <span class="ot">&lt;-</span> <span class="fu">lazy_dt</span>(main)</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>get_volatility_dt <span class="ot">&lt;-</span> <span class="cf">function</span>(gvkey_in, anndat_in, <span class="at">lag =</span> <span class="dv">4</span>){</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  anndat_min_lag <span class="ot">&lt;-</span> anndat_in <span class="sc">-</span> lag <span class="sc">*</span> <span class="dv">365</span> <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  surprises <span class="ot">&lt;-</span> main_dt <span class="sc">%&gt;%</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gvkey <span class="sc">==</span> gvkey_in, anndat <span class="sc">&lt;</span> anndat_in,</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>           anndat <span class="sc">&gt;=</span> anndat_min_lag) <span class="sc">%&gt;%</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(surprise)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(surprise)</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  volatility <span class="ot">&lt;-</span> <span class="fu">if_else</span>(<span class="fu">length</span>(surprises) <span class="sc">&gt;=</span> <span class="dv">4</span>, <span class="fu">sd</span>(surprises),</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>                        <span class="cn">NA_real_</span>)</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(volatility)</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>test_key <span class="ot">&lt;-</span> <span class="st">"001081"</span></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>test_anndat <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2006-02-15"</span>)</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="fu">get_volatility</span>(<span class="at">gvkey =</span> test_key, <span class="at">anndat_in =</span> test_anndat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="regressions_cache/html/get-volatility_99afcd53be22b2a82b607ed1ed6c296e">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>get_volatility <span class="ot">&lt;-</span> <span class="cf">function</span>(gvkey_in, anndat_in, <span class="at">lag =</span> <span class="dv">4</span>){</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  anndat_min_lag <span class="ot">&lt;-</span> anndat_in <span class="sc">-</span> lag <span class="sc">*</span> <span class="dv">365</span> <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  surprises <span class="ot">&lt;-</span> main <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gvkey <span class="sc">==</span> gvkey_in, anndat <span class="sc">&lt;</span> anndat_in,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>           anndat <span class="sc">&gt;=</span> anndat_min_lag) <span class="sc">%&gt;%</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(surprise)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(surprise)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  volatility <span class="ot">&lt;-</span> <span class="fu">if_else</span>(<span class="fu">length</span>(surprises) <span class="sc">&gt;=</span> <span class="dv">4</span>, <span class="fu">sd</span>(surprises),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                        <span class="cn">NA_real_</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(volatility)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dtplyr)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>main_dt <span class="ot">&lt;-</span> <span class="fu">lazy_dt</span>(main)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>get_volatility_dt <span class="ot">&lt;-</span> <span class="cf">function</span>(gvkey_in, anndat_in, <span class="at">lag =</span> <span class="dv">4</span>){</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  anndat_min_lag <span class="ot">&lt;-</span> anndat_in <span class="sc">-</span> lag <span class="sc">*</span> <span class="dv">365</span> <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  surprises <span class="ot">&lt;-</span> main_dt <span class="sc">%&gt;%</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gvkey <span class="sc">==</span> gvkey_in, anndat <span class="sc">&lt;</span> anndat_in,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>           anndat <span class="sc">&gt;=</span> anndat_min_lag) <span class="sc">%&gt;%</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(surprise)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(surprise)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  volatility <span class="ot">&lt;-</span> <span class="fu">if_else</span>(<span class="fu">length</span>(surprises) <span class="sc">&gt;=</span> <span class="dv">4</span>, <span class="fu">sd</span>(surprises),</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>                        <span class="cn">NA_real_</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(volatility)</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>test_key <span class="ot">&lt;-</span> <span class="st">"001081"</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>test_anndat <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2006-02-15"</span>)</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="fu">get_volatility</span>(<span class="at">gvkey =</span> test_key, <span class="at">anndat_in =</span> test_anndat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.008746968</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_volatility_dt</span>(<span class="at">gvkey =</span> test_key, <span class="at">anndat_in =</span> test_anndat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_volatility_dt</span>(<span class="at">gvkey =</span> test_key, <span class="at">anndat_in =</span> test_anndat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.008746968</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(<span class="at">vol =</span> <span class="fu">get_volatility</span>(<span class="at">gvkey =</span> test_key, <span class="at">anndat_in =</span> test_anndat),</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                               <span class="at">vol_dt =</span> <span class="fu">get_volatility_dt</span>(<span class="at">gvkey =</span> test_key, <span class="at">anndat_in =</span> test_anndat),</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">times =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(<span class="at">vol =</span> <span class="fu">get_volatility</span>(<span class="at">gvkey =</span> test_key, <span class="at">anndat_in =</span> test_anndat),</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                               <span class="at">vol_dt =</span> <span class="fu">get_volatility_dt</span>(<span class="at">gvkey =</span> test_key, <span class="at">anndat_in =</span> test_anndat),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">times =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: milliseconds
    expr      min       lq     mean   median       uq      max neval
-    vol 4.667570 4.904584 6.097149 5.253576 5.722228 15.40677    20
- vol_dt 6.277119 6.860226 7.460642 7.185351 7.599177 13.49717    20</code></pre>
+    vol 4.641323 4.707876 5.066754 4.759633 4.891806 10.46621    20
+ vol_dt 6.113596 7.144397 7.832512 7.311755 7.512789 13.35067    20</code></pre>
 </div>
 </div>
 <p>We can now use the faster function to calculate the volatility measures with the other control variables.</p>
-<div class="cell" data-hash="regressions_cache/html/subset-for-regressions_35f13bf3dbe133c0a667b0e04e0a3803">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>subset <span class="ot">&lt;-</span> main <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(quantile <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">11</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">top =</span> <span class="fu">if_else</span>(quantile <span class="sc">==</span> <span class="dv">11</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">log_size =</span> <span class="fu">log</span>(market_value),</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">volatility =</span> <span class="fu">pmap_dbl</span>(<span class="fu">list</span>(gvkey, anndat),</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                               <span class="sc">~</span> <span class="fu">get_volatility</span>(..<span class="dv">1</span>, ..<span class="dv">2</span>),</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                               <span class="at">.progress =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_size_adj =</span> log_size <span class="sc">-</span> <span class="fu">mean</span>(log_size, <span class="at">na.rm =</span> T),</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">.by =</span> <span class="fu">c</span>(quarter, year)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">size_decile =</span> <span class="fu">ntile</span>(log_size_adj, <span class="dv">10</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vol_decile =</span> <span class="fu">ntile</span>(volatility, <span class="dv">10</span>),</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">.by =</span> year)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(subset, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"subset.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="regressions_cache/html/subset-for-regressions_dd007d5de8b1cd3ca0e1bdf7ec26fab7">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>subset <span class="ot">&lt;-</span> main <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(quantile <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">11</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">top =</span> <span class="fu">if_else</span>(quantile <span class="sc">==</span> <span class="dv">11</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">log_size =</span> <span class="fu">log</span>(market_value),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">volatility =</span> <span class="fu">pmap_dbl</span>(<span class="fu">list</span>(gvkey, anndat),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                               <span class="sc">~</span> <span class="fu">get_volatility</span>(..<span class="dv">1</span>, ..<span class="dv">2</span>),</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                               <span class="at">.progress =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_size_adj =</span> log_size <span class="sc">-</span> <span class="fu">mean</span>(log_size, <span class="at">na.rm =</span> T),</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">.by =</span> <span class="fu">c</span>(quarter, year)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">size_decile =</span> <span class="fu">ntile</span>(log_size_adj, <span class="dv">10</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vol_decile =</span> <span class="fu">ntile</span>(volatility, <span class="dv">10</span>),</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">.by =</span> year)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(subset, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"subset.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="regressions" class="level1">
@@ -630,820 +619,445 @@ Warning
 </ul>
 <section id="panel-a-short-term-car" class="level3">
 <h3 class="anchored" data-anchor-id="panel-a-short-term-car">Panel A: Short Term CAR</h3>
-<div class="cell" data-hash="regressions_cache/html/table2a_147df49d233b46df76ef1d26d75d5b6e">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>subset <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"subset.RDS"</span>))</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>model1a <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_short <span class="sc">~</span> friday <span class="sc">*</span> top,</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> subset)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>model2a <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_short <span class="sc">~</span> friday <span class="sc">*</span> top <span class="sc">|</span> (year[top] <span class="sc">+</span> month[top] <span class="sc">+</span> size_decile[top]),</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="regressions_cache/html/table2a_79cc050154b15ebb7346fbb6c9c4ef00">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>subset <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"subset.RDS"</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>model1a <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_short <span class="sc">~</span> friday <span class="sc">*</span> top,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> subset)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>model2a <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_short <span class="sc">~</span> friday <span class="sc">*</span> top <span class="sc">|</span> (year[top] <span class="sc">+</span> month[top] <span class="sc">+</span> size_decile[top]),</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>The variable 'top' has been removed because of collinearity (see $collin.var).</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>model3a <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_short <span class="sc">~</span> friday <span class="sc">*</span> top <span class="sc">|</span> (year[top] <span class="sc">+</span> month[top] <span class="sc">+</span> size_decile[top] <span class="sc">+</span> vol_decile[top]),</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>model3a <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_short <span class="sc">~</span> friday <span class="sc">*</span> top <span class="sc">|</span> (year[top] <span class="sc">+</span> month[top] <span class="sc">+</span> size_decile[top] <span class="sc">+</span> vol_decile[top]),</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>NOTE: 6,818 observations removed because of NA values (Fixed-effects: 6,818).
+<pre><code>NOTE: 6,839 observations removed because of NA values (Fixed-effects: 6,839).
 The variable 'top' has been removed because of collinearity (see $collin.var).</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(model1a, model2a, model3a), <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(model1a, model2a, model3a), <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(2)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(3)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">−0.036***</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.001)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">friday</td>
+<td style="text-align: center;">0.014***</td>
+<td style="text-align: center;">0.012***</td>
+<td style="text-align: center;">0.013**</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.003)</td>
+<td style="text-align: center;">(0.003)</td>
+<td style="text-align: center;">(0.004)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">top</td>
+<td style="text-align: center;">0.061***</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.002)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">friday × top</td>
+<td style="text-align: center;">−0.023***</td>
+<td style="text-align: center;">−0.020***</td>
+<td style="text-align: center;">−0.021***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1px;"></td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.004)</td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.004)</td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.005)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">22486</td>
+<td style="text-align: center;">22486</td>
+<td style="text-align: center;">15647</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R2</td>
+<td style="text-align: center;">0.086</td>
+<td style="text-align: center;">0.095</td>
+<td style="text-align: center;">0.110</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R2 Within</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.001</td>
+<td style="text-align: center;">0.001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Std.Errors</td>
+<td style="text-align: center;">by: anndat</td>
+<td style="text-align: center;">by: anndat</td>
+<td style="text-align: center;">by: anndat</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FE: size_decile</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FE: year</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FE: month</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FE: vol_decile</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
 
-<!-- preamble start -->
+</table>
 
-    <script>
-      function styleCell_d5pb3wmb07rmd15h6pjc(i, j, css_id) {
-        var table = document.getElementById("tinytable_d5pb3wmb07rmd15h6pjc");
-        table.rows[i].cells[j].classList.add(css_id);
-      }
-      function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_d5pb3wmb07rmd15h6pjc');
-        var newRow = table.insertRow(i);
-        var newCell = newRow.insertCell(0);
-        newCell.setAttribute("colspan", colspan);
-        // newCell.innerText = content;
-        // this may be unsafe, but innerText does not interpret <br>
-        newCell.innerHTML = content;
-      }
-      function spanCell_d5pb3wmb07rmd15h6pjc(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_d5pb3wmb07rmd15h6pjc");
-        const targetRow = table.rows[i];
-        const targetCell = targetRow.cells[j];
-        for (let r = 0; r < rowspan; r++) {
-          // Only start deleting cells to the right for the first row (r == 0)
-          if (r === 0) {
-            // Delete cells to the right of the target cell in the first row
-            for (let c = colspan - 1; c > 0; c--) {
-              if (table.rows[i + r].cells[j + c]) {
-                table.rows[i + r].deleteCell(j + c);
-              }
-            }
-          }
-          // For rows below the first, delete starting from the target column
-          if (r > 0) {
-            for (let c = colspan - 1; c >= 0; c--) {
-              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
-                table.rows[i + r].deleteCell(j);
-              }
-            }
-          }
-        }
-        // Set rowspan and colspan of the target cell
-        targetCell.rowSpan = rowspan;
-        targetCell.colSpan = colspan;
-      }
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(0, 0, 'tinytable_css_idgvexuy3knt1aa40kgqcq') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(0, 1, 'tinytable_css_idz0ch5e002zk2s4ei22wz') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(0, 2, 'tinytable_css_idz0ch5e002zk2s4ei22wz') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(0, 3, 'tinytable_css_idz0ch5e002zk2s4ei22wz') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(1, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(1, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(1, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(1, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(2, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(2, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(2, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(2, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(3, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(3, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(3, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(3, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(4, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(4, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(4, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(4, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(5, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(5, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(5, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(5, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(6, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(6, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(6, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(6, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(7, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(7, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(7, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(7, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(8, 0, 'tinytable_css_idwa1osein8ftwyfi7jie6') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(8, 1, 'tinytable_css_idy48y04ru1g64mvsbum86') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(8, 2, 'tinytable_css_idy48y04ru1g64mvsbum86') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(8, 3, 'tinytable_css_idy48y04ru1g64mvsbum86') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(9, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(9, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(9, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(9, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(10, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(10, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(10, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(10, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(11, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(11, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(11, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(11, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(12, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(12, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(12, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(12, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(13, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(13, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(13, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(13, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(14, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(14, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(14, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(14, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(15, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(15, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(15, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(15, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(16, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(16, 1, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(16, 2, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(16, 3, 'tinytable_css_idwzan3hsllr1m9rgpx5gw') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(17, 0, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(17, 1, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(17, 2, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-window.addEventListener('load', function () { styleCell_d5pb3wmb07rmd15h6pjc(17, 3, 'tinytable_css_idw5gg6kdayxw8zrhzqqhe') })
-    </script>
 
-    <style>
-    .table td.tinytable_css_idgvexuy3knt1aa40kgqcq, .table th.tinytable_css_idgvexuy3knt1aa40kgqcq {  text-align: left;  border-bottom: solid 0.1em #d3d8dc; }
-    .table td.tinytable_css_idz0ch5e002zk2s4ei22wz, .table th.tinytable_css_idz0ch5e002zk2s4ei22wz {  text-align: center;  border-bottom: solid 0.1em #d3d8dc; }
-    .table td.tinytable_css_idw5gg6kdayxw8zrhzqqhe, .table th.tinytable_css_idw5gg6kdayxw8zrhzqqhe {  text-align: left; }
-    .table td.tinytable_css_idwzan3hsllr1m9rgpx5gw, .table th.tinytable_css_idwzan3hsllr1m9rgpx5gw {  text-align: center; }
-    .table td.tinytable_css_idwa1osein8ftwyfi7jie6, .table th.tinytable_css_idwa1osein8ftwyfi7jie6 {  border-bottom: solid 0.05em black;  text-align: left; }
-    .table td.tinytable_css_idy48y04ru1g64mvsbum86, .table th.tinytable_css_idy48y04ru1g64mvsbum86 {  border-bottom: solid 0.05em black;  text-align: center; }
-    </style>
-    <div class="container">
-      <table class="table table-borderless" id="tinytable_d5pb3wmb07rmd15h6pjc" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
-        <thead>
-        
-              <tr>
-                <th scope="col"> </th>
-                <th scope="col">(1)</th>
-                <th scope="col">(2)</th>
-                <th scope="col">(3)</th>
-              </tr>
-        </thead>
-        <tfoot><tr><td colspan="4">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
-        <tbody>
-                <tr>
-                  <td>(Intercept)    </td>
-                  <td>-0.036*** </td>
-                  <td>          </td>
-                  <td>          </td>
-                </tr>
-                <tr>
-                  <td>               </td>
-                  <td>(0.001)   </td>
-                  <td>          </td>
-                  <td>          </td>
-                </tr>
-                <tr>
-                  <td>friday         </td>
-                  <td>0.014***  </td>
-                  <td>0.012***  </td>
-                  <td>0.013**   </td>
-                </tr>
-                <tr>
-                  <td>               </td>
-                  <td>(0.003)   </td>
-                  <td>(0.003)   </td>
-                  <td>(0.004)   </td>
-                </tr>
-                <tr>
-                  <td>top            </td>
-                  <td>0.061***  </td>
-                  <td>          </td>
-                  <td>          </td>
-                </tr>
-                <tr>
-                  <td>               </td>
-                  <td>(0.002)   </td>
-                  <td>          </td>
-                  <td>          </td>
-                </tr>
-                <tr>
-                  <td>friday × top   </td>
-                  <td>-0.023*** </td>
-                  <td>-0.020*** </td>
-                  <td>-0.021*** </td>
-                </tr>
-                <tr>
-                  <td>               </td>
-                  <td>(0.004)   </td>
-                  <td>(0.004)   </td>
-                  <td>(0.005)   </td>
-                </tr>
-                <tr>
-                  <td>Num.Obs.       </td>
-                  <td>22417     </td>
-                  <td>22417     </td>
-                  <td>15599     </td>
-                </tr>
-                <tr>
-                  <td>R2             </td>
-                  <td>0.086     </td>
-                  <td>0.095     </td>
-                  <td>0.110     </td>
-                </tr>
-                <tr>
-                  <td>R2 Within      </td>
-                  <td>          </td>
-                  <td>0.001     </td>
-                  <td>0.001     </td>
-                </tr>
-                <tr>
-                  <td>Std.Errors     </td>
-                  <td>by: anndat</td>
-                  <td>by: anndat</td>
-                  <td>by: anndat</td>
-                </tr>
-                <tr>
-                  <td>FE: size_decile</td>
-                  <td>          </td>
-                  <td>X         </td>
-                  <td>X         </td>
-                </tr>
-                <tr>
-                  <td>FE: year       </td>
-                  <td>          </td>
-                  <td>X         </td>
-                  <td>X         </td>
-                </tr>
-                <tr>
-                  <td>FE: month      </td>
-                  <td>          </td>
-                  <td>X         </td>
-                  <td>X         </td>
-                </tr>
-                <tr>
-                  <td>FE: vol_decile </td>
-                  <td>          </td>
-                  <td>          </td>
-                  <td>X         </td>
-                </tr>
-        </tbody>
-      </table>
-    </div>
-<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 </section>
 <section id="panel-b-long-term-car" class="level3">
 <h3 class="anchored" data-anchor-id="panel-b-long-term-car">Panel B: Long Term CAR</h3>
-<div class="cell" data-hash="regressions_cache/html/table2b_7a87fc71f35a76de7e38b4fc6b085c89">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>model1b <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_long <span class="sc">~</span> friday <span class="sc">*</span> top,</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> subset)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>model2b <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_long <span class="sc">~</span> friday <span class="sc">*</span> top <span class="sc">|</span> (year[top] <span class="sc">+</span> month[top] <span class="sc">+</span> size_decile[top]),</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="regressions_cache/html/table2b_09e7f36425ccdbe58523f16b464cbe53">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>model1b <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_long <span class="sc">~</span> friday <span class="sc">*</span> top,</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> subset)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>model2b <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_long <span class="sc">~</span> friday <span class="sc">*</span> top <span class="sc">|</span> (year[top] <span class="sc">+</span> month[top] <span class="sc">+</span> size_decile[top]),</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>The variable 'top' has been removed because of collinearity (see $collin.var).</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>model3b <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_long <span class="sc">~</span> friday <span class="sc">*</span> top <span class="sc">|</span> (year[top] <span class="sc">+</span> month[top] <span class="sc">+</span> size_decile[top] <span class="sc">+</span> vol_decile[top]),</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>model3b <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_long <span class="sc">~</span> friday <span class="sc">*</span> top <span class="sc">|</span> (year[top] <span class="sc">+</span> month[top] <span class="sc">+</span> size_decile[top] <span class="sc">+</span> vol_decile[top]),</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>NOTE: 6,818 observations removed because of NA values (Fixed-effects: 6,818).
+<pre><code>NOTE: 6,839 observations removed because of NA values (Fixed-effects: 6,839).
 The variable 'top' has been removed because of collinearity (see $collin.var).</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(model1b, model2b, model3b), <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(model1b, model2b, model3b), <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(2)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(3)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">−0.022***</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.005)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">friday</td>
+<td style="text-align: center;">−0.012</td>
+<td style="text-align: center;">−0.012</td>
+<td style="text-align: center;">−0.022</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.013)</td>
+<td style="text-align: center;">(0.013)</td>
+<td style="text-align: center;">(0.015)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">top</td>
+<td style="text-align: center;">0.037***</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.004)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">friday × top</td>
+<td style="text-align: center;">0.041**</td>
+<td style="text-align: center;">0.043**</td>
+<td style="text-align: center;">0.052**</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1px;"></td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.015)</td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.014)</td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.017)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">22486</td>
+<td style="text-align: center;">22486</td>
+<td style="text-align: center;">15647</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R2</td>
+<td style="text-align: center;">0.006</td>
+<td style="text-align: center;">0.035</td>
+<td style="text-align: center;">0.041</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R2 Within</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.001</td>
+<td style="text-align: center;">0.001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Std.Errors</td>
+<td style="text-align: center;">by: anndat</td>
+<td style="text-align: center;">by: anndat</td>
+<td style="text-align: center;">by: anndat</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FE: size_decile</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FE: year</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FE: month</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FE: vol_decile</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
 
-<!-- preamble start -->
+</table>
 
-    <script>
-      function styleCell_73m25lxmt7u6eirwwdrv(i, j, css_id) {
-        var table = document.getElementById("tinytable_73m25lxmt7u6eirwwdrv");
-        table.rows[i].cells[j].classList.add(css_id);
-      }
-      function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_73m25lxmt7u6eirwwdrv');
-        var newRow = table.insertRow(i);
-        var newCell = newRow.insertCell(0);
-        newCell.setAttribute("colspan", colspan);
-        // newCell.innerText = content;
-        // this may be unsafe, but innerText does not interpret <br>
-        newCell.innerHTML = content;
-      }
-      function spanCell_73m25lxmt7u6eirwwdrv(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_73m25lxmt7u6eirwwdrv");
-        const targetRow = table.rows[i];
-        const targetCell = targetRow.cells[j];
-        for (let r = 0; r < rowspan; r++) {
-          // Only start deleting cells to the right for the first row (r == 0)
-          if (r === 0) {
-            // Delete cells to the right of the target cell in the first row
-            for (let c = colspan - 1; c > 0; c--) {
-              if (table.rows[i + r].cells[j + c]) {
-                table.rows[i + r].deleteCell(j + c);
-              }
-            }
-          }
-          // For rows below the first, delete starting from the target column
-          if (r > 0) {
-            for (let c = colspan - 1; c >= 0; c--) {
-              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
-                table.rows[i + r].deleteCell(j);
-              }
-            }
-          }
-        }
-        // Set rowspan and colspan of the target cell
-        targetCell.rowSpan = rowspan;
-        targetCell.colSpan = colspan;
-      }
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(0, 0, 'tinytable_css_idlylp1c1u9trsmn8llf4m') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(0, 1, 'tinytable_css_idt0jkr0eups8ohdl332ju') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(0, 2, 'tinytable_css_idt0jkr0eups8ohdl332ju') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(0, 3, 'tinytable_css_idt0jkr0eups8ohdl332ju') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(1, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(1, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(1, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(1, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(2, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(2, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(2, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(2, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(3, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(3, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(3, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(3, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(4, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(4, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(4, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(4, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(5, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(5, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(5, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(5, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(6, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(6, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(6, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(6, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(7, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(7, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(7, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(7, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(8, 0, 'tinytable_css_idqy2bmg65j2rkvcx7xk4v') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(8, 1, 'tinytable_css_idalhfzdonqz22lsmh3x44') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(8, 2, 'tinytable_css_idalhfzdonqz22lsmh3x44') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(8, 3, 'tinytable_css_idalhfzdonqz22lsmh3x44') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(9, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(9, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(9, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(9, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(10, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(10, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(10, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(10, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(11, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(11, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(11, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(11, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(12, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(12, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(12, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(12, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(13, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(13, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(13, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(13, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(14, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(14, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(14, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(14, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(15, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(15, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(15, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(15, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(16, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(16, 1, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(16, 2, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(16, 3, 'tinytable_css_id84d9ie1528dpt1irifb9') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(17, 0, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(17, 1, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(17, 2, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-window.addEventListener('load', function () { styleCell_73m25lxmt7u6eirwwdrv(17, 3, 'tinytable_css_id8435t8qzb6oxwmfrmtiq') })
-    </script>
 
-    <style>
-    .table td.tinytable_css_idlylp1c1u9trsmn8llf4m, .table th.tinytable_css_idlylp1c1u9trsmn8llf4m {  text-align: left;  border-bottom: solid 0.1em #d3d8dc; }
-    .table td.tinytable_css_idt0jkr0eups8ohdl332ju, .table th.tinytable_css_idt0jkr0eups8ohdl332ju {  text-align: center;  border-bottom: solid 0.1em #d3d8dc; }
-    .table td.tinytable_css_id8435t8qzb6oxwmfrmtiq, .table th.tinytable_css_id8435t8qzb6oxwmfrmtiq {  text-align: left; }
-    .table td.tinytable_css_id84d9ie1528dpt1irifb9, .table th.tinytable_css_id84d9ie1528dpt1irifb9 {  text-align: center; }
-    .table td.tinytable_css_idqy2bmg65j2rkvcx7xk4v, .table th.tinytable_css_idqy2bmg65j2rkvcx7xk4v {  border-bottom: solid 0.05em black;  text-align: left; }
-    .table td.tinytable_css_idalhfzdonqz22lsmh3x44, .table th.tinytable_css_idalhfzdonqz22lsmh3x44 {  border-bottom: solid 0.05em black;  text-align: center; }
-    </style>
-    <div class="container">
-      <table class="table table-borderless" id="tinytable_73m25lxmt7u6eirwwdrv" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
-        <thead>
-        
-              <tr>
-                <th scope="col"> </th>
-                <th scope="col">(1)</th>
-                <th scope="col">(2)</th>
-                <th scope="col">(3)</th>
-              </tr>
-        </thead>
-        <tfoot><tr><td colspan="4">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
-        <tbody>
-                <tr>
-                  <td>(Intercept)    </td>
-                  <td>-0.023*** </td>
-                  <td>          </td>
-                  <td>          </td>
-                </tr>
-                <tr>
-                  <td>               </td>
-                  <td>(0.005)   </td>
-                  <td>          </td>
-                  <td>          </td>
-                </tr>
-                <tr>
-                  <td>friday         </td>
-                  <td>-0.010    </td>
-                  <td>-0.011    </td>
-                  <td>-0.021    </td>
-                </tr>
-                <tr>
-                  <td>               </td>
-                  <td>(0.014)   </td>
-                  <td>(0.013)   </td>
-                  <td>(0.015)   </td>
-                </tr>
-                <tr>
-                  <td>top            </td>
-                  <td>0.038***  </td>
-                  <td>          </td>
-                  <td>          </td>
-                </tr>
-                <tr>
-                  <td>               </td>
-                  <td>(0.004)   </td>
-                  <td>          </td>
-                  <td>          </td>
-                </tr>
-                <tr>
-                  <td>friday × top   </td>
-                  <td>0.040**   </td>
-                  <td>0.042**   </td>
-                  <td>0.051**   </td>
-                </tr>
-                <tr>
-                  <td>               </td>
-                  <td>(0.015)   </td>
-                  <td>(0.014)   </td>
-                  <td>(0.017)   </td>
-                </tr>
-                <tr>
-                  <td>Num.Obs.       </td>
-                  <td>22417     </td>
-                  <td>22417     </td>
-                  <td>15599     </td>
-                </tr>
-                <tr>
-                  <td>R2             </td>
-                  <td>0.006     </td>
-                  <td>0.036     </td>
-                  <td>0.041     </td>
-                </tr>
-                <tr>
-                  <td>R2 Within      </td>
-                  <td>          </td>
-                  <td>0.001     </td>
-                  <td>0.001     </td>
-                </tr>
-                <tr>
-                  <td>Std.Errors     </td>
-                  <td>by: anndat</td>
-                  <td>by: anndat</td>
-                  <td>by: anndat</td>
-                </tr>
-                <tr>
-                  <td>FE: size_decile</td>
-                  <td>          </td>
-                  <td>X         </td>
-                  <td>X         </td>
-                </tr>
-                <tr>
-                  <td>FE: year       </td>
-                  <td>          </td>
-                  <td>X         </td>
-                  <td>X         </td>
-                </tr>
-                <tr>
-                  <td>FE: month      </td>
-                  <td>          </td>
-                  <td>X         </td>
-                  <td>X         </td>
-                </tr>
-                <tr>
-                  <td>FE: vol_decile </td>
-                  <td>          </td>
-                  <td>          </td>
-                  <td>X         </td>
-                </tr>
-        </tbody>
-      </table>
-    </div>
-<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 </section>
 </section>
 <section id="table-3" class="level2">
 <h2 class="anchored" data-anchor-id="table-3">Table 3</h2>
-<div class="cell" data-hash="regressions_cache/html/table3_cd6cfbcff131a6fa6163dcd11a5c51e5">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>main_extra <span class="ot">&lt;-</span> main <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_size =</span> <span class="fu">log</span>(market_value))  <span class="sc">%&gt;%</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_size_adj =</span> log_size <span class="sc">-</span> <span class="fu">mean</span>(log_size, <span class="at">na.rm =</span> T),</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">.by =</span> <span class="fu">c</span>(quarter, year)) <span class="sc">%&gt;%</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">size_decile =</span> <span class="fu">ntile</span>(log_size_adj, <span class="dv">10</span>))</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_short <span class="sc">~</span> friday <span class="sc">*</span> quantile,</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> main_extra)</span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_short <span class="sc">~</span> friday <span class="sc">+</span> friday <span class="sc">:</span> quantile</span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>                <span class="sc">|</span> (year[quantile] <span class="sc">+</span> month[quantile] <span class="sc">+</span> size_decile[quantile]),</span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> main_extra)</span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_long <span class="sc">~</span> friday <span class="sc">*</span> quantile,</span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> main_extra)</span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_long <span class="sc">~</span> friday  <span class="sc">+</span> friday <span class="sc">:</span> quantile</span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>                <span class="sc">|</span> (year[quantile] <span class="sc">+</span> month[quantile] <span class="sc">+</span> size_decile[quantile]),</span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
-<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> main_extra)</span>
-<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(model1, model2, model3, model4), <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="regressions_cache/html/table3_189bcb608a1b2d9fe3e834bf6ea00c6e">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>main_extra <span class="ot">&lt;-</span> main <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_size =</span> <span class="fu">log</span>(market_value))  <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_size_adj =</span> log_size <span class="sc">-</span> <span class="fu">mean</span>(log_size, <span class="at">na.rm =</span> T),</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">.by =</span> <span class="fu">c</span>(quarter, year)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">size_decile =</span> <span class="fu">ntile</span>(log_size_adj, <span class="dv">10</span>))</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_short <span class="sc">~</span> friday <span class="sc">*</span> quantile,</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> main_extra)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_short <span class="sc">~</span> friday <span class="sc">+</span> friday <span class="sc">:</span> quantile</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>                <span class="sc">|</span> (year[quantile] <span class="sc">+</span> month[quantile] <span class="sc">+</span> size_decile[quantile]),</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> main_extra)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_long <span class="sc">~</span> friday <span class="sc">*</span> quantile,</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> main_extra)</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="fu">feols</span>(car_long <span class="sc">~</span> friday  <span class="sc">+</span> friday <span class="sc">:</span> quantile</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>                <span class="sc">|</span> (year[quantile] <span class="sc">+</span> month[quantile] <span class="sc">+</span> size_decile[quantile]),</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">cluster =</span> <span class="st">"anndat"</span>,</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> main_extra)</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(model1, model2, model3, model4), <span class="at">gof_omit =</span> gof_omit, <span class="at">stars =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;(1)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(2)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(3)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;&nbsp;(4)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">−0.041***</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">−0.015***</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.001)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">(0.002)</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">friday</td>
+<td style="text-align: center;">0.016***</td>
+<td style="text-align: center;">0.014***</td>
+<td style="text-align: center;">−0.016*</td>
+<td style="text-align: center;">−0.015*</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.002)</td>
+<td style="text-align: center;">(0.002)</td>
+<td style="text-align: center;">(0.008)</td>
+<td style="text-align: center;">(0.007)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">quantile</td>
+<td style="text-align: center;">0.006***</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.003***</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(0.000)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">(0.000)</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">friday × quantile</td>
+<td style="text-align: center;">−0.002***</td>
+<td style="text-align: center;">−0.002***</td>
+<td style="text-align: center;">0.003**</td>
+<td style="text-align: center;">0.003***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1px;"></td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.000)</td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.000)</td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.001)</td>
+<td style="text-align: center; box-shadow: 0px 1px;">(0.001)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">130759</td>
+<td style="text-align: center;">130759</td>
+<td style="text-align: center;">130759</td>
+<td style="text-align: center;">130759</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R2</td>
+<td style="text-align: center;">0.054</td>
+<td style="text-align: center;">0.057</td>
+<td style="text-align: center;">0.002</td>
+<td style="text-align: center;">0.015</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R2 Within</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.000</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Std.Errors</td>
+<td style="text-align: center;">by: anndat</td>
+<td style="text-align: center;">by: anndat</td>
+<td style="text-align: center;">by: anndat</td>
+<td style="text-align: center;">by: anndat</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FE: size_decile</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FE: year</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FE: month</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
 
-<!-- preamble start -->
+</table>
 
-    <script>
-      function styleCell_nedllgmheil5rbshxt0a(i, j, css_id) {
-        var table = document.getElementById("tinytable_nedllgmheil5rbshxt0a");
-        table.rows[i].cells[j].classList.add(css_id);
-      }
-      function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_nedllgmheil5rbshxt0a');
-        var newRow = table.insertRow(i);
-        var newCell = newRow.insertCell(0);
-        newCell.setAttribute("colspan", colspan);
-        // newCell.innerText = content;
-        // this may be unsafe, but innerText does not interpret <br>
-        newCell.innerHTML = content;
-      }
-      function spanCell_nedllgmheil5rbshxt0a(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_nedllgmheil5rbshxt0a");
-        const targetRow = table.rows[i];
-        const targetCell = targetRow.cells[j];
-        for (let r = 0; r < rowspan; r++) {
-          // Only start deleting cells to the right for the first row (r == 0)
-          if (r === 0) {
-            // Delete cells to the right of the target cell in the first row
-            for (let c = colspan - 1; c > 0; c--) {
-              if (table.rows[i + r].cells[j + c]) {
-                table.rows[i + r].deleteCell(j + c);
-              }
-            }
-          }
-          // For rows below the first, delete starting from the target column
-          if (r > 0) {
-            for (let c = colspan - 1; c >= 0; c--) {
-              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
-                table.rows[i + r].deleteCell(j);
-              }
-            }
-          }
-        }
-        // Set rowspan and colspan of the target cell
-        targetCell.rowSpan = rowspan;
-        targetCell.colSpan = colspan;
-      }
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(0, 0, 'tinytable_css_idcd4l0du5z41opwpjyxfm') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(0, 1, 'tinytable_css_idz0njnv656vuo5lmlbiyf') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(0, 2, 'tinytable_css_idz0njnv656vuo5lmlbiyf') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(0, 3, 'tinytable_css_idz0njnv656vuo5lmlbiyf') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(0, 4, 'tinytable_css_idz0njnv656vuo5lmlbiyf') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(1, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(1, 1, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(1, 2, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(1, 3, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(1, 4, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(2, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(2, 1, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(2, 2, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(2, 3, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(2, 4, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(3, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(3, 1, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(3, 2, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(3, 3, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(3, 4, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(4, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(4, 1, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(4, 2, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(4, 3, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(4, 4, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(5, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(5, 1, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(5, 2, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(5, 3, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(5, 4, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(6, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(6, 1, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(6, 2, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(6, 3, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(6, 4, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(7, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(7, 1, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(7, 2, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(7, 3, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(7, 4, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(8, 0, 'tinytable_css_id9vvu2xjv1v161anmw1bf') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(8, 1, 'tinytable_css_id60a1ojhvwix648tp34yp') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(8, 2, 'tinytable_css_id60a1ojhvwix648tp34yp') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(8, 3, 'tinytable_css_id60a1ojhvwix648tp34yp') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(8, 4, 'tinytable_css_id60a1ojhvwix648tp34yp') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(9, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(9, 1, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(9, 2, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(9, 3, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(9, 4, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(10, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(10, 1, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(10, 2, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(10, 3, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(10, 4, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(11, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(11, 1, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(11, 2, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(11, 3, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(11, 4, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(12, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(12, 1, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(12, 2, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(12, 3, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(12, 4, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(13, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(13, 1, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(13, 2, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(13, 3, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(13, 4, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(14, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(14, 1, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(14, 2, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(14, 3, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(14, 4, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(15, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(15, 1, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(15, 2, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(15, 3, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(15, 4, 'tinytable_css_idtlqf7y8vpqvvpk8d3of5') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(16, 0, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(16, 1, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(16, 2, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(16, 3, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-window.addEventListener('load', function () { styleCell_nedllgmheil5rbshxt0a(16, 4, 'tinytable_css_idbnupn8gzo9te5ij8cosc') })
-    </script>
 
-    <style>
-    .table td.tinytable_css_idcd4l0du5z41opwpjyxfm, .table th.tinytable_css_idcd4l0du5z41opwpjyxfm {  text-align: left;  border-bottom: solid 0.1em #d3d8dc; }
-    .table td.tinytable_css_idz0njnv656vuo5lmlbiyf, .table th.tinytable_css_idz0njnv656vuo5lmlbiyf {  text-align: center;  border-bottom: solid 0.1em #d3d8dc; }
-    .table td.tinytable_css_idbnupn8gzo9te5ij8cosc, .table th.tinytable_css_idbnupn8gzo9te5ij8cosc {  text-align: left; }
-    .table td.tinytable_css_idtlqf7y8vpqvvpk8d3of5, .table th.tinytable_css_idtlqf7y8vpqvvpk8d3of5 {  text-align: center; }
-    .table td.tinytable_css_id9vvu2xjv1v161anmw1bf, .table th.tinytable_css_id9vvu2xjv1v161anmw1bf {  border-bottom: solid 0.05em black;  text-align: left; }
-    .table td.tinytable_css_id60a1ojhvwix648tp34yp, .table th.tinytable_css_id60a1ojhvwix648tp34yp {  border-bottom: solid 0.05em black;  text-align: center; }
-    </style>
-    <div class="container">
-      <table class="table table-borderless" id="tinytable_nedllgmheil5rbshxt0a" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
-        <thead>
-        
-              <tr>
-                <th scope="col"> </th>
-                <th scope="col">(1)</th>
-                <th scope="col">(2)</th>
-                <th scope="col">(3)</th>
-                <th scope="col">(4)</th>
-              </tr>
-        </thead>
-        <tfoot><tr><td colspan="5">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
-        <tbody>
-                <tr>
-                  <td>(Intercept)      </td>
-                  <td>-0.041*** </td>
-                  <td>          </td>
-                  <td>-0.015*** </td>
-                  <td>          </td>
-                </tr>
-                <tr>
-                  <td>                 </td>
-                  <td>(0.001)   </td>
-                  <td>          </td>
-                  <td>(0.002)   </td>
-                  <td>          </td>
-                </tr>
-                <tr>
-                  <td>friday           </td>
-                  <td>0.016***  </td>
-                  <td>0.014***  </td>
-                  <td>-0.016*   </td>
-                  <td>-0.015*   </td>
-                </tr>
-                <tr>
-                  <td>                 </td>
-                  <td>(0.002)   </td>
-                  <td>(0.002)   </td>
-                  <td>(0.008)   </td>
-                  <td>(0.007)   </td>
-                </tr>
-                <tr>
-                  <td>quantile         </td>
-                  <td>0.006***  </td>
-                  <td>          </td>
-                  <td>0.003***  </td>
-                  <td>          </td>
-                </tr>
-                <tr>
-                  <td>                 </td>
-                  <td>(0.000)   </td>
-                  <td>          </td>
-                  <td>(0.000)   </td>
-                  <td>          </td>
-                </tr>
-                <tr>
-                  <td>friday × quantile</td>
-                  <td>-0.002*** </td>
-                  <td>-0.002*** </td>
-                  <td>0.003**   </td>
-                  <td>0.003***  </td>
-                </tr>
-                <tr>
-                  <td>                 </td>
-                  <td>(0.000)   </td>
-                  <td>(0.000)   </td>
-                  <td>(0.001)   </td>
-                  <td>(0.001)   </td>
-                </tr>
-                <tr>
-                  <td>Num.Obs.         </td>
-                  <td>130358    </td>
-                  <td>130358    </td>
-                  <td>130358    </td>
-                  <td>130358    </td>
-                </tr>
-                <tr>
-                  <td>R2               </td>
-                  <td>0.054     </td>
-                  <td>0.057     </td>
-                  <td>0.002     </td>
-                  <td>0.015     </td>
-                </tr>
-                <tr>
-                  <td>R2 Within        </td>
-                  <td>          </td>
-                  <td>0.000     </td>
-                  <td>          </td>
-                  <td>0.000     </td>
-                </tr>
-                <tr>
-                  <td>Std.Errors       </td>
-                  <td>by: anndat</td>
-                  <td>by: anndat</td>
-                  <td>by: anndat</td>
-                  <td>by: anndat</td>
-                </tr>
-                <tr>
-                  <td>FE: size_decile  </td>
-                  <td>          </td>
-                  <td>X         </td>
-                  <td>          </td>
-                  <td>X         </td>
-                </tr>
-                <tr>
-                  <td>FE: year         </td>
-                  <td>          </td>
-                  <td>X         </td>
-                  <td>          </td>
-                  <td>X         </td>
-                </tr>
-                <tr>
-                  <td>FE: month        </td>
-                  <td>          </td>
-                  <td>X         </td>
-                  <td>          </td>
-                  <td>X         </td>
-                </tr>
-        </tbody>
-      </table>
-    </div>
-<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 

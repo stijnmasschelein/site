@@ -422,72 +422,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>This setup code loads a package, <code>here</code>, that helps to navigate the folder structure in which I will create files. The <code>tidyverse</code> package is the main package, we will use to manipulate datasets. There are other ways to program in <code>R</code>. I think that to start of the <code>tidyverse</code> way of looking at data is quite intuitive and it is very well supported. The intuition and how quickly you can do meaningful things will hopefully be clear by the end of this document.</p>
-<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/setup_4ccb2a1ebc0c45010903c6ce19c0dd82">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/setup_88c1625689926389216272c728a4f620">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here) </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"auxilary/introduction_to_rstudio_for_accfin.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"auxilary/introduction_to_rstudio_for_accfin.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     </code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dbplyr'
-
-The following objects are masked from 'package:dplyr':
-
-    ident, sql</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="get-the-data" class="level1">
 <h1>Get the data</h1>
 <p>We establish a connection with the WRDS databases with my account. <a href="https://wrds-www.wharton.upenn.edu/">WRDS</a> is the data provider the university subscribes to and it has a lot of good tutorials on how to connect to their databases from R. Important, you will first have to ask for an account from the person in charge of the databases in the department. I will give a more extensive example later in the unit to really go over some of the details. This is meant as an illustration of what is possible with these type of files and code.</p>
 <p>The code below establishes a connection with the WRDS servers under my username. The <a href="https://wrds-www.wharton.upenn.edu/pages/support/programming-wrds/programming-r/r-from-your-computer/">WRDS website</a> has instructions on how to do set up the connection and how you can safely store your WRDS password so you do not have to type it. The settings I used here are all given by the WRDS instructions.</p>
-<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/wrds_connection_3c99f183bbf79d29467c69e89a0f18b5">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>wrds <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">Postgres</span>(),</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">port=</span><span class="dv">9737</span>,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">dbname=</span><span class="st">'wrds'</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">user=</span><span class="st">'stimas'</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">sslmode=</span><span class="st">'require'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/wrds_connection_3c6cd6b12cf74fc734e8039e1632ea32">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>wrds <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">Postgres</span>(),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">port=</span><span class="dv">9737</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">dbname=</span><span class="st">'wrds'</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">user=</span><span class="st">'stimas'</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">sslmode=</span><span class="st">'require'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, I download the data that we need from the <code>wrds</code> connection that I established before. I use the <code>tbl</code> function from the <code>dbplyr</code> package. This basically allows me to use the <code>tidyverse</code> verbs to to interact with almost any database. I give the downloaded data a name <code>wrds_data</code> so that I can use it further down the line. The only thing to remember with the <code>tbl</code> function is that you need to run the <code>collect</code> function at the end of the query so that the data is downloaded. Obviously, you need to know where the data is on the servers and how the variables are named. Sometimes, you can ask colleagues but other times, you will have to read the documentation on the WRDS website.</p>
-<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/query_execcomp_751573c96e2e8d5cc07f01a2a8c3d4d6">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>wrds_data <span class="ot">&lt;-</span> <span class="fu">tbl</span>(wrds, <span class="fu">in_schema</span>(<span class="st">"execcomp"</span>, <span class="st">"anncomp"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;</span> <span class="dv">2010</span> <span class="sc">&amp;</span> ceoann <span class="sc">==</span> <span class="st">"CEO"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, gvkey, cusip, exec_fullname, coname, ceoann,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    execid, bonus, salary, stock_awards_fv, stock_unvest_val,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    eip_unearn_num, eip_unearn_val, option_awards,</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    option_awards_blk_value, option_awards_num, tdc1, tdc2,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    shrown_tot_pct, becameceo, joined_co, reason) <span class="sc">%&gt;%</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/query_execcomp_8bf4a98770324bc23972c37c1ebf6354">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>wrds_data <span class="ot">&lt;-</span> <span class="fu">tbl</span>(wrds, <span class="fu">in_schema</span>(<span class="st">"execcomp"</span>, <span class="st">"anncomp"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;</span> <span class="dv">2010</span> <span class="sc">&amp;</span> ceoann <span class="sc">==</span> <span class="st">"CEO"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, gvkey, cusip, exec_fullname, coname, ceoann,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    execid, bonus, salary, stock_awards_fv, stock_unvest_val,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    eip_unearn_num, eip_unearn_val, option_awards,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    option_awards_blk_value, option_awards_num, tdc1, tdc2,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    shrown_tot_pct, becameceo, joined_co, reason) <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here, I clean up the data and have a quick look after which I save it in my <code>data</code> folder to share it with you.</p>
-<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/wrds_execcomp_432c6fea922449febf03abb7213ebf54">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>compensation <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(wrds_data) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(compensation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/wrds_execcomp_424d4e9ec8a1f36860d3c66e05b80d9c">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>compensation <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(wrds_data) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(tolower)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(compensation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 26,574
+<pre><code>Rows: 24,717
 Columns: 22
 $ year                    &lt;dbl&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018…
 $ gvkey                   &lt;chr&gt; "001004", "001004", "001004", "001004", "00100…
@@ -496,7 +471,7 @@ $ exec_fullname           &lt;chr&gt; "David P. Storch", "David P. Storch", "Dav
 $ coname                  &lt;chr&gt; "AAR CORP", "AAR CORP", "AAR CORP", "AAR CORP"…
 $ ceoann                  &lt;chr&gt; "CEO", "CEO", "CEO", "CEO", "CEO", "CEO", "CEO…
 $ execid                  &lt;chr&gt; "09249", "09249", "09249", "09249", "09249", "…
-$ bonus                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ bonus                   &lt;dbl&gt; 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0…
 $ salary                  &lt;dbl&gt; 867.000, 877.838, 906.449, 906.449, 755.250, 8…
 $ stock_awards_fv         &lt;dbl&gt; 2664.745, 619.200, 1342.704, 1695.200, 1150.50…
 $ stock_unvest_val        &lt;dbl&gt; 4227.273, 6018.000, 4244.165, 4103.283, 1334.0…
@@ -512,40 +487,40 @@ $ becameceo               &lt;date&gt; 1996-10-09, 1996-10-09, 1996-10-09, 1996-
 $ joined_co               &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
 $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(compensation, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(compensation, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, we do the same for the market value of the company. Again, we can do this completely in <code>R</code>. I don’t want to download all market values. Only for the firms that are already in our compensation data. What I do is to extract all the identifiers of the firms in our original data.</p>
-<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/gvkeys_1012193b4ae2bd86832767cd2282ede5">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>gvkeys <span class="ot">&lt;-</span> <span class="fu">unique</span>(compensation<span class="sc">$</span>gvkey)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(gvkeys)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/gvkeys_acac509ec15b2d546fb021d3ef6f8248">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>gvkeys <span class="ot">&lt;-</span> <span class="fu">unique</span>(compensation<span class="sc">$</span>gvkey)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(gvkeys)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2645</code></pre>
+<pre><code>[1] 2579</code></pre>
 </div>
 </div>
 <p>The remainder of the code follows a fairly similar pattern as before. I extract three variables from the WRDS databases <code>fyear</code> and <code>gvkey</code> so that we can match it with the compensation data and the <code>mkvalt</code> at the end of the fiscal year.</p>
-<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/wrds_fundamental_67bcbf6aaa256bfaad9b9b5b6732ff75">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span>  <span class="fu">tbl</span>(wrds, <span class="fu">in_schema</span>(<span class="st">"comp"</span>, <span class="st">"funda"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gvkey <span class="sc">%in%</span> gvkeys, fyear <span class="sc">&gt;</span> <span class="dv">2010</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(fyear, gvkey, mkvalt) <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/wrds_fundamental_7fc08a50a4a5bb76e489432afdbd0e3f">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span>  <span class="fu">tbl</span>(wrds, <span class="fu">in_schema</span>(<span class="st">"comp"</span>, <span class="st">"funda"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gvkey <span class="sc">%in%</span> gvkeys, fyear <span class="sc">&gt;</span> <span class="dv">2010</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(fyear, gvkey, mkvalt) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 57,980
+<pre><code>Rows: 55,377
 Columns: 3
 $ fyear  &lt;int&gt; 2011, 2011, 2012, 2013, 2013, 2014, 2014, 2015, 2015, 2016, 201…
 $ gvkey  &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004", "00…
 $ mkvalt &lt;dbl&gt; 485.2897, 485.2897, 790.0029, 961.3080, 961.3080, 1046.3954, 10…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">distinct</span>(value)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">distinct</span>(value)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 28,170
+<pre><code>Rows: 26,684
 Columns: 3
 $ fyear  &lt;int&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 202…
 $ gvkey  &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004", "00…
 $ mkvalt &lt;dbl&gt; 485.2897, 790.0029, 961.3080, 1046.3954, 842.5112, 1200.3288, 1…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(value, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-value-new.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(value, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-value-new.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="explore-the-data" class="level1">
@@ -553,10 +528,10 @@ $ mkvalt &lt;dbl&gt; 485.2897, 790.0029, 961.3080, 1046.3954, 842.5112, 1200.328
 <section id="with-the-tidyverse" class="level2">
 <h2 class="anchored" data-anchor-id="with-the-tidyverse">With the tidyverse</h2>
 <div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/unnamed-chunk-7_40e23564081aec974c0301a4ca5befc5">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>us_comp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>))</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(us_comp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>us_comp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"us-compensation-new.RDS"</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(us_comp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 26,574
+<pre><code>Rows: 23,096
 Columns: 22
 $ year                    &lt;dbl&gt; 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018…
 $ gvkey                   &lt;chr&gt; "001004", "001004", "001004", "001004", "00100…
@@ -565,7 +540,7 @@ $ exec_fullname           &lt;chr&gt; "David P. Storch", "David P. Storch", "Dav
 $ coname                  &lt;chr&gt; "AAR CORP", "AAR CORP", "AAR CORP", "AAR CORP"…
 $ ceoann                  &lt;chr&gt; "CEO", "CEO", "CEO", "CEO", "CEO", "CEO", "CEO…
 $ execid                  &lt;chr&gt; "09249", "09249", "09249", "09249", "09249", "…
-$ bonus                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ bonus                   &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.00…
 $ salary                  &lt;dbl&gt; 867.000, 877.838, 906.449, 906.449, 755.250, 8…
 $ stock_awards_fv         &lt;dbl&gt; 2664.745, 619.200, 1342.704, 1695.200, 1150.50…
 $ stock_unvest_val        &lt;dbl&gt; 4227.273, 6018.000, 4244.165, 4103.283, 1334.0…
@@ -583,9 +558,9 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </div>
 </div>
 <div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/unnamed-chunk-8_92e43b635d5c1174f6159537bdd0db8e">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, gvkey <span class="sc">==</span> <span class="st">"001004"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, gvkey <span class="sc">==</span> <span class="st">"001004"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 13 × 22
+<pre><code># A tibble: 11 × 22
     year gvkey  cusip    exec_fullname         coname ceoann execid bonus salary
    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;                 &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
  1  2011 001004 00036110 David P. Storch       AAR C… CEO    09249      0   867 
@@ -599,8 +574,6 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
  9  2019 001004 00036110 John McClain Holmes,… AAR C… CEO    48195      0   801.
 10  2020 001004 00036110 John McClain Holmes,… AAR C… CEO    48195      0   781.
 11  2021 001004 00036110 John McClain Holmes,… AAR C… CEO    48195      0   925 
-12  2022 001004 00036110 John McClain Holmes,… AAR C… CEO    48195      0  1000 
-13  2023 001004 00036110 John McClain Holmes,… AAR C… CEO    48195      0  1050 
 # ℹ 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
 #   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
 #   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
@@ -609,9 +582,9 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </div>
 </div>
 <div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/unnamed-chunk-9_4254bce72f72f38ed9da80f748fef700">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, bonus <span class="sc">==</span> <span class="dv">0</span>, year <span class="sc">==</span> <span class="dv">2012</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, bonus <span class="sc">==</span> <span class="dv">0</span>, year <span class="sc">==</span> <span class="dv">2012</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,718 × 22
+<pre><code># A tibble: 1,678 × 22
     year gvkey  cusip    exec_fullname         coname ceoann execid bonus salary
    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;                 &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
  1  2012 001004 00036110 David P. Storch       AAR C… CEO    09249      0   878.
@@ -624,7 +597,7 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
  8  2012 001177 00817Y10 Mark Thomas Bertolini AETNA… CEO    31029      0   977.
  9  2012 001209 00915810 John E. McGlade       AIR P… CEO    27315      0  1200 
 10  2012 001230 01165910 Bradley D. Tilden     ALASK… CEO    21308      0   420.
-# ℹ 1,708 more rows
+# ℹ 1,668 more rows
 # ℹ 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
 #   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
 #   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
@@ -640,49 +613,45 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 <li>Look for the <code>gvkey</code> of Gamestop. Then use <code>filter</code> with exactly that key.</li>
 </ol>
 <div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/gamestop_4c25d079bcae27f504cdb1a29a7e1b54">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, <span class="fu">str_detect</span>(<span class="fu">tolower</span>(coname),</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"gamestop"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, <span class="fu">str_detect</span>(<span class="fu">tolower</span>(coname),</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"gamestop"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 13 × 22
+<pre><code># A tibble: 11 × 22
     year gvkey  cusip    exec_fullname     coname     ceoann execid bonus salary
    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;             &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
- 1  2011 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  2254. 1028. 
- 2  2012 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  1515  1050. 
- 3  2013 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719   975  1059. 
- 4  2014 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0  1201. 
- 5  2015 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0  1247. 
- 6  2016 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0  1285. 
- 7  2017 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0  1293. 
- 8  2018 145049 36467W10 Shane S. Kim      GAMESTOP … CEO    56940    25   963. 
- 9  2019 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080   150   846. 
-10  2020 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080     0  1005. 
-11  2021 145049 36467W10 Matthew Furlong   GAMESTOP … CEO    61979  1595.  115. 
-12  2022 145049 36467W10 Matthew Furlong   GAMESTOP … CEO    61979  2280.  200  
-13  2023 145049 36467W10 Matthew Furlong   GAMESTOP … CEO    61979   825    78.5
+ 1  2011 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  2254.  1028.
+ 2  2012 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  1515   1050.
+ 3  2013 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719   975   1059.
+ 4  2014 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1201.
+ 5  2015 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1247.
+ 6  2016 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1285.
+ 7  2017 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1293.
+ 8  2018 145049 36467W10 Shane S. Kim      GAMESTOP … CEO    56940    25    963.
+ 9  2019 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080   150    846.
+10  2020 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080     0   1005.
+11  2021 145049 36467W10 Matthew Furlong   GAMESTOP … CEO    61979  1595.   115.
 # ℹ 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
 #   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
 #   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
 #   tdc2 &lt;dbl&gt;, shrown_tot_pct &lt;dbl&gt;, becameceo &lt;date&gt;, joined_co &lt;date&gt;,
 #   reason &lt;chr&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, gvkey <span class="sc">==</span> <span class="st">"145049"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(us_comp, gvkey <span class="sc">==</span> <span class="st">"145049"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 13 × 22
+<pre><code># A tibble: 11 × 22
     year gvkey  cusip    exec_fullname     coname     ceoann execid bonus salary
    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;             &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
- 1  2011 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  2254. 1028. 
- 2  2012 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  1515  1050. 
- 3  2013 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719   975  1059. 
- 4  2014 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0  1201. 
- 5  2015 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0  1247. 
- 6  2016 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0  1285. 
- 7  2017 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0  1293. 
- 8  2018 145049 36467W10 Shane S. Kim      GAMESTOP … CEO    56940    25   963. 
- 9  2019 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080   150   846. 
-10  2020 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080     0  1005. 
-11  2021 145049 36467W10 Matthew Furlong   GAMESTOP … CEO    61979  1595.  115. 
-12  2022 145049 36467W10 Matthew Furlong   GAMESTOP … CEO    61979  2280.  200  
-13  2023 145049 36467W10 Matthew Furlong   GAMESTOP … CEO    61979   825    78.5
+ 1  2011 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  2254.  1028.
+ 2  2012 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719  1515   1050.
+ 3  2013 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719   975   1059.
+ 4  2014 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1201.
+ 5  2015 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1247.
+ 6  2016 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1285.
+ 7  2017 145049 36467W10 J. Paul Raines    GAMESTOP … CEO    35719     0   1293.
+ 8  2018 145049 36467W10 Shane S. Kim      GAMESTOP … CEO    56940    25    963.
+ 9  2019 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080   150    846.
+10  2020 145049 36467W10 George E. Sherman GAMESTOP … CEO    46080     0   1005.
+11  2021 145049 36467W10 Matthew Furlong   GAMESTOP … CEO    61979  1595.   115.
 # ℹ 13 more variables: stock_awards_fv &lt;dbl&gt;, stock_unvest_val &lt;dbl&gt;,
 #   eip_unearn_num &lt;dbl&gt;, eip_unearn_val &lt;dbl&gt;, option_awards &lt;dbl&gt;,
 #   option_awards_blk_value &lt;dbl&gt;, option_awards_num &lt;dbl&gt;, tdc1 &lt;dbl&gt;,
@@ -694,9 +663,9 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 <section id="moving-on" class="level2">
 <h2 class="anchored" data-anchor-id="moving-on">Moving on</h2>
 <div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/unnamed-chunk-10_671e5a444d48fce1e8e3a1902049e0ae">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(us_comp, year, coname, bonus, salary, <span class="at">total =</span> tdc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(us_comp, year, coname, bonus, salary, <span class="at">total =</span> tdc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 26,574 × 5
+<pre><code># A tibble: 23,096 × 5
     year coname   bonus salary total
    &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
  1  2011 AAR CORP     0   867  5786.
@@ -709,18 +678,18 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
  8  2018 AAR CORP     0   750  3344.
  9  2019 AAR CORP     0   801. 4736.
 10  2020 AAR CORP     0   781. 4123.
-# ℹ 26,564 more rows</code></pre>
+# ℹ 23,086 more rows</code></pre>
 </div>
 </div>
 <p>We first build up the dataset with <code>select</code> and <code>mutate</code> and the pipe <code>%&gt;%</code>. When we are satisfied with the result, we can save the dataset as an R object with the name <code>us_comp_small</code>.</p>
 <div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/unnamed-chunk-11_9130da4fbe057cf9e2ef3904a0bf3a28">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>us_comp_small <span class="ot">&lt;-</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(us_comp, year, coname, bonus,</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>       salary, <span class="at">total =</span> tdc1) <span class="sc">%&gt;%</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">salary_percentage =</span> salary<span class="sc">/</span>total)</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(us_comp_small)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>us_comp_small <span class="ot">&lt;-</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(us_comp, year, coname, bonus,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>       salary, <span class="at">total =</span> tdc1) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">salary_percentage =</span> salary<span class="sc">/</span>total)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(us_comp_small)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 26,574 × 6
+<pre><code># A tibble: 23,096 × 6
     year coname   bonus salary total salary_percentage
    &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;             &lt;dbl&gt;
  1  2011 AAR CORP     0   867  5786.             0.150
@@ -733,63 +702,63 @@ $ reason                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
  8  2018 AAR CORP     0   750  3344.             0.224
  9  2019 AAR CORP     0   801. 4736.             0.169
 10  2020 AAR CORP     0   781. 4123.             0.189
-# ℹ 26,564 more rows</code></pre>
+# ℹ 23,086 more rows</code></pre>
 </div>
 </div>
 </section>
 <section id="quick-descriptive-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="quick-descriptive-statistics">Quick descriptive statistics</h2>
 <div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/unnamed-chunk-12_858035b80eaec38d9550f63c9c3ac0f9">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(us_comp, gvkey) <span class="sc">%&gt;%</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>(), <span class="at">N_CEO =</span> <span class="fu">n_distinct</span>(execid),</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">average =</span> <span class="fu">mean</span>(salary),</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd =</span> <span class="fu">sd</span>(salary),</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">med =</span> <span class="fu">median</span>(salary),</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">min =</span> <span class="fu">min</span>(salary),</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">max =</span> <span class="fu">max</span>(salary)) <span class="sc">%&gt;%</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(med <span class="sc">&gt;</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(us_comp, gvkey) <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>(), <span class="at">N_CEO =</span> <span class="fu">n_distinct</span>(execid),</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">average =</span> <span class="fu">mean</span>(salary),</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd =</span> <span class="fu">sd</span>(salary),</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">med =</span> <span class="fu">median</span>(salary),</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">min =</span> <span class="fu">min</span>(salary),</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">max =</span> <span class="fu">max</span>(salary)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(med <span class="sc">&gt;</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 637 × 8
+<pre><code># A tibble: 599 × 8
    gvkey      N N_CEO average    sd   med   min   max
    &lt;chr&gt;  &lt;int&gt; &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 001075    13     2   1212. 109.  1203. 1091  1395 
- 2 001078    13     2   1766. 229.  1900  1298. 1973.
- 3 001161    13     3    980. 159.  1000.  566. 1200 
- 4 001209    14     2   1255. 127.  1255.  905. 1402.
+ 1 001075    12     2   1219. 111.  1222. 1091  1395 
+ 2 001078    12     2   1788. 224.  1900  1298. 1973.
+ 3 001161    12     3    961. 151.  1000.  566. 1149.
+ 4 001209    12     2   1239. 131.  1200   905. 1402.
  5 001274    11     1   1082. 101.  1030  1000  1250 
- 6 001300    13     3   1677. 199.  1700  1225  1890 
- 7 001380    13     1   1500    0   1500  1500  1500 
- 8 001440    13     2   1303. 214.  1325.  862. 1522.
- 9 001447    13     2   1771. 264.  2000  1488. 2038.
-10 001449    13     1   1438.  11.6 1441. 1399. 1441.
-# ℹ 627 more rows</code></pre>
+ 6 001300    12     2   1714. 152.  1750  1415. 1890 
+ 7 001380    12     1   1500    0   1500  1500  1500 
+ 8 001440    12     2   1339. 176.  1350.  903. 1522.
+ 9 001447    12     2   1794. 262.  2000  1488. 2038.
+10 001449    12     1   1438.  12.1 1441. 1399. 1441.
+# ℹ 589 more rows</code></pre>
 </div>
 </div>
 <div class="cell" data-hash="introduction_to_rstudio_for_accfin_cache/html/unnamed-chunk-13_df76e848612d56f433b3c23bc2a1ce94">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(us_comp, <span class="at">N =</span> <span class="fu">n</span>(), <span class="at">N_CEO =</span> <span class="fu">n_distinct</span>(execid),</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">average =</span> <span class="fu">mean</span>(salary),</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd =</span> <span class="fu">sd</span>(salary),</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">med =</span> <span class="fu">median</span>(salary),</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">min =</span> <span class="fu">min</span>(salary),</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">max =</span> <span class="fu">max</span>(salary),</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">.by =</span> gvkey) <span class="sc">%&gt;%</span></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(med <span class="sc">&gt;</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(us_comp, <span class="at">N =</span> <span class="fu">n</span>(), <span class="at">N_CEO =</span> <span class="fu">n_distinct</span>(execid),</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">average =</span> <span class="fu">mean</span>(salary),</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">sd =</span> <span class="fu">sd</span>(salary),</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">med =</span> <span class="fu">median</span>(salary),</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">min =</span> <span class="fu">min</span>(salary),</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">max =</span> <span class="fu">max</span>(salary),</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">.by =</span> gvkey) <span class="sc">%&gt;%</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(med <span class="sc">&gt;</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 637 × 8
+<pre><code># A tibble: 599 × 8
    gvkey      N N_CEO average    sd   med   min   max
    &lt;chr&gt;  &lt;int&gt; &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 001075    13     2   1212. 109.  1203. 1091  1395 
- 2 001078    13     2   1766. 229.  1900  1298. 1973.
- 3 001161    13     3    980. 159.  1000.  566. 1200 
- 4 001209    14     2   1255. 127.  1255.  905. 1402.
+ 1 001075    12     2   1219. 111.  1222. 1091  1395 
+ 2 001078    12     2   1788. 224.  1900  1298. 1973.
+ 3 001161    12     3    961. 151.  1000.  566. 1149.
+ 4 001209    12     2   1239. 131.  1200   905. 1402.
  5 001274    11     1   1082. 101.  1030  1000  1250 
- 6 001300    13     3   1677. 199.  1700  1225  1890 
- 7 001380    13     1   1500    0   1500  1500  1500 
- 8 001440    13     2   1303. 214.  1325.  862. 1522.
- 9 001447    13     2   1771. 264.  2000  1488. 2038.
-10 001449    13     1   1438.  11.6 1441. 1399. 1441.
-# ℹ 627 more rows</code></pre>
+ 6 001300    12     2   1714. 152.  1750  1415. 1890 
+ 7 001380    12     1   1500    0   1500  1500  1500 
+ 8 001440    12     2   1339. 176.  1350.  903. 1522.
+ 9 001447    12     2   1794. 262.  2000  1488. 2038.
+10 001449    12     1   1438.  12.1 1441. 1399. 1441.
+# ℹ 589 more rows</code></pre>
 </div>
 </div>
 
