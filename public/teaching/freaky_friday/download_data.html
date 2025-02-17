@@ -439,78 +439,101 @@ div.csl-indent {
 
 </header>
 
-<div class="cell" data-hash="download_data_cache/html/setup_17ee02c1820e8827a758d252eb207fd2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/download_data.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="download_data_cache/html/setup_6c35de239ee7edb0bcb5b5502c4cd1dc">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dtplyr)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>linking_table <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"linking_table.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"freaky_friday/download_data.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
-<div class="cell" data-hash="download_data_cache/html/setup-wrds_087338f2dd1fb6055bc7511788475e5e">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>wrds <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">Postgres</span>(),</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">port=</span><span class="dv">9737</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">dbname=</span><span class="st">'wrds'</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">user=</span><span class="st">'stimas'</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sslmode=</span><span class="st">'require'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dtplyr)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dbplyr'
+
+The following objects are masked from 'package:dplyr':
+
+    ident, sql</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>linking_table <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"linking_table.RDS"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="download_data_cache/html/setup-wrds_0051386608fbcb2cd4f152e0010dd3d4">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>wrds <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">Postgres</span>(),</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">host=</span><span class="st">'wrds-pgdata.wharton.upenn.edu'</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">port=</span><span class="dv">9737</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">dbname=</span><span class="st">'wrds'</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">user=</span><span class="st">'stimas'</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sslmode=</span><span class="st">'require'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="earnings-announcements" class="level1">
 <h1>Earnings Announcements</h1>
 <section id="ibes" class="level2">
 <h2 class="anchored" data-anchor-id="ibes">I/B/E/S</h2>
 <p>We start with the earnings announcement data from I/B/E/S with the analyst estimates. According to the method section in <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span>, we need the data from the start of 1995 to the middle of 2006. We will want the analyst estimates for all the firms with a ticker in the master <code>linking_table</code>. I am going to use parameters that we can calculate or set in <code>R</code> and then pass them on to the database query.</p>
-<div class="cell" data-hash="download_data_cache/html/params-announcement_a6dfb442584806dcfcc3f89bb1da9582">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>begin_date <span class="ot">&lt;-</span> <span class="st">"'1995-01-01'"</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>end_date <span class="ot">&lt;-</span> <span class="st">"'2006-07-01'"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tickers <span class="ot">&lt;-</span> <span class="fu">unique</span>(linking_table<span class="sc">$</span>ticker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="download_data_cache/html/params-announcement_4bb95e736f013f17d3cbb08478280b69">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>begin_date <span class="ot">&lt;-</span> <span class="st">"'1995-01-01'"</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>end_date <span class="ot">&lt;-</span> <span class="st">"'2006-07-01'"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>tickers <span class="ot">&lt;-</span> <span class="fu">unique</span>(linking_table<span class="sc">$</span>ticker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The dates of the estimate and the actual earnings announcement will be critical to construct unexpected component of the earnings and to determine the exact event data, i.e.&nbsp;the date that (the unexpected component of) the earnings are announced. Thankfully, WRDS provides a <a href="https://wrds-www.wharton.upenn.edu/pages/support/support-articles/ibes/detail-history-file-meanings-date-variables/">description of the date variables</a>. <code>anndats</code> is the first day that an analyst set their estimate for the earnings per share and the <code>revdats</code> is the last day that the analyst confirmed their estimate. We will use <code>revdats</code> as the defacto date that the analyst provided the estimate. <code>anndats_act</code> is the earnings announcement date. <code>value</code> is the estimated EPS by the analyst and <code>actual</code> is the actual EPS as announced by the firm. <code>pdf</code> is flag whether the EPS if for the primary share class or on a diluted basis. I included both and that is probably appropriate for this paper. <code>fpi</code> is the forecast period indicator if we set this to “6”, we get the earnings estimates that are done in the quarter before the earnings announcements. All these variables can be verified in the data descriptions on WRDS. As you can see, it’s quite important if you work with data that you have not collected yourself to read the data descriptions.</p>
-<div class="cell" data-hash="download_data_cache/html/annual-ibes_78d2ee58f33200fc8b12e5c3cf3bab9a">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ibes_query <span class="ot">&lt;-</span> <span class="fu">tbl</span>(wrds, <span class="fu">in_schema</span>(<span class="st">"ibes"</span>, <span class="st">"det_epsus"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ticker, cusip, fpi, anndats, revdats, pdf, value, anndats_act, actual, analys) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fpi <span class="sc">==</span> <span class="st">"6"</span>, ticker <span class="sc">%in%</span> tickers, <span class="sc">!</span><span class="fu">is.null</span>(actual)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(anndats_act <span class="sc">&gt;=</span> begin_date, anndats_act <span class="sc">&lt;=</span> end_date)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>ann_ibes <span class="ot">&lt;-</span> <span class="fu">collect</span>(ibes_query)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(ann_ibes, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"ann_ibes.RDS"</span>))</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ann_ibes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="download_data_cache/html/annual-ibes_9307baac36cd77e1e91c859020f44869">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ibes_query <span class="ot">&lt;-</span> <span class="fu">tbl</span>(wrds, <span class="fu">in_schema</span>(<span class="st">"ibes"</span>, <span class="st">"det_epsus"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ticker, cusip, fpi, anndats, revdats, pdf, value, anndats_act, actual, analys) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fpi <span class="sc">==</span> <span class="st">"6"</span>, ticker <span class="sc">%in%</span> tickers, <span class="sc">!</span><span class="fu">is.null</span>(actual)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(anndats_act <span class="sc">&gt;=</span> begin_date, anndats_act <span class="sc">&lt;=</span> end_date)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ann_ibes <span class="ot">&lt;-</span> <span class="fu">collect</span>(ibes_query)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(ann_ibes, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"ann_ibes.RDS"</span>))</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ann_ibes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 1,046,663
+<pre><code>Rows: 1,046,451
 Columns: 10
-$ ticker      &lt;chr&gt; "AA", "A2", "A2", "A2", "AA", "AA", "AA", "AA", "AA", "AA"…
-$ cusip       &lt;chr&gt; "02224910", "0039241X", "0039241X", "0039241X", "02224910"…
+$ ticker      &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2", "A2"…
+$ cusip       &lt;chr&gt; "0039241X", "0039241X", "0039241X", "0039241X", "0039241X"…
 $ fpi         &lt;chr&gt; "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6"…
-$ anndats     &lt;date&gt; 1994-10-10, 2004-09-30, 2004-10-21, 2004-10-27, 1994-10-1…
-$ revdats     &lt;date&gt; 1995-07-06, 2004-09-30, 2004-10-22, 2004-11-03, 1994-10-1…
-$ pdf         &lt;chr&gt; "D", "D", "D", "D", "P", "P", "P", "P", "P", "D", "D", "P"…
-$ value       &lt;dbl&gt; 0.1875, -0.0900, -0.0403, -0.0410, 0.2663, 0.2963, 0.7500,…
-$ anndats_act &lt;date&gt; 1995-01-11, 2004-10-21, 2004-10-21, 2004-10-21, 1995-01-1…
-$ actual      &lt;dbl&gt; 0.2812, -0.0400, -0.0400, -0.0400, 0.2812, 0.2812, 0.7575,…
-$ analys      &lt;dbl&gt; 297, 478, 5469, 43594, 288, 18082, 18082, 474, 288, 127, 6…</code></pre>
+$ anndats     &lt;date&gt; 2004-09-30, 2004-10-21, 2004-10-27, 2004-11-05, 2004-11-0…
+$ revdats     &lt;date&gt; 2004-09-30, 2004-10-22, 2004-11-03, 2004-11-09, 2004-11-2…
+$ pdf         &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"…
+$ value       &lt;dbl&gt; -0.0900, -0.0403, -0.0410, -0.0919, -0.0584, -0.0500, -0.0…
+$ anndats_act &lt;date&gt; 2004-10-21, 2004-10-21, 2004-10-21, 2005-01-26, 2005-01-2…
+$ actual      &lt;dbl&gt; -0.04, -0.04, -0.04, -0.11, -0.11, -0.11, -0.11, -0.11, -0…
+$ analys      &lt;dbl&gt; 478, 5469, 43594, 71785, 43594, 84303, 87125, 43594, 43594…</code></pre>
 </div>
 </div>
 </section>
 <section id="compustat" class="level2">
 <h2 class="anchored" data-anchor-id="compustat">Compustat</h2>
 <p>Following the paper, we will verify the earnings announcement date in I/B/E/S with the earnings announcement date in Compustat. Given the importance of finding the exact date for an event study, it is not surprising that <span class="citation" data-cites="dellavigna2009">Dellavigna and Pollet (<a href="#ref-dellavigna2009" role="doc-biblioref">2009</a>)</span> spent a lot of effort to make sure that they have the date right.</p>
-<div class="cell" data-hash="download_data_cache/html/sql-params-2_03af8439ddeb3763ede4d61a4e8aa98f">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>gvkeys <span class="ot">&lt;-</span> <span class="fu">unique</span>(linking_table<span class="sc">$</span>gvkey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="download_data_cache/html/sql-params-2_c5b07a513e869b2b4c6401abc40e4dd8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>gvkeys <span class="ot">&lt;-</span> <span class="fu">unique</span>(linking_table<span class="sc">$</span>gvkey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>rdq</code> is the earnings announcement date in Compustat. It does not make it easier that different databases use different variable names. That is why it so important to read the documentation of the database.</p>
-<div class="cell" data-hash="download_data_cache/html/annual-compustat_e5243d2029b31c62eabae2d120f3a9b4">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>compu_query <span class="ot">&lt;-</span> <span class="fu">tbl</span>(wrds, <span class="fu">in_schema</span>(<span class="st">"comp"</span>, <span class="st">"fundq"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rdq <span class="sc">&gt;=</span> begin_date, rdq <span class="sc">&lt;=</span> end_date, gvkey <span class="sc">%in%</span> gvkeys) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(cusip, rdq, gvkey)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ann_compu <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(compu_query) <span class="sc">%&gt;%</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cusip =</span> <span class="fu">str_sub</span>(cusip, <span class="dv">1</span>, <span class="dv">8</span>))</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(ann_compu, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"ann_compu.RDS"</span>))</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ann_compu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="download_data_cache/html/annual-compustat_4ac37923cc77cf8372896a0e691aeab0">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>compu_query <span class="ot">&lt;-</span> <span class="fu">tbl</span>(wrds, <span class="fu">in_schema</span>(<span class="st">"comp"</span>, <span class="st">"fundq"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rdq <span class="sc">&gt;=</span> begin_date, rdq <span class="sc">&lt;=</span> end_date, gvkey <span class="sc">%in%</span> gvkeys) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(cusip, rdq, gvkey)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>ann_compu <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(compu_query) <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cusip =</span> <span class="fu">str_sub</span>(cusip, <span class="dv">1</span>, <span class="dv">8</span>))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(ann_compu, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"ann_compu.RDS"</span>))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ann_compu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 327,964
+<pre><code>Rows: 327,878
 Columns: 3
 $ cusip &lt;chr&gt; "00036110", "00036110", "00036110", "00036110", "00036110", "000…
 $ rdq   &lt;date&gt; 1995-03-15, 1995-07-06, 1995-09-13, 1995-12-12, 1996-03-14, 199…
@@ -522,46 +545,46 @@ $ gvkey &lt;chr&gt; "001004", "001004", "001004", "001004", "001004", "001004", 
 <h2 class="anchored" data-anchor-id="combine-announcements">Combine Announcements</h2>
 <p>To combine the two datasets, we will link them through a simplified version of the larger linking table. I will also enforce that the first 6 characters of cusip are the same. I don’t think it is strictly necessary to do that but it does gives us more confidence that the links are of higher quality. We need to match the I/B/E/S data and the Compustat data based on the firm and its earnings announcement date. However, if you read the paper <span class="citation" data-cites="dellavigna2009">(<a href="#ref-dellavigna2009" role="doc-biblioref">Dellavigna and Pollet 2009</a>)</span>, you will notice that the reason why we want to combine the I/B/E/S and Compustat data is because the date in both datasets does not always match. The paper gets around that by matching earnings announcements if the date is not more than 5 days apart in the two data sources. This is why I create <code>anndat_begin</code> and <code>anndat_end</code> to define the interval in which we want to match the data. Finally, we can calculate the actual event date as the minimum of the date in the I/B/E/S data and the Compustat data <span class="citation" data-cites="dellavigna2009">(<a href="#ref-dellavigna2009" role="doc-biblioref">Dellavigna and Pollet 2009</a>)</span> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <p>You can also see that I have two lines of code at the start to read in the datasets again. This is not strictly necessary to make this file fully reproducible but it does make debugging the code easier. If I want to make some changes to the code I do not have to download the data again from WRDS. I can just use the one in the data folder.</p>
-<div class="cell" data-hash="download_data_cache/html/simplify-ibes-merge_7a2c22d77f103e53abaddce9b49ee797">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ann_ibes <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"ann_ibes.RDS"</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ann_compu <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"ann_compu.RDS"</span>))</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>simple_link <span class="ot">&lt;-</span> linking_table <span class="sc">%&gt;%</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ticker, gvkey, permno, cusip) <span class="sc">%&gt;%</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cusip =</span> <span class="fu">str_sub</span>(cusip, <span class="at">end =</span> <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>earn_ann <span class="ot">&lt;-</span> ann_ibes <span class="sc">%&gt;%</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(ticker, actual, pdf, cusip, anndats_act) <span class="sc">%&gt;%</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cusip =</span> <span class="fu">str_sub</span>(cusip, <span class="at">end =</span> <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(simple_link, <span class="at">by =</span> <span class="fu">join_by</span>(ticker)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gvkey), <span class="sc">!</span>(cusip.x <span class="sc">!=</span> cusip.y)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">"cusip"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">anndat_begin =</span> anndats_act <span class="sc">-</span> <span class="dv">5</span>, <span class="at">anndat_end =</span> anndats_act <span class="sc">+</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(ann_compu, <span class="at">by =</span> <span class="fu">join_by</span>(gvkey <span class="sc">==</span> gvkey,</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                                    anndat_begin <span class="sc">&lt;=</span> rdq,  anndat_end <span class="sc">&gt;=</span> rdq)) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(rdq)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">anndat =</span> <span class="fu">pmin</span>(anndats_act, rdq)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>anndat_begin, <span class="sc">-</span>anndat_end)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="download_data_cache/html/simplify-ibes-merge_98c840a8086226c0fcef3ecd8749714e">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ann_ibes <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"ann_ibes.RDS"</span>))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>ann_compu <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"ann_compu.RDS"</span>))</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>simple_link <span class="ot">&lt;-</span> linking_table <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ticker, gvkey, permno, cusip) <span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cusip =</span> <span class="fu">str_sub</span>(cusip, <span class="at">end =</span> <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>earn_ann <span class="ot">&lt;-</span> ann_ibes <span class="sc">%&gt;%</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(ticker, actual, pdf, cusip, anndats_act) <span class="sc">%&gt;%</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cusip =</span> <span class="fu">str_sub</span>(cusip, <span class="at">end =</span> <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(simple_link, <span class="at">by =</span> <span class="fu">join_by</span>(ticker)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(gvkey), <span class="sc">!</span>(cusip.x <span class="sc">!=</span> cusip.y)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">starts_with</span>(<span class="st">"cusip"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">anndat_begin =</span> anndats_act <span class="sc">-</span> <span class="dv">5</span>, <span class="at">anndat_end =</span> anndats_act <span class="sc">+</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(ann_compu, <span class="at">by =</span> <span class="fu">join_by</span>(gvkey <span class="sc">==</span> gvkey,</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>                                    anndat_begin <span class="sc">&lt;=</span> rdq,  anndat_end <span class="sc">&gt;=</span> rdq)) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(rdq)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">anndat =</span> <span class="fu">pmin</span>(anndats_act, rdq)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>anndat_begin, <span class="sc">-</span>anndat_end)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in left_join(., simple_link, by = join_by(ticker)): Detected an unexpected many-to-many relationship between `x` and `y`.
-ℹ Row 151 of `x` matches multiple rows in `y`.
-ℹ Row 11209 of `y` matches multiple rows in `x`.
+ℹ Row 150 of `x` matches multiple rows in `y`.
+ℹ Row 34 of `y` matches multiple rows in `x`.
 ℹ If a many-to-many relationship is expected, set `relationship =
   "many-to-many"` to silence this warning.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(earn_ann, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"earn_ann.RDS"</span>))</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(earn_ann)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(earn_ann, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"earn_ann.RDS"</span>))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(earn_ann)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 154,464
+<pre><code>Rows: 154,235
 Columns: 9
-$ ticker      &lt;chr&gt; "A2", "AA0G", "A2", "AA0A", "AA0G", "AA0G", "AA0R", "AA0R"…
-$ actual      &lt;dbl&gt; -0.0400, -0.3000, -0.0800, 0.1067, -0.4100, -0.3100, 0.035…
+$ ticker      &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "AA0A", "AA0A", …
+$ actual      &lt;dbl&gt; -0.0400, -0.1100, -0.1100, -0.0500, -0.0700, -0.1000, -0.0…
 $ pdf         &lt;chr&gt; "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"…
-$ anndats_act &lt;date&gt; 2004-10-21, 2005-03-01, 2006-04-26, 2003-05-08, 2004-03-0…
-$ gvkey       &lt;chr&gt; "001081", "133724", "001081", "001094", "133724", "133724"…
-$ permno      &lt;dbl&gt; 10560, 88784, 10560, 10656, 88784, 88784, 10659, 10659, 84…
-$ cusip       &lt;chr&gt; "00392410", "00724X10", "00392410", "00444610", "00724X10"…
-$ rdq         &lt;date&gt; 2004-10-21, 2005-03-01, 2006-04-26, 2003-05-08, 2004-03-0…
-$ anndat      &lt;date&gt; 2004-10-21, 2005-03-01, 2006-04-26, 2003-05-08, 2004-03-0…</code></pre>
+$ anndats_act &lt;date&gt; 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-2…
+$ gvkey       &lt;chr&gt; "001081", "001081", "001081", "001081", "001081", "001081"…
+$ permno      &lt;dbl&gt; 10560, 10560, 10560, 10560, 10560, 10560, 10560, 10656, 10…
+$ cusip       &lt;chr&gt; "00392410", "00392410", "00392410", "00392410", "00392410"…
+$ rdq         &lt;date&gt; 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-2…
+$ anndat      &lt;date&gt; 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-2…</code></pre>
 </div>
 </div>
 <p><code>earn_ann</code> serves as a linking table to match different earnings announcements (as opposed to firms and their securities in <code>linking_table</code>)</p>
@@ -612,36 +635,36 @@ $ anndat      &lt;date&gt; 2004-10-21, 2005-03-01, 2006-04-26, 2003-05-08, 2004-
 </tbody>
 </table>
 <p><code>anndat</code> is the validated way of calculating the announcement date. However, we need to keep the other dates around because we will need them to link back to the original databases.</p>
-<p>The paper states that they have 154,051 earnings announcements <span class="citation" data-cites="dellavigna2009">(<a href="#ref-dellavigna2009" role="doc-biblioref">Dellavigna and Pollet 2009</a>)</span>. We have 154464 earnings announcements.</p>
+<p>The paper states that they have 154,051 earnings announcements <span class="citation" data-cites="dellavigna2009">(<a href="#ref-dellavigna2009" role="doc-biblioref">Dellavigna and Pollet 2009</a>)</span>. We have 154235 earnings announcements.</p>
 </section>
 </section>
 <section id="analyst-expectations" class="level1">
 <h1>Analyst Expectations</h1>
 <p>Finally, we have to calculate the median analyst earnings per share estimate for each company in the 30 days before the earnings announcement <span class="citation" data-cites="dellavigna2009">(<a href="#ref-dellavigna2009" role="doc-biblioref">Dellavigna and Pollet 2009</a>)</span>. I will use the <code>dtplyr</code> package to do the calculations. I like the <code>tidyverse</code> for its expressiveness and readability but for some computations it can be slow <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The <code>data.table</code> and the general <a href="https://fastverse.github.io/fastverse/"><code>fastverse</code></a> can help speed up computations but the code syntax is less intuitive for beginner programmers. A nice intermediate step is to use the <code>dtplyr</code> package which translates <code>tidyverse</code> code into <code>data.table</code> code. We only have to make our datasets ready for the <code>data.table</code> code with <code>lazy_dt()</code>. The rest of the code should look like regular old <code>tidyverse</code> code. First, we only keep the last observation for every analyst in the 30 days before the earnings announcement. Second, we calculate the median estimate and some other statistics about the analyst estimates. In the last step, we convert the dataset back to a <code>tidyverse</code> <code>tibble</code> so that we can make use of our regular tidyverse functions.</p>
-<div class="cell" data-hash="download_data_cache/html/analyst-expectations_d5dd4e63d47fef77e895009623c35358">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>earn_ann_lazy <span class="ot">&lt;-</span> <span class="fu">lazy_dt</span>(earn_ann)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ann_ibes_lazy <span class="ot">&lt;-</span> <span class="fu">lazy_dt</span>(ann_ibes)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>analyst <span class="ot">&lt;-</span> <span class="fu">select</span>(earn_ann_lazy, ticker, anndats_act, anndat) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(ann_ibes_lazy, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ticker"</span>, <span class="st">"anndats_act"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(anndat), anndat <span class="sc">-</span> <span class="dv">30</span> <span class="sc">&lt;=</span> revdats, anndats <span class="sc">&lt;</span> anndat) <span class="sc">%&gt;%</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>anndats_act) <span class="sc">%&gt;%</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ticker, anndat, actual, analys, pdf) <span class="sc">%&gt;%</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(revdats) <span class="sc">%&gt;%</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(<span class="sc">~</span> <span class="fu">last</span>(.)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ticker, anndat, actual, pdf) <span class="sc">%&gt;%</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>(), <span class="at">median =</span> <span class="fu">median</span>(value, <span class="at">na.rm =</span> T),</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(value, <span class="at">na.rm =</span> T),</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_days =</span> <span class="fu">mean</span>(<span class="fu">pmax</span>(<span class="dv">0</span>, anndat <span class="sc">-</span> revdats))) <span class="sc">%&gt;%</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="download_data_cache/html/analyst-expectations_2addfcaa55947bb1f1783d0bfacea2cf">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>earn_ann_lazy <span class="ot">&lt;-</span> <span class="fu">lazy_dt</span>(earn_ann)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>ann_ibes_lazy <span class="ot">&lt;-</span> <span class="fu">lazy_dt</span>(ann_ibes)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>analyst <span class="ot">&lt;-</span> <span class="fu">select</span>(earn_ann_lazy, ticker, anndats_act, anndat) <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(ann_ibes_lazy, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ticker"</span>, <span class="st">"anndats_act"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(anndat), anndat <span class="sc">-</span> <span class="dv">30</span> <span class="sc">&lt;=</span> revdats, anndats <span class="sc">&lt;</span> anndat) <span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>anndats_act) <span class="sc">%&gt;%</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ticker, anndat, actual, analys, pdf) <span class="sc">%&gt;%</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(revdats) <span class="sc">%&gt;%</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(<span class="sc">~</span> <span class="fu">last</span>(.)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ticker, anndat, actual, pdf) <span class="sc">%&gt;%</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N =</span> <span class="fu">n</span>(), <span class="at">median =</span> <span class="fu">median</span>(value, <span class="at">na.rm =</span> T),</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(value, <span class="at">na.rm =</span> T),</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_days =</span> <span class="fu">mean</span>(<span class="fu">pmax</span>(<span class="dv">0</span>, anndat <span class="sc">-</span> revdats))) <span class="sc">%&gt;%</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'ticker', 'anndat', 'actual'. You can
 override using the `.groups` argument.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(analyst, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"analyst.RDS"</span>))</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(analyst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(analyst, <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"freaky_friday"</span>, <span class="st">"analyst.RDS"</span>))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(analyst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 133,076
+<pre><code>Rows: 132,750
 Columns: 8
 $ ticker    &lt;chr&gt; "A2", "A2", "A2", "A2", "A2", "A2", "A2", "AA0A", "AA0A", "A…
 $ anndat    &lt;date&gt; 2004-10-21, 2005-01-26, 2005-04-27, 2005-07-27, 2005-10-26,…

@@ -447,46 +447,23 @@ div.csl-indent {
 
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div class="cell" data-hash="poisson_cache/html/setup_9047014c2ac2d5de7fb70321560fc450">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.5.0     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fixest)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'cowplot'
-
-The following object is masked from 'package:lubridate':
-
-    stamp</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>(<span class="at">font_size =</span> <span class="dv">18</span>))</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"generalised/introduction.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="poisson_cache/html/setup_b2b278d1609b9189f9b26a19a2a407c1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fixest)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>(<span class="at">font_size =</span> <span class="dv">18</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">i_am</span>(<span class="st">"generalised/introduction.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>here() starts at /Users/stijnmasschelein/Library/CloudStorage/Dropbox/Teaching/lecturenotes/method_package</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="poisson_cache/html/parameters_5bcc798bc6044823d4fd829d9ab87c9a">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">830323</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">4000</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>n_firm <span class="ot">&lt;-</span> <span class="dv">500</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>gof_omit <span class="ot">&lt;-</span> <span class="st">"Adj|Lik|IC|RMSE"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="poisson_cache/html/parameters_44dde865e87f69f98e2c2b7abea980c8">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">830323</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">4000</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>n_firm <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>gof_omit <span class="ot">&lt;-</span> <span class="st">"Adj|Lik|IC|RMSE"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="introduction" class="level2">
@@ -549,38 +526,39 @@ E(y|x_1, x_2) = e^{-0.3 x_1 + x_2}
 \]</span></p>
 <p>This is the data generating process that we associate with a multiplicative process or from a Poisson count process. We will be interested in estimating the effect of <span class="math inline">\(x_1\)</span> on <span class="math inline">\(y\)</span> which in the Poisson regression should give an estimate of <span class="math inline">\(-0.3\)</span>.</p>
 <p>The data generating process also includes fixed effects and additional variation around this expected value which violates the assumptions of the naive Poisson regression. The details of this approach are not important and require knowledge of the negative binomial distribution(<code>rnbinom</code>) to get count data and the chi-squared distribution (<code>rchisq</code>) for the continuous case.</p>
-<div class="cell" data-hash="poisson_cache/html/simulate-count-data_afcb3c0fbac76ac5261412d5dec1b90a">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>overdispersion <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>hetero <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="sc">-</span> <span class="fl">0.3</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>firm <span class="ot">&lt;-</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">firm =</span> <span class="dv">1</span><span class="sc">:</span>n_firm,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">fixed =</span> <span class="fu">rnorm</span>(n_firm, <span class="dv">0</span>, .<span class="dv">5</span>))</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>panel <span class="ot">&lt;-</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">firm =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, N, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1_noise =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, .<span class="dv">5</span>),</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">noise =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, .<span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(firm) <span class="sc">%&gt;%</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> fixed <span class="sc">+</span> x1_noise,</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> <span class="fu">rnorm</span>(N, x1 <span class="sc">+</span> x1<span class="sc">^</span><span class="dv">2</span>, <span class="dv">2</span>),</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">ydiscrete =</span> <span class="fu">rnbinom</span>(<span class="at">n =</span> N, <span class="at">mu =</span> <span class="fu">exp</span>(beta <span class="sc">*</span> x1 <span class="sc">+</span> x2),</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>                        <span class="at">size =</span> <span class="dv">1</span><span class="sc">/</span>overdispersion),</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">ycontinuous =</span> <span class="fu">rchisq</span>(<span class="at">n =</span> N, ydiscrete))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="poisson_cache/html/simulate-count-data_906096509dc43e4207bc41b0ec35468d">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>overdispersion <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>hetero <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="sc">-</span> <span class="fl">0.3</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>firm <span class="ot">&lt;-</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">firm =</span> <span class="dv">1</span><span class="sc">:</span>n_firm,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">fixed =</span> <span class="fu">rnorm</span>(n_firm, <span class="dv">0</span>, .<span class="dv">5</span>))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>panel <span class="ot">&lt;-</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">firm =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, N, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1_noise =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, .<span class="dv">5</span>),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">noise =</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, .<span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(firm) <span class="sc">%&gt;%</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> fixed <span class="sc">+</span> x1_noise,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x2 =</span> <span class="fu">rnorm</span>(N, x1 <span class="sc">+</span> x1<span class="sc">^</span><span class="dv">2</span>, <span class="dv">2</span>),</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">ydiscrete =</span> <span class="fu">rnbinom</span>(<span class="at">n =</span> N, <span class="at">mu =</span> <span class="fu">exp</span>(beta <span class="sc">*</span> x1 <span class="sc">+</span> x2),</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                        <span class="at">size =</span> <span class="dv">1</span><span class="sc">/</span>overdispersion),</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">ycontinuous =</span> <span class="fu">rchisq</span>(<span class="at">n =</span> N, ydiscrete))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(firm)`</code></pre>
 </div>
 </div>
 <p>I plot the data on log + 1 scale and you can see that the figure looks distorted or weird for lower values of <code>ydiscrete</code> or <code>ycontinuous</code>. This is by now means proof but it is indicative of some of the problems with the log or log plus 1 transformation.</p>
-<div class="cell" data-hash="poisson_cache/html/unnamed-chunk-4_8d20ed497e1df7ca7d3e6117307e18fb">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>panel <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(ydiscrete, ycontinuous), <span class="at">values_to =</span> <span class="st">"y"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> y <span class="sc">+</span> <span class="dv">1</span>, <span class="at">x =</span> x1)) <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="poisson_cache/html/unnamed-chunk-4_9a7eb9f1ea87c1a0db7717cde93cbd97">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> panel <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(ydiscrete, ycontinuous), <span class="at">values_to =</span> <span class="st">"y"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> y <span class="sc">+</span> <span class="dv">1</span>, <span class="at">x =</span> x1))  <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="poisson_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -590,24 +568,24 @@ E(y|x_1, x_2) = e^{-0.3 x_1 + x_2}
 <li>The Poisson regression with <span class="math inline">\(y\)</span> as dependent variable.</li>
 <li>An OlS regression with <span class="math inline">\(\textrm{log}(y + 1)\)</span> as dependent variable.</li>
 <li>An OLS regression with <span class="math inline">\(y\)</span> as dependent variable. Because this regression is not on the rate of change scale, we do not expect a coefficient of -0.3 here. The main purpose is to show how noisy the estimate is.</li>
-<li>An OLS regression with <span class="math inline">\(\frac{y/x_2\)</span> as dependent variable. This approach will suffer from the same noisy estimates.</li>
+<li>An OLS regression with <span class="math inline">\(\frac{y}{x_2}\)</span> as dependent variable. This approach will suffer from the same noisy estimates.</li>
 </ul>
 <div class="cell" data-hash="poisson_cache/html/unnamed-chunk-5_d6ef0714f2b0dcc2e56a2dc970cff1f0">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>poisson_disc <span class="ot">&lt;-</span> <span class="fu">feglm</span>(ydiscrete <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> panel)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>poisson_cont <span class="ot">&lt;-</span> <span class="fu">feglm</span>(ycontinuous <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> panel)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>log_plus1_disc <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="fu">log</span>(ydiscrete <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> panel)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>log_plus1_cont <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="fu">log</span>(ycontinuous <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> panel)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>ols_disc <span class="ot">&lt;-</span><span class="fu">feols</span>(ydiscrete <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>ols_cont <span class="ot">&lt;-</span><span class="fu">feols</span>(ycontinuous <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>rate_disc <span class="ot">&lt;-</span><span class="fu">feols</span>(<span class="fu">I</span>(ydiscrete <span class="sc">/</span> <span class="fu">exp</span>(x2)) <span class="sc">~</span> x1 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>rate_cont <span class="ot">&lt;-</span><span class="fu">feols</span>(<span class="fu">I</span>(ycontinuous <span class="sc">/</span> <span class="fu">exp</span>(x2)) <span class="sc">~</span> x1 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="at">poisson =</span> poisson_disc, <span class="at">log1 =</span> log_plus1_disc,</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>              <span class="at">ols =</span> ols_disc, <span class="at">rate =</span> rate_disc),</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">gof_omit =</span> gof_omit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>poisson_disc <span class="ot">&lt;-</span> <span class="fu">feglm</span>(ydiscrete <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> panel)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>poisson_cont <span class="ot">&lt;-</span> <span class="fu">feglm</span>(ycontinuous <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> panel)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>log_plus1_disc <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="fu">log</span>(ydiscrete <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> panel)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>log_plus1_cont <span class="ot">&lt;-</span> <span class="fu">feols</span>(<span class="fu">log</span>(ycontinuous <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> panel)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>ols_disc <span class="ot">&lt;-</span><span class="fu">feols</span>(ydiscrete <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>ols_cont <span class="ot">&lt;-</span><span class="fu">feols</span>(ycontinuous <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>rate_disc <span class="ot">&lt;-</span><span class="fu">feols</span>(<span class="fu">I</span>(ydiscrete <span class="sc">/</span> <span class="fu">exp</span>(x2)) <span class="sc">~</span> x1 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>rate_cont <span class="ot">&lt;-</span><span class="fu">feols</span>(<span class="fu">I</span>(ycontinuous <span class="sc">/</span> <span class="fu">exp</span>(x2)) <span class="sc">~</span> x1 <span class="sc">|</span> firm, <span class="at">data =</span> panel)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="at">poisson =</span> poisson_disc, <span class="at">log1 =</span> log_plus1_disc,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>              <span class="at">ols =</span> ols_disc, <span class="at">rate =</span> rate_disc),</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">gof_omit =</span> gof_omit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
@@ -688,9 +666,9 @@ E(y|x_1, x_2) = e^{-0.3 x_1 + x_2}
 
 
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="at">poisson =</span> poisson_cont, <span class="at">log1 =</span> log_plus1_cont,</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">ols =</span> ols_cont, <span class="at">rate =</span> rate_cont),</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">gof_omit =</span> gof_omit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">msummary</span>(<span class="fu">list</span>(<span class="at">poisson =</span> poisson_cont, <span class="at">log1 =</span> log_plus1_cont,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">ols =</span> ols_cont, <span class="at">rate =</span> rate_cont),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">gof_omit =</span> gof_omit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
